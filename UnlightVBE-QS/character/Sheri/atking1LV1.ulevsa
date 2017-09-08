@@ -1,0 +1,57 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKN00109"
+         Case 2
+              main = "42#45#11#61#99"
+         Case 3
+              main = "自殺傾向"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "全距離#111"
+         Case 6
+              main = "特合計1以上#41a"
+         Case 7
+              main = "HP-特&#ATK+特x4"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 42
+            If AtkingPagetotVS(1, 4) >= 1 Then
+               If AtkingckVSS(1, 1) = 0 Then
+                    atking = atking & "AtkingLineLight#1" & "="
+                    atking = atking & "AtkingTurnOnOff#1" & "="
+               End If
+            Else
+               If AtkingckVSS(1, 1) = 1 Then
+                    atking = atking & "AtkingLineLight#2" & "="
+                    atking = atking & "AtkingTurnOnOff#2" & "="
+               End If
+            End If
+        Case 45
+            atking = atking & "EventTotalDiceChange#1,1," & (AtkingPagetotVS(1, 4) * 4) & "="
+        Case 11
+          atking = atking & "AtkingStartPlay#" & "\gif\Sheri\atking1.jpg,0" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+          atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 61
+          atking = atking & "PersonBloodControl#1,1,1," & AtkingPagetotVS(1, 4) & "="
+        Case 99
+          If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(13) = 1 Then
+                If AtkingPagetotVS(1, 4) >= 1 And VBEAtkingVSF(1, 1, 1) - AtkingPagetotVS(1, 4) > 0 Then
+                    atking = atking & "EventActiveAIScore#1,2"
+                    For i = 1 To UBound(VBEPageCardNumVS, 1)
+                        If VBEPageCardNumVS(i, 1) = 4 Then
+                            atking = atking & "," & i
+                        End If
+                    Next
+                    atking = atking & "="
+                ElseIf VBEAtkingVSF(1, 1, 1) - AtkingPagetotVS(1, 4) <= 0 Then
+                    atking = atking & "EventActiveAIScore#3,2" & "="
+                End If
+          End If
+    End Select
+End Function

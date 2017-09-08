@@ -1,0 +1,29 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFN00102"
+         Case 2
+              main = "45#53"
+         Case 3
+              main = "ATK-"
+         Case 4
+              main = "\Buff\atkdown\atkdownnew.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 45
+            If BuffPersonType = 1 Then
+                If VBEAtkingVSS(12) = 3 Then
+                    If (atkingpagetotVS(1, 1) > 0 And VBEAtkingVSS(6) = 1) Or (atkingpagetotVS(1, 5) > 0 And VBEAtkingVSS(6) > 1) Then
+                         buff = buff & "EventTotalDiceChange#1,2," & VBEVSBuffNum(1) & "="
+                    End If
+                End If
+            End If
+        Case 53
+            If BuffPersonType = 1 Then
+                buff = buff & "BuffTurnEnd#0" & "="
+            End If
+    End Select
+End Function

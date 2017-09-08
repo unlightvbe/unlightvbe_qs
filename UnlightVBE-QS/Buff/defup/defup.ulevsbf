@@ -1,0 +1,27 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFN00201"
+         Case 2
+              main = "45#53"
+         Case 3
+              main = "DEF+"
+         Case 4
+              main = "\Buff\defup\defupnew.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 45
+            If BuffPersonType = 1 Then
+                If VBEAtkingVSS(12) = 4 Then
+                    buff = buff & "EventTotalDiceChange#1,1," & VBEVSBuffNum(1) & "="
+                End If
+            End If
+        Case 53
+            If BuffPersonType = 1 Then
+                buff = buff & "BuffTurnEnd#0" & "="
+            End If
+    End Select
+End Function

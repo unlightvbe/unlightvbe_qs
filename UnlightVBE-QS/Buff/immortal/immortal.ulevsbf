@@ -1,0 +1,27 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFN01001"
+         Case 2
+              main = "27#53"
+         Case 3
+              main = "¤£¦º"
+         Case 4
+              main = "\Buff\immortal\immortal.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 27
+            If BuffPersonType = 1 Then
+                If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
+                    buff = buff & "AtkingTrueDiceControl#3,0" & "="
+                End If
+            End If
+        Case 53
+            If BuffPersonType = 1 Then
+                buff = buff & "BuffTurnEnd#0" & "="
+            End If
+    End Select
+End Function

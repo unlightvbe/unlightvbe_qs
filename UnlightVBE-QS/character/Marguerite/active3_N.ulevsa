@@ -1,0 +1,75 @@
+Dim pagecheck()
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKN01713"
+         Case 2
+              main = "42#45#11#61#99"
+         Case 3
+              main = "世界創織者"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "全距離#111"
+         Case 6
+              main = "劍合計4以上、槍合計2以上#14a&52a"
+         Case 7
+              main = "ATK+5,給予對戰對手(自身出牌之槍數值+對手手牌之劍數值)÷4(尾數捨去)的傷害"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 42
+            If AtkingPagetotVS(1, 1) >= 4 And AtkingPagetotVS(1, 5) >= 2 Then
+               If AtkingckVSS(3, 1) = 0 Then
+                    atking = atking & "AtkingLineLight#1" & "="
+                    atking = atking & "AtkingTurnOnOff#1" & "="
+               End If
+            Else
+               If AtkingckVSS(3, 1) = 1 Then
+                    atking = atking & "AtkingLineLight#2" & "="
+                    atking = atking & "AtkingTurnOnOff#2" & "="
+               End If
+            End If
+        Case 45
+            atking = atking & "EventTotalDiceChange#1,1,5" & "="
+        Case 11
+          atking = atking & "AtkingStartPlay#" & "\gif\Marguerite\active3_1_N.jpg,\gif\Marguerite\active3_2_N.jpg" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+          atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 61
+            Dim atknum
+            For i = 1 To UBound(VBEPageCardNumVS, 1)
+                If VBEPageCardNumVS(i, 1) = 1 And VBEPageCardNumVS(i, 5) = 2 And VBEPageCardNumVS(i, 6) = 1 Then
+                    atknum = atknum + VBEPageCardNumVS(i, 2)
+                ElseIf VBEPageCardNumVS(i, 3) = 1 And VBEPageCardNumVS(i, 5) = 2 And VBEPageCardNumVS(i, 6) = 1 Then
+                    atknum = atknum + VBEPageCardNumVS(i, 4)
+                End If
+            Next
+            atking = atking & "PersonBloodControl#2,1,1," & (AtkingPagetotVS(1, 5) + atknum) \ 4 & "="
+        Case 99
+          Dim numtot, k, m
+          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+          If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(13) = 1 Then
+                If AtkingPagetotVS(1, 1) >= 4 And AtkingPagetotVS(1, 5) >= 2 Then
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        m = AtkingPagetotVS(1, 1) - k
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            If VBEPageCardNumVS(i, 1) = 1 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = False And numtot < 4 Then
+                                atking = atking & "," & i
+                                pagecheck(i) = True
+                                numtot = numtot + m
+                            ElseIf VBEPageCardNumVS(i, 1) = 5 And pagecheck(i) = False Then
+                                atking = atking & "," & i
+                                pagecheck(i) = True
+                            End If
+                        Next
+                    Loop Until numtot >= 4
+                    atking = atking & "="
+                End If
+          End If
+    End Select
+End Function

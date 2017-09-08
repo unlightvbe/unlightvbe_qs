@@ -1,0 +1,27 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFN01201"
+         Case 2
+              main = "24#53"
+         Case 3
+              main = "¨g¾Ô¤h"
+         Case 4
+              main = "\Buff\berserk\berserk.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 24
+            If BuffPersonType = 1 Then
+                If VBEAtkingVSS(12) = 3 Or VBEAtkingVSS(12) = 4 Then
+                    buff = buff & "AtkingTrueDiceControl#3," & VBEAtkingVSS(5) * 2 & "="
+                End If
+            End If
+        Case 53
+            If BuffPersonType = 1 Then
+                buff = buff & "BuffTurnEnd#0" & "="
+            End If
+    End Select
+End Function

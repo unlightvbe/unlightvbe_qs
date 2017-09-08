@@ -1,0 +1,43 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKN01101"
+         Case 2
+              main = "42#45#11"
+         Case 3
+              main = "精密射擊"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "中、遠距離#110"
+         Case 6
+              main = "槍合計2以上#52a"
+         Case 7
+              main = "ATK+4"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 42
+            If VBEAtkingVSS(6) > 1 Then
+                If AtkingPagetotVS(1, 5) >= 2 Then
+                   If AtkingckVSS(1, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(1, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+          End If
+        Case 45
+          atking = atking & "EventTotalDiceChange#1,1,4" & "="
+        Case 11
+          atking = atking & "AtkingStartPlay#" & "\gif\Evarist\atking1.jpg,0" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+          atking = atking & "AtkingTurnOnOff#2" & "="
+    End Select
+End Function

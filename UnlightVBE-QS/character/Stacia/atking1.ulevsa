@@ -1,0 +1,74 @@
+Dim pagecheck()
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKN00501"
+         Case 2
+              main = "44#5#61#99"
+         Case 3
+              main = "殺戮器官"
+         Case 4
+              main = "移動#3"
+         Case 5
+              main = "全距離#111"
+         Case 6
+              main = "無合計1以上、無合計1以上、無合計1以上#01a&01a&01a"
+         Case 7
+              main = "自己獲得「殺戮」狀態"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 44
+            If VBEAtkingVSS(1) >= 3 Then
+               If AtkingckVSS(1, 1) = 0 Then
+                    atking = atking & "AtkingLineLight#1" & "="
+                    atking = atking & "AtkingTurnOnOff#1" & "="
+               End If
+            Else
+               If AtkingckVSS(1, 1) = 1 Then
+                    atking = atking & "AtkingLineLight#2" & "="
+                    atking = atking & "AtkingTurnOnOff#2" & "="
+               End If
+            End If
+        Case 5
+          atking = atking & "AtkingStartPlay#" & "\gif\Stacia\atking1.jpg,0" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+          atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 61
+          atking = atking & "PersonAddActualStatus#1,1,UCASN00101,1" & "="
+        Case 99
+          Dim checknum(1), k, numtot, m
+           ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+           If VBEAtkingVSS(12) = 2 Then
+               For i = 1 To UBound(VBEPageCardNumVS, 1)
+                    If VBEPageCardNumVS(i, 1) = 3 Then
+                        checknum(0) = checknum(0) + 1
+                    ElseIf VBEPageCardNumVS(i, 2) <= 2 And VBEPageCardNumVS(i, 4) <= 2 Then
+                        checknum(1) = checknum(1) + 1
+                    End If
+                Next
+                If checknum(0) + checknum(1) >= 3 Then
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            If VBEPageCardNumVS(i, 1) = 3 And pagecheck(i) = 0 Then
+                                atking = atking & "," & i
+                                pagecheck(i) = 1
+                                numtot = numtot + 1
+                            ElseIf VBEPageCardNumVS(i, 2) <= 2 And VBEPageCardNumVS(i, 4) <= 2 And pagecheck(i) = 0 And m > 0 Then
+                                atking = atking & "," & i
+                                pagecheck(i) = 1
+                                numtot = numtot + 1
+                            End If
+                            If numtot >= 3 Then Exit Do
+                        Next
+                        m = m + 1
+                    Loop
+                    atking = atking & "="
+                End If
+           End If
+    End Select
+End Function

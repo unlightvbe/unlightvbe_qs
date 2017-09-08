@@ -1,0 +1,50 @@
+Dim cardcheckpoint()
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNPEN01701"
+         Case 2
+              main = "17#12"
+         Case 3
+              main = "月光"
+         Case 4
+              main = "攻擊時，丟棄對手2張特殊卡，並給予丟棄張數x1的傷害(攻擊力為0時候無效)。"
+    End Select
+End Function
+
+Function passive(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), PassivePersonType, VBEVSStageNum())
+    Select Case a
+        Case 17
+            If PassivePersonType = 1 Then
+                passive = passive & "AtkingLineLight#1" & "="
+                passive = passive & "AtkingTurnOnOff#1" & "="
+            End If
+        Case 12
+            Dim cardnum, m, k
+            ReDim cardcheckpoint(UBound(VBEPageCardNumVS, 1))
+            If PassivePersonType = 1 Then
+                If VBEAtkingVSS(7) > 0 Then
+                    For i = 1 To UBound(VBEPageCardNumVS, 1)
+                        If (VBEPageCardNumVS(i, 1) = 4 Or VBEPageCardNumVS(i, 3) = 4) And VBEPageCardNumVS(i, 5) = 2 And VBEPageCardNumVS(i, 6) = 1 Then
+                            cardnum = cardnum + 1
+                        End If
+                    Next
+                    If cardnum > 0 Then
+                          If cardnum > 2 Then cardnum = 2
+                          Randomize
+                          Do
+                              m = Int(Rnd() * UBound(VBEPageCardNumVS, 1)) + 1
+                              If (VBEPageCardNumVS(m, 1) = 4 Or VBEPageCardNumVS(m, 3) = 4) And VBEPageCardNumVS(m, 5) = 2 And VBEPageCardNumVS(m, 6) = 1 And cardcheckpoint(m) = False Then
+                                  passive = passive & "AtkingDestroyCards#2," & m & "="
+                                  k = k + 1
+                                  cardcheckpoint(m) = True
+                              End If
+                          Loop Until k >= cardnum
+                          passive = passive & "PersonBloodControl#2,1,1," & cardnum & "="
+                    End If
+                End If
+                passive = passive & "AtkingLineLight#2" & "="
+                passive = passive & "AtkingTurnOnOff#2" & "="
+            End If
+    End Select
+End Function

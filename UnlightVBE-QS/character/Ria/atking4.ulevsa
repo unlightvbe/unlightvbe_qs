@@ -1,0 +1,84 @@
+Dim pagecheck()
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKS00104"
+         Case 2
+              main = "42#45#11#29#99"
+         Case 3
+              main = "終曲-無盡輪迴的終結"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "近、中距離#011"
+         Case 6
+              main = "特合計4以上#44a"
+         Case 7
+              main = "ATK+16，讓傷害強制轉移至對手血量最少的角色身上"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 42
+            If VBEAtkingVSS(6) < 3 Then
+                If AtkingPagetotVS(1, 4) >= 4 Then
+                   If AtkingckVSS(4, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(4, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+          End If
+        Case 45
+          atking = atking & "EventTotalDiceChange#1,1,16" & "="
+        Case 11
+          atking = atking & "AtkingStartPlay#" & "\gif\Ria\atking4.jpg,0" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+        Case 29
+          Dim num1, num2
+          For i = 1 To 3
+              If VBEAtkingVSF(2, i, 1) > 0 Then
+                  num1 = VBEAtkingVSF(2, i, 1)
+                  num2 = i
+                  Exit For
+              End If
+          Next
+          If VBEAtkingVSS(5) > 0 Then
+              For i = 1 To 3
+                  If VBEAtkingVSF(2, i, 1) < num1 And VBEAtkingVSF(2, i, 1) > 0 Then
+                      num1 = VBEAtkingVSF(2, i, 1)
+                      num2 = i
+                  End If
+              Next
+              atking = atking & "PersonBloodControl#2," & num2 & ",1," & VBEAtkingVSS(5) & "="
+              atking = atking & "AtkingTrueDiceControl#3,0" & "="
+          End If
+          atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 99
+          Dim numtot, k, m
+          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+          If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(13) = 1 And VBEAtkingVSS(6) < 3 Then
+                If AtkingPagetotVS(1, 4) >= 4 Then
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        m = AtkingPagetotVS(1, 4) - k
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = 0 Then
+                                atking = atking & "," & i
+                                pagecheck(i) = 1
+                                numtot = numtot + m
+                            End If
+                            If numtot >= 4 Then Exit Do
+                        Next
+                    Loop
+                    atking = atking & "="
+                End If
+          End If
+    End Select
+End Function
