@@ -1,0 +1,23 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFS00201"
+         Case 2
+              main = "45"
+         Case 3
+              main = "¨¾¿m"
+         Case 4
+              main = "\Buff\protection\protection.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 45
+            If BuffPersonType = 1 Then
+                If VBEAtkingVSS(12) = 4 Then
+                    buff = buff & "EventTotalDiceChange#1,1," & VBEVSBuffNum(2) & "="
+                End If
+            End If
+    End Select
+End Function

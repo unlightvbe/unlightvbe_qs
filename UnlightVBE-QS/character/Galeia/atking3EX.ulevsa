@@ -1,0 +1,74 @@
+Dim pagecheck()
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKS00607"
+         Case 2
+              main = "42#11#45#61#99"
+         Case 3
+              main = "Ex跳躍攻擊"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "中、遠距離#110"
+         Case 6
+              main = "槍合計4以上、移合計2以上#54a&32a"
+         Case 7
+              main = "ATK+5+「防禦」數&#移到近距離。"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 42
+            If VBEAtkingVSS(6) > 1 Then
+                If AtkingPagetotVS(1, 5) >= 4  And AtkingPagetotVS(1, 3) >= 2 Then
+                   If AtkingckVSS(3, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(3, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+          End If
+        Case 11
+          atking = atking & "AtkingStartPlay#" & "\gif\Galeia\atking3EX.jpg,0" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+          atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 45
+          For i = 1 To UBound(VBEPersonBuffVSS, 3)
+              If VBEPersonBuffVSS(1, 1, i) = "BUFFS00201" Then
+                  atking = atking & "EventTotalDiceChange#1,1," & (VBEPersonBuffVSF(1, 1, i, 2)+5) & "="
+                  Exit Function
+              End If
+          Next
+          '============如果沒有偵測到的話
+            atking = atking & "EventTotalDiceChange#1,1,5" & "="
+        Case 61
+          atking = atking & "BattleMoveControl#1" & "="
+        Case 99
+          Dim numtot, k, m
+          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))  '卡牌選擇標記變數
+          If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(6) > 1 Then
+                If AtkingPagetotVS(1, 5) >= 4  And AtkingPagetotVS(1, 3) >= 2 Then '如果手牌符合條件時
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        m = AtkingPagetotVS(1, 3) - k '從牌面上最高之移動數開始篩選
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            If VBEPageCardNumVS(i, 1) = 3 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = 0 Then
+                                atking = atking & "," & i
+                                pagecheck(i) = 1
+                                numtot = numtot + m
+                            End If
+                            If numtot >= 2 Then Exit Do
+                        Next
+                    Loop
+                    atking = atking & "="
+                End If
+          End If
+    End Select
+End Function

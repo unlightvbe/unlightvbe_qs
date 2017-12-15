@@ -52,15 +52,17 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                   End If
                End If
           Next
-          atking = atking & "AtkingSeizeEnemyCards#1," & cardnum(0) & "="
+          If cardnum(0) > 0 Then
+            atking = atking & "AtkingSeizeEnemyCards#1," & cardnum(0) & "="
+          End If
         Case 99
           Dim numtot, k, m
-          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))  '卡牌選擇標記變數
           If VBEAtkingVSS(12) = 2 And VBEAtkingVSS(6) = 2 Then
                 If AtkingPagetotVS(1, 4) >= 3 Then
                     atking = atking & "EventActiveAIScore#1,1"
                     Do
-                        m = AtkingPagetotVS(1, 4) - k
+                        m = AtkingPagetotVS(1, 4) - k '從牌面上最高之特數開始篩選
                         k = k + 1
                         For i = 1 To UBound(VBEPageCardNumVS, 1)
                             If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = 0 Then

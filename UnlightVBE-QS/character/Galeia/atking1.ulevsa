@@ -1,0 +1,82 @@
+Dim pagecheck()
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKS00601"
+         Case 2
+              main = "42#45#11#61#99"
+         Case 3
+              main = "斬擊波"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "近、中距離#011"
+         Case 6
+              main = "劍合計3以上、防合計1以上#13a&21a"
+         Case 7
+              main = "ATK+6&#自身獲得「防禦」1點。"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Dim k, m
+    Select Case a
+        Case 42
+            If VBEAtkingVSS(6) < 3 Then
+                If AtkingPagetotVS(1, 1) >= 3  And AtkingPagetotVS(1, 2) >= 1 Then
+                   If AtkingckVSS(1, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(1, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+          End If
+        Case 45
+          atking = atking & "EventTotalDiceChange#1,1,6" & "="
+        Case 11
+          atking = atking & "AtkingStartPlay#" & "\gif\Galeia\atking1-1.jpg,\gif\Galeia\atking1-2.jpg" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+          atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 61
+          For i = 1 To UBound(VBEPersonBuffVSS, 3)
+              If VBEPersonBuffVSS(1, 1, i) = "BUFFS00201" Then
+                  If VBEPersonBuffVSF(1, 1, i, 2) + 1 < 10 Then k = VBEPersonBuffVSF(1, 1, i, 2) + 1 Else k = 9
+                  atking = atking & "PersonAddBuff#1,1,BUFFS00201,0," & k & "="
+                  Exit Function
+              End If
+          Next
+          '============如果沒有偵測到的話
+          atking = atking & "PersonAddBuff#1,1,BUFFS00201,0,1" & "="
+        Case 99
+          Dim numtot, DEFCheck
+          k = 0
+          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+          If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(6) < 3 Then  '如果在攻擊階段且為中、近距離時
+                If AtkingPagetotVS(1, 1) >= 3 And AtkingPagetotVS(1, 2) >= 1 Then  '如果手牌符合條件時
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        m = AtkingPagetotVS(1, 1) - k
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            '劍，數值從持有手牌最大值開始選擇
+                            If VBEPageCardNumVS(i, 1) = 1 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = 0 And numtot < 3 Then
+                                atking = atking & "," & i
+                                pagecheck(i) = 1
+                                numtot = numtot + m
+                            '防禦、數值從1開始選擇
+                            ElseIf VBEPageCardNumVS(i, 1) = 2 And VBEPageCardNumVS(i, 2) = k And pagecheck(i) = 0 And DEFCheck = False Then
+                                atking = atking & "," & i
+                                pagecheck(i) = 1
+                                DEFCheck = True
+                            End If
+                        Next
+                    Loop Until (numtot >= 3 And DEFCheck = True)
+                    atking = atking & "="
+                End If
+          End If
+    End Select
+End Function

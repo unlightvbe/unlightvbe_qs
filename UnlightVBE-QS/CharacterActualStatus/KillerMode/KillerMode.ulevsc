@@ -20,7 +20,9 @@ Function ActualStatus(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), V
                             "-90,-60,90,-60" & "="
         Case 45
           If ActualStatusPersonType = 1 Then
+            If VBEAtkingVSS(12) = 3 Then
               ActualStatus = ActualStatus & "EventTotalDiceChange#1,3,2" & "="
+            End If
           End If
         Case 54
           If ActualStatusPersonType = 1 Then
