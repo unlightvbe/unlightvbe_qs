@@ -162,8 +162,9 @@ Sub ¦Û°Ê±²¶b±²°Ê()
 End Sub
 Sub ¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¨Ï¥ÎªÌ(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
@@ -311,8 +312,9 @@ End Select
 End Sub
 Sub ¦^´_°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 2) As Integer
 Vss_EventHPLActionOffNum = 0
+VBEStageNum(0) = 48
 VBEStageNum(1) = -1 '¦^´_¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¦^´_¤Hª«½s¸¹
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(48)
@@ -371,8 +373,9 @@ End If
 End Sub
 Sub ¦^´_°õ¦æ_¹q¸£(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 2) As Integer
 Vss_EventHPLActionOffNum = 0
+VBEStageNum(0) = 48
 VBEStageNum(1) = -2 '¦^´_¤è(¨t²Î¥N¸¹)
 VBEStageNum(2) = num '¦^´_¤Hª«½s¸¹
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(48)
@@ -427,8 +430,9 @@ End If
 End Sub
 Function ¶Ë®`°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = 1 '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 1 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
@@ -461,8 +465,9 @@ End If
 End Function
 Sub ¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¹q¸£(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
@@ -519,8 +524,9 @@ End If
 End Sub
 Function ¶Ë®`°õ¦æ_¹q¸£(ByVal tot As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = 1 '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 1 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
@@ -816,13 +822,15 @@ For i = 1 To 14
 Next
 ¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÄ~©Ó_¨Ï¥ÎªÌ
 End Sub
-Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer)
-'===============================
-Erase VBEStageNum
-VBEStageNum(1) = movecp 'ÅÜ§ó«e¶ZÂ÷
-VBEStageNum(2) = m  'ÅÜ§ó«á¶ZÂ÷
+Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean)
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(47)
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 47, 1
+If isEvent = True Then
+    ReDim VBEStageNum(0 To 2) As Integer
+    VBEStageNum(0) = 47
+    VBEStageNum(1) = movecp 'ÅÜ§ó«e¶ZÂ÷
+    VBEStageNum(2) = m  'ÅÜ§ó«á¶ZÂ÷
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 47, 1
+End If
 '============================
 Dim anw(1 To 2) As Integer
 Dim anh(1 To 2) As Integer
@@ -2618,7 +2626,7 @@ FormMainMode.bloodlineout1.Width = (¶ZÂ÷³æ¦ì(1, 1, 1) * liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(
 FormMainMode.bloodnumus1.Caption = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2))
 FormMainMode.bloodnumus2.Caption = liveusmax(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2))
 '========================
-°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
 '========================¥H¤U¬O§Þ¯àÀË¬d¤Î±Ò°Ê
 'If FormMainMode.uspi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = "¥v¶ð®L" Then
 '    If atking_¥v¶ð®L_±þ¼®¼Ò¦¡ª¬ºA¼Æ(2) = 1 Then
@@ -2734,7 +2742,7 @@ FormMainMode.bloodlineout2.Left = 11340 - (¶ZÂ÷³æ¦ì(1, 2, 1) * livecom(¨¤¦â¤Hª«¹
 FormMainMode.bloodnumcom1.Caption = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2))
 FormMainMode.bloodnumcom2.Caption = livecommax(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2))
 '==============================
-°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
 '=============================
 'If FormMainMode.compi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = "¤×²ú¥d" And atking_AI_¤×²ú¥d_¶W¸ü¥Ø«e¶¥¬q¬ö¿ý¼Æ(3) > 0 Then
 '    atkingckai(139, 2) = 1
@@ -5032,8 +5040,9 @@ Next
 End Sub
 Sub ¶Ë®`°õ¦æ_¥ß§Y¦º¤`_¨Ï¥ÎªÌ(ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 3 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
@@ -5069,8 +5078,9 @@ End If
 End Sub
 Sub ¶Ë®`°õ¦æ_¥ß§Y¦º¤`_¹q¸£(ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 3 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)

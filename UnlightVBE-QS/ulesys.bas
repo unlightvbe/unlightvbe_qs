@@ -1332,7 +1332,7 @@ FormMainMode.personcomminijpg.小人物影子top差 = Val(VBEPerson(2, 1, 2, 1, 6))
 FormMainMode.personcomminijpg.小人物影像反轉 = True
 '==================執行小人物立繪指定及距離指定
 '戰鬥系統類.人物交換_使用者_指定交換 1
-執行動作_距離變更 movecp
+執行動作_距離變更 movecp, False
 '================仿對戰模式設定
 If Formsetting.chkpersonvsmode.Value = 1 Then
     For i = 2 To 3
@@ -1682,6 +1682,7 @@ ReDim vbecommadnum(1 To 7, vbecommadtotplay)
 ReDim vbecommadstr(1 To 3, vbecommadtotplay)
 Erase Vss_PersonAtkingOffNum
 Erase Vss_AtkingInformationRecordStr
+ReDim VBEStageNum(0) As Integer
 End Sub
 Sub 清除戰鬥系統開始表單設定值()
 Dim i As Integer, j As Integer

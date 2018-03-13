@@ -11,7 +11,7 @@ Public Vss_EventBloodActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¶Ë®`µL®Ä¤Æ¬ö¿
 Public Vss_EventHPLActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¦^´_µL®Ä¤Æ¬ö¿ý¼È®ÉÅÜ¼Æ
 Public Vss_EventRemoveBuffActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§²§±`ª¬ºA®ø°£µL®Ä¤Æ¼Ð°O¼È®ÉÅÜ¼Æ
 Public Vss_EventRemoveActualStatusActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¤Hª«¹ê»Úª¬ºA®ø°£µL®Ä¤Æ¼Ð°O¼È®ÉÅÜ¼Æ
-Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3) As Integer '°õ¦æ«ü¥O¶°-¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ¤Î³Q°Ê§Þ§Þ¯à¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£,1~3¤Hª«½s¸¹)
+Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3, 1 To 8) As Integer '°õ¦æ«ü¥O¶°-¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ¤Î³Q°Ê§Þ§Þ¯à¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£,1~3¤Hª«½s¸¹,1~4.¥D°Ê§Þ¼Ð°O/5~8.³Q°Ê§Þ¼Ð°O)
 Public Vss_EventActiveAIScoreNum() As Integer '°õ¦æ«ü¥O¶°-´¼¼z«¬AI­Ó§O§Þ¯àµû¤À¬ö¿ý¼È®ÉÅÜ¼Æ(1.¸Ó±Æ¦C²Õ¦X§Þ¯àµû¤À¦^´_/2.µû¤À¼Ð·Ç¦^´_/3~.§Þ¯à±ÀÂË¤§­Ó§O´Á±æ±ÀÂËµP½s¸¹)
 Public Vss_PersonMoveControlNum(1 To 2, 1 To 2) As Integer  '°õ¦æ«ü¥O¶°-²¾°Ê«eÁ`²¾°Ê¶q±±¨î¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,1.²¾°ÊÅÜ¤Æ¶q/2.¬O§_¬°«ü©w)
 Public Vss_AtkingInformationRecordStr(1 To 2, 1 To 3, 1 To 8) As String '°õ¦æ«ü¥O¶°-§Þ¯à³Æµù¸ê°TÀx¦s¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£,1~3¤Hª«½s¸¹,§Þ¯à¦Û¦æ³Æµù¦r¦ê)
@@ -47,8 +47,10 @@ Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_«ü¥O©I¥s°õ¦æ(ByVal uscom As Integer, ByVal commadtype As In
         vbecommadstr(1, vbecommadtotplay) = commadstr2(0)
         vbecommadstr(3, vbecommadtotplay) = commadstr2(1)
         '=============================================
-        If PersonCheckAtking = False And _
+'        If PersonCheckAtking = False And _
                commadstr2(0) <> "AtkingLineLight" And commadstr2(0) <> "AtkingTurnOnOff" And commadstr2(0) <> "EventActiveAIScore" Then
+        If PersonCheckAtking = False And _
+               commadstr2(0) <> "AtkingLineLight" And commadstr2(0) <> "AtkingTurnOnOff" Then
                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O
         Else
             Do
@@ -107,7 +109,13 @@ Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_«ü¥O©I¥s°õ¦æ(ByVal uscom As Integer, ByVal commadtype As In
                         Case "PersonRemoveActualStatus"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_¯S©w¸Ñ°£_±M uscom, commadtype, atkingnum  '(¶¥¬q1)
                         Case "PersonAtkingOff"
-                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ¤Î³Q°Ê§Þ§Þ¯à uscom, commadtype, atkingnum  '(¶¥¬q1)
+                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ§Þ¯à_¾ãÅé uscom, commadtype, atkingnum  '(¶¥¬q1)
+                        Case "PersonPassiveOff"
+                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«³Q°Ê§Þ§Þ¯à_¾ãÅé uscom, commadtype, atkingnum  '(¶¥¬q1)
+                        Case "PersonAtkingOffSelect"
+                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ§Þ¯à_¿ï¾Ü uscom, commadtype, atkingnum  '(¶¥¬q1)
+                        Case "PersonPassiveOffSelect"
+                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«³Q°Ê§Þ§Þ¯à_¿ï¾Ü uscom, commadtype, atkingnum  '(¶¥¬q1)
                         Case "PersonMoveControl"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_²¾°Ê«eÁ`²¾°Ê¶q±±¨î uscom, commadtype, atkingnum  '(¶¥¬q1)
                         Case "AtkingInformationRecord"
@@ -127,8 +135,8 @@ Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_«ü¥O©I¥s°õ¦æ(ByVal uscom As Integer, ByVal commadtype As In
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_«Å§iµ²§ô_±M uscom, commadtype, atkingnum  '(¶¥¬q1)
                         Case "EventRemoveActualStatusActionOff"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_°õ¦æ¤§¤Hª«¹ê»Úª¬ºA®ø·ÀµL®Ä¤Æ_±M uscom, commadtype, atkingnum  '(¶¥¬q1)
-                        Case "EventActiveAIScore"
-                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_´¼¼z«¬AI­Ó§O§Þ¯àµû¤À uscom, commadtype, atkingnum  '(¶¥¬q1)
+'                        Case "EventActiveAIScore"
+'                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_´¼¼z«¬AI­Ó§O§Þ¯àµû¤À uscom, commadtype, atkingnum  '(¶¥¬q1)
                      '========================================================
                         Case Else
                                GoTo vss_cmdlocalerr
@@ -579,11 +587,11 @@ Sub °õ¦æ«ü¥O_³õ¦a¶ZÂ÷±±¨î(ByVal uscom As Integer, ByVal commadtype As Integer, B
         Case 1
             Select Case Val(commadstr3(0))
                 Case 1
-                    ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó 1
+                    ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó 1, True
                 Case 2
-                    ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó 2
+                    ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó 2, True
                 Case 3
-                    ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó 3
+                    ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó 3, True
             End Select
             GoTo VssCommadExit
     End Select
@@ -650,7 +658,7 @@ Sub °õ¦æ«ü¥O_§Þ¯à°Êµe°õ¦æ(ByVal uscom As Integer, ByVal commadtype As Integer, B
                 '=======================
                 °õ¦æ¶¥¬q¨t²Î_«Å§i¶}©l©Îµ²§ô 1
                 '=======================
-                Dim VBEStageNumMain(1 To 5) As Integer
+                Dim VBEStageNumMain(1 To 1) As Integer
                 Dim personnum As Integer, persontype As Integer
                 Dim buffvssnum As String
                 If vbecommadnum(3, vbecommadtotplay - 1) <= 24 Then
@@ -1109,7 +1117,7 @@ Exit Sub
 vss_cmdlocalerr:
 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "BattleSendMessage", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
 End Sub
-Sub °õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ¤Î³Q°Ê§Þ§Þ¯à(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+Sub °õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ§Þ¯à_¾ãÅé(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
     If UBound(commadstr3) <> 2 Or (commadtype <> 1 And vbecommadnum(4, vbecommadtotplay) <> 61) Or atkingnum <= 8 Then GoTo VssCommadExit
@@ -1124,9 +1132,13 @@ Sub °õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ¤Î³Q°Ê§Þ§Þ¯à(ByVal uscom As Integer, ByVal commad
             '========================================
             Select Case Val(commadstr3(2))
                  Case 1
-                       Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1)))) = 1
+                        For i = 1 To 4
+                            Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), i) = 1
+                        Next
                  Case 2
-                       Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1)))) = 0
+                        For i = 1 To 4
+                            Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), i) = 0
+                        Next
             End Select
             GoTo VssCommadExit
     End Select
@@ -1139,6 +1151,103 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonAtkingOff", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+End Sub
+Sub °õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«³Q°Ê§Þ§Þ¯à_¾ãÅé(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+    If UBound(commadstr3) <> 2 Or (commadtype <> 1 And vbecommadnum(4, vbecommadtotplay) <> 61) Or atkingnum <= 8 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplay)
+        Case 1
+            Select Case Val(commadstr3(0))
+                 Case 1
+                       uscomt = uscom
+                 Case 2
+                       If uscom = 1 Then uscomt = 2 Else uscomt = 1
+            End Select
+            '========================================
+            Select Case Val(commadstr3(2))
+                 Case 1
+                        For i = 5 To 8
+                            Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), i) = 1
+                        Next
+                 Case 2
+                        For i = 5 To 8
+                            Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), i) = 0
+                        Next
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonPassiveOff", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+End Sub
+Sub °õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«¥D°Ê§Þ§Þ¯à_¿ï¾Ü(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+    If UBound(commadstr3) <> 3 Or (commadtype <> 1 And vbecommadnum(4, vbecommadtotplay) <> 61) Or atkingnum <= 8 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplay)
+        Case 1
+            Select Case Val(commadstr3(0))
+                 Case 1
+                       uscomt = uscom
+                 Case 2
+                       If uscom = 1 Then uscomt = 2 Else uscomt = 1
+            End Select
+            '========================================
+            Select Case Val(commadstr3(2))
+                 Case 1
+                        Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), Val(commadstr3(3))) = 1
+                 Case 2
+                        Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), Val(commadstr3(3))) = 0
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonAtkingOffSelect", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+End Sub
+Sub °õ¦æ«ü¥O_¸T¤î°õ¦æ¤Hª«³Q°Ê§Þ§Þ¯à_¿ï¾Ü(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+    If UBound(commadstr3) <> 3 Or (commadtype <> 1 And vbecommadnum(4, vbecommadtotplay) <> 61) Or atkingnum <= 8 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplay)
+        Case 1
+            Select Case Val(commadstr3(0))
+                 Case 1
+                       uscomt = uscom
+                 Case 2
+                       If uscom = 1 Then uscomt = 2 Else uscomt = 1
+            End Select
+            '========================================
+            Select Case Val(commadstr3(2))
+                 Case 1
+                        Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), Val(commadstr3(3)) + 4) = 1
+                 Case 2
+                        Vss_PersonAtkingOffNum(uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), Val(commadstr3(3)) + 4) = 0
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonPassiveOffSelect", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
 End Sub
 Sub °õ¦æ«ü¥O_°õ¦æ¤§¶Ë®`µL®Ä¤Æ_±M(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
@@ -1513,7 +1622,7 @@ Sub °õ¦æ«ü¥O_°õ¦æÂY»ë¤l(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
             '=======================
             °õ¦æ¶¥¬q¨t²Î_«Å§i¶}©l©Îµ²§ô 1
             '=======================
-            Dim VBEStageNumMain(1 To 5) As Integer
+            Dim VBEStageNumMain(1 To 1) As Integer
             Dim personnum As Integer, persontype As Integer
             Dim buffvssnum As String
             If vbecommadnum(3, vbecommadtotplay - 1) <= 24 Then
@@ -1688,7 +1797,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_¥[¤J(ByVal uscom As Integer, ByVal commadtype As I
             '=======================
             °õ¦æ¶¥¬q¨t²Î_«Å§i¶}©l©Îµ²§ô 1
             '=======================
-            Dim VBEStageNumMain(1 To 5) As Integer
+            Dim VBEStageNumMain(1 To 1) As Integer
             VBEStageNumMain(1) = Val(commadstr3(3))
             If Val(commadstr3(1)) > 1 Then persontype = 2 Else persontype = 1
             °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«¹ê»Úª¬ºA uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), 74, persontype, VBEStageNumMain
@@ -1768,7 +1877,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA¥[¤J¸ê®Æ_±M(ByVal uscom As Integer, ByVal commadtype As
                         FormMainMode.personusminijpg.¤p¤Hª«¼v¤ltop®t = Val(¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(uscom, personnum, 8))
                         ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(1) = ¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(uscom, personnum, 3)
                         FormMainMode.Åã¥Ü¦C1.¨Ï¥ÎªÌ¤è¤p¤Hª«¹Ï¤ùleft = -(FormMainMode.Åã¥Ü¦C1.¨Ï¥ÎªÌ¤è¤p¤Hª«¹Ï¤ùwidth)
-                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
                         FormMainMode.personusminijpg.¤p¤Hª«Åã²{ = True
                     Case 2
                         FormMainMode.personcomminijpg.¤p¤Hª«¹Ï¤ù = ¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(uscom, personnum, 4)
@@ -1778,7 +1887,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA¥[¤J¸ê®Æ_±M(ByVal uscom As Integer, ByVal commadtype As
                         FormMainMode.personcomminijpg.¤p¤Hª«¼v¤ltop®t = Val(¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(uscom, personnum, 8))
                         ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(2) = ¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(uscom, personnum, 3)
                         FormMainMode.Åã¥Ü¦C1.¹q¸£¤è¤p¤Hª«¹Ï¤ùleft = FormMainMode.ScaleWidth
-                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
                         FormMainMode.personcomminijpg.¤p¤Hª«Åã²{ = True
                 End Select
                 vbecommadnum(2, vbecommadtotplay) = 3
@@ -1836,7 +1945,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_«Å§iµ²§ô_±M(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personusminijpg.¤p¤Hª«¼v¤ltop®t = Val(VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 2, 1, 6))
                         ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(1) = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 1, 5, 3)
                         FormMainMode.Åã¥Ü¦C1.¨Ï¥ÎªÌ¤è¤p¤Hª«¹Ï¤ùleft = -(FormMainMode.Åã¥Ü¦C1.¨Ï¥ÎªÌ¤è¤p¤Hª«¹Ï¤ùwidth)
-                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
                         FormMainMode.personusminijpg.¤p¤Hª«Åã²{ = True
                     Case 2
                         FormMainMode.personcomminijpg.¤p¤Hª«¹Ï¤ù = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 1, 5, 1)
@@ -1846,7 +1955,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_«Å§iµ²§ô_±M(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personcomminijpg.¤p¤Hª«¼v¤ltop®t = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 2, 1, 6)
                         ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(2) = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 1, 5, 3)
                         FormMainMode.Åã¥Ü¦C1.¹q¸£¤è¤p¤Hª«¹Ï¤ùleft = FormMainMode.ScaleWidth
-                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
                         FormMainMode.personcomminijpg.¤p¤Hª«Åã²{ = True
                 End Select
                 vbecommadnum(2, vbecommadtotplay) = 3
@@ -1890,7 +1999,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_¯S©w¸Ñ°£_±M(ByVal uscom As Integer, ByVal commadty
                 '=======================
                 °õ¦æ¶¥¬q¨t²Î_«Å§i¶}©l©Îµ²§ô 1
                 '=======================
-                Dim VBEStageNumMain(1 To 5) As Integer
+                Dim VBEStageNumMain(1 To 1) As Integer
                 If Val(commadstr3(1)) > 1 Then persontype = 2 Else persontype = 1
                 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«¹ê»Úª¬ºA uscomt, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, Val(commadstr3(1))), 75, persontype, VBEStageNumMain
                 '=======================
@@ -1929,7 +2038,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_¯S©w¸Ñ°£_±M(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personusminijpg.¤p¤Hª«¼v¤ltop®t = Val(VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 2, 1, 6))
                         ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(1) = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 1, 5, 3)
                         FormMainMode.Åã¥Ü¦C1.¨Ï¥ÎªÌ¤è¤p¤Hª«¹Ï¤ùleft = -(FormMainMode.Åã¥Ü¦C1.¨Ï¥ÎªÌ¤è¤p¤Hª«¹Ï¤ùwidth)
-                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
                         FormMainMode.personusminijpg.¤p¤Hª«Åã²{ = True
                     Case 2
                         FormMainMode.personcomminijpg.¤p¤Hª«¹Ï¤ù = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 1, 5, 1)
@@ -1939,7 +2048,7 @@ Sub °õ¦æ«ü¥O_¤Hª«¹ê»Úª¬ºA±±¨î_¯S©w¸Ñ°£_±M(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personcomminijpg.¤p¤Hª«¼v¤ltop®t = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 2, 1, 6)
                         ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(2) = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 1, 5, 3)
                         FormMainMode.Åã¥Ü¦C1.¹q¸£¤è¤p¤Hª«¹Ï¤ùleft = FormMainMode.ScaleWidth
-                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+                        ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
                         FormMainMode.personcomminijpg.¤p¤Hª«Åã²{ = True
                 End Select
                 vbecommadnum(2, vbecommadtotplay) = 4
@@ -1983,33 +2092,33 @@ Exit Sub
 vss_cmdlocalerr:
 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "EventRemoveActualStatusActionOff", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
 End Sub
-Sub °õ¦æ«ü¥O_´¼¼z«¬AI­Ó§O§Þ¯àµû¤À(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
-    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
-    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
-    If UBound(commadstr3) < 1 Or vbecommadnum(3, vbecommadtotplay) > 24 Or Val(vbecommadnum(4, vbecommadtotplay)) <> 99 Then GoTo VssCommadExit
-    Select Case vbecommadnum(2, vbecommadtotplay)
-        Case 1
-            ReDim Vss_EventActiveAIScoreNum(1 To UBound(commadstr3) + 1) As Integer
-            For i = 0 To UBound(commadstr3)
-                Vss_EventActiveAIScoreNum(i + 1) = commadstr3(i)
-            Next
-            '=====================
-            GoTo VssCommadExit
-    End Select
-        '============================
-    Exit Sub
-VssCommadExit:
-    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O
-    '============================
-'=============================
-Exit Sub
-vss_cmdlocalerr:
-°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "EventActiveAIScore", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
-End Sub
+'Sub °õ¦æ«ü¥O_´¼¼z«¬AI­Ó§O§Þ¯àµû¤À(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+'    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+'    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+'    If UBound(commadstr3) < 1 Or vbecommadnum(3, vbecommadtotplay) > 24 Or Val(vbecommadnum(4, vbecommadtotplay)) <> 99 Then GoTo VssCommadExit
+'    Select Case vbecommadnum(2, vbecommadtotplay)
+'        Case 1
+'            ReDim Vss_EventActiveAIScoreNum(1 To UBound(commadstr3) + 1) As Integer
+'            For i = 0 To UBound(commadstr3)
+'                Vss_EventActiveAIScoreNum(i + 1) = commadstr3(i)
+'            Next
+'            '=====================
+'            GoTo VssCommadExit
+'    End Select
+'        '============================
+'    Exit Sub
+'VssCommadExit:
+'    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O
+'    '============================
+''=============================
+'Exit Sub
+'vss_cmdlocalerr:
+'°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "EventActiveAIScore", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+'End Sub
 Sub °õ¦æ«ü¥O_²¾°Ê«eÁ`²¾°Ê¶q±±¨î(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
-    If UBound(commadstr3) <> 2 Or (commadtype <> 1 And vbecommadnum(4, vbecommadtotplay) <> 61) Then GoTo VssCommadExit
+    If UBound(commadstr3) <> 2 Or (vbecommadnum(4, vbecommadtotplay) <> 70 And vbecommadnum(4, vbecommadtotplay) <> 71) Then GoTo VssCommadExit
     Dim uscomt As Integer
     Select Case Val(commadstr3(0))
          Case 1

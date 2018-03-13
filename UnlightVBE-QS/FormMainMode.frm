@@ -8623,9 +8623,6 @@ If 目前數(31) = 0 Then
     '===========================執行階段插入點(70)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 70, 1
     '============================
-    '===========================執行階段插入點(71)
-    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 71, 1
-    '============================
 'movecheckcom = movecom
 '顯示列1.電腦方移動值 = movecheckcom
 '========================================
@@ -8722,6 +8719,13 @@ If movecom < 0 Then movecom = 0
         movecpn = Val(movecom) + Val(movecpn)
     End If
     '==============================
+    ReDim VBEStageNum(0 To 2) As Integer
+    VBEStageNum(0) = 71
+    VBEStageNum(1) = moveus '使用者方總移動數
+    VBEStageNum(2) = movecom '電腦方總移動數
+    '===========================執行階段插入點(71)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 71, 1
+    '============================
     
     If movecpn < 1 Then
        movecpn = 1
@@ -8729,7 +8733,7 @@ If movecom < 0 Then movecom = 0
        movecpn = 3
     End If
     
-    執行動作_距離變更 (movecpn)
+    執行動作_距離變更 movecpn, True
     
     If Val(movecheckus) > Val(movecheckcom) Then
       戰鬥系統類.movetnus

@@ -10,8 +10,8 @@ Public VBEAtkingVSS(1 To 15) As Variant 'VBE>VS給予變數統一資料-S版
 'Public VBEPageCardNumVS(1 To 106, 1 To 6) As Variant '公用牌資料-VS版
 Public VBEPageCardNumVS() As Variant '公用牌資料-VS版
 Public VBEVSBuffNum(1 To 2) As Variant '異常狀態專用-異常狀態之2個數值-VS版
-Public VBEStageNum(1 To 5) As Integer '執行階段系統-執行階段多用途紀錄暫時變數
-Public VBEVSStageNum(1 To 5) As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
+Public VBEStageNum() As Integer '執行階段系統-執行階段多用途紀錄暫時變數(0.執行階段號/1~任意內容)
+Public VBEVSStageNum() As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
 'Public VBEVSBuffMainCommadNum(1 To 2) As Integer '執行階段系統-異常狀態類相關暫時紀錄變數(1.是否為場上人物紀錄數/2.角色待機編號紀錄數)
 Public VBEStageRemoveBuffAllNum() As Boolean '執行階段系統-執行階段73-異常狀態控制全部清除-異常狀態是否異議標記暫時變數
 Public VBEActualStatusVS(1 To 2, 1 To 3, 1 To 2) As Variant '人物實際狀態資料-VS版
@@ -37,7 +37,7 @@ Sub 執行階段73_指令_異常狀態控制_全部清除(ByVal uscom As Integer, ByVal num As I
 '=======================
 執行階段系統_宣告開始或結束 1
 '=======================
-Dim VBEStageNumMain(1 To 5) As Integer
+Dim VBEStageNumMain(1 To 1) As Integer
 ReDim VBEStageRemoveBuffAllNum(1 To 14) As Boolean
 '=======================
 For p = 1 To 14
@@ -65,7 +65,7 @@ Sub 執行階段73_指令_異常狀態控制_特定清除(ByVal uscom As Integer, ByVal num As I
 '=======================
 執行階段系統_宣告開始或結束 1
 '=======================
-Dim VBEStageNumMain(1 To 5) As Integer
+Dim VBEStageNumMain(1 To 1) As Integer
 '=======================
 Vss_EventRemoveBuffActionOffNum = 0
 If num = 1 Then
@@ -89,11 +89,20 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
     '=======================
     執行階段系統_宣告開始或結束 1
     '=======================
-    Dim VBEStageNumMain(1 To 5) As Integer
-    For i = 1 To 5
-       VBEStageNumMain(i) = VBEStageNum(i)
-    Next
-    Erase VBEStageNum
+    Dim VBEStageNumMain() As Integer
+    If UBound(VBEStageNum) = 0 Then
+        ReDim VBEStageNumMain(1 To 1) As Integer
+    Else
+        ReDim VBEStageNumMain(0 To UBound(VBEStageNum)) As Integer
+        For i = 0 To UBound(VBEStageNum)
+           VBEStageNumMain(i) = VBEStageNum(i)
+        Next
+    End If
+'    Dim VBEStageNumMain(1 To UBound(VBEStageNum)) As Integer
+'    For i = 1 To 5
+'       VBEStageNumMain(i) = VBEStageNum(i)
+'    Next
+'    Erase VBEStageNum
     '=======================
     Dim uscom As Integer
     For k = 1 To 2
@@ -141,14 +150,14 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
             If w = 1 Then
                  '===場上人物之人物被動技能
                  For atkingnum = 5 To 8
-                    If atkingck(uscom, 角色待機人物紀錄數(uscom, w), atkingnum, 1) = 1 Or Vss_PersonAtkingOffNum(uscom, 角色待機人物紀錄數(uscom, w)) = 0 Then
+                    If atkingck(uscom, 角色待機人物紀錄數(uscom, w), atkingnum, 1) = 1 Or Vss_PersonAtkingOffNum(uscom, 角色待機人物紀錄數(uscom, w), atkingnum) = 0 Then
                         執行階段系統總主要程序_人物被動技能 uscom, 角色待機人物紀錄數(uscom, w), atkingnum, ns, 1, VBEStageNumMain
                     End If
                 Next
              Else
                  '===待機人物之人物被動技能
                  For atkingnum = 5 To 8
-                    If atkingck(uscom, 角色待機人物紀錄數(uscom, w), atkingnum, 1) = 1 Or Vss_PersonAtkingOffNum(uscom, 角色待機人物紀錄數(uscom, w)) = 0 Then
+                    If atkingck(uscom, 角色待機人物紀錄數(uscom, w), atkingnum, 1) = 1 Or Vss_PersonAtkingOffNum(uscom, 角色待機人物紀錄數(uscom, w), atkingnum) = 0 Then
                         執行階段系統總主要程序_人物被動技能 uscom, 角色待機人物紀錄數(uscom, w), atkingnum, ns, 2, VBEStageNumMain
                     End If
                 Next
@@ -157,7 +166,7 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
         '==================主動技能
         For atkingnum = 1 To 4
             If (nstype <= 2 And atkingck(uscom, 角色人物對戰人數(uscom, 2), atkingnum, 1) = 1) Or _
-                (nstype > 2 And Vss_PersonAtkingOffNum(uscom, 角色人物對戰人數(uscom, 2)) = 0) Then
+                (nstype > 2 And Vss_PersonAtkingOffNum(uscom, 角色人物對戰人數(uscom, 2), atkingnum) = 0) Then
                 執行階段系統總主要程序_人物主動技能 uscom, atkingnum, ns, VBEStageNumMain
             End If
         Next
@@ -165,6 +174,7 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
         If nstype = 2 Or nstype = 4 Then Exit For
     Next
     '=================
+    ReDim VBEStageNum(0) As Integer
     執行階段系統_宣告開始或結束 2
     '=================
 End Sub
@@ -391,7 +401,8 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
     Erase VBEAtkingVSS 'VBE>VS給予變數統一資料-S版
 '    Erase VBEPageCardNumVS '公用牌資料-VS版
     ReDim VBEPageCardNumVS(1 To 公用牌實體卡片分隔紀錄數(1), 1 To 6) As Variant '公用牌資料-VS版
-    Erase VBEVSStageNum '執行階段系統-執行階段多用途紀錄變數-VS版
+'    Erase VBEVSStageNum '執行階段系統-執行階段多用途紀錄變數-VS版
+    ReDim VBEVSStageNum(1 To UBound(VBEStageNumMain)) As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
     Erase VBEActualStatusVS '人物實際狀態資料-VS版
     '===========================
     Dim q As Integer, w As Integer, rr As Integer
@@ -521,13 +532,28 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                     VBEAtkingVSS(13) = 0
              End Select
              '=========================
-             For i = 1 To UBound(VBEStageNumMain)
-                 If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
-                     VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
-                 Else
-                     VBEVSStageNum(i) = VBEStageNumMain(i)
-                 End If
-             Next
+             If LBound(VBEStageNumMain) = 0 Then
+                    Select Case VBEStageNumMain(0)
+                        Case 71  '執行階段71(普通-移動前)
+                            For i = 1 To UBound(VBEStageNumMain)
+                                    VBEVSStageNum(i) = VBEStageNumMain(i)
+                            Next
+                        Case 46, 48 '執行階段46/48(傷害/回復)
+                            For i = 1 To UBound(VBEStageNumMain)
+                                    If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
+                                        VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
+                                    Else
+                                        VBEVSStageNum(i) = VBEStageNumMain(i)
+                                    End If
+                            Next
+                        Case Else
+                            For i = 1 To UBound(VBEStageNumMain)
+                                    VBEVSStageNum(i) = VBEStageNumMain(i)
+                            Next
+                    End Select
+             Else
+                    VBEVSStageNum(1) = 0 '無資料
+             End If
          Case 2 '===============================================================
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
              For i = 1 To 2
@@ -665,15 +691,29 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                     VBEAtkingVSS(13) = 0
              End Select
              '=========================
-             For i = 1 To UBound(VBEStageNumMain)
-                 If VBEStageNumMain(i) = -1 Then
-                     VBEVSStageNum(i) = 2
-                 ElseIf VBEStageNumMain(i) = -2 Then
-                     VBEVSStageNum(i) = 1
-                 Else
-                     VBEVSStageNum(i) = VBEStageNumMain(i)
-                 End If
-             Next
+             If LBound(VBEStageNumMain) = 0 Then
+                    Select Case VBEStageNumMain(0)
+                        Case 71  '執行階段71(普通-移動前)
+                            VBEVSStageNum(1) = VBEStageNumMain(2)
+                            VBEVSStageNum(2) = VBEStageNumMain(1)
+                        Case 46, 48 '執行階段46/48(傷害/回復)
+                            For i = 1 To UBound(VBEStageNumMain)
+                                If VBEStageNumMain(i) = -1 Then
+                                    VBEVSStageNum(i) = 2
+                                ElseIf VBEStageNumMain(i) = -2 Then
+                                    VBEVSStageNum(i) = 1
+                                Else
+                                    VBEVSStageNum(i) = VBEStageNumMain(i)
+                                End If
+                            Next
+                        Case Else
+                            For i = 1 To UBound(VBEStageNumMain)
+                                    VBEVSStageNum(i) = VBEStageNumMain(i)
+                            Next
+                    End Select
+             Else
+                    VBEVSStageNum(1) = 0 '無資料
+             End If
    End Select
 End Sub
 Sub 執行階段系統_初始_腳本讀入程序()
