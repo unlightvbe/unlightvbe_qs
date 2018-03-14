@@ -160,64 +160,73 @@ End Function
 Sub 自動捲軸捲動()
 'FormMainMode.messageus.ListIndex = FormMainMode.messageus.ListCount - 1
 End Sub
-Sub 傷害執行_技能直傷_使用者(ByVal tot As Integer, ByVal num As Integer)
+Sub 傷害執行_技能直傷_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
+If isEvent = True Then
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
-Vss_EventBloodActionOffNum = 0
-VBEStageNum(0) = 46
-VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
-VBEStageNum(2) = num '受到傷害人物編號
-VBEStageNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-'===========================執行階段插入點(46)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
-'============================
-If Vss_EventBloodActionOffNum = 0 Then
-    Select Case num
-       Case 1
-          If tot > 0 And liveus(角色人物對戰人數(1, 2)) > 0 Then
-              If tot >= liveus(角色人物對戰人數(1, 2)) Then
-                 戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
-'                 FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = 0
-                 FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
-                 FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = 0
-                 liveus(角色人物對戰人數(1, 2)) = 0
-                 FormMainMode.bloodnumus1.Caption = 0
-                 FormMainMode.bloodlineout1.Width = 0
-                 牌總階段數(1) = 牌總階段數(1) + 1
-              Else
-'                 FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = Val(FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption) - tot
-                 FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2)) - tot
-                 FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = Val(FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption) - tot
-                 liveus(角色人物對戰人數(1, 2)) = liveus(角色人物對戰人數(1, 2)) - tot
-                 FormMainMode.bloodnumus1.Caption = Val(FormMainMode.bloodnumus1.Caption) - tot
-                 FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width - (距離單位(1, 1, 1) * tot)
-                 戰鬥系統類.廣播訊息 "您受到了" & tot & "點傷害。"
-              End If
-              戰鬥系統類.播放傷害音樂
-           End If
-       Case Is > 1
-           If tot > 0 And liveus(角色待機人物紀錄數(1, num)) > 0 Then
-              If tot >= liveus(角色待機人物紀錄數(1, num)) Then
-                 liveus(角色待機人物紀錄數(1, num)) = 0
-                 If FormMainMode.uspi1(角色待機人物紀錄數(1, num)).Caption = "" Then
-'                     FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
-                     FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = -liveusmax(角色待機人物紀錄數(1, num))
-                     FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
-                 Else
-'                     FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = 0
-                     FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 0
-                     FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = 0
-                 End If
-                 牌總階段數(1) = 牌總階段數(1) + 1
-              Else
-'                 FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = Val(FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption) - tot
-                 FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = Val(FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption) - tot
-                 FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = Val(FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption)
-                 liveus(角色待機人物紀錄數(1, num)) = liveus(角色待機人物紀錄數(1, num)) - tot
-              End If
-           End If
-    End Select
+    ReDim VBEStageNum(0 To 4) As Integer
+    Vss_EventBloodActionOffNum = 0
+    VBEStageNum(0) = 46
+    VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
+    VBEStageNum(2) = num '受到傷害人物編號
+    VBEStageNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+    VBEStageNum(4) = tot '受到傷害之數值
+    Vss_EventBloodActionChangeNum(0) = 0
+    Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
+    Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
+    Vss_EventBloodActionChangeNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+    Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
+    '===========================執行階段插入點(46)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
+    '============================
+    If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
+    If Vss_EventBloodActionOffNum = 1 Then Exit Sub
 End If
+Select Case num
+   Case 1
+      If tot > 0 And liveus(角色人物對戰人數(1, 2)) > 0 Then
+          If tot >= liveus(角色人物對戰人數(1, 2)) Then
+             戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
+'                 FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = 0
+             FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
+             FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = 0
+             liveus(角色人物對戰人數(1, 2)) = 0
+             FormMainMode.bloodnumus1.Caption = 0
+             FormMainMode.bloodlineout1.Width = 0
+             牌總階段數(1) = 牌總階段數(1) + 1
+          Else
+'                 FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = Val(FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption) - tot
+             FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2)) - tot
+             FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = Val(FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption) - tot
+             liveus(角色人物對戰人數(1, 2)) = liveus(角色人物對戰人數(1, 2)) - tot
+             FormMainMode.bloodnumus1.Caption = Val(FormMainMode.bloodnumus1.Caption) - tot
+             FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width - (距離單位(1, 1, 1) * tot)
+             戰鬥系統類.廣播訊息 "您受到了" & tot & "點傷害。"
+          End If
+          戰鬥系統類.播放傷害音樂
+       End If
+   Case Is > 1
+       If tot > 0 And liveus(角色待機人物紀錄數(1, num)) > 0 Then
+          If tot >= liveus(角色待機人物紀錄數(1, num)) Then
+             liveus(角色待機人物紀錄數(1, num)) = 0
+             If FormMainMode.uspi1(角色待機人物紀錄數(1, num)).Caption = "" Then
+'                     FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
+                 FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = -liveusmax(角色待機人物紀錄數(1, num))
+                 FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
+             Else
+'                     FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = 0
+                 FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 0
+                 FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = 0
+             End If
+             牌總階段數(1) = 牌總階段數(1) + 1
+          Else
+'                 FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = Val(FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption) - tot
+             FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = Val(FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption) - tot
+             FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = Val(FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption)
+             liveus(角色待機人物紀錄數(1, num)) = liveus(角色待機人物紀錄數(1, num)) - tot
+          End If
+       End If
+End Select
+
 End Sub
 Sub 骰量更新顯示()
 攻擊防禦骰子總數(1) = 0
@@ -312,14 +321,18 @@ End Select
 End Sub
 Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-ReDim VBEStageNum(0 To 2) As Integer
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventHPLActionOffNum = 0
 VBEStageNum(0) = 48
 VBEStageNum(1) = -1 '回復方(1.使用者/2.電腦)
 VBEStageNum(2) = num '回復人物編號
+VBEStageNum(3) = tot '回復之數值
+Vss_EventHPLActionChangeNum(0) = 0
+Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
 '===========================執行階段插入點(48)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 48, 1
 '============================
+If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
 If Vss_EventHPLActionOffNum = 0 Then
     Select Case num
        Case 1
@@ -373,14 +386,18 @@ End If
 End Sub
 Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-ReDim VBEStageNum(0 To 2) As Integer
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventHPLActionOffNum = 0
 VBEStageNum(0) = 48
 VBEStageNum(1) = -2 '回復方(系統代號)
 VBEStageNum(2) = num '回復人物編號
+VBEStageNum(3) = tot '回復之數值
+Vss_EventHPLActionChangeNum(0) = 0
+Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
 '===========================執行階段插入點(48)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 48, 1
 '============================
+If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
 If Vss_EventHPLActionOffNum = 0 Then
     Select Case num
        Case 1
@@ -430,15 +447,22 @@ End If
 End Sub
 Function 傷害執行_使用者(ByVal tot As Integer)
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = 1 '受到傷害人物編號
 VBEStageNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+VBEStageNum(4) = tot '受到傷害之數值
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
+Vss_EventBloodActionChangeNum(2) = 1 '受到傷害人物編號
+Vss_EventBloodActionChangeNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
 '============================
+If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
 If Vss_EventBloodActionOffNum = 0 Then
     If tot > 0 And liveus(角色人物對戰人數(1, 2)) > 0 Then
           If tot >= liveus(角色人物對戰人數(1, 2)) Then
@@ -463,76 +487,91 @@ If Vss_EventBloodActionOffNum = 0 Then
     End If
 End If
 End Function
-Sub 傷害執行_技能直傷_電腦(ByVal tot As Integer, ByVal num As Integer)
-'===============================
-ReDim VBEStageNum(0 To 3) As Integer
-Vss_EventBloodActionOffNum = 0
-VBEStageNum(0) = 46
-VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
-VBEStageNum(2) = num '受到傷害人物編號
-VBEStageNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-'===========================執行階段插入點(46)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
-'============================
-If Vss_EventBloodActionOffNum = 0 Then
-    Select Case num
-        Case 1
-           If tot > 0 And livecom(角色人物對戰人數(2, 2)) > 0 Then
-                    If tot >= livecom(角色人物對戰人數(2, 2)) Then
-                       戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"
-                       FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = 0
-'                       FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption = 0
-                       FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 0
-                       FormMainMode.bloodnumcom1.Caption = 0
-                       livecom(角色人物對戰人數(2, 2)) = 0
-                       FormMainMode.bloodlineout2.Left = 11580
-                       牌總階段數(2) = 牌總階段數(2) + 1
-                    Else
-                       戰鬥系統類.廣播訊息 "對方受到了" & Val(tot) & "點傷害。"
-                       FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = Val(FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption) - tot
-'                       FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption = Val(FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption) - tot
-                       FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2)) - tot
-                       FormMainMode.bloodnumcom1.Caption = Val(FormMainMode.bloodnumcom1.Caption) - tot
-                       livecom(角色人物對戰人數(2, 2)) = livecom(角色人物對戰人數(2, 2)) - tot
-                       FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left + (距離單位(1, 2, 1) * tot)
-                    End If
-            戰鬥系統類.播放傷害音樂
-            End If
-        Case Is > 1
-           If tot > 0 And livecom(角色待機人物紀錄數(2, num)) > 0 Then
-                    If tot >= livecom(角色待機人物紀錄數(2, num)) Then
-                       If FormMainMode.compi1(角色待機人物紀錄數(2, num)).Caption = "" Then
-                           FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num))
-'                           FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num))
-                           FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = -livecommax(角色待機人物紀錄數(2, num))
-                       Else
-                           FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = 0
-'                           FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = 0
-                           FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
-                       End If
-                       livecom(角色待機人物紀錄數(2, num)) = 0
-                       牌總階段數(2) = 牌總階段數(2) + 1
-                    Else
-                       FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = Val(FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption) - tot
-'                       FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = Val(FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption) - tot
-                       FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = Val(FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption)
-                       livecom(角色待機人物紀錄數(2, num)) = livecom(角色待機人物紀錄數(2, num)) - tot
-                    End If
-            End If
-    End Select
+Sub 傷害執行_技能直傷_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
+If isEvent = True Then
+    '===============================
+    ReDim VBEStageNum(0 To 4) As Integer
+    Vss_EventBloodActionOffNum = 0
+    VBEStageNum(0) = 46
+    VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
+    VBEStageNum(2) = num '受到傷害人物編號
+    VBEStageNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+    VBEStageNum(4) = tot '受到傷害之數值
+    Vss_EventBloodActionChangeNum(0) = 0
+    Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
+    Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
+    Vss_EventBloodActionChangeNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+    Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
+    '===========================執行階段插入點(46)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
+    '============================
+    If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
+    If Vss_EventBloodActionOffNum = 1 Then Exit Sub
 End If
+Select Case num
+    Case 1
+       If tot > 0 And livecom(角色人物對戰人數(2, 2)) > 0 Then
+                If tot >= livecom(角色人物對戰人數(2, 2)) Then
+                   戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"
+                   FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = 0
+'                       FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption = 0
+                   FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 0
+                   FormMainMode.bloodnumcom1.Caption = 0
+                   livecom(角色人物對戰人數(2, 2)) = 0
+                   FormMainMode.bloodlineout2.Left = 11580
+                   牌總階段數(2) = 牌總階段數(2) + 1
+                Else
+                   戰鬥系統類.廣播訊息 "對方受到了" & Val(tot) & "點傷害。"
+                   FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = Val(FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption) - tot
+'                       FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption = Val(FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption) - tot
+                   FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2)) - tot
+                   FormMainMode.bloodnumcom1.Caption = Val(FormMainMode.bloodnumcom1.Caption) - tot
+                   livecom(角色人物對戰人數(2, 2)) = livecom(角色人物對戰人數(2, 2)) - tot
+                   FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left + (距離單位(1, 2, 1) * tot)
+                End If
+        戰鬥系統類.播放傷害音樂
+        End If
+    Case Is > 1
+       If tot > 0 And livecom(角色待機人物紀錄數(2, num)) > 0 Then
+                If tot >= livecom(角色待機人物紀錄數(2, num)) Then
+                   If FormMainMode.compi1(角色待機人物紀錄數(2, num)).Caption = "" Then
+                       FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num))
+'                           FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num))
+                       FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = -livecommax(角色待機人物紀錄數(2, num))
+                   Else
+                       FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = 0
+'                           FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = 0
+                       FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
+                   End If
+                   livecom(角色待機人物紀錄數(2, num)) = 0
+                   牌總階段數(2) = 牌總階段數(2) + 1
+                Else
+                   FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = Val(FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption) - tot
+'                       FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = Val(FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption) - tot
+                   FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = Val(FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption)
+                   livecom(角色待機人物紀錄數(2, num)) = livecom(角色待機人物紀錄數(2, num)) - tot
+                End If
+        End If
+End Select
 End Sub
 Function 傷害執行_電腦(ByVal tot As Integer)
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = 1 '受到傷害人物編號
 VBEStageNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+VBEStageNum(4) = tot '受到傷害之數值
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
+Vss_EventBloodActionChangeNum(2) = 1 '受到傷害人物編號
+Vss_EventBloodActionChangeNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
 '============================
+If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
 If Vss_EventBloodActionOffNum = 0 Then
     If tot > 0 And livecom(角色人物對戰人數(2, 2)) > 0 Then
             If tot >= livecom(角色人物對戰人數(2, 2)) Then
@@ -825,11 +864,14 @@ End Sub
 Sub 執行動作_距離變更(ByVal m As Integer, ByVal isEvent As Boolean)
 '===========================執行階段插入點(47)
 If isEvent = True Then
+    Vss_EventMoveActionOffNum = 0
     ReDim VBEStageNum(0 To 2) As Integer
     VBEStageNum(0) = 47
     VBEStageNum(1) = movecp '變更前距離
     VBEStageNum(2) = m  '變更後距離
     執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 47, 1
+    '=====================
+    If Vss_EventMoveActionOffNum = 1 Then Exit Sub
 End If
 '============================
 Dim anw(1 To 2) As Integer
@@ -5040,16 +5082,22 @@ Next
 End Sub
 Sub 傷害執行_立即死亡_使用者(ByVal num As Integer)
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = num '受到傷害人物編號
 VBEStageNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+VBEStageNum(4) = liveus(角色待機人物紀錄數(1, num))  '受到傷害之數值(現有HP)
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
+Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
+Vss_EventBloodActionChangeNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+Vss_EventBloodActionChangeNum(4) = liveus(角色待機人物紀錄數(1, num))   '受到傷害之數值
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
 '============================
-If Vss_EventBloodActionOffNum = 0 Then
+If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
     Select Case num
        Case 1
             戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
@@ -5084,10 +5132,16 @@ VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = num '受到傷害人物編號
 VBEStageNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+VBEStageNum(4) = livecom(角色待機人物紀錄數(2, num)) '受到傷害之數值(現有HP)
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
+Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
+Vss_EventBloodActionChangeNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
+Vss_EventBloodActionChangeNum(4) = livecom(角色待機人物紀錄數(2, num))  '受到傷害之數值
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
 '============================
-If Vss_EventBloodActionOffNum = 0 Then
+If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
     Select Case num
         Case 1
             戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"

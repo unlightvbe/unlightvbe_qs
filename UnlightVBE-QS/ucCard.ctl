@@ -248,6 +248,3 @@ Public Property Let CardEventType(ByVal New_CardEventType As Boolean)
    '========================
 End Property
 
-Private Sub UserControl_Initialize()
-
-End Sub

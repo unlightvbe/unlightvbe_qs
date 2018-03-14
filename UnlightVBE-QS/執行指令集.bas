@@ -8,7 +8,10 @@ Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
 Public Vss_AtkingStartPlayNum(1 To 3) As Integer '執行指令集-技能動畫執行紀錄暫時變數
 Public Vss_EventBloodActionOffNum As Integer '執行指令集-原應執行之傷害無效化紀錄暫時變數
+Public Vss_EventBloodActionChangeNum(0 To 4) As Integer '執行指令集-原應執行之傷害效果變更紀錄暫時變數(0.是否執行/1.受到傷害方(1)使用者-(2)電腦/2.受到傷害人物編號/3.(1)骰傷-(2)直傷-(3)立即死亡/4.效果變更後數值)
 Public Vss_EventHPLActionOffNum As Integer '執行指令集-原應執行之回復無效化紀錄暫時變數
+Public Vss_EventHPLActionChangeNum(0 To 1) As Integer '執行指令集-原應執行之回復效果變更紀錄暫時變數(0.是否執行/1.效果變更後數值)
+Public Vss_EventMoveActionOffNum As Integer '執行指令集-原應執行之距離變更無效化紀錄暫時變數
 Public Vss_EventRemoveBuffActionOffNum As Integer '執行指令集-原應執行之異常狀態消除無效化標記暫時變數
 Public Vss_EventRemoveActualStatusActionOffNum As Integer '執行指令集-原應執行之人物實際狀態消除無效化標記暫時變數
 Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3, 1 To 8) As Integer '執行指令集-禁止執行人物主動技及被動技技能紀錄暫時變數(1.使用者/2.電腦,1~3人物編號,1~4.主動技標記/5~8.被動技標記)
@@ -125,8 +128,14 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                執行指令集.執行指令_異常狀態控制_當回合結束_專 uscom, commadtype, atkingnum  '(階段1)
                         Case "EventBloodActionOff"
                                執行指令集.執行指令_執行之傷害無效化_專 uscom, commadtype, atkingnum  '(階段1)
+                        Case "EventBloodActionChange"
+                               執行指令集.執行指令_執行之傷害效果變更_專 uscom, commadtype, atkingnum  '(階段1)
                         Case "EventHPLActionOff"
                                執行指令集.執行指令_執行之回復無效化_專 uscom, commadtype, atkingnum  '(階段1)
+                        Case "EventHPLActionChange"
+                               執行指令集.執行指令_執行之回復效果變更_專 uscom, commadtype, atkingnum  '(階段1)
+                        Case "EventMoveActionOff"
+                               執行指令集.執行指令_執行之距離變更無效化_專 uscom, commadtype, atkingnum  '(階段1)
                         Case "EventRemoveBuffActionOff"
                                執行指令集.執行指令_執行之異常狀態消滅無效化_專 uscom, commadtype, atkingnum  '(階段1)
                         Case "EventAddActualStatusData"
@@ -491,9 +500,9 @@ Sub 執行指令_人物血量控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
                      End Select
                      Select Case uscomt
                           Case 1
-                                戰鬥系統類.傷害執行_技能直傷_使用者 commadstr3(3), commadstr3(1)
+                                戰鬥系統類.傷害執行_技能直傷_使用者 commadstr3(3), commadstr3(1), True
                           Case 2
-                                戰鬥系統類.傷害執行_技能直傷_電腦 commadstr3(3), commadstr3(1)
+                                戰鬥系統類.傷害執行_技能直傷_電腦 commadstr3(3), commadstr3(1), True
                      End Select
                 Case 2
                      Select Case Val(commadstr3(0))
@@ -1268,6 +1277,46 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionOff", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
 End Sub
+Sub 執行指令_執行之傷害效果變更_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+    If UBound(commadstr3) <> 1 Or Val(vbecommadnum(4, vbecommadtotplay)) <> 46 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplay)
+        Case 1
+            Vss_EventBloodActionChangeNum(0) = 1
+            Select Case Val(commadstr3(0))
+                Case 1
+                    If Vss_EventBloodActionChangeNum(3) < 3 Then
+                        Vss_EventBloodActionChangeNum(4) = Vss_EventBloodActionChangeNum(4) + Val(commadstr3(1))
+                    End If
+                Case 2
+                    If Vss_EventBloodActionChangeNum(3) < 3 Then
+                        Vss_EventBloodActionChangeNum(4) = Vss_EventBloodActionChangeNum(4) - Val(commadstr3(1))
+                    End If
+                Case 3
+                    If Vss_EventBloodActionChangeNum(3) < 3 Then
+                        Vss_EventBloodActionChangeNum(4) = Val(commadstr3(1))
+                    ElseIf Vss_EventBloodActionChangeNum(3) = 3 Then
+                        Select Case Vss_EventBloodActionChangeNum(1)
+                            Case 1
+                                戰鬥系統類.傷害執行_技能直傷_使用者 Vss_EventBloodActionChangeNum(4), Vss_EventBloodActionChangeNum(2), False
+                            Case 2
+                                戰鬥系統類.傷害執行_技能直傷_電腦 Vss_EventBloodActionChangeNum(4), Vss_EventBloodActionChangeNum(2), False
+                        End Select
+                    End If
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionChange", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+End Sub
 Sub 執行指令_執行之回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
@@ -1286,6 +1335,52 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventHPLActionOff", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+End Sub
+Sub 執行指令_執行之回復效果變更_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+    If UBound(commadstr3) <> 1 Or Val(vbecommadnum(4, vbecommadtotplay)) <> 48 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplay)
+        Case 1
+            Vss_EventHPLActionChangeNum(0) = 1
+            Select Case Val(commadstr3(0))
+                Case 1
+                        Vss_EventHPLActionChangeNum(1) = Vss_EventHPLActionChangeNum(1) + Val(commadstr3(1))
+                Case 2
+                        Vss_EventHPLActionChangeNum(1) = Vss_EventHPLActionChangeNum(1) - Val(commadstr3(1))
+                Case 3
+                        Vss_EventHPLActionChangeNum(1) = Val(commadstr3(1))
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventHPLActionChange", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
+End Sub
+Sub 執行指令_執行之距離變更無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplay), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplay)) <> 47 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplay)
+        Case 1
+            Vss_EventMoveActionOffNum = 1
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventMoveActionOff", vbecommadnum(2, vbecommadtotplay), vbecommadnum(4, vbecommadtotplay)
 End Sub
 Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr

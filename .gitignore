@@ -1,4 +1,4 @@
 # Project Open failed log
 *.log
-
+.vscode
 Thumbs.db
