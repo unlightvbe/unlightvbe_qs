@@ -15,29 +15,30 @@ Public VBEVSStageNum() As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
 'Public VBEVSBuffMainCommadNum(1 To 2) As Integer '執行階段系統-異常狀態類相關暫時紀錄變數(1.是否為場上人物紀錄數/2.角色待機編號紀錄數)
 Public VBEStageRemoveBuffAllNum() As Boolean '執行階段系統-執行階段73-異常狀態控制全部清除-異常狀態是否異議標記暫時變數
 Public VBEActualStatusVS(1 To 2, 1 To 3, 1 To 2) As Variant '人物實際狀態資料-VS版
-Sub 執行階段系統總主要程序_人物主動技能(ByVal uscom As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByRef VBEStageNumMain() As Integer)
+Sub 執行階段系統總主要程序_人物主動技能(ByVal uscom As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     If 執行階段系統類.執行階段系統_驗證(atkingnum, ns, 執行階段系統資料(uscom, atkingnum, 1), uscom, 角色人物對戰人數(uscom, 2)) = True Then
            執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain
-           vbecommadnum(6, vbecommadtotplay) = 1
-           vbecommadnum(7, vbecommadtotplay) = 角色人物對戰人數(uscom, 2)
-           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物主動技能類(atkingnum, ns, uscom), 執行階段系統資料(uscom, atkingnum, 3), uscom, atkingnum, ns
+           vbecommadnum(6, vbecommadtotplayNow) = 1
+           vbecommadnum(7, vbecommadtotplayNow) = 角色人物對戰人數(uscom, 2)
+           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物主動技能類(atkingnum, ns, uscom), 執行階段系統資料(uscom, atkingnum, 3), uscom, atkingnum, ns, vbecommadtotplayNow
     End If
 End Sub
-Sub 執行階段系統總主要程序_人物被動技能(ByVal uscom As Integer, ByVal personnum As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByVal PassivePersonType As Integer, ByRef VBEStageNumMain() As Integer)
+Sub 執行階段系統總主要程序_人物被動技能(ByVal uscom As Integer, ByVal personnum As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByVal PassivePersonType As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim buffvssnum As Integer '暫時變數
     If 執行階段系統類.執行階段系統_驗證(atkingnum, ns, VBEPerson(uscom, personnum, 3, atkingnum, 3), uscom, personnum) = True Then
            執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain
-           vbecommadnum(6, vbecommadtotplay) = PassivePersonType
-           vbecommadnum(7, vbecommadtotplay) = personnum
+           vbecommadnum(6, vbecommadtotplayNow) = PassivePersonType
+           vbecommadnum(7, vbecommadtotplayNow) = personnum
            passivevssnum = (uscom - 1) * 12 + (4 * personnum - 4) + (atkingnum - 4) + 24
-           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物被動技能類(atkingnum, ns, uscom, personnum, PassivePersonType), passivevssnum, uscom, atkingnum, ns
+           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物被動技能類(atkingnum, ns, uscom, personnum, PassivePersonType), passivevssnum, uscom, atkingnum, ns, vbecommadtotplayNow
     End If
 End Sub
 Sub 執行階段73_指令_異常狀態控制_全部清除(ByVal uscom As Integer, ByVal num As Integer)
+Dim vbecommadnumSecond As Integer '本層執行階段編號數
 '=======================
-執行階段系統_宣告開始或結束 1
+vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 '=======================
-Dim VBEStageNumMain(1 To 1) As Integer
+Dim VBEStageNumMainSec(1 To 1) As Integer
 ReDim VBEStageRemoveBuffAllNum(1 To 14) As Boolean
 '=======================
 For p = 1 To 14
@@ -45,12 +46,12 @@ For p = 1 To 14
     If num = 1 Then
          '===場上人物之異常狀態
          If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 3) <> "" Then
-             執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, 1, VBEStageNumMain
+             執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, 1, VBEStageNumMainSec, vbecommadnumSecond
          End If
      Else
          '===待機人物之異常狀態
          If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 3) <> "" Then
-             執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, 2, VBEStageNumMain
+             執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, 2, VBEStageNumMainSec, vbecommadnumSecond
          End If
      End If
      If Vss_EventRemoveBuffActionOffNum = 1 Then
@@ -59,24 +60,25 @@ For p = 1 To 14
 Next
 '=======================
 執行階段系統_宣告開始或結束 2
-'==========================================================
+'=======================
 End Sub
 Sub 執行階段73_指令_異常狀態控制_特定清除(ByVal uscom As Integer, ByVal num As Integer, ByVal buffnum As Integer)
+Dim vbecommadnumSecond As Integer '本層執行階段編號數
 '=======================
-執行階段系統_宣告開始或結束 1
+vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 '=======================
-Dim VBEStageNumMain(1 To 1) As Integer
+Dim VBEStageNumMainSec(1 To 1) As Integer
 '=======================
 Vss_EventRemoveBuffActionOffNum = 0
 If num = 1 Then
     '===場上人物之異常狀態
     If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
-        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, 1, VBEStageNumMain
+        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, 1, VBEStageNumMainSec, vbecommadnumSecond
     End If
 Else
     '===待機人物之異常狀態
     If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
-        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, 2, VBEStageNumMain
+        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, 2, VBEStageNumMainSec, vbecommadnumSecond
     End If
 End If
 '=======================
@@ -85,9 +87,10 @@ End If
 End Sub
 
 Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As Integer, ByVal nstype As Integer)
+    Dim vbecommadtotplayNow As Integer '本層執行階段編號數
     '==nstype(1.全執行(驗證)/2.只執行一次(驗證)/3.全執行(不驗證)/4.只執行一次(不驗證)
     '=======================
-    執行階段系統_宣告開始或結束 1
+    vbecommadtotplayNow = 執行階段系統_宣告開始或結束(1)
     '=======================
     Dim VBEStageNumMain() As Integer
     If UBound(VBEStageNum) = 0 Then
@@ -118,12 +121,12 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
             If w = 1 Then
                  '===場上人物之人物實際狀態
                  If 人物實際狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), 1) <> "" Then
-                     執行階段系統總主要程序_人物實際狀態 uscom, 角色待機人物紀錄數(uscom, w), ns, 1, VBEStageNumMain
+                     執行階段系統總主要程序_人物實際狀態 uscom, 角色待機人物紀錄數(uscom, w), ns, 1, VBEStageNumMain, vbecommadtotplayNow
                  End If
              Else
                  '===待機人物之人物實際狀態
                  If 人物實際狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), 1) <> "" Then
-                     執行階段系統總主要程序_人物實際狀態 uscom, 角色待機人物紀錄數(uscom, w), ns, 2, VBEStageNumMain
+                     執行階段系統總主要程序_人物實際狀態 uscom, 角色待機人物紀錄數(uscom, w), ns, 2, VBEStageNumMain, vbecommadtotplayNow
                  End If
              End If
         Next
@@ -133,12 +136,12 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
                If w = 1 Then
                     '===場上人物之異常狀態
                     If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), p, 3) <> "" Then
-                        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, w), p, ns, 1, VBEStageNumMain
+                        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, w), p, ns, 1, VBEStageNumMain, vbecommadtotplayNow
                     End If
                 Else
                     '===待機人物之異常狀態
                     If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), p, 3) <> "" Then
-                        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, w), p, ns, 2, VBEStageNumMain
+                        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, w), p, ns, 2, VBEStageNumMain, vbecommadtotplayNow
                     End If
                 End If
            Next
@@ -151,14 +154,14 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
                  '===場上人物之人物被動技能
                  For atkingnum = 5 To 8
                     If atkingck(uscom, 角色待機人物紀錄數(uscom, w), atkingnum, 1) = 1 Or Vss_PersonAtkingOffNum(uscom, 角色待機人物紀錄數(uscom, w), atkingnum) = 0 Then
-                        執行階段系統總主要程序_人物被動技能 uscom, 角色待機人物紀錄數(uscom, w), atkingnum, ns, 1, VBEStageNumMain
+                        執行階段系統總主要程序_人物被動技能 uscom, 角色待機人物紀錄數(uscom, w), atkingnum, ns, 1, VBEStageNumMain, vbecommadtotplayNow
                     End If
                 Next
              Else
                  '===待機人物之人物被動技能
                  For atkingnum = 5 To 8
                     If atkingck(uscom, 角色待機人物紀錄數(uscom, w), atkingnum, 1) = 1 Or Vss_PersonAtkingOffNum(uscom, 角色待機人物紀錄數(uscom, w), atkingnum) = 0 Then
-                        執行階段系統總主要程序_人物被動技能 uscom, 角色待機人物紀錄數(uscom, w), atkingnum, ns, 2, VBEStageNumMain
+                        執行階段系統總主要程序_人物被動技能 uscom, 角色待機人物紀錄數(uscom, w), atkingnum, ns, 2, VBEStageNumMain, vbecommadtotplayNow
                     End If
                 Next
              End If
@@ -167,7 +170,7 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
         For atkingnum = 1 To 4
             If (nstype <= 2 And atkingck(uscom, 角色人物對戰人數(uscom, 2), atkingnum, 1) = 1) Or _
                 (nstype > 2 And Vss_PersonAtkingOffNum(uscom, 角色人物對戰人數(uscom, 2), atkingnum) = 0) Then
-                執行階段系統總主要程序_人物主動技能 uscom, atkingnum, ns, VBEStageNumMain
+                執行階段系統總主要程序_人物主動技能 uscom, atkingnum, ns, VBEStageNumMain, vbecommadtotplayNow
             End If
         Next
         '=====================
@@ -178,7 +181,7 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
     執行階段系統_宣告開始或結束 2
     '=================
 End Sub
-Sub 執行階段系統_宣告開始或結束(ByVal n As Integer)
+Function 執行階段系統_宣告開始或結束(ByVal n As Integer) As Integer
     Select Case n
         Case 1 '==開始
             vbecommadtotplay = vbecommadtotplay + 1
@@ -189,7 +192,8 @@ Sub 執行階段系統_宣告開始或結束(ByVal n As Integer)
             ReDim Preserve vbecommadnum(1 To 7, vbecommadtotplay)
             ReDim Preserve vbecommadstr(1 To 3, vbecommadtotplay)
     End Select
-End Sub
+    執行階段系統_宣告開始或結束 = vbecommadtotplay
+End Function
 Function 執行階段系統_驗證(ByVal atkingnum As Integer, ByVal ns As Integer, ByVal akstr As String, ByVal uscom As Integer, ByVal personnum As Integer) As Boolean
     If Formsetting.checktest.Value = 0 Then On Error GoTo vscheckerr
     Dim vsstr1 As String, vsstr2 As String, vsstr3() As String
@@ -1053,12 +1057,12 @@ vssyserror:
 執行階段系統_錯誤訊息通知 1, "7[" & VBEVSSActualStatusStr2(i) & "]"
 '===============
 End Sub
-Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal personbuffnum As Integer, ByVal ns As Integer, ByVal BuffPersonType As Integer, ByRef VBEStageNumMain() As Integer)
+Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal personbuffnum As Integer, ByVal ns As Integer, ByVal BuffPersonType As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim buffvssnum As Integer '暫時變數
     If 執行階段系統類.執行階段系統_驗證(9, ns, 人物異常狀態資料庫(uscom, personnum, personbuffnum, 3), uscom, personnum) = True Then
            執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain
-           vbecommadnum(6, vbecommadtotplay) = BuffPersonType
-           vbecommadnum(7, vbecommadtotplay) = personnum
+           vbecommadnum(6, vbecommadtotplayNow) = BuffPersonType
+           vbecommadnum(7, vbecommadtotplayNow) = personnum
            Erase VBEVSBuffNum '異常狀態專用-異常狀態之2個數值-VS版
            For p = 1 To UBound(VBEVSSBuffStr1)
                  If VBEVSSBuffStr1(p) = 人物異常狀態資料庫(uscom, personnum, personbuffnum, 3) Then
@@ -1068,17 +1072,17 @@ Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As I
                      Exit For
                  End If
             Next
-           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_異常狀態類(buffvssnum, ns, BuffPersonType, VBEVSSBuffStr1(p)), buffvssnum, uscom, 9, ns
+           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_異常狀態類(buffvssnum, ns, BuffPersonType, VBEVSSBuffStr1(p)), buffvssnum, uscom, 9, ns, vbecommadtotplayNow
     End If
 End Sub
-Sub 執行階段系統總主要程序_人物實際狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal ns As Integer, ByVal ActualStatusPersonType As Integer, ByRef VBEStageNumMain() As Integer)
+Sub 執行階段系統總主要程序_人物實際狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal ns As Integer, ByVal ActualStatusPersonType As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim ActualStatusvssnum As Integer '暫時變數
     If 執行階段系統類.執行階段系統_驗證(10, ns, 人物實際狀態資料庫(uscom, personnum, 1), uscom, personnum) = True Then
            執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain
-           vbecommadnum(6, vbecommadtotplay) = ActualStatusPersonType
-           vbecommadnum(7, vbecommadtotplay) = personnum
+           vbecommadnum(6, vbecommadtotplayNow) = ActualStatusPersonType
+           vbecommadnum(7, vbecommadtotplayNow) = personnum
            ActualStatusvssnum = (((uscom - 1) * 3) + personnum) + 48
-           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物實際狀態類(ActualStatusvssnum, ns, ActualStatusPersonType, 人物實際狀態資料庫(uscom, personnum, 1)), ActualStatusvssnum, uscom, 10, ns
+           執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物實際狀態類(ActualStatusvssnum, ns, ActualStatusPersonType, 人物實際狀態資料庫(uscom, personnum, 1)), ActualStatusvssnum, uscom, 10, ns, vbecommadtotplayNow
     End If
 End Sub
 Function 執行階段系統_搜尋正在執行之執行階段(ByVal vscmdname As String) As Integer

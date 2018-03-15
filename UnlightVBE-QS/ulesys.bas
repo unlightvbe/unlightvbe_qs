@@ -1061,6 +1061,7 @@ Next
 '-----------------------
 For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
     FormMainMode.card(ckl).Visible = False
+    FormMainMode.card(ckl).CardEnabledType = True
 Next
 '-------以下是設計物件顯示
 If Formsetting.checktest.Value = 0 Then

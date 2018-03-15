@@ -1338,8 +1338,13 @@ End If
 End Sub
 Sub 小人物頭像執行完判斷_電腦()
 If turnatk = 1 Or turnatk = 2 Or turnatk = 3 Then
-   階段狀態數 = 3
-   FormMainMode.電腦出牌.Enabled = True
+    If Vss_EventPlayerAllActionOffNum(2) = 0 Then
+        階段狀態數 = 3
+        FormMainMode.電腦出牌.Enabled = True
+    Else
+        目前數(24) = 48
+        FormMainMode.等待時間_2.Enabled = True
+    End If
 End If
 End Sub
 Sub 公用牌變背面()
@@ -5252,3 +5257,58 @@ Sub 執行動作_系統總卡牌張數更新()
 FormMainMode.PEAFInterface.Cardnum = BattleCardNum
 FormMainMode.pageul.Caption = BattleCardNum
 End Sub
+Sub 執行動作_電腦方各階段出牌完畢後行動(ByVal turnNum As Integer)
+Select Case turnNum
+    Case 1
+        FormMainMode.攻擊階段_階段2.Enabled = True
+    Case 2
+        FormMainMode.bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+        FormMainMode.bnok.Visible = True
+        '==============
+        小人物頭像移動方向數(1) = 1
+        小人物頭像移動方向數(2) = 2
+        FormMainMode.小人物頭像移動_使用者.Enabled = True
+        FormMainMode.小人物頭像移動_電腦.Enabled = True
+        '==============
+        階段狀態數 = 1
+        FormMainMode.wmpse6.Controls.play
+        一般系統類.檢查音樂播放 6
+        戰鬥系統類.時間軸_重設
+        FormMainMode.trtimeline.Enabled = True
+        '===========================
+        If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            FormMainMode.bnok.Enabled = False
+            目前數(24) = 47
+            FormMainMode.等待時間_2.Enabled = True
+        ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            目前數(24) = 45
+            FormMainMode.等待時間_2.Enabled = True
+        End If
+    Case 3
+        turnpageonin = 1
+        階段狀態數 = 1
+        FormMainMode.bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+        FormMainMode.bnok.Visible = True
+        If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            FormMainMode.bnok.Enabled = False
+            目前數(24) = 47
+            FormMainMode.等待時間_2.Enabled = True
+        ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            目前數(24) = 45
+            FormMainMode.等待時間_2.Enabled = True
+        End If
+End Select
+End Sub
+

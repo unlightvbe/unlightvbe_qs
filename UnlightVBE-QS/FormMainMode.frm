@@ -47,8 +47,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
@@ -58,8 +58,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -289,7 +289,7 @@ Begin VB.Form FormMainMode
             Enabled         =   0   'False
             Interval        =   10
             Left            =   1920
-            Top             =   1320
+            Top             =   1200
          End
          Begin VB.Timer 防禦階段_階段初始 
             Enabled         =   0   'False
@@ -5535,11 +5535,22 @@ trgoi2.Enabled = True
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
 '======================================
+Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 17, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 37, 2
 '============================
-If Formsetting.chkusenewaipersonauto.Value = 1 Then
+If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+    For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+        FormMainMode.card(ckl).CardEnabledType = False
+    Next
+    FormMainMode.bnok.Enabled = False
+    目前數(24) = 47
+    FormMainMode.等待時間_2.Enabled = True
+ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+    For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+        FormMainMode.card(ckl).CardEnabledType = False
+    Next
     目前數(24) = 45
     等待時間_2.Enabled = True
 End If
@@ -5622,10 +5633,11 @@ End If
 戰鬥系統類.骰量更新顯示
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
+'============================
+Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 17, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 37, 2
-'============================
 '======================電腦方事件卡先出制度
 If 電腦方事件卡是否出完選擇數 = False Then
    GoTo 電腦方事件卡先出制度_執行階段2
@@ -5714,12 +5726,9 @@ If 電腦方事件卡是否出完選擇數 = False Then
     '==============
     戰鬥系統類.時間軸_重設
     trtimeline.Enabled = True
-End If
-'======================電腦方事件卡先出制度_結束後階段2
-If 電腦方事件卡是否出完選擇數 = True Then
+ElseIf 電腦方事件卡是否出完選擇數 = True Then  '電腦方事件卡先出制度_結束後階段2
     電腦出牌.Enabled = True
 End If
-'===========================
 End Sub
 
 
@@ -8672,6 +8681,9 @@ If movecom < 0 Then movecom = 0
        電腦方移動階段選擇數 = 2
     End If
     '==================================
+    If Vss_EventPlayerAllActionOffNum(1) = 1 Then 顯示列1.移動階段選擇值 = 0
+    If Vss_EventPlayerAllActionOffNum(2) = 1 Then 電腦方移動階段選擇數 = 0
+    '==================================
     If 顯示列1.移動階段選擇值 = 1 Or 顯示列1.移動階段選擇值 = 3 Then
        If 顯示列1.移動階段選擇值 = 3 Then
           moveus = -Val(moveus)
@@ -9782,6 +9794,11 @@ Select Case 目前數(14)
                 '====================
                 bnok.Enabled = True
                 FormMainMode.bnok_Click
+                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                    FormMainMode.card(ckl).CardEnabledType = True
+                Next
+            Case 48
+                執行動作_電腦方各階段出牌完畢後行動 turnatk
       End Select
 End Select
 End Sub
@@ -9818,10 +9835,11 @@ Select Case 目前數(14)
            Case 5
               cn1_Click
            Case 6
-              '===========================執行階段插入點(1)
-              執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 1, 1
-              '============================
-              cnmove_Click
+                Erase Vss_EventPlayerAllActionOffNum
+                '===========================執行階段插入點(1)
+                執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 1, 1
+                '============================
+                cnmove_Click
            Case 7
               目前數(24) = 2
               等待時間_2.Enabled = True
@@ -10126,15 +10144,19 @@ If 電腦方事件卡是否出完選擇數 = True Then
                       trgoi2_Timer
                       trgoi1_Timer
                    Case 3
-                      turnpageonin = 1
-                      階段狀態數 = 1
-        '              cnmove2.Visible = True
-                      bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-                      bnok.Visible = True
-                      If Formsetting.chkusenewaipersonauto.Value = 1 Then
-                          目前數(24) = 45
-                          等待時間_2.Enabled = True
-                      End If
+'                      turnpageonin = 1
+'                      階段狀態數 = 1
+'        '              cnmove2.Visible = True
+'                      bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+'                      bnok.Visible = True
+'                      If Formsetting.chkusenewaipersonauto.Value = 1 Then
+'                            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+'                                FormMainMode.card(ckl).CardEnabledType = False
+'                            Next
+'                            目前數(24) = 45
+'                            等待時間_2.Enabled = True
+'                      End If
+                        執行動作_電腦方各階段出牌完畢後行動 3
                 End Select
                 Exit Do
              End If
@@ -10283,27 +10305,38 @@ If 目前數(6) > pageqlead(2) Then
     電腦出牌_亮牌.Enabled = False
     Select Case turnatk
        Case 1
-          攻擊階段_階段2.Enabled = True
+'          攻擊階段_階段2.Enabled = True
+            執行動作_電腦方各階段出牌完畢後行動 1
        Case 2
 '          cn32.Visible = True
-          bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-          bnok.Visible = True
-          '==============
-            小人物頭像移動方向數(1) = 1
-            小人物頭像移動方向數(2) = 2
-            小人物頭像移動_使用者.Enabled = True
-            小人物頭像移動_電腦.Enabled = True
-          '==============
-          階段狀態數 = 1
-          FormMainMode.wmpse6.Controls.play
-          一般系統類.檢查音樂播放 6
-          戰鬥系統類.時間軸_重設
-          trtimeline.Enabled = True
-          '===========================
-            If Formsetting.chkusenewaipersonauto.Value = 1 Then
-                目前數(24) = 45
-                等待時間_2.Enabled = True
-            End If
+'          bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+'          bnok.Visible = True
+'          '==============
+'            小人物頭像移動方向數(1) = 1
+'            小人物頭像移動方向數(2) = 2
+'            小人物頭像移動_使用者.Enabled = True
+'            小人物頭像移動_電腦.Enabled = True
+'          '==============
+'          階段狀態數 = 1
+'          FormMainMode.wmpse6.Controls.play
+'          一般系統類.檢查音樂播放 6
+'          戰鬥系統類.時間軸_重設
+'          trtimeline.Enabled = True
+'          '===========================
+'            If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+'                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+'                    FormMainMode.card(ckl).CardEnabledType = False
+'                Next
+'                目前數(24) = 47
+'                等待時間_2.Enabled = True
+'            ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+'                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+'                    FormMainMode.card(ckl).CardEnabledType = False
+'                Next
+'                目前數(24) = 45
+'                等待時間_2.Enabled = True
+'            End If
+            執行動作_電腦方各階段出牌完畢後行動 2
        Case 3
 '          atkingtrtot.Interval = 600
 '          atkingtrtot.Enabled = True
