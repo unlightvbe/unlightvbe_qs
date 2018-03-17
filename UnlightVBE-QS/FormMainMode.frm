@@ -47,8 +47,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
+         _ExtentX        =   2355
+         _ExtentY        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
@@ -58,8 +58,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
+         _ExtentX        =   2355
+         _ExtentY        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -843,7 +843,7 @@ Begin VB.Form FormMainMode
       Begin VB.Timer tr使用者_棄牌 
          Enabled         =   0   'False
          Interval        =   200
-         Left            =   960
+         Left            =   1080
          Top             =   4440
       End
       Begin VB.Timer tr電腦牌_棄牌 
@@ -5886,7 +5886,6 @@ PEAFInterface.turn = BattleTurn
 顯示列1.goi2 = 0
 攻擊防禦骰子總數(1) = 0
 攻擊防禦骰子總數(2) = 0
-Erase Vss_PersonMoveControlNum
 '====================
 If 系統顯示界面紀錄數 = 1 Then
     move1.Visible = True
@@ -6917,7 +6916,7 @@ Private Sub tr牌組_抽牌_使用者_Timer()
 Dim m As Integer '暫時變數
 Do
     Randomize
-    m = Int(Rnd() * 57) + 1
+    m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
     '===========
     If BattleCardNum <= 0 Then
         Exit Do
@@ -6934,7 +6933,7 @@ Private Sub tr牌組_抽牌_電腦_Timer()
 Dim m As Integer '暫時變數
 Do
     Randomize
-    m = Int(Rnd() * 57) + 1
+    m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
     '===========
     If BattleCardNum <= 0 Then
         Exit Do
@@ -8612,67 +8611,68 @@ If 目前數(31) = 0 Then
     '===============
     movecom = atkingpagetot(2, 3)
     moveus = atkingpagetot(1, 3)
-'=====================以下是異常狀態檢查及啟動
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
-'      異常狀態檢查數(21, 1) = 2
-'      異常狀態.中毒_電腦  '(階段2)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 3) = True Then
-'      異常狀態檢查數(3, 1) = 1
-'      異常狀態.MOV加_電腦  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 6) = True Then
-'      異常狀態檢查數(6, 1) = 1
-'      異常狀態.MOV減_電腦  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 17) = True Then
-'      異常狀態檢查數(17, 1) = 1
-'      異常狀態.麻痺_電腦  '(階段1)
-'End If
+    '=====================以下是異常狀態檢查及啟動
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
+    '      異常狀態檢查數(21, 1) = 2
+    '      異常狀態.中毒_電腦  '(階段2)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 3) = True Then
+    '      異常狀態檢查數(3, 1) = 1
+    '      異常狀態.MOV加_電腦  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 6) = True Then
+    '      異常狀態檢查數(6, 1) = 1
+    '      異常狀態.MOV減_電腦  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 17) = True Then
+    '      異常狀態檢查數(17, 1) = 1
+    '      異常狀態.麻痺_電腦  '(階段1)
+    'End If
     '===========================執行階段插入點(70)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 70, 1
     '============================
-'movecheckcom = movecom
-'顯示列1.電腦方移動值 = movecheckcom
-'========================================
+    'movecheckcom = movecom
+    '顯示列1.電腦方移動值 = movecheckcom
+    '========================================
+    
+    '===========
+    'atkingtrn(1) = Val(atkingtrn(1)) + Val(atkingtrn(3))
+    'atkingtrn(2) = Val(atkingtrn(2)) + Val(atkingtrn(4))
+    'atkingtrn(3) = 0
+    'atkingtrn(4) = 0
 
-'===========
-'atkingtrn(1) = Val(atkingtrn(1)) + Val(atkingtrn(3))
-'atkingtrn(2) = Val(atkingtrn(2)) + Val(atkingtrn(4))
-'atkingtrn(3) = 0
-'atkingtrn(4) = 0
-
-'=====================================================
-
-'===============以下是技能檢查及啟動
-
-'===============以下是異常狀態檢查及啟動
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 9) = True Then
-'      異常狀態檢查數(9, 1) = 1
-'      異常狀態.MOV加_使用者  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 12) = True Then
-'      異常狀態檢查數(12, 1) = 1
-'      異常狀態.MOV減_使用者  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 16) = True Then
-'      異常狀態檢查數(16, 1) = 1
-'      異常狀態.麻痺_使用者  '(階段1)
-'End If
-'===============
-If Vss_PersonMoveControlNum(1, 2) = 0 Then
-    moveus = moveus + Vss_PersonMoveControlNum(1, 1)
-Else
-    moveus = Vss_PersonMoveControlNum(1, 1)
-End If
-If Vss_PersonMoveControlNum(2, 2) = 0 Then
-    movecom = movecom + Vss_PersonMoveControlNum(2, 1)
-Else
-    movecom = Vss_PersonMoveControlNum(2, 1)
-End If
-If moveus < 0 Then moveus = 0
-If movecom < 0 Then movecom = 0
-'===============
+    '=====================================================
+    
+    '===============以下是技能檢查及啟動
+    
+    '===============以下是異常狀態檢查及啟動
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 9) = True Then
+    '      異常狀態檢查數(9, 1) = 1
+    '      異常狀態.MOV加_使用者  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 12) = True Then
+    '      異常狀態檢查數(12, 1) = 1
+    '      異常狀態.MOV減_使用者  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 16) = True Then
+    '      異常狀態檢查數(16, 1) = 1
+    '      異常狀態.麻痺_使用者  '(階段1)
+    'End If
+    '=================================
+    If Vss_PersonMoveControlNum(1, 2) = 0 Then
+        moveus = moveus + Vss_PersonMoveControlNum(1, 1)
+    Else
+        moveus = Vss_PersonMoveControlNum(1, 1)
+    End If
+    If Vss_PersonMoveControlNum(2, 2) = 0 Then
+        movecom = movecom + Vss_PersonMoveControlNum(2, 1)
+    Else
+        movecom = Vss_PersonMoveControlNum(2, 1)
+    End If
+    '==================================
+    If moveus < 0 Then moveus = 0
+    If movecom < 0 Then movecom = 0
+    '==================================
     movecheckus = moveus
     movecheckcom = movecom
     顯示列1.電腦方移動值 = movecheckcom
@@ -8681,6 +8681,13 @@ If movecom < 0 Then movecom = 0
        電腦方移動階段選擇數 = 2
     End If
     '==================================
+    If Vss_PersonMoveActionChangeNum(1, 1) = 1 Then
+        顯示列1.移動階段選擇值 = Vss_PersonMoveActionChangeNum(1, 2)
+    End If
+    If Vss_PersonMoveActionChangeNum(2, 1) = 1 Then
+        電腦方移動階段選擇數 = Vss_PersonMoveActionChangeNum(2, 2)
+    End If
+    '===============
     If Vss_EventPlayerAllActionOffNum(1) = 1 Then 顯示列1.移動階段選擇值 = 0
     If Vss_EventPlayerAllActionOffNum(2) = 1 Then 電腦方移動階段選擇數 = 0
     '==================================
@@ -9082,6 +9089,8 @@ Sub 移動階段_階段前啟動_Timer()
 '=================
 'atkingtrtot.Interval = 600
 'atkingtrtot.Enabled = True
+Erase Vss_PersonMoveActionChangeNum
+Erase Vss_PersonMoveControlNum
 '===========================執行階段插入點(2)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 2, 1
 '============================
