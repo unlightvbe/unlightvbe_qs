@@ -542,7 +542,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                             For i = 1 To UBound(VBEStageNumMain)
                                     VBEVSStageNum(i) = VBEStageNumMain(i)
                             Next
-                        Case 46, 48 '執行階段46/48(傷害/回復)
+                        Case 41, 46, 48 '執行階段41/46/48(角色交換/傷害/回復)
                             For i = 1 To UBound(VBEStageNumMain)
                                     If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
                                         VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
@@ -700,7 +700,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                         Case 71  '執行階段71(普通-移動前)
                             VBEVSStageNum(1) = VBEStageNumMain(2)
                             VBEVSStageNum(2) = VBEStageNumMain(1)
-                        Case 46, 48 '執行階段46/48(傷害/回復)
+                        Case 41, 46, 48 '執行階段41/46/48(角色交換/傷害/回復)
                             For i = 1 To UBound(VBEStageNumMain)
                                 If VBEStageNumMain(i) = -1 Then
                                     VBEVSStageNum(i) = 2

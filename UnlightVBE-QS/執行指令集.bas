@@ -672,28 +672,14 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
                 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
                 '=======================
                 Dim VBEStageNumMainSec(1 To 1) As Integer
-                Dim personnum As Integer, persontype As Integer
+'                Dim personnum As Integer, persontype As Integer
                 Dim buffvssnum As String
                 If vbecommadnum(3, vbecommadtotplayNow) <= 24 Then
                     執行階段系統類.執行階段系統總主要程序_人物主動技能 uscom, atkingnum, 61, VBEStageNumMainSec, vbecommadnumSecond
                 ElseIf vbecommadnum(3, vbecommadtotplayNow) > 24 And vbecommadnum(3, vbecommadtotplayNow) <= 48 Then
-                    If vbecommadnum(3, vbecommadtotplayNow) - 24 - 12 <= 0 Then
-                       personnum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24) / 4 + 0.9)
-                    Else
-                      personnum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24 - 12) / 4 + 0.9)
-                    End If
-                    If 角色人物對戰人數(uscom, 2) = personnum Then persontype = 1 Else persontype = 2
-                    '================================
-                    執行階段系統類.執行階段系統總主要程序_人物被動技能 uscom, personnum, atkingnum, 61, persontype, VBEStageNumMainSec, vbecommadnumSecond
+                    執行階段系統類.執行階段系統總主要程序_人物被動技能 uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
                 ElseIf vbecommadnum(3, vbecommadtotplayNow) > 48 And vbecommadnum(3, vbecommadtotplayNow) <= 54 Then
-                    If vbecommadnum(3, vbecommadtotplayNow) - 48 > 3 Then
-                        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48 - 3
-                    Else
-                        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48
-                    End If
-                    If 角色人物對戰人數(uscom, 2) = personnum Then persontype = 1 Else persontype = 2
-                    '=================================
-                    執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, personnum, 61, persontype, VBEStageNumMainSec, vbecommadnumSecond
+                    執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
                 Else
                     buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
                     For i = 1 To 14
@@ -1721,28 +1707,14 @@ Sub 執行指令_執行擲骰子(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
             vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
             '=======================
             Dim VBEStageNumMainSec(1 To 1) As Integer
-            Dim personnum As Integer, persontype As Integer
+'            Dim personnum As Integer, persontype As Integer
             Dim buffvssnum As String
             If vbecommadnum(3, vbecommadtotplayNow) <= 24 Then
                 執行階段系統類.執行階段系統總主要程序_人物主動技能 uscom, atkingnum, 62, VBEStageNumMainSec, vbecommadnumSecond
             ElseIf vbecommadnum(3, vbecommadtotplayNow) > 24 And vbecommadnum(3, vbecommadtotplayNow) <= 48 Then
-                If vbecommadnum(3, vbecommadtotplayNow) - 24 - 12 <= 0 Then
-                   personnum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24) / 4 + 0.9)
-                Else
-                  personnum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24 - 12) / 4 + 0.9)
-                End If
-                If 角色人物對戰人數(uscom, 2) = personnum Then persontype = 1 Else persontype = 2
-                '================================
-                執行階段系統類.執行階段系統總主要程序_人物被動技能 uscom, personnum, atkingnum, 62, persontype, VBEStageNumMainSec, vbecommadnumSecond
+                執行階段系統類.執行階段系統總主要程序_人物被動技能 uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 62, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
             ElseIf vbecommadnum(3, vbecommadtotplayNow) > 48 And vbecommadnum(3, vbecommadtotplayNow) <= 54 Then
-                If vbecommadnum(3, vbecommadtotplayNow) - 48 > 3 Then
-                    personnum = vbecommadnum(3, vbecommadtotplayNow) - 48 - 3
-                Else
-                    personnum = vbecommadnum(3, vbecommadtotplayNow) - 48
-                End If
-                If 角色人物對戰人數(uscom, 2) = personnum Then persontype = 1 Else persontype = 2
-                '=================================
-                執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, personnum, 62, persontype, VBEStageNumMainSec, vbecommadnumSecond
+                執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), 62, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
             Else
                 buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
                 For i = 1 To 14
@@ -1930,11 +1902,12 @@ Sub 執行指令_人物實際狀態加入資料_專(ByVal uscom As Integer, ByVal commadtype As
     Else
         GoTo VssCommadExit
     End If
-    If vbecommadnum(3, vbecommadtotplayNow) - 48 > 3 Then
-        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48 - 3
-    Else
-        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48
-    End If
+'    If vbecommadnum(3, vbecommadtotplayNow) - 48 > 3 Then
+'        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48 - 3
+'    Else
+'        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48
+'    End If
+    personnum = vbecommadnum(7, vbecommadtotplayNow)
     '==========
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
@@ -2013,11 +1986,12 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
     If UBound(commadstr3) <> 0 Or commadtype <> 1 Or atkingnum <> 10 Then GoTo VssCommadExit
     Dim personnum As Integer, i As Integer
     Dim vsstr As String
-    If vbecommadnum(3, vbecommadtotplayNow) - 48 > 3 Then
-        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48 - 3
-    Else
-        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48
-    End If
+'    If vbecommadnum(3, vbecommadtotplayNow) - 48 > 3 Then
+'        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48 - 3
+'    Else
+'        personnum = vbecommadnum(3, vbecommadtotplayNow) - 48
+'    End If
+    personnum = vbecommadnum(7, vbecommadtotplayNow)
     '===========
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1

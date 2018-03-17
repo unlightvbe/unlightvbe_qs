@@ -2600,6 +2600,15 @@ End Sub
 Sub 人物交換_使用者_指定交換(ByVal num As Integer)
 Dim ae As Integer
 '=======================
+ReDim VBEStageNum(0 To 3) As Integer
+VBEStageNum(0) = 41
+VBEStageNum(1) = -1 '執行效果方(1.使用者/2.電腦)
+VBEStageNum(2) = 1 '交換前人物編號
+VBEStageNum(3) = num '交換後人物編號
+'===========================執行階段插入點(41)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 41, 1
+'============================
+'=======================
 FormMainMode.personusminijpg.小人物消失 = True
 Do Until FormMainMode.personusminijpg.小人物消失 = False
     DoEvents
@@ -2703,14 +2712,20 @@ FormMainMode.personusminijpg.小人物顯現 = True
 Do Until FormMainMode.personusminijpg.小人物顯現 = False
     DoEvents
 Loop
-'=======================
-'===========================執行階段插入點(41-使用者)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 41, 2
-'============================
+
 End Sub
 
 Sub 人物交換_電腦_指定交換(ByVal num As Integer)
 Dim ae As Integer
+'=======================
+ReDim VBEStageNum(0 To 3) As Integer
+VBEStageNum(0) = 41
+VBEStageNum(1) = -2 '執行效果方(1.使用者/2.電腦)
+VBEStageNum(2) = 1 '交換前人物編號
+VBEStageNum(3) = num '交換後人物編號
+'===========================執行階段插入點(41)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 41, 1
+'============================
 '=======================
 FormMainMode.personcomminijpg.小人物消失 = True
 Do Until FormMainMode.personcomminijpg.小人物消失 = False
@@ -2803,9 +2818,6 @@ Do Until FormMainMode.personcomminijpg.小人物顯現 = False
     DoEvents
 Loop
 '=======================
-'===========================執行階段插入點(41-電腦)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 41, 2
-'============================
 End Sub
 Sub 執行動作_交換人物角色_使用者_初始()
 Dim i As Integer
@@ -5257,8 +5269,8 @@ Sub 執行動作_系統總卡牌張數更新()
 FormMainMode.PEAFInterface.Cardnum = BattleCardNum
 FormMainMode.pageul.Caption = BattleCardNum
 End Sub
-Sub 執行動作_電腦方各階段出牌完畢後行動(ByVal turnNum As Integer)
-Select Case turnNum
+Sub 執行動作_電腦方各階段出牌完畢後行動(ByVal turnnum As Integer)
+Select Case turnnum
     Case 1
         FormMainMode.攻擊階段_階段2.Enabled = True
     Case 2
