@@ -24,7 +24,7 @@ Begin VB.Form FormMainMode
    ScaleHeight     =   11100
    ScaleWidth      =   20400
    StartUpPosition =   2  '¿Ã¹õ¤¤¥¡
-   Tag             =   "UnlightVBE-QS OB-Test"
+   Tag             =   "UnlightVBE-QS Origin"
    Begin VB.PictureBox PEAttackingForm 
       Appearance      =   0  '¥­­±
       BackColor       =   &H00FFFFFF&

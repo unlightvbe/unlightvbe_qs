@@ -1412,12 +1412,12 @@ FormMainMode.wmp.Controls.play
 一般系統類.檢查音樂播放 0
 FormMainMode.personreadifus.Visible = False
 '---------以下是設計物件顯示
-'For i = 1 To 3
-'    FormMainMode.personsettingus(i).Caption = "人物資訊"
-'    FormMainMode.personsettingcom(i).Caption = "人物資訊"
-'    FormMainMode.personsettingus(i).Visible = False
-'    FormMainMode.personsettingcom(i).Visible = False
-'Next
+For i = 1 To 3
+    FormMainMode.personsettingus(i).Caption = "人物資訊"
+    FormMainMode.personsettingcom(i).Caption = "人物資訊"
+    FormMainMode.personsettingus(i).Visible = False
+    FormMainMode.personsettingcom(i).Visible = False
+Next
 'MsgBox "1-5-2-6"
 End Sub
 Sub 遊戲初始讀入程序()
@@ -1568,13 +1568,13 @@ Formsetting.chkusenewai.Value = 1
 Formsetting.chkusenewpage.Value = 1
 Formsetting.chkusenewinterface.Value = 1
 If FormMainMode.personsettingus(1).Caption = "人物資訊" Then
-    Formsetting.其他設定.Visible = False
+'    Formsetting.其他設定.Visible = False
     Formsetting.chkpersonvsmode.Value = 1
     Formsetting.persontgruoncom(4).Value = True
     Formsetting.persontgruonus(4).Value = True
     Formsetting.ckendturn.Value = 1
-    Formsetting.chkusenewaipersonauto.Visible = False
-    FormMainMode.Caption = FormMainMode.Tag & "  [" & Form2.aboutvn.Caption & "]"
+'    Formsetting.chkusenewaipersonauto.Visible = False
+'    FormMainMode.Caption = FormMainMode.Tag & "  [" & Form2.aboutvn.Caption & "]"
 End If
 'MsgBox "1-5-3-2"
 End Sub
