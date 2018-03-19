@@ -204,18 +204,11 @@ Sub 執行指令_技能燈控制(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
                 Case Is <= 24
                         GoTo VssCommadExit
                 Case Is <= 48 '==被動技
-                        Dim vspassivenum As Integer
-                        If vbecommadnum(3, vbecommadtotplayNow) - 24 - 12 <= 0 Then
-                           vspassivenum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24) / 4 + 0.9)
-                        Else
-                          vspassivenum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24 - 12) / 4 + 0.9)
-                        End If
-                        '========================
-                        If ((uscom = 1 And liveus(vspassivenum) <= 0) Or _
-                           (uscom = 2 And livecom(vspassivenum) <= 0)) And Val(commadstr3(0)) = 1 Then
+                        If ((uscom = 1 And liveus(vbecommadnum(7, vbecommadtotplayNow)) <= 0) Or _
+                           (uscom = 2 And livecom(vbecommadnum(7, vbecommadtotplayNow)) <= 0)) And Val(commadstr3(0)) = 1 Then
                            GoTo VssCommadExit
                         End If
-                        If 角色人物對戰人數(uscom, 2) = vspassivenum Then
+                        If 角色人物對戰人數(uscom, 2) = vbecommadnum(7, vbecommadtotplayNow) Then
                             Select Case uscom
                                 Case 1
                                      Select Case Val(commadstr3(0))
@@ -268,24 +261,17 @@ Sub 執行指令_技能啟動碼控制(ByVal uscom As Integer, ByVal commadtype As Integer,
                                 atkingck(uscom, 角色人物對戰人數(uscom, 2), atkingnum, 3) = Val(atkingck(uscom, 角色人物對戰人數(uscom, 2), atkingnum, 3)) + 1
                         End Select
                 Case Is <= 48 '==被動技
-                        Dim vspassivenum As Integer
-                        If vbecommadnum(3, vbecommadtotplayNow) - 24 - 12 <= 0 Then
-                           vspassivenum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24) / 4 + 0.9)
-                        Else
-                          vspassivenum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24 - 12) / 4 + 0.9)
-                        End If
-                        '====================================
-                        If ((uscom = 1 And liveus(vspassivenum) <= 0) Or _
-                           (uscom = 2 And livecom(vspassivenum) <= 0)) And Val(commadstr3(0)) = 1 Then
+                        If ((uscom = 1 And liveus(vbecommadnum(7, vbecommadtotplayNow)) <= 0) Or _
+                           (uscom = 2 And livecom(vbecommadnum(7, vbecommadtotplayNow)) <= 0)) And Val(commadstr3(0)) = 1 Then
                            GoTo VssCommadExit
                         End If
                         Select Case Val(commadstr3(0))
                             Case 1
-                                atkingck(uscom, vspassivenum, atkingnum, 1) = 1
+                                atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 1) = 1
                             Case 2
-                                atkingck(uscom, vspassivenum, atkingnum, 1) = 0
-                                atkingck(uscom, vspassivenum, atkingnum, 2) = Val(atkingck(uscom, vspassivenum, atkingnum, 2)) + 1
-                                atkingck(uscom, vspassivenum, atkingnum, 3) = Val(atkingck(uscom, vspassivenum, atkingnum, 3)) + 1
+                                atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 1) = 0
+                                atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 2) = Val(atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 2)) + 1
+                                atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 3) = Val(atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 3)) + 1
                         End Select
             End Select
             GoTo VssCommadExit
@@ -2343,14 +2329,7 @@ If vbecommadnum(3, vbecommadtotplayNow) <= 48 Then  '==僅主動技能/被動技能需進行
                  執行指令集_執行驗證 = False
              End If
          Case Is <= 48
-             Dim vspassivenum As Integer
-             If vbecommadnum(3, vbecommadtotplayNow) - 24 - 12 <= 0 Then
-                vspassivenum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24) / 4 + 0.9)
-             Else
-               vspassivenum = Int((vbecommadnum(3, vbecommadtotplayNow) - 24 - 12) / 4 + 0.9)
-             End If
-             '====================
-             If atkingck(uscom, vspassivenum, atkingnum, 1) = 1 Then
+             If atkingck(uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 1) = 1 Then
                  執行指令集_執行驗證 = True
              Else
                  執行指令集_執行驗證 = False
