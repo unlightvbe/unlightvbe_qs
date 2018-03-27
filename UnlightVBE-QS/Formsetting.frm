@@ -942,6 +942,18 @@ Begin VB.Form Formsetting
          TabIndex        =   129
          Top             =   4560
          Width           =   8775
+         Begin VB.TextBox 大亂鬥模式選項_牌數 
+            Appearance      =   0  '平面
+            BorderStyle     =   0  '沒有框線
+            Enabled         =   0   'False
+            Height          =   375
+            Left            =   3240
+            MaxLength       =   2
+            TabIndex        =   148
+            Text            =   "17"
+            Top             =   720
+            Width           =   375
+         End
          Begin VB.TextBox 挑戰模式選項_牌數 
             Appearance      =   0  '平面
             BorderStyle     =   0  '沒有框線
@@ -980,12 +992,12 @@ Begin VB.Form Formsetting
             Width           =   2535
          End
          Begin VB.CheckBox 大亂鬥選項 
-            Caption         =   "大亂鬥模式（雙方角色發18張牌，HP=99）"
+            Caption         =   "大亂鬥模式（雙方角色發        張牌，HP=99） (Min:1)"
             Height          =   375
             Left            =   240
             TabIndex        =   130
             Top             =   720
-            Width           =   5655
+            Width           =   6255
          End
       End
       Begin VB.Frame 其他 
@@ -2545,6 +2557,7 @@ End Sub
 Private Sub Image2_Click()
 Formsetting.Visible = False
 If Val(挑戰模式選項_牌數.Text) > 30 Then 挑戰模式選項_牌數.Text = 30
+If Val(大亂鬥模式選項_牌數.Text) < 1 Then 大亂鬥模式選項_牌數.Text = 1
 If Val(ckendturnnum.Text) <= 0 Then
     ckendturnnum.Text = 18
 End If
@@ -2553,6 +2566,7 @@ End Sub
 Private Sub Label3_Click()
 Formsetting.Visible = False
 If Val(挑戰模式選項_牌數.Text) > 30 Then 挑戰模式選項_牌數.Text = 30
+If Val(大亂鬥模式選項_牌數.Text) < 1 Then 大亂鬥模式選項_牌數.Text = 1
 If Val(ckendturnnum.Text) <= 0 Then
     ckendturnnum.Text = 18
 End If
@@ -2850,6 +2864,33 @@ Select Case t1.Tab
            表單_系統.Visible = True
            表單_系統.ZOrder
 End Select
+End Sub
+
+Private Sub 大亂鬥模式選項_牌數_Change()
+Dim i As Integer, j As Integer, k As Integer
+j = 1
+Do While j <= Len(大亂鬥模式選項_牌數.Text)
+   k = 0
+      For k = 0 To 9
+         If Asc(Mid(大亂鬥模式選項_牌數.Text, j, 1)) = Asc(k) Then
+             j = j + 1
+             Exit For
+         End If
+      Next
+      If k = 10 Then
+         MsgBox "大小姐，請輸入數字歐...", 64
+         大亂鬥模式選項_牌數.Text = ""
+         Exit Sub
+      End If
+Loop
+End Sub
+
+Private Sub 大亂鬥選項_Click()
+If 大亂鬥選項.Value = 1 Then
+    大亂鬥模式選項_牌數.Enabled = True
+Else
+    大亂鬥模式選項_牌數.Enabled = False
+End If
 End Sub
 
 Private Sub 挑戰模式選項_Click()

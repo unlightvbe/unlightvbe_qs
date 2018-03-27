@@ -58,7 +58,7 @@ Public Property Let 項目編號(ByVal New_項目編號 As Integer)
    '==============
    Select Case Me.物件類別
         Case 1
-             Image1.Left = Val(Me.項目編號) * -300
+             Image1.Left = Val(Me.項目編號) * -315
              Image1.Top = 0
         Case 2
              Image1.Left = (Val(Me.項目編號) - 1) * -120

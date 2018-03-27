@@ -1358,10 +1358,9 @@ ReDim Vss_EventActiveAIScoreNum(1 To 1) As Integer
 For i = 1 To cardAITotalNUM
     For atkingnum = 1 To 4
         If Vss_PersonAtkingOffNum(uscom, 角色人物對戰人數(uscom, 2), atkingnum) = 0 And Val(VBEPerson(uscom, 角色人物對戰人數(uscom, 2), 3, atkingnum, 8)) = turn Then
-            If 執行階段系統類.執行階段系統_驗證(atkingnum, 99, 執行階段系統類.執行階段系統資料(uscom, atkingnum, 1), uscom, 角色人物對戰人數(uscom, 2)) = True Then
+            If 執行階段系統類.執行階段系統_驗證(atkingnum, 99, VBEPerson(uscom, 角色人物對戰人數(uscom, 2), 3, atkingnum, 11), uscom, 角色人物對戰人數(uscom, 2)) = True Then
                    智慧型AI系統類.智慧型AI系統_執行階段準備變數統合資料 uscom, VBEStageNumMain, turn, movecpre, i
-'                   執行指令集.執行指令集總程序執行 執行階段系統類.執行階段系統_執行腳本_人物主動技能類(atkingnum, 99, uscom), 執行階段系統類.執行階段系統資料(uscom, atkingnum, 3), uscom, atkingnum, 99
-                   智慧型AI系統類.智慧型AI系統_執行階段99_計算個別期望推薦值統計 uscom, atkingnum, i, turn
+                   智慧型AI系統類.智慧型AI系統_執行階段99_計算個別期望推薦值統計 uscom, atkingnum, i, turn, 角色人物對戰人數(uscom, 2)
             End If
         End If
     Next
@@ -1695,10 +1694,10 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
              Next
    End Select
 End Sub
-Sub 智慧型AI系統_執行階段99_計算個別期望推薦值統計(ByVal uscom As Integer, ByVal atkingnum As Integer, ByVal cardAICaseNum As Integer, ByVal turn As Integer)
+Sub 智慧型AI系統_執行階段99_計算個別期望推薦值統計(ByVal uscom As Integer, ByVal atkingnum As Integer, ByVal cardAICaseNum As Integer, ByVal turn As Integer, ByVal personnum As Integer)
 Dim vsstr As String, vsstr2() As String, vsstr3() As String, vsstr4() As String, vstest As String, uscomt As Integer
 '============擷取執行階段99之評分資料
-vsstr = 執行階段系統類.執行階段系統_執行腳本_人物主動技能類(atkingnum, 99, uscom)
+vsstr = 執行階段系統類.執行階段系統_執行腳本_人物主動技能類(atkingnum, 99, uscom, personnum)
 vsstr2 = Split(vsstr, "=")
 For i = 0 To UBound(vsstr2)
     If vsstr2(i) <> "" Then
@@ -1722,7 +1721,7 @@ If Vss_EventActiveAIScoreNum(1) = 1 Then
         cardAInumFinal(cardAICaseNum, 1) = cardAInumFinal(cardAICaseNum, 1) + 10
     ElseIf Vss_EventActiveAIScoreNum(2) = 2 Then
         '============擷取執行階段45之總骰數變化量資料
-        vsstr = 執行階段系統類.執行階段系統_執行腳本_人物主動技能類(atkingnum, 45, uscom)
+        vsstr = 執行階段系統類.執行階段系統_執行腳本_人物主動技能類(atkingnum, 45, uscom, personnum)
         vsstr2 = Split(vsstr, "=")
         For i = 0 To UBound(vsstr2)
             If vsstr2(i) <> "" Then

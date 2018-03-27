@@ -161,6 +161,7 @@ Sub 自動捲軸捲動()
 'FormMainMode.messageus.ListIndex = FormMainMode.messageus.ListCount - 1
 End Sub
 Sub 傷害執行_技能直傷_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
+If tot <= 0 Then Exit Sub
 If isEvent = True Then
 '===============================
     ReDim VBEStageNum(0 To 4) As Integer
@@ -445,7 +446,8 @@ If Vss_EventHPLActionOffNum = 0 Then
     End Select
 End If
 End Sub
-Function 傷害執行_使用者(ByVal tot As Integer)
+Sub 傷害執行_使用者(ByVal tot As Integer)
+If tot <= 0 Then Exit Sub
 '===============================
 ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
@@ -486,8 +488,9 @@ If Vss_EventBloodActionOffNum = 0 Then
     戰鬥系統類.播放傷害音樂
     End If
 End If
-End Function
+End Sub
 Sub 傷害執行_技能直傷_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
+If tot <= 0 Then Exit Sub
 If isEvent = True Then
     '===============================
     ReDim VBEStageNum(0 To 4) As Integer
@@ -554,7 +557,8 @@ Select Case num
         End If
 End Select
 End Sub
-Function 傷害執行_電腦(ByVal tot As Integer)
+Sub 傷害執行_電腦(ByVal tot As Integer)
+If tot <= 0 Then Exit Sub
 '===============================
 ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
@@ -595,7 +599,7 @@ If Vss_EventBloodActionOffNum = 0 Then
     戰鬥系統類.播放傷害音樂
     End If
 End If
-End Function
+End Sub
 Sub 執行動作_使用者_棄牌(ByVal n As Integer)
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) - 1
     目前數(5) = pagecardnum(n, 7)

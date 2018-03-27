@@ -10023,100 +10023,101 @@ End Sub
 
 
 Private Sub 電腦出牌_Timer()
- '=========================專屬事件卡出牌階段
-For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
-    If Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 6)) = 1 Then
-        If pagecardnum(i, 1) = a6a Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a6a Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-        If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a7a And (turnatk = 1 Or turnatk = 2) Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-        If pagecardnum(i, 1) = a8a Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a8a Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-        If pagecardnum(i, 1) = a9a Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a9a Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-    End If
-Next
 If 電腦方事件卡是否出完選擇數 = False Then
+     '=========================專屬事件卡出牌階段
+    For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
+        If Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 6)) = 1 Then
+            If pagecardnum(i, 1) = a6a Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a6a Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+            If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a7a And (turnatk = 1 Or turnatk = 2) Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+            If pagecardnum(i, 1) = a8a Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a8a Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+            If pagecardnum(i, 1) = a9a Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a9a Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+        End If
+    Next
+    '==============================事件卡均已出牌完畢
     電腦方事件卡是否出完選擇數 = True
     電腦出牌.Enabled = False
     Select Case turnatk
@@ -10153,18 +10154,6 @@ If 電腦方事件卡是否出完選擇數 = True Then
                       trgoi2_Timer
                       trgoi1_Timer
                    Case 3
-'                      turnpageonin = 1
-'                      階段狀態數 = 1
-'        '              cnmove2.Visible = True
-'                      bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-'                      bnok.Visible = True
-'                      If Formsetting.chkusenewaipersonauto.Value = 1 Then
-'                            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-'                                FormMainMode.card(ckl).CardEnabledType = False
-'                            Next
-'                            目前數(24) = 45
-'                            等待時間_2.Enabled = True
-'                      End If
                         執行動作_電腦方各階段出牌完畢後行動 3
                 End Select
                 Exit Do
@@ -10313,43 +10302,9 @@ Private Sub 電腦出牌_亮牌_Timer()
 If 目前數(6) > pageqlead(2) Then
     電腦出牌_亮牌.Enabled = False
     Select Case turnatk
-       Case 1
-'          攻擊階段_階段2.Enabled = True
-            執行動作_電腦方各階段出牌完畢後行動 1
-       Case 2
-'          cn32.Visible = True
-'          bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-'          bnok.Visible = True
-'          '==============
-'            小人物頭像移動方向數(1) = 1
-'            小人物頭像移動方向數(2) = 2
-'            小人物頭像移動_使用者.Enabled = True
-'            小人物頭像移動_電腦.Enabled = True
-'          '==============
-'          階段狀態數 = 1
-'          FormMainMode.wmpse6.Controls.play
-'          一般系統類.檢查音樂播放 6
-'          戰鬥系統類.時間軸_重設
-'          trtimeline.Enabled = True
-'          '===========================
-'            If Vss_EventPlayerAllActionOffNum(1) = 1 Then
-'                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-'                    FormMainMode.card(ckl).CardEnabledType = False
-'                Next
-'                目前數(24) = 47
-'                等待時間_2.Enabled = True
-'            ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
-'                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-'                    FormMainMode.card(ckl).CardEnabledType = False
-'                Next
-'                目前數(24) = 45
-'                等待時間_2.Enabled = True
-'            End If
-            執行動作_電腦方各階段出牌完畢後行動 2
+       Case 1, 2
+            執行動作_電腦方各階段出牌完畢後行動 turnatk
        Case 3
-'          atkingtrtot.Interval = 600
-'          atkingtrtot.Enabled = True
-'          等待時間.Enabled = True
             目前數(24) = 30
             等待時間_2.Enabled = True
     End Select

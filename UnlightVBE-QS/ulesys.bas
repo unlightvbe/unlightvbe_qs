@@ -1,7 +1,7 @@
 Attribute VB_Name = "一般系統類"
 Public app_path As String  '路徑設定碼
 Public 角色人物對戰人數(1 To 2, 1 To 2) As Integer '雙方對戰角色人數紀錄數(1.使用者/2.電腦,1.總共人數/2.目前第幾位)
-Public 角色待機人物紀錄數(1 To 2, 1 To 3) As Integer '雙方待機角色人物編號紀錄數(1.使用者/2.電腦,1.無意義/2~3.第n位編號)
+Public 角色待機人物紀錄數(1 To 2, 1 To 3) As Integer '雙方待機角色人物編號紀錄數(1.使用者/2.電腦,1.場上角色/2~3.待機角色第n位編號)
 Public tr1num As Integer 'PEStartForm計數器暫時變數
 Public PEAEtr1num As Integer 'PEAttackingEndingForm計數器暫時變數
 Public st As Integer, sq As Integer, swq As Integer, cardusq As Integer, cardcomq As Integer   'PEAttackingStartForm計數器暫時變數
@@ -1183,7 +1183,8 @@ FormMainMode.wmpse3.Controls.stop
 '-----------以下為牌組初始化
 If Formsetting.大亂鬥選項.Value = 1 Then
     For mm = 1 To 3
-       牌總階段數(mm) = 8
+       牌總階段數(mm) = Val(Formsetting.大亂鬥模式選項_牌數.Text)
+       If 牌總階段數(mm) < 1 Then 牌總階段數(mm) = 1
     Next
 ElseIf Formsetting.挑戰模式選項.Value = 1 Then
    For mm = 2 To 3
