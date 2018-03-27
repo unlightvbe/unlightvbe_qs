@@ -104,10 +104,11 @@ Event CardMouseMove()
 Dim m_CardImage As String
 Dim m_LocationType As Integer '牌目前狀態(0.未使用/1.手牌-正面/2.出牌-正面/3.背面)
 Dim m_CardRotationType As Integer '牌目前反轉紀錄數(1.正面/2.轉牌)
-Dim m_CardEventType As Boolean '牌是否回應使用者事件
+Dim m_CardEventType As Boolean '牌是否顯示細項部分紀錄數
+Dim m_CardEnabledType As Boolean '牌是否回應使用者操作紀錄數
 
 Private Sub card_Click(ByVal Button As Integer)
-RaiseEvent CardClick
+If m_CardEnabledType = True Then RaiseEvent CardClick
 End Sub
 
 Sub card_MouseExit()
@@ -120,7 +121,7 @@ cqe.Visible = False
 End Sub
 
 Private Sub card_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent CardMouseMove
+If m_CardEnabledType = True Then RaiseEvent CardMouseMove
 If Me.CardEventType = True Then
     Select Case Me.LocationType
         Case 1
@@ -173,7 +174,7 @@ If Me.CardRotationType = 1 Then
 Else
     Me.CardRotationType = 1
 End If
-RaiseEvent CardButtonClickin
+If m_CardEnabledType = True Then RaiseEvent CardButtonClickin
 End Sub
 
 Private Sub cqe_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -187,7 +188,7 @@ If Me.CardRotationType = 1 Then
 Else
     Me.CardRotationType = 1
 End If
-RaiseEvent CardButtonClickout
+If m_CardEnabledType = True Then RaiseEvent CardButtonClickout
 End Sub
 
 Public Property Get CardImage() As String
@@ -245,9 +246,14 @@ End Property
 Public Property Let CardEventType(ByVal New_CardEventType As Boolean)
    m_CardEventType = New_CardEventType
    PropertyChanged "CardEventType"
-   '========================
 End Property
-
+Public Property Get CardEnabledType() As Boolean
+   CardEnabledType = m_CardEnabledType
+End Property
+Public Property Let CardEnabledType(ByVal New_CardEnabledType As Boolean)
+   m_CardEnabledType = New_CardEnabledType
+   PropertyChanged "CardEnabledType"
+End Property
 Private Sub UserControl_Initialize()
-
+m_CardEnabledType = True
 End Sub

@@ -1,7 +1,7 @@
 Attribute VB_Name = "一般系統類"
 Public app_path As String  '路徑設定碼
 Public 角色人物對戰人數(1 To 2, 1 To 2) As Integer '雙方對戰角色人數紀錄數(1.使用者/2.電腦,1.總共人數/2.目前第幾位)
-Public 角色待機人物紀錄數(1 To 2, 1 To 3) As Integer '雙方待機角色人物編號紀錄數(1.使用者/2.電腦,1.無意義/2~3.第n位編號)
+Public 角色待機人物紀錄數(1 To 2, 1 To 3) As Integer '雙方待機角色人物編號紀錄數(1.使用者/2.電腦,1.場上角色/2~3.待機角色第n位編號)
 Public tr1num As Integer 'PEStartForm計數器暫時變數
 Public PEAEtr1num As Integer 'PEAttackingEndingForm計數器暫時變數
 Public st As Integer, sq As Integer, swq As Integer, cardusq As Integer, cardcomq As Integer   'PEAttackingStartForm計數器暫時變數
@@ -1061,6 +1061,7 @@ Next
 '-----------------------
 For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
     FormMainMode.card(ckl).Visible = False
+    FormMainMode.card(ckl).CardEnabledType = True
 Next
 '-------以下是設計物件顯示
 If Formsetting.checktest.Value = 0 Then
@@ -1182,7 +1183,8 @@ FormMainMode.wmpse3.Controls.stop
 '-----------以下為牌組初始化
 If Formsetting.大亂鬥選項.Value = 1 Then
     For mm = 1 To 3
-       牌總階段數(mm) = 8
+       牌總階段數(mm) = Val(Formsetting.大亂鬥模式選項_牌數.Text)
+       If 牌總階段數(mm) < 1 Then 牌總階段數(mm) = 1
     Next
 ElseIf Formsetting.挑戰模式選項.Value = 1 Then
    For mm = 2 To 3
@@ -1332,7 +1334,7 @@ FormMainMode.personcomminijpg.小人物影子top差 = Val(VBEPerson(2, 1, 2, 1, 6))
 FormMainMode.personcomminijpg.小人物影像反轉 = True
 '==================執行小人物立繪指定及距離指定
 '戰鬥系統類.人物交換_使用者_指定交換 1
-執行動作_距離變更 movecp
+執行動作_距離變更 movecp, False
 '================仿對戰模式設定
 If Formsetting.chkpersonvsmode.Value = 1 Then
     For i = 2 To 3
@@ -1411,12 +1413,12 @@ FormMainMode.wmp.Controls.play
 一般系統類.檢查音樂播放 0
 FormMainMode.personreadifus.Visible = False
 '---------以下是設計物件顯示
-'For i = 1 To 3
-'    FormMainMode.personsettingus(i).Caption = "人物資訊"
-'    FormMainMode.personsettingcom(i).Caption = "人物資訊"
-'    FormMainMode.personsettingus(i).Visible = False
-'    FormMainMode.personsettingcom(i).Visible = False
-'Next
+For i = 1 To 3
+    FormMainMode.personsettingus(i).Caption = "人物資訊"
+    FormMainMode.personsettingcom(i).Caption = "人物資訊"
+    FormMainMode.personsettingus(i).Visible = False
+    FormMainMode.personsettingcom(i).Visible = False
+Next
 'MsgBox "1-5-2-6"
 End Sub
 Sub 遊戲初始讀入程序()
@@ -1567,13 +1569,13 @@ Formsetting.chkusenewai.Value = 1
 Formsetting.chkusenewpage.Value = 1
 Formsetting.chkusenewinterface.Value = 1
 If FormMainMode.personsettingus(1).Caption = "人物資訊" Then
-    Formsetting.其他設定.Visible = False
+'    Formsetting.其他設定.Visible = False
     Formsetting.chkpersonvsmode.Value = 1
     Formsetting.persontgruoncom(4).Value = True
     Formsetting.persontgruonus(4).Value = True
     Formsetting.ckendturn.Value = 1
-    Formsetting.chkusenewaipersonauto.Visible = False
-    FormMainMode.Caption = FormMainMode.Tag & "  [" & Form2.aboutvn.Caption & "]"
+'    Formsetting.chkusenewaipersonauto.Visible = False
+'    FormMainMode.Caption = FormMainMode.Tag & "  [" & Form2.aboutvn.Caption & "]"
 End If
 'MsgBox "1-5-3-2"
 End Sub
@@ -1682,6 +1684,7 @@ ReDim vbecommadnum(1 To 7, vbecommadtotplay)
 ReDim vbecommadstr(1 To 3, vbecommadtotplay)
 Erase Vss_PersonAtkingOffNum
 Erase Vss_AtkingInformationRecordStr
+ReDim VBEStageNum(0) As Integer
 End Sub
 Sub 清除戰鬥系統開始表單設定值()
 Dim i As Integer, j As Integer

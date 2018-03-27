@@ -160,63 +160,74 @@ End Function
 Sub ¦Û°Ê±²¶b±²°Ê()
 'FormMainMode.messageus.ListIndex = FormMainMode.messageus.ListCount - 1
 End Sub
-Sub ¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¨Ï¥ÎªÌ(ByVal tot As Integer, ByVal num As Integer)
+Sub ¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¨Ï¥ÎªÌ(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
+If tot <= 0 Then Exit Sub
+If isEvent = True Then
 '===============================
-Erase VBEStageNum
-Vss_EventBloodActionOffNum = 0
-VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
-VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
-VBEStageNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
-'===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 46, 1
-'============================
-If Vss_EventBloodActionOffNum = 0 Then
-    Select Case num
-       Case 1
-          If tot > 0 And liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) > 0 Then
-              If tot >= liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) Then
-                 ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "±z¨ü¨ì¤F" & liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) & "ÂI¶Ë®`¡C"
-'                 FormMainMode.usbi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = 0
-                 FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).CardMain_¨¤¦âHP = 0
-                 FormMainMode.uspi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = 0
-                 liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) = 0
-                 FormMainMode.bloodnumus1.Caption = 0
-                 FormMainMode.bloodlineout1.Width = 0
-                 µPÁ`¶¥¬q¼Æ(1) = µPÁ`¶¥¬q¼Æ(1) + 1
-              Else
-'                 FormMainMode.usbi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = Val(FormMainMode.usbi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption) - tot
-                 FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).CardMain_¨¤¦âHP = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) - tot
-                 FormMainMode.uspi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = Val(FormMainMode.uspi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption) - tot
-                 liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) - tot
-                 FormMainMode.bloodnumus1.Caption = Val(FormMainMode.bloodnumus1.Caption) - tot
-                 FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width - (¶ZÂ÷³æ¦ì(1, 1, 1) * tot)
-                 ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "±z¨ü¨ì¤F" & tot & "ÂI¶Ë®`¡C"
-              End If
-              ¾Ô°«¨t²ÎÃþ.¼½©ñ¶Ë®`­µ¼Ö
-           End If
-       Case Is > 1
-           If tot > 0 And liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) > 0 Then
-              If tot >= liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) Then
-                 liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) = 0
-                 If FormMainMode.uspi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = "" Then
-'                     FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = -liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))
-                     FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = -liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))
-                     FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = -liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))
-                 Else
-'                     FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = 0
-                     FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = 0
-                     FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = 0
-                 End If
-                 µPÁ`¶¥¬q¼Æ(1) = µPÁ`¶¥¬q¼Æ(1) + 1
-              Else
-'                 FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = Val(FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption) - tot
-                 FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = Val(FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption) - tot
-                 FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = Val(FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption)
-                 liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) = liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) - tot
-              End If
-           End If
-    End Select
+    ReDim VBEStageNum(0 To 4) As Integer
+    Vss_EventBloodActionOffNum = 0
+    VBEStageNum(0) = 46
+    VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+    VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+    VBEStageNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+    VBEStageNum(4) = tot '¨ü¨ì¶Ë®`¤§¼Æ­È
+    Vss_EventBloodActionChangeNum(0) = 0
+    Vss_EventBloodActionChangeNum(1) = 1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+    Vss_EventBloodActionChangeNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+    Vss_EventBloodActionChangeNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+    Vss_EventBloodActionChangeNum(4) = tot  '¨ü¨ì¶Ë®`¤§¼Æ­È
+    '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 46, 1
+    '============================
+    If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
+    If Vss_EventBloodActionOffNum = 1 Then Exit Sub
 End If
+Select Case num
+   Case 1
+      If tot > 0 And liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) > 0 Then
+          If tot >= liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) Then
+             ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "±z¨ü¨ì¤F" & liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) & "ÂI¶Ë®`¡C"
+'                 FormMainMode.usbi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = 0
+             FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).CardMain_¨¤¦âHP = 0
+             FormMainMode.uspi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = 0
+             liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) = 0
+             FormMainMode.bloodnumus1.Caption = 0
+             FormMainMode.bloodlineout1.Width = 0
+             µPÁ`¶¥¬q¼Æ(1) = µPÁ`¶¥¬q¼Æ(1) + 1
+          Else
+'                 FormMainMode.usbi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = Val(FormMainMode.usbi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption) - tot
+             FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).CardMain_¨¤¦âHP = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) - tot
+             FormMainMode.uspi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = Val(FormMainMode.uspi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption) - tot
+             liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) - tot
+             FormMainMode.bloodnumus1.Caption = Val(FormMainMode.bloodnumus1.Caption) - tot
+             FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width - (¶ZÂ÷³æ¦ì(1, 1, 1) * tot)
+             ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "±z¨ü¨ì¤F" & tot & "ÂI¶Ë®`¡C"
+          End If
+          ¾Ô°«¨t²ÎÃþ.¼½©ñ¶Ë®`­µ¼Ö
+       End If
+   Case Is > 1
+       If tot > 0 And liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) > 0 Then
+          If tot >= liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) Then
+             liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) = 0
+             If FormMainMode.uspi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = "" Then
+'                     FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = -liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))
+                 FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = -liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))
+                 FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = -liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))
+             Else
+'                     FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = 0
+                 FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = 0
+                 FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = 0
+             End If
+             µPÁ`¶¥¬q¼Æ(1) = µPÁ`¶¥¬q¼Æ(1) + 1
+          Else
+'                 FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = Val(FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption) - tot
+             FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption = Val(FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption) - tot
+             FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = Val(FormMainMode.uspi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).Caption)
+             liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) = liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) - tot
+          End If
+       End If
+End Select
+
 End Sub
 Sub »ë¶q§ó·sÅã¥Ü()
 §ðÀ»¨¾¿m»ë¤lÁ`¼Æ(1) = 0
@@ -311,13 +322,18 @@ End Select
 End Sub
 Sub ¦^´_°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventHPLActionOffNum = 0
+VBEStageNum(0) = 48
 VBEStageNum(1) = -1 '¦^´_¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¦^´_¤Hª«½s¸¹
+VBEStageNum(3) = tot '¦^´_¤§¼Æ­È
+Vss_EventHPLActionChangeNum(0) = 0
+Vss_EventHPLActionChangeNum(1) = tot  '¦^´_¤§¼Æ­È
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(48)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 48, 1
 '============================
+If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
 If Vss_EventHPLActionOffNum = 0 Then
     Select Case num
        Case 1
@@ -371,13 +387,18 @@ End If
 End Sub
 Sub ¦^´_°õ¦æ_¹q¸£(ByVal tot As Integer, ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventHPLActionOffNum = 0
+VBEStageNum(0) = 48
 VBEStageNum(1) = -2 '¦^´_¤è(¨t²Î¥N¸¹)
 VBEStageNum(2) = num '¦^´_¤Hª«½s¸¹
+VBEStageNum(3) = tot '¦^´_¤§¼Æ­È
+Vss_EventHPLActionChangeNum(0) = 0
+Vss_EventHPLActionChangeNum(1) = tot  '¦^´_¤§¼Æ­È
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(48)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 48, 1
 '============================
+If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
 If Vss_EventHPLActionOffNum = 0 Then
     Select Case num
        Case 1
@@ -425,16 +446,25 @@ If Vss_EventHPLActionOffNum = 0 Then
     End Select
 End If
 End Sub
-Function ¶Ë®`°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer)
+Sub ¶Ë®`°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer)
+If tot <= 0 Then Exit Sub
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = 1 '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 1 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+VBEStageNum(4) = tot '¨ü¨ì¶Ë®`¤§¼Æ­È
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+Vss_EventBloodActionChangeNum(2) = 1 '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+Vss_EventBloodActionChangeNum(3) = 1 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+Vss_EventBloodActionChangeNum(4) = tot  '¨ü¨ì¶Ë®`¤§¼Æ­È
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 46, 1
 '============================
+If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
 If Vss_EventBloodActionOffNum = 0 Then
     If tot > 0 And liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) > 0 Then
           If tot >= liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) Then
@@ -458,75 +488,94 @@ If Vss_EventBloodActionOffNum = 0 Then
     ¾Ô°«¨t²ÎÃþ.¼½©ñ¶Ë®`­µ¼Ö
     End If
 End If
-End Function
-Sub ¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¹q¸£(ByVal tot As Integer, ByVal num As Integer)
-'===============================
-Erase VBEStageNum
-Vss_EventBloodActionOffNum = 0
-VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
-VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
-VBEStageNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
-'===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 46, 1
-'============================
-If Vss_EventBloodActionOffNum = 0 Then
-    Select Case num
-        Case 1
-           If tot > 0 And livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) > 0 Then
-                    If tot >= livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) Then
-                       ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "¹ï¤è¨ü¨ì¤F" & livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) & "ÂI¶Ë®`¡C"
-                       FormMainMode.compi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = 0
-'                       FormMainMode.cardcompi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = 0
-                       FormMainMode.cardcom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).CardMain_¨¤¦âHP = 0
-                       FormMainMode.bloodnumcom1.Caption = 0
-                       livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) = 0
-                       FormMainMode.bloodlineout2.Left = 11580
-                       µPÁ`¶¥¬q¼Æ(2) = µPÁ`¶¥¬q¼Æ(2) + 1
-                    Else
-                       ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "¹ï¤è¨ü¨ì¤F" & Val(tot) & "ÂI¶Ë®`¡C"
-                       FormMainMode.compi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = Val(FormMainMode.compi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption) - tot
-'                       FormMainMode.cardcompi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = Val(FormMainMode.cardcompi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption) - tot
-                       FormMainMode.cardcom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).CardMain_¨¤¦âHP = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) - tot
-                       FormMainMode.bloodnumcom1.Caption = Val(FormMainMode.bloodnumcom1.Caption) - tot
-                       livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) - tot
-                       FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left + (¶ZÂ÷³æ¦ì(1, 2, 1) * tot)
-                    End If
-            ¾Ô°«¨t²ÎÃþ.¼½©ñ¶Ë®`­µ¼Ö
-            End If
-        Case Is > 1
-           If tot > 0 And livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) > 0 Then
-                    If tot >= livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) Then
-                       If FormMainMode.compi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = "" Then
-                           FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = -livecommax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))
-'                           FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = -livecommax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))
-                           FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CardMain_¨¤¦âHP = -livecommax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))
-                       Else
-                           FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = 0
-'                           FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = 0
-                           FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CardMain_¨¤¦âHP = 0
-                       End If
-                       livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) = 0
-                       µPÁ`¶¥¬q¼Æ(2) = µPÁ`¶¥¬q¼Æ(2) + 1
-                    Else
-                       FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = Val(FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption) - tot
-'                       FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = Val(FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption) - tot
-                       FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CardMain_¨¤¦âHP = Val(FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption)
-                       livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) = livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) - tot
-                    End If
-            End If
-    End Select
-End If
 End Sub
-Function ¶Ë®`°õ¦æ_¹q¸£(ByVal tot As Integer)
+Sub ¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¹q¸£(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
+If tot <= 0 Then Exit Sub
+If isEvent = True Then
+    '===============================
+    ReDim VBEStageNum(0 To 4) As Integer
+    Vss_EventBloodActionOffNum = 0
+    VBEStageNum(0) = 46
+    VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+    VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+    VBEStageNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+    VBEStageNum(4) = tot '¨ü¨ì¶Ë®`¤§¼Æ­È
+    Vss_EventBloodActionChangeNum(0) = 0
+    Vss_EventBloodActionChangeNum(1) = 2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+    Vss_EventBloodActionChangeNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+    Vss_EventBloodActionChangeNum(3) = 2 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+    Vss_EventBloodActionChangeNum(4) = tot  '¨ü¨ì¶Ë®`¤§¼Æ­È
+    '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 46, 1
+    '============================
+    If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
+    If Vss_EventBloodActionOffNum = 1 Then Exit Sub
+End If
+Select Case num
+    Case 1
+       If tot > 0 And livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) > 0 Then
+                If tot >= livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) Then
+                   ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "¹ï¤è¨ü¨ì¤F" & livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) & "ÂI¶Ë®`¡C"
+                   FormMainMode.compi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = 0
+'                       FormMainMode.cardcompi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = 0
+                   FormMainMode.cardcom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).CardMain_¨¤¦âHP = 0
+                   FormMainMode.bloodnumcom1.Caption = 0
+                   livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) = 0
+                   FormMainMode.bloodlineout2.Left = 11580
+                   µPÁ`¶¥¬q¼Æ(2) = µPÁ`¶¥¬q¼Æ(2) + 1
+                Else
+                   ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "¹ï¤è¨ü¨ì¤F" & Val(tot) & "ÂI¶Ë®`¡C"
+                   FormMainMode.compi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = Val(FormMainMode.compi4(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption) - tot
+'                       FormMainMode.cardcompi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = Val(FormMainMode.cardcompi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption) - tot
+                   FormMainMode.cardcom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).CardMain_¨¤¦âHP = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) - tot
+                   FormMainMode.bloodnumcom1.Caption = Val(FormMainMode.bloodnumcom1.Caption) - tot
+                   livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) - tot
+                   FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left + (¶ZÂ÷³æ¦ì(1, 2, 1) * tot)
+                End If
+        ¾Ô°«¨t²ÎÃþ.¼½©ñ¶Ë®`­µ¼Ö
+        End If
+    Case Is > 1
+       If tot > 0 And livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) > 0 Then
+                If tot >= livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) Then
+                   If FormMainMode.compi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = "" Then
+                       FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = -livecommax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))
+'                           FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = -livecommax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))
+                       FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CardMain_¨¤¦âHP = -livecommax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))
+                   Else
+                       FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = 0
+'                           FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = 0
+                       FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CardMain_¨¤¦âHP = 0
+                   End If
+                   livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) = 0
+                   µPÁ`¶¥¬q¼Æ(2) = µPÁ`¶¥¬q¼Æ(2) + 1
+                Else
+                   FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = Val(FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption) - tot
+'                       FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption = Val(FormMainMode.cardcompi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption) - tot
+                   FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CardMain_¨¤¦âHP = Val(FormMainMode.compi4(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Caption)
+                   livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) = livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) - tot
+                End If
+        End If
+End Select
+End Sub
+Sub ¶Ë®`°õ¦æ_¹q¸£(ByVal tot As Integer)
+If tot <= 0 Then Exit Sub
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = 1 '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 1 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+VBEStageNum(4) = tot '¨ü¨ì¶Ë®`¤§¼Æ­È
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+Vss_EventBloodActionChangeNum(2) = 1 '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+Vss_EventBloodActionChangeNum(3) = 1 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+Vss_EventBloodActionChangeNum(4) = tot  '¨ü¨ì¶Ë®`¤§¼Æ­È
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 46, 1
 '============================
+If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
 If Vss_EventBloodActionOffNum = 0 Then
     If tot > 0 And livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) > 0 Then
             If tot >= livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) Then
@@ -550,7 +599,7 @@ If Vss_EventBloodActionOffNum = 0 Then
     ¾Ô°«¨t²ÎÃþ.¼½©ñ¶Ë®`­µ¼Ö
     End If
 End If
-End Function
+End Sub
 Sub °õ¦æ°Ê§@_¨Ï¥ÎªÌ_±óµP(ByVal n As Integer)
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) - 1
     ¥Ø«e¼Æ(5) = pagecardnum(n, 7)
@@ -816,13 +865,18 @@ For i = 1 To 14
 Next
 ¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÄ~©Ó_¨Ï¥ÎªÌ
 End Sub
-Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer)
-'===============================
-Erase VBEStageNum
-VBEStageNum(1) = movecp 'ÅÜ§ó«e¶ZÂ÷
-VBEStageNum(2) = m  'ÅÜ§ó«á¶ZÂ÷
+Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean)
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(47)
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 47, 1
+If isEvent = True Then
+    Vss_EventMoveActionOffNum = 0
+    ReDim VBEStageNum(0 To 2) As Integer
+    VBEStageNum(0) = 47
+    VBEStageNum(1) = movecp 'ÅÜ§ó«e¶ZÂ÷
+    VBEStageNum(2) = m  'ÅÜ§ó«á¶ZÂ÷
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 47, 1
+    '=====================
+    If Vss_EventMoveActionOffNum = 1 Then Exit Sub
+End If
 '============================
 Dim anw(1 To 2) As Integer
 Dim anh(1 To 2) As Integer
@@ -1288,8 +1342,13 @@ End If
 End Sub
 Sub ¤p¤Hª«ÀY¹³°õ¦æ§¹§PÂ__¹q¸£()
 If turnatk = 1 Or turnatk = 2 Or turnatk = 3 Then
-   ¶¥¬qª¬ºA¼Æ = 3
-   FormMainMode.¹q¸£¥XµP.Enabled = True
+    If Vss_EventPlayerAllActionOffNum(2) = 0 Then
+        ¶¥¬qª¬ºA¼Æ = 3
+        FormMainMode.¹q¸£¥XµP.Enabled = True
+    Else
+        ¥Ø«e¼Æ(24) = 48
+        FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
+    End If
 End If
 End Sub
 Sub ¤½¥ÎµPÅÜ­I­±()
@@ -2545,6 +2604,15 @@ End Sub
 Sub ¤Hª«¥æ´«_¨Ï¥ÎªÌ_«ü©w¥æ´«(ByVal num As Integer)
 Dim ae As Integer
 '=======================
+ReDim VBEStageNum(0 To 3) As Integer
+VBEStageNum(0) = 41
+VBEStageNum(1) = -1 '°õ¦æ®ÄªG¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+VBEStageNum(2) = 1 '¥æ´««e¤Hª«½s¸¹
+VBEStageNum(3) = num '¥æ´««á¤Hª«½s¸¹
+'===========================°õ¦æ¶¥¬q´¡¤JÂI(41)
+°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 41, 1
+'============================
+'=======================
 FormMainMode.personusminijpg.¤p¤Hª«®ø¥¢ = True
 Do Until FormMainMode.personusminijpg.¤p¤Hª«®ø¥¢ = False
     DoEvents
@@ -2618,7 +2686,7 @@ FormMainMode.bloodlineout1.Width = (¶ZÂ÷³æ¦ì(1, 1, 1) * liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(
 FormMainMode.bloodnumus1.Caption = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2))
 FormMainMode.bloodnumus2.Caption = liveusmax(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2))
 '========================
-°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
 '========================¥H¤U¬O§Þ¯àÀË¬d¤Î±Ò°Ê
 'If FormMainMode.uspi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Caption = "¥v¶ð®L" Then
 '    If atking_¥v¶ð®L_±þ¼®¼Ò¦¡ª¬ºA¼Æ(2) = 1 Then
@@ -2648,14 +2716,20 @@ FormMainMode.personusminijpg.¤p¤Hª«Åã²{ = True
 Do Until FormMainMode.personusminijpg.¤p¤Hª«Åã²{ = False
     DoEvents
 Loop
-'=======================
-'===========================°õ¦æ¶¥¬q´¡¤JÂI(41-¨Ï¥ÎªÌ)
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 41, 2
-'============================
+
 End Sub
 
 Sub ¤Hª«¥æ´«_¹q¸£_«ü©w¥æ´«(ByVal num As Integer)
 Dim ae As Integer
+'=======================
+ReDim VBEStageNum(0 To 3) As Integer
+VBEStageNum(0) = 41
+VBEStageNum(1) = -2 '°õ¦æ®ÄªG¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+VBEStageNum(2) = 1 '¥æ´««e¤Hª«½s¸¹
+VBEStageNum(3) = num '¥æ´««á¤Hª«½s¸¹
+'===========================°õ¦æ¶¥¬q´¡¤JÂI(41)
+°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 41, 1
+'============================
 '=======================
 FormMainMode.personcomminijpg.¤p¤Hª«®ø¥¢ = True
 Do Until FormMainMode.personcomminijpg.¤p¤Hª«®ø¥¢ = False
@@ -2734,7 +2808,7 @@ FormMainMode.bloodlineout2.Left = 11340 - (¶ZÂ÷³æ¦ì(1, 2, 1) * livecom(¨¤¦â¤Hª«¹
 FormMainMode.bloodnumcom1.Caption = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2))
 FormMainMode.bloodnumcom2.Caption = livecommax(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2))
 '==============================
-°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp
+°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
 '=============================
 'If FormMainMode.compi1(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Caption = "¤×²ú¥d" And atking_AI_¤×²ú¥d_¶W¸ü¥Ø«e¶¥¬q¬ö¿ý¼Æ(3) > 0 Then
 '    atkingckai(139, 2) = 1
@@ -2748,9 +2822,6 @@ Do Until FormMainMode.personcomminijpg.¤p¤Hª«Åã²{ = False
     DoEvents
 Loop
 '=======================
-'===========================°õ¦æ¶¥¬q´¡¤JÂI(41-¹q¸£)
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 41, 2
-'============================
 End Sub
 Sub °õ¦æ°Ê§@_¥æ´«¤Hª«¨¤¦â_¨Ï¥ÎªÌ_ªì©l()
 Dim i As Integer
@@ -5032,15 +5103,22 @@ Next
 End Sub
 Sub ¶Ë®`°õ¦æ_¥ß§Y¦º¤`_¨Ï¥ÎªÌ(ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 3 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+VBEStageNum(4) = liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))  '¨ü¨ì¶Ë®`¤§¼Æ­È(²{¦³HP)
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 1 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+Vss_EventBloodActionChangeNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+Vss_EventBloodActionChangeNum(3) = 3 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+Vss_EventBloodActionChangeNum(4) = liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num))   '¨ü¨ì¶Ë®`¤§¼Æ­È
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 46, 1
 '============================
-If Vss_EventBloodActionOffNum = 0 Then
+If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
     Select Case num
        Case 1
             ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "±z¨ü¨ì¤F" & liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) & "ÂI¶Ë®`¡C"
@@ -5069,15 +5147,22 @@ End If
 End Sub
 Sub ¶Ë®`°õ¦æ_¥ß§Y¦º¤`_¹q¸£(ByVal num As Integer)
 '===============================
-Erase VBEStageNum
+ReDim VBEStageNum(0 To 3) As Integer
 Vss_EventBloodActionOffNum = 0
+VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
 VBEStageNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
 VBEStageNum(3) = 3 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+VBEStageNum(4) = livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) '¨ü¨ì¶Ë®`¤§¼Æ­È(²{¦³HP)
+Vss_EventBloodActionChangeNum(0) = 0
+Vss_EventBloodActionChangeNum(1) = 2 '¨ü¨ì¶Ë®`¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+Vss_EventBloodActionChangeNum(2) = num '¨ü¨ì¶Ë®`¤Hª«½s¸¹
+Vss_EventBloodActionChangeNum(3) = 3 '¨ü¨ì¶Ë®`¤§§Î¦¡(1.»ë¶Ë/2.ª½¶Ë/3.¥ß§Y¦º¤`)
+Vss_EventBloodActionChangeNum(4) = livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num))  '¨ü¨ì¶Ë®`¤§¼Æ­È
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 46, 1
 '============================
-If Vss_EventBloodActionOffNum = 0 Then
+If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
     Select Case num
         Case 1
             ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "¹ï¤è¨ü¨ì¤F" & livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) & "ÂI¶Ë®`¡C"
@@ -5188,3 +5273,58 @@ Sub °õ¦æ°Ê§@_¨t²ÎÁ`¥dµP±i¼Æ§ó·s()
 FormMainMode.PEAFInterface.Cardnum = BattleCardNum
 FormMainMode.pageul.Caption = BattleCardNum
 End Sub
+Sub °õ¦æ°Ê§@_¹q¸£¤è¦U¶¥¬q¥XµP§¹²¦«á¦æ°Ê(ByVal turnnum As Integer)
+Select Case turnnum
+    Case 1
+        FormMainMode.§ðÀ»¶¥¬q_¶¥¬q2.Enabled = True
+    Case 2
+        FormMainMode.bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+        FormMainMode.bnok.Visible = True
+        '==============
+        ¤p¤Hª«ÀY¹³²¾°Ê¤è¦V¼Æ(1) = 1
+        ¤p¤Hª«ÀY¹³²¾°Ê¤è¦V¼Æ(2) = 2
+        FormMainMode.¤p¤Hª«ÀY¹³²¾°Ê_¨Ï¥ÎªÌ.Enabled = True
+        FormMainMode.¤p¤Hª«ÀY¹³²¾°Ê_¹q¸£.Enabled = True
+        '==============
+        ¶¥¬qª¬ºA¼Æ = 1
+        FormMainMode.wmpse6.Controls.play
+        ¤@¯ë¨t²ÎÃþ.ÀË¬d­µ¼Ö¼½©ñ 6
+        ¾Ô°«¨t²ÎÃþ.®É¶¡¶b_­«³]
+        FormMainMode.trtimeline.Enabled = True
+        '===========================
+        If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+            For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            FormMainMode.bnok.Enabled = False
+            ¥Ø«e¼Æ(24) = 47
+            FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
+        ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+            For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            ¥Ø«e¼Æ(24) = 45
+            FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
+        End If
+    Case 3
+        turnpageonin = 1
+        ¶¥¬qª¬ºA¼Æ = 1
+        FormMainMode.bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+        FormMainMode.bnok.Visible = True
+        If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+            For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            FormMainMode.bnok.Enabled = False
+            ¥Ø«e¼Æ(24) = 47
+            FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
+        ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+            For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+                FormMainMode.card(ckl).CardEnabledType = False
+            Next
+            ¥Ø«e¼Æ(24) = 45
+            FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
+        End If
+End Select
+End Sub
+

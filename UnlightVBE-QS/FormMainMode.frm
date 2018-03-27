@@ -24,7 +24,7 @@ Begin VB.Form FormMainMode
    ScaleHeight     =   11100
    ScaleWidth      =   20400
    StartUpPosition =   2  '螢幕中央
-   Tag             =   "UnlightVBE-QS OB-Test"
+   Tag             =   "UnlightVBE-QS Origin"
    Begin VB.PictureBox PEAttackingForm 
       Appearance      =   0  '平面
       BackColor       =   &H00FFFFFF&
@@ -289,7 +289,7 @@ Begin VB.Form FormMainMode
             Enabled         =   0   'False
             Interval        =   10
             Left            =   1920
-            Top             =   1320
+            Top             =   1200
          End
          Begin VB.Timer 防禦階段_階段初始 
             Enabled         =   0   'False
@@ -843,7 +843,7 @@ Begin VB.Form FormMainMode
       Begin VB.Timer tr使用者_棄牌 
          Enabled         =   0   'False
          Interval        =   200
-         Left            =   960
+         Left            =   1080
          Top             =   4440
       End
       Begin VB.Timer tr電腦牌_棄牌 
@@ -5535,11 +5535,22 @@ trgoi2.Enabled = True
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
 '======================================
+Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 17, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 37, 2
 '============================
-If Formsetting.chkusenewaipersonauto.Value = 1 Then
+If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+    For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+        FormMainMode.card(ckl).CardEnabledType = False
+    Next
+    FormMainMode.bnok.Enabled = False
+    目前數(24) = 47
+    FormMainMode.等待時間_2.Enabled = True
+ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+    For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+        FormMainMode.card(ckl).CardEnabledType = False
+    Next
     目前數(24) = 45
     等待時間_2.Enabled = True
 End If
@@ -5622,10 +5633,11 @@ End If
 戰鬥系統類.骰量更新顯示
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
+'============================
+Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 17, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 37, 2
-'============================
 '======================電腦方事件卡先出制度
 If 電腦方事件卡是否出完選擇數 = False Then
    GoTo 電腦方事件卡先出制度_執行階段2
@@ -5714,12 +5726,9 @@ If 電腦方事件卡是否出完選擇數 = False Then
     '==============
     戰鬥系統類.時間軸_重設
     trtimeline.Enabled = True
-End If
-'======================電腦方事件卡先出制度_結束後階段2
-If 電腦方事件卡是否出完選擇數 = True Then
+ElseIf 電腦方事件卡是否出完選擇數 = True Then  '電腦方事件卡先出制度_結束後階段2
     電腦出牌.Enabled = True
 End If
-'===========================
 End Sub
 
 
@@ -5877,7 +5886,6 @@ PEAFInterface.turn = BattleTurn
 顯示列1.goi2 = 0
 攻擊防禦骰子總數(1) = 0
 攻擊防禦骰子總數(2) = 0
-Erase Vss_PersonMoveControlNum
 '====================
 If 系統顯示界面紀錄數 = 1 Then
     move1.Visible = True
@@ -6908,7 +6916,7 @@ Private Sub tr牌組_抽牌_使用者_Timer()
 Dim m As Integer '暫時變數
 Do
     Randomize
-    m = Int(Rnd() * 57) + 1
+    m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
     '===========
     If BattleCardNum <= 0 Then
         Exit Do
@@ -6925,7 +6933,7 @@ Private Sub tr牌組_抽牌_電腦_Timer()
 Dim m As Integer '暫時變數
 Do
     Randomize
-    m = Int(Rnd() * 57) + 1
+    m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
     '===========
     If BattleCardNum <= 0 Then
         Exit Do
@@ -8603,70 +8611,68 @@ If 目前數(31) = 0 Then
     '===============
     movecom = atkingpagetot(2, 3)
     moveus = atkingpagetot(1, 3)
-'=====================以下是異常狀態檢查及啟動
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
-'      異常狀態檢查數(21, 1) = 2
-'      異常狀態.中毒_電腦  '(階段2)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 3) = True Then
-'      異常狀態檢查數(3, 1) = 1
-'      異常狀態.MOV加_電腦  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 6) = True Then
-'      異常狀態檢查數(6, 1) = 1
-'      異常狀態.MOV減_電腦  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 17) = True Then
-'      異常狀態檢查數(17, 1) = 1
-'      異常狀態.麻痺_電腦  '(階段1)
-'End If
+    '=====================以下是異常狀態檢查及啟動
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
+    '      異常狀態檢查數(21, 1) = 2
+    '      異常狀態.中毒_電腦  '(階段2)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 3) = True Then
+    '      異常狀態檢查數(3, 1) = 1
+    '      異常狀態.MOV加_電腦  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 6) = True Then
+    '      異常狀態檢查數(6, 1) = 1
+    '      異常狀態.MOV減_電腦  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 17) = True Then
+    '      異常狀態檢查數(17, 1) = 1
+    '      異常狀態.麻痺_電腦  '(階段1)
+    'End If
     '===========================執行階段插入點(70)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 70, 1
     '============================
-    '===========================執行階段插入點(71)
-    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 71, 1
-    '============================
-'movecheckcom = movecom
-'顯示列1.電腦方移動值 = movecheckcom
-'========================================
+    'movecheckcom = movecom
+    '顯示列1.電腦方移動值 = movecheckcom
+    '========================================
+    
+    '===========
+    'atkingtrn(1) = Val(atkingtrn(1)) + Val(atkingtrn(3))
+    'atkingtrn(2) = Val(atkingtrn(2)) + Val(atkingtrn(4))
+    'atkingtrn(3) = 0
+    'atkingtrn(4) = 0
 
-'===========
-'atkingtrn(1) = Val(atkingtrn(1)) + Val(atkingtrn(3))
-'atkingtrn(2) = Val(atkingtrn(2)) + Val(atkingtrn(4))
-'atkingtrn(3) = 0
-'atkingtrn(4) = 0
-
-'=====================================================
-
-'===============以下是技能檢查及啟動
-
-'===============以下是異常狀態檢查及啟動
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 9) = True Then
-'      異常狀態檢查數(9, 1) = 1
-'      異常狀態.MOV加_使用者  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 12) = True Then
-'      異常狀態檢查數(12, 1) = 1
-'      異常狀態.MOV減_使用者  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 16) = True Then
-'      異常狀態檢查數(16, 1) = 1
-'      異常狀態.麻痺_使用者  '(階段1)
-'End If
-'===============
-If Vss_PersonMoveControlNum(1, 2) = 0 Then
-    moveus = moveus + Vss_PersonMoveControlNum(1, 1)
-Else
-    moveus = Vss_PersonMoveControlNum(1, 1)
-End If
-If Vss_PersonMoveControlNum(2, 2) = 0 Then
-    movecom = movecom + Vss_PersonMoveControlNum(2, 1)
-Else
-    movecom = Vss_PersonMoveControlNum(2, 1)
-End If
-If moveus < 0 Then moveus = 0
-If movecom < 0 Then movecom = 0
-'===============
+    '=====================================================
+    
+    '===============以下是技能檢查及啟動
+    
+    '===============以下是異常狀態檢查及啟動
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 9) = True Then
+    '      異常狀態檢查數(9, 1) = 1
+    '      異常狀態.MOV加_使用者  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 12) = True Then
+    '      異常狀態檢查數(12, 1) = 1
+    '      異常狀態.MOV減_使用者  '(階段1)
+    'End If
+    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 16) = True Then
+    '      異常狀態檢查數(16, 1) = 1
+    '      異常狀態.麻痺_使用者  '(階段1)
+    'End If
+    '=================================
+    If Vss_PersonMoveControlNum(1, 2) = 0 Then
+        moveus = moveus + Vss_PersonMoveControlNum(1, 1)
+    Else
+        moveus = Vss_PersonMoveControlNum(1, 1)
+    End If
+    If Vss_PersonMoveControlNum(2, 2) = 0 Then
+        movecom = movecom + Vss_PersonMoveControlNum(2, 1)
+    Else
+        movecom = Vss_PersonMoveControlNum(2, 1)
+    End If
+    '==================================
+    If moveus < 0 Then moveus = 0
+    If movecom < 0 Then movecom = 0
+    '==================================
     movecheckus = moveus
     movecheckcom = movecom
     顯示列1.電腦方移動值 = movecheckcom
@@ -8674,6 +8680,16 @@ If movecom < 0 Then movecom = 0
     If movecheckcom <= 0 Then
        電腦方移動階段選擇數 = 2
     End If
+    '==================================
+    If Vss_PersonMoveActionChangeNum(1, 1) = 1 Then
+        顯示列1.移動階段選擇值 = Vss_PersonMoveActionChangeNum(1, 2)
+    End If
+    If Vss_PersonMoveActionChangeNum(2, 1) = 1 Then
+        電腦方移動階段選擇數 = Vss_PersonMoveActionChangeNum(2, 2)
+    End If
+    '===============
+    If Vss_EventPlayerAllActionOffNum(1) = 1 Then 顯示列1.移動階段選擇值 = 0
+    If Vss_EventPlayerAllActionOffNum(2) = 1 Then 電腦方移動階段選擇數 = 0
     '==================================
     If 顯示列1.移動階段選擇值 = 1 Or 顯示列1.移動階段選擇值 = 3 Then
        If 顯示列1.移動階段選擇值 = 3 Then
@@ -8722,6 +8738,13 @@ If movecom < 0 Then movecom = 0
         movecpn = Val(movecom) + Val(movecpn)
     End If
     '==============================
+    ReDim VBEStageNum(0 To 2) As Integer
+    VBEStageNum(0) = 71
+    VBEStageNum(1) = moveus '使用者方總移動數
+    VBEStageNum(2) = movecom '電腦方總移動數
+    '===========================執行階段插入點(71)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 71, 1
+    '============================
     
     If movecpn < 1 Then
        movecpn = 1
@@ -8729,7 +8752,7 @@ If movecom < 0 Then movecom = 0
        movecpn = 3
     End If
     
-    執行動作_距離變更 (movecpn)
+    執行動作_距離變更 movecpn, True
     
     If Val(movecheckus) > Val(movecheckcom) Then
       戰鬥系統類.movetnus
@@ -9066,6 +9089,8 @@ Sub 移動階段_階段前啟動_Timer()
 '=================
 'atkingtrtot.Interval = 600
 'atkingtrtot.Enabled = True
+Erase Vss_PersonMoveActionChangeNum
+Erase Vss_PersonMoveControlNum
 '===========================執行階段插入點(2)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 2, 1
 '============================
@@ -9778,6 +9803,11 @@ Select Case 目前數(14)
                 '====================
                 bnok.Enabled = True
                 FormMainMode.bnok_Click
+                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                    FormMainMode.card(ckl).CardEnabledType = True
+                Next
+            Case 48
+                執行動作_電腦方各階段出牌完畢後行動 turnatk
       End Select
 End Select
 End Sub
@@ -9814,10 +9844,11 @@ Select Case 目前數(14)
            Case 5
               cn1_Click
            Case 6
-              '===========================執行階段插入點(1)
-              執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 1, 1
-              '============================
-              cnmove_Click
+                Erase Vss_EventPlayerAllActionOffNum
+                '===========================執行階段插入點(1)
+                執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 1, 1
+                '============================
+                cnmove_Click
            Case 7
               目前數(24) = 2
               等待時間_2.Enabled = True
@@ -9992,100 +10023,101 @@ End Sub
 
 
 Private Sub 電腦出牌_Timer()
- '=========================專屬事件卡出牌階段
-For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
-    If Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 6)) = 1 Then
-        If pagecardnum(i, 1) = a6a Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a6a Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-        If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a7a And (turnatk = 1 Or turnatk = 2) Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-        If pagecardnum(i, 1) = a8a Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a8a Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-        If pagecardnum(i, 1) = a9a Then
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        ElseIf pagecardnum(i, 3) = a9a Then
-            cspce = pagecardnum(i, 1)
-            cspme = pagecardnum(i, 2)
-            pagecardnum(i, 1) = pagecardnum(i, 3)
-            pagecardnum(i, 2) = pagecardnum(i, 4)
-            pagecardnum(i, 3) = cspce
-            pagecardnum(i, 4) = cspme
-            If pageonin(i) = 2 Then
-               pageonin(i) = 1
-            Else
-               pageonin(i) = 2
-            End If
-            pagecardnum(i, 11) = 1
-            電腦牌_模擬按牌 i
-            電腦出牌.Enabled = False
-            Exit Sub
-        End If
-    End If
-Next
 If 電腦方事件卡是否出完選擇數 = False Then
+     '=========================專屬事件卡出牌階段
+    For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
+        If Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 6)) = 1 Then
+            If pagecardnum(i, 1) = a6a Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a6a Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+            If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a7a And (turnatk = 1 Or turnatk = 2) Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+            If pagecardnum(i, 1) = a8a Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a8a Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+            If pagecardnum(i, 1) = a9a Then
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            ElseIf pagecardnum(i, 3) = a9a Then
+                cspce = pagecardnum(i, 1)
+                cspme = pagecardnum(i, 2)
+                pagecardnum(i, 1) = pagecardnum(i, 3)
+                pagecardnum(i, 2) = pagecardnum(i, 4)
+                pagecardnum(i, 3) = cspce
+                pagecardnum(i, 4) = cspme
+                If pageonin(i) = 2 Then
+                   pageonin(i) = 1
+                Else
+                   pageonin(i) = 2
+                End If
+                pagecardnum(i, 11) = 1
+                電腦牌_模擬按牌 i
+                電腦出牌.Enabled = False
+                Exit Sub
+            End If
+        End If
+    Next
+    '==============================事件卡均已出牌完畢
     電腦方事件卡是否出完選擇數 = True
     電腦出牌.Enabled = False
     Select Case turnatk
@@ -10122,15 +10154,7 @@ If 電腦方事件卡是否出完選擇數 = True Then
                       trgoi2_Timer
                       trgoi1_Timer
                    Case 3
-                      turnpageonin = 1
-                      階段狀態數 = 1
-        '              cnmove2.Visible = True
-                      bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-                      bnok.Visible = True
-                      If Formsetting.chkusenewaipersonauto.Value = 1 Then
-                          目前數(24) = 45
-                          等待時間_2.Enabled = True
-                      End If
+                        執行動作_電腦方各階段出牌完畢後行動 3
                 End Select
                 Exit Do
              End If
@@ -10278,32 +10302,9 @@ Private Sub 電腦出牌_亮牌_Timer()
 If 目前數(6) > pageqlead(2) Then
     電腦出牌_亮牌.Enabled = False
     Select Case turnatk
-       Case 1
-          攻擊階段_階段2.Enabled = True
-       Case 2
-'          cn32.Visible = True
-          bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-          bnok.Visible = True
-          '==============
-            小人物頭像移動方向數(1) = 1
-            小人物頭像移動方向數(2) = 2
-            小人物頭像移動_使用者.Enabled = True
-            小人物頭像移動_電腦.Enabled = True
-          '==============
-          階段狀態數 = 1
-          FormMainMode.wmpse6.Controls.play
-          一般系統類.檢查音樂播放 6
-          戰鬥系統類.時間軸_重設
-          trtimeline.Enabled = True
-          '===========================
-            If Formsetting.chkusenewaipersonauto.Value = 1 Then
-                目前數(24) = 45
-                等待時間_2.Enabled = True
-            End If
+       Case 1, 2
+            執行動作_電腦方各階段出牌完畢後行動 turnatk
        Case 3
-'          atkingtrtot.Interval = 600
-'          atkingtrtot.Enabled = True
-'          等待時間.Enabled = True
             目前數(24) = 30
             等待時間_2.Enabled = True
     End Select

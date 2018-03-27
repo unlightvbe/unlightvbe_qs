@@ -12,6 +12,7 @@ Begin VB.Form Form2
    MinButton       =   0   'False
    ScaleHeight     =   5055
    ScaleWidth      =   8400
+   StartUpPosition =   1  '所屬視窗中央
    Begin VB.PictureBox Picture1 
       Appearance      =   0  '平面
       BackColor       =   &H00000000&
@@ -68,7 +69,7 @@ Begin VB.Form Form2
       Width           =   1470
    End
    Begin VB.Label Label1 
-      Caption         =   "2017 By Andy Ciu."
+      Caption         =   "2018 By Andy Ciu."
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   11.25
@@ -85,7 +86,7 @@ Begin VB.Form Form2
       Width           =   3615
    End
    Begin VB.Label aboutvn 
-      Caption         =   "Bulid 0310"
+      Caption         =   "Bulid 0546"
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   12
