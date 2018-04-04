@@ -1,0 +1,77 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKS00504"
+         Case 2
+              main = "44#7#61#99"
+         Case 3
+              main = "救濟天使"
+         Case 4
+              main = "移動#3"
+         Case 5
+              main = "全距離#111"
+         Case 6
+              main = "特合計5以上#45a"
+         Case 7
+              main = "己方所有待機成員HP+1，獲得「庇護」。當沒有待機成員時，自身「ATK+7」「DEF+7」「再生」(4回合)"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 44
+            If AtkingPagetotVS(1, 4) >= 5 Then
+               If AtkingckVSS(4, 1) = 0 Then
+                    atking = atking & "AtkingLineLight#1" & "="
+                    atking = atking & "AtkingTurnOnOff#1" & "="
+               End If
+            Else
+               If AtkingckVSS(4, 1) = 1 Then
+                    atking = atking & "AtkingLineLight#2" & "="
+                    atking = atking & "AtkingTurnOnOff#2" & "="
+               End If
+            End If
+        Case 7
+            atking = atking & "AtkingStartPlay#" & "\gif\Alec\atking4.jpg,0" & "="
+            atking = atking & "AtkingLineLight#2" & "="
+            atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 61
+            Dim isSelf
+            isSelf = True
+            
+            For i = 2 To UBound(VBEAtkingVSF, 2)
+                If VBEAtkingVSF(1, i, 1) > 0 Then isSelf = False
+                Exit For
+            Next
+
+            If isSelf = True Then
+                atking = atking & "PersonAddBuff#1,1,BUFFN00101,7,4" & "="
+                atking = atking & "PersonAddBuff#1,1,BUFFN00201,7,4" & "="
+                atking = atking & "PersonAddBuff#1,1,BUFFN00401,0,4" & "="
+            Else
+                For i = 2 To UBound(VBEAtkingVSF, 2)
+                    atking = atking & "PersonBloodControl#1," & i & ",2,1" & "="
+                    atking = atking & "PersonAddBuff#1," & i & ",BUFFS00101,0,1" & "="
+                Next
+            End If
+        Case 99
+            Dim k, m, numtot
+            k = 0
+            If VBEAtkingVSS(12) = 1 Then
+                If AtkingPagetotVS(1, 4) >= 5 Then
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        m = AtkingPagetotVS(1, 4) - k
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = m And numtot < 5 Then
+                                atking = atking & "," & i
+                                numtot = numtot + m
+                            End If
+                        Next
+                    Loop Until numtot >= 5
+                    atking = atking & "="
+                End If
+            End If
+    End Select
+End Function

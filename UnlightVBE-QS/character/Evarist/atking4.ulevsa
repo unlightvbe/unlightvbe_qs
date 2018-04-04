@@ -37,7 +37,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
         Case 61
-          atking = atking & "AtkingDrawCards#1,2" & "="
+          atking = atking & "AtkingDrawCards#1,1,2" & "="
         Case 99
            Dim checknum(1), k, numtot, m
            ReDim pagecheck(UBound(VBEPageCardNumVS, 1))

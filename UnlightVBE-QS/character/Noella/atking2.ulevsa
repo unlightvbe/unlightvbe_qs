@@ -1,0 +1,47 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKN02802"
+         Case 2
+              main = "43#32#34"
+         Case 3
+              main = "鮮血吸收"
+         Case 4
+              main = "防禦#2"
+         Case 5
+              main = "近、遠距離#101"
+         Case 6
+              main = "防合計2以上#22a"
+         Case 7
+              main = "自己以外的全部隊伍成員，回復這次戰鬥所受到的傷害等值的HP。"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 43
+            If VBEAtkingVSS(6) <> 2 Then
+                If AtkingPagetotVS(1, 2) >= 2 Then
+                   If AtkingckVSS(2, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(2, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+          End If
+        Case 32
+          atking = atking & "AtkingStartPlay#" & "\gif\Noella\ATK2.jpg,0" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+	Case 34
+	  If VBEAtkingVSS(5) > 0 Then
+	     h = VBEAtkingVSS(5)
+	     atking = atking & "PersonBloodControl#1,2,2," & h & "="
+             atking = atking & "PersonBloodControl#1,3,2," & h & "="
+	  End If
+	  atking = atking & "AtkingTurnOnOff#2" & "="
+    End Select
+End Function

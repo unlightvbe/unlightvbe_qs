@@ -1,0 +1,28 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFN00701"
+         Case 2
+              main = "72#53"
+         Case 3
+              main = "«Ê¦L"
+         Case 4
+              main = "\Buff\seal\seal.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 72
+            If BuffPersonType = 1 Then
+                buff = buff & "PersonAtkingOff#1,1,1" & "="
+            End If
+        Case 53
+            If BuffPersonType = 1 Then
+                If VBEVSBuffNum(2) = 1 Then
+                    buff = buff & "PersonAtkingOff#1,1,2" & "="
+                End If
+                buff = buff & "BuffTurnEnd#0" & "="
+            End If
+    End Select
+End Function

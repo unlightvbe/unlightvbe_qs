@@ -1,0 +1,44 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKC00291"
+         Case 2
+              main = "44#5#61#52"
+         Case 3
+              main = "猜想實驗裝置"
+         Case 4
+              main = "移動#3"
+         Case 5
+              main = "全距離#111"
+         Case 6
+              main = "特合計2以上#42a"
+         Case 7
+              main = "抽1張牌。&#本回合內自身技能造成的直接傷害+2"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 44
+            If VBEAtkingVSS(12) = 2 Then
+                If AtkingPagetotVS(1, 4) >= 2 Then
+                   If AtkingckVSS(1, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(1, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+            End If
+	Case 5
+          atking = atking & "AtkingStartPlay#" & "\gif\No07\atking.jpg,0" & "="
+        Case 61
+          atking = atking & "AtkingDrawCards#1,1,1" & "="
+	Case 52
+          atking = atking & "AtkingLineLight#2" & "="
+	  atking = atking & "AtkingTurnOnOff#2" & "="
+    End Select
+End Function

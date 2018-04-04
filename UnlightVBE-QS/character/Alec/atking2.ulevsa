@@ -1,0 +1,44 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKS00502"
+         Case 2
+              main = "43#31#23"
+         Case 3
+              main = "白百合"
+         Case 4
+              main = "防禦#2"
+         Case 5
+              main = "近、中距離#011"
+         Case 6
+              main = "無合計1以上、無合計1以上#01a&01a"
+         Case 7
+              main = "這次戰鬥有受到傷害時，消除對手所有的異常狀態，且「封印」對手(1回合)"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 43
+            If VBEAtkingVSS(1) >= 2 And VBEAtkingVSS(6) < 3 Then
+               If AtkingckVSS(2, 1) = 0 Then
+                    atking = atking & "AtkingLineLight#1" & "="
+                    atking = atking & "AtkingTurnOnOff#1" & "="
+               End If
+            Else
+               If AtkingckVSS(2, 1) = 1 Then
+                    atking = atking & "AtkingLineLight#2" & "="
+                    atking = atking & "AtkingTurnOnOff#2" & "="
+               End If
+            End If
+        Case 31
+            atking = atking & "AtkingStartPlay#" & "\gif\Alec\atking2-1.jpg,\gif\Alec\atking2-2.jpg" & "="
+            atking = atking & "AtkingLineLight#2" & "="
+        Case 23
+            If VBEAtkingVSS(5) > 0 Then
+                atking = atking & "PersonRemoveBuffAll#2,1" & "="
+                atking = atking & "PersonAddBuff#2,1,BUFFN00701,0,1" & "="
+            End If
+            atking = atking & "AtkingTurnOnOff#2" & "="
+    End Select
+End Function

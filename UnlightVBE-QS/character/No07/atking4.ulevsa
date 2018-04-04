@@ -1,0 +1,49 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKC00294"
+         Case 2
+              main = "44#5#11#31#52"
+         Case 3
+              main = "絕槍與聖盾"
+         Case 4
+              main = "移動#3"
+         Case 5
+              main = "全距離#111"
+         Case 6
+              main = "防合計5以上、槍合計3以上#25a&53a"
+         Case 7
+              main = "自身回復2點HP&#本回合雙方ATK及DEF固定為10"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+    Case 44
+        If VBEAtkingVSS(12) = 2 Then
+                If AtkingPagetotVS(1, 2) >= 5 And AtkingPagetotVS(1, 5) >= 3 Then
+                   If AtkingckVSS(4, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(4, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+        End If
+	Case 5
+          atking = atking & "AtkingStartPlay#" & "\gif\No07\atking.jpg,0" & "="
+		  atking = atking & "PersonBloodControl#1,1,2,2" & "="
+          atking = atking & "AtkingLineLight#2" & "="
+	Case 11
+		atking = atking & "PersonTotalDiceControl#1,6,10" & "="
+		atking = atking & "PersonTotalDiceControl#2,6,10" & "="
+	Case 31
+		atking = atking & "PersonTotalDiceControl#1,6,10" & "="
+		atking = atking & "PersonTotalDiceControl#2,6,10" & "="
+	Case 52
+	  atking = atking & "AtkingTurnOnOff#2" & "="
+    End Select
+End Function

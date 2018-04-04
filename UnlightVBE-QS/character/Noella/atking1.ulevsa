@@ -1,0 +1,48 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKN02801"
+         Case 2
+              main = "42#45#29#14"
+         Case 3
+              main = "隼鷹標槍"
+         Case 4
+              main = "攻擊#1"
+         Case 5
+              main = "中、遠距離#110"
+         Case 6
+              main = "槍合計4以上#54a"
+         Case 7
+              main = "ATK+8，攻擊成功時，給予對戰對手「自壞」(5回合)"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 42
+            If VBEAtkingVSS(6) >= 2 Then
+                If AtkingPagetotVS(1, 5) >= 4 Then
+                   If AtkingckVSS(1, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(1, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+            End If
+
+        Case 45
+            atking = atking & "EventTotalDiceChange#1,1,8" & "="
+	Case 29
+            atking = atking & "AtkingStartPlay#" & "\gif\Noella\ATK1a.jpg,\gif\Noella\ATK1b.jpg" & "="
+            atking = atking & "AtkingLineLight#2" & "="
+	Case 14
+	  If VBEAtkingVSS(5) >= 1 Then
+		atking = atking & "PersonAddBuff#2,1,BUFFN01101,0,5" & "="
+	  End If
+	  atking = atking & "AtkingTurnOnOff#2" & "="
+    End Select
+End Function

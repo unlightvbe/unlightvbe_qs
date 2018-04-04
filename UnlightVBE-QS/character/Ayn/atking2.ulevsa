@@ -32,37 +32,39 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                End If
             End If
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking2.jpg,0" & "="
-          atking = atking & "AtkingLineLight#2" & "="
+            atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking2.jpg,0" & "="
+            atking = atking & "AtkingLineLight#2" & "="
         Case 29
-          Dim m, n, k
-          n = 0
-          k = VBEAtkingVSS(5) \ 2
-          Do
-                Randomize
-                m = Int(Rnd() * 3) + 1
-                If VBEAtkingVSF(2, m, 1) > 0 Then
-                    atking = atking & "PersonBloodControl#2," & m & ",1," & k & "="
-                    n = 1
-                End If
-          Loop Until n > 0
-          atking = atking & "AtkingTurnOnOff#2" & "="
+            Dim m, n, k
+            If VBEAtkingVSS(5) > 1 Then
+                n = 0
+                k = VBEAtkingVSS(5) \ 2
+                Do
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    If VBEAtkingVSF(2, m, 1) > 0 Then
+                        atking = atking & "PersonBloodControl#2," & m & ",1," & k & "="
+                        n = 1
+                    End If
+                Loop Until n > 0
+            End If
+            atking = atking & "AtkingTurnOnOff#2" & "="
         Case 99
-          k = 0
-          If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
-                If AtkingPagetotVS(1, 3) >= 1 Then
-                    atking = atking & "EventActiveAIScore#1,1"
-                    Do
-                        k = k + 1
-                        For i = 1 To UBound(VBEPageCardNumVS, 1)
-                            If VBEPageCardNumVS(i, 1) = 3 And VBEPageCardNumVS(i, 2) = k Then
-                                atking = atking & "," & i
-                                Exit Do
-                            End If
-                        Next
-                    Loop
-                    atking = atking & "="
-                End If
-          End If
+            k = 0
+            If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
+                    If AtkingPagetotVS(1, 3) >= 1 Then
+                        atking = atking & "EventActiveAIScore#1,1"
+                        Do
+                            k = k + 1
+                            For i = 1 To UBound(VBEPageCardNumVS, 1)
+                                If VBEPageCardNumVS(i, 1) = 3 And VBEPageCardNumVS(i, 2) = k Then
+                                    atking = atking & "," & i
+                                    Exit Do
+                                End If
+                            Next
+                        Loop
+                        atking = atking & "="
+                    End If
+            End If
     End Select
 End Function
