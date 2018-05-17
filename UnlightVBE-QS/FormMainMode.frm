@@ -5233,6 +5233,7 @@ End Sub
 
 Private Sub cnmove2_Click()
 turnpageonin = 0
+目前數(31) = 0
 OK按鈕牌完成移動檢查.Enabled = True
 cnmove2.Visible = False
 End Sub
@@ -5424,7 +5425,7 @@ turnatk = 4
 '====================
 '目前數(1) = 1
 目前數(2) = 1
-
+電腦方事件卡是否出完選擇數 = False
 'If 牌總階段數(3) > 9 Then 牌總階段數(3) = 9 '現行限制(總擁有牌最大數)
 'Erase atkingck
 '===========================執行階段插入點(0)
@@ -5920,7 +5921,7 @@ If 使用者出牌_出牌對齊_靠左.Enabled = False And 使用者出牌_出牌對齊_靠右.Enabled
        Case 2
            防禦階段_階段初始.Enabled = True
        Case 3
-           移動階段_階段前啟動.Enabled = True
+           移動階段_階段初始.Enabled = True
    End Select
 End If
 End Sub
@@ -7860,6 +7861,7 @@ End Sub
 Private Sub 攻擊階段_階段初始_Timer()
 戰鬥系統類.時間軸_重設
 trtimeline.Enabled = True
+電腦方事件卡是否出完選擇數 = False
 ''============以下是技能檢查及啟動
 '    If turnatk = 1 And atkingck(13, 2) = 1 Then
 '       atkingck(13, 1) = 2
@@ -8603,14 +8605,22 @@ End Sub
 
 Private Sub 移動階段_階段初始_Timer()
 If 目前數(31) = 0 Then
-    目前數(31) = 1
     Dim movecpn As Integer
     movecpn = movecp
-    moveus = 0
-    movecheckus = 0
     '===============
     movecom = atkingpagetot(2, 3)
     moveus = atkingpagetot(1, 3)
+    Erase Vss_PersonMoveActionChangeNum
+    Erase Vss_PersonMoveControlNum
+    '===========================執行階段插入點(2)
+    戰鬥系統類.移動階段移動前執行階段呼叫 2
+    '============================
+    '===========================執行階段插入點(3)
+    戰鬥系統類.移動階段移動前執行階段呼叫 3
+    '============================
+    '===========================執行階段插入點(4)
+    戰鬥系統類.移動階段移動前執行階段呼叫 4
+    '============================
     '=====================以下是異常狀態檢查及啟動
     'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
     '      異常狀態檢查數(21, 1) = 2
@@ -8629,7 +8639,7 @@ If 目前數(31) = 0 Then
     '      異常狀態.麻痺_電腦  '(階段1)
     'End If
     '===========================執行階段插入點(70)
-    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 70, 1
+    戰鬥系統類.移動階段移動前執行階段呼叫 70
     '============================
     'movecheckcom = movecom
     '顯示列1.電腦方移動值 = movecheckcom
@@ -8691,6 +8701,15 @@ If 目前數(31) = 0 Then
     If Vss_EventPlayerAllActionOffNum(1) = 1 Then 顯示列1.移動階段選擇值 = 0
     If Vss_EventPlayerAllActionOffNum(2) = 1 Then 電腦方移動階段選擇數 = 0
     '==================================
+    ReDim VBEStageNum(0 To 4) As Integer
+    VBEStageNum(0) = 71
+    VBEStageNum(1) = moveus '使用者方總移動數
+    VBEStageNum(2) = movecom '電腦方總移動數
+    VBEStageNum(3) = 顯示列1.移動階段選擇值 '使用者方目前移動階段行動選擇
+    VBEStageNum(4) = 電腦方移動階段選擇數 '電腦方目前移動階段行動選擇
+    '===========================執行階段插入點(71)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 71, 1
+    '============================
     If 顯示列1.移動階段選擇值 = 1 Or 顯示列1.移動階段選擇值 = 3 Then
        If 顯示列1.移動階段選擇值 = 3 Then
           moveus = -Val(moveus)
@@ -8738,13 +8757,6 @@ If 目前數(31) = 0 Then
         movecpn = Val(movecom) + Val(movecpn)
     End If
     '==============================
-    ReDim VBEStageNum(0 To 2) As Integer
-    VBEStageNum(0) = 71
-    VBEStageNum(1) = moveus '使用者方總移動數
-    VBEStageNum(2) = movecom '電腦方總移動數
-    '===========================執行階段插入點(71)
-    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 71, 1
-    '============================
     
     If movecpn < 1 Then
        movecpn = 1
@@ -9089,21 +9101,21 @@ Sub 移動階段_階段前啟動_Timer()
 '=================
 'atkingtrtot.Interval = 600
 'atkingtrtot.Enabled = True
-Erase Vss_PersonMoveActionChangeNum
-Erase Vss_PersonMoveControlNum
-'===========================執行階段插入點(2)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 2, 1
-'============================
-'===========================執行階段插入點(3)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 3, 1
-'============================
-'===========================執行階段插入點(4)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 4, 1
-'============================
-移動階段_階段前啟動.Enabled = False
-目前數(22) = 26
-目前數(31) = 0
-等待時間.Enabled = True
+'Erase Vss_PersonMoveActionChangeNum
+'Erase Vss_PersonMoveControlNum
+''===========================執行階段插入點(2)
+'執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 2, 1
+''============================
+''===========================執行階段插入點(3)
+'執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 3, 1
+''============================
+''===========================執行階段插入點(4)
+'執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 4, 1
+''============================
+'移動階段_階段前啟動.Enabled = False
+'目前數(22) = 26
+'目前數(31) = 0
+'等待時間.Enabled = True
 End Sub
 
 Private Sub 移動圖片完成檢查_Timer()
@@ -9633,6 +9645,7 @@ Select Case 目前數(14)
             Case 22
                FormMainMode.骰子執行完啟動.Enabled = True
             Case 23
+                目前數(31) = 1
                 FormMainMode.移動階段_階段初始.Enabled = True
 '               If atkingck(122, 2) = 1 Then
 '                    atkingck(122, 1) = 6
@@ -9860,6 +9873,7 @@ Select Case 目前數(14)
                顯示列1.Visible = True
                戰鬥系統類.時間軸_顯示
            Case 10
+               電腦方事件卡是否出完選擇數 = False
                cn3_Click
                顯示列1.Visible = True
                戰鬥系統類.時間軸_顯示
@@ -9926,6 +9940,7 @@ Select Case 目前數(14)
                   Case 1
                      cn2_Click
                   Case 2
+                     電腦方事件卡是否出完選擇數 = False
                      cn3_Click
                 End Select
            Case 18
@@ -9959,8 +9974,8 @@ Select Case 目前數(14)
 '                    atkingckai(78, 1) = 5
 '                    AI技能.瑪格莉特_月光 '(階段5)
 '                End If
-            Case 26
-                移動階段_階段初始.Enabled = True
+'            Case 26
+'                移動階段_階段初始.Enabled = True
 '            Case 27
 '                If atkingck(156, 2) = 1 Then
 '                    atkingck(156, 1) = 5

@@ -5327,4 +5327,45 @@ Select Case turnnum
         End If
 End Select
 End Sub
-
+Sub 移動階段移動前執行階段呼叫(ByVal ns As Integer)
+Dim moveusTempnum As Integer, movecomTempnum As Integer, moveusSelectnum As Integer, movecomSelectnum As Integer
+If Vss_PersonMoveControlNum(1, 2) = 0 Then
+    moveusTempnum = moveus + Vss_PersonMoveControlNum(1, 1)
+Else
+    moveusTempnum = Vss_PersonMoveControlNum(1, 1)
+End If
+If Vss_PersonMoveControlNum(2, 2) = 0 Then
+    movecomTempnum = movecom + Vss_PersonMoveControlNum(2, 1)
+Else
+    movecomTempnum = Vss_PersonMoveControlNum(2, 1)
+End If
+'==================================
+If moveusTempnum < 0 Then moveusTempnum = 0
+If movecomTempnum < 0 Then movecomTempnum = 0
+'==================================
+If Vss_PersonMoveActionChangeNum(1, 1) = 1 Then
+    moveusSelectnum = Vss_PersonMoveActionChangeNum(1, 2)
+Else
+    moveusSelectnum = FormMainMode.顯示列1.移動階段選擇值
+End If
+If Vss_PersonMoveActionChangeNum(2, 1) = 1 Then
+    movecomSelectnum = Vss_PersonMoveActionChangeNum(2, 2)
+Else
+    movecomSelectnum = 電腦方移動階段選擇數
+    If movecomTempnum <= 0 Then
+       movecomSelectnum = 2
+    End If
+End If
+'===============
+If Vss_EventPlayerAllActionOffNum(1) = 1 Then moveusSelectnum = 0
+If Vss_EventPlayerAllActionOffNum(2) = 1 Then movecomSelectnum = 0
+ReDim VBEStageNum(0 To 4) As Integer
+VBEStageNum(0) = ns
+VBEStageNum(1) = moveusTempnum '使用者方總移動數
+VBEStageNum(2) = movecomTempnum '電腦方總移動數
+VBEStageNum(3) = moveusSelectnum '使用者方目前移動階段行動選擇
+VBEStageNum(4) = movecomSelectnum '電腦方目前移動階段行動選擇
+'===========================執行階段插入點(ns)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, ns, 1
+'============================
+End Sub
