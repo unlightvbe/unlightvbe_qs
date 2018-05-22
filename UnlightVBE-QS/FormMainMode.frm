@@ -10184,17 +10184,22 @@ End Sub
 
 
 Private Sub 電腦出牌_手牌對齊_Timer()
-For i = 1 To Val(pagecomglead)
-   If 出牌順序統計暫時變數(4, i, 1) > 目前數(9) Then
-       card(出牌順序統計暫時變數(4, i, 2)).Left = card(出牌順序統計暫時變數(4, i, 2)).Left + (240 / 10)
-   End If
-Next
-目前數(8) = 目前數(8) + (240 / 10)
-If 目前數(8) >= 240 Then
+If 目前數(8) < 240 Then
+    For i = 1 To Val(pagecomglead)
+       If 出牌順序統計暫時變數(4, i, 1) > 目前數(9) Then
+           card(出牌順序統計暫時變數(4, i, 2)).Left = card(出牌順序統計暫時變數(4, i, 2)).Left + (240 / 10)
+       End If
+    Next
+    目前數(8) = 目前數(8) + (240 / 10)
+Else
     電腦出牌_手牌對齊.Enabled = False
     Select Case 目前數(17)
         Case 1
-            電腦出牌.Enabled = True
+            If 牌移動.Enabled = False Then
+                電腦出牌.Enabled = True
+            Else
+                電腦出牌_手牌對齊.Enabled = True  '等待牌移動完畢
+            End If
         Case 2
             '======結束動作
         Case 3

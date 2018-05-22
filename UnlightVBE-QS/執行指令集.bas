@@ -810,6 +810,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                 FormMainMode.PEAFInterface.turn = BattleTurn
                                                 目前數(15) = 21
                                                 FormMainMode.tr牌組_回牌_使用者.Enabled = True
+                                                vbecommadnum(2, vbecommadtotplayNow) = 0
                                             End If
                                     Case 2
                                             tn = BattleTurn + 1
@@ -837,6 +838,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                 FormMainMode.PEAFInterface.turn = BattleTurn
                                                 目前數(15) = 21
                                                 FormMainMode.tr牌組_回牌_電腦.Enabled = True
+                                                vbecommadnum(2, vbecommadtotplayNow) = 0
                                             End If
                                End Select
                     End Select
@@ -1012,6 +1014,7 @@ Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
                          目前數(16) = Val(commadstr3(0))
                          目前數(15) = 22
                          FormMainMode.tr牌組_回牌_使用者.Enabled = True
+                         vbecommadnum(2, vbecommadtotplayNow) = 0
                      Else
                          GoTo VssCommadExit
                      End If
@@ -1020,6 +1023,7 @@ Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
                         目前數(16) = Val(commadstr3(0))
                         目前數(15) = 22
                         FormMainMode.tr牌組_回牌_電腦.Enabled = True
+                        vbecommadnum(2, vbecommadtotplayNow) = 0
                      Else
                         GoTo VssCommadExit
                      End If
