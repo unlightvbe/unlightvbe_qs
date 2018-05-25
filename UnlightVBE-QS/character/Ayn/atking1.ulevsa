@@ -40,7 +40,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           atking = atking & "AtkingTurnOnOff#2" & "="
         Case 61
           Dim cardnum(1)
-          For i = 1 To UBound(VBEPageCardNumVS)
+          For i = 1 To UBound(VBEPageCardNumVS, 1)
                If VBEPageCardNumVS(i, 5) = 2 And VBEPageCardNumVS(i, 6) = 1 Then
                   If VBEPageCardNumVS(i, 2) > cardnum(1) Then
                       cardnum(0) = i
