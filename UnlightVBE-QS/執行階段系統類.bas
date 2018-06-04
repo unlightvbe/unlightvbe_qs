@@ -48,20 +48,12 @@ Dim VBEStageNumMainSec(1 To 1) As Integer
 ReDim VBEStageRemoveBuffAllNum(1 To 14) As Boolean
 '=======================
 For p = 1 To 14
-    Vss_EventRemoveBuffActionOffNum = 0
-    If num = 1 Then
-         '===場上人物之異常狀態
-         If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 3) <> "" Then
-             執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, 1, VBEStageNumMainSec, vbecommadnumSecond
-         End If
-     Else
-         '===待機人物之異常狀態
-         If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 3) <> "" Then
-             執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, 2, VBEStageNumMainSec, vbecommadnumSecond
-         End If
+     Vss_EventRemoveBuffActionOffNum = 0
+     If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 3) <> "" Then
+        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, num, VBEStageNumMainSec, vbecommadnumSecond
      End If
      If Vss_EventRemoveBuffActionOffNum = 1 Then
-         VBEStageRemoveBuffAllNum(i) = True
+         VBEStageRemoveBuffAllNum(p) = True
      End If
 Next
 '=======================
@@ -76,16 +68,8 @@ vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 Dim VBEStageNumMainSec(1 To 1) As Integer
 '=======================
 Vss_EventRemoveBuffActionOffNum = 0
-If num = 1 Then
-    '===場上人物之異常狀態
-    If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
-        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, 1, VBEStageNumMainSec, vbecommadnumSecond
-    End If
-Else
-    '===待機人物之異常狀態
-    If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
-        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, 2, VBEStageNumMainSec, vbecommadnumSecond
-    End If
+If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
+    執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, num, VBEStageNumMainSec, vbecommadnumSecond
 End If
 '=======================
 執行階段系統_宣告開始或結束 2
