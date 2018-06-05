@@ -81,6 +81,7 @@ Public 是否系統公骰 As Boolean '是否為系統公骰紀錄數
 Public 戰鬥擲骰介面人物立繪圖路徑紀錄數(1 To 2) As String '戰鬥系統擲骰介面雙方人物立繪圖路徑紀錄數(1.使用者方/2.電腦方)
 Public 人物實際狀態資料庫(1 To 2, 1 To 3, 1 To 9) As String '人物實際狀態資料
 Public 系統顯示界面紀錄數 As Integer '戰鬥系統顯示介面設定紀錄數(1.舊版/2.新版)
+Public 等待時間佇列(1 To 2) As New Collection '戰鬥系統等待時間計數器工作佇列
 Sub 人物技能欄燈開關(ByVal k As Boolean, ByVal n As Integer)
 Select Case n
    Case 1
@@ -1335,6 +1336,21 @@ Sub 小人物頭像執行完判斷_使用者()
 If turnatk = 1 Or turnatk = 2 Then
    turnpageonin = 1
 '   階段狀態數 = 1
+    If Vss_EventPlayerAllActionOffNum(1) = 1 Then
+        For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+            FormMainMode.card(ckl).CardEnabledType = False
+        Next
+        FormMainMode.bnok.Enabled = False
+        等待時間佇列(2).Add 47
+        FormMainMode.等待時間_2.Enabled = True
+    ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
+        For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+            FormMainMode.card(ckl).CardEnabledType = False
+        Next
+        FormMainMode.bnok.Enabled = False
+        等待時間佇列(2).Add 45
+        FormMainMode.等待時間_2.Enabled = True
+    End If
 End If
 If turnatk = 3 Then
     FormMainMode.trtimeline.Enabled = True
@@ -1346,7 +1362,7 @@ If turnatk = 1 Or turnatk = 2 Or turnatk = 3 Then
         階段狀態數 = 3
         FormMainMode.電腦出牌.Enabled = True
     Else
-        目前數(24) = 48
+        等待時間佇列(2).Add 48
         FormMainMode.等待時間_2.Enabled = True
     End If
 End If
@@ -1647,22 +1663,22 @@ If Val(擲骰表單溝通暫時變數(4)) = 1 Then
        If 擲骰表單溝通暫時變數(4) = 1 Then
 '           cn3.Visible = True
            擲骰表單溝通暫時變數(1) = 2
-           目前數(22) = 14
+           等待時間佇列(1).Add 14
            FormMainMode.等待時間.Enabled = True
        Else
 '           cn4.Visible = True
-           目前數(22) = 15
+           等待時間佇列(1).Add 15
            FormMainMode.等待時間.Enabled = True
        End If
     Case 2
        If 擲骰表單溝通暫時變數(4) = 1 Then
 '          cn4.Visible = True
-          目前數(22) = 15
+          等待時間佇列(1).Add 15
           FormMainMode.等待時間.Enabled = True
        Else
 '          cn2.Visible = True
           擲骰表單溝通暫時變數(1) = 2
-          目前數(22) = 13
+          等待時間佇列(1).Add 13
           FormMainMode.等待時間.Enabled = True
        End If
     End Select
@@ -1671,23 +1687,23 @@ Else
     Case 1
        If 擲骰表單溝通暫時變數(4) = 1 Then
 '          cn4.Visible = True
-          目前數(22) = 15
+          等待時間佇列(1).Add 15
           FormMainMode.等待時間.Enabled = True
        Else
 '          cn2.Visible = True
           擲骰表單溝通暫時變數(1) = 2
-          目前數(22) = 13
+          等待時間佇列(1).Add 13
           FormMainMode.等待時間.Enabled = True
        End If
     Case 2
        If 擲骰表單溝通暫時變數(4) = 1 Then
 '           cn3.Visible = True
            擲骰表單溝通暫時變數(1) = 2
-           目前數(22) = 14
+           等待時間佇列(1).Add 14
            FormMainMode.等待時間.Enabled = True
        Else
 '           cn4.Visible = True
-           目前數(22) = 15
+           等待時間佇列(1).Add 15
            FormMainMode.等待時間.Enabled = True
        End If
     End Select
@@ -2118,7 +2134,7 @@ If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
          End Select
      End If
      '========================
-'      目前數(24) = 25
+'      等待時間佇列(2).Add 25
 '      FormMainMode.等待時間_2.Enabled = True
 '     Form6.Top = FormMainMode.Top + 825
 '     Form6.Show 1
@@ -2207,15 +2223,15 @@ If liveus(角色人物對戰人數(1, 2)) <= 0 Then
 End If
 
 If person(1) = 2 Or person(2) = 2 Then
-   目前數(22) = 21
+   等待時間佇列(1).Add 21
    FormMainMode.人物消失檢查.Enabled = True
    Exit Sub
 ElseIf person(1) = 0 And person(2) = 1 Then
    戰鬥模式勝敗紀錄數 = 1
-   目前數(22) = 36
+   等待時間佇列(1).Add 36
    FormMainMode.人物消失檢查.Enabled = True
 ElseIf person(1) = 1 And person(2) = 0 Then
-   目前數(22) = 36
+   等待時間佇列(1).Add 36
    戰鬥模式勝敗紀錄數 = 2
    FormMainMode.人物消失檢查.Enabled = True
 ElseIf person(1) = 1 And person(2) = 1 Then
@@ -2224,11 +2240,11 @@ ElseIf person(1) = 1 And person(2) = 1 Then
    Select Case inp
        Case 1
            戰鬥模式勝敗紀錄數 = 1
-           目前數(22) = 36
+           等待時間佇列(1).Add 36
            FormMainMode.人物消失檢查.Enabled = True
        Case 2
            戰鬥模式勝敗紀錄數 = 2
-           目前數(22) = 36
+           等待時間佇列(1).Add 36
            FormMainMode.人物消失檢查.Enabled = True
     End Select
 End If
@@ -2237,11 +2253,11 @@ If FormMainMode.人物消失檢查.Enabled = False Then
   Select Case HP檢查階段數
      Case 1
        '----------以下為階段繼續實行（移動階段3）
-        目前數(22) = 4
+        等待時間佇列(1).Add 4
         FormMainMode.等待時間.Enabled = True
      Case 2
 '         atkingnumtot = 0
-          目前數(22) = 11
+          等待時間佇列(1).Add 11
           FormMainMode.等待時間.Enabled = True
      Case 3
         戰鬥系統類.階段執行判斷
@@ -2887,10 +2903,10 @@ Sub 執行動作_交換人物角色_電腦_初始()
 Select Case 交換角色紀錄暫時變數(2)
     Case 1
        交換角色紀錄暫時變數(2) = 0
-       目前數(22) = 18
+       等待時間佇列(1).Add 18
        FormMainMode.等待時間.Enabled = True
     Case 0
-       目前數(22) = 19
+       等待時間佇列(1).Add 19
        FormMainMode.等待時間.Enabled = True
 End Select
 
@@ -2934,7 +2950,7 @@ If 交換角色紀錄暫時變數(1) = 1 Or 交換角色紀錄暫時變數(2) = 1 Then
     執行動作_交換人物角色_初始
 Else
     交換角色紀錄暫時變數(3) = 0
-    目前數(22) = 17
+    等待時間佇列(1).Add 17
     FormMainMode.等待時間.Enabled = True
 End If
 End Sub
@@ -2943,7 +2959,7 @@ If 交換角色紀錄暫時變數(1) = 1 Or 交換角色紀錄暫時變數(2) = 1 Then
     執行動作_交換人物角色_初始
 Else
     交換角色紀錄暫時變數(3) = 0
-    目前數(22) = 20
+    等待時間佇列(1).Add 20
     FormMainMode.等待時間.Enabled = True
 End If
 End Sub
@@ -5291,21 +5307,6 @@ Select Case turnnum
         一般系統類.檢查音樂播放 6
         戰鬥系統類.時間軸_重設
         FormMainMode.trtimeline.Enabled = True
-        '===========================
-        If Vss_EventPlayerAllActionOffNum(1) = 1 Then
-            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-                FormMainMode.card(ckl).CardEnabledType = False
-            Next
-            FormMainMode.bnok.Enabled = False
-            目前數(24) = 47
-            FormMainMode.等待時間_2.Enabled = True
-        ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
-            For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-                FormMainMode.card(ckl).CardEnabledType = False
-            Next
-            目前數(24) = 45
-            FormMainMode.等待時間_2.Enabled = True
-        End If
     Case 3
         turnpageonin = 1
         階段狀態數 = 1
@@ -5316,13 +5317,14 @@ Select Case turnnum
                 FormMainMode.card(ckl).CardEnabledType = False
             Next
             FormMainMode.bnok.Enabled = False
-            目前數(24) = 47
+            等待時間佇列(2).Add 47
             FormMainMode.等待時間_2.Enabled = True
         ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
             For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
                 FormMainMode.card(ckl).CardEnabledType = False
             Next
-            目前數(24) = 45
+            FormMainMode.bnok.Enabled = False
+            等待時間佇列(2).Add 45
             FormMainMode.等待時間_2.Enabled = True
         End If
 End Select

@@ -67,7 +67,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         FormMainMode.wmpse7.Controls.play
         一般系統類.檢查音樂播放 7
-        目前數(24) = 9
+        等待時間佇列(2).Add 9
         FormMainMode.等待時間_2.Enabled = True
     Case 3
         '=============以下是牌移動(收牌)(電腦)
@@ -88,7 +88,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         End If
     Case 4
          If 事件卡記錄暫時數(2, 2) > 事件卡記錄暫時數(2, 1) Or BattleCardNum <= 0 Then
-             目前數(24) = 10
+             等待時間佇列(2).Add 10
              FormMainMode.等待時間_2.Enabled = True
              事件卡記錄暫時數(2, 6) = 0
              Exit Sub
@@ -128,7 +128,7 @@ Select Case 事件卡記錄暫時數(1, 3)
             End If
         Loop
         If 事件卡記錄暫時數(1, 2) > 事件卡記錄暫時數(1, 1) Or Val(FormMainMode.pagecomglead.Caption) <= 0 Then
-            目前數(24) = 12
+            等待時間佇列(2).Add 12
             FormMainMode.等待時間_2.Enabled = True
         End If
      Case 3
@@ -144,7 +144,7 @@ Select Case 事件卡記錄暫時數(1, 3)
             End If
         Loop
         If 事件卡記錄暫時數(1, 2) > 事件卡記錄暫時數(1, 1) Or Val(FormMainMode.pagecomglead.Caption) <= 0 Then
-            目前數(24) = 12
+            等待時間佇列(2).Add 12
             FormMainMode.等待時間_2.Enabled = True
         End If
      Case 4
@@ -202,7 +202,7 @@ Select Case 事件卡記錄暫時數(2, 3)
             End If
         Loop
         If 事件卡記錄暫時數(2, 2) > 事件卡記錄暫時數(2, 1) Or Val(FormMainMode.pageusglead.Caption) <= 0 Then
-            目前數(24) = 14
+            等待時間佇列(2).Add 14
             FormMainMode.等待時間_2.Enabled = True
         End If
      Case 3
@@ -218,7 +218,7 @@ Select Case 事件卡記錄暫時數(2, 3)
             End If
         Loop
         If 事件卡記錄暫時數(2, 2) > 事件卡記錄暫時數(2, 1) Or Val(FormMainMode.pageusglead.Caption) <= 0 Then
-            目前數(24) = 14
+            等待時間佇列(2).Add 14
             FormMainMode.等待時間_2.Enabled = True
         End If
      Case 4
@@ -228,7 +228,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         FormMainMode.wmpse7.Controls.play
         一般系統類.檢查音樂播放 7
-        目前數(24) = 15
+        等待時間佇列(2).Add 15
         FormMainMode.等待時間_2.Enabled = True
      Case 5
         '=============以下是牌移動(收牌)(電腦)
@@ -244,7 +244,7 @@ Select Case 事件卡記錄暫時數(2, 3)
          FormMainMode.牌移動.Enabled = True
         '=====================
     Case 6
-        目前數(24) = 10
+        等待時間佇列(2).Add 10
         FormMainMode.等待時間_2.Enabled = True
         事件卡記錄暫時數(2, 6) = 0
 End Select
@@ -265,7 +265,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         FormMainMode.bnok.Enabled = False
         '=======================
         戰鬥系統類.回復執行_使用者 Val(事件卡記錄暫時數(1, 1)), 1
-        目前數(24) = 17
+        等待時間佇列(2).Add 17
         FormMainMode.等待時間_2.Enabled = True
      Case 3
          FormMainMode.wmpse7.Controls.play
@@ -308,7 +308,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         事件卡記錄暫時數(2, 2) = 1
         '=======================
         回復執行_電腦 Val(事件卡記錄暫時數(2, 1)), 1
-        目前數(24) = 19
+        等待時間佇列(2).Add 19
         FormMainMode.等待時間_2.Enabled = True
      Case 3
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Width = 810
@@ -317,7 +317,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         FormMainMode.wmpse7.Controls.play
         一般系統類.檢查音樂播放 7
-        目前數(24) = 20
+        等待時間佇列(2).Add 20
         FormMainMode.等待時間_2.Enabled = True
      Case 4
         '=============以下是牌移動(收牌)(電腦)
@@ -333,7 +333,7 @@ Select Case 事件卡記錄暫時數(2, 3)
          FormMainMode.牌移動.Enabled = True
         '=====================
     Case 5
-        目前數(24) = 10
+        等待時間佇列(2).Add 10
         FormMainMode.等待時間_2.Enabled = True
         事件卡記錄暫時數(2, 6) = 0
 End Select
@@ -355,7 +355,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         '=======================
         戰鬥系統類.執行動作_清除所有異常狀態_使用者 1
         FormMainMode.trgoi1_Timer
-        目前數(24) = 40
+        等待時間佇列(2).Add 40
         FormMainMode.等待時間_2.Enabled = True
      Case 3
          FormMainMode.wmpse7.Controls.play
@@ -399,7 +399,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         '=======================
         戰鬥系統類.執行動作_清除所有異常狀態_電腦 1
         FormMainMode.trgoi2_Timer
-        目前數(24) = 42
+        等待時間佇列(2).Add 42
         FormMainMode.等待時間_2.Enabled = True
      Case 3
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Width = 810
@@ -408,7 +408,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         FormMainMode.wmpse7.Controls.play
         一般系統類.檢查音樂播放 7
-        目前數(24) = 43
+        等待時間佇列(2).Add 43
         FormMainMode.等待時間_2.Enabled = True
      Case 4
         '=============以下是牌移動(收牌)(電腦)
@@ -424,7 +424,7 @@ Select Case 事件卡記錄暫時數(2, 3)
          FormMainMode.牌移動.Enabled = True
         '=====================
     Case 5
-        目前數(24) = 10
+        等待時間佇列(2).Add 10
         FormMainMode.等待時間_2.Enabled = True
         事件卡記錄暫時數(2, 6) = 0
 End Select

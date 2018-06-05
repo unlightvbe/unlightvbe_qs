@@ -47,8 +47,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
@@ -58,8 +58,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -4717,10 +4717,10 @@ If turnpageonin = 1 Then
     戰鬥系統類.時間軸_停止
     Select Case turnatk
         Case 1
-            目前數(22) = 7
+            等待時間佇列(1).Add 7
             等待時間.Enabled = True
         Case 2
-            目前數(22) = 8
+            等待時間佇列(1).Add 8
             等待時間.Enabled = True
         Case 3
             cnmove2_Click
@@ -5520,6 +5520,12 @@ End If
 '    atkingckai(44, 1) = 1
 '    AI技能.庫勒尼西_沙漠中的海市蜃樓 '(階段1)
 'End If
+'======================================
+Erase Vss_EventPlayerAllActionOffNum
+'===========================執行階段插入點(ATK-17/DEF-37)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 17, 2
+執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 37, 2
+'============================
 '==============
 小人物頭像移動方向數(1) = 1
 小人物頭像移動方向數(2) = 2
@@ -5535,26 +5541,6 @@ trgoi2.Enabled = True
 戰鬥系統類.骰量更新顯示
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
-'======================================
-Erase Vss_EventPlayerAllActionOffNum
-'===========================執行階段插入點(ATK-17/DEF-37)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 17, 2
-執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 37, 2
-'============================
-If Vss_EventPlayerAllActionOffNum(1) = 1 Then
-    For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-        FormMainMode.card(ckl).CardEnabledType = False
-    Next
-    FormMainMode.bnok.Enabled = False
-    目前數(24) = 47
-    FormMainMode.等待時間_2.Enabled = True
-ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
-    For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-        FormMainMode.card(ckl).CardEnabledType = False
-    Next
-    目前數(24) = 45
-    等待時間_2.Enabled = True
-End If
 End Sub
 
 
@@ -5907,7 +5893,7 @@ End If
 小人物頭像移動_使用者.Enabled = True
 小人物頭像移動_電腦.Enabled = True
 '==============
-目前數(24) = 1
+等待時間佇列(2).Add 1
 等待時間_2.Enabled = True
 End Sub
 
@@ -6749,7 +6735,7 @@ End Select
 '       AI技能.蕾_EX_安魂曲_死神的鎮魂歌  '(階段3)
 '  End If
 '=============
-目前數(24) = 21
+等待時間佇列(2).Add 21
 等待時間_2.Enabled = True
 trnextend.Enabled = False
 End Sub
@@ -6881,7 +6867,7 @@ If timelineout1.X1 >= timelineout1.X2 Then
     戰鬥系統類.時間軸_停止
     turnpageonin = 0
     bnok.Picture = LoadPicture(app_path & "gif\system\ok_3.jpg")
-    目前數(24) = 4
+    等待時間佇列(2).Add 4
     等待時間_2.Enabled = True
 End If
 End Sub
@@ -7250,7 +7236,7 @@ If 血量計數器動畫暫時變數(2, 2) = 0 Then
 End If
 If 血量計數器動畫暫時變數(1, 2) = 1 And 血量計數器動畫暫時變數(2, 2) = 1 Then
    血量載入動畫.Enabled = False
-   目前數(24) = 1
+   等待時間佇列(2).Add 1
    等待時間_2.Enabled = True
 End If
 End Sub
@@ -8425,7 +8411,7 @@ If turnpageonin = 1 And 牌移動.Enabled = False Then
     目前數(32) = 目前數(32) + 1
     If 目前數(32) > 公用牌實體卡片分隔紀錄數(1) Then
         使用者出牌_AI出牌控制.Enabled = False
-        目前數(24) = 47
+        等待時間佇列(2).Add 47
         等待時間_2.Enabled = True
     End If
 End If
@@ -8455,7 +8441,7 @@ If turnpageonin = 1 And 牌移動.Enabled = False Then
     Next
     If i = 公用牌實體卡片分隔紀錄數(4) + 1 Then
         使用者出牌_AI出牌控制_事件卡.Enabled = False
-        目前數(24) = 46
+        等待時間佇列(2).Add 46
         等待時間_2.Enabled = True
     End If
 End If
@@ -8566,7 +8552,7 @@ If 目前數(4) >= 900 Then
 '               Exit Sub
 '           End If
         Case 11
-            目前數(24) = 38
+            等待時間佇列(2).Add 38
             等待時間_2.Enabled = True
     End Select
 End If
@@ -8788,7 +8774,7 @@ If 目前數(31) = 0 Then
     '技能動畫顯示階段數 = 2
     '戰鬥系統類.技能啟動數量檢查
     HP檢查變數 = False
-    目前數(24) = 23
+    等待時間佇列(2).Add 23
     FormMainMode.等待時間_2.Enabled = True
 Else
    '============以下是技能檢查及啟動
@@ -9113,7 +9099,7 @@ Sub 移動階段_階段前啟動_Timer()
 '執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 4, 1
 ''============================
 '移動階段_階段前啟動.Enabled = False
-'目前數(22) = 26
+'等待時間佇列(1).Add 26
 '目前數(31) = 0
 '等待時間.Enabled = True
 End Sub
@@ -9173,11 +9159,11 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
           '===========事件卡執行_機會_使用者(階段2)
           card(事件卡記錄暫時數(1, 4)).Visible = False
           pagecardnum(事件卡記錄暫時數(1, 4), 6) = 3
-          目前數(24) = 6
+          等待時間佇列(2).Add 6
           等待時間_2.Enabled = True
         Case 7
            '===========事件卡執行_機會_使用者(階段1)
-          目前數(24) = 5
+          等待時間佇列(2).Add 5
           等待時間_2.Enabled = True
         Case 8
            '===========事件卡執行_機會_使用者(階段3)
@@ -9185,13 +9171,13 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡.機會_使用者 0, 0
         Case 9
             '===========事件卡執行_機會_電腦(階段1)
-           目前數(24) = 7
+           等待時間佇列(2).Add 7
            等待時間_2.Enabled = True
         Case 10
            '===========事件卡執行_機會_電腦(階段3)
           card(事件卡記錄暫時數(2, 4)).Visible = False
           pagecardnum(事件卡記錄暫時數(2, 4), 6) = 3
-          目前數(24) = 8
+          等待時間佇列(2).Add 8
           等待時間_2.Enabled = True
         Case 11
            '===========事件卡執行_機會_電腦(階段4)
@@ -9199,7 +9185,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡.機會_電腦 0, 0
         Case 12
            '===========事件卡執行_詛咒術_使用者(階段1)
-           目前數(24) = 11
+           等待時間佇列(2).Add 11
            等待時間_2.Enabled = True
         Case 13
            '===========事件卡執行_詛咒術_使用者(階段6)
@@ -9209,7 +9195,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡.詛咒術_使用者 0, 0
         Case 14
            '===========事件卡執行_詛咒術_電腦(階段1)
-           目前數(24) = 13
+           等待時間佇列(2).Add 13
            等待時間_2.Enabled = True
         Case 15
            '===========事件卡執行_詛咒術_電腦(階段5>6)
@@ -9219,7 +9205,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡.詛咒術_電腦 0, 0
         Case 16
            '===========事件卡執行_HP回復_使用者(階段1)
-           目前數(24) = 16
+           等待時間佇列(2).Add 16
            等待時間_2.Enabled = True
            turnpageonin = 0
            FormMainMode.bnok.Enabled = False
@@ -9231,7 +9217,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡.HP回復_使用者 0, 0
         Case 18
            '===========事件卡執行_HP回復_電腦(階段1)
-           目前數(24) = 18
+           等待時間佇列(2).Add 18
            等待時間_2.Enabled = True
         Case 19
            '===========事件卡執行_HP回復_電腦(階段4>5)
@@ -9397,11 +9383,11 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
 '               Exit Sub
 '          End If
       Case 40
-          目前數(24) = 37
+          等待時間佇列(2).Add 37
           等待時間_2.Enabled = True
       Case 41
            '===========事件卡執行_聖水_使用者(階段1)
-           目前數(24) = 39
+           等待時間佇列(2).Add 39
            等待時間_2.Enabled = True
            turnpageonin = 0
            FormMainMode.bnok.Enabled = False
@@ -9413,7 +9399,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡.聖水_使用者 0, 0
       Case 43
            '===========事件卡執行_聖水_電腦(階段1)
-           目前數(24) = 41
+           等待時間佇列(2).Add 41
            等待時間_2.Enabled = True
       Case 44
            '===========事件卡執行_聖水_電腦(階段4>5)
@@ -9512,7 +9498,7 @@ If (Val(pageusglead) >= 牌總階段數(1) And Val(pagecomglead) >= 牌總階段數(2)) Or
 '   cnmove.Visible = True
    發牌檢查.Enabled = False
    目前數(15) = 0
-   目前數(22) = 3
+   等待時間佇列(1).Add 3
    等待時間.Enabled = True
 Else
    '發牌_使用者階段.Enabled = True
@@ -9538,9 +9524,12 @@ Select Case 目前數(14)
    Case 0
       目前數(14) = 目前數(14) + 1
    Case 1
-      目前數(14) = 0
-      等待時間_2.Enabled = False
-      Select Case 目前數(24)
+      If 等待時間佇列(2).Count <= 1 Then
+          目前數(14) = 0
+          等待時間_2.Enabled = False
+      End If
+      If 等待時間佇列(2).Count = 0 Then Exit Sub
+      Select Case 等待時間佇列(2).Item(1)
           Case 1
               '========開始初始階段1
                 顯示列1.Visible = True
@@ -9554,7 +9543,7 @@ Select Case 目前數(14)
                 Else
                     FormMainMode.PEAFInterface.stagejpg = app_path & "gif\system\draw2.gif"
                 End If
-                目前數(22) = 2
+                等待時間佇列(1).Add 2
                 等待時間.Enabled = True
           Case 2
               cn22_Click
@@ -9565,10 +9554,10 @@ Select Case 目前數(14)
            Case 4
               Select Case turnatk
                     Case 1
-                        目前數(22) = 7
+                        等待時間佇列(1).Add 7
                         等待時間.Enabled = True
                     Case 2
-                        目前數(22) = 8
+                        等待時間佇列(1).Add 8
                         等待時間.Enabled = True
                     Case 3
                         cnmove2_Click
@@ -9686,7 +9675,7 @@ Select Case 目前數(14)
 '                        執行指令集.執行指令_執行擲骰子 uscomt, 1, atknumtnum
                     End If
                 Else
-                    目前數(24) = 24
+                    等待時間佇列(2).Add 24
                     等待時間_2.Enabled = True
                 End If
 '               If atkingck(122, 2) = 1 Then
@@ -9697,7 +9686,7 @@ Select Case 目前數(14)
                 If FormMainMode.PEAFDiceInterface.DiceStop = True Or 骰數零檢查值(1) = True Or 骰數零檢查值(2) = True Then
                     戰鬥系統類.擲骰後續判斷
                 Else
-                    目前數(24) = 25
+                    等待時間佇列(2).Add 25
                     等待時間_2.Enabled = True
                 End If
 '               If atkingckai(78, 2) = 1 Then
@@ -9729,7 +9718,7 @@ Select Case 目前數(14)
                     顯示列1.移動方向圖片顯示 = True
                     移動圖片完成檢查.Enabled = True
                 Else
-                    目前數(24) = 30
+                    等待時間佇列(2).Add 30
                     等待時間_2.Enabled = True
                 End If
 '            Case 31
@@ -9795,7 +9784,6 @@ Select Case 目前數(14)
                 事件卡記錄暫時數(2, 3) = 4
                 事件卡.聖水_電腦 0, 0
             Case 45
-                bnok.Enabled = False
                 目前數(32) = 1
                 FormMainMode.使用者出牌_AI出牌控制_事件卡.Enabled = True
             Case 46
@@ -9822,27 +9810,31 @@ Select Case 目前數(14)
             Case 48
                 執行動作_電腦方各階段出牌完畢後行動 turnatk
       End Select
+      等待時間佇列(2).Remove 1
 End Select
 End Sub
 
 Private Sub 等待時間_Timer()
-Select Case 目前數(14)
+Select Case 目前數(22)
    Case 0
-      目前數(14) = 目前數(14) + 1
+      目前數(22) = 目前數(22) + 1
    Case 1
-      目前數(14) = 0
-      等待時間.Enabled = False
-      Select Case 目前數(22)
+      If 等待時間佇列(1).Count <= 1 Then
+          目前數(22) = 0
+          等待時間.Enabled = False
+      End If
+      If 等待時間佇列(1).Count = 0 Then Exit Sub
+      Select Case 等待時間佇列(1).Item(1)
           Case 1
 '              If atkingck(56, 2) = 1 Then
 '                  atkingck(56, 1) = 6
 '                  技能.伊芙琳_怠惰的墓表 '(階段6)
 '              End If
           Case 2   '========開始初始階段2
-             目前數(22) = 5
+             等待時間佇列(1).Add 5
              等待時間.Enabled = True
           Case 3
-            目前數(22) = 22
+            等待時間佇列(1).Add 22
             等待時間.Enabled = True
           Case 4
                 戰鬥系統類.廣播訊息 "現在的距離" & movecp & "。"
@@ -9863,10 +9855,10 @@ Select Case 目前數(14)
                 '============================
                 cnmove_Click
            Case 7
-              目前數(24) = 2
+              等待時間佇列(2).Add 2
               等待時間_2.Enabled = True
            Case 8
-              目前數(24) = 3
+              等待時間佇列(2).Add 3
               等待時間_2.Enabled = True
            Case 9
                cn2_Click
@@ -9880,7 +9872,7 @@ Select Case 目前數(14)
            Case 11
               戰鬥系統類.時間軸_隱藏
               顯示列1.Visible = False
-              目前數(22) = 12
+              等待時間佇列(1).Add 12
               等待時間.Enabled = True
            Case 12
                 If Val(擲骰表單溝通暫時變數(4)) = 1 Then
@@ -9916,14 +9908,14 @@ Select Case 目前數(14)
                 擲骰表單溝通暫時變數(10) = 攻擊防禦骰子總數(2)
                 是否系統公骰 = True
                 戰鬥系統類.擲骰表單顯示
-                目前數(24) = 25
+                等待時間佇列(2).Add 25
                 FormMainMode.等待時間_2.Enabled = True
 '                FormMainMode.骰子執行完啟動.Enabled = True
            Case 13
-               目前數(22) = 9
+               等待時間佇列(1).Add 9
                等待時間.Enabled = True
            Case 14
-               目前數(22) = 10
+               等待時間佇列(1).Add 10
                等待時間.Enabled = True
            Case 15
                cn4_Click
@@ -9957,7 +9949,7 @@ Select Case 目前數(14)
             Case 22
                 戰鬥系統類.事件卡處理_分派_使用者方
                 戰鬥系統類.事件卡處理_分派_電腦方
-                目前數(22) = 6
+                等待時間佇列(1).Add 6
                 等待時間.Enabled = True
             Case 23
 '                If atkingck(122, 2) = 1 Then
@@ -10007,7 +9999,7 @@ Select Case 目前數(14)
 '                 If atkingck(59, 2) = 1 Then
 '                        atking_伊芙琳_赤紅石榴階段紀錄數(0, 4) = atking_伊芙琳_赤紅石榴階段紀錄數(0, 4) + 1
 '                        If atking_伊芙琳_赤紅石榴階段紀錄數(0, 4) < 2 Then
-'                            目前數(22) = 33
+'                            等待時間佇列(1).Add 33
 '                            等待時間.Enabled = True
 '                        Else
 '                             atkingck(59, 1) = 12
@@ -10032,6 +10024,7 @@ Select Case 目前數(14)
 '                    AI技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段5)
 '                End If
       End Select
+      等待時間佇列(1).Remove 1
 End Select
 End Sub
 
@@ -10325,7 +10318,7 @@ If 目前數(6) > pageqlead(2) Then
        Case 1, 2
             執行動作_電腦方各階段出牌完畢後行動 turnatk
        Case 3
-            目前數(24) = 30
+            等待時間佇列(2).Add 30
             等待時間_2.Enabled = True
     End Select
     Exit Sub

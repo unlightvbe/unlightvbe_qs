@@ -1755,7 +1755,7 @@ Sub 執行指令_執行擲骰子(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
             擲骰表單溝通暫時變數(9) = 攻擊防禦骰子總數(1)
             擲骰表單溝通暫時變數(10) = 攻擊防禦骰子總數(2)
             戰鬥系統類.擲骰表單顯示
-            目前數(24) = 24
+            等待時間佇列(2).Add 24
             FormMainMode.等待時間_2.Enabled = True
             vbecommadnum(2, vbecommadtotplayNow) = 0 '==等待時間
         Case 2
