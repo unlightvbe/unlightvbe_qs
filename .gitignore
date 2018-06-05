@@ -1,5 +1,9 @@
 # Project Open failed log
 *.log
-.vscode
-Thumbs.db
+
+# file
 *.mp3
+Thumbs.db
+
+# folder
+.vscode
