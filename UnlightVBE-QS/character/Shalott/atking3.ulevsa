@@ -14,7 +14,7 @@ Function main(a)
          Case 6
               main = "防合計1以上、移合計1以上#21a&31a"
          Case 7
-              main = "HP+1&=接下來的2回合，自己的事件卡變為「HP回復3」。"
+              main = "HP+1&接下來的2回合，自己的事件卡變為「HP回復3」。"
     End Select
 End Function
 
@@ -39,9 +39,9 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
         Case 61
+          atking = atking & "PersonBloodControl#1,1,2,1" & "="
           atking = atking & "BattleInsertEventCard#1," & VBEAtkingVSS(9) + 1 & ",HP回復3" & "="
           atking = atking & "BattleInsertEventCard#1," & VBEAtkingVSS(9) + 2 & ",HP回復3" & "="
-          atking = atking & "AtkingInformationRecord#" & VBEAtkingVSS(9) & "="
         Case 99
           Dim numtot(1), k
           ReDim pagecheck(UBound(VBEPageCardNumVS, 1))

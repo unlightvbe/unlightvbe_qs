@@ -1,0 +1,25 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "BUFFN00901"
+         Case 2
+              main = "1#17#37#53"
+         Case 3
+              main = "·w¯t"
+         Case 4
+              main = "\Buff\stun\stun.gif"
+    End Select
+End Function
+
+Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
+    Select Case a
+        Case 1, 17, 37
+            If BuffPersonType = 1 Then
+                buff = buff & "EventPlayerAllActionOff#1" & "="
+            End If
+        Case 53
+            If BuffPersonType = 1 Then
+                buff = buff & "BuffTurnEnd#0" & "="
+            End If
+    End Select
+End Function

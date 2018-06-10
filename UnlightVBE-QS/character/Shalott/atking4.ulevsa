@@ -14,7 +14,7 @@ Function main(a)
          Case 6
               main = "特合計3以上#43a"
          Case 7
-              main = "手牌最大數-1&=接下來的3回合，自己的事件卡變為「機會5」。"
+              main = "手牌最大數-1&接下來的3回合，自己的事件卡變為「機會5」。"
     End Select
 End Function
 

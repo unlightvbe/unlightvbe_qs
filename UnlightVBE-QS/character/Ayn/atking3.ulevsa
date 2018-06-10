@@ -13,7 +13,7 @@ Function main(a)
          Case 6
               main = "防合計5以上，特合計1以上#25a&41a"
          Case 7
-              main = "DEF+9&=HP+特殊÷2(尾數進位)"
+              main = "DEF+9&HP+特殊÷2(尾數進位)"
     End Select
 End Function
 
