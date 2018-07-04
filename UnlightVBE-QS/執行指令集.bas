@@ -2177,7 +2177,7 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
             End If
             '=================
         Case 2
-            If Vss_EventRemoveActualStatusActionOffNum = 1 Then
+            If Vss_EventRemoveActualStatusActionOffNum = 0 Then
                 If Val(commadstr3(1)) = 1 Then
                     Select Case uscomt
                         Case 1
