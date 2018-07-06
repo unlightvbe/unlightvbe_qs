@@ -20,6 +20,7 @@ Public Vss_PersonMoveControlNum(1 To 2, 1 To 2) As Integer  '執行指令集-移動前總
 Public Vss_AtkingInformationRecordStr(1 To 2, 1 To 3, 1 To 8) As String '執行指令集-技能備註資訊儲存暫時變數(1.使用者/2.電腦,1~3人物編號,技能自行備註字串)
 Public Vss_EventPlayerAllActionOffNum(1 To 2) As Integer '執行指令集-禁止玩家進行所有操作紀錄暫時變數(1.使用者方/2.電腦方)
 Public Vss_PersonMoveActionChangeNum(1 To 2, 1 To 2) As Integer  '執行指令集-人物角色移動階段行動控制暫時變數(1.使用者方/2.電腦方,1.是否執行/2.更改後選擇數)
+Public Vss_PersonAttackFirstControlNum As Integer '執行指令集-人物角色優先攻擊控制紀錄暫時變數(1.使用者方先/2.電腦方先)
 Sub 執行指令集總程序_擷取指令(ByVal str As String, ByVal ns As Integer, ByVal vbecommadtotplayNow As Integer)
       vbecommadstr(2, vbecommadtotplayNow) = str
       vbecommadnum(1, vbecommadtotplayNow) = 1
@@ -125,6 +126,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                執行指令集.執行指令_移動前總移動量控制 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "PersonMoveActionChange"
                                執行指令集.執行指令_人物角色移動階段行動控制 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "PersonAttackFirstControl"
+                               執行指令集.執行指令_人物角色優先攻擊控制 uscom, commadtype, atkingnum, vbecommadtotplayNow    '(階段1)
                         Case "AtkingInformationRecord"
                                執行指令集.執行指令_技能註記備註字串 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         '========================================================
@@ -2392,6 +2395,32 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "PersonMoveControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_人物角色優先攻擊控制(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 2 Or (vbecommadnum(4, vbecommadtotplayNow) <> 2 And vbecommadnum(4, vbecommadtotplayNow) <> 3 And vbecommadnum(4, vbecommadtotplayNow) <> 4 And vbecommadnum(4, vbecommadtotplayNow) <> 70 And vbecommadnum(4, vbecommadtotplayNow) <> 71) Then GoTo VssCommadExit
+    Dim uscomt As Integer
+    Select Case Val(commadstr3(0))
+         Case 1
+               uscomt = uscom
+         Case 2
+               If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            Vss_PersonAttackFirstControlNum = uscomt
+            GoTo VssCommadExit
+    End Select
+        '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "PersonAttackFirstControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub 執行指令_技能註記備註字串(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr

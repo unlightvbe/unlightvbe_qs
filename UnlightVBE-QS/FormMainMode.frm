@@ -47,8 +47,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
+         _ExtentX        =   2355
+         _ExtentY        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
@@ -58,8 +58,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
+         _ExtentX        =   2355
+         _ExtentY        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -8598,6 +8598,7 @@ If 目前數(31) = 0 Then
     moveus = atkingpagetot(1, 3)
     Erase Vss_PersonMoveActionChangeNum
     Erase Vss_PersonMoveControlNum
+    Vss_PersonAttackFirstControlNum = 0
     '===========================執行階段插入點(2)
     戰鬥系統類.移動階段移動前執行階段呼叫 2
     '============================
@@ -8752,15 +8753,21 @@ If 目前數(31) = 0 Then
     
     執行動作_距離變更 movecpn, True
     
-    If Val(movecheckus) > Val(movecheckcom) Then
-      戰鬥系統類.movetnus
-    ElseIf Val(movecheckus) < Val(movecheckcom) Then
-      戰鬥系統類.movetncom
+    If Vss_PersonAttackFirstControlNum = 1 Then
+        戰鬥系統類.movetnus
+    ElseIf Vss_PersonAttackFirstControlNum = 2 Then
+        戰鬥系統類.movetncom
     Else
-      Randomize
-      mfd = Int(Rnd() * 2) + 1
-      If mfd = 1 Then 戰鬥系統類.movetnus
-      If mfd = 2 Then 戰鬥系統類.movetncom
+        If Val(movecheckus) > Val(movecheckcom) Then
+            戰鬥系統類.movetnus
+        ElseIf Val(movecheckus) < Val(movecheckcom) Then
+            戰鬥系統類.movetncom
+        Else
+            Randomize
+            mfd = Int(Rnd() * 2) + 1
+            If mfd = 1 Then 戰鬥系統類.movetnus
+            If mfd = 2 Then 戰鬥系統類.movetncom
+        End If
     End If
     
 '    If Val(顯示列1.使用者方移動值) > 6 Then
