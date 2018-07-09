@@ -5205,6 +5205,61 @@ If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
     End Select
 End If
 End Sub
+Sub 角色復活_使用者(ByVal num As Integer)
+If liveus(角色待機人物紀錄數(1, num)) > 0 Then Exit Sub
+'===============================
+Vss_EventPersonResurrectActionOffNum = 0
+'===========================執行階段插入點(49)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 49, 1
+'============================
+If Vss_EventPersonResurrectActionOffNum = 0 Then
+    Select Case num
+       Case 1
+            FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 1
+            FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = 1
+            liveus(角色人物對戰人數(1, 2)) = 1
+            FormMainMode.bloodlineout1.Width = 距離單位(1, 1, 1)
+            FormMainMode.bloodnumus1.Caption = liveus(角色人物對戰人數(1, 2))
+       Case Is > 1
+            liveus(角色待機人物紀錄數(1, num)) = 1
+            If FormMainMode.uspi1(角色待機人物紀錄數(1, num)).Caption = "" Then
+                FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = -liveusmax(角色待機人物紀錄數(1, num)) + 1
+                FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num)) + 1
+            Else
+                FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 1
+                FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = 1
+            End If
+    End Select
+End If
+End Sub
+Sub 角色復活_電腦(ByVal num As Integer)
+'===============================
+If livecom(角色待機人物紀錄數(2, num)) > 0 Then Exit Sub
+'===============================
+Vss_EventPersonResurrectActionOffNum = 0
+'===========================執行階段插入點(49)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 49, 1
+'============================
+If Vss_EventPersonResurrectActionOffNum = 0 Then
+    Select Case num
+        Case 1
+            FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = 1
+            FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 1
+            FormMainMode.bloodnumcom1.Caption = 1
+            livecom(角色人物對戰人數(2, 2)) = 1
+            FormMainMode.bloodlineout2.Left = 11580 - 距離單位(1, 2, 1)
+        Case Is > 1
+            If FormMainMode.compi1(角色待機人物紀錄數(2, num)).Caption = "" Then
+                FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num)) + 1
+                FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = -livecommax(角色待機人物紀錄數(2, num)) + 1
+            Else
+                FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = 1
+                FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 1
+            End If
+            livecom(角色待機人物紀錄數(2, num)) = 1
+    End Select
+End If
+End Sub
 Sub 解析骰量變化(ByVal str As String, ByVal uscom As Integer)
 Dim cmdstr() As String
 cmdstr = Split(str, "=")

@@ -21,6 +21,7 @@ Public Vss_AtkingInformationRecordStr(1 To 2, 1 To 3, 1 To 8) As String '°õ¦æ«ü¥
 Public Vss_EventPlayerAllActionOffNum(1 To 2) As Integer '°õ¦æ«ü¥O¶°-¸T¤îª±®a¶i¦æ©Ò¦³¾Þ§@¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è)
 Public Vss_PersonMoveActionChangeNum(1 To 2, 1 To 2) As Integer  '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦â²¾°Ê¶¥¬q¦æ°Ê±±¨î¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,1.¬O§_°õ¦æ/2.§ó§ï«á¿ï¾Ü¼Æ)
 Public Vss_PersonAttackFirstControlNum As Integer '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦âÀu¥ý§ðÀ»±±¨î¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è¥ý/2.¹q¸£¤è¥ý)
+Public Vss_EventPersonResurrectActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ¼Ð°O¼È®ÉÅÜ¼Æ
 Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_Â^¨ú«ü¥O(ByVal str As String, ByVal ns As Integer, ByVal vbecommadtotplayNow As Integer)
       vbecommadstr(2, vbecommadtotplayNow) = str
       vbecommadnum(1, vbecommadtotplayNow) = 1
@@ -134,6 +135,8 @@ Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_«ü¥O©I¥s°õ¦æ(ByVal uscom As Integer, ByVal commadtype As In
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_§Þ¯à¿O±±¨î_¨ä¥L uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
                         Case "AtkingTurnOnOffAnother"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_§Þ¯à±Ò°Ê½X±±¨î_¨ä¥L uscom, commadtype, atkingnum, vbecommadtotplayNow  '(¶¥¬q1)
+                        Case "PersonResurrect"
+                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¤Hª«¨¤¦â´_¬¡ uscom, commadtype, atkingnum, vbecommadtotplayNow  '(¶¥¬q1)
                         '========================================================
                         Case "BuffTurnEnd"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_²§±`ª¬ºA±±¨î_·í¦^¦Xµ²§ô_±M uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
@@ -157,6 +160,8 @@ Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_«ü¥O©I¥s°õ¦æ(ByVal uscom As Integer, ByVal commadtype As In
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_°õ¦æ¤§¤Hª«¹ê»Úª¬ºA®ø·ÀµL®Ä¤Æ_±M uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
                         Case "EventPlayerAllActionOff"
                                 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¸T¤îª±®a¶i¦æ©Ò¦³¾Þ§@ uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
+                        Case "EventPersonResurrectActionOff"
+                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ_±M uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
 '                        Case "EventActiveAIScore"
 '                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_´¼¼z«¬AI­Ó§O§Þ¯àµû¤À uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
                      '========================================================
@@ -525,7 +530,6 @@ Exit Sub
 vss_cmdlocalerr:
 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonTotalDiceControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-
 Sub °õ¦æ«ü¥O_¤Hª«¦å¶q±±¨î(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
@@ -581,6 +585,44 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonBloodControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub °õ¦æ«ü¥O_¤Hª«¨¤¦â´_¬¡(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 1 Then GoTo VssCommadExit
+    Select Case commadtype
+        Case 1
+        Case Else
+            GoTo VssCommadExit
+    End Select
+    '=====================
+    Dim uscomt As Integer
+    Select Case Val(commadstr3(0))
+         Case 1
+               uscomt = uscom
+         Case 2
+               If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    If Val(commadstr3(1)) < 1 Or Val(commadstr3(1)) > ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(uscomt, 1) Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            Select Case uscomt
+                Case 1
+                     ¾Ô°«¨t²ÎÃþ.¨¤¦â´_¬¡_¨Ï¥ÎªÌ Val(commadstr3(1))
+                Case 2
+                     ¾Ô°«¨t²ÎÃþ.¨¤¦â´_¬¡_¹q¸£ Val(commadstr3(1))
+            End Select
+            GoTo VssCommadExit
+    End Select
+        '============================
+    Exit Sub
+VssCommadExit:
+    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "PersonResurrect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub °õ¦æ«ü¥O_¤Hª«§Þ¯àµL®Ä¤Æ(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
@@ -1422,6 +1464,25 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "EventMoveActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub °õ¦æ«ü¥O_°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ_±M(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 49 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            Vss_EventPersonResurrectActionOffNum = 1
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "EventPersonResurrectActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub °õ¦æ«ü¥O_²§±`ª¬ºA±±¨î_¥[¤J(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
