@@ -77,10 +77,11 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
+Dim changepersonComplete As Boolean
 Sub bnok_Click(Index As Integer)
 If liveus(角色待機人物紀錄數(1, Index + 1)) > 0 Then
     Me.Hide
+    changepersonComplete = True
     戰鬥系統類.人物交換_使用者_指定交換 Index + 1
     執行動作_交換人物角色_結束執行
     Unload Me
@@ -89,6 +90,10 @@ End Sub
 
 Private Sub bnok_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
 bnok(Index).Picture = LoadPicture(App.Path & "\gif\system\changeok_2.bmp")
+End Sub
+
+Private Sub Form_Load()
+changepersonComplete = False
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -101,18 +106,20 @@ End Sub
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 Dim m As Integer
 Me.Hide
-If liveus(角色人物對戰人數(1, 2)) > 0 Then
-    執行動作_交換人物角色_結束執行
-Else
-    Randomize
-    m = Int(Rnd() * 2) + 1
-    If liveus(角色待機人物紀錄數(1, m + 1)) > 0 Then
-       戰鬥系統類.人物交換_使用者_指定交換 m + 1
-       執行動作_交換人物角色_結束執行
+If changepersonComplete = False Then
+    If liveus(角色人物對戰人數(1, 2)) > 0 Then
+        執行動作_交換人物角色_結束執行
     Else
-       If m = 1 Then m = 2 Else m = 1
-       戰鬥系統類.人物交換_使用者_指定交換 m + 1
-       執行動作_交換人物角色_結束執行
+        Randomize
+        m = Int(Rnd() * 2) + 1
+        If liveus(角色待機人物紀錄數(1, m + 1)) > 0 Then
+           戰鬥系統類.人物交換_使用者_指定交換 m + 1
+           執行動作_交換人物角色_結束執行
+        Else
+           If m = 1 Then m = 2 Else m = 1
+           戰鬥系統類.人物交換_使用者_指定交換 m + 1
+           執行動作_交換人物角色_結束執行
+        End If
     End If
 End If
 Unload Me
