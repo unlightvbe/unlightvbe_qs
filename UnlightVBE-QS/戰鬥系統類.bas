@@ -5163,7 +5163,7 @@ End If
 End Sub
 Sub 傷害執行_立即死亡_電腦(ByVal num As Integer)
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
+ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
