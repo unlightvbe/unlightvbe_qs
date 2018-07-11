@@ -52,7 +52,7 @@ End If
 End Sub
      
 Sub 開始遊戲進行程序()
-Dim i, m, n, u, personvsp As Integer
+Dim i As Integer, m As Integer, n As Integer, u As Integer, personvsp As Integer, perosntempCount As Integer
 Dim personnameg(1 To 2, 1 To 3) As String '人物隨機選擇紀錄數
 FormMainMode.wmpse3.Controls.stop
 FormMainMode.wmpse3.Controls.play
@@ -81,10 +81,24 @@ If FormMainMode.opnpersonvs(1).Value = True Then
     personvsp = 1
     If FormMainMode.personnameus(1).Text = "《隨機》" Then
         Randomize
-        m = Int(Rnd() * (FormMainMode.personnameus(1).ListCount - 1)) + 1
-        人物系統類.卡片人物資訊讀入_二階段_使用者 FormMainMode.personnameus(1).List(m), 1
-'        MsgBox formmainmode.personlevelus(1).ListCount
-        n = Int(Rnd() * (FormMainMode.personlevelus(1).ListCount - 1 + 1)) + 0
+        perosntempCount = 0
+        Do
+            m = Int(Rnd() * (FormMainMode.personnameus(1).ListCount - 1)) + 1
+            人物系統類.卡片人物資訊讀入_二階段_使用者 FormMainMode.personnameus(1).List(m), 1
+            If Formsetting.chkusesimilarlevel.Value = 0 Then
+                n = Int(Rnd() * (FormMainMode.personlevelus(1).ListCount - 1 + 1)) + 0
+                Exit Do
+            End If
+            n = 角色人物隨機相似等級選擇(1, 1)
+            If n <> -1 Then
+                Exit Do
+            Else
+                perosntempCount = perosntempCount + 1
+                If perosntempCount > 3 Then
+                    n = Int(Rnd() * (FormMainMode.personlevelus(1).ListCount - 1 + 1)) + 0
+                End If
+            End If
+        Loop Until (perosntempCount > 3)
 '        人物系統類.卡片人物資訊讀入_三階段_使用者 FormMainMode.personnameus(1).List(m), FormMainMode.personlevelus(1).List(n), 1, 1
         人物系統類.清除角色人物資訊變數 1, 1
         人物系統類.卡片人物資訊讀入_三階段 FormMainMode.personnameus(1).List(m), FormMainMode.personlevelus(1).List(n), 1, 1
@@ -93,9 +107,24 @@ If FormMainMode.opnpersonvs(1).Value = True Then
     End If
     If FormMainMode.personnamecom(1).Text = "《隨機》" Then
         Randomize
-        m = Int(Rnd() * (FormMainMode.personnamecom(1).ListCount - 1)) + 1
-        人物系統類.卡片人物資訊讀入_二階段_電腦 FormMainMode.personnamecom(1).List(m), 1
-        n = Int(Rnd() * (FormMainMode.personlevelcom(1).ListCount - 1 + 1)) + 0
+        perosntempCount = 0
+        Do
+            m = Int(Rnd() * (FormMainMode.personnamecom(1).ListCount - 1)) + 1
+            人物系統類.卡片人物資訊讀入_二階段_電腦 FormMainMode.personnamecom(1).List(m), 1
+            If Formsetting.chkusesimilarlevel.Value = 0 Then
+                n = Int(Rnd() * (FormMainMode.personlevelcom(1).ListCount - 1 + 1)) + 0
+                Exit Do
+            End If
+            n = 角色人物隨機相似等級選擇(2, 1)
+            If n <> -1 Then
+                Exit Do
+            Else
+                perosntempCount = perosntempCount + 1
+                If perosntempCount > 3 Then
+                    n = Int(Rnd() * (FormMainMode.personlevelcom(1).ListCount - 1 + 1)) + 0
+                End If
+            End If
+        Loop Until (perosntempCount > 3)
 '        人物系統類.卡片人物資訊讀入_三階段_電腦 FormMainMode.personnamecom(1).List(m), FormMainMode.personlevelcom(1).List(n), 1, 2
         人物系統類.清除角色人物資訊變數 2, 1
         人物系統類.卡片人物資訊讀入_三階段 FormMainMode.personnamecom(1).List(m), FormMainMode.personlevelcom(1).List(n), 1, 2
@@ -106,10 +135,25 @@ Else
     For i = 1 To 3
         If FormMainMode.personnameus(i).Text = "《隨機》" Then
             Randomize
-            m = Int(Rnd() * (FormMainMode.personnameus(i).ListCount - 1)) + 1
-            personnameg(1, i) = FormMainMode.personnameus(i).List(m)
-            人物系統類.卡片人物資訊讀入_二階段_使用者 FormMainMode.personnameus(i).List(m), i
-            n = Int(Rnd() * (FormMainMode.personlevelus(i).ListCount - 1 + 1)) + 0
+            perosntempCount = 0
+            Do
+                m = Int(Rnd() * (FormMainMode.personnameus(i).ListCount - 1)) + 1
+                personnameg(1, i) = FormMainMode.personnameus(i).List(m)
+                人物系統類.卡片人物資訊讀入_二階段_使用者 FormMainMode.personnameus(i).List(m), i
+                If Formsetting.chkusesimilarlevel.Value = 0 Then
+                    n = Int(Rnd() * (FormMainMode.personlevelus(i).ListCount - 1 + 1)) + 0
+                    Exit Do
+                End If
+                n = 角色人物隨機相似等級選擇(1, i)
+                If n <> -1 Then
+                    Exit Do
+                Else
+                    perosntempCount = perosntempCount + 1
+                    If perosntempCount > 3 Then
+                        n = Int(Rnd() * (FormMainMode.personlevelus(i).ListCount - 1 + 1)) + 0
+                    End If
+                End If
+            Loop Until (perosntempCount > 3)
 '            人物系統類.卡片人物資訊讀入_三階段_使用者 FormMainMode.personnameus(i).List(m), FormMainMode.personlevelus(i).List(n), i, 1
 '            人物系統類.卡片人物資訊讀入_四階段_使用者 FormMainMode.personnameus(i).List(m), i
             人物系統類.清除角色人物資訊變數 1, i
@@ -119,10 +163,25 @@ Else
         End If
         If FormMainMode.personnamecom(i).Text = "《隨機》" Then
             Randomize
-            m = Int(Rnd() * (FormMainMode.personnamecom(i).ListCount - 1)) + 1
-            personnameg(2, i) = FormMainMode.personnamecom(i).List(m)
-            人物系統類.卡片人物資訊讀入_二階段_電腦 FormMainMode.personnamecom(i).List(m), i
-            n = Int(Rnd() * (FormMainMode.personlevelcom(i).ListCount - 1 + 1)) + 0
+            perosntempCount = 0
+            Do
+                m = Int(Rnd() * (FormMainMode.personnamecom(i).ListCount - 1)) + 1
+                personnameg(2, i) = FormMainMode.personnamecom(i).List(m)
+                人物系統類.卡片人物資訊讀入_二階段_電腦 FormMainMode.personnamecom(i).List(m), i
+                If Formsetting.chkusesimilarlevel.Value = 0 Then
+                    n = Int(Rnd() * (FormMainMode.personlevelcom(i).ListCount - 1 + 1)) + 0
+                    Exit Do
+                End If
+                n = 角色人物隨機相似等級選擇(2, i)
+                If n <> -1 Then
+                    Exit Do
+                Else
+                    perosntempCount = perosntempCount + 1
+                    If perosntempCount > 3 Then
+                        n = Int(Rnd() * (FormMainMode.personlevelcom(i).ListCount - 1 + 1)) + 0
+                    End If
+                End If
+            Loop Until (perosntempCount > 3)
 '            人物系統類.卡片人物資訊讀入_三階段_電腦 FormMainMode.personnamecom(i).List(m), FormMainMode.personlevelcom(i).List(n), i, 2
             人物系統類.清除角色人物資訊變數 2, i
             人物系統類.卡片人物資訊讀入_三階段 FormMainMode.personnamecom(i).List(m), FormMainMode.personlevelcom(i).List(n), i, 2
@@ -317,7 +376,46 @@ Else
     FormMainMode.PEGameFreeModeSettingForm.Visible = False
 End If
 End Sub
+Function 角色人物隨機相似等級選擇(ByVal uscom As Integer, ByVal num As Integer) As Integer
+Dim levelmark As Integer
+Dim tempnum As Integer
+Dim personlist As ComboBox
+Dim temppass As Boolean
+levelmark = Formsetting.cbsimilarlevel.ListIndex
+tempnum = 1
+Select Case uscom
+    Case 1
+        Set personlist = FormMainMode.personlevelus(num)
+    Case 2
+        Set personlist = FormMainMode.personlevelcom(num)
+End Select
+temppass = False
+Do
+    If temppass = False Then
+        For i = 0 To personlist.ListCount - 1
+            If personlist.List(i) = Formsetting.cbsimilarlevel.List(levelmark) Then
+                角色人物隨機相似等級選擇 = i
+                Exit Function
+            End If
+        Next
+    End If
+    Select Case tempnum
+        Case 1
+            levelmark = Formsetting.cbsimilarlevel.ListIndex - 1
+        Case 2
+            levelmark = Formsetting.cbsimilarlevel.ListIndex + 1
+        Case 3
+            levelmark = Formsetting.cbsimilarlevel.ListIndex - 2
+        Case 4
+            levelmark = Formsetting.cbsimilarlevel.ListIndex + 2
+    End Select
+    tempnum = tempnum + 1
+    If levelmark > Formsetting.cbsimilarlevel.ListCount - 1 Or levelmark < 0 Then temppass = True Else temppass = False
+Loop Until (tempnum > 4)
 
+'=======未找到任何相似之等級
+角色人物隨機相似等級選擇 = -1
+End Function
 Function 角色人物選擇空值檢查(ByVal personvs As Integer) As Boolean
 角色人物選擇空值檢查 = True
 Dim i As Integer
@@ -1568,6 +1666,20 @@ Formsetting.t1.Tab = 0
 Formsetting.chkusenewai.Value = 1
 Formsetting.chkusenewpage.Value = 1
 Formsetting.chkusenewinterface.Value = 1
+'=============================
+Formsetting.cbsimilarlevel.AddItem "LV1"
+Formsetting.cbsimilarlevel.AddItem "LV2"
+Formsetting.cbsimilarlevel.AddItem "LV3"
+Formsetting.cbsimilarlevel.AddItem "LV4"
+Formsetting.cbsimilarlevel.AddItem "LV5"
+Formsetting.cbsimilarlevel.AddItem "R1"
+Formsetting.cbsimilarlevel.AddItem "R2"
+Formsetting.cbsimilarlevel.AddItem "R3"
+Formsetting.cbsimilarlevel.AddItem "R4"
+Formsetting.cbsimilarlevel.AddItem "R5"
+Formsetting.cbsimilarlevel.AddItem "N1"
+Formsetting.cbsimilarlevel.ListIndex = 4
+'=============================
 If FormMainMode.personsettingus(1).Caption = "人物資訊" Then
 '    Formsetting.其他設定.Visible = False
     Formsetting.chkpersonvsmode.Value = 1

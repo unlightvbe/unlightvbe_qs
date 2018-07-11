@@ -28,10 +28,44 @@ Begin VB.Form Formsetting
    Begin VB.Frame 表單_系統 
       Caption         =   "系統"
       Height          =   5895
-      Left            =   11040
+      Left            =   9480
       TabIndex        =   135
-      Top             =   1440
+      Top             =   2160
       Width           =   9015
+      Begin VB.ComboBox cbsimilarlevel 
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   360
+         Left            =   4560
+         TabIndex        =   150
+         Text            =   "Combo1"
+         Top             =   2880
+         Width           =   975
+      End
+      Begin VB.CheckBox chkusesimilarlevel 
+         Caption         =   "人物角色隨機時以相似之等級進行對戰："
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   11.25
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   300
+         Left            =   240
+         TabIndex        =   149
+         Top             =   2880
+         Width           =   6495
+      End
       Begin VB.TextBox 自訂AI手牌張數 
          Appearance      =   0  '平面
          BorderStyle     =   0  '沒有框線
@@ -145,6 +179,23 @@ Begin VB.Form Formsetting
          TabIndex        =   136
          Top             =   480
          Width           =   6495
+      End
+      Begin VB.Label Label8 
+         Caption         =   "以此選擇正負2等級為隨機之上下限，若3次隨機角色都不符合範圍者則以第3次結果+隨機等級為主。"
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   8.25
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   600
+         TabIndex        =   151
+         Top             =   3240
+         Width           =   8175
       End
       Begin VB.Label Label7 
          Caption         =   "請注意：若將計算張數設定過高可能會導致程式沒有回應。"
@@ -2245,6 +2296,14 @@ Else
     persontgruoncom(1).Value = True
     persontgruonus(1).Value = True
     Formsetting.對戰地圖選擇.ListIndex = 0
+End If
+End Sub
+
+Private Sub chkusesimilarlevel_Click()
+If chkusesimilarlevel.Value = 0 Then
+   cbsimilarlevel.Enabled = False
+Else
+    cbsimilarlevel.Enabled = True
 End If
 End Sub
 
