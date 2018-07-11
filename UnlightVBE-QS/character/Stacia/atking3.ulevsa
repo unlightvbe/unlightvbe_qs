@@ -39,11 +39,13 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
         Case 61
+          Dim hpnum
+          hpnum = VBEAtkingVSS(9) \ 2
+          If hpnum > 4 Then hpnum = 4
           If VBEActualStatusVS(1, 1, 1) = "UCASN00101" Then
-              atking = atking & "PersonBloodControl#1,1,2," & (VBEAtkingVSS(9) / 2) \ 2 & "="
-          Else
-              atking = atking & "PersonBloodControl#1,1,2," & VBEAtkingVSS(9) \ 2 & "="
+              hpnum = hpnum \ 2
           End If
+          atking = atking & "PersonBloodControl#1,1,2," & hpnum & "="
         Case 99
           Dim numtot, k, m
           ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
