@@ -20,7 +20,7 @@ End Function
 Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
     Select Case a
         Case 42
-            If AtkingPagetotVS(1, 4) >= 2 Then
+            If AtkingPagetotVS(1, 4) >= 3 Then
                 If AtkingckVSS(1, 1) = 0 Then
                     atking = atking & "AtkingLineLight#1" & "="
                     atking = atking & "AtkingTurnOnOff#1" & "="
