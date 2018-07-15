@@ -39,9 +39,11 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             Dim isSelf
             isSelf = True
             
-            For i = 2 To UBound(VBEAtkingVSF, 2)
-                If VBEAtkingVSF(1, i, 1) > 0 Then isSelf = False
-                Exit For
+            For i = 2 To VBEAtkingVSS(17)
+                If VBEAtkingVSF(1, i, 1) > 0 Then 
+                    isSelf = False
+                    Exit For
+                End If
             Next
 
             If isSelf = True Then
@@ -49,7 +51,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                 atking = atking & "PersonAddBuff#1,1,BUFFN00201,7,4" & "="
                 atking = atking & "PersonAddBuff#1,1,BUFFN00401,0,4" & "="
             Else
-                For i = 2 To UBound(VBEAtkingVSF, 2)
+                For i = 2 To VBEAtkingVSS(17)
                     atking = atking & "PersonBloodControl#1," & i & ",2,1" & "="
                     atking = atking & "PersonAddBuff#1," & i & ",BUFFS00101,0,1" & "="
                 Next

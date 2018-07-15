@@ -1,0 +1,70 @@
+Function main(a)
+    Select Case a
+         Case 1
+              main = "PNAKS00702"
+         Case 2
+              main = "43#45#31#61#99"
+         Case 3
+              main = "急救療法"
+         Case 4
+              main = "防禦#2"
+         Case 5
+              main = "近、中距離#011"
+         Case 6
+              main = "防合計5以上，特合計1以上#25a&41a"
+         Case 7
+              main = "DEF+8&我方其他成員HP+特殊÷2(尾數進位)"
+    End Select
+End Function
+
+Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), AtkingckVSS(), AtkingckVSF(), VBEAtkingVSF(), VBEAtkingVSS(), VBEActualStatusVS(), VBEVSStageNum())
+    Select Case a
+        Case 43
+            If VBEAtkingVSS(6) < 3 Then
+                If AtkingPagetotVS(1, 2) >= 5 And AtkingPagetotVS(1, 4) >= 1 Then
+                   If AtkingckVSS(2, 1) = 0 Then
+                        atking = atking & "AtkingLineLight#1" & "="
+                        atking = atking & "AtkingTurnOnOff#1" & "="
+                   End If
+                Else
+                   If AtkingckVSS(2, 1) = 1 Then
+                        atking = atking & "AtkingLineLight#2" & "="
+                        atking = atking & "AtkingTurnOnOff#2" & "="
+                   End If
+                End If
+            End If
+        Case 45
+            atking = atking & "EventTotalDiceChange#1,1,8" & "="
+        Case 31
+            atking = atking & "AtkingStartPlay#" & "\gif\Carminia\atking2.jpg,0" & "="
+            atking = atking & "AtkingLineLight#2" & "="
+            atking = atking & "AtkingTurnOnOff#2" & "="
+        Case 61
+            If VBEAtkingVSS(17) > 1 Then
+                Dim n
+                n = Int((AtkingPagetotVS(1, 4) / 2) + 0.9)
+                For i = 2 To VBEAtkingVSS(17)
+                    If VBEAtkingVSF(1,i,1) > 0 Then
+                        atking = atking & "PersonBloodControl#1," & i & ",2," & n & "="
+                    End If
+                Next
+            End If
+        Case 99
+          Dim k
+          If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 And VBEAtkingVSS(6) < 3 Then
+                If AtkingPagetotVS(1, 2) >= 5 And AtkingPagetotVS(1, 4) >= 1 Then
+                    atking = atking & "EventActiveAIScore#1,1"
+                    Do
+                        k = k + 1
+                        For i = 1 To UBound(VBEPageCardNumVS, 1)
+                            If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = k Then
+                                atking = atking & "," & i
+                                Exit Do
+                            End If
+                        Next
+                    Loop
+                    atking = atking & "="
+                End If
+          End If
+    End Select
+End Function
