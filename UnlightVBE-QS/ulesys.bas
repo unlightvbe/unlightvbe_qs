@@ -1511,7 +1511,7 @@ Next
 End Sub
 Sub 遊戲初始讀入程序()
 '=====以下是背景音樂及SE初始設定
-    For i = 1 To 8
+    For i = FormMainMode.cMusicPlayer.UBound + 1 To 8
         Load FormMainMode.cMusicPlayer(i)
     Next
     FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulbgm03.mp3"
