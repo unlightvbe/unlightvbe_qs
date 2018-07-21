@@ -303,8 +303,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   54
          Top             =   1950
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num4 
          Height          =   255
@@ -313,8 +313,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   53
          Top             =   1950
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num4 
          Height          =   255
@@ -323,8 +323,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   52
          Top             =   1950
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num4 
          Height          =   255
@@ -333,8 +333,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   51
          Top             =   1950
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num4 
          Height          =   255
@@ -343,8 +343,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   50
          Top             =   1950
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num3 
          Height          =   255
@@ -353,8 +353,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   49
          Top             =   1520
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num3 
          Height          =   255
@@ -363,8 +363,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   48
          Top             =   1520
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num3 
          Height          =   255
@@ -373,8 +373,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   47
          Top             =   1520
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num3 
          Height          =   255
@@ -383,8 +383,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   46
          Top             =   1520
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num3 
          Height          =   255
@@ -393,8 +393,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   45
          Top             =   1520
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num2 
          Height          =   255
@@ -403,8 +403,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   44
          Top             =   1080
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num2 
          Height          =   255
@@ -413,8 +413,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   43
          Top             =   1080
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num2 
          Height          =   255
@@ -423,8 +423,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   42
          Top             =   1080
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num2 
          Height          =   255
@@ -433,8 +433,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   41
          Top             =   1080
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num2 
          Height          =   255
@@ -443,8 +443,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   40
          Top             =   1080
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num1 
          Height          =   255
@@ -453,8 +453,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   39
          Top             =   600
          Width           =   285
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num1 
          Height          =   255
@@ -463,8 +463,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   38
          Top             =   600
          Width           =   290
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num1 
          Height          =   255
@@ -473,8 +473,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   37
          Top             =   600
          Width           =   290
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num1 
          Height          =   255
@@ -483,8 +483,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   36
          Top             =   600
          Width           =   290
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range4 
          Height          =   255
@@ -493,8 +493,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   35
          Top             =   1950
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range4 
          Height          =   255
@@ -503,8 +503,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   34
          Top             =   1950
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range4 
          Height          =   255
@@ -513,8 +513,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   33
          Top             =   1950
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range3 
          Height          =   255
@@ -523,8 +523,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   32
          Top             =   1520
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range3 
          Height          =   255
@@ -533,8 +533,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   31
          Top             =   1520
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range3 
          Height          =   255
@@ -543,8 +543,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   30
          Top             =   1520
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range2 
          Height          =   255
@@ -553,8 +553,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   29
          Top             =   1080
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range2 
          Height          =   255
@@ -563,8 +563,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   28
          Top             =   1080
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range2 
          Height          =   255
@@ -573,8 +573,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   27
          Top             =   1080
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range1 
          Height          =   255
@@ -583,8 +583,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   26
          Top             =   600
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range1 
          Height          =   255
@@ -593,8 +593,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   25
          Top             =   600
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_turn 
          Height          =   135
@@ -603,8 +603,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   24
          Top             =   1960
          Width           =   495
-         _extentx        =   873
-         _extenty        =   238
+         _ExtentX        =   873
+         _ExtentY        =   238
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_turn 
          Height          =   135
@@ -613,8 +613,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   23
          Top             =   1530
          Width           =   495
-         _extentx        =   873
-         _extenty        =   238
+         _ExtentX        =   873
+         _ExtentY        =   238
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_turn 
          Height          =   135
@@ -623,8 +623,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   22
          Top             =   1080
          Width           =   495
-         _extentx        =   873
-         _extenty        =   238
+         _ExtentX        =   873
+         _ExtentY        =   238
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_turn 
          Height          =   135
@@ -633,8 +633,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   21
          Top             =   630
          Width           =   495
-         _extentx        =   873
-         _extenty        =   238
+         _ExtentX        =   873
+         _ExtentY        =   238
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_range1 
          Height          =   255
@@ -643,8 +643,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   20
          Top             =   600
          Width           =   135
-         _extentx        =   238
-         _extenty        =   450
+         _ExtentX        =   238
+         _ExtentY        =   450
       End
       Begin UnlightVBE.uc卡片背面 PEAFpersoncardback_num1 
          Height          =   255
@@ -653,8 +653,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   19
          Top             =   600
          Width           =   290
-         _extentx        =   503
-         _extenty        =   450
+         _ExtentX        =   503
+         _ExtentY        =   450
       End
       Begin ImageX.aicAlphaImage PEAFcardbackBR 
          Height          =   435
@@ -749,8 +749,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   17
          Top             =   720
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -759,8 +759,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   16
          Top             =   1080
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -769,8 +769,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   15
          Top             =   1440
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -779,8 +779,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   14
          Top             =   1800
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -789,8 +789,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   13
          Top             =   2160
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -799,8 +799,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   12
          Top             =   2520
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -809,8 +809,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   11
          Top             =   2880
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -819,8 +819,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   10
          Top             =   720
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -829,8 +829,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   9
          Top             =   1080
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -839,8 +839,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   8
          Top             =   1440
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -849,8 +849,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   7
          Top             =   1800
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -859,8 +859,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   6
          Top             =   2160
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -869,8 +869,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   5
          Top             =   2520
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin UnlightVBE.uc異常狀態 personspe 
          Height          =   375
@@ -879,8 +879,8 @@ Begin VB.UserControl uc角色卡片介面
          TabIndex        =   4
          Top             =   2880
          Width           =   975
-         _extentx        =   1720
-         _extenty        =   661
+         _ExtentX        =   1720
+         _ExtentY        =   661
       End
       Begin VB.Label personlabeldef 
          Alignment       =   2  '置中對齊
@@ -957,7 +957,6 @@ Dim m_buff_reset As Boolean
 Dim m_cardback_reset As Boolean
 Dim m_cardback_activehelp(1 To 4) As String, m_cardback_passivehelp(1 To 4) As String
 Dim m_cardback_activecheck As Integer, m_cardback_passivecheck As Integer, m_cardbackcheck As Integer
-Dim m_wmpvolume As Integer
 Public Property Get CardMain_角色圖片() As String
    CardMain_角色圖片 = m_cardmain_jpg
 End Property
@@ -1424,16 +1423,6 @@ Public Property Let CardBack_被動技_技能說明(ByVal New_CardBack_被動技_技能說明 
        m_cardback_passivehelp(Val(buffstr(1))) = buffstr(0)
    End If
    PropertyChanged "CardBack_被動技_技能說明"
-End Property
-Public Property Get Wmp_音量() As Integer
-   Wmp_音量 = m_wmpvolume
-End Property
-Public Property Let Wmp_音量(ByVal New_Wmp_音量 As Integer)
-   m_wmpvolume = New_Wmp_音量
-   PropertyChanged "Wmp_音量"
-   If Me.Wmp_音量 < 0 Or Me.Wmp_音量 > 100 Then Me.Wmp_音量 = 20
-   '========================
-   wmp1.settings.volume = Me.Wmp_音量
 End Property
 Private Sub cardactiveChickimage_Click()
 PEAFcardback.Visible = False

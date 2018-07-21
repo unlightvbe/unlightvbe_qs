@@ -85,8 +85,7 @@ ElseIf ヘ玡计(31) = 10 Then
    Vss_AtkingStartPlayNum(2) = 1 'м磅︽い币笆
    ヘ玡计(31) = Val(ヘ玡计(31)) + 1
 ElseIf ヘ玡计(31) = 7 Then
-   FormMainMode.wmpse5.Controls.play
-   ╰参摸.浪琩贾冀 5
+   ╰参摸.冀 5
    ヘ玡计(31) = Val(ヘ玡计(31)) + 1
 ElseIf ヘ玡计(31) = 5 Then
    atkingcomjpg.Visible = True

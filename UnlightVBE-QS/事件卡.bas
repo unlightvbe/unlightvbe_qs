@@ -10,8 +10,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         事件卡記錄暫時數(1, 6) = 1
         FormMainMode.對齊完成檢查.Enabled = False
     Case 2
-        FormMainMode.wmpse7.Controls.play
-        一般系統類.檢查音樂播放 7
+        一般系統類.音效播放 7
         '=============以下是牌移動(收牌)(使用者)
 '         戰鬥系統類.座標計算_使用者手牌
          pageqlead(1) = Val(pageqlead(1)) - 1
@@ -65,8 +64,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
-        FormMainMode.wmpse7.Controls.play
-        一般系統類.檢查音樂播放 7
+        一般系統類.音效播放 7
         等待時間佇列(2).Add 9
         FormMainMode.等待時間_2.Enabled = True
     Case 3
@@ -150,8 +148,7 @@ Select Case 事件卡記錄暫時數(1, 3)
      Case 4
         FormMainMode.tr電腦牌_棄牌.Enabled = True
      Case 5
-         FormMainMode.wmpse7.Controls.play
-         一般系統類.檢查音樂播放 7
+         一般系統類.音效播放 7
         '=============以下是牌移動(收牌)(使用者)
 '         戰鬥系統類.座標計算_使用者手牌
          pageqlead(1) = Val(pageqlead(1)) - 1
@@ -226,8 +223,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
-        FormMainMode.wmpse7.Controls.play
-        一般系統類.檢查音樂播放 7
+        一般系統類.音效播放 7
         等待時間佇列(2).Add 15
         FormMainMode.等待時間_2.Enabled = True
      Case 5
@@ -268,8 +264,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         等待時間佇列(2).Add 17
         FormMainMode.等待時間_2.Enabled = True
      Case 3
-         FormMainMode.wmpse7.Controls.play
-         一般系統類.檢查音樂播放 7
+         一般系統類.音效播放 7
         '=============以下是牌移動(收牌)(使用者)
 '         戰鬥系統類.座標計算_使用者手牌
          pageqlead(1) = Val(pageqlead(1)) - 1
@@ -315,8 +310,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
-        FormMainMode.wmpse7.Controls.play
-        一般系統類.檢查音樂播放 7
+        一般系統類.音效播放 7
         等待時間佇列(2).Add 20
         FormMainMode.等待時間_2.Enabled = True
      Case 4
@@ -358,8 +352,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         等待時間佇列(2).Add 40
         FormMainMode.等待時間_2.Enabled = True
      Case 3
-         FormMainMode.wmpse7.Controls.play
-         一般系統類.檢查音樂播放 7
+         一般系統類.音效播放 7
         '=============以下是牌移動(收牌)(使用者)
 '         戰鬥系統類.座標計算_使用者手牌
          pageqlead(1) = Val(pageqlead(1)) - 1
@@ -406,8 +399,7 @@ Select Case 事件卡記錄暫時數(2, 3)
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
-        FormMainMode.wmpse7.Controls.play
-        一般系統類.檢查音樂播放 7
+        一般系統類.音效播放 7
         等待時間佇列(2).Add 43
         FormMainMode.等待時間_2.Enabled = True
      Case 4

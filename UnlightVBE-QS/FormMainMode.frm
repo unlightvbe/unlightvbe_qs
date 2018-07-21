@@ -1,7 +1,6 @@
 VERSION 5.00
-Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Object = "{0E59F1D2-1FBE-11D0-8FF2-00A0D10038BC}#1.0#0"; "msscript.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
 Begin VB.Form FormMainMode 
    BorderStyle     =   1  '單線固定
    Caption         =   "UnlightVBE-QS Origin"
@@ -31,35 +30,35 @@ Begin VB.Form FormMainMode
       BorderStyle     =   0  '沒有框線
       ForeColor       =   &H80000008&
       Height          =   9910
-      Left            =   8160
+      Left            =   11280
       Picture         =   "FormMainMode.frx":0CCA
       ScaleHeight     =   9915
       ScaleWidth      =   11340
       TabIndex        =   0
-      Top             =   840
+      Top             =   720
       Visible         =   0   'False
       Width           =   11340
       Begin UnlightVBE.uc角色卡片介面 cardcom 
          Height          =   3615
          Index           =   0
          Left            =   1080
-         TabIndex        =   207
+         TabIndex        =   197
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
          Index           =   0
          Left            =   0
-         TabIndex        =   206
+         TabIndex        =   196
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -74,7 +73,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   405
          Left            =   8760
-         TabIndex        =   203
+         TabIndex        =   193
          Top             =   9360
          Width           =   975
       End
@@ -91,7 +90,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   405
          Left            =   8040
-         TabIndex        =   202
+         TabIndex        =   192
          Top             =   9360
          Width           =   615
       End
@@ -108,7 +107,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   375
          Left            =   9840
-         TabIndex        =   201
+         TabIndex        =   191
          Top             =   9360
          Width           =   1215
       End
@@ -129,7 +128,7 @@ Begin VB.Form FormMainMode
          Picture         =   "FormMainMode.frx":22BA9
          ScaleHeight     =   495
          ScaleWidth      =   2520
-         TabIndex        =   183
+         TabIndex        =   173
          Top             =   9360
          Width           =   2520
          Begin VB.Label uspi5 
@@ -149,7 +148,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   2280
-            TabIndex        =   189
+            TabIndex        =   179
             Top             =   360
             Width           =   255
          End
@@ -170,7 +169,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   1560
-            TabIndex        =   188
+            TabIndex        =   178
             Top             =   360
             Width           =   255
          End
@@ -191,7 +190,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   960
-            TabIndex        =   187
+            TabIndex        =   177
             Top             =   360
             Width           =   255
          End
@@ -212,7 +211,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   240
-            TabIndex        =   186
+            TabIndex        =   176
             Top             =   360
             Width           =   255
          End
@@ -233,7 +232,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   2040
-            TabIndex        =   185
+            TabIndex        =   175
             Top             =   -30
             Width           =   495
          End
@@ -253,7 +252,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   120
-            TabIndex        =   184
+            TabIndex        =   174
             Top             =   0
             Width           =   2535
          End
@@ -263,7 +262,7 @@ Begin VB.Form FormMainMode
          Left            =   5160
          ScaleHeight     =   2115
          ScaleWidth      =   6075
-         TabIndex        =   174
+         TabIndex        =   164
          Top             =   6600
          Visible         =   0   'False
          Width           =   6135
@@ -317,7 +316,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   960
-            TabIndex        =   182
+            TabIndex        =   172
             Top             =   480
             Visible         =   0   'False
             Width           =   975
@@ -336,7 +335,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   1920
-            TabIndex        =   181
+            TabIndex        =   171
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -355,7 +354,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   1920
-            TabIndex        =   180
+            TabIndex        =   170
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -373,7 +372,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   3840
-            TabIndex        =   179
+            TabIndex        =   169
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -391,7 +390,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   3840
-            TabIndex        =   178
+            TabIndex        =   168
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -409,7 +408,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2880
-            TabIndex        =   177
+            TabIndex        =   167
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -427,7 +426,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2880
-            TabIndex        =   176
+            TabIndex        =   166
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -446,7 +445,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2640
-            TabIndex        =   175
+            TabIndex        =   165
             Top             =   1080
             Visible         =   0   'False
             Width           =   1335
@@ -1724,7 +1723,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc擲骰介面 PEAFDiceInterface 
          Height          =   9910
          Left            =   0
-         TabIndex        =   205
+         TabIndex        =   195
          Top             =   0
          Width           =   11340
          _ExtentX        =   2566
@@ -1743,7 +1742,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   2520
-         TabIndex        =   200
+         TabIndex        =   190
          Top             =   6600
          Width           =   135
       End
@@ -1759,7 +1758,7 @@ Begin VB.Form FormMainMode
          Height          =   1335
          Index           =   0
          Left            =   5280
-         TabIndex        =   199
+         TabIndex        =   189
          Top             =   1200
          Visible         =   0   'False
          Width           =   855
@@ -1779,7 +1778,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   9120
-         TabIndex        =   198
+         TabIndex        =   188
          Top             =   720
          Width           =   135
       End
@@ -1801,7 +1800,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   1
          Left            =   6960
-         TabIndex        =   197
+         TabIndex        =   187
          Top             =   600
          Width           =   2055
       End
@@ -1823,7 +1822,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   2
          Left            =   4920
-         TabIndex        =   196
+         TabIndex        =   186
          Top             =   600
          Width           =   2055
       End
@@ -1845,7 +1844,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   3
          Left            =   2880
-         TabIndex        =   195
+         TabIndex        =   185
          Top             =   600
          Width           =   2055
       End
@@ -1867,7 +1866,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   4
          Left            =   840
-         TabIndex        =   194
+         TabIndex        =   184
          Top             =   600
          Width           =   2055
       End
@@ -1889,7 +1888,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   4
          Left            =   9140
-         TabIndex        =   193
+         TabIndex        =   183
          Top             =   6240
          Width           =   2205
       End
@@ -1911,7 +1910,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   3
          Left            =   6930
-         TabIndex        =   192
+         TabIndex        =   182
          Top             =   6240
          Width           =   2205
       End
@@ -1933,7 +1932,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   2
          Left            =   4730
-         TabIndex        =   191
+         TabIndex        =   181
          Top             =   6240
          Width           =   2205
       End
@@ -1955,7 +1954,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   1
          Left            =   2520
-         TabIndex        =   190
+         TabIndex        =   180
          Top             =   6240
          Width           =   2205
       End
@@ -2297,7 +2296,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc戰鬥系統牌型介面 PEAFInterface 
          Height          =   9910
          Left            =   0
-         TabIndex        =   204
+         TabIndex        =   194
          Top             =   0
          Width           =   11340
          _ExtentX        =   2143
@@ -2310,11 +2309,11 @@ Begin VB.Form FormMainMode
       BorderStyle     =   0  '沒有框線
       ForeColor       =   &H80000008&
       Height          =   9915
-      Left            =   1080
+      Left            =   5400
       ScaleHeight     =   9915
       ScaleWidth      =   11340
       TabIndex        =   57
-      Top             =   480
+      Top             =   240
       Visible         =   0   'False
       Width           =   11340
       Begin VB.PictureBox Picture3 
@@ -3440,17 +3439,47 @@ Begin VB.Form FormMainMode
          Width           =   11400
       End
    End
+   Begin VB.PictureBox PEMusicForm 
+      Appearance      =   0  '平面
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  '沒有框線
+      ForeColor       =   &H80000008&
+      Height          =   7935
+      Left            =   1320
+      ScaleHeight     =   7935
+      ScaleWidth      =   11895
+      TabIndex        =   198
+      Top             =   1200
+      Visible         =   0   'False
+      Width           =   11895
+      Begin VB.Timer PEMFtr1 
+         Enabled         =   0   'False
+         Interval        =   10
+         Left            =   240
+         Top             =   1680
+      End
+      Begin UnlightVBE.ucMusicPlayer cMusicPlayer 
+         Height          =   855
+         Index           =   0
+         Left            =   840
+         TabIndex        =   199
+         Top             =   3480
+         Width           =   1095
+         _ExtentX        =   1931
+         _ExtentY        =   1508
+      End
+   End
    Begin VB.PictureBox PEStartForm 
       Appearance      =   0  '平面
       BackColor       =   &H00000000&
       BorderStyle     =   0  '沒有框線
       ForeColor       =   &H80000008&
       Height          =   9915
-      Left            =   -1200
+      Left            =   3480
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   126
-      Top             =   2520
+      TabIndex        =   116
+      Top             =   960
       Visible         =   0   'False
       Width           =   11340
       Begin VB.Timer tr1 
@@ -3475,7 +3504,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   615
          Left            =   8280
-         TabIndex        =   127
+         TabIndex        =   117
          Top             =   9120
          Visible         =   0   'False
          Width           =   2655
@@ -3491,7 +3520,7 @@ Begin VB.Form FormMainMode
       Picture         =   "FormMainMode.frx":4B748
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   128
+      TabIndex        =   118
       Top             =   240
       Visible         =   0   'False
       Width           =   11340
@@ -3522,7 +3551,7 @@ Begin VB.Form FormMainMode
          Left            =   6285
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   129
+         TabIndex        =   119
          Top             =   3240
          Visible         =   0   'False
          Width           =   2535
@@ -3543,7 +3572,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   1
             Left            =   480
-            TabIndex        =   132
+            TabIndex        =   122
             Top             =   3240
             Width           =   495
          End
@@ -3564,7 +3593,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   131
+            TabIndex        =   121
             Top             =   3240
             Width           =   495
          End
@@ -3585,7 +3614,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   130
+            TabIndex        =   120
             Top             =   3240
             Width           =   615
          End
@@ -3599,7 +3628,7 @@ Begin VB.Form FormMainMode
          Left            =   7485
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   159
+         TabIndex        =   149
          Top             =   3600
          Visible         =   0   'False
          Width           =   2535
@@ -3620,7 +3649,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   162
+            TabIndex        =   152
             Top             =   3240
             Width           =   615
          End
@@ -3641,7 +3670,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   161
+            TabIndex        =   151
             Top             =   3240
             Width           =   495
          End
@@ -3662,7 +3691,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   2
             Left            =   480
-            TabIndex        =   160
+            TabIndex        =   150
             Top             =   3240
             Width           =   495
          End
@@ -3685,7 +3714,7 @@ Begin VB.Form FormMainMode
          Left            =   2805
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   133
+         TabIndex        =   123
          Top             =   3240
          Visible         =   0   'False
          Width           =   2535
@@ -3706,7 +3735,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   550
-            TabIndex        =   136
+            TabIndex        =   126
             Top             =   3240
             Width           =   375
          End
@@ -3727,7 +3756,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   135
+            TabIndex        =   125
             Top             =   3240
             Width           =   495
          End
@@ -3748,7 +3777,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   134
+            TabIndex        =   124
             Top             =   3240
             Width           =   615
          End
@@ -3771,7 +3800,7 @@ Begin VB.Form FormMainMode
          Left            =   1485
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   151
+         TabIndex        =   141
          Top             =   3600
          Visible         =   0   'False
          Width           =   2535
@@ -3792,7 +3821,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   154
+            TabIndex        =   144
             Top             =   3240
             Width           =   615
          End
@@ -3813,7 +3842,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   153
+            TabIndex        =   143
             Top             =   3240
             Width           =   495
          End
@@ -3834,7 +3863,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   550
-            TabIndex        =   152
+            TabIndex        =   142
             Top             =   3240
             Width           =   375
          End
@@ -3848,7 +3877,7 @@ Begin VB.Form FormMainMode
          Left            =   8565
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   163
+         TabIndex        =   153
          Top             =   3960
          Visible         =   0   'False
          Width           =   2535
@@ -3869,7 +3898,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   166
+            TabIndex        =   156
             Top             =   3240
             Width           =   615
          End
@@ -3890,7 +3919,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   165
+            TabIndex        =   155
             Top             =   3240
             Width           =   495
          End
@@ -3911,7 +3940,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   3
             Left            =   480
-            TabIndex        =   164
+            TabIndex        =   154
             Top             =   3240
             Width           =   495
          End
@@ -3934,7 +3963,7 @@ Begin VB.Form FormMainMode
          Left            =   360
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   155
+         TabIndex        =   145
          Top             =   3960
          Visible         =   0   'False
          Width           =   2535
@@ -3955,7 +3984,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   158
+            TabIndex        =   148
             Top             =   3240
             Width           =   615
          End
@@ -3976,7 +4005,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   157
+            TabIndex        =   147
             Top             =   3240
             Width           =   495
          End
@@ -3997,7 +4026,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   550
-            TabIndex        =   156
+            TabIndex        =   146
             Top             =   3240
             Width           =   375
          End
@@ -4012,7 +4041,7 @@ Begin VB.Form FormMainMode
          Picture         =   "FormMainMode.frx":7A5FC
          ScaleHeight     =   1455
          ScaleWidth      =   11415
-         TabIndex        =   138
+         TabIndex        =   128
          Top             =   8160
          Visible         =   0   'False
          Width           =   11415
@@ -4023,7 +4052,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   480
-            TabIndex        =   150
+            TabIndex        =   140
             Top             =   120
             Width           =   1935
          End
@@ -4034,123 +4063,123 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   6840
-            TabIndex        =   149
-            Top             =   120
-            Width           =   2055
-         End
-         Begin VB.Label cardusspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號1"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   1
-            Left            =   1560
-            TabIndex        =   148
-            Top             =   120
-            Width           =   3135
-         End
-         Begin VB.Label cardcomspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號1"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   1
-            Left            =   7920
-            TabIndex        =   147
-            Top             =   120
-            Width           =   3135
-         End
-         Begin VB.Label cardusname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物2"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   480
-            TabIndex        =   146
-            Top             =   480
-            Width           =   1935
-         End
-         Begin VB.Label cardusname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物3"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   480
-            TabIndex        =   145
-            Top             =   840
-            Width           =   1935
-         End
-         Begin VB.Label cardusspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號2"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   2
-            Left            =   1560
-            TabIndex        =   144
-            Top             =   480
-            Width           =   3135
-         End
-         Begin VB.Label cardusspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號3"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   3
-            Left            =   1560
-            TabIndex        =   143
-            Top             =   840
-            Width           =   3135
-         End
-         Begin VB.Label cardcomname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物2"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   6840
-            TabIndex        =   142
-            Top             =   480
-            Width           =   2055
-         End
-         Begin VB.Label cardcomname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物3"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   6840
-            TabIndex        =   141
-            Top             =   840
-            Width           =   2055
-         End
-         Begin VB.Label cardcomspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號2"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   2
-            Left            =   7920
-            TabIndex        =   140
-            Top             =   480
-            Width           =   3135
-         End
-         Begin VB.Label cardcomspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號3"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   3
-            Left            =   7920
             TabIndex        =   139
+            Top             =   120
+            Width           =   2055
+         End
+         Begin VB.Label cardusspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號1"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   1
+            Left            =   1560
+            TabIndex        =   138
+            Top             =   120
+            Width           =   3135
+         End
+         Begin VB.Label cardcomspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號1"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   1
+            Left            =   7920
+            TabIndex        =   137
+            Top             =   120
+            Width           =   3135
+         End
+         Begin VB.Label cardusname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物2"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   480
+            TabIndex        =   136
+            Top             =   480
+            Width           =   1935
+         End
+         Begin VB.Label cardusname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物3"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   480
+            TabIndex        =   135
+            Top             =   840
+            Width           =   1935
+         End
+         Begin VB.Label cardusspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號2"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   2
+            Left            =   1560
+            TabIndex        =   134
+            Top             =   480
+            Width           =   3135
+         End
+         Begin VB.Label cardusspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號3"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   3
+            Left            =   1560
+            TabIndex        =   133
+            Top             =   840
+            Width           =   3135
+         End
+         Begin VB.Label cardcomname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物2"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   6840
+            TabIndex        =   132
+            Top             =   480
+            Width           =   2055
+         End
+         Begin VB.Label cardcomname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物3"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   6840
+            TabIndex        =   131
+            Top             =   840
+            Width           =   2055
+         End
+         Begin VB.Label cardcomspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號2"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   2
+            Left            =   7920
+            TabIndex        =   130
+            Top             =   480
+            Width           =   3135
+         End
+         Begin VB.Label cardcomspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號3"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   3
+            Left            =   7920
+            TabIndex        =   129
             Top             =   840
             Width           =   3135
          End
@@ -4165,7 +4194,7 @@ Begin VB.Form FormMainMode
          Picture         =   "FormMainMode.frx":82F78
          ScaleHeight     =   1905
          ScaleWidth      =   11415
-         TabIndex        =   137
+         TabIndex        =   127
          Top             =   0
          Visible         =   0   'False
          Width           =   11415
@@ -4209,7 +4238,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc對話 PEASpersontalk 
          Height          =   1935
          Left            =   0
-         TabIndex        =   173
+         TabIndex        =   163
          Top             =   -120
          Visible         =   0   'False
          Width           =   5775
@@ -4219,7 +4248,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 大人物形像_電腦 
          Height          =   10005
          Left            =   20040
-         TabIndex        =   167
+         TabIndex        =   157
          Top             =   -480
          Width           =   5895
          _ExtentX        =   10398
@@ -4228,7 +4257,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 大人物形像_使用者 
          Height          =   10005
          Left            =   -9960
-         TabIndex        =   168
+         TabIndex        =   158
          Top             =   -480
          Width           =   6015
          _ExtentX        =   10610
@@ -4237,7 +4266,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 upjpg_2 
          Height          =   1935
          Left            =   0
-         TabIndex        =   169
+         TabIndex        =   159
          Top             =   -480
          Visible         =   0   'False
          Width           =   11415
@@ -4255,7 +4284,7 @@ Begin VB.Form FormMainMode
       Picture         =   "FormMainMode.frx":8E4A4
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   170
+      TabIndex        =   160
       Top             =   -1680
       Visible         =   0   'False
       Width           =   11340
@@ -4272,7 +4301,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   9480
-         TabIndex        =   172
+         TabIndex        =   162
          Top             =   8760
          Visible         =   0   'False
          Width           =   1455
@@ -4284,7 +4313,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   7680
-         TabIndex        =   171
+         TabIndex        =   161
          Top             =   8760
          Visible         =   0   'False
          Width           =   1455
@@ -4306,321 +4335,12 @@ Begin VB.Form FormMainMode
          Width           =   1470
       End
    End
-   Begin VB.PictureBox PEMusicForm 
-      Appearance      =   0  '平面
-      BackColor       =   &H80000005&
-      BorderStyle     =   0  '沒有框線
-      ForeColor       =   &H80000008&
-      Height          =   7935
-      Left            =   2040
-      ScaleHeight     =   7935
-      ScaleWidth      =   9615
-      TabIndex        =   116
-      Top             =   840
-      Visible         =   0   'False
-      Width           =   9615
-      Begin VB.Timer PEMtr1 
-         Enabled         =   0   'False
-         Interval        =   10
-         Left            =   240
-         Top             =   1680
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmp 
-         Height          =   960
-         Left            =   840
-         TabIndex        =   125
-         Top             =   480
-         Width           =   1080
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   1905
-         _cy             =   1693
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse1 
-         Height          =   600
-         Left            =   3840
-         TabIndex        =   124
-         Top             =   240
-         Width           =   2160
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   3810
-         _cy             =   1058
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse2 
-         Height          =   720
-         Left            =   3840
-         TabIndex        =   123
-         Top             =   1200
-         Width           =   2280
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4022
-         _cy             =   1270
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse3 
-         Height          =   600
-         Left            =   3840
-         TabIndex        =   122
-         Top             =   2160
-         Width           =   2400
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4233
-         _cy             =   1058
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse4 
-         Height          =   600
-         Left            =   3840
-         TabIndex        =   121
-         Top             =   2880
-         Width           =   2400
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4233
-         _cy             =   1058
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse5 
-         Height          =   600
-         Left            =   3840
-         TabIndex        =   120
-         Top             =   3840
-         Width           =   2280
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4022
-         _cy             =   1058
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse6 
-         Height          =   600
-         Left            =   6840
-         TabIndex        =   119
-         Top             =   360
-         Width           =   2400
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4233
-         _cy             =   1058
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse7 
-         Height          =   600
-         Left            =   6840
-         TabIndex        =   118
-         Top             =   1200
-         Width           =   2400
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4233
-         _cy             =   1058
-      End
-      Begin WMPLibCtl.WindowsMediaPlayer wmpse8 
-         Height          =   720
-         Left            =   6840
-         TabIndex        =   117
-         Top             =   2160
-         Width           =   2400
-         URL             =   ""
-         rate            =   1
-         balance         =   0
-         currentPosition =   0
-         defaultFrame    =   ""
-         playCount       =   1
-         autoStart       =   -1  'True
-         currentMarker   =   0
-         invokeURLs      =   -1  'True
-         baseURL         =   ""
-         volume          =   50
-         mute            =   0   'False
-         uiMode          =   "invisible"
-         stretchToFit    =   0   'False
-         windowlessVideo =   0   'False
-         enabled         =   -1  'True
-         enableContextMenu=   -1  'True
-         fullScreen      =   0   'False
-         SAMIStyle       =   ""
-         SAMILang        =   ""
-         SAMIFilename    =   ""
-         captioningID    =   ""
-         enableErrorDialogs=   0   'False
-         _cx             =   4233
-         _cy             =   1270
-      End
-   End
 End
 Attribute VB_Name = "FormMainMode"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
 Private Sub atkinghelpc_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 atkinghelpc.Visible = False
 End Sub
@@ -4762,9 +4482,7 @@ pagecardnum(Index, 1) = pagecardnum(Index, 3)
 pagecardnum(Index, 2) = pagecardnum(Index, 4)
 pagecardnum(Index, 3) = uspce
 pagecardnum(Index, 4) = uspme
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 3
 pageonin(Index) = Val(card(Index).CardRotationType)
 End Sub
 
@@ -4776,9 +4494,7 @@ pagecardnum(Index, 1) = pagecardnum(Index, 3)
 pagecardnum(Index, 2) = pagecardnum(Index, 4)
 pagecardnum(Index, 3) = uspce
 pagecardnum(Index, 4) = uspme
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 3
 pageonin(Index) = Val(card(Index).CardRotationType)
 '===================================================================
    If pagecardnum(Index, 1) = a1a Then
@@ -4945,9 +4661,7 @@ If pagecardnum(Index, 6) = 1 And (turnpageonin = 1 Or turnpageoninatking = 1) An
     戰鬥系統類.計算牌移動距離單位
     目前數(15) = 0
     牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
    '================以下是手牌對齊
    目前數(4) = 0
    目前數(21) = 1
@@ -5036,9 +4750,7 @@ If pagecardnum(Index, 6) = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) An
     戰鬥系統類.計算牌移動距離單位
     目前數(15) = 0
     牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
    '================以下是出牌對齊
    目前數(3) = 0
    戰鬥系統類.出牌順序計算_使用者_出牌
@@ -5221,8 +4933,7 @@ If 電腦方事件卡是否出完選擇數 = False Then
     戰鬥系統類.時間軸_重設
     顯示列1.移動階段圖顯示 = True
     戰鬥系統類.時間軸_顯示
-    FormMainMode.wmpse6.Controls.play
-    一般系統類.檢查音樂播放 6
+    一般系統類.音效播放 6
 End If
 '======================電腦方事件卡先出制度_結束後階段2
 If 電腦方事件卡是否出完選擇數 = True Then
@@ -5532,8 +5243,7 @@ Erase Vss_EventPlayerAllActionOffNum
 小人物頭像移動_使用者.Enabled = True
 小人物頭像移動_電腦.Enabled = True
 '==============
-FormMainMode.wmpse6.Controls.play
-一般系統類.檢查音樂播放 6
+一般系統類.音效播放 6
 戰鬥系統類.時間軸_重設
 trtimeline.Enabled = True
 trgoi2.Enabled = True
@@ -5803,18 +5513,6 @@ End Sub
 
 
 
-Private Sub Form_Unload(Cancel As Integer)
-wmp.Close
-wmpse1.Close
-wmpse2.Close
-wmpse3.Close
-wmpse4.Close
-wmpse5.Close
-wmpse6.Close
-wmpse7.Close
-wmpse8.Close
-End Sub
-
 Private Sub messageus_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 'For i = 1 To 公用牌實體卡片分隔紀錄數(1)
 '   card(i).card_MouseExit
@@ -5830,6 +5528,13 @@ Private Sub messageus_MouseMove(Button As Integer, Shift As Integer, X As Single
 '    bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
 'End If
 End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+For i = 1 To cMusicPlayer.UBound
+    Unload cMusicPlayer(i)
+Next
+End Sub
+
 Private Sub NextTurn_階段2_Timer()
 Dim uscomvsn As Integer
 goidefus = 0
@@ -6241,7 +5946,7 @@ Select Case PEAEtr1num
          ElseIf 戰鬥模式勝敗紀錄數 = 3 Then
          
          End If
-         FormMainMode.wmp.Controls.play
+         FormMainMode.cMusicPlayer(0).MusicPlay
     Case 50
          bnreturn.Visible = True
          bnreturnt.Visible = True
@@ -6295,80 +6000,6 @@ atkinghelpc.Visible = False
 If turnpageonin = 1 Then
     bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
 End If
-End Sub
-
-Sub PEMtr1_Timer()
-Select Case 音樂檢查播放目標數
-     Case 0
-         If Left(FormMainMode.wmp.Status, 2) = "就緒" Then
-             wmp.Controls.play
-         ElseIf Left(FormMainMode.wmp.Status, 2) = "播放" Then
-             PEMtr1.Enabled = False
-         End If
-     Case 1
-         If Left(FormMainMode.wmpse1.Status, 2) = "就緒" Then
-             wmpse1.Controls.play
-         ElseIf Left(FormMainMode.wmpse1.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse1.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 2
-         If Left(FormMainMode.wmpse2.Status, 2) = "就緒" Then
-             wmpse2.Controls.play
-         ElseIf Left(FormMainMode.wmpse2.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse2.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 3
-         If Left(FormMainMode.wmpse3.Status, 2) = "就緒" Then
-             wmpse3.Controls.play
-         ElseIf Left(FormMainMode.wmpse3.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse3.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 4
-         If Left(FormMainMode.wmpse4.Status, 2) = "就緒" Then
-             wmpse4.Controls.play
-         ElseIf Left(FormMainMode.wmpse4.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse4.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 5
-         If Left(FormMainMode.wmpse5.Status, 2) = "就緒" Then
-             wmpse5.Controls.play
-         ElseIf Left(FormMainMode.wmpse5.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse5.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 6
-         If Left(FormMainMode.wmpse6.Status, 2) = "就緒" Then
-             wmpse6.Controls.play
-         ElseIf Left(FormMainMode.wmpse6.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse6.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 7
-         If Left(FormMainMode.wmpse7.Status, 2) = "就緒" Then
-             wmpse7.Controls.play
-         ElseIf Left(FormMainMode.wmpse7.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse7.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-    Case 8
-         If Left(FormMainMode.wmpse8.Status, 2) = "就緒" Then
-             wmpse8.Controls.play
-         ElseIf Left(FormMainMode.wmpse8.Status, 2) = "播放" Or _
-         Left(FormMainMode.wmpse8.Status, 3) = "已停止" Then
-             PEMtr1.Enabled = False
-         End If
-'    Case 9
-'         If Left(FormMainMode.wmpse9.Status, 2) = "就緒" Then
-'             wmpse9.Controls.play
-'         ElseIf Left(FormMainMode.wmpse9.Status, 2) = "播放" Or _
-'         Left(FormMainMode.wmpse9.Status, 3) = "已停止" Then
-'             PEMtr1.Enabled = False
-'         End If
-End Select
 End Sub
 
 Private Sub personatk_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -6428,12 +6059,9 @@ If trend暫時變數 = 4 Then
    PEAEtr1.Enabled = True
    trend.Enabled = False
 ElseIf trend暫時變數 = 2 Then
-   FormMainMode.wmp.Controls.stop
-'   FormMainMode.wmp.Controls.pause
-   FormMainMode.wmp.settings.playCount = 1
-   FormMainMode.wmp.URL = app_path & "mp3\ulse15.mp3"
-   FormMainMode.wmp.Controls.stop
-   FormMainMode.wmp.settings.playCount = 1
+   FormMainMode.cMusicPlayer(0).MusicStop
+   FormMainMode.cMusicPlayer(0).IsLoop = False
+   FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulse15.mp3"
    trend暫時變數 = trend暫時變數 + 1
 Else
    trend暫時變數 = trend暫時變數 + 1
@@ -7076,7 +6704,6 @@ If Val(uspi4(Index).Caption) <= 0 Then
 '    cardbackus(Index).Visible = True
 End If
 End Sub
-
 Private Sub 人物消失檢查_Timer()
 If 人物消失檢查暫時變數(1) = 10 Then
     If 人物消失檢查暫時變數(2) = 1 Then
@@ -9542,8 +9169,7 @@ Select Case 目前數(14)
                 顯示列1.Visible = True
                 顯示列1.移動階段圖顯示 = False
                 顯示列1.移動方向圖片顯示 = False
-                FormMainMode.wmpse6.Controls.play
-                一般系統類.檢查音樂播放 6
+                一般系統類.音效播放 6
                 If 系統顯示界面紀錄數 = 1 Then
                     draw1.Visible = False
                     draw2.Visible = True
@@ -10334,9 +9960,7 @@ End If
     card(出牌順序統計暫時變數(3, 目前數(6), 2)).Height = 1260
     card(出牌順序統計暫時變數(3, 目前數(6), 2)).CardImage = app_path & "card\" & pagecardnum(出牌順序統計暫時變數(3, 目前數(6), 2), 8) & ".png"
     card(出牌順序統計暫時變數(3, 目前數(6), 2)).CardRotationType = pageonin(出牌順序統計暫時變數(3, 目前數(6), 2))
-    FormMainMode.wmpse4.Controls.stop
-    FormMainMode.wmpse4.Controls.play
-    一般系統類.檢查音樂播放 4
+    一般系統類.音效播放 4
 End Sub
 
 Private Sub 對齊完成檢查_Timer()
@@ -10888,18 +10512,14 @@ End If
 End Sub
 Private Sub bnabout_Click()
 Form2.Show 1
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 11
 End Sub
 
 Private Sub bnconfig_Click()
 Formsetting.Left = FormMainMode.Left + 915
 Formsetting.Top = FormMainMode.Top + 300
 一般系統類.自由戰鬥模式設定表單各式設定讀入程序
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 11
 Formsetting.Show 1
 End Sub
 

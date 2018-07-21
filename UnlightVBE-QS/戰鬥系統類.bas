@@ -312,13 +312,9 @@ End Sub
 Sub 播放傷害音樂()
 Select Case movecp
     Case 1
-'        FormMainMode.wmpse2.URL = app_path & "mp3\ulse09.mp3"
-        FormMainMode.wmpse2.Controls.play
-        一般系統類.檢查音樂播放 2
+        一般系統類.音效播放 2
     Case Is >= 2
-'        FormMainMode.wmpse2.URL = app_path & "mp3\ulse10_f.mp3"
-        FormMainMode.wmpse8.Controls.play
-        一般系統類.檢查音樂播放 8
+        一般系統類.音效播放 8
 End Select
 End Sub
 Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer)
@@ -615,9 +611,7 @@ Sub 執行動作_使用者_棄牌(ByVal n As Integer)
 '    牌順序增加_手牌_使用者 n
     目前數(15) = 4
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
 End Sub
 Sub 執行動作_牌組_回牌_使用者(ByVal n As Integer)
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
@@ -632,9 +626,7 @@ Sub 執行動作_牌組_回牌_使用者(ByVal n As Integer)
     戰鬥系統類.計算牌移動距離單位
     牌順序增加_手牌_使用者 n
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
 End Sub
 Sub 執行動作_電腦牌_偷牌_使用者(ByVal n As Integer)
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
@@ -650,9 +642,7 @@ Sub 執行動作_電腦牌_偷牌_使用者(ByVal n As Integer)
     牌順序增加_手牌_使用者 n
     目前數(15) = 2
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
 End Sub
 Sub 執行動作_使用者牌_偷牌_電腦(ByVal n As Integer)
     FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
@@ -669,9 +659,7 @@ Sub 執行動作_使用者牌_偷牌_電腦(ByVal n As Integer)
     目前數(15) = 20
     戰鬥系統類.公用牌變背面
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
 End Sub
 Sub 執行動作_牌組_回牌_電腦(ByVal n As Integer)
     FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
@@ -686,9 +674,7 @@ Sub 執行動作_牌組_回牌_電腦(ByVal n As Integer)
     牌順序增加_手牌_電腦 n
     戰鬥系統類.公用牌變背面
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
 End Sub
 Sub 執行動作_翻牌(ByVal n As Integer)
     FormMainMode.card(n).Width = 810
@@ -697,9 +683,7 @@ Sub 執行動作_翻牌(ByVal n As Integer)
     FormMainMode.card(n).LocationType = 1
     FormMainMode.card(n).CardEventType = False
     FormMainMode.card(n).Visible = True
-    FormMainMode.wmpse4.Controls.stop
-    FormMainMode.wmpse4.Controls.play
-    一般系統類.檢查音樂播放 4
+    一般系統類.音效播放 4
 End Sub
 Sub 座標計算_電腦出牌()
 Dim xy As Long  '暫時變數(首牌Left)
@@ -770,9 +754,7 @@ Sub 執行動作_電腦_棄牌(ByVal n As Integer)
     戰鬥系統類.計算牌移動距離單位
     目前數(15) = 5
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
 End Sub
 Sub 執行動作_洗牌()
 For g = 1 To 公用牌實體卡片分隔紀錄數(2)
@@ -1601,25 +1583,13 @@ End If
 End Sub
 Sub 音量靜音調節設定()
 If Formsetting.cksemute.Value = 1 Then
-   FormMainMode.wmpse1.settings.mute = True
-   FormMainMode.wmpse2.settings.mute = True
-   FormMainMode.wmpse3.settings.mute = True
-   FormMainMode.wmpse4.settings.mute = True
-   FormMainMode.wmpse5.settings.mute = True
-   FormMainMode.wmpse6.settings.mute = True
-   FormMainMode.wmpse7.settings.mute = True
-   FormMainMode.wmpse8.settings.mute = True
-'   FormMainMode.wmpse9.settings.mute = True
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
+        FormMainMode.cMusicPlayer(i).Mute = True
+    Next
 Else
-   FormMainMode.wmpse1.settings.mute = False
-   FormMainMode.wmpse2.settings.mute = False
-   FormMainMode.wmpse3.settings.mute = False
-   FormMainMode.wmpse4.settings.mute = False
-   FormMainMode.wmpse5.settings.mute = False
-   FormMainMode.wmpse6.settings.mute = False
-   FormMainMode.wmpse7.settings.mute = False
-   FormMainMode.wmpse8.settings.mute = False
-'   FormMainMode.wmpse9.settings.mute = False
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
+        FormMainMode.cMusicPlayer(i).Mute = False
+    Next
 End If
 End Sub
 Sub 時間軸_重設()
@@ -1786,9 +1756,7 @@ If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 2 Then
     戰鬥系統類.計算牌移動距離單位
     目前數(15) = 0
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
    '================以下是手牌對齊
    目前數(8) = 0
    目前數(17) = 1
@@ -1903,9 +1871,7 @@ If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
     戰鬥系統類.公用牌變背面
     目前數(15) = 0
     FormMainMode.牌移動.Enabled = True
-    FormMainMode.wmpse1.Controls.stop
-    FormMainMode.wmpse1.Controls.play
-    一般系統類.檢查音樂播放 1
+    一般系統類.音效播放 1
    '================以下是出牌對齊
    目前數(7) = 0
    戰鬥系統類.出牌順序計算_電腦_出牌
@@ -1942,9 +1908,7 @@ pagecardnum(Index, 1) = pagecardnum(Index, 3)
 pagecardnum(Index, 2) = pagecardnum(Index, 4)
 pagecardnum(Index, 3) = uspce
 pagecardnum(Index, 4) = uspme
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 3
 If pageonin(Index) = 1 Then
    pageonin(Index) = 2
 '   FormMainMode.card(Index).Picture = LoadPicture(app_path & "card\" & pagecardnum(Index, 8) & "-" & pageonin(Index) & ".bmp")
@@ -4647,9 +4611,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                 FormMainMode.card(m).ZOrder
                 戰鬥系統類.牌順序增加_手牌_使用者 m
                 FormMainMode.牌移動.Enabled = True
-                FormMainMode.wmpse1.Controls.stop
-                FormMainMode.wmpse1.Controls.play
-                一般系統類.檢查音樂播放 1
+                一般系統類.音效播放 1
             Case 2 '電腦
                 pagecardnum(m, 11) = 0
                 BattleCardNum = BattleCardNum - 1
@@ -4668,9 +4630,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                 FormMainMode.card(m).ZOrder
                 戰鬥系統類.牌順序增加_手牌_電腦 m
                 FormMainMode.牌移動.Enabled = True
-                FormMainMode.wmpse1.Controls.stop
-                FormMainMode.wmpse1.Controls.play
-                一般系統類.檢查音樂播放 1
+                一般系統類.音效播放 1
         End Select
 End If
 End Sub
@@ -5358,8 +5318,7 @@ Select Case turnnum
         FormMainMode.小人物頭像移動_電腦.Enabled = True
         '==============
         階段狀態數 = 1
-        FormMainMode.wmpse6.Controls.play
-        一般系統類.檢查音樂播放 6
+        一般系統類.音效播放 6
         戰鬥系統類.時間軸_重設
         FormMainMode.trtimeline.Enabled = True
     Case 3

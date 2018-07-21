@@ -9,6 +9,7 @@ Public 第一次啟動讀入程序標記 As Boolean '第一次啟動程式讀入程序標記數
 Public 接續讀入表單串 As String 'PEStartForm接續讀入表單暫時紀錄數
 Public 音樂檢查播放目標數 As Integer '音樂檢查播放計數器目標數
 Public 通知表單是否已出現 As Boolean '布勞通知表單是否已經出現暫時變數
+
 Sub 判斷字型_FormMainMode()
 Dim i, a As Integer
 a = 14
@@ -54,9 +55,7 @@ End Sub
 Sub 開始遊戲進行程序()
 Dim i As Integer, m As Integer, n As Integer, u As Integer, personvsp As Integer, perosntempCount As Integer
 Dim personnameg(1 To 2, 1 To 3) As String '人物隨機選擇紀錄數
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 11
 選單使用者事件 = False
 選單電腦事件 = False
 電腦方事件卡是否出完選擇數 = False
@@ -290,7 +289,7 @@ Else
         End If
      End If
     '===============================對戰音樂載入
-    FormMainMode.wmp.Controls.stop
+    FormMainMode.cMusicPlayer(0).MusicStop
     If Formsetting.BGM選擇.Text = "《隨機》" Then
         Randomize
         m = Int(Rnd() * Val(Formsetting.BGM選擇.ListCount - 1)) + 1
@@ -298,31 +297,31 @@ Else
     End If
        Select Case Formsetting.BGM選擇.Text
          Case "舊版"
-           FormMainMode.wmp.URL = app_path & "mp3\ulbgm04.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulbgm04.mp3"
          Case "冰封湖畔(新)"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm003.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm003.mp3"
          Case "人魂墓地"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm004.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm004.mp3"
          Case "萊丁貝魯格城堡"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm000.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm000.mp3"
          Case "誘惑森林"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm001.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm001.mp3"
          Case "垃圾之街"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm002.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm002.mp3"
          Case "盡頭之村"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm005.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm005.mp3"
          Case "風暴荒野"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm006.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm006.mp3"
          Case "魔都羅占布爾克"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm008.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm008.mp3"
          Case "烏波斯的黑湖"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm010.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm010.mp3"
          Case "藩骸兒的遺跡"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm007.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm007.mp3"
          Case "瘋狂山脈"
-           FormMainMode.wmp.URL = app_path & "mp3\bgm009.mp3"
+           FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\bgm009.mp3"
          Case "《其他》"
-           FormMainMode.wmp.URL = Formsetting.lopnmusictext.Caption
+           FormMainMode.cMusicPlayer(0).Filepath = Formsetting.lopnmusictext.Caption
         End Select
       '===========================對戰圖片載入
     If Formsetting.對戰地圖選擇.Text = "《隨機》" Then
@@ -346,11 +345,7 @@ Else
         戰鬥系統類.公用牌地圖牌種類配置 0
     End If
     '=============================================
-    FormMainMode.wmpse1.URL = app_path & "mp3\ulse06.mp3"
-    FormMainMode.wmp.settings.playCount = 99999
-    FormMainMode.wmp.Controls.play
-    一般系統類.檢查音樂播放 0
-    FormMainMode.wmpse1.Controls.stop
+    FormMainMode.cMusicPlayer(0).IsLoop = True
     '=================================================
     戰鬥擲骰介面人物立繪圖路徑紀錄數(1) = VBEPerson(1, 1, 1, 5, 3)
     戰鬥擲骰介面人物立繪圖路徑紀錄數(2) = VBEPerson(2, 1, 1, 5, 3)
@@ -373,6 +368,7 @@ Else
     一般系統類.戰鬥系統開始表單讀入程序
     '===================
     一般系統類.主選單_PEAttackingStartForm顯示
+    FormMainMode.cMusicPlayer(0).MusicPlay
     FormMainMode.PEGameFreeModeSettingForm.Visible = False
 End If
 End Sub
@@ -1272,12 +1268,6 @@ Else
     FormMainMode.move2.Visible = False
 End If
 FormMainMode.顯示列1.顯示列圖片 = app_path & "gif\system\DRAW.png"
-'==================以下是音樂載入
-FormMainMode.wmpse1.URL = app_path & "mp3\ulse06.mp3"
-FormMainMode.wmpse1.Controls.stop
-FormMainMode.wmpse3.URL = app_path & "mp3\ulse08.mp3"
-FormMainMode.wmpse3.Controls.stop
-'===================
 '-----------以下為牌組初始化
 If Formsetting.大亂鬥選項.Value = 1 Then
     For mm = 1 To 3
@@ -1507,8 +1497,8 @@ FormMainMode.opnpersonvs(2).Value = True
 
 
 '一般系統類.判斷字型_formgamesetting
-FormMainMode.wmp.Controls.play
-一般系統類.檢查音樂播放 0
+FormMainMode.cMusicPlayer(0).MusicPlay
+'一般系統類.檢查音樂播放 0
 FormMainMode.personreadifus.Visible = False
 '---------以下是設計物件顯示
 For i = 1 To 3
@@ -1521,39 +1511,15 @@ Next
 End Sub
 Sub 遊戲初始讀入程序()
 '=====以下是背景音樂及SE初始設定
-'  MsgBox "1-5-1-1"
-  FormMainMode.wmp.settings.volume = 40
-  FormMainMode.wmpse1.settings.volume = 20
-  FormMainMode.wmpse2.settings.volume = 20
-  FormMainMode.wmpse3.settings.volume = 20
-  FormMainMode.wmpse4.settings.volume = 20
-  FormMainMode.wmpse5.settings.volume = 20
-  FormMainMode.wmpse6.settings.volume = 20
-  FormMainMode.wmpse7.settings.volume = 20
-  FormMainMode.wmpse8.settings.volume = 20
-'  FormMainMode.wmpse9.settings.volume = 20
-  FormMainMode.wmp.settings.playCount = 99999
-  FormMainMode.wmp.URL = app_path & "mp3\ulbgm03.mp3"
-  FormMainMode.wmp.Controls.stop
-  FormMainMode.wmpse1.URL = app_path & "mp3\ulse22.mp3"
-  FormMainMode.wmpse1.Controls.stop
-  FormMainMode.wmpse2.URL = app_path & "mp3\ulse09.mp3"
-  FormMainMode.wmpse2.Controls.stop
-  FormMainMode.wmpse8.URL = app_path & "mp3\ulse10_f.mp3"
-  FormMainMode.wmpse8.Controls.stop
-  FormMainMode.wmpse3.URL = app_path & "mp3\ulse01.mp3"
-  FormMainMode.wmpse3.Controls.stop
-  FormMainMode.wmpse4.URL = app_path & "mp3\ulse29.mp3"
-  FormMainMode.wmpse4.Controls.stop
-  FormMainMode.wmpse5.URL = app_path & "mp3\ulse13.mp3"
-  FormMainMode.wmpse5.Controls.stop
-  FormMainMode.wmpse6.URL = app_path & "mp3\ulse12.mp3"
-  FormMainMode.wmpse6.Controls.stop
-  FormMainMode.wmpse7.URL = app_path & "mp3\ulse11.mp3"
-  FormMainMode.wmpse7.Controls.stop
-'  FormMainMode.wmpse9.URL = app_path & "mp3\ulse23.mp3"
-'  FormMainMode.wmpse9.Controls.stop
-'  MsgBox "1-5-1-2"
+    For i = 1 To 8
+        Load FormMainMode.cMusicPlayer(i)
+    Next
+    FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulbgm03.mp3"
+    FormMainMode.cMusicPlayer(0).Volume = 50
+    FormMainMode.cMusicPlayer(0).IsLoop = True
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
+          FormMainMode.cMusicPlayer(i).Volume = 45
+    Next
 End Sub
 Sub 主選單_PEStartForm顯示()
 FormMainMode.PEStartForm.Left = 0
@@ -1692,8 +1658,8 @@ End If
 'MsgBox "1-5-3-2"
 End Sub
 Sub 檢查音樂播放(ByVal num As Integer)
-音樂檢查播放目標數 = num
-FormMainMode.PEMtr1.Enabled = True
+'音樂檢查播放目標數 = num
+'FormMainMode.PEMtr1.Enabled = True
 End Sub
 Sub 清除戰鬥系統所有變數值()
 'Erase atkingno '技能發動排序暫時圖片路徑儲存變數(技能發動順序8~1,1.圖片路徑/2.(1)使用者/(2)電腦方/3.Left/4.Top(座標)/5.視窗寬度(Width)/6.視窗高度(Height)/7.技能編號/8.技能執行中時啟動值/9.技能執行中換圖片檢查值/10.第2張圖片路徑)
@@ -1855,4 +1821,35 @@ Select Case num
         FormMessage.Text1.Visible = False
         FormMessage.Show 1
 End Select
+End Sub
+Sub 音效播放(ByVal num As Integer)
+Select Case num
+    Case 1
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse06.mp3"
+    Case 2
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse09.mp3"
+    Case 3
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse08.mp3"
+    Case 4
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse29.mp3"
+    Case 5
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse13.mp3"
+    Case 6
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse12.mp3"
+    Case 7
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse11.mp3"
+    Case 8
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse10_f.mp3"
+    Case 9
+        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse23.mp3"
+    Case 10
+        FormMainMode.cMusicPlayer(1).Filepath = app_path & "mp3\ulse22.mp3"
+        FormMainMode.cMusicPlayer(1).MusicPlay
+        Exit Sub
+    Case 11
+        FormMainMode.cMusicPlayer(3).Filepath = app_path & "mp3\ulse01.mp3"
+        FormMainMode.cMusicPlayer(3).MusicPlay
+        Exit Sub
+End Select
+FormMainMode.cMusicPlayer(num).MusicPlay
 End Sub

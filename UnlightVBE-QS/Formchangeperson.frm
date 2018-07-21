@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form Formchangeperson 
    BackColor       =   &H00000000&
    BorderStyle     =   1  '單線固定
-   Caption         =   "UnlightVBE-交換角色"
+   Caption         =   "交換角色"
    ClientHeight    =   4845
    ClientLeft      =   6690
    ClientTop       =   2535

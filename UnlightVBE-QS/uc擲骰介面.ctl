@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
 Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Begin VB.UserControl uc擲骰介面 
    Appearance      =   0  '平面
@@ -50,38 +49,15 @@ Begin VB.UserControl uc擲骰介面
       Left            =   2400
       Top             =   600
    End
-   Begin WMPLibCtl.WindowsMediaPlayer wmp 
-      Height          =   480
+   Begin UnlightVBE.ucMusicPlayer ucMusicPlayer 
+      Height          =   735
       Index           =   0
       Left            =   1080
       TabIndex        =   0
-      Top             =   6720
-      Width           =   720
-      URL             =   ""
-      rate            =   1
-      balance         =   0
-      currentPosition =   0
-      defaultFrame    =   ""
-      playCount       =   1
-      autoStart       =   0   'False
-      currentMarker   =   0
-      invokeURLs      =   -1  'True
-      baseURL         =   ""
-      volume          =   50
-      mute            =   0   'False
-      uiMode          =   "invisible"
-      stretchToFit    =   0   'False
-      windowlessVideo =   0   'False
-      enabled         =   -1  'True
-      enableContextMenu=   -1  'True
-      fullScreen      =   0   'False
-      SAMIStyle       =   ""
-      SAMILang        =   ""
-      SAMIFilename    =   ""
-      captioningID    =   ""
-      enableErrorDialogs=   0   'False
-      _cx             =   1270
-      _cy             =   847
+      Top             =   6960
+      Width           =   1575
+      _ExtentX        =   2778
+      _ExtentY        =   1296
    End
    Begin ImageX.aicAlphaImage dicemini1 
       Height          =   375
@@ -315,30 +291,12 @@ Public Property Let DiceStart(ByVal New_DiceStart As Boolean)
              dice2(i).Opacity = 0
              dice2(i).Visible = False
          Next
-'         If Me.diceusTotal >= Me.dicecomTotal Then
-'             For i = 1 To Me.diceusTotal - 1
-'                Load wmp(i)
-'                wmp(i).URL = App.Path & "\mp3\ulse07.mp3"
-'                wmp(i).settings.volume = Me.dicevoice
-'                wmp(i).settings.playCount = 1
-'                wmp(i).Controls.stop
-'              Next
-'         Else
-'              For i = 1 To Me.dicecomTotal - 1
-'                Load wmp(i)
-'                wmp(i).URL = App.Path & "\mp3\ulse07.mp3"
-'                wmp(i).settings.volume = Me.dicevoice
-'                wmp(i).settings.playCount = 1
-'                wmp(i).Controls.stop
-'              Next
-'         End If
-          For i = 1 To 5
-              Load wmp(i)
-              wmp(i).URL = App.Path & "\mp3\ulse07.mp3"
-              wmp(i).settings.volume = Me.dicevoice
-              wmp(i).settings.playCount = 1
-              wmp(i).Controls.stop
+          For i = 1 To 4
+                Load ucMusicPlayer(i)
+                ucMusicPlayer(i).Filepath = App.Path & "\mp3\ulse07.mp3"
+                ucMusicPlayer(i).IsLoop = False
           Next
+          Call AdjustVolume
          '=========================
          Call 排列骰子版面
          trpersonshowoff.Enabled = True
@@ -406,6 +364,7 @@ Public Property Let PersonImageLeftZero(ByVal New_PersonImageLeftZero As Boolean
    m_PersonImageLeftZero = New_PersonImageLeftZero
    PropertyChanged "PersonImageLeftZero"
 End Property
+
 Private Sub trdiceoff_all_Timer()
 Dim i As Integer
 If TrDiceOffAllNum1 >= 130 Then
@@ -521,16 +480,15 @@ End Sub
 
 Private Sub trdiceshow_tot_Timer()
 Dim i As Integer
+Dim CurState As Long
 If TrDiceShowTotalNum2 >= 100 Then
     TrDiceShowTotalNum2 = 0
     '====================
-'    If TrDiceShowTotalNum1 + 1 <= wmp.UBound Then
-'        wmp(TrDiceShowTotalNum1).Controls.play
-'    End If
-    If (TrDiceShowTotalNum1 + 1 <= Me.diceusTotal And Me.diceusTotal >= Me.dicecomTotal) Or _
-        (TrDiceShowTotalNum1 + 1 <= Me.dicecomTotal And Me.diceusTotal < Me.dicecomTotal) Then
-        wmp((Val(TrDiceShowTotalNum1) Mod 5) + 1).Controls.stop
-        wmp((Val(TrDiceShowTotalNum1) Mod 5) + 1).Controls.play
+    If (TrDiceShowTotalNum1 + 3 <= Me.diceusTotal And Me.diceusTotal >= Me.dicecomTotal) Or _
+        (TrDiceShowTotalNum1 + 3 <= Me.dicecomTotal And Me.diceusTotal < Me.dicecomTotal) Or _
+        TrDiceShowTotalNum1 = 0 Then
+        ucMusicPlayer((Val(TrDiceShowTotalNum1) Mod 4) + 1).MusicStop
+        ucMusicPlayer((Val(TrDiceShowTotalNum1) Mod 4) + 1).MusicPlay
     End If
     '====================
     TrDiceShowTotalNum1 = TrDiceShowTotalNum1 + 1
@@ -619,9 +577,6 @@ Exit Sub
 TrOff1:
 trpersonshowoff.Enabled = False
 trdiceshow_tot.Enabled = True
-'===========
-wmp(1).Controls.play
-'===========
 '===========================
 Exit Sub
 TrOff2:
@@ -773,8 +728,12 @@ Next
 For i = 1 To dice2.UBound
     Unload dice2(i)
 Next
-For i = 1 To wmp.UBound
-    Unload wmp(i)
+For i = 1 To ucMusicPlayer.UBound
+    Unload ucMusicPlayer(i)
 Next
 End Sub
-
+Private Sub AdjustVolume()
+For i = 1 To ucMusicPlayer.UBound
+    ucMusicPlayer(i).Volume = Me.dicevoice
+Next
+End Sub
