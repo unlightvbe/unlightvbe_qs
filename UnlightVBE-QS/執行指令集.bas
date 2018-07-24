@@ -2088,6 +2088,7 @@ Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As I
                     Close
                     If str <> "" Then
                         FormMainMode.PEAFvssc((uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48).AddCode str
+                        If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 (uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48
                     End If
                     vsstr = FormMainMode.PEAFvssc((uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48).Run("main", 1)
                     If vsstr = commadstr3(2) Then

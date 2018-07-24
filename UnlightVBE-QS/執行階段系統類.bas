@@ -275,7 +275,13 @@ End Function
 Function 執行階段系統_執行腳本_人物主動技能類(ByVal atkingnum As Integer, ByVal ns As Integer, ByVal uscom As Integer, ByVal personnum As Integer) As String
    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
 VssAdminReTry:
-   執行階段系統_執行腳本_人物主動技能類 = FormMainMode.PEAFvssc((uscom - 1) * 12 + (4 * personnum - 4) + atkingnum).Run("atking", ns, VBEPersonVS, VBEPageCardNumVS, atkingpagetotVS, VBEPersonBuffVSF, VBEPersonBuffVSS, AtkingckVSS, AtkingckVSF, VBEAtkingVSF, VBEAtkingVSS, VBEActualStatusVS, VBEVSStageNum)
+    If 一般系統類.ProgramIsOnWine = True Then
+        Dim wineObj As New clsWineobj
+        執行階段系統_wine變數統合資料物件寫入 wineObj, ns, 0
+        執行階段系統_執行腳本_人物主動技能類 = FormMainMode.PEAFvssc((uscom - 1) * 12 + (4 * personnum - 4) + atkingnum).Run("WineEntryPoint", wineObj)
+    Else
+        執行階段系統_執行腳本_人物主動技能類 = FormMainMode.PEAFvssc((uscom - 1) * 12 + (4 * personnum - 4) + atkingnum).Run("atking", ns, VBEPersonVS, VBEPageCardNumVS, atkingpagetotVS, VBEPersonBuffVSF, VBEPersonBuffVSS, AtkingckVSS, AtkingckVSF, VBEAtkingVSF, VBEAtkingVSS, VBEActualStatusVS, VBEVSStageNum)
+    End If
 '=====================================
 Exit Function
 '===========
@@ -293,9 +299,15 @@ End Function
 Function 執行階段系統_執行腳本_人物被動技能類(ByVal atkingnum As Integer, ByVal ns As Integer, ByVal uscom As Integer, ByVal personnum As Integer, ByVal PassivePersonType As Integer) As String
    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
 VssAdminReTry:
-   Dim PassivePersonTypeVSS As Variant
-   PassivePersonTypeVSS = PassivePersonType
-   執行階段系統_執行腳本_人物被動技能類 = FormMainMode.PEAFvssc((uscom - 1) * 12 + (4 * personnum - 4) + (atkingnum - 4) + 24).Run("passive", ns, VBEPersonVS, VBEPageCardNumVS, atkingpagetotVS, VBEPersonBuffVSF, VBEPersonBuffVSS, AtkingckVSS, AtkingckVSF, VBEAtkingVSF, VBEAtkingVSS, VBEActualStatusVS, PassivePersonTypeVSS, VBEVSStageNum)
+    Dim PassivePersonTypeVSS As Variant
+    PassivePersonTypeVSS = PassivePersonType
+    If 一般系統類.ProgramIsOnWine = True Then
+        Dim wineObj As New clsWineobj
+        執行階段系統_wine變數統合資料物件寫入 wineObj, ns, PassivePersonType
+        執行階段系統_執行腳本_人物被動技能類 = FormMainMode.PEAFvssc((uscom - 1) * 12 + (4 * personnum - 4) + (atkingnum - 4) + 24).Run("WineEntryPoint", wineObj)
+    Else
+        執行階段系統_執行腳本_人物被動技能類 = FormMainMode.PEAFvssc((uscom - 1) * 12 + (4 * personnum - 4) + (atkingnum - 4) + 24).Run("passive", ns, VBEPersonVS, VBEPageCardNumVS, atkingpagetotVS, VBEPersonBuffVSF, VBEPersonBuffVSS, AtkingckVSS, AtkingckVSF, VBEAtkingVSF, VBEAtkingVSS, VBEActualStatusVS, PassivePersonTypeVSS, VBEVSStageNum)
+    End If
 '=====================================
 Exit Function
 '===========
@@ -316,7 +328,13 @@ Function 執行階段系統_執行腳本_異常狀態類(ByVal vssnum As Integer, ByVal ns As I
 VssAdminReTry:
     Dim BuffPersonTypeVSS As Variant
     BuffPersonTypeVSS = BuffPersonType
-    執行階段系統_執行腳本_異常狀態類 = FormMainMode.PEAFvssc(vssnum).Run("buff", ns, atkingpagetotVS, VBEAtkingVSF, VBEAtkingVSS, VBEVSBuffNum, BuffPersonTypeVSS, VBEVSStageNum)
+    If 一般系統類.ProgramIsOnWine = True Then
+        Dim wineObj As New clsWineobj
+        執行階段系統_wine變數統合資料物件寫入 wineObj, ns, BuffPersonType
+        執行階段系統_執行腳本_異常狀態類 = FormMainMode.PEAFvssc(vssnum).Run("WineEntryPoint", wineObj)
+    Else
+        執行階段系統_執行腳本_異常狀態類 = FormMainMode.PEAFvssc(vssnum).Run("buff", ns, atkingpagetotVS, VBEAtkingVSF, VBEAtkingVSS, VBEVSBuffNum, BuffPersonTypeVSS, VBEVSStageNum)
+    End If
 '=====================================
 Exit Function
 '===========
@@ -336,7 +354,13 @@ Function 執行階段系統_執行腳本_人物實際狀態類(ByVal vssnum As Integer, ByVal ns 
 VssAdminReTry:
     Dim ActualStatusPersonTypeVSS As Variant
     ActualStatusPersonTypeVSS = ActualStatusPersonType
-    執行階段系統_執行腳本_人物實際狀態類 = FormMainMode.PEAFvssc(vssnum).Run("ActualStatus", ns, VBEPersonVS, VBEPageCardNumVS, atkingpagetotVS, VBEPersonBuffVSF, VBEPersonBuffVSS, VBEAtkingVSF, VBEAtkingVSS, ActualStatusPersonTypeVSS, VBEVSStageNum)
+    If 一般系統類.ProgramIsOnWine = True Then
+        Dim wineObj As New clsWineobj
+        執行階段系統_wine變數統合資料物件寫入 wineObj, ns, ActualStatusPersonType
+        執行階段系統_執行腳本_人物實際狀態類 = FormMainMode.PEAFvssc(vssnum).Run("WineEntryPoint", wineObj)
+    Else
+        執行階段系統_執行腳本_人物實際狀態類 = FormMainMode.PEAFvssc(vssnum).Run("ActualStatus", ns, VBEPersonVS, VBEPageCardNumVS, atkingpagetotVS, VBEPersonBuffVSF, VBEPersonBuffVSS, VBEAtkingVSF, VBEAtkingVSS, ActualStatusPersonTypeVSS, VBEVSStageNum)
+    End If
 '=====================================
 Exit Function
 '===========
@@ -728,6 +752,7 @@ Do
                     Close
                     If str <> "" Then
                         FormMainMode.PEAFvssc((uscomn - 1) * 12 + (4 * pnnum - 4) + atknum).AddCode str
+                        If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 (uscomn - 1) * 12 + (4 * pnnum - 4) + atknum
                     End If
                 End If
                 atknum = atknum + 1
@@ -753,6 +778,7 @@ Do
                     Close
                     If str <> "" Then
                         FormMainMode.PEAFvssc((uscomn - 1) * 12 + (4 * pnnum - 4) + atknum + 24).AddCode str
+                        If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 (uscomn - 1) * 12 + (4 * pnnum - 4) + atknum + 24
                     End If
                 End If
                 atknum = atknum + 1
@@ -779,6 +805,7 @@ Do
                 Close
                 If str <> "" Then
                     FormMainMode.PEAFvssc(tot).AddCode str
+                    If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 tot
                 End If
                 buffnum = buffnum + 1
     End Select
@@ -1089,4 +1116,34 @@ End Function
 Sub 執行階段系統_錯誤訊息通知(ByVal num As Integer, ByVal num1 As String)
 MsgBox "執行階段錯誤(03-" & num & "-" & num1 & ")：" & Chr(10) & "系統於讀取及解釋腳本指令時發生錯誤。" & Chr(10) & Chr(10) & "(" & Err.Number & "):" & Err.Description, vbCritical
 End
+End Sub
+Sub 執行階段系統_加入Wine程式進入點(ByVal num As Integer)
+Dim strcode As String
+Select Case num
+         Case Is <= 24
+            strcode = "Function WineEntryPoint(wineObj)" & vbCrLf & "WineEntryPoint = atking(wineObj.oNs, wineObj.GetArray(""VBEPersonVS""), wineObj.GetArray(""VBEPageCardNumVS""), wineObj.GetArray(""AtkingPagetotVS""), wineObj.GetArray(""VBEPersonBuffVSF""), wineObj.GetArray(""VBEPersonBuffVSS""), wineObj.GetArray(""AtkingckVSS""), wineObj.GetArray(""AtkingckVSF""), wineObj.GetArray(""VBEAtkingVSF""), wineObj.GetArray(""VBEAtkingVSS""), wineObj.GetArray(""VBEActualStatusVS""), wineObj.GetArray(""VBEVSStageNum""))" & vbCrLf & "End Function"
+         Case Is <= 48
+            strcode = "Function WineEntryPoint(wineObj)" & vbCrLf & "WineEntryPoint = passive(wineObj.oNs, wineObj.GetArray(""VBEPersonVS""), wineObj.GetArray(""VBEPageCardNumVS""), wineObj.GetArray(""AtkingPagetotVS""), wineObj.GetArray(""VBEPersonBuffVSF""), wineObj.GetArray(""VBEPersonBuffVSS""), wineObj.GetArray(""AtkingckVSS""), wineObj.GetArray(""AtkingckVSF""), wineObj.GetArray(""VBEAtkingVSF""), wineObj.GetArray(""VBEAtkingVSS""), wineObj.GetArray(""VBEActualStatusVS""), wineObj.oPersonType, wineObj.GetArray(""VBEVSStageNum""))" & vbCrLf & "End Function"
+         Case Is <= 54
+            strcode = "Function WineEntryPoint(wineObj)" & vbCrLf & "WineEntryPoint = ActualStatus(wineObj.oNs, wineObj.GetArray(""VBEPersonVS""), wineObj.GetArray(""VBEPageCardNumVS""), wineObj.GetArray(""AtkingPagetotVS""), wineObj.GetArray(""VBEPersonBuffVSF""), wineObj.GetArray(""VBEPersonBuffVSS""), wineObj.GetArray(""VBEAtkingVSF""), wineObj.GetArray(""VBEAtkingVSS""), wineObj.oPersonType, wineObj.GetArray(""VBEVSStageNum""))" & vbCrLf & "End Function"
+         Case Else
+            strcode = "Function WineEntryPoint(wineObj)" & vbCrLf & "WineEntryPoint = buff(wineObj.oNs, wineObj.GetArray(""AtkingPagetotVS""), wineObj.GetArray(""VBEAtkingVSF""), wineObj.GetArray(""VBEAtkingVSS""), wineObj.GetArray(""VBEVSBuffNum""), wineObj.oPersonType, wineObj.GetArray(""VBEVSStageNum""))" & vbCrLf & "End Function"
+End Select
+FormMainMode.PEAFvssc(num).AddCode strcode
+End Sub
+Sub 執行階段系統_wine變數統合資料物件寫入(ByRef wineObj As clsWineobj, ByVal ns As Integer, ByVal persontype As Integer)
+wineObj.oNs = ns
+wineObj.oPersonType = persontype
+wineObj.AddInformation "VBEAtkingVSF", 執行階段系統類.VBEAtkingVSF
+wineObj.AddInformation "VBEAtkingVSS", 執行階段系統類.VBEAtkingVSS
+wineObj.AddInformation "AtkingPagetotVS", 執行階段系統類.atkingpagetotVS
+wineObj.AddInformation "VBEPersonVS", 執行階段系統類.VBEPersonVS
+wineObj.AddInformation "VBEPageCardNumVS", 執行階段系統類.VBEPageCardNumVS
+wineObj.AddInformation "AtkingckVSS", 執行階段系統類.AtkingckVSS
+wineObj.AddInformation "AtkingckVSF", 執行階段系統類.AtkingckVSF
+wineObj.AddInformation "VBEPersonBuffVSF", 執行階段系統類.VBEPersonBuffVSF
+wineObj.AddInformation "VBEPersonBuffVSS", 執行階段系統類.VBEPersonBuffVSS
+wineObj.AddInformation "VBEActualStatusVS", 執行階段系統類.VBEActualStatusVS
+wineObj.AddInformation "VBEVSBuffNum", 執行階段系統類.VBEVSBuffNum
+wineObj.AddInformation "VBEVSStageNum", 執行階段系統類.VBEVSStageNum
 End Sub

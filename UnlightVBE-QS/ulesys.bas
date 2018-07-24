@@ -9,6 +9,7 @@ Public 第一次啟動讀入程序標記 As Boolean '第一次啟動程式讀入程序標記數
 Public 接續讀入表單串 As String 'PEStartForm接續讀入表單暫時紀錄數
 Public 音樂檢查播放目標數 As Integer '音樂檢查播放計數器目標數
 Public 通知表單是否已出現 As Boolean '布勞通知表單是否已經出現暫時變數
+Public ProgramIsOnWine As Boolean '程式是否處於Wine環境下執行
 
 Sub 判斷字型_FormMainMode()
 Dim i, a As Integer

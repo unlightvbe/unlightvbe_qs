@@ -46,8 +46,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
+         _ExtentX        =   2355
+         _ExtentY        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
@@ -57,8 +57,8 @@ Begin VB.Form FormMainMode
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
+         _ExtentX        =   2355
+         _ExtentY        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -10536,6 +10536,14 @@ Private Sub Form_Load()
 app_path = App.Path
 If Right$(app_path, 1) <> "\" Then app_path = app_path & "\"
 '==============
+Dim cmstr() As String
+
+cmstr = Split(Command$, "/")
+If UBound(cmstr) > 0 Then
+    For i = 0 To UBound(cmstr)
+        If cmstr(i) = "wine" Then 一般系統類.ProgramIsOnWine = True
+    Next
+End If
 一般系統類.判斷字型_FormMainMode
 一般系統類.主選單_PEStartForm顯示
 End Sub
