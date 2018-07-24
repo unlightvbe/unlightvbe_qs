@@ -1,7 +1,6 @@
 VERSION 5.00
 Begin VB.Form Form9 
    BorderStyle     =   1  '單線固定
-   Caption         =   "UnlightVBE-QS系統提示"
    ClientHeight    =   2805
    ClientLeft      =   3360
    ClientTop       =   4395
@@ -93,9 +92,7 @@ Private Sub bne_Click()
 Form9.Visible = False
 'form7.Enabled = True
 'form7.Show
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 11
 選單使用者事件 = True
 選單電腦事件 = True
 FormMainMode.PEGameFreeModeSettingForm.Enabled = True
@@ -105,9 +102,7 @@ Private Sub bnet_Click()
 Form9.Visible = False
 'form7.Enabled = True
 'form7.Show
-FormMainMode.wmpse3.Controls.stop
-FormMainMode.wmpse3.Controls.play
-一般系統類.檢查音樂播放 3
+一般系統類.音效播放 11
 'Formgamesetting.Enabled = True
 選單使用者事件 = True
 選單電腦事件 = True

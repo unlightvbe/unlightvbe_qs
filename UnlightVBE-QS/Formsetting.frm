@@ -1223,8 +1223,8 @@ Begin VB.Form Formsetting
             LargeChange     =   10
             Min             =   1
             Max             =   100
-            SelStart        =   40
-            Value           =   40
+            SelStart        =   50
+            Value           =   50
          End
          Begin ComctlLib.Slider sdrse 
             Height          =   495
@@ -1238,8 +1238,8 @@ Begin VB.Form Formsetting
             LargeChange     =   10
             Min             =   1
             Max             =   100
-            SelStart        =   20
-            Value           =   20
+            SelStart        =   50
+            Value           =   45
          End
          Begin ComctlLib.ImageList ImageListback 
             Left            =   3000
@@ -1313,7 +1313,7 @@ Begin VB.Form Formsetting
          Begin VB.Label bgmve 
             Alignment       =   1  '¾a¥k¹ï»ô
             BackStyle       =   0  '³z©ú
-            Caption         =   "40"
+            Caption         =   "50"
             Height          =   375
             Left            =   7320
             TabIndex        =   121
@@ -1323,7 +1323,7 @@ Begin VB.Form Formsetting
          Begin VB.Label seve 
             Alignment       =   1  '¾a¥k¹ï»ô
             BackStyle       =   0  '³z©ú
-            Caption         =   "20"
+            Caption         =   "45"
             Height          =   375
             Left            =   7320
             TabIndex        =   120
@@ -2309,9 +2309,9 @@ End Sub
 
 Private Sub ckbgmmute_Click()
 If ckbgmmute.Value = 1 Then
-   FormMainMode.wmp.settings.mute = True
+   FormMainMode.cMusicPlayer(0).Mute = True
 Else
-   FormMainMode.wmp.settings.mute = False
+   FormMainMode.cMusicPlayer(0).Mute = False
 End If
 End Sub
 
@@ -2325,25 +2325,13 @@ End Sub
 
 Private Sub cksemute_Click()
 If cksemute.Value = 1 Then
-   FormMainMode.wmpse1.settings.mute = True
-   FormMainMode.wmpse2.settings.mute = True
-   FormMainMode.wmpse3.settings.mute = True
-   FormMainMode.wmpse4.settings.mute = True
-   FormMainMode.wmpse5.settings.mute = True
-   FormMainMode.wmpse6.settings.mute = True
-   FormMainMode.wmpse7.settings.mute = True
-   FormMainMode.wmpse8.settings.mute = True
-'   FormMainMode.wmpse9.settings.mute = True
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
+        FormMainMode.cMusicPlayer(i).Mute = True
+    Next
 Else
-   FormMainMode.wmpse1.settings.mute = False
-   FormMainMode.wmpse2.settings.mute = False
-   FormMainMode.wmpse3.settings.mute = False
-   FormMainMode.wmpse4.settings.mute = False
-   FormMainMode.wmpse5.settings.mute = False
-   FormMainMode.wmpse6.settings.mute = False
-   FormMainMode.wmpse7.settings.mute = False
-   FormMainMode.wmpse8.settings.mute = False
-'   FormMainMode.wmpse9.settings.mute = False
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
+        FormMainMode.cMusicPlayer(i).Mute = False
+    Next
 End If
 End Sub
 
@@ -2867,7 +2855,7 @@ End Sub
 
 Private Sub sdrbgm_Scroll()
 bgmve.Caption = sdrbgm.Value
-FormMainMode.wmp.settings.volume = sdrbgm.Value
+FormMainMode.cMusicPlayer(0).Volume = sdrbgm.Value
 End Sub
 
 Private Sub sdrse_Change()
@@ -2876,21 +2864,10 @@ End Sub
 
 Private Sub sdrse_Scroll()
 seve.Caption = sdrse.Value
-FormMainMode.wmpse1.settings.volume = sdrse.Value
-FormMainMode.wmpse2.settings.volume = sdrse.Value
-FormMainMode.wmpse3.settings.volume = sdrse.Value
-FormMainMode.wmpse4.settings.volume = sdrse.Value
-FormMainMode.wmpse5.settings.volume = sdrse.Value
-FormMainMode.wmpse6.settings.volume = sdrse.Value
-FormMainMode.wmpse7.settings.volume = sdrse.Value
-FormMainMode.wmpse8.settings.volume = sdrse.Value
-'FormMainMode.wmpse9.settings.volume = sdrse.Value
+For i = 1 To FormMainMode.cMusicPlayer.UBound
+    FormMainMode.cMusicPlayer(i).Volume = sdrse.Value
+Next
 End Sub
-
-
-
-
-
 Private Sub t1_Click(PreviousTab As Integer)
 Select Case t1.Tab
      Case 0
