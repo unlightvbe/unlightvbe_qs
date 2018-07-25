@@ -22,6 +22,19 @@ ___
 命令列輸入：```git config --global core.autocrlf false```
 ___
 
+## Linux Wine 環境配置（試驗）  
+#### PlayOnLinux 
+1. install PlayOnLinux
+2. 新增虛擬磁碟(32 bits installation)
+3. 安裝套件: vbrun6, wsh57, quartz
+4. 將UnlightVBE-QS遊戲資料夾複製到該虛擬磁碟上
+5. 將ttf內所有字體複製至`windows/fonts`內
+6. 將`COMCTL32.OCX`/`COMDLG32.OCX`/`Imagex.ocx`/`TABCTL32.OCX`/`msscript.ocx`覆蓋至`windows/system32`內
+7. PlayOnLinux設定: 建立新的捷徑>`UnlightVBE-QS.exe`, 程式設定: 參數>```/wine```
+8. 配置wine: 版本>`Windows XP`, 函式庫>`quartz`:原生, `winegstreamer`:停用
+9. 執行，請耐心等待。
+10. 若成功進入loading畫面卻閃退者可能是因為wine字體編碼問題，請Google: `wine big5`
+
 ## 遊戲簡介
 
 ![ULVBE_logo](http://3.bp.blogspot.com/-TyrMtORJqrE/UhzAREQ4twI/AAAAAAAAABQ/nUKTAy2q7e8/s1600/unlightvbelong.jpg "ULVBE logo")  
