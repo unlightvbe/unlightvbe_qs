@@ -6,7 +6,7 @@ Public VBEPersonBuffVSS(1 To 2, 1 To 3, 1 To 14) As Variant '異常狀態資料-VS-S版
 Public AtkingckVSS(1 To 8, 1 To 3) As Variant  '技能資訊一覽-S版(技能啟動碼)
 Public AtkingckVSF(1 To 8, 1 To 1) As Variant '技能資訊一覽-F版(備註字串)
 Public VBEAtkingVSF(1 To 2, 1 To 3, 1 To 2) As Variant 'VBE>VS給予變數統一資料-F版
-Public VBEAtkingVSS(0 To 18) As Variant 'VBE>VS給予變數統一資料-S版
+Public VBEAtkingVSS(0 To 20) As Variant 'VBE>VS給予變數統一資料-S版
 'Public VBEPageCardNumVS(1 To 106, 1 To 6) As Variant '公用牌資料-VS版
 Public VBEPageCardNumVS() As Variant '公用牌資料-VS版
 Public VBEVSBuffNum(1 To 2) As Variant '異常狀態專用-異常狀態之2個數值-VS版
@@ -504,6 +504,8 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
             VBEAtkingVSS(16) = moveturn
             VBEAtkingVSS(17) = 角色人物對戰人數(1, 1)
             VBEAtkingVSS(18) = 角色人物對戰人數(2, 1)
+            VBEAtkingVSS(19) = 牌總階段數(1)
+            VBEAtkingVSS(20) = 牌總階段數(2)
             Select Case turnatk
                 Case 1
                     VBEAtkingVSS(12) = 3
@@ -671,6 +673,8 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
             If moveturn = 2 Then VBEAtkingVSS(16) = 1 Else VBEAtkingVSS(16) = 2
             VBEAtkingVSS(17) = 角色人物對戰人數(2, 1)
             VBEAtkingVSS(18) = 角色人物對戰人數(1, 1)
+            VBEAtkingVSS(19) = 牌總階段數(2)
+            VBEAtkingVSS(20) = 牌總階段數(1)
             Select Case turnatk
                 Case 1
                     VBEAtkingVSS(12) = 4

@@ -1494,6 +1494,7 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                 VBEAtkingVSF(2, i, 2) = livecommax(角色待機人物紀錄數(2, i))
             Next
             '========================
+            VBEAtkingVSS(0) = 1
             VBEAtkingVSS(1) = cardAInumuscom
             VBEAtkingVSS(2) = 0
             VBEAtkingVSS(3) = pageqlead(2)
@@ -1505,12 +1506,14 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                 VBEAtkingVSS(8) = Val(攻擊防禦骰子總數(2))
                 VBEAtkingVSS(14) = 擲骰表單溝通暫時變數(5)
                 VBEAtkingVSS(15) = 擲骰表單溝通暫時變數(6)
+                VBEAtkingVSS(16) = moveturn
             Else
                 VBEAtkingVSS(5) = 0
                 VBEAtkingVSS(7) = 0
                 VBEAtkingVSS(8) = 0
                 VBEAtkingVSS(14) = 0
                 VBEAtkingVSS(15) = 0
+                VBEAtkingVSS(16) = 1
             End If
             VBEAtkingVSS(9) = BattleTurn
             VBEAtkingVSS(10) = app_path
@@ -1529,6 +1532,10 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                     VBEAtkingVSS(12) = 0
                     VBEAtkingVSS(13) = 0
              End Select
+             VBEAtkingVSS(17) = 角色人物對戰人數(1, 1)
+             VBEAtkingVSS(18) = 角色人物對戰人數(2, 1)
+             VBEAtkingVSS(19) = 牌總階段數(1)
+             VBEAtkingVSS(20) = 牌總階段數(2)
              '=========================
              For i = 1 To UBound(VBEStageNumMain)
                  If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
@@ -1647,6 +1654,7 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                 VBEAtkingVSF(1, i, 2) = livecommax(角色待機人物紀錄數(2, i))
             Next
             '========================
+            VBEAtkingVSS(0) = 1
             VBEAtkingVSS(1) = cardAInumuscom
             VBEAtkingVSS(2) = 0
             VBEAtkingVSS(3) = pageqlead(1)
@@ -1658,12 +1666,14 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                 VBEAtkingVSS(8) = Val(攻擊防禦骰子總數(1))
                 VBEAtkingVSS(14) = 擲骰表單溝通暫時變數(6)
                 VBEAtkingVSS(15) = 擲骰表單溝通暫時變數(5)
+                If moveturn = 2 Then VBEAtkingVSS(16) = 1 Else VBEAtkingVSS(16) = 2
             Else
                 VBEAtkingVSS(5) = 0
                 VBEAtkingVSS(7) = 0
                 VBEAtkingVSS(8) = 0
                 VBEAtkingVSS(14) = 0
                 VBEAtkingVSS(15) = 0
+                VBEAtkingVSS(16) = 1
             End If
             VBEAtkingVSS(9) = BattleTurn
             VBEAtkingVSS(10) = app_path
@@ -1682,6 +1692,10 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                     VBEAtkingVSS(12) = 0
                     VBEAtkingVSS(13) = 0
              End Select
+             VBEAtkingVSS(17) = 角色人物對戰人數(2, 1)
+             VBEAtkingVSS(18) = 角色人物對戰人數(1, 1)
+             VBEAtkingVSS(19) = 牌總階段數(2)
+             VBEAtkingVSS(20) = 牌總階段數(1)
              '=========================
              For i = 1 To UBound(VBEStageNumMain)
                  If VBEStageNumMain(i) = -1 Then
