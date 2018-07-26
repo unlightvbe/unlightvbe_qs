@@ -2028,17 +2028,25 @@ End Select
 戰鬥系統類.骰量更新顯示
 End Sub
 Sub 骰數零執行判斷()
-'==無介面表示，需自行擲骰
-  For p = 1 To 擲骰表單溝通暫時變數(9)
-     Randomize Timer
-     i = Int(Rnd() * 6) + 1
-     If i = 1 Or i = 6 Then 擲骰表單溝通暫時變數(5) = Val(擲骰表單溝通暫時變數(5)) + 1
-  Next
-  For p = 1 To 擲骰表單溝通暫時變數(10)
-     Randomize Timer
-     j = Int(Rnd() * 6) + 1
-     If j = 1 Or j = 6 Then 擲骰表單溝通暫時變數(6) = Val(擲骰表單溝通暫時變數(6)) + 1
-  Next
+    Dim ustruenum As Integer, comtruenum As Integer
+    '==無介面表示，需自行擲骰
+    For p = 1 To 擲骰表單溝通暫時變數(9)
+       Randomize Timer
+       i = Int(Rnd() * 6) + 1
+       If i = 1 Or i = 6 Then ustruenum = ustruenum + 1
+    Next
+    For p = 1 To 擲骰表單溝通暫時變數(10)
+        Randomize Timer
+        j = Int(Rnd() * 6) + 1
+        If j = 1 Or j = 6 Then comtruenum = comtruenum + 1
+    Next
+    If 是否系統公骰 = True Then
+        擲骰表單溝通暫時變數(5) = ustruenum
+        擲骰表單溝通暫時變數(6) = comtruenum
+    Else
+        Vss_BattleStartDiceNum(3) = ustruenum
+        Vss_BattleStartDiceNum(4) = comtruenum
+    End If
 End Sub
 Sub 擲骰表單顯示()
 If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
@@ -2118,14 +2126,17 @@ FormMainMode.bloodnumcom1.ZOrder
 FormMainMode.bloodnumcom2.ZOrder
 End Sub
 Sub 擲骰後續判斷()
-If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
-    擲骰表單溝通暫時變數(5) = Val(FormMainMode.PEAFDiceInterface.diceusTrue)
-    擲骰表單溝通暫時變數(6) = Val(FormMainMode.PEAFDiceInterface.dicecomTrue)
-End If
 If 是否系統公骰 = True Then
-    擲骰表單溝通暫時變數(7) = 擲骰表單溝通暫時變數(5)
-    擲骰表單溝通暫時變數(8) = 擲骰表單溝通暫時變數(6)
+    If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
+        擲骰表單溝通暫時變數(5) = Val(FormMainMode.PEAFDiceInterface.diceusTrue)
+        擲骰表單溝通暫時變數(6) = Val(FormMainMode.PEAFDiceInterface.dicecomTrue)
+    End If
     FormMainMode.骰子執行完啟動.Enabled = True
+Else
+    If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
+        Vss_BattleStartDiceNum(3) = Val(FormMainMode.PEAFDiceInterface.diceusTrue)
+        Vss_BattleStartDiceNum(4) = Val(FormMainMode.PEAFDiceInterface.dicecomTrue)
+    End If
 End If
 '=====================================================
 If Val(擲骰表單溝通暫時變數(4)) = 1 Then
@@ -2146,13 +2157,21 @@ End If
 '==========================================
 Exit Sub
 usatkcom:
-  擲骰表單溝通暫時變數(2) = 擲骰表單溝通暫時變數(5) - 擲骰表單溝通暫時變數(6)
-  擲骰表單溝通暫時變數(3) = 2
+    If 是否系統公骰 = True Then
+        擲骰表單溝通暫時變數(2) = 擲骰表單溝通暫時變數(5) - 擲骰表單溝通暫時變數(6)
+        擲骰表單溝通暫時變數(3) = 2
+    Else
+        Vss_BattleStartDiceNum(5) = Vss_BattleStartDiceNum(3) - Vss_BattleStartDiceNum(4)
+    End If
 '==========================================
 Exit Sub
 comatkus:
-  擲骰表單溝通暫時變數(2) = 擲骰表單溝通暫時變數(6) - 擲骰表單溝通暫時變數(5)
-  擲骰表單溝通暫時變數(3) = 1
+    If 是否系統公骰 = True Then
+        擲骰表單溝通暫時變數(2) = 擲骰表單溝通暫時變數(6) - 擲骰表單溝通暫時變數(5)
+        擲骰表單溝通暫時變數(3) = 1
+    Else
+        Vss_BattleStartDiceNum(5) = Vss_BattleStartDiceNum(4) - Vss_BattleStartDiceNum(3)
+    End If
 End Sub
 Sub 雙方HP檢查()
 Dim inp As Integer 'RND暫時變數

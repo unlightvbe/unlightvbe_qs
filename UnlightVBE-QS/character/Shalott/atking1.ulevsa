@@ -40,7 +40,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           DiceRecord = 0
           atking = atking & "BattleStartDice#0" & "="
         Case 62
-          DiceRecord = VBEAtkingVSS(5)
+          DiceRecord = VBEVSStageNum(5)
         Case 20
           If DiceRecord < VBEAtkingVSS(5) Then
               atking = atking & "AtkingTrueDiceControl#3," & DiceRecord & "="

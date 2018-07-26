@@ -723,6 +723,12 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                                     VBEVSStageNum(i) = VBEStageNumMain(i)
                             Next
                             VBEVSStageNum(3) = VBEStage7xAtkingInformation
+                        Case 62 '技能效果進行多次擲骰時
+                            VBEVSStageNum(1) = VBEStageNumMain(2)
+                            VBEVSStageNum(2) = VBEStageNumMain(1)
+                            VBEVSStageNum(3) = VBEStageNumMain(4)
+                            VBEVSStageNum(4) = VBEStageNumMain(3)
+                            VBEVSStageNum(5) = VBEStageNumMain(5)
                         Case Else
                             For i = 1 To UBound(VBEStageNumMain)
                                     VBEVSStageNum(i) = VBEStageNumMain(i)

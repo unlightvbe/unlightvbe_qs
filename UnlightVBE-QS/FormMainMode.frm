@@ -30,12 +30,12 @@ Begin VB.Form FormMainMode
       BorderStyle     =   0  '沒有框線
       ForeColor       =   &H80000008&
       Height          =   9910
-      Left            =   11280
+      Left            =   7440
       Picture         =   "FormMainMode.frx":0CCA
       ScaleHeight     =   9915
       ScaleWidth      =   11340
       TabIndex        =   0
-      Top             =   720
+      Top             =   600
       Visible         =   0   'False
       Width           =   11340
       Begin UnlightVBE.uc角色卡片介面 cardcom 
@@ -9276,7 +9276,6 @@ Select Case 目前數(14)
             Case 24
 '                戰鬥系統類.擲骰表單顯示
                 If FormMainMode.PEAFDiceInterface.DiceStop = True Or 骰數零檢查值(1) = True Or 骰數零檢查值(2) = True Then
-                    戰鬥系統類.擲骰後續判斷
                     If 執行階段系統_搜尋正在執行之執行階段("BattleStartDice") <> 0 Then
 '                        Dim uscomt As Integer
 '                        Dim atknumtnum As Integer

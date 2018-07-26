@@ -22,6 +22,7 @@ Public Vss_EventPlayerAllActionOffNum(1 To 2) As Integer '°õ¦æ«ü¥O¶°-¸T¤îª±®a¶i¦
 Public Vss_PersonMoveActionChangeNum(1 To 2, 1 To 2) As Integer  '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦â²¾°Ê¶¥¬q¦æ°Ê±±¨î¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,1.¬O§_°õ¦æ/2.§ó§ï«á¿ï¾Ü¼Æ)
 Public Vss_PersonAttackFirstControlNum As Integer '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦âÀu¥ý§ðÀ»±±¨î¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è¥ý/2.¹q¸£¤è¥ý)
 Public Vss_EventPersonResurrectActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ¼Ð°O¼È®ÉÅÜ¼Æ
+Public Vss_BattleStartDiceNum(0 To 5) As Integer '°õ¦æ«ü¥O¶°-°õ¦æÂY»ë¤l¶¥¬q¸ê°T¼È®ÉÅÜ¼Æ(0.°õ¦æ¶¥¬q¸¹/1.¦Û¨­Á`»ë¼Æ/2.¹ï¤âÁ`»ë¼Æ/3.ÂY»ë«á¦Û¨­¥¿»ë¼Æ¶q/4.ÂY»ë«á¹ï¤â¥¿»ë¼Æ¶q/5.ÂY»ë«áÁ`¥¿»ë¼Æ¶q)
 Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_Â^¨ú«ü¥O(ByVal str As String, ByVal ns As Integer, ByVal vbecommadtotplayNow As Integer)
       vbecommadstr(2, vbecommadtotplayNow) = str
       vbecommadnum(1, vbecommadtotplayNow) = 1
@@ -1916,16 +1917,16 @@ End Sub
 Sub °õ¦æ«ü¥O_°õ¦æÂY»ë¤l(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 0 Or (vbecommadnum(4, vbecommadtotplayNow) <> 13 And vbecommadnum(4, vbecommadtotplayNow) <> 33) Then GoTo VssCommadExit
+    If UBound(commadstr3) <> 0 Or (vbecommadnum(4, vbecommadtotplayNow) <> 13 And vbecommadnum(4, vbecommadtotplayNow) <> 33 And vbecommadnum(4, vbecommadtotplayNow) < 20 And vbecommadnum(4, vbecommadtotplayNow) > 29) Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-             ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(2) = 0
-             ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(3) = 0
-             ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(5) = 0
-             ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(6) = 0
-             '========================================
+            Erase Vss_BattleStartDiceNum
             ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(9) = §ðÀ»¨¾¿m»ë¤lÁ`¼Æ(1)
             ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(10) = §ðÀ»¨¾¿m»ë¤lÁ`¼Æ(2)
+            Vss_BattleStartDiceNum(0) = 62
+            Vss_BattleStartDiceNum(1) = §ðÀ»¨¾¿m»ë¤lÁ`¼Æ(1)
+            Vss_BattleStartDiceNum(2) = §ðÀ»¨¾¿m»ë¤lÁ`¼Æ(2)
+            ¬O§_¨t²Î¤½»ë = False
             ¾Ô°«¨t²ÎÃþ.ÂY»ëªí³æÅã¥Ü
             µ¥«Ý®É¶¡¦î¦C(2).Add 24
             FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
@@ -1935,20 +1936,19 @@ Sub °õ¦æ«ü¥O_°õ¦æÂY»ë¤l(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
             '=======================
             vbecommadnumSecond = °õ¦æ¶¥¬q¨t²Î_«Å§i¶}©l©Îµ²§ô(1)
             '=======================
-            Dim VBEStageNumMainSec(1 To 1) As Integer
-'            Dim personnum As Integer, persontype As Integer
+            ¾Ô°«¨t²ÎÃþ.ÂY»ë«áÄò§PÂ_
             Dim buffvssnum As String
             If vbecommadnum(3, vbecommadtotplayNow) <= 24 Then
-                °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«¥D°Ê§Þ¯à uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 62, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«¥D°Ê§Þ¯à uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
             ElseIf vbecommadnum(3, vbecommadtotplayNow) > 24 And vbecommadnum(3, vbecommadtotplayNow) <= 48 Then
-                °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«³Q°Ê§Þ¯à uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 62, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«³Q°Ê§Þ¯à uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
             ElseIf vbecommadnum(3, vbecommadtotplayNow) > 48 And vbecommadnum(3, vbecommadtotplayNow) <= 54 Then
-                °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«¹ê»Úª¬ºA uscom, vbecommadnum(7, vbecommadtotplayNow), 62, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_¤Hª«¹ê»Úª¬ºA uscom, vbecommadnum(7, vbecommadtotplayNow), 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
             Else
                 buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
                 For i = 1 To 14
                     If ¤Hª«²§±`ª¬ºA¸ê®Æ®w(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 3) = buffvssnum And Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) > 0 Then
-                        °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_²§±`ª¬ºA uscom, vbecommadnum(7, vbecommadtotplayNow), i, 62, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                        °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_²§±`ª¬ºA uscom, vbecommadnum(7, vbecommadtotplayNow), i, 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
                         Exit For
                     End If
                 Next
