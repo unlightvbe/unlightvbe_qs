@@ -5303,7 +5303,6 @@ liveus(角色人物對戰人數(1, 2)) = Val(uspi4(角色人物對戰人數(1, 2)).Caption)
 骰數零檢查值(1) = False
 骰數零檢查值(2) = False
 是否系統公骰 = False
-Erase atkingckdice
 'Erase 異常狀態_混沌紀錄數
 'Erase 異常狀態_AI_混沌紀錄數
 ''=====
@@ -9663,6 +9662,7 @@ End Sub
 
 
 Private Sub 電腦出牌_Timer()
+電腦出牌.Enabled = False
 If 電腦方事件卡是否出完選擇數 = False Then
      '=========================專屬事件卡出牌階段
     For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
@@ -9670,7 +9670,6 @@ If 電腦方事件卡是否出完選擇數 = False Then
             If pagecardnum(i, 1) = a6a Then
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             ElseIf pagecardnum(i, 3) = a6a Then
                 cspce = pagecardnum(i, 1)
@@ -9686,13 +9685,11 @@ If 電腦方事件卡是否出完選擇數 = False Then
                 End If
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             End If
             If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             ElseIf pagecardnum(i, 3) = a7a And (turnatk = 1 Or turnatk = 2) Then
                 cspce = pagecardnum(i, 1)
@@ -9708,13 +9705,11 @@ If 電腦方事件卡是否出完選擇數 = False Then
                 End If
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             End If
             If pagecardnum(i, 1) = a8a Then
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             ElseIf pagecardnum(i, 3) = a8a Then
                 cspce = pagecardnum(i, 1)
@@ -9730,13 +9725,11 @@ If 電腦方事件卡是否出完選擇數 = False Then
                 End If
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             End If
             If pagecardnum(i, 1) = a9a Then
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             ElseIf pagecardnum(i, 3) = a9a Then
                 cspce = pagecardnum(i, 1)
@@ -9752,14 +9745,12 @@ If 電腦方事件卡是否出完選擇數 = False Then
                 End If
                 pagecardnum(i, 11) = 1
                 電腦牌_模擬按牌 i
-                電腦出牌.Enabled = False
                 Exit Sub
             End If
         End If
     Next
     '==============================事件卡均已出牌完畢
     電腦方事件卡是否出完選擇數 = True
-    電腦出牌.Enabled = False
     Select Case turnatk
         Case 1
              攻擊階段_階段1.Enabled = True
@@ -9775,7 +9766,6 @@ If 電腦方事件卡是否出完選擇數 = True Then
         Do
             目前數(6) = 目前數(6) + 1
             If 目前數(6) > 公用牌實體卡片分隔紀錄數(4) Then
-                電腦出牌.Enabled = False
                 電腦方事件卡是否出完選擇數 = False
                 Select Case turnatk
                    Case 1
@@ -9796,12 +9786,11 @@ If 電腦方事件卡是否出完選擇數 = True Then
                    Case 3
                         執行動作_電腦方各階段出牌完畢後行動 3
                 End Select
-                Exit Do
-             End If
+                Exit Sub
+            End If
             If Val(pagecardnum(目前數(6), 5)) = 2 And Val(pagecardnum(目前數(6), 6)) = 1 And Val(pagecardnum(目前數(6), 11)) = 1 Then
                電腦牌_模擬按牌 目前數(6)
-               電腦出牌.Enabled = False
-               Exit Do
+               Exit Sub
             End If
         Loop
 End If

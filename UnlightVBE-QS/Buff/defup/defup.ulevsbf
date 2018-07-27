@@ -16,7 +16,7 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
         Case 45
             If BuffPersonType = 1 Then
                 If VBEAtkingVSS(12) = 4 Then
-                    buff = buff & "EventTotalDiceChange#1,1," & VBEVSBuffNum(1) & "="
+                    buff = buff & "EventPersonAbilityDiceChange#1,1," & VBEVSBuffNum(1) & "="
                 End If
             End If
         Case 53

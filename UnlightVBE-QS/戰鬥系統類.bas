@@ -235,6 +235,7 @@ Sub 骰量更新顯示()
 攻擊防禦骰子總數(2) = 0
 Erase 顯示列雙方數值鎖定紀錄數
 Erase atkingckdice
+Erase Vss_EventPersonAbilityDiceChangeNum
 '===========================執行階段插入點(45)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 45, 1
 '============================
@@ -243,14 +244,23 @@ For uscom = 1 To 2
         Case 1
             If turnatk = 1 Then
                 If atkingpagetot(1, 1) > 0 And movecp = 1 Then
-                    攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkus(角色人物對戰人數(1, 2))
+                    If Vss_EventPersonAbilityDiceChangeNum(1, 2) = 0 Then
+                        攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkus(角色人物對戰人數(1, 2))
+                    End If
+                    攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Vss_EventPersonAbilityDiceChangeNum(1, 1)
                     攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkingpagetot(1, 1)
                 ElseIf atkingpagetot(1, 5) > 0 And movecp > 1 Then
-                    攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkus(角色人物對戰人數(1, 2))
+                    If Vss_EventPersonAbilityDiceChangeNum(1, 2) = 0 Then
+                        攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkus(角色人物對戰人數(1, 2))
+                    End If
+                    攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Vss_EventPersonAbilityDiceChangeNum(1, 1)
                     攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkingpagetot(1, 5)
                 End If
             ElseIf turnatk = 2 Then
-                攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + defus(角色人物對戰人數(1, 2))
+                If Vss_EventPersonAbilityDiceChangeNum(1, 2) = 0 Then
+                    攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + defus(角色人物對戰人數(1, 2))
+                End If
+                攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Vss_EventPersonAbilityDiceChangeNum(1, 1)
                 攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkingpagetot(1, 2)
             End If
             '=======主動技
@@ -275,14 +285,23 @@ For uscom = 1 To 2
         Case 2
             If turnatk = 2 Then
                 If atkingpagetot(2, 1) > 0 And movecp = 1 Then
-                    攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkcom(角色人物對戰人數(2, 2))
+                    If Vss_EventPersonAbilityDiceChangeNum(2, 2) = 0 Then
+                        攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkcom(角色人物對戰人數(2, 2))
+                    End If
+                    攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Vss_EventPersonAbilityDiceChangeNum(2, 1)
                     攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkingpagetot(2, 1)
                 ElseIf atkingpagetot(2, 5) > 0 And movecp > 1 Then
-                    攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkcom(角色人物對戰人數(2, 2))
+                    If Vss_EventPersonAbilityDiceChangeNum(2, 2) = 0 Then
+                        攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkcom(角色人物對戰人數(2, 2))
+                    End If
+                    攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Vss_EventPersonAbilityDiceChangeNum(2, 1)
                     攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkingpagetot(2, 5)
                 End If
             ElseIf turnatk = 1 Then
-                攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + defcom(角色人物對戰人數(2, 2))
+                If Vss_EventPersonAbilityDiceChangeNum(2, 2) = 0 Then
+                    攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + defcom(角色人物對戰人數(2, 2))
+                End If
+                攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Vss_EventPersonAbilityDiceChangeNum(2, 1)
                 攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + atkingpagetot(2, 2)
             End If
             '=======主動技

@@ -23,6 +23,8 @@ Public Vss_PersonMoveActionChangeNum(1 To 2, 1 To 2) As Integer  '°õ¦æ«ü¥O¶°-¤Hª
 Public Vss_PersonAttackFirstControlNum As Integer '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦âÀu¥ý§ðÀ»±±¨î¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è¥ý/2.¹q¸£¤è¥ý)
 Public Vss_EventPersonResurrectActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ¼Ð°O¼È®ÉÅÜ¼Æ
 Public Vss_BattleStartDiceNum(0 To 5) As Integer '°õ¦æ«ü¥O¶°-°õ¦æÂY»ë¤l¶¥¬q¸ê°T¼È®ÉÅÜ¼Æ(0.°õ¦æ¶¥¬q¸¹/1.¦Û¨­Á`»ë¼Æ/2.¹ï¤âÁ`»ë¼Æ/3.ÂY»ë«á¦Û¨­¥¿»ë¼Æ¶q/4.ÂY»ë«á¹ï¤â¥¿»ë¼Æ¶q/5.ÂY»ë«áÁ`¥¿»ë¼Æ¶q)
+Public Vss_EventPersonAbilityDiceChangeNum(1 To 2, 1 To 2) As Integer '°õ¦æ«ü¥O¶°-¨¤¦â¯à¤O¹ï»ë¼ÆÅÜ¤Æ¶q±±¨î¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,1.ÅÜ¤Æ¶q/2.¬O§_¬°«ü©w)
+
 Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_Â^¨ú«ü¥O(ByVal str As String, ByVal ns As Integer, ByVal vbecommadtotplayNow As Integer)
       vbecommadstr(2, vbecommadtotplayNow) = str
       vbecommadnum(1, vbecommadtotplayNow) = 1
@@ -138,6 +140,8 @@ Sub °õ¦æ«ü¥O¶°Á`µ{§Ç_«ü¥O©I¥s°õ¦æ(ByVal uscom As Integer, ByVal commadtype As In
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_§Þ¯à±Ò°Ê½X±±¨î_¨ä¥L uscom, commadtype, atkingnum, vbecommadtotplayNow  '(¶¥¬q1)
                         Case "PersonResurrect"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¤Hª«¨¤¦â´_¬¡ uscom, commadtype, atkingnum, vbecommadtotplayNow  '(¶¥¬q1)
+                        Case "EventPersonAbilityDiceChange"
+                               °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_¤Hª«¨¤¦â¥Õ­È¹ï»ë¼ÆÅÜ¤Æ¶q±±¨î uscom, commadtype, atkingnum, vbecommadtotplayNow  '(¶¥¬q1)
                         '========================================================
                         Case "BuffTurnEnd"
                                °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_²§±`ª¬ºA±±¨î_·í¦^¦Xµ²§ô_±M uscom, commadtype, atkingnum, vbecommadtotplayNow   '(¶¥¬q1)
@@ -2645,3 +2649,41 @@ Else
     °õ¦æ«ü¥O¶°_°õ¦æÅçÃÒ = True
 End If
 End Function
+Sub °õ¦æ«ü¥O_¤Hª«¨¤¦â¥Õ­È¹ï»ë¼ÆÅÜ¤Æ¶q±±¨î(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 2 Or vbecommadnum(4, vbecommadtotplayNow) <> 45 Then GoTo VssCommadExit
+    Dim uscomt As Integer
+    Select Case Val(commadstr3(0))
+         Case 1
+               uscomt = uscom
+         Case 2
+               If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            Select Case commadstr3(1)
+                Case 1
+                     If Vss_EventPersonAbilityDiceChangeNum(uscomt, 2) = 0 Then
+                        Vss_EventPersonAbilityDiceChangeNum(uscomt, 1) = Vss_EventPersonAbilityDiceChangeNum(uscomt, 1) + Val(commadstr3(2))
+                     End If
+                Case 2
+                     If Vss_EventPersonAbilityDiceChangeNum(uscomt, 2) = 0 Then
+                        Vss_EventPersonAbilityDiceChangeNum(uscomt, 1) = Vss_EventPersonAbilityDiceChangeNum(uscomt, 1) - Val(commadstr3(2))
+                     End If
+                Case 3
+                     Vss_EventPersonAbilityDiceChangeNum(uscomt, 1) = Val(commadstr3(2))
+                     Vss_EventPersonAbilityDiceChangeNum(uscomt, 2) = 1
+            End Select
+            GoTo VssCommadExit
+    End Select
+        '============================
+    Exit Sub
+VssCommadExit:
+    °õ¦æ«ü¥O¶°.°õ¦æ«ü¥O_«ü¥Oµ²§ô¼Ð°O vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+°õ¦æ«ü¥O¶°.°õ¦æ«ü¥O¶°_¿ù»~°T®§³qª¾ "EventPersonAbilityDiceChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
