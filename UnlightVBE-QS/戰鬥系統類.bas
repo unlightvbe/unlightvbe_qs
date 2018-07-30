@@ -165,7 +165,6 @@ Sub 傷害執行_技能直傷_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal i
 If tot <= 0 Then Exit Sub
 If isEvent = True Then
 '===============================
-    ReDim VBEStageNum(0 To 4) As Integer
     Vss_EventBloodActionOffNum = 0
     VBEStageNum(0) = 46
     VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
@@ -336,9 +335,13 @@ Select Case movecp
         一般系統類.音效播放 8
 End Select
 End Sub
-Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer)
+Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer)
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
+If statusfrom = 0 Then
+    ReDim VBEStageNum(0 To 5) As Integer
+    VBEStageNum(4) = 0 '觸發事件方
+    VBEStageNum(5) = 0 '觸發事件體系
+End If
 Vss_EventHPLActionOffNum = 0
 VBEStageNum(0) = 48
 VBEStageNum(1) = -1 '回復方(1.使用者/2.電腦)
@@ -401,9 +404,13 @@ If Vss_EventHPLActionOffNum = 0 Then
     End Select
 End If
 End Sub
-Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer)
+Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer)
 '===============================
-ReDim VBEStageNum(0 To 3) As Integer
+If statusfrom = 0 Then
+    ReDim VBEStageNum(0 To 5) As Integer
+    VBEStageNum(4) = 0 '觸發事件方
+    VBEStageNum(5) = 0 '觸發事件體系
+End If
 Vss_EventHPLActionOffNum = 0
 VBEStageNum(0) = 48
 VBEStageNum(1) = -2 '回復方(系統代號)
@@ -465,13 +472,15 @@ End Sub
 Sub 傷害執行_使用者(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub
 '===============================
-ReDim VBEStageNum(0 To 4) As Integer
+ReDim VBEStageNum(0 To 6) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = 1 '受到傷害人物編號
 VBEStageNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 VBEStageNum(4) = tot '受到傷害之數值
+VBEStageNum(5) = 0 '來自系統的傷害
+VBEStageNum(6) = 0 '來自系統的傷害
 Vss_EventBloodActionChangeNum(0) = 0
 Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
 Vss_EventBloodActionChangeNum(2) = 1 '受到傷害人物編號
@@ -509,7 +518,6 @@ Sub 傷害執行_技能直傷_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal isE
 If tot <= 0 Then Exit Sub
 If isEvent = True Then
     '===============================
-    ReDim VBEStageNum(0 To 4) As Integer
     Vss_EventBloodActionOffNum = 0
     VBEStageNum(0) = 46
     VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
@@ -576,13 +584,15 @@ End Sub
 Sub 傷害執行_電腦(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub
 '===============================
-ReDim VBEStageNum(0 To 4) As Integer
+ReDim VBEStageNum(0 To 6) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = 1 '受到傷害人物編號
 VBEStageNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 VBEStageNum(4) = tot '受到傷害之數值
+VBEStageNum(5) = 0 '來自系統的傷害
+VBEStageNum(6) = 0 '來自系統的傷害
 Vss_EventBloodActionChangeNum(0) = 0
 Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
 Vss_EventBloodActionChangeNum(2) = 1 '受到傷害人物編號
@@ -5117,7 +5127,6 @@ Next
 End Sub
 Sub 傷害執行_立即死亡_使用者(ByVal num As Integer)
 '===============================
-ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
@@ -5161,7 +5170,6 @@ End If
 End Sub
 Sub 傷害執行_立即死亡_電腦(ByVal num As Integer)
 '===============================
-ReDim VBEStageNum(0 To 4) As Integer
 Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
