@@ -44,7 +44,9 @@ Dim vbecommadnumSecond As Integer '本層執行階段編號數
 '=======================
 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 '=======================
-Dim VBEStageNumMainSec(1 To 1) As Integer
+Dim VBEStageNumMainSec(0 To 1) As Integer
+VBEStageNumMainSec(0) = 73
+VBEStageNumMainSec(1) = 1
 ReDim VBEStageRemoveBuffAllNum(1 To 14) As Boolean
 '=======================
 For p = 1 To 14
@@ -65,7 +67,9 @@ Dim vbecommadnumSecond As Integer '本層執行階段編號數
 '=======================
 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 '=======================
-Dim VBEStageNumMainSec(1 To 1) As Integer
+Dim VBEStageNumMainSec(0 To 1) As Integer
+VBEStageNumMainSec(0) = 73
+VBEStageNumMainSec(1) = 1
 '=======================
 Vss_EventRemoveBuffActionOffNum = 0
 If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
@@ -75,7 +79,20 @@ End If
 執行階段系統_宣告開始或結束 2
 '=======================
 End Sub
-
+Sub 執行階段73_指令_異常狀態控制_主動清除(ByVal uscom As Integer, ByVal num As Integer, ByVal buffnum As Integer)
+Dim vbecommadnumSecond As Integer '本層執行階段編號數
+'=======================
+vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
+'=======================
+Dim VBEStageNumMainSec(0 To 1) As Integer
+VBEStageNumMainSec(0) = 73
+VBEStageNumMainSec(1) = 0
+'=======================
+執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, num, VBEStageNumMainSec, vbecommadnumSecond
+'=======================
+執行階段系統_宣告開始或結束 2
+'=======================
+End Sub
 Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As Integer, ByVal nstype As Integer)
     Dim vbecommadtotplayNow As Integer '本層執行階段編號數
     '==nstype(1.全執行(驗證)/2.只執行一次(驗證)/3.全執行(不驗證)/4.只執行一次(不驗證)

@@ -3,7 +3,7 @@ Function main(a)
          Case 1
               main = "BUFFN00701"
          Case 2
-              main = "72#53"
+              main = "72#53#73"
          Case 3
               main = "«Ê¦L"
          Case 4
@@ -14,15 +14,12 @@ End Function
 Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
     Select Case a
         Case 72
-            If BuffPersonType = 1 Then
-                buff = buff & "PersonAtkingOff#1,1,1" & "="
-            End If
+            buff = buff & "PersonAtkingOff#1," & VBEAtkingVSS(0) & ",1" & "="
         Case 53
             If BuffPersonType = 1 Then
-                If VBEVSBuffNum(2) = 1 Then
-                    buff = buff & "PersonAtkingOff#1,1,2" & "="
-                End If
                 buff = buff & "BuffTurnEnd#0" & "="
             End If
+        Case 73
+            buff = buff & "PersonAtkingOff#1," & VBEAtkingVSS(0) & ",2" & "="
     End Select
 End Function

@@ -1,8 +1,8 @@
 Attribute VB_Name = "執行指令集"
 'Public commadstr1()  As String, commadstr2() As String
 Public commadstr3() As String '執行指令字串暫時變數
-Public vbecommadnum() As Integer '執行階段指令集變數-數值類(執行階段執行中計數值,1.目前執行指令次序/2.目前執行指令分階段/3.目前執行腳本物件號/4.目前之執行階段號5.目前執行階段指令總計/6.目前人物於場上順序/7.目前人物角色實際編號)
-Public vbecommadstr() As String '執行階段指令集變數-字串類(執行階段執行中計數值,1.目前執行指令名稱/2.目前執行階段指令串)
+Public vbecommadnum() As Integer '執行階段指令集變數-數值類(1.目前執行指令次序/2.目前執行指令分階段/3.目前執行腳本物件號/4.目前之執行階段號/5.目前執行階段指令總計/6.目前人物於場上順序/7.目前人物角色實際編號, 執行階段執行中計數值)
+Public vbecommadstr() As String '執行階段指令集變數-字串類(1.目前執行指令名稱/2.目前執行階段指令串, 執行階段執行中計數值)
 Public vbecommadtotplay As Integer '目前執行之執行階段計數值
 Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
@@ -782,7 +782,6 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
                 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
                 '=======================
                 Dim VBEStageNumMainSec(1 To 1) As Integer
-'                Dim personnum As Integer, persontype As Integer
                 Dim buffvssnum As String
                 If vbecommadnum(3, vbecommadtotplayNow) <= 24 Then
                     執行階段系統類.執行階段系統總主要程序_人物主動技能 uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
@@ -1595,10 +1594,9 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
             '=======================
             Dim VBEStageNumMainSec(1 To 1) As Integer
             VBEStageNumMainSec(1) = Val(commadstr3(3))
-            If Val(commadstr3(1)) > 1 Then persontype = 2 Else persontype = 1
             For i = 1 To 14
                 If Val(人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2)) > 0 And 人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 3) = commadstr3(2) Then
-                    執行階段系統總主要程序_異常狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 72, persontype, VBEStageNumMainSec, vbecommadnumSecond
+                    執行階段系統總主要程序_異常狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 72, Val(commadstr3(1)), VBEStageNumMainSec, vbecommadnumSecond
                     Exit For
                 End If
             Next
@@ -1684,6 +1682,7 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
                             FormMainMode.cardcom(vbecommadnum(7, vbecommadtotplayNow)).Buff_異常狀態效果回合數_變更 = 人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2) & "#" & i
                     End Select
                     If Val(人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) <= 0 Then
+                        執行階段73_指令_異常狀態控制_主動清除 uscom, vbecommadnum(6, vbecommadtotplayNow), i
                         vbecommadnum(2, vbecommadtotplayNow) = 2
                         Exit Sub
                     Else
@@ -2073,7 +2072,7 @@ End Sub
 Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    Dim uscomt As Integer, persontype As Integer
+    Dim uscomt As Integer
     Dim vsstr As String, textlinea As String, str As String
     If UBound(commadstr3) <> 3 Or atkingnum >= 9 Then GoTo VssCommadExit
     Select Case commadtype
@@ -2130,9 +2129,7 @@ Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As I
             vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
             '=======================
             Dim VBEStageNumMainSec(1 To 1) As Integer
-            VBEStageNumMainSec(1) = Val(commadstr3(3))
-            If Val(commadstr3(1)) > 1 Then persontype = 2 Else persontype = 1
-            執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 74, persontype, VBEStageNumMainSec, vbecommadnumSecond
+            執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 74, Val(commadstr3(1)), VBEStageNumMainSec, vbecommadnumSecond
             '=======================
             執行階段系統_宣告開始或結束 2
             vbecommadnum(2, vbecommadtotplayNow) = 3
@@ -2263,6 +2260,17 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
     '===========
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
+            Dim vbecommadnumSecond As Integer '本層執行階段編號數
+            '=======================
+            vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
+            '=======================
+            Dim VBEStageNumMainSec(0 To 1) As Integer
+            VBEStageNumMainSec(0) = 75
+            VBEStageNumMainSec(1) = 0
+            執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), 75, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+            '=======================
+            執行階段系統_宣告開始或結束 2
+            '=======================
             If 角色人物對戰人數(uscom, 2) = personnum Then
                 Select Case uscom
                     Case 1
@@ -2361,9 +2369,10 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
                 '=======================
                 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
                 '=======================
-                Dim VBEStageNumMainSec(1 To 1) As Integer
-                If Val(commadstr3(1)) > 1 Then persontype = 2 Else persontype = 1
-                執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 75, persontype, VBEStageNumMainSec, vbecommadnumSecond
+                Dim VBEStageNumMainSec(0 To 1) As Integer
+                VBEStageNumMainSec(0) = 75
+                VBEStageNumMainSec(1) = 1
+                執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 75, Val(commadstr3(1)), VBEStageNumMainSec, vbecommadnumSecond
                 '=======================
                 執行階段系統_宣告開始或結束 2
                 '=======================
