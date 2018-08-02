@@ -58,6 +58,9 @@ End Property
 Public Property Let Mute(ByVal New_Mute As Boolean)
    m_Mute = New_Mute
    PropertyChanged "Mute"
+   If PlayerIsPlaying = True Then
+         Me.AdjustVolume
+    End If
 End Property
 Public Property Get Volume() As Integer
    Volume = m_Volume
