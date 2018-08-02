@@ -175,8 +175,8 @@ Function 執行階段系統_驗證(ByVal atkingnum As Integer, ByVal ns As Integer, ByVa
     Dim vsstr1 As String, vsstr2 As String, vsstr3() As String, vsstr4 As String
     Dim textlinea As String, str As String
     '==========================
-    If (uscom = 1 And liveus(personnum) <= 0) Or _
-       (uscom = 2 And livecom(personnum) <= 0) Then
+    If (uscom = 1 And liveus(personnum) <= 0 And 角色人物對戰人數(uscom, 2) <> personnum) Or _
+       (uscom = 2 And livecom(personnum) <= 0 And 角色人物對戰人數(uscom, 2) <> personnum) Then
        執行階段系統_驗證 = False
        Exit Function
     End If
