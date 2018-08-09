@@ -957,6 +957,7 @@ Dim m_buff_reset As Boolean
 Dim m_cardback_reset As Boolean
 Dim m_cardback_activehelp(1 To 4) As String, m_cardback_passivehelp(1 To 4) As String
 Dim m_cardback_activecheck As Integer, m_cardback_passivecheck As Integer, m_cardbackcheck As Integer
+Dim m_cardmain_isnewtype As Boolean
 Public Property Get CardMain_角色圖片() As String
    CardMain_角色圖片 = m_cardmain_jpg
 End Property
@@ -1043,6 +1044,28 @@ Public Property Let CardMain_角色DEF(ByVal New_CardMain_角色DEF As Integer)
        personlabeldef.Caption = Me.CardMain_角色DEF
    Else
        personlabeldef.Caption = Me.CardMain_角色DEF
+   End If
+End Property
+Public Property Get CardMain_是否為新樣式資訊() As Boolean
+   CardMain_是否為新樣式資訊 = m_cardmain_isnewtype
+End Property
+Public Property Let CardMain_是否為新樣式資訊(ByVal New_CardMain_是否為新樣式資訊 As Boolean)
+   m_cardmain_isnewtype = New_CardMain_是否為新樣式資訊
+   PropertyChanged "CardMain_是否為新樣式資訊"
+   If m_cardmain_isnewtype = False Then
+        personlabelhp.Left = 555
+        personlabelhp.Top = 3240
+        personlabelatk.Left = 1200
+        personlabelatk.Top = 3240
+        personlabeldef.Left = 1920
+        personlabeldef.Top = 3240
+   Else
+        personlabelhp.Left = 300
+        personlabelhp.Top = 3220
+        personlabelatk.Left = 960
+        personlabelatk.Top = 3220
+        personlabeldef.Left = 1820
+        personlabeldef.Top = 3220
    End If
 End Property
 Public Property Get Buff_異常狀態圖片_變更() As String

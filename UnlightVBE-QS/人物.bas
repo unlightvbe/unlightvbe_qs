@@ -182,6 +182,8 @@ Do Until EOF(1)
                VBEPerson(uscom, Index, 1, 3, 2) = 文件字串(1)
             Case "persondef"
                VBEPerson(uscom, Index, 1, 3, 3) = 文件字串(1)
+            Case "cardInfisNewType"
+                VBEPerson(uscom, Index, 1, 3, 5) = 文件字串(1)
             Case "personname"
                VBEPerson(uscom, Index, 1, 1, 1) = 文件字串(1)
             Case "personengname"
@@ -856,12 +858,42 @@ FormMainMode.PEGFusbi1(Index).Caption = VBEPerson(1, Index, 1, 3, 1)
 FormMainMode.PEGFusbi2(Index).Caption = VBEPerson(1, Index, 1, 3, 2)
 FormMainMode.PEGFusbi3(Index).Caption = VBEPerson(1, Index, 1, 3, 3)
 FormMainMode.PEGFcardus(Index).Picture = LoadPicture(VBEPerson(1, Index, 1, 5, 5))
+If Val(VBEPerson(1, Index, 1, 3, 5)) = 1 Then
+    FormMainMode.PEGFusbi1(Index).Left = 300
+    FormMainMode.PEGFusbi1(Index).Top = 3220
+    FormMainMode.PEGFusbi2(Index).Left = 960
+    FormMainMode.PEGFusbi2(Index).Top = 3220
+    FormMainMode.PEGFusbi3(Index).Left = 1820
+    FormMainMode.PEGFusbi3(Index).Top = 3220
+Else
+    FormMainMode.PEGFusbi1(Index).Left = 555
+    FormMainMode.PEGFusbi1(Index).Top = 3240
+    FormMainMode.PEGFusbi2(Index).Left = 1200
+    FormMainMode.PEGFusbi2(Index).Top = 3240
+    FormMainMode.PEGFusbi3(Index).Left = 1920
+    FormMainMode.PEGFusbi3(Index).Top = 3240
+End If
 End Sub
 Sub 卡片人物資訊顯示_電腦(ByVal Index As Integer)
 FormMainMode.PEGFcardcompi1(Index).Caption = VBEPerson(2, Index, 1, 3, 1)
 FormMainMode.PEGFcardcompi2(Index).Caption = VBEPerson(2, Index, 1, 3, 2)
 FormMainMode.PEGFcardcompi3(Index).Caption = VBEPerson(2, Index, 1, 3, 3)
 FormMainMode.PEGFcardcom(Index).Picture = LoadPicture(VBEPerson(2, Index, 1, 5, 5))
+If Val(VBEPerson(2, Index, 1, 3, 5)) = 1 Then
+    FormMainMode.PEGFcardcompi1(Index).Left = 300
+    FormMainMode.PEGFcardcompi1(Index).Top = 3220
+    FormMainMode.PEGFcardcompi2(Index).Left = 960
+    FormMainMode.PEGFcardcompi2(Index).Top = 3220
+    FormMainMode.PEGFcardcompi3(Index).Left = 1820
+    FormMainMode.PEGFcardcompi3(Index).Top = 3220
+Else
+    FormMainMode.PEGFcardcompi1(Index).Left = 555
+    FormMainMode.PEGFcardcompi1(Index).Top = 3240
+    FormMainMode.PEGFcardcompi2(Index).Left = 1200
+    FormMainMode.PEGFcardcompi2(Index).Top = 3240
+    FormMainMode.PEGFcardcompi3(Index).Left = 1920
+    FormMainMode.PEGFcardcompi3(Index).Top = 3240
+End If
 End Sub
 Sub 角色隨機_使用者(ByVal Index As Integer)
 Dim i As Integer

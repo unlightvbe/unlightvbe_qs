@@ -2866,6 +2866,7 @@ For i = 2 To 3
    Formchangeperson.card(i - 1).CardMain_角色HPMAX = liveusmax(角色待機人物紀錄數(1, i))
    Formchangeperson.card(i - 1).CardMain_角色ATK = atkus(角色待機人物紀錄數(1, i))
    Formchangeperson.card(i - 1).CardMain_角色DEF = defus(角色待機人物紀錄數(1, i))
+   Formchangeperson.card(i - 1).CardMain_是否為新樣式資訊 = CBool(Val(VBEPerson(1, 角色待機人物紀錄數(1, i), 1, 3, 5)) = 1)
 Next
 戰鬥系統類.技能說明載入_人物卡片背面_交換角色
 'ne = 1

@@ -243,6 +243,41 @@ Else
                 FormMainMode.PEAScardcompi3(i).Caption = VBEPerson(2, i, 1, 3, 3)
             Next
     End Select
+    '===============================
+    For i = 1 To 角色人物對戰人數(1, 1)
+        If Val(VBEPerson(1, i, 1, 3, 5)) = 1 Then
+            FormMainMode.PEASusbi1(i).Left = 300
+            FormMainMode.PEASusbi1(i).Top = 3220
+            FormMainMode.PEASusbi2(i).Left = 960
+            FormMainMode.PEASusbi2(i).Top = 3220
+            FormMainMode.PEASusbi3(i).Left = 1820
+            FormMainMode.PEASusbi3(i).Top = 3220
+        Else
+            FormMainMode.PEASusbi1(i).Left = 555
+            FormMainMode.PEASusbi1(i).Top = 3240
+            FormMainMode.PEASusbi2(i).Left = 1200
+            FormMainMode.PEASusbi2(i).Top = 3240
+            FormMainMode.PEASusbi3(i).Left = 1920
+            FormMainMode.PEASusbi3(i).Top = 3240
+        End If
+    Next
+    For i = 1 To 角色人物對戰人數(2, 1)
+        If Val(VBEPerson(2, i, 1, 3, 5)) = 1 Then
+            FormMainMode.PEAScardcompi1(i).Left = 300
+            FormMainMode.PEAScardcompi1(i).Top = 3220
+            FormMainMode.PEAScardcompi2(i).Left = 960
+            FormMainMode.PEAScardcompi2(i).Top = 3220
+            FormMainMode.PEAScardcompi3(i).Left = 1820
+            FormMainMode.PEAScardcompi3(i).Top = 3220
+        Else
+            FormMainMode.PEAScardcompi1(i).Left = 555
+            FormMainMode.PEAScardcompi1(i).Top = 3240
+            FormMainMode.PEAScardcompi2(i).Left = 1200
+            FormMainMode.PEAScardcompi2(i).Top = 3240
+            FormMainMode.PEAScardcompi3(i).Left = 1920
+            FormMainMode.PEAScardcompi3(i).Top = 3240
+        End If
+    Next
     '===========================戰鬥系統主表單讀入(測)
     執行階段系統類.執行階段系統遊戲初始總程序
     戰鬥系統類.遊戲角色卡片物件創立
@@ -1366,6 +1401,7 @@ For w = 1 To 角色人物對戰人數(1, 1)
     FormMainMode.uspidef(w).Caption = defus(w)
     FormMainMode.uspi4(w).Caption = liveus(w)
     FormMainMode.uspi5(w).Caption = liveusmax(w)
+    FormMainMode.cardus(w).CardMain_是否為新樣式資訊 = CBool(Val(VBEPerson(1, w, 1, 3, 5)) = 1)
     '=================
     FormMainMode.cardus(w).Buff_異常狀態_全重設 = True
     FormMainMode.cardus(w).CardBack_全重設 = True
@@ -1406,6 +1442,7 @@ For w = 1 To 角色人物對戰人數(2, 1)
     FormMainMode.cardcom(w).CardMain_角色HPMAX = livecommax(w)
     FormMainMode.cardcom(w).CardMain_角色ATK = atkcom(w)
     FormMainMode.cardcom(w).CardMain_角色DEF = defcom(w)
+    FormMainMode.cardcom(w).CardMain_是否為新樣式資訊 = CBool(Val(VBEPerson(2, w, 1, 3, 5)) = 1)
     '=================
     FormMainMode.cardcom(w).Buff_異常狀態_全重設 = True
     FormMainMode.cardcom(w).CardBack_全重設 = True
