@@ -86,7 +86,7 @@ Begin VB.Form Form2
       Width           =   3615
    End
    Begin VB.Label aboutvn 
-      Caption         =   "Bulid 0910"
+      Caption         =   "Bulid 0931"
       BeginProperty Font 
          Name            =   "·L³n¥¿¶ÂÅé"
          Size            =   12
