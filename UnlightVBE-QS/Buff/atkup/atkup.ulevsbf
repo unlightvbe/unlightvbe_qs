@@ -7,7 +7,7 @@ Function main(a)
          Case 3
               main = "ATK+"
          Case 4
-              main = "\Buff\atkup\atkupnew.gif"
+              main = "\Buff\atkup\atkup.png"
     End Select
 End Function
 

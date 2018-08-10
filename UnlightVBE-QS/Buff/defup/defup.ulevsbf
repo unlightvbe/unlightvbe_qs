@@ -7,7 +7,7 @@ Function main(a)
          Case 3
               main = "DEF+"
          Case 4
-              main = "\Buff\defup\defupnew.gif"
+              main = "\Buff\defup\defup.png"
     End Select
 End Function
 

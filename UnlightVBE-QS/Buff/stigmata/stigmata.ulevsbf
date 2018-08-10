@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
          Case 1
-              main = "BUFFS00201"
+              main = "BUFFN01401"
          Case 2
               main = "45"
          Case 3
-              main = "¨¾¿m"
+              main = "¸t²ª"
          Case 4
-              main = "\Buff\protection\protection.png"
+              main = "\Buff\stigmata\stigmata.png"
     End Select
 End Function
 
@@ -15,7 +15,7 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
     Select Case a
         Case 45
             If BuffPersonType = 1 Then
-                If VBEAtkingVSS(12) = 4 Then
+                If VBEAtkingVSS(12) = 3 Or VBEAtkingVSS(12) = 4 Then
                     buff = buff & "EventPersonAbilityDiceChange#1,1," & VBEVSBuffNum(2) & "="
                 End If
             End If

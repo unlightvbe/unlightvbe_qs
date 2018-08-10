@@ -7,7 +7,7 @@ Function main(a)
          Case 3
               main = "®£©Æ"
          Case 4
-              main = "\Buff\fear\fear.gif"
+              main = "\Buff\fear\fear.png"
     End Select
 End Function
 
