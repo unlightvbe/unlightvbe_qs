@@ -6,7 +6,7 @@
 
 開發環境：Visual Studio 6.0 SP6
 
-本專案為主程式source code，若只想單純下載遊玩者請左轉到`UnlightVBE-QS (User Edition)`
+本專案為主程式source code，若只想單純下載遊玩者請左轉到[UnlightVBE-QS (User Edition)](https://github.com/unlightvbe/unlightvbe_qs_user "UnlightVBE-QS (User Edition)")
 
 ___
 
