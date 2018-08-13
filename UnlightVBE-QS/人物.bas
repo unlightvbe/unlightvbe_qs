@@ -880,14 +880,14 @@ FormMainMode.PEGFcardcompi2(Index).Caption = VBEPerson(2, Index, 1, 3, 2)
 FormMainMode.PEGFcardcompi3(Index).Caption = VBEPerson(2, Index, 1, 3, 3)
 FormMainMode.PEGFcardcom(Index).Picture = LoadPicture(VBEPerson(2, Index, 1, 5, 5))
 If Val(VBEPerson(2, Index, 1, 3, 5)) = 1 Then
-    FormMainMode.PEGFcardcompi1(Index).Left = 300
+    FormMainMode.PEGFcardcompi1(Index).Left = 230
     FormMainMode.PEGFcardcompi1(Index).Top = 3220
     FormMainMode.PEGFcardcompi2(Index).Left = 960
     FormMainMode.PEGFcardcompi2(Index).Top = 3220
     FormMainMode.PEGFcardcompi3(Index).Left = 1820
     FormMainMode.PEGFcardcompi3(Index).Top = 3220
 Else
-    FormMainMode.PEGFcardcompi1(Index).Left = 555
+    FormMainMode.PEGFcardcompi1(Index).Left = 480
     FormMainMode.PEGFcardcompi1(Index).Top = 3240
     FormMainMode.PEGFcardcompi2(Index).Left = 1200
     FormMainMode.PEGFcardcompi2(Index).Top = 3240

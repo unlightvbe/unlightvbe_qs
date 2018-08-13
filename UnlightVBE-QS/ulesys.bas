@@ -263,14 +263,14 @@ Else
     Next
     For i = 1 To 角色人物對戰人數(2, 1)
         If Val(VBEPerson(2, i, 1, 3, 5)) = 1 Then
-            FormMainMode.PEAScardcompi1(i).Left = 300
+            FormMainMode.PEAScardcompi1(i).Left = 230
             FormMainMode.PEAScardcompi1(i).Top = 3220
             FormMainMode.PEAScardcompi2(i).Left = 960
             FormMainMode.PEAScardcompi2(i).Top = 3220
             FormMainMode.PEAScardcompi3(i).Left = 1820
             FormMainMode.PEAScardcompi3(i).Top = 3220
         Else
-            FormMainMode.PEAScardcompi1(i).Left = 555
+            FormMainMode.PEAScardcompi1(i).Left = 480
             FormMainMode.PEAScardcompi1(i).Top = 3240
             FormMainMode.PEAScardcompi2(i).Left = 1200
             FormMainMode.PEAScardcompi2(i).Top = 3240
