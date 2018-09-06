@@ -362,13 +362,13 @@ End Sub
 Sub 執行指令_技能啟動碼控制_其他(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 0 Or vbecommadnum(3, vbecommadtotplayNow) > 48 Or _
+    If UBound(commadstr3) <> 2 Or vbecommadnum(3, vbecommadtotplayNow) > 48 Or _
        (commadtype <> 1 And commadtype <> 3) Then GoTo VssCommadExit
     If Val(commadstr3(1)) < 1 Or Val(commadstr3(1)) > 4 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
             Select Case Val(commadstr3(0))
-                Case 1 '主動技
+                    Case 1 '主動技
                         If ((uscom = 1 And liveus(vbecommadnum(7, vbecommadtotplayNow)) <= 0) Or _
                            (uscom = 2 And livecom(vbecommadnum(7, vbecommadtotplayNow)) <= 0)) And Val(commadstr3(2)) = 1 Then
                            GoTo VssCommadExit
