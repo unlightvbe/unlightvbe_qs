@@ -4668,28 +4668,26 @@ If pagecardnum(Index, 6) = 1 And (turnpageonin = 1 Or turnpageoninatking = 1) An
    戰鬥系統類.出牌順序計算_使用者_手牌
    使用者出牌_手牌對齊.Enabled = True
    '=================
-   對齊完成檢查.Enabled = True
-   '===================以下是事件卡檢查及啟動
-   If pagecardnum(Index, 1) = a6a Then
-       事件卡記錄暫時數(1, 3) = 1
-       事件卡.機會_使用者 Index, pagecardnum(Index, 2)
-   End If
-   If turnatk = 1 Or turnatk = 2 Then
-        If pagecardnum(Index, 1) = a7a Then
-            事件卡記錄暫時數(1, 3) = 1
-            事件卡.詛咒術_使用者 Index, pagecardnum(Index, 2)
-        End If
-   End If
-   If pagecardnum(Index, 1) = a8a Then
-       事件卡記錄暫時數(1, 3) = 1
-       事件卡.HP回復_使用者 Index, pagecardnum(Index, 2)
-   End If
-   If pagecardnum(Index, 1) = a9a Then
-       事件卡記錄暫時數(1, 3) = 1
-       事件卡.聖水_使用者 Index, pagecardnum(Index, 2)
-   End If
-   '===================
-   GoTo vsssystemplay
+   If pagecardnum(Index, 1) = a6a Or pagecardnum(Index, 1) = a7a Or pagecardnum(Index, 1) = a8a Or pagecardnum(Index, 1) = a9a Then
+        '===================以下是事件卡檢查及啟動
+        對齊完成檢查.Enabled = False
+        事件卡記錄暫時數(1, 3) = 1
+        Select Case pagecardnum(Index, 1)
+            Case a6a
+                事件卡.機會_使用者 Index, pagecardnum(Index, 2)
+            Case a7a
+                事件卡.詛咒術_使用者 Index, pagecardnum(Index, 2)
+            Case a8a
+                事件卡.HP回復_使用者 Index, pagecardnum(Index, 2)
+            Case a9a
+                事件卡.聖水_使用者 Index, pagecardnum(Index, 2)
+        End Select
+        '===================
+        Exit Sub
+    Else
+        對齊完成檢查.Enabled = True
+        GoTo vsssystemplay
+    End If
 End If
 '=================================================================
 If pagecardnum(Index, 6) = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) And pagecardnum(Index, 5) = 1 Then
