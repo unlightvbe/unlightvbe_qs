@@ -953,11 +953,82 @@ Dim m_cardmain_jpg As String
 Dim m_cardmain_personhp As Integer, m_cardmain_personhpmax As Integer, m_cardmain_personhp41 As Integer
 Dim m_cardmain_personatk As Integer
 Dim m_cardmain_persondef As Integer
-Dim m_buff_reset As Boolean
-Dim m_cardback_reset As Boolean
 Dim m_cardback_activehelp(1 To 4) As String, m_cardback_passivehelp(1 To 4) As String
 Dim m_cardback_activecheck As Integer, m_cardback_passivecheck As Integer, m_cardbackcheck As Integer
 Dim m_cardmain_isnewtype As Boolean
+Public Sub §ó§ï²§±`ª¬ºA¸ê®Æ(ByVal buffnum As Integer, ByVal imagepath As String, ByVal num As Integer, ByVal tot As Integer, ByVal isVisible As Boolean)
+If buffnum >= 1 And buffnum <= 14 Then
+     personspe(buffnum).person_num = num
+     personspe(buffnum).person_turn = tot
+     personspe(buffnum).²§±`ª¬ºA¹Ï¤ù = imagepath
+     personspe(buffnum).Visible = isVisible
+End If
+End Sub
+Public Sub ²§±`ª¬ºA¥ş­«³]()
+For i = 1 To 14
+    personspe(i).Visible = False
+Next
+End Sub
+Public Sub CardBack¥ş­«³]()
+Erase m_cardback_activehelp
+m_cardback_activecheck = 0
+m_cardback_passivecheck = 0
+m_cardbackcheck = 0
+For i = 1 To 4
+      PEAFpersoncardback_turn(i).Visible = False
+      PEAFpersoncardback_text(i).Visible = False
+      PEAFpersoncardback_passivetext(i).Visible = False
+      PEAFpersoncardback_main.Caption = ""
+      PEAFpersoncardback_passivemain.Caption = ""
+      '==========
+      Select Case i
+          Case 1
+                 For k = 1 To 5
+                     PEAFpersoncardback_num1(k).Visible = False
+                 Next
+               '================
+                 For k = 1 To 3
+                       PEAFpersoncardback_range1(k).ª«¥óÃş§O = 2
+                       PEAFpersoncardback_range1(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
+                       PEAFpersoncardback_range1(k).¶µ¥Ø½s¸¹ = 2
+                 Next
+               '================
+          Case 2
+                 For k = 1 To 5
+                     PEAFpersoncardback_num2(k).Visible = False
+                 Next
+               '================
+                 For k = 1 To 3
+                       PEAFpersoncardback_range2(k).ª«¥óÃş§O = 2
+                       PEAFpersoncardback_range2(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
+                       PEAFpersoncardback_range2(k).¶µ¥Ø½s¸¹ = 2
+                 Next
+               '================
+          Case 3
+                 For k = 1 To 5
+                     PEAFpersoncardback_num3(k).Visible = False
+                 Next
+               '================
+                 For k = 1 To 3
+                       PEAFpersoncardback_range3(k).ª«¥óÃş§O = 2
+                       PEAFpersoncardback_range3(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
+                       PEAFpersoncardback_range3(k).¶µ¥Ø½s¸¹ = 2
+                 Next
+               '================
+          Case 4
+                 For k = 1 To 5
+                     PEAFpersoncardback_num4(k).Visible = False
+                 Next
+               '================
+                 For k = 1 To 3
+                       PEAFpersoncardback_range4(k).ª«¥óÃş§O = 2
+                       PEAFpersoncardback_range4(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
+                       PEAFpersoncardback_range4(k).¶µ¥Ø½s¸¹ = 2
+                 Next
+               '================
+      End Select
+Next
+End Sub
 Public Property Get CardMain_¨¤¦â¹Ï¤ù() As String
    CardMain_¨¤¦â¹Ï¤ù = m_cardmain_jpg
 End Property
@@ -1066,142 +1137,6 @@ Public Property Let CardMain_¬O§_¬°·s¼Ë¦¡¸ê°T(ByVal New_CardMain_¬O§_¬°·s¼Ë¦¡¸ê°
         personlabelatk.Top = 3220
         personlabeldef.Left = 1820
         personlabeldef.Top = 3220
-   End If
-End Property
-Public Property Get Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó() As String
-   Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = ""
-End Property
-Public Property Let Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó(ByVal New_Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó As String)
-   Dim buffstr() As String
-   buffstr = Split(New_Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó, "#")
-   If buffstr(0) <> "" And Val(buffstr(1)) >= 1 And Val(buffstr(1)) <= 14 Then
-       personspe(Val(buffstr(1))).²§±`ª¬ºA¹Ï¤ù = buffstr(0)
-   End If
-   PropertyChanged "Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó"
-End Property
-Public Property Get Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó() As String
-   Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = ""
-End Property
-Public Property Let Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó(ByVal New_Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó As String)
-   Dim buffstr() As String
-   buffstr = Split(New_Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó, "#")
-   If Val(buffstr(0)) >= 0 And Val(buffstr(1)) >= 1 And Val(buffstr(1)) <= 14 Then
-       personspe(Val(buffstr(1))).person_num = Val(buffstr(0))
-   End If
-   PropertyChanged "Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó"
-End Property
-Public Property Get Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó() As String
-   Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = ""
-End Property
-Public Property Let Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó(ByVal New_Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó As String)
-   Dim buffstr() As String
-   buffstr = Split(New_Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó, "#")
-   If Val(buffstr(0)) >= 0 And Val(buffstr(1)) >= 1 And Val(buffstr(1)) <= 14 Then
-       personspe(Val(buffstr(1))).person_turn = Val(buffstr(0))
-   End If
-   PropertyChanged "Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó"
-End Property
-Public Property Get Buff_²§±`ª¬ºA_Åã¥Ü() As Integer
-   Buff_²§±`ª¬ºA_Åã¥Ü = 0
-End Property
-Public Property Let Buff_²§±`ª¬ºA_Åã¥Ü(ByVal New_Buff_²§±`ª¬ºA_Åã¥Ü As Integer)
-   If New_Buff_²§±`ª¬ºA_Åã¥Ü >= 1 And New_Buff_²§±`ª¬ºA_Åã¥Ü <= 14 Then
-       personspe(New_Buff_²§±`ª¬ºA_Åã¥Ü).Visible = True
-   End If
-   PropertyChanged "Buff_²§±`ª¬ºA_Åã¥Ü"
-End Property
-Public Property Get Buff_²§±`ª¬ºA_ÁôÂÃ() As Integer
-   Buff_²§±`ª¬ºA_ÁôÂÃ = 0
-End Property
-Public Property Let Buff_²§±`ª¬ºA_ÁôÂÃ(ByVal New_Buff_²§±`ª¬ºA_ÁôÂÃ As Integer)
-   If New_Buff_²§±`ª¬ºA_ÁôÂÃ >= 1 And New_Buff_²§±`ª¬ºA_ÁôÂÃ <= 14 Then
-       personspe(New_Buff_²§±`ª¬ºA_ÁôÂÃ).Visible = False
-   End If
-   PropertyChanged "Buff_²§±`ª¬ºA_ÁôÂÃ"
-End Property
-Public Property Get Buff_²§±`ª¬ºA_¥ş­«³]() As Boolean
-   Buff_²§±`ª¬ºA_¥ş­«³] = m_buff_reset
-End Property
-Public Property Let Buff_²§±`ª¬ºA_¥ş­«³](ByVal New_Buff_²§±`ª¬ºA_¥ş­«³] As Boolean)
-   m_buff_reset = New_Buff_²§±`ª¬ºA_¥ş­«³]
-   PropertyChanged "Buff_²§±`ª¬ºA_¥ş­«³]"
-   If Me.Buff_²§±`ª¬ºA_¥ş­«³] = True Then
-       Dim i As Integer
-       For i = 1 To 14
-           personspe(i).Visible = False
-       Next
-       Me.Buff_²§±`ª¬ºA_¥ş­«³] = False
-   End If
-End Property
-Public Property Get CardBack_¥ş­«³]() As Boolean
-   CardBack_¥ş­«³] = m_cardback_reset
-End Property
-Public Property Let CardBack_¥ş­«³](ByVal New_CardBack_¥ş­«³] As Boolean)
-   Dim i As Integer, j As Integer, k  As Integer
-   m_cardback_reset = New_CardBack_¥ş­«³]
-   PropertyChanged "CardBack_¥ş­«³]"
-   If Me.CardBack_¥ş­«³] = True Then
-       '===============================
-       Erase m_cardback_activehelp
-       m_cardback_activecheck = 0
-       m_cardback_passivecheck = 0
-       m_cardbackcheck = 0
-       For i = 1 To 4
-             PEAFpersoncardback_turn(i).Visible = False
-             PEAFpersoncardback_text(i).Visible = False
-             PEAFpersoncardback_passivetext(i).Visible = False
-             PEAFpersoncardback_main.Caption = ""
-             PEAFpersoncardback_passivemain.Caption = ""
-             '==========
-             Select Case i
-                 Case 1
-                        For k = 1 To 5
-                            PEAFpersoncardback_num1(k).Visible = False
-                        Next
-                      '================
-                        For k = 1 To 3
-                              PEAFpersoncardback_range1(k).ª«¥óÃş§O = 2
-                              PEAFpersoncardback_range1(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
-                              PEAFpersoncardback_range1(k).¶µ¥Ø½s¸¹ = 2
-                        Next
-                      '================
-                 Case 2
-                        For k = 1 To 5
-                            PEAFpersoncardback_num2(k).Visible = False
-                        Next
-                      '================
-                        For k = 1 To 3
-                              PEAFpersoncardback_range2(k).ª«¥óÃş§O = 2
-                              PEAFpersoncardback_range2(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
-                              PEAFpersoncardback_range2(k).¶µ¥Ø½s¸¹ = 2
-                        Next
-                      '================
-                 Case 3
-                        For k = 1 To 5
-                            PEAFpersoncardback_num3(k).Visible = False
-                        Next
-                      '================
-                        For k = 1 To 3
-                              PEAFpersoncardback_range3(k).ª«¥óÃş§O = 2
-                              PEAFpersoncardback_range3(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
-                              PEAFpersoncardback_range3(k).¶µ¥Ø½s¸¹ = 2
-                        Next
-                      '================
-                 Case 4
-                        For k = 1 To 5
-                            PEAFpersoncardback_num4(k).Visible = False
-                        Next
-                      '================
-                        For k = 1 To 3
-                              PEAFpersoncardback_range4(k).ª«¥óÃş§O = 2
-                              PEAFpersoncardback_range4(k).¹Ï¤ù = app_path & "gif\system\cardback\CBrge.png"
-                              PEAFpersoncardback_range4(k).¶µ¥Ø½s¸¹ = 2
-                        Next
-                      '================
-             End Select
-       Next
-       '===============================
-       Me.CardBack_¥ş­«³] = False
    End If
 End Property
 Public Property Get CardBack_¥D°Ê§Ş_§Ş¯à¦WºÙ() As String

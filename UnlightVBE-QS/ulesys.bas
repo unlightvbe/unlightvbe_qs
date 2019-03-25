@@ -1403,8 +1403,8 @@ For w = 1 To 角色人物對戰人數(1, 1)
     FormMainMode.uspi5(w).Caption = liveusmax(w)
     FormMainMode.cardus(w).CardMain_是否為新樣式資訊 = CBool(Val(VBEPerson(1, w, 1, 3, 5)) = 1)
     '=================
-    FormMainMode.cardus(w).Buff_異常狀態_全重設 = True
-    FormMainMode.cardus(w).CardBack_全重設 = True
+    FormMainMode.cardus(w).異常狀態全重設
+    FormMainMode.cardus(w).CardBack全重設
     戰鬥系統類.技能說明載入_人物卡片背面_使用者 w
 Next
 FormMainMode.bloodnumus1.Caption = liveus(1)
@@ -1444,8 +1444,8 @@ For w = 1 To 角色人物對戰人數(2, 1)
     FormMainMode.cardcom(w).CardMain_角色DEF = defcom(w)
     FormMainMode.cardcom(w).CardMain_是否為新樣式資訊 = CBool(Val(VBEPerson(2, w, 1, 3, 5)) = 1)
     '=================
-    FormMainMode.cardcom(w).Buff_異常狀態_全重設 = True
-    FormMainMode.cardcom(w).CardBack_全重設 = True
+    FormMainMode.cardcom(w).異常狀態全重設
+    FormMainMode.cardcom(w).CardBack全重設
     戰鬥系統類.技能說明載入_人物卡片背面_電腦 w
 Next
 FormMainMode.bloodnumcom1.Caption = livecom(1)
@@ -1477,7 +1477,7 @@ If Formsetting.chkpersonvsmode.Value = 1 Then
         FormMainMode.cardcom(i).CardMain_角色ATK = -99
         FormMainMode.cardcom(i).CardMain_角色DEF = -99
         FormMainMode.cardcom(i).CardMain_角色圖片 = app_path & "gif\system\personunknown.jpg"
-        FormMainMode.cardcom(i).CardBack_全重設 = True
+        FormMainMode.cardcom(i).CardBack全重設
     Next
 End If
 '--------------------------計算距離單位(HP血條)
@@ -1549,13 +1549,13 @@ Next
 End Sub
 Sub 遊戲初始讀入程序()
 '=====以下是背景音樂及SE初始設定
-    For i = FormMainMode.cMusicPlayer.ubound + 1 To 8
+    For i = FormMainMode.cMusicPlayer.UBound + 1 To 8
         Load FormMainMode.cMusicPlayer(i)
     Next
     FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulbgm03.mp3"
     FormMainMode.cMusicPlayer(0).Volume = 50
     FormMainMode.cMusicPlayer(0).IsLoop = True
-    For i = 1 To FormMainMode.cMusicPlayer.ubound
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
           FormMainMode.cMusicPlayer(i).Volume = 45
     Next
 End Sub

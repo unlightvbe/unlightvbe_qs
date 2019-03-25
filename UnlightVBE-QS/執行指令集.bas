@@ -1576,7 +1576,7 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
             '===========================執行階段插入點(76)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 76, 1
             '============================
-            戰鬥系統類.異常狀態顯示更新
+            戰鬥系統類.異常狀態顯示更新 uscomt
             GoTo VssCommadExit
     End Select
     '============================
@@ -1641,9 +1641,11 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
                 '=======================
                 If personStatus.Total <= 0 Then
                     執行階段73_指令_異常狀態控制_主動清除 uscom, vbecommadnum(6, vbecommadtotplayNow), buffvssnum
+                    人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow)).Remove buffvssnum
                     vbecommadnum(2, vbecommadtotplayNow) = 2
                     Exit Sub
                 Else
+                    戰鬥系統類.異常狀態顯示更新 uscom
                     GoTo VssCommadExit
                 End If
             End If
@@ -1656,7 +1658,7 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
             '===========================執行階段插入點(77)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscom, 77, 1
             '============================
-             戰鬥系統類.異常狀態顯示更新
+             戰鬥系統類.異常狀態顯示更新 uscom
             GoTo VssCommadExit
     End Select
     '============================
@@ -1718,7 +1720,7 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
             '===========================執行階段插入點(77)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 77, 1
             '============================
-            戰鬥系統類.異常狀態顯示更新
+            戰鬥系統類.異常狀態顯示更新 uscomt
             GoTo VssCommadExit
     End Select
     '============================
@@ -1776,7 +1778,7 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
             '===========================執行階段插入點(77)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 77, 1
             '============================
-            戰鬥系統類.異常狀態顯示更新
+            戰鬥系統類.異常狀態顯示更新 uscomt
             GoTo VssCommadExit
     End Select
     '============================

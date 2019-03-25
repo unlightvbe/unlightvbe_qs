@@ -839,7 +839,7 @@ For i = 1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count
         tempnum = tempnum + 1
     End If
 Next
-戰鬥系統類.異常狀態顯示更新
+戰鬥系統類.異常狀態顯示更新 uscom
 End Sub
 Sub 執行動作_距離變更(ByVal m As Integer, ByVal isEvent As Boolean)
 '===========================執行階段插入點(47)
@@ -914,40 +914,36 @@ Else
    距離單位(2, 1, 2) = -((pagecardnum(牌移動暫時變數(3), 10) - 牌移動暫時變數(2)) \ 12)
 End If
 End Sub
-Sub 異常狀態顯示更新()
+Sub 異常狀態顯示更新(ByVal uscom As Integer)
 Dim numNow As Integer, obj As clsStatus
-For uscom = 1 To 2
-    For i = 1 To 角色人物對戰人數(uscom, 1)
-        numNow = 1
-        For Each n In 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, i))
-            Set obj = n
+
+For i = 1 To 角色人物對戰人數(uscom, 1)
+    numNow = 1
+    For Each n In 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, i))
+        Set obj = n
+        Select Case uscom
+            Case 1
+                FormMainMode.cardus(角色待機人物紀錄數(1, i)).更改異常狀態資料 numNow, obj.imagepath, obj.Value, obj.Total, True
+            Case 2
+                FormMainMode.cardcom(角色待機人物紀錄數(2, i)).更改異常狀態資料 numNow, obj.imagepath, obj.Value, obj.Total, True
+        End Select
+        numNow = numNow + 1
+        If numNow > 14 Then Exit For
+    Next
+    If numNow <= 14 Then
+        For k = numNow To 14
             Select Case uscom
                 Case 1
-                    FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態圖片_變更 = obj.ImagePath & "#" & numNow
-                    FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態效果變化量_變更 = obj.Value & "#" & numNow
-                    FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態效果回合數_變更 = obj.Total & "#" & numNow
-                    FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態_顯示 = numNow
+'                        FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態_隱藏 = k
+                    FormMainMode.cardus(角色待機人物紀錄數(1, i)).更改異常狀態資料 k, 0, 0, 0, False
                 Case 2
-                    FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態圖片_變更 = obj.ImagePath & "#" & numNow
-                    FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態效果變化量_變更 = obj.Value & "#" & numNow
-                    FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態效果回合數_變更 = obj.Total & "#" & numNow
-                    FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態_顯示 = numNow
+'                        FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態_隱藏 = k
+                    FormMainMode.cardcom(角色待機人物紀錄數(2, i)).更改異常狀態資料 k, 0, 0, 0, False
             End Select
-            numNow = numNow + 1
-            If numNow > 14 Then Exit For
         Next
-        If numNow <= 14 Then
-            For k = numNow To 14
-                Select Case uscom
-                    Case 1
-                        FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態_隱藏 = k
-                    Case 2
-                        FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態_隱藏 = k
-                End Select
-            Next
-        End If
-    Next
+    End If
 Next
+
 End Sub
 Sub 特殊_史塔夏_殺戮狀態_使用者()
 'Select Case atking_史塔夏_殺戮模式狀態數(1)
@@ -2790,8 +2786,8 @@ Dim ne As Integer
 Dim numNow As Integer, obj As clsStatus
 
 For i = 2 To 3
-   Formchangeperson.card(i - 1).Buff_異常狀態_全重設 = True
-   Formchangeperson.card(i - 1).CardBack_全重設 = True
+   Formchangeperson.card(i - 1).異常狀態全重設
+   Formchangeperson.card(i - 1).CardBack全重設
    Formchangeperson.card(i - 1).CardMain_角色圖片 = VBEPerson(1, 角色待機人物紀錄數(1, i), 1, 5, 5)
    Formchangeperson.card(i - 1).CardMain_角色HP = liveus(角色待機人物紀錄數(1, i))
    Formchangeperson.card(i - 1).CardMain_角色HPMAX = liveusmax(角色待機人物紀錄數(1, i))
@@ -2806,10 +2802,7 @@ For k = 2 To 3
     numNow = 1
     For Each n In 人物異常狀態列表(1, 角色待機人物紀錄數(1, k))
         Set obj = n
-        Formchangeperson.card(ne).Buff_異常狀態圖片_變更 = obj.ImagePath & "#" & numNow
-        Formchangeperson.card(ne).Buff_異常狀態效果變化量_變更 = obj.Value & "#" & numNow
-        Formchangeperson.card(ne).Buff_異常狀態效果回合數_變更 = obj.Total & "#" & numNow
-        Formchangeperson.card(ne).Buff_異常狀態_顯示 = numNow
+        Formchangeperson.card(ne).更改異常狀態資料 numNow, obj.imagepath, obj.Value, obj.Total, True
         numNow = numNow + 1
         If numNow > 14 Then Exit For
     Next
