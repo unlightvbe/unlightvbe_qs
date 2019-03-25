@@ -1,18 +1,16 @@
 Attribute VB_Name = "執行階段系統類"
 Public VBEPersonVS(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)  As Variant  'VBE人物統一變數-VS版
 Public atkingpagetotVS(1 To 2, 1 To 5) As Variant  '每階段出牌種類及數值統計資料-VS版
-Public VBEPersonBuffVSF(1 To 2, 1 To 3, 1 To 14, 1 To 2) As Variant '異常狀態資料-VS-F版
-Public VBEPersonBuffVSS(1 To 2, 1 To 3, 1 To 14) As Variant '異常狀態資料-VS-S版
+Public VBEPersonBuffVSF() As Variant '異常狀態資料-VS-F版
+Public VBEPersonBuffVSS() As Variant '異常狀態資料-VS-S版
 Public AtkingckVSS(1 To 8, 1 To 3) As Variant  '技能資訊一覽-S版(技能啟動碼)
 Public AtkingckVSF(1 To 8, 1 To 1) As Variant '技能資訊一覽-F版(備註字串)
 Public VBEAtkingVSF(1 To 2, 1 To 3, 1 To 2) As Variant 'VBE>VS給予變數統一資料-F版
 Public VBEAtkingVSS(0 To 20) As Variant 'VBE>VS給予變數統一資料-S版
-'Public VBEPageCardNumVS(1 To 106, 1 To 6) As Variant '公用牌資料-VS版
 Public VBEPageCardNumVS() As Variant '公用牌資料-VS版
 Public VBEVSBuffNum(1 To 2) As Variant '異常狀態專用-異常狀態之2個數值-VS版
 Public VBEStageNum() As Integer '執行階段系統-執行階段多用途紀錄暫時變數(0.執行階段號/1~任意內容)
 Public VBEVSStageNum() As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
-'Public VBEVSBuffMainCommadNum(1 To 2) As Integer '執行階段系統-異常狀態類相關暫時紀錄變數(1.是否為場上人物紀錄數/2.角色待機編號紀錄數)
 Public VBEStageRemoveBuffAllNum() As Boolean '執行階段系統-執行階段73-異常狀態控制全部清除-異常狀態是否異議標記暫時變數
 Public VBEActualStatusVS(1 To 2, 1 To 3, 1 To 2) As Variant '人物實際狀態資料-VS版
 Public VBEStage7xAtkingInformation As String '執行階段7x(76狀態加入/77解除)-技能唯一識別碼暫時儲存變數
@@ -41,28 +39,28 @@ Sub 執行階段系統總主要程序_人物被動技能(ByVal uscom As Integer, ByVal personnum 
 End Sub
 Sub 執行階段73_指令_異常狀態控制_全部清除(ByVal uscom As Integer, ByVal num As Integer)
 Dim vbecommadnumSecond As Integer '本層執行階段編號數
+Dim buffobj As clsStatus
 '=======================
 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 '=======================
 Dim VBEStageNumMainSec(0 To 1) As Integer
 VBEStageNumMainSec(0) = 73
 VBEStageNumMainSec(1) = 1
-ReDim VBEStageRemoveBuffAllNum(1 To 14) As Boolean
+ReDim VBEStageRemoveBuffAllNum(1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count) As Boolean
 '=======================
-For p = 1 To 14
-     Vss_EventRemoveBuffActionOffNum = 0
-     If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), p, 3) <> "" Then
-        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), p, 73, num, VBEStageNumMainSec, vbecommadnumSecond
-     End If
-     If Vss_EventRemoveBuffActionOffNum = 1 Then
-         VBEStageRemoveBuffAllNum(p) = True
-     End If
+For i = 1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count
+    Set buffobj = 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num))(i)
+    Vss_EventRemoveBuffActionOffNum = 0
+    執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffobj.Identifier, 73, num, VBEStageNumMainSec, vbecommadnumSecond
+    If Vss_EventRemoveBuffActionOffNum = 1 Then
+         VBEStageRemoveBuffAllNum(i) = True
+    End If
 Next
 '=======================
 執行階段系統_宣告開始或結束 2
 '=======================
 End Sub
-Sub 執行階段73_指令_異常狀態控制_特定清除(ByVal uscom As Integer, ByVal num As Integer, ByVal buffnum As Integer)
+Sub 執行階段73_指令_異常狀態控制_特定清除(ByVal uscom As Integer, ByVal num As Integer, ByVal akstr As String)
 Dim vbecommadnumSecond As Integer '本層執行階段編號數
 '=======================
 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
@@ -72,14 +70,12 @@ VBEStageNumMainSec(0) = 73
 VBEStageNumMainSec(1) = 1
 '=======================
 Vss_EventRemoveBuffActionOffNum = 0
-If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, num), buffnum, 3) <> "" Then
-    執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, num, VBEStageNumMainSec, vbecommadnumSecond
-End If
+執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), akstr, 73, num, VBEStageNumMainSec, vbecommadnumSecond
 '=======================
 執行階段系統_宣告開始或結束 2
 '=======================
 End Sub
-Sub 執行階段73_指令_異常狀態控制_主動清除(ByVal uscom As Integer, ByVal num As Integer, ByVal buffnum As Integer)
+Sub 執行階段73_指令_異常狀態控制_主動清除(ByVal uscom As Integer, ByVal num As Integer, ByVal akstr As String)
 Dim vbecommadnumSecond As Integer '本層執行階段編號數
 '=======================
 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
@@ -88,7 +84,7 @@ Dim VBEStageNumMainSec(0 To 1) As Integer
 VBEStageNumMainSec(0) = 73
 VBEStageNumMainSec(1) = 0
 '=======================
-執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffnum, 73, num, VBEStageNumMainSec, vbecommadnumSecond
+執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), akstr, 73, num, VBEStageNumMainSec, vbecommadnumSecond
 '=======================
 執行階段系統_宣告開始或結束 2
 '=======================
@@ -124,14 +120,10 @@ Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As
         Next
         '==================異常狀態
         For w = 1 To 3
-           For p = 1 To 14
-                If Val(人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), p, 2)) > 0 And 人物異常狀態資料庫(uscom, 角色待機人物紀錄數(uscom, w), p, 3) <> "" Then
-                    執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, w), p, ns, w, VBEStageNumMain, vbecommadtotplayNow
-                End If
-           Next
+            For Each n In 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, w))
+                執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, w), n.Identifier, ns, w, VBEStageNumMain, vbecommadtotplayNow
+            Next
         Next
-        戰鬥系統類.異常狀態繼承_使用者
-        戰鬥系統類.異常狀態繼承_電腦
         '==================被動技能
         For w = 1 To 3
             For atkingnum = 5 To 8
@@ -408,7 +400,18 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
     ReDim VBEVSStageNum(1 To UBound(VBEStageNumMain)) As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
     Erase VBEActualStatusVS '人物實際狀態資料-VS版
     '===========================
-    Dim q As Integer, w As Integer, rr As Integer
+    Dim q As Integer, w As Integer, rr As Integer, tempc As Integer, buffobj As clsStatus
+    tempc = 1
+    For i = 1 To 2
+        For j = 1 To 3
+            If 人物異常狀態列表(i, j).Count > tempc Then
+                tempc = 人物異常狀態列表(i, j).Count
+            End If
+        Next
+    Next
+    ReDim VBEPersonBuffVSF(1 To 2, 1 To 3, 1 To tempc, 1 To 2) As Variant '異常狀態資料-VS-F版
+    ReDim VBEPersonBuffVSS(1 To 2, 1 To 3, 1 To tempc) As Variant '異常狀態資料-VS-S版
+    '===========================
     Select Case uscom
          Case 1
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
@@ -463,14 +466,11 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
             '(1 To 2, 1 To 3, 1 To 14, 1 To 3)
             For i = 1 To 2
                 For rr = 1 To 3
-                    For j = 1 To 14
-                        For k = 1 To 3
-                            If k = 3 Then
-                                VBEPersonBuffVSS(i, rr, j) = 人物異常狀態資料庫(i, 角色待機人物紀錄數(i, rr), j, k)
-                            Else
-                                VBEPersonBuffVSF(i, rr, j, k) = Val(人物異常狀態資料庫(i, 角色待機人物紀錄數(i, rr), j, k))
-                            End If
-                        Next
+                    For j = 1 To 人物異常狀態列表(i, 角色待機人物紀錄數(i, rr)).Count
+                        Set buffobj = 人物異常狀態列表(i, 角色待機人物紀錄數(i, rr))(j)
+                        VBEPersonBuffVSF(i, rr, j, 1) = buffobj.Value
+                        VBEPersonBuffVSF(i, rr, j, 2) = buffobj.Total
+                        VBEPersonBuffVSS(i, rr, j) = buffobj.Identifier
                     Next
                 Next
             Next
@@ -631,14 +631,11 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
             For i = 1 To 2
                 If i = 1 Then q = 2 Else q = 1
                 For rr = 1 To 3
-                    For j = 1 To 14
-                        For k = 1 To 3
-                            If k = 3 Then
-                                VBEPersonBuffVSS(i, rr, j) = 人物異常狀態資料庫(q, 角色待機人物紀錄數(q, rr), j, k)
-                            Else
-                                VBEPersonBuffVSF(i, rr, j, k) = Val(人物異常狀態資料庫(q, 角色待機人物紀錄數(q, rr), j, k))
-                            End If
-                        Next
+                    For j = 1 To 人物異常狀態列表(q, 角色待機人物紀錄數(q, rr)).Count
+                        Set buffobj = 人物異常狀態列表(q, 角色待機人物紀錄數(q, rr))(j)
+                        VBEPersonBuffVSF(i, rr, j, 1) = buffobj.Value
+                        VBEPersonBuffVSF(i, rr, j, 2) = buffobj.Total
+                        VBEPersonBuffVSS(i, rr, j) = buffobj.Identifier
                     Next
                 Next
             Next
@@ -1130,20 +1127,21 @@ vssyserror:
 執行階段系統_錯誤訊息通知 1, "7[" & VBEVSSActualStatusStr2(i) & "]"
 '===============
 End Sub
-Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal personbuffnum As Integer, ByVal ns As Integer, ByVal PersonBattleNum As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
-    Dim buffvssnum As Integer, BuffPersonType As Integer '暫時變數
+Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal akstr As String, ByVal ns As Integer, ByVal PersonBattleNum As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
+    Dim buffvssnum As Integer, BuffPersonType As Integer, buffobj As clsStatus '暫時變數
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
-    If 執行階段系統類.執行階段系統_驗證(9, ns, 人物異常狀態資料庫(uscom, personnum, personbuffnum, 3), uscom, personnum) = True Then
+    If 執行階段系統類.執行階段系統_驗證(9, ns, akstr, uscom, personnum) = True Then
+           Set buffobj = 人物異常狀態列表(uscom, personnum)(akstr)
            執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain, PersonBattleNum
            If PersonBattleNum > 1 Then BuffPersonType = 2 Else BuffPersonType = 1
            vbecommadnum(6, vbecommadtotplayNow) = PersonBattleNum
            vbecommadnum(7, vbecommadtotplayNow) = personnum
            Erase VBEVSBuffNum '異常狀態專用-異常狀態之2個數值-VS版
            For p = 1 To UBound(VBEVSSBuffStr1)
-                 If VBEVSSBuffStr1(p) = 人物異常狀態資料庫(uscom, personnum, personbuffnum, 3) Then
+                 If VBEVSSBuffStr1(p) = akstr Then
                      buffvssnum = p + 54
-                     VBEVSBuffNum(1) = Val(人物異常狀態資料庫(uscom, personnum, personbuffnum, 1))
-                     VBEVSBuffNum(2) = Val(人物異常狀態資料庫(uscom, personnum, personbuffnum, 2))
+                     VBEVSBuffNum(1) = buffobj.Value
+                     VBEVSBuffNum(2) = buffobj.Total
                      Exit For
                  End If
             Next

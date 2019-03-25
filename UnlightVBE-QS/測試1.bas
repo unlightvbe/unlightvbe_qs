@@ -76,3 +76,11 @@ Dim sgnThisTime As Single, sgnCount As Single
         DoEvents
      Loop
 End Sub
+Public Function CollectionExists(ByVal oCol As Collection, ByVal vKey As Variant) As Boolean
+
+    On Error Resume Next
+    oCol.Item vKey
+    CollectionExists = (Err.Number = 0)
+    Err.Clear
+
+End Function

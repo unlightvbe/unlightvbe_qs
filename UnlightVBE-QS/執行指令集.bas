@@ -1,6 +1,4 @@
 Attribute VB_Name = "執行指令集"
-'Public commadstr1()  As String, commadstr2() As String
-Public commadstr3() As String '執行指令字串暫時變數
 Public vbecommadnum() As Integer '執行階段指令集變數-數值類(1.目前執行指令次序/2.目前執行指令分階段/3.目前執行腳本物件號/4.目前之執行階段號/5.目前執行階段指令總計/6.目前人物於場上順序/7.目前人物角色實際編號, 執行階段執行中計數值)
 Public vbecommadstr() As String '執行階段指令集變數-字串類(1.目前執行指令名稱/2.目前執行階段指令串, 執行階段執行中計數值)
 Public vbecommadtotplay As Integer '目前執行之執行階段計數值
@@ -57,8 +55,6 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
         vbecommadstr(1, vbecommadtotplayNow) = commadstr2(0)
         vbecommadstr(3, vbecommadtotplayNow) = commadstr2(1)
         '=============================================
-'        If PersonCheckAtking = False And _
-               commadstr2(0) <> "AtkingLineLight" And commadstr2(0) <> "AtkingTurnOnOff" And commadstr2(0) <> "EventActiveAIScore" Then
         If PersonCheckAtking = False And _
                commadstr2(0) <> "AtkingLineLight" And commadstr2(0) <> "AtkingTurnOnOff" Then
                執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
@@ -167,8 +163,6 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                 執行指令集.執行指令_禁止玩家進行所有操作 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventPersonResurrectActionOff"
                                 執行指令集.執行指令_執行之人物角色復活無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
-'                        Case "EventActiveAIScore"
-'                               執行指令集.執行指令_智慧型AI個別技能評分 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                      '========================================================
                         Case Else
                                GoTo vss_cmdlocalerr
@@ -758,7 +752,6 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
                         FormMainMode.atkingtrcom.Enabled = True
             End Select
             Erase Vss_AtkingStartPlayNum
-'            vbecommadnum(2, vbecommadtotplayNow) = 0 '==等待時間
             vbecommadnum(2, vbecommadtotplayNow) = 2 '==等待時間
         Case 2
             If Vss_AtkingStartPlayNum(1) = 1 Then
@@ -772,7 +765,6 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
                                 Formatkingcom.atkingcomjpg.LoadImage_FromFile App.Path & commadstr3(1)
                             End If
                 End Select
-'                vbecommadnum(2, vbecommadtotplayNow) = 0 '==等待時間
                 vbecommadnum(2, vbecommadtotplayNow) = 3 '==等待時間
             End If
         Case 3
@@ -791,12 +783,9 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
                     執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
                 Else
                     buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
-                    For i = 1 To 14
-                        If 人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 3) = buffvssnum And Val(人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) > 0 Then
-                            執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), i, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
-                            Exit For
-                        End If
-                    Next
+                    If CollectionExists(人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow)), buffvssnum) = True Then
+                        執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), buffvssnum, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                    End If
                 End If
                 '=======================
                 執行階段系統_宣告開始或結束 2
@@ -1512,6 +1501,7 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     Dim uscomt As Integer
     Dim vsstr As String
+    Dim personStatus As clsStatus
     If UBound(commadstr3) <> 4 Or atkingnum = 9 Then GoTo VssCommadExit
     Select Case commadtype
         Case 1
@@ -1536,53 +1526,29 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
                GoTo VssCommadExit
             End If
             '===========================================執行取代既有的異常狀態資料
-            For i = 1 To 14
-                If 人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 3) = commadstr3(2) And Val(人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2)) > 0 Then
-                    Select Case uscomt
-                        Case 1
-'                            FormMainMode.personusspe(i).person_num = Val(commadstr3(3))
-'                            FormMainMode.personusspe(i).person_turn = Val(commadstr3(4))
-                            FormMainMode.cardus(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Buff_異常狀態效果變化量_變更 = Val(commadstr3(3)) & "#" & i
-                            FormMainMode.cardus(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Buff_異常狀態效果回合數_變更 = Val(commadstr3(4)) & "#" & i
-                            人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 1) = Val(commadstr3(3))
-                            人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2) = Val(commadstr3(4))
-                        Case 2
-'                            FormMainMode.personcomspe(i).person_num = Val(commadstr3(3))
-'                            FormMainMode.personcomspe(i).person_turn = Val(commadstr3(4))
-                            FormMainMode.cardcom(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Buff_異常狀態效果變化量_變更 = Val(commadstr3(3)) & "#" & i
-                            FormMainMode.cardcom(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Buff_異常狀態效果回合數_變更 = Val(commadstr3(4)) & "#" & i
-                            人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 1) = Val(commadstr3(3))
-                            人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2) = Val(commadstr3(4))
-                    End Select
-'                    GoTo VssCommadExit
-                    vbecommadnum(2, vbecommadtotplayNow) = 2
-                    Exit Sub
-                End If
-            Next
+            If CollectionExists(人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))), commadstr3(2)) = True Then
+                Set personStatus = 人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))))(commadstr3(2))
+                personStatus.Value = Val(commadstr3(3))
+                personStatus.Total = Val(commadstr3(4))
+                '=======================
+                vbecommadnum(2, vbecommadtotplayNow) = 2
+                Exit Sub
+            End If
             '===========================================新增異常狀態資料
             For k = 1 To UBound(VBEVSSBuffStr1)
                 If VBEVSSBuffStr1(k) = commadstr3(2) Then
                     vsstr = FormMainMode.PEAFvssc(k + 54).Run("main", 4)
-                    For i = 1 To 14
-                        If Val(人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2)) = 0 Then
-                            人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 4) = App.Path & vsstr
-                            戰鬥系統類.人物異常狀態表設定_初設 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, commadstr3(2), App.Path & vsstr, Val(commadstr3(3)), Val(commadstr3(4))
-'                            GoTo VssCommadExit
-                            vbecommadnum(2, vbecommadtotplayNow) = 2
-                            Exit Sub
-                        End If
-                    Next
-                    If i = 15 Then
-                        '==============人物已超過14個異常狀態上限
-                        戰鬥系統類.廣播訊息 VBEPerson(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 1, 1, 1) & "  已超過異常狀態之擁有上限，宣告死亡。"
-                        Select Case uscomt
-                             Case 1
-                                   戰鬥系統類.傷害執行_立即死亡_使用者 Val(commadstr3(1))
-                             Case 2
-                                   戰鬥系統類.傷害執行_立即死亡_電腦 Val(commadstr3(1))
-                        End Select
-                        '=======================
-                    End If
+                    Set personStatus = New clsStatus
+                    With personStatus
+                        .Identifier = commadstr3(2)
+                        .Value = Val(commadstr3(3))
+                        .Total = Val(commadstr3(4))
+                        .ImagePath = App.Path & vsstr
+                    End With
+                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Add personStatus, commadstr3(2)
+                    '===================
+                    vbecommadnum(2, vbecommadtotplayNow) = 2
+                    Exit Sub
                 End If
             Next
             '===============未找到異常狀態資料
@@ -1594,12 +1560,9 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
             '=======================
             Dim VBEStageNumMainSec(1 To 1) As Integer
             VBEStageNumMainSec(1) = Val(commadstr3(3))
-            For i = 1 To 14
-                If Val(人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2)) > 0 And 人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 3) = commadstr3(2) Then
-                    執行階段系統總主要程序_異常狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 72, Val(commadstr3(1)), VBEStageNumMainSec, vbecommadnumSecond
-                    Exit For
-                End If
-            Next
+            If CollectionExists(人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))), commadstr3(2)) = True Then
+                執行階段系統總主要程序_異常狀態 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), commadstr3(2), 72, Val(commadstr3(1)), VBEStageNumMainSec, vbecommadnumSecond
+            End If
             '=======================
             執行階段系統_宣告開始或結束 2
             vbecommadnum(2, vbecommadtotplayNow) = 3
@@ -1613,6 +1576,7 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
             '===========================執行階段插入點(76)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 76, 1
             '============================
+            戰鬥系統類.異常狀態顯示更新
             GoTo VssCommadExit
     End Select
     '============================
@@ -1656,6 +1620,7 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     Dim buffvssnum As String
     Dim vsstr As String
+    Dim personStatus As clsStatus
     If UBound(commadstr3) <> 0 And atkingnum <> 9 Then GoTo VssCommadExit
     Select Case commadtype
         Case 1
@@ -1670,26 +1635,18 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
             buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
             VBEStage7xAtkingInformation = buffvssnum
             '===========================================執行取代既有的異常狀態資料
-            For i = 1 To 14
-                If 人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 3) = buffvssnum And Val(人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) > 0 Then
-                    人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2) = Val(人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) - 1
-                    Select Case uscom
-                        Case 1
-'                            FormMainMode.personusspe(i).person_turn = Val(人物異常狀態資料庫(uscom, i, 2))
-                            FormMainMode.cardus(vbecommadnum(7, vbecommadtotplayNow)).Buff_異常狀態效果回合數_變更 = 人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2) & "#" & i
-                        Case 2
-'                            FormMainMode.personcomspe(i).person_turn = Val(人物異常狀態資料庫(uscom, i, 2))
-                            FormMainMode.cardcom(vbecommadnum(7, vbecommadtotplayNow)).Buff_異常狀態效果回合數_變更 = 人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2) & "#" & i
-                    End Select
-                    If Val(人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) <= 0 Then
-                        執行階段73_指令_異常狀態控制_主動清除 uscom, vbecommadnum(6, vbecommadtotplayNow), i
-                        vbecommadnum(2, vbecommadtotplayNow) = 2
-                        Exit Sub
-                    Else
-                        GoTo VssCommadExit
-                    End If
+            If CollectionExists(人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow)), buffvssnum) = True Then
+                Set personStatus = 人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow))(buffvssnum)
+                personStatus.Total = personStatus.Total - 1
+                '=======================
+                If personStatus.Total <= 0 Then
+                    執行階段73_指令_異常狀態控制_主動清除 uscom, vbecommadnum(6, vbecommadtotplayNow), buffvssnum
+                    vbecommadnum(2, vbecommadtotplayNow) = 2
+                    Exit Sub
+                Else
+                    GoTo VssCommadExit
                 End If
-            Next
+            End If
         Case 2
             ReDim VBEStageNum(0 To 3) As Integer
             VBEStageNum(0) = 77
@@ -1699,8 +1656,7 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
             '===========================執行階段插入點(77)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscom, 77, 1
             '============================
-            戰鬥系統類.異常狀態繼承_使用者
-            戰鬥系統類.異常狀態繼承_電腦
+             戰鬥系統類.異常狀態顯示更新
             GoTo VssCommadExit
     End Select
     '============================
@@ -1718,6 +1674,7 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     Dim buffvssnum As String
     Dim vsstr As String
+    Dim tempnum As Integer
     If UBound(commadstr3) <> 1 Or atkingnum = 9 Then GoTo VssCommadExit
     Select Case commadtype
         Case 1
@@ -1741,12 +1698,15 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
                GoTo VssCommadExit
             End If
             '===========================================
-            Select Case uscomt
-                Case 1
-                    執行動作_清除所有異常狀態_使用者 Val(commadstr3(1))
-                Case 2
-                    執行動作_清除所有異常狀態_電腦 Val(commadstr3(1))
-            End Select
+            執行階段73_指令_異常狀態控制_全部清除 uscomt, Val(commadstr3(1))
+            tempnum = 1
+            For i = 1 To 人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Count
+                If VBEStageRemoveBuffAllNum(i) = False Then
+                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove tempnum
+                Else
+                    tempnum = tempnum + 1
+                End If
+            Next
             vbecommadnum(2, vbecommadtotplayNow) = 2
         Case 2
             ReDim VBEStageNum(0 To 3) As Integer
@@ -1758,6 +1718,7 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
             '===========================執行階段插入點(77)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 77, 1
             '============================
+            戰鬥系統類.異常狀態顯示更新
             GoTo VssCommadExit
     End Select
     '============================
@@ -1798,19 +1759,13 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
                GoTo VssCommadExit
             End If
             '===========================================
-            For i = 1 To 14
-                If 人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 3) = commadstr3(2) Then
-                    執行階段73_指令_異常狀態控制_特定清除 uscomt, Val(commadstr3(1)), i
-                    If Vss_EventRemoveBuffActionOffNum = 0 Then
-                       人物異常狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i, 2) = 0
-                    End If
-                    VBEStage7xAtkingInformation = commadstr3(2)
-                    Exit For
+            If CollectionExists(人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))), commadstr3(2)) = True Then
+                執行階段73_指令_異常狀態控制_特定清除 uscomt, Val(commadstr3(1)), commadstr3(2)
+                If Vss_EventRemoveBuffActionOffNum = 0 Then
+                   人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
                 End If
-            Next
-            '=================
-            戰鬥系統類.異常狀態繼承_使用者
-            戰鬥系統類.異常狀態繼承_電腦
+                VBEStage7xAtkingInformation = commadstr3(2)
+            End If
             vbecommadnum(2, vbecommadtotplayNow) = 2
         Case 2
             ReDim VBEStageNum(0 To 3) As Integer
@@ -1821,6 +1776,7 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
             '===========================執行階段插入點(77)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 77, 1
             '============================
+            戰鬥系統類.異常狀態顯示更新
             GoTo VssCommadExit
     End Select
     '============================
@@ -1968,12 +1924,9 @@ Sub 執行指令_執行擲骰子(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
                 執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
             Else
                 buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
-                For i = 1 To 14
-                    If 人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 3) = buffvssnum And Val(人物異常狀態資料庫(uscom, vbecommadnum(7, vbecommadtotplayNow), i, 2)) > 0 Then
-                        執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), i, 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
-                        Exit For
-                    End If
-                Next
+                If CollectionExists(人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow)), buffvssnum) = True Then
+                    執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), buffvssnum, 62, vbecommadnum(6, vbecommadtotplayNow), Vss_BattleStartDiceNum, vbecommadnumSecond
+                End If
             End If
             '=======================
             執行階段系統_宣告開始或結束 2
@@ -2537,29 +2490,6 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "PersonMoveActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-'Sub 執行指令_智慧型AI個別技能評分(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer)
-'    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
-'    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-'    If UBound(commadstr3) < 1 Or vbecommadnum(3, vbecommadtotplayNow) > 24 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 99 Then GoTo VssCommadExit
-'    Select Case vbecommadnum(2, vbecommadtotplayNow)
-'        Case 1
-'            ReDim Vss_EventActiveAIScoreNum(1 To UBound(commadstr3) + 1) As Integer
-'            For i = 0 To UBound(commadstr3)
-'                Vss_EventActiveAIScoreNum(i + 1) = commadstr3(i)
-'            Next
-'            '=====================
-'            GoTo VssCommadExit
-'    End Select
-'        '============================
-'    Exit Sub
-'VssCommadExit:
-'    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
-'    '============================
-''=============================
-'Exit Sub
-'vss_cmdlocalerr:
-'執行指令集.執行指令集_錯誤訊息通知 "EventActiveAIScore", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
-'End Sub
 Sub 執行指令_移動前總移動量控制(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
@@ -2651,7 +2581,6 @@ End Sub
 
 Sub 執行指令_指令結束標記(ByVal vbecommadtotplayNow As Integer)
     vbecommadnum(1, vbecommadtotplayNow) = vbecommadnum(1, vbecommadtotplayNow) + 1
-'    執行指令集.執行指令集總程序_指令呼叫執行
 End Sub
 Sub 執行指令集_錯誤訊息通知(ByVal name As String, ByVal cmdturn As Integer, ByVal systurn As Integer)
 MsgBox "執行階段錯誤(04-" & systurn & "-" & name & "-" & cmdturn & ")：" & Chr(10) & "指令於執行時發生錯誤。" & Chr(10) & Chr(10) & "(" & Err.Number & "):" & Err.Description, vbCritical

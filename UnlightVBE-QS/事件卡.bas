@@ -347,7 +347,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         turnpageonin = 0
         FormMainMode.bnok.Enabled = False
         '=======================
-        戰鬥系統類.執行動作_清除所有異常狀態_使用者 1
+        戰鬥系統類.執行動作_清除所有異常狀態 1, 1
         FormMainMode.trgoi1_Timer
         等待時間佇列(2).Add 40
         FormMainMode.等待時間_2.Enabled = True
@@ -390,7 +390,7 @@ Select Case 事件卡記錄暫時數(2, 3)
     Case 2
         事件卡記錄暫時數(2, 2) = 1
         '=======================
-        戰鬥系統類.執行動作_清除所有異常狀態_電腦 1
+        戰鬥系統類.執行動作_清除所有異常狀態 2, 1
         FormMainMode.trgoi2_Timer
         等待時間佇列(2).Add 42
         FormMainMode.等待時間_2.Enabled = True

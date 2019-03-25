@@ -1492,11 +1492,11 @@ Erase 血量計數器動畫暫時變數
 '==============時間軸顏色設定
 戰鬥系統類.時間軸_重設
 '===============重設雙方異常狀態設定
-'戰鬥系統類.執行動作_清除所有異常狀態_使用者 1
-'戰鬥系統類.執行動作_清除所有異常狀態_電腦 1
-Erase 人物異常狀態資料庫
-'==================
-'一般系統類.判斷字型_FormMainMode
+For i = 1 To 2
+    For j = 1 To UBound(人物異常狀態列表, 2)
+        Set 人物異常狀態列表(i, j) = New Collection
+    Next
+Next
 '==================
 BattleTurn = 1
 FormMainMode.PEAFInterface.turn = BattleTurn
@@ -1549,13 +1549,13 @@ Next
 End Sub
 Sub 遊戲初始讀入程序()
 '=====以下是背景音樂及SE初始設定
-    For i = FormMainMode.cMusicPlayer.UBound + 1 To 8
+    For i = FormMainMode.cMusicPlayer.ubound + 1 To 8
         Load FormMainMode.cMusicPlayer(i)
     Next
     FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulbgm03.mp3"
     FormMainMode.cMusicPlayer(0).Volume = 50
     FormMainMode.cMusicPlayer(0).IsLoop = True
-    For i = 1 To FormMainMode.cMusicPlayer.UBound
+    For i = 1 To FormMainMode.cMusicPlayer.ubound
           FormMainMode.cMusicPlayer(i).Volume = 45
     Next
 End Sub

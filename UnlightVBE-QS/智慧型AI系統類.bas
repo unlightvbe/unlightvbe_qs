@@ -812,6 +812,7 @@ Erase cardAInumMOVmain
 Erase cardAInumMOVnm
 Erase cardAInumMOVnmtot
 Dim wtmovnum As Integer '暫時變數
+Dim buffobj As clsStatus
 If cardAInumchoose = -10 Then
     智慧型AI系統計算_移動階段續_判斷出牌資格 = False
     Exit Function
@@ -827,17 +828,15 @@ For i = 1 To cardAInumuscom
 Next
 '==============計算有效移動數
 wtmovnum = cardAInumMOVmain(1, 4)
-For i = 1 To 14
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00302" Then
-        wtmovnum = Val(wtmovnum) - Val(人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 1))
-    End If
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00301" Then
-        wtmovnum = Val(wtmovnum) + Val(人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 1))
-    End If
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00801" Then
+For Each n In 人物異常狀態列表(uscom, 角色人物對戰人數(uscom, 2))
+    Set buffobj = n
+    If buffobj.Identifier = "BUFFN00302" Then
+        wtmovnum = Val(wtmovnum) - buffobj.Value
+    ElseIf buffobj.Identifier = "BUFFN00301" Then
+        wtmovnum = Val(wtmovnum) + buffobj.Value
+    ElseIf buffobj.Identifier = "BUFFN00801" Then
         wtmovnum = -100
-    End If
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00501" And _
+    ElseIf buffobj.Identifier = "BUFFN00501" And _
         ((uscom = 1 And liveus(角色人物對戰人數(uscom, 2)) = 1) Or (uscom = 2 And livecom(角色人物對戰人數(uscom, 2)) = 1)) Then
         wtmovnum = -100
     End If
@@ -1067,15 +1066,15 @@ End Sub
 Sub 智慧型AI系統計算_移動階段續_正向面_四階段_統計估計期望值及判斷(ByVal uscom As Integer)
 Dim atk1max As Integer, atk2max As Integer, defmax As Integer, chemax As Integer, chestr As String
 Dim wtmovnum As Integer
+Dim buffobj As clsStatus
 '==================篩選是否符合移動量
-For i = 1 To 14
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00302" Then
-        wtmovnum = Val(wtmovnum) - Val(人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 1))
-    End If
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00301" Then
-        wtmovnum = Val(wtmovnum) + Val(人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 1))
-    End If
-    If 人物異常狀態資料庫(uscom, 角色人物對戰人數(uscom, 2), i, 3) = "BUFFN00801" Then
+For Each n In 人物異常狀態列表(uscom, 角色人物對戰人數(uscom, 2))
+    Set buffobj = n
+    If buffobj.Identifier = "BUFFN00302" Then
+        wtmovnum = Val(wtmovnum) - buffobj.Value
+    ElseIf buffobj.Identifier = "BUFFN00301" Then
+        wtmovnum = Val(wtmovnum) + buffobj.Value
+    ElseIf buffobj.Identifier = "BUFFN00801" Then
         wtmovnum = -100
     End If
 Next
@@ -1306,25 +1305,25 @@ If Val(pageglead(uscom)) > CardNumMax Then
 End If
 End Sub
 Sub 檢查人物技能是否有EX技(ByVal uscom As Integer, ByVal name As String)
-Erase personatkingtfr
-For i = 1 To 3
-     If VBEPerson(uscom, i, 1, 1, 1) = name Then
-         For k = 1 To 4
-               If Mid(VBEPerson(uscom, i, 3, k, 1), 1, 2) = "Ex" Then
-                   personatkingtfr(k) = 1
-               Else
-                   personatkingtfr(k) = 0
-               End If
-          Next
-          For k = 1 To 14
-'                If (人物異常狀態資料庫(uscom, i, k, 3) = 22 And uscom = 1) Or _
-'                    (人物異常狀態資料庫(uscom, i, k, 3) = 23 And uscom = 2) Then
-                 If 人物異常狀態資料庫(uscom, i, k, 3) = "BUFFN00701" Then
-                    personatkingtfr(5) = 1
-                End If
-          Next
-     End If
-Next
+'Erase personatkingtfr
+'For i = 1 To 3
+'     If VBEPerson(uscom, i, 1, 1, 1) = name Then
+'         For k = 1 To 4
+'               If Mid(VBEPerson(uscom, i, 3, k, 1), 1, 2) = "Ex" Then
+'                   personatkingtfr(k) = 1
+'               Else
+'                   personatkingtfr(k) = 0
+'               End If
+'          Next
+'          For k = 1 To 14
+''                If (人物異常狀態資料庫(uscom, i, k, 3) = 22 And uscom = 1) Or _
+''                    (人物異常狀態資料庫(uscom, i, k, 3) = 23 And uscom = 2) Then
+'                 If 人物異常狀態資料庫(uscom, i, k, 3) = "BUFFN00701" Then
+'                    personatkingtfr(5) = 1
+'                End If
+'          Next
+'     End If
+'Next
 End Sub
 Sub 智慧型AI系統_使用者出牌階段判斷反轉()
 For i = 1 To 公用牌實體卡片分隔紀錄數(1)
@@ -1385,7 +1384,18 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
     ReDim VBEVSStageNum(1 To UBound(VBEStageNumMain)) As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
     Erase VBEActualStatusVS '人物實際狀態資料-VS版
     '===========================
-    Dim q As Integer, w As Integer, rr As Integer, cs1 As Variant, cs2 As Variant
+    Dim q As Integer, w As Integer, rr As Integer, cs1 As Variant, cs2 As Variant, tempc As Integer, buffobj As clsStatus
+    tempc = 1
+    For i = 1 To 2
+        For j = 1 To 3
+            If 人物異常狀態列表(i, j).Count > tempc Then
+                tempc = 人物異常狀態列表(i, j).Count
+            End If
+        Next
+    Next
+    ReDim VBEPersonBuffVSF(1 To 2, 1 To 3, 1 To tempc, 1 To 2) As Variant '異常狀態資料-VS-F版
+    ReDim VBEPersonBuffVSS(1 To 2, 1 To 3, 1 To tempc) As Variant '異常狀態資料-VS-S版
+    '===========================
     Select Case uscom
          Case 1
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
@@ -1453,14 +1463,11 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
             '(1 To 2, 1 To 3, 1 To 14, 1 To 3)
             For i = 1 To 2
                 For rr = 1 To 3
-                    For j = 1 To 14
-                        For k = 1 To 3
-                            If k = 3 Then
-                                VBEPersonBuffVSS(i, rr, j) = 人物異常狀態資料庫(i, 角色待機人物紀錄數(i, rr), j, k)
-                            Else
-                                VBEPersonBuffVSF(i, rr, j, k) = Val(人物異常狀態資料庫(i, 角色待機人物紀錄數(i, rr), j, k))
-                            End If
-                        Next
+                    For j = 1 To 人物異常狀態列表(i, 角色待機人物紀錄數(i, rr)).Count
+                        Set buffobj = 人物異常狀態列表(i, 角色待機人物紀錄數(i, rr))(j)
+                        VBEPersonBuffVSF(i, rr, j, 1) = buffobj.Value
+                        VBEPersonBuffVSF(i, rr, j, 2) = buffobj.Total
+                        VBEPersonBuffVSS(i, rr, j) = buffobj.Identifier
                     Next
                 Next
             Next
@@ -1612,14 +1619,11 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
             For i = 1 To 2
                 If i = 1 Then q = 2 Else q = 1
                 For rr = 1 To 3
-                    For j = 1 To 14
-                        For k = 1 To 3
-                            If k = 3 Then
-                                VBEPersonBuffVSS(i, rr, j) = 人物異常狀態資料庫(q, 角色待機人物紀錄數(q, rr), j, k)
-                            Else
-                                VBEPersonBuffVSF(i, rr, j, k) = Val(人物異常狀態資料庫(q, 角色待機人物紀錄數(q, rr), j, k))
-                            End If
-                        Next
+                    For j = 1 To 人物異常狀態列表(q, 角色待機人物紀錄數(q, rr)).Count
+                        Set buffobj = 人物異常狀態列表(q, 角色待機人物紀錄數(q, rr))(j)
+                        VBEPersonBuffVSF(i, rr, j, 1) = buffobj.Value
+                        VBEPersonBuffVSF(i, rr, j, 2) = buffobj.Total
+                        VBEPersonBuffVSS(i, rr, j) = buffobj.Identifier
                     Next
                 Next
             Next

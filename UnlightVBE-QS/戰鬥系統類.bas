@@ -82,6 +82,7 @@ Public ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(1 To 2) As String '¾Ô°«¨t²ÎÂY»ë¤¶­±Âù¤è¤
 Public ¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(1 To 2, 1 To 3, 1 To 9) As String '¤Hª«¹ê»Úª¬ºA¸ê®Æ
 Public ¨t²ÎÅã¥Ü¬É­±¬ö¿ý¼Æ As Integer '¾Ô°«¨t²ÎÅã¥Ü¤¶­±³]©w¬ö¿ý¼Æ(1.ÂÂª©/2.·sª©)
 Public µ¥«Ý®É¶¡¦î¦C(1 To 2) As New Collection '¾Ô°«¨t²Îµ¥«Ý®É¶¡­p¼Æ¾¹¤u§@¦î¦C
+Public ¤Hª«²§±`ª¬ºA¦Cªí(1 To 2, 1 To 3) As Collection '²§±`ª¬ºA¦Cªí(1.¨Ï¥ÎªÌ/2.¹q¸£,²Än¦ì)
 Sub ¤Hª«§Þ¯àÄæ¿O¶}Ãö(ByVal k As Boolean, ByVal n As Integer)
 Select Case n
    Case 1
@@ -116,36 +117,6 @@ Select Case n
          FormMainMode.personatk(4).ForeColor = RGB(192, 192, 192)
          FormMainMode.personatk(4).BackColor = RGB(0, 0, 0)
       End If
-End Select
-
-End Sub
-Sub ¤Hª«²§±`ª¬ºAªí³]©w_ªì³](ByVal Âù¤è As Integer, ByVal personnum As Integer, ByVal ²Ä´X­Ó As Integer, ByVal ²§±`ª¬ºA½s¸¹ As String, ByVal ph As String, ByVal num1 As Integer, ByVal num2 As Integer)
-'===================================
-Select Case Âù¤è
-    Case 1
-'        FormMainMode.personusspe(²Ä´X­Ó).²§±`ª¬ºA¹Ï¤ù = ph
-'        FormMainMode.personusspe(²Ä´X­Ó).person_num = num1
-'        FormMainMode.personusspe(²Ä´X­Ó).person_turn = num2
-        FormMainMode.cardus(personnum).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = ph & "#" & ²Ä´X­Ó
-        FormMainMode.cardus(personnum).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = num1 & "#" & ²Ä´X­Ó
-        FormMainMode.cardus(personnum).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = num2 & "#" & ²Ä´X­Ó
-        ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, personnum, ²Ä´X­Ó, 1) = num1
-        ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, personnum, ²Ä´X­Ó, 2) = num2
-        ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, personnum, ²Ä´X­Ó, 3) = ²§±`ª¬ºA½s¸¹
-'        FormMainMode.personusspe(²Ä´X­Ó).Visible = True
-        FormMainMode.cardus(personnum).Buff_²§±`ª¬ºA_Åã¥Ü = ²Ä´X­Ó
-    Case 2
-'        FormMainMode.personcomspe(²Ä´X­Ó).²§±`ª¬ºA¹Ï¤ù = ph
-'        FormMainMode.personcomspe(²Ä´X­Ó).person_num = num1
-'        FormMainMode.personcomspe(²Ä´X­Ó).person_turn = num2
-        FormMainMode.cardcom(personnum).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = ph & "#" & ²Ä´X­Ó
-        FormMainMode.cardcom(personnum).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = num1 & "#" & ²Ä´X­Ó
-        FormMainMode.cardcom(personnum).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = num2 & "#" & ²Ä´X­Ó
-        ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, personnum, ²Ä´X­Ó, 1) = num1
-        ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, personnum, ²Ä´X­Ó, 2) = num2
-        ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, personnum, ²Ä´X­Ó, 3) = ²§±`ª¬ºA½s¸¹
-'        FormMainMode.personcomspe(²Ä´X­Ó).Visible = True
-        FormMainMode.cardcom(personnum).Buff_²§±`ª¬ºA_Åã¥Ü = ²Ä´X­Ó
 End Select
 
 End Sub
@@ -855,27 +826,20 @@ Next
 BattleCardNum = Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)) - Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 1))
 ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¨t²ÎÁ`¥dµP±i¼Æ§ó·s
 End Sub
-Sub °õ¦æ°Ê§@_²M°£©Ò¦³²§±`ª¬ºA_¹q¸£(ByVal num As Integer)
+Sub °õ¦æ°Ê§@_²M°£©Ò¦³²§±`ª¬ºA(ByVal uscom As Integer, ByVal num As Integer)
 '==================
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q73_«ü¥O_²§±`ª¬ºA±±¨î_¥þ³¡²M°£ 2, num
+°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q73_«ü¥O_²§±`ª¬ºA±±¨î_¥þ³¡²M°£ uscom, num
 '==================
-For i = 1 To 14
+Dim tempnum As Integer
+tempnum = 1
+For i = 1 To ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Count
     If VBEStageRemoveBuffAllNum(i) = False Then
-       ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num), i, 2) = 0
+        ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscomt, num)).Remove tempnum
+    Else
+        tempnum = tempnum + 1
     End If
 Next
-¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÄ~©Ó_¹q¸£
-End Sub
-Sub °õ¦æ°Ê§@_²M°£©Ò¦³²§±`ª¬ºA_¨Ï¥ÎªÌ(ByVal num As Integer)
-'==================
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q73_«ü¥O_²§±`ª¬ºA±±¨î_¥þ³¡²M°£ 1, num
-'==================
-For i = 1 To 14
-      If VBEStageRemoveBuffAllNum(i) = False Then
-          ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num), i, 2) = 0
-      End If
-Next
-¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÄ~©Ó_¨Ï¥ÎªÌ
+¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÅã¥Ü§ó·s
 End Sub
 Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean)
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(47)
@@ -950,69 +914,38 @@ Else
    ¶ZÂ÷³æ¦ì(2, 1, 2) = -((pagecardnum(µP²¾°Ê¼È®ÉÅÜ¼Æ(3), 10) - µP²¾°Ê¼È®ÉÅÜ¼Æ(2)) \ 12)
 End If
 End Sub
-Sub ²§±`ª¬ºAÄ~©Ó_¨Ï¥ÎªÌ()
-For k = 1 To 3
-    For i = 1 To (14 - 1)
-         If Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i, 2)) = 0 Then
-             If Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 2)) > 0 Then
-'                  FormMainMode.personusspe(i).²§±`ª¬ºA¹Ï¤ù = FormMainMode.personusspe(i + 1).²§±`ª¬ºA¹Ï¤ù
-'                  FormMainMode.personusspe(i).person_num = FormMainMode.personusspe(i + 1).person_num
-'                  FormMainMode.personusspe(i).person_turn = FormMainMode.personusspe(i + 1).person_turn
-                  FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 4) & "#" & i
-                  FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 1) & "#" & i
-                  FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 2) & "#" & i
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i, 2) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 2)
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i, 3) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 3)
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i, 1) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 1)
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i, 4) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, 4)
-                  For j = 1 To 4
-                     ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i + 1, j) = 0
-                  Next
-'                  FormMainMode.personusspe(i + 1).Visible = False
-'                  FormMainMode.personusspe(i).Visible = True
-                  FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)).Buff_²§±`ª¬ºA_ÁôÂÃ = i + 1
-                  FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)).Buff_²§±`ª¬ºA_Åã¥Ü = i
-             Else
-                  For j = 1 To 4
-                     ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), i, j) = 0
-                  Next
-'                  FormMainMode.personusspe(i).Visible = False
-                  FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)).Buff_²§±`ª¬ºA_ÁôÂÃ = i
-             End If
+Sub ²§±`ª¬ºAÅã¥Ü§ó·s()
+Dim numNow As Integer, obj As clsStatus
+For uscom = 1 To 2
+    For i = 1 To ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(uscom, 1)
+        numNow = 1
+        For Each n In ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, i))
+            Set obj = n
+            Select Case uscom
+                Case 1
+                    FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = obj.ImagePath & "#" & numNow
+                    FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = obj.Value & "#" & numNow
+                    FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = obj.Total & "#" & numNow
+                    FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Buff_²§±`ª¬ºA_Åã¥Ü = numNow
+                Case 2
+                    FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, i)).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = obj.ImagePath & "#" & numNow
+                    FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, i)).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = obj.Value & "#" & numNow
+                    FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, i)).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = obj.Total & "#" & numNow
+                    FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, i)).Buff_²§±`ª¬ºA_Åã¥Ü = numNow
+            End Select
+            numNow = numNow + 1
+            If numNow > 14 Then Exit For
+        Next
+        If numNow <= 14 Then
+            For k = numNow To 14
+                Select Case uscom
+                    Case 1
+                        FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Buff_²§±`ª¬ºA_ÁôÂÃ = k
+                    Case 2
+                        FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, i)).Buff_²§±`ª¬ºA_ÁôÂÃ = k
+                End Select
+            Next
         End If
-    Next
-Next
-End Sub
-Sub ²§±`ª¬ºAÄ~©Ó_¹q¸£()
-For k = 1 To 3
-    For i = 1 To (14 - 1)
-          If Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i, 2)) = 0 Then
-              If Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 2)) > 0 Then
-'                  FormMainMode.personcomspe(i).²§±`ª¬ºA¹Ï¤ù = FormMainMode.personcomspe(i + 1).²§±`ª¬ºA¹Ï¤ù
-'                  FormMainMode.personcomspe(i).person_num = FormMainMode.personcomspe(i + 1).person_num
-'                  FormMainMode.personcomspe(i).person_turn = FormMainMode.personcomspe(i + 1).person_turn
-                  FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k)).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 4) & "#" & i
-                  FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k)).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 1) & "#" & i
-                  FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k)).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 2) & "#" & i
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i, 2) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 2)
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i, 3) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 3)
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i, 1) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 1)
-                  ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i, 4) = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, 4)
-                  For j = 1 To 4
-                     ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i + 1, j) = 0
-                  Next
-'                  FormMainMode.personcomspe(i + 1).Visible = False
-'                  FormMainMode.personcomspe(i).Visible = True
-                  FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k)).Buff_²§±`ª¬ºA_ÁôÂÃ = i + 1
-                  FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k)).Buff_²§±`ª¬ºA_Åã¥Ü = i
-              Else
-                  For j = 1 To 4
-                     ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k), i, j) = 0
-                  Next
-'                  FormMainMode.personcomspe(i).Visible = False
-                  FormMainMode.cardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, k)).Buff_²§±`ª¬ºA_ÁôÂÃ = i
-              End If
-          End If
     Next
 Next
 End Sub
@@ -2854,13 +2787,11 @@ End Sub
 Sub °õ¦æ°Ê§@_¥æ´«¤Hª«¨¤¦â_¨Ï¥ÎªÌ_ªì©l()
 Dim i As Integer
 Dim ne As Integer
+Dim numNow As Integer, obj As clsStatus
+
 For i = 2 To 3
    Formchangeperson.card(i - 1).Buff_²§±`ª¬ºA_¥þ­«³] = True
    Formchangeperson.card(i - 1).CardBack_¥þ­«³] = True
-'   Formchangeperson.card(i - 1).Picture = FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Picture
-'   Formchangeperson.cardhp(i - 1).Caption = FormMainMode.usbi1(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Caption
-'   Formchangeperson.cardatk(i - 1).Caption = FormMainMode.usbi2(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Caption
-'   Formchangeperson.carddef(i - 1).Caption = FormMainMode.usbi3(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i)).Caption
    Formchangeperson.card(i - 1).CardMain_¨¤¦â¹Ï¤ù = VBEPerson(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i), 1, 5, 5)
    Formchangeperson.card(i - 1).CardMain_¨¤¦âHP = liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i))
    Formchangeperson.card(i - 1).CardMain_¨¤¦âHPMAX = liveusmax(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i))
@@ -2869,42 +2800,24 @@ For i = 2 To 3
    Formchangeperson.card(i - 1).CardMain_¬O§_¬°·s¼Ë¦¡¸ê°T = CBool(Val(VBEPerson(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, i), 1, 3, 5)) = 1)
 Next
 ¾Ô°«¨t²ÎÃþ.§Þ¯à»¡©ú¸ü¤J_¤Hª«¥d¤ù­I­±_¥æ´«¨¤¦â
-'ne = 1
-'For k = 2 To 3
-'    For j = 14 * (¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k) - 1) + 1 To 14 * ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k)
-''        For i = 14 * (k - 2) + 1 To 14 * (k - 1)
-'            If Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, j, 2)) > 0 Then
-'                Formchangeperson.personusspe(ne).person_turn = FormMainMode.personusspe(j).person_turn
-'                Formchangeperson.personusspe(ne).person_num = FormMainMode.personusspe(j).person_num
-'                Formchangeperson.personusspe(ne).²§±`ª¬ºA¹Ï¤ù = FormMainMode.personusspe(j).²§±`ª¬ºA¹Ï¤ù
-'                Formchangeperson.personusspe(ne).Visible = True
-'            Else
-'                Formchangeperson.personusspe(ne).Visible = False
-'            End If
-'            ne = ne + 1
-''        Next
-'    Next
-'Next
+
 ne = 1
 For k = 2 To 3
-    For j = 1 To 14
-            If Val(¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), j, 2)) > 0 Then
-'                Formchangeperson.personusspe(ne).person_turn = FormMainMode.personusspe(j).person_turn
-'                Formchangeperson.personusspe(ne).person_num = FormMainMode.personusspe(j).person_num
-'                Formchangeperson.personusspe(ne).²§±`ª¬ºA¹Ï¤ù = FormMainMode.personusspe(j).²§±`ª¬ºA¹Ï¤ù
-                Formchangeperson.card(ne).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), j, 4) & "#" & j
-                Formchangeperson.card(ne).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), j, 1) & "#" & j
-                Formchangeperson.card(ne).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k), j, 2) & "#" & j
-'                Formchangeperson.personusspe(ne).Visible = True
-                Formchangeperson.card(ne).Buff_²§±`ª¬ºA_Åã¥Ü = j
-            End If
+    numNow = 1
+    For Each n In ¤Hª«²§±`ª¬ºA¦Cªí(1, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, k))
+        Set obj = n
+        Formchangeperson.card(ne).Buff_²§±`ª¬ºA¹Ï¤ù_ÅÜ§ó = obj.ImagePath & "#" & numNow
+        Formchangeperson.card(ne).Buff_²§±`ª¬ºA®ÄªGÅÜ¤Æ¶q_ÅÜ§ó = obj.Value & "#" & numNow
+        Formchangeperson.card(ne).Buff_²§±`ª¬ºA®ÄªG¦^¦X¼Æ_ÅÜ§ó = obj.Total & "#" & numNow
+        Formchangeperson.card(ne).Buff_²§±`ª¬ºA_Åã¥Ü = numNow
+        numNow = numNow + 1
+        If numNow > 14 Then Exit For
     Next
     ne = ne + 1
 Next
+
 ¥æ´«¨¤¦â¬ö¿ý¼È®ÉÅÜ¼Æ(1) = 0
-'For k = 1 To 2
-'     Formchangeperson.PEAFcardback(k).Visible = False
-'Next
+
 If Formsetting.chkusenewaipersonauto.Value = 1 Then
     Formchangeperson.¨Ï¥ÎªÌ¤è´¼¼z«¬AI_¦Û°Ê±±¨î¿ï¤H.Enabled = True
 End If
@@ -3944,21 +3857,21 @@ Else
 End If
 End Sub
 Function °õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA(ByVal uscom As Integer, ByVal num As String) As Boolean
-°õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA = False
-Select Case uscom
-   Case 1
-        For i = 1 To 14
-           If ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), i, 3) = num Then
-               °õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA = True
-           End If
-        Next
-   Case 2
-        For i = 1 To 14
-            If ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), i, 3) = num Then
-                °õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA = True
-            End If
-        Next
-End Select
+'°õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA = False
+'Select Case uscom
+'   Case 1
+'        For i = 1 To 14
+'           If ¤Hª«²§±`ª¬ºA¸ê®Æ®w(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), i, 3) = Num Then
+'               °õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA = True
+'           End If
+'        Next
+'   Case 2
+'        For i = 1 To 14
+'            If ¤Hª«²§±`ª¬ºA¸ê®Æ®w(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), i, 3) = Num Then
+'                °õ¦æ°Ê§@_ÀË¬d¬O§_¦³«ü©w²§±`ª¬ºA = True
+'            End If
+'        Next
+'End Select
 End Function
 Sub °õ¦æ°Ê§@_¨¾¿m¶¥¬qµ²§ô®É§Þ¯à±Ò°Ê()
 'atkingtrn(1) = 0
