@@ -69,7 +69,7 @@ Begin VB.Form Form2
       Width           =   1470
    End
    Begin VB.Label Label1 
-      Caption         =   "2018 By Andy Ciu."
+      Caption         =   "2019 By Andy Ciu."
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   11.25
@@ -86,7 +86,7 @@ Begin VB.Form Form2
       Width           =   3615
    End
    Begin VB.Label aboutvn 
-      Caption         =   "Bulid 0931"
+      Caption         =   "Bulid 0966"
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   12
