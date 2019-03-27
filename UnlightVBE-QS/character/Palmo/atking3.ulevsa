@@ -3,7 +3,7 @@ Function main(a)
          Case 1
               main = "PNAKN00403"
          Case 2
-              main = "42#45#10#61#15#99"
+              main = "42#45#10#61#20#99"
          Case 3
               main = "·O´dªºÂÅ²´"
          Case 4
@@ -41,7 +41,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             atking = atking & "AtkingLineLight#2" & "="
         Case 61
             atking = atking & "PersonBloodControl#1,1,2,2" & "="
-        Case 15
+        Case 20
             For i = 1 To UBound(VBEPersonBuffVSS, 3)
                 If VBEPersonBuffVSS(1, 1, i) = "BUFFN01401" Then
                     If VBEPersonBuffVSF(1, 1, i, 2) + 2 <= 9 Then k = VBEPersonBuffVSF(1, 1, i, 2) + 2 Else k = 9

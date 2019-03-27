@@ -4,7 +4,7 @@ Function main(a)
          Case 1
               main = "PNAKN00404"
          Case 2
-              main = "42#11#61"
+              main = "42#11#61#99"
          Case 3
               main = "¾Ô·Xªº¯T¤ú"
          Case 4
