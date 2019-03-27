@@ -1648,6 +1648,8 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
                     戰鬥系統類.異常狀態顯示更新 uscom
                     GoTo VssCommadExit
                 End If
+            Else
+                GoTo VssCommadExit
             End If
         Case 2
             ReDim VBEStageNum(0 To 3) As Integer
@@ -1699,6 +1701,7 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
                (uscomt = 2 And livecom(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))) <= 0)) Then
                GoTo VssCommadExit
             End If
+            If 人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Count = 0 Then GoTo VssCommadExit
             '===========================================
             執行階段73_指令_異常狀態控制_全部清除 uscomt, Val(commadstr3(1))
             tempnum = 1
@@ -1767,8 +1770,11 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
                 End If
                 VBEStage7xAtkingInformation = commadstr3(2)
+                vbecommadnum(2, vbecommadtotplayNow) = 2
+                Exit Sub
+            Else
+                GoTo VssCommadExit '未找到該異常狀態
             End If
-            vbecommadnum(2, vbecommadtotplayNow) = 2
         Case 2
             ReDim VBEStageNum(0 To 3) As Integer
             VBEStageNum(0) = 77

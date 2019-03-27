@@ -1721,7 +1721,7 @@ HP檢查變數 = False 'HP檢查階段是否已檢查變數
 HP檢查階段數 = 0  'HP檢查階段變數(1.移動階段後,2.攻擊/防禦階段前,3.攻/防禦階段後)
 Erase 距離單位  '距離單位暫時儲存資料(1.HP血條/2.牌移動,1.使用者/2.電腦,1.Left單位/2.Top單位)
 Erase personminixy '小人物圖片座標指定資料(1.使用者/2.電腦,第n位,1.近距離/2.中距離/3.遠距離,1.Left/2.Top(座標))
-Erase 人物異常狀態資料庫 '異常狀態資料(1.使用者/2.電腦,第x個異常狀態,1.狀態數值/2.狀態統計數(剩餘回合/累計)/3.狀態編號)
+'Erase 人物異常狀態資料庫 '異常狀態資料(1.使用者/2.電腦,第x個異常狀態,1.狀態數值/2.狀態統計數(剩餘回合/累計)/3.狀態編號)
 Erase 異常狀態檢查數 '異常狀態啟動碼(x.異常狀態編號,1.狀態執行階段/2.狀態啟動檢查值)
 技能動畫顯示階段數 = 0 '技能動畫計數器階段碼(1.攻擊/防禦階段-普通,2.移動階段-普通/3.發牌階段後、移動階段前/4.移動階段後/5.攻擊階段後/6.防禦階段後/7.回合結束時)
 Erase 攻擊防禦骰子總數 '攻擊/防禦模式骰子數量資料(1.使用者(總)/2.電腦(總)/3.使用者(原)/4.電腦(原))
@@ -1801,6 +1801,11 @@ ReDim vbecommadstr(1 To 3, vbecommadtotplay)
 Erase Vss_PersonAtkingOffNum
 Erase Vss_AtkingInformationRecordStr
 ReDim VBEStageNum(0) As Integer
+For i = 1 To 2
+    For j = 1 To UBound(人物異常狀態列表, 2)
+        Set 人物異常狀態列表(i, j) = Nothing
+    Next
+Next
 End Sub
 Sub 清除戰鬥系統開始表單設定值()
 Dim i As Integer, j As Integer

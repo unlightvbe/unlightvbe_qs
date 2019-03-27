@@ -956,12 +956,16 @@ Dim m_cardmain_persondef As Integer
 Dim m_cardback_activehelp(1 To 4) As String, m_cardback_passivehelp(1 To 4) As String
 Dim m_cardback_activecheck As Integer, m_cardback_passivecheck As Integer, m_cardbackcheck As Integer
 Dim m_cardmain_isnewtype As Boolean
-Public Sub 更改異常狀態資料(ByVal buffnum As Integer, ByVal imagepath As String, ByVal num As Integer, ByVal tot As Integer, ByVal isVisible As Boolean)
+Public Sub 更改異常狀態資料(ByVal buffnum As Integer, ByVal ImagePath As String, ByVal num As Integer, ByVal tot As Integer, ByVal isVisible As Boolean)
 If buffnum >= 1 And buffnum <= 14 Then
-     personspe(buffnum).person_num = num
-     personspe(buffnum).person_turn = tot
-     personspe(buffnum).異常狀態圖片 = imagepath
-     personspe(buffnum).Visible = isVisible
+    If isVisible = False Then
+        personspe(buffnum).Visible = False
+    Else
+        personspe(buffnum).person_num = num
+        personspe(buffnum).person_turn = tot
+        personspe(buffnum).異常狀態圖片 = ImagePath
+        personspe(buffnum).Visible = True
+    End If
 End If
 End Sub
 Public Sub 異常狀態全重設()
