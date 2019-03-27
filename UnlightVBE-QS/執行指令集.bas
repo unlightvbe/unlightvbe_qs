@@ -138,6 +138,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                執行指令集.執行指令_人物角色復活 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                         Case "EventPersonAbilityDiceChange"
                                執行指令集.執行指令_人物角色白值對骰數變化量控制 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
+                        Case "PersonChangeBattleImage"
+                                執行指令集.執行指令_變更人物戰鬥立繪 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                         '========================================================
                         Case "BuffTurnEnd"
                                執行指令集.執行指令_異常狀態控制_當回合結束_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
@@ -2651,4 +2653,30 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventPersonAbilityDiceChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_變更人物戰鬥立繪(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 1 Or atkingnum > 8 Or commadtype = 2 Then GoTo VssCommadExit
+    Dim uscomt As Integer
+    Select Case Val(commadstr3(0))
+         Case 1
+               uscomt = uscom
+         Case 2
+               If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            戰鬥擲骰介面人物立繪圖路徑紀錄數(uscomt) = App.Path & commadstr3(1)
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "PersonChangeBattleImage", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
