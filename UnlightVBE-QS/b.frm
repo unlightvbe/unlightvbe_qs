@@ -43,7 +43,7 @@ Begin VB.Form Form2
    End
    Begin VB.Label Label5 
       Alignment       =   1  '¾a¥k¹ï»ô
-      Caption         =   "(CC) 2019 ¢Ñ¢Þ¢Ï Co.,Ltd."
+      Caption         =   "(CC BY-ND 4.0) CPA Co.,Ltd."
       BeginProperty Font 
          Name            =   "·L³n¥¿¶ÂÅé"
          Size            =   8.25
