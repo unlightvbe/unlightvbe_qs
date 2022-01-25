@@ -96,9 +96,6 @@ Public Property Let 異常狀態圖片(ByVal New_異常狀態圖片 As String)
    m_personimg = New_異常狀態圖片
    PropertyChanged "異常狀態圖片"
    If Me.異常狀態圖片 <> "" Then
-'       personimg.AutoSize = True
-'       personimg.AutoRedraw = True
-'       personimg.ClearImage
        personimg.LoadImage_FromFile Me.異常狀態圖片
     End If
 End Property

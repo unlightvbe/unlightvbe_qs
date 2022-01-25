@@ -1,21 +1,4 @@
-Attribute VB_Name = "測試1"
-Sub 測試模組程式()
-'MsgBox "這是基本測試"
-'測試表單2.Label1.Caption = "1111"
-End Sub
-
-Sub 測試開始選項()
-Dim i, j As Integer
-For i = 1 To 3
-   Formgamesetting.personnameus(i).ListIndex = 0
-   Formgamesetting.personnamecom(i).ListIndex = 0
-Next
-Formgamesetting.opnpersonvs(2).Value = True
-End Sub
-
-Public Sub test2()
-MsgBox "test2"
-End Sub
+Attribute VB_Name = "Utils"
 Public Sub SearchDirectory()
   Dim mypath As String, mydir As String
   Dim DirectoryBuff()

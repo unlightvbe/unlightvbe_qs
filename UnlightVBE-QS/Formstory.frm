@@ -10,7 +10,7 @@ Begin VB.Form personstory
    LinkTopic       =   "Form10"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   Picture         =   "story.frx":0000
+   Picture         =   "Formstory.frx":0000
    ScaleHeight     =   8580
    ScaleWidth      =   11070
    StartUpPosition =   3  '系統預設值

@@ -1,12 +1,12 @@
 VERSION 5.00
-Begin VB.Form Form6 
+Begin VB.Form FormDice 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   1  '單線固定
    ClientHeight    =   7905
    ClientLeft      =   5265
    ClientTop       =   1770
    ClientWidth     =   9720
-   Icon            =   "f.frx":0000
+   Icon            =   "FormDice.frx":0000
    LinkTopic       =   "Form6"
    MaxButton       =   0   'False
    MinButton       =   0   'False
@@ -19,7 +19,7 @@ Begin VB.Form Form6
       ForeColor       =   &H80000008&
       Height          =   7935
       Left            =   3960
-      Picture         =   "f.frx":0CCA
+      Picture         =   "FormDice.frx":0CCA
       ScaleHeight     =   7935
       ScaleWidth      =   8535
       TabIndex        =   1
@@ -34,7 +34,7 @@ Begin VB.Form Form6
       ForeColor       =   &H80000008&
       Height          =   8775
       Left            =   600
-      Picture         =   "f.frx":6209
+      Picture         =   "FormDice.frx":6209
       ScaleHeight     =   8775
       ScaleWidth      =   4215
       TabIndex        =   0
@@ -114,7 +114,7 @@ Begin VB.Form Form6
       _ExtentY        =   13996
    End
 End
-Attribute VB_Name = "Form6"
+Attribute VB_Name = "FormDice"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -125,9 +125,6 @@ Dim 距離單位(1 To 1, 1 To 2, 1 To 2) As Integer  '距離單位暫時儲存資料(1.HP血條,
 Dim bigallzero(1 To 2) As Integer
 
 Private Sub Form_Activate()
-'距離單位(1, 1, 1) = 5295 \ Val(form7.usbi1.Caption)
-'距離單位(1, 2, 1) = (11580 - 6060) \ Val(form7.cardcompi1.Caption)
-
 If Val(擲骰表單溝通暫時變數(4)) = 1 Then
   If Val(擲骰表單溝通暫時變數(1)) = 1 Then
     adfe.Left = 5160
@@ -145,99 +142,21 @@ End If
 '=====================
 jpgus.Height = jpgus.大人物圖片height
 jpgus.Width = jpgus.大人物圖片width
-jpgus.Top = Form6.ScaleHeight - jpgus.大人物圖片height
+jpgus.Top = FormDice.ScaleHeight - jpgus.大人物圖片height
 If Val(VBEPerson(1, 角色人物對戰人數(1, 2), 2, 2, 5)) = 1 Then
     bigallzero(1) = 1
 Else
     bigallzero(1) = 0
 End If
-'Select Case 角色人物對戰人數(1, 2)
-'   Case 1
-''        jpgus.Height = formsettingpersonus.bight.Text
-''        jpgus.Top = formsettingpersonus.bigtop.Text
-''        jpgus.Width = formsettingpersonus.bigwh.Text
-'        jpgus.Height = jpgus.大人物圖片height
-'        jpgus.Width = jpgus.大人物圖片width
-''        jpgus.Top = formsettingpersonus.bigtop.Text
-'        jpgus.Top = Form6.ScaleHeight - jpgus.大人物圖片height
-''        If formsettingpersonus.atkingjpgleftallzero.Value = 1 Then
-'        If formsettingpersonus.atkingjpgleftallzero.Value = 1 Then
-'            bigallzero(1) = 1
-'        Else
-'            bigallzero(1) = 0
-'        End If
-'   Case 2
-''        jpgus.Height = formsettingpersonus2.bight.Text
-''        jpgus.Top = formsettingpersonus2.bigtop.Text
-''        jpgus.Width = formsettingpersonus2.bigwh.Text
-'        jpgus.Height = jpgus.大人物圖片height
-'        jpgus.Width = jpgus.大人物圖片width
-'        jpgus.Top = Form6.ScaleHeight - jpgus.大人物圖片height
-'        If formsettingpersonus2.atkingjpgleftallzero.Value = 1 Then
-'            bigallzero(1) = 1
-'        Else
-'            bigallzero(1) = 0
-'        End If
-'   Case 3
-''        jpgus.Height = formsettingpersonus3.bight.Text
-''        jpgus.Top = formsettingpersonus3.bigtop.Text
-''        jpgus.Width = formsettingpersonus3.bigwh.Text
-'        jpgus.Height = jpgus.大人物圖片height
-'        jpgus.Width = jpgus.大人物圖片width
-'        jpgus.Top = Form6.ScaleHeight - jpgus.大人物圖片height
-'        If formsettingpersonus3.atkingjpgleftallzero.Value = 1 Then
-'            bigallzero(1) = 1
-'        Else
-'            bigallzero(1) = 0
-'        End If
-'End Select
 '=================
 jpgcom.Height = jpgcom.大人物圖片height
 jpgcom.Width = jpgcom.大人物圖片width
-jpgcom.Top = Form6.ScaleHeight - jpgcom.大人物圖片height
+jpgcom.Top = FormDice.ScaleHeight - jpgcom.大人物圖片height
 If Val(VBEPerson(2, 角色人物對戰人數(2, 2), 2, 2, 5)) = 1 Then
     bigallzero(2) = 1
 Else
     bigallzero(2) = 0
 End If
-'Select Case 角色人物對戰人數(2, 2)
-'   Case 1
-''        jpgcom.Height = formsettingpersoncom.bight.Text
-''        jpgcom.Top = formsettingpersoncom.bigtop.Text
-''        jpgcom.Width = formsettingpersoncom.bigwh.Text
-'        jpgcom.Height = jpgcom.大人物圖片height
-'        jpgcom.Width = jpgcom.大人物圖片width
-'        jpgcom.Top = Form6.ScaleHeight - jpgcom.大人物圖片height
-'        If VBEPerson(2, 1, 2, 2, 5) = 1 Then
-'            bigallzero(2) = 1
-'        Else
-'            bigallzero(2) = 0
-'        End If
-'   Case 2
-''        jpgcom.Height = formsettingpersoncom2.bight.Text
-''        jpgcom.Top = formsettingpersoncom2.bigtop.Text
-''        jpgcom.Width = formsettingpersoncom2.bigwh.Text
-'        jpgcom.Height = jpgcom.大人物圖片height
-'        jpgcom.Width = jpgcom.大人物圖片width
-'        jpgcom.Top = Form6.ScaleHeight - jpgcom.大人物圖片height
-'        If formsettingpersoncom2.atkingjpgleftallzero.Value = 1 Then
-'            bigallzero(2) = 1
-'        Else
-'            bigallzero(2) = 0
-'        End If
-'   Case 3
-''        jpgcom.Height = formsettingpersoncom3.bight.Text
-''        jpgcom.Top = formsettingpersoncom3.bigtop.Text
-''        jpgcom.Width = formsettingpersoncom3.bigwh.Text
-'        jpgcom.Height = jpgcom.大人物圖片height
-'        jpgcom.Width = jpgcom.大人物圖片width
-'        jpgcom.Top = Form6.ScaleHeight - jpgcom.大人物圖片height
-'        If formsettingpersoncom3.atkingjpgleftallzero.Value = 1 Then
-'            bigallzero(2) = 1
-'        Else
-'            bigallzero(2) = 0
-'        End If
-'End Select
 '----------------
 adfe.Visible = False
 jpgus.Left = -jpgus.Width
@@ -269,12 +188,6 @@ Private Sub Form_Load()
     jpgcom_test.Visible = False
 End Sub
 
-Private Sub jpgusback_Click()
-
-End Sub
-
-
-
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 If UnloadMode = 0 Then
    YesNo = MsgBox("確定離開遊戲?", 36, "UnlightVBE-系統提示")
@@ -296,8 +209,8 @@ If 2760 - bigw(1) < 0 Or bigallzero(1) = 1 Then
 Else
     bigall(1) = 2760 - bigw(1)
 End If
-If 6960 - bigw(2) > Val(Form6.Width) - Val(jpgcom.大人物圖片width) Or bigallzero(2) = 1 Then
-    bigall(2) = Val(Form6.Width) - Val(jpgcom.大人物圖片width)
+If 6960 - bigw(2) > Val(FormDice.Width) - Val(jpgcom.大人物圖片width) Or bigallzero(2) = 1 Then
+    bigall(2) = Val(FormDice.Width) - Val(jpgcom.大人物圖片width)
 Else
     bigall(2) = 6960 - bigw(2)
 End If
@@ -305,7 +218,6 @@ If Val(擲骰表單溝通暫時變數(4)) = 1 Then
   If Val(擲骰表單溝通暫時變數(1)) = 1 Then
     jpgus.Visible = True
     jpgus.Left = Val(jpgus.Left) + 150
-'    If Val(jpgus.Left) >= Val(formsettingpersonus.bigleftall) Then
     If bigall(1) - Val(jpgus.Left) <= 150 Then
       jpgus.Left = bigall(1)
       trjpgshow.Enabled = False
@@ -321,7 +233,6 @@ Else
   If Val(擲骰表單溝通暫時變數(1)) = 2 Then
     jpgus.Visible = True
     jpgus.Left = Val(jpgus.Left) + 150
-'    If Val(jpgus.Left) >= Val(formsettingpersonus.bigleftall) Then
     If bigall(1) - Val(jpgus.Left) <= 150 Then
       jpgus.Left = bigall(1)
       trjpgshow.Enabled = False
@@ -344,8 +255,7 @@ Else
 End If
 End Sub
 Sub outprocess()
-  Form6.Visible = False
-'  FormMainMode.atkingnumtot.Caption = -2
+  FormDice.Visible = False
   trout.Enabled = False
   If Val(擲骰表單溝通暫時變數(4)) = 1 Then
    Select Case Val(擲骰表單溝通暫時變數(1))
@@ -362,40 +272,17 @@ Sub outprocess()
        usatkcom
     End Select
   End If
-'  FormMainMode.骰子執行完啟動.Enabled = True
-'  Unload Me
 End Sub
 Sub usatkcom()
-     tot = Val(擲骰表單溝通暫時變數(5)) - Val(擲骰表單溝通暫時變數(6))
-'======以下為異常狀態檢查及啟動
-'formmainmode.技能.蕾_終曲_無盡輪迴的終結_舊   '(階段3)
-'atkingck(17, 1) = 3
-'技能.帕茉_靜謐之背 '(階段3)
-'=========
-擲骰表單溝通暫時變數(2) = tot
-'擲骰後骰傷害數 = tot
-擲骰表單溝通暫時變數(3) = 2
+    tot = Val(擲骰表單溝通暫時變數(5)) - Val(擲骰表單溝通暫時變數(6))
+    擲骰表單溝通暫時變數(2) = tot
+    擲骰表單溝通暫時變數(3) = 2
 End Sub
 Sub comatkus()
- tot = Val(擲骰表單溝通暫時變數(6)) - Val(擲骰表單溝通暫時變數(5))
-'======以下為異常狀態檢查及啟動
-'formmainmode.異常狀態.不死_使用者  '(階段1)
-'=========
-擲骰表單溝通暫時變數(2) = tot
-'擲骰後骰傷害數 = tot
-擲骰表單溝通暫時變數(3) = 1
+    tot = Val(擲骰表單溝通暫時變數(6)) - Val(擲骰表單溝通暫時變數(5))
+    擲骰表單溝通暫時變數(2) = tot
+    擲骰表單溝通暫時變數(3) = 1
 End Sub
-'Sub 異常狀態.不死_使用者_分支_階段一()
-'tot = 0
-'End Sub
-'Sub 技能_蕾_終曲_無盡輪迴的終結_舊_分支_階段三()
-'If tot < -7 Then
-'   tot = livecom(角色人物對戰人數(2, 2))
-'End If
-'End Sub
-'Function 技能_帕茉_靜謐之背_分支_階段三(turn As Integer)
-'tot = tot + turn
-'End Function
 Private Sub trshow_Timer()
 If 擲骰表單溝通暫時變數(4) = 1 Then
   Select Case Val(擲骰表單溝通暫時變數(1))
@@ -434,10 +321,7 @@ End Function
 
 Private Sub trwait_Timer()
 If adfe.adwait = True Then
-    'trshow.Enabled = False
-   'hideall = 1
     trwait.Enabled = False
-   'trhide.Enabled = True
     timeout = 0
     trout.Enabled = True
 End If

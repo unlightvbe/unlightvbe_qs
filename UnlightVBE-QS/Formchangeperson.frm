@@ -99,8 +99,6 @@ End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 bnok(1).Picture = LoadPicture(App.Path & "\gif\system\changeok_1.bmp")
 bnok(2).Picture = LoadPicture(App.Path & "\gif\system\changeok_1.bmp")
-'PEAFcardbackclick(1).Visible = False
-'PEAFcardbackclick(2).Visible = False
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)

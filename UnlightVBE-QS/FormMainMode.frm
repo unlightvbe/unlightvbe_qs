@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{0E59F1D2-1FBE-11D0-8FF2-00A0D10038BC}#1.0#0"; "msscript.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form FormMainMode 
    BorderStyle     =   1  '單線固定
    Caption         =   "UnlightVBE-QS Origin"
@@ -24,6 +24,1016 @@ Begin VB.Form FormMainMode
    ScaleWidth      =   20400
    StartUpPosition =   2  '螢幕中央
    Tag             =   "UnlightVBE-QS Origin"
+   Begin VB.PictureBox PEGameFreeModeSettingForm 
+      Appearance      =   0  '平面
+      BackColor       =   &H80000000&
+      BorderStyle     =   0  '沒有框線
+      ForeColor       =   &H80000008&
+      Height          =   9915
+      Left            =   2760
+      ScaleHeight     =   9915
+      ScaleWidth      =   11340
+      TabIndex        =   57
+      Top             =   -360
+      Visible         =   0   'False
+      Width           =   11340
+      Begin VB.PictureBox Picture3 
+         Appearance      =   0  '平面
+         BackColor       =   &H80000005&
+         ForeColor       =   &H80000008&
+         Height          =   1815
+         Left            =   0
+         ScaleHeight     =   1785
+         ScaleWidth      =   11385
+         TabIndex        =   82
+         Top             =   4320
+         Width           =   11415
+         Begin VB.ComboBox personlevelus 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   1
+            Left            =   120
+            TabIndex        =   97
+            Top             =   0
+            Width           =   855
+         End
+         Begin VB.ComboBox personlevelus 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   2
+            Left            =   2760
+            TabIndex        =   96
+            Top             =   0
+            Width           =   855
+         End
+         Begin VB.ComboBox personlevelus 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   3
+            Left            =   5400
+            TabIndex        =   95
+            Top             =   0
+            Width           =   855
+         End
+         Begin VB.ComboBox personnameus 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   1
+            Left            =   1080
+            TabIndex        =   94
+            Top             =   0
+            Width           =   1575
+         End
+         Begin VB.ComboBox personnameus 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   2
+            Left            =   3720
+            TabIndex        =   93
+            Top             =   0
+            Width           =   1575
+         End
+         Begin VB.ComboBox personnameus 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   3
+            Left            =   6360
+            TabIndex        =   92
+            Top             =   0
+            Width           =   1575
+         End
+         Begin VB.ComboBox personlevelcom 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   1
+            Left            =   3360
+            TabIndex        =   91
+            Top             =   1440
+            Width           =   855
+         End
+         Begin VB.ComboBox personlevelcom 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   2
+            Left            =   6000
+            TabIndex        =   90
+            Top             =   1440
+            Width           =   855
+         End
+         Begin VB.ComboBox personlevelcom 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   3
+            Left            =   8640
+            TabIndex        =   89
+            Top             =   1440
+            Width           =   855
+         End
+         Begin VB.ComboBox personnamecom 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   1
+            Left            =   4320
+            TabIndex        =   88
+            Top             =   1440
+            Width           =   1575
+         End
+         Begin VB.ComboBox personnamecom 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   2
+            Left            =   6960
+            TabIndex        =   87
+            Top             =   1440
+            Width           =   1575
+         End
+         Begin VB.ComboBox personnamecom 
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   375
+            Index           =   3
+            Left            =   9600
+            TabIndex        =   86
+            Top             =   1440
+            Width           =   1575
+         End
+         Begin VB.OptionButton opnpersonvs 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "3v3"
+            Height          =   375
+            Index           =   2
+            Left            =   120
+            TabIndex        =   84
+            Top             =   1080
+            Width           =   1695
+         End
+         Begin VB.CommandButton personreadifus 
+            Caption         =   "讀入..."
+            Height          =   495
+            Left            =   2040
+            TabIndex        =   83
+            Top             =   720
+            Width           =   975
+         End
+         Begin MSComDlg.CommonDialog cdgpersonus 
+            Left            =   3000
+            Top             =   720
+            _ExtentX        =   847
+            _ExtentY        =   847
+            _Version        =   393216
+            DialogTitle     =   "UnlightVBE-卡片人物資訊-開啟檔案"
+         End
+         Begin VB.OptionButton opnpersonvs 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "1v1"
+            Height          =   495
+            Index           =   1
+            Left            =   120
+            TabIndex        =   85
+            Top             =   720
+            Value           =   -1  'True
+            Width           =   855
+         End
+         Begin UnlightVBE.大人物形像 personfus 
+            Height          =   1215
+            Left            =   0
+            TabIndex        =   107
+            Top             =   0
+            Width           =   3135
+            _ExtentX        =   5530
+            _ExtentY        =   2143
+         End
+         Begin VB.Image bnstart 
+            Height          =   510
+            Left            =   9600
+            Picture         =   "FormMainMode.frx":0CCA
+            Top             =   600
+            Width           =   1440
+         End
+         Begin VB.Image bnabout 
+            Height          =   390
+            Left            =   8280
+            Picture         =   "FormMainMode.frx":1820
+            Top             =   720
+            Width           =   1320
+         End
+         Begin VB.Image bnconfig 
+            Height          =   390
+            Left            =   7080
+            Picture         =   "FormMainMode.frx":1E8B
+            Top             =   720
+            Width           =   1320
+         End
+         Begin VB.Label Label3 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "VS"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   20.25
+               Charset         =   136
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H000000FF&
+            Height          =   495
+            Left            =   5400
+            TabIndex        =   106
+            Top             =   600
+            Width           =   735
+         End
+         Begin VB.Label personresetus 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "重設"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   -1  'True
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FF0000&
+            Height          =   255
+            Index           =   1
+            Left            =   1200
+            TabIndex        =   105
+            Top             =   360
+            Width           =   495
+         End
+         Begin VB.Label personresetus 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "重設"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   -1  'True
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FF0000&
+            Height          =   255
+            Index           =   2
+            Left            =   3840
+            TabIndex        =   104
+            Top             =   360
+            Width           =   495
+         End
+         Begin VB.Label personresetus 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "重設"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   -1  'True
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FF0000&
+            Height          =   255
+            Index           =   3
+            Left            =   6480
+            TabIndex        =   103
+            Top             =   360
+            Width           =   495
+         End
+         Begin VB.Label personresetcom 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "重設"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   -1  'True
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FF0000&
+            Height          =   255
+            Index           =   1
+            Left            =   4320
+            TabIndex        =   102
+            Top             =   1200
+            Width           =   495
+         End
+         Begin VB.Label personresetcom 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "重設"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   -1  'True
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FF0000&
+            Height          =   255
+            Index           =   2
+            Left            =   6960
+            TabIndex        =   101
+            Top             =   1200
+            Width           =   495
+         End
+         Begin VB.Label personresetcom 
+            BackColor       =   &H00FFFFFF&
+            Caption         =   "重設"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   9.75
+               Charset         =   136
+               Weight          =   400
+               Underline       =   -1  'True
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FF0000&
+            Height          =   255
+            Index           =   3
+            Left            =   9600
+            TabIndex        =   100
+            Top             =   1200
+            Width           =   495
+         End
+         Begin VB.Label Label4 
+            BackColor       =   &H00FFFFFF&
+            BackStyle       =   0  '透明
+            Caption         =   "1P"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   15.75
+               Charset         =   136
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   495
+            Left            =   8040
+            TabIndex        =   99
+            Top             =   0
+            Width           =   735
+         End
+         Begin VB.Label Label5 
+            BackColor       =   &H00FFFFFF&
+            BackStyle       =   0  '透明
+            Caption         =   "COM"
+            BeginProperty Font 
+               Name            =   "微軟正黑體"
+               Size            =   15.75
+               Charset         =   136
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   615
+            Left            =   2400
+            TabIndex        =   98
+            Top             =   1400
+            Width           =   855
+         End
+      End
+      Begin VB.PictureBox PEGFcardus 
+         Appearance      =   0  '平面
+         BackColor       =   &H00000000&
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9.75
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   3615
+         Index           =   1
+         Left            =   120
+         Picture         =   "FormMainMode.frx":249B
+         ScaleHeight     =   3585
+         ScaleWidth      =   2505
+         TabIndex        =   78
+         Top             =   600
+         Width           =   2535
+         Begin VB.Label PEGFusbi1 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   1
+            Left            =   550
+            TabIndex        =   81
+            Top             =   3240
+            Width           =   375
+         End
+         Begin VB.Label PEGFusbi2 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   1
+            Left            =   1200
+            TabIndex        =   80
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFusbi3 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   1
+            Left            =   1920
+            TabIndex        =   79
+            Top             =   3240
+            Width           =   615
+         End
+      End
+      Begin VB.PictureBox PEGFcardus 
+         Appearance      =   0  '平面
+         BackColor       =   &H00000000&
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9.75
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   3615
+         Index           =   2
+         Left            =   2760
+         Picture         =   "FormMainMode.frx":633E
+         ScaleHeight     =   3585
+         ScaleWidth      =   2505
+         TabIndex        =   74
+         Top             =   600
+         Width           =   2535
+         Begin VB.Label PEGFusbi1 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   550
+            TabIndex        =   77
+            Top             =   3240
+            Width           =   375
+         End
+         Begin VB.Label PEGFusbi2 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   1200
+            TabIndex        =   76
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFusbi3 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   1920
+            TabIndex        =   75
+            Top             =   3240
+            Width           =   615
+         End
+      End
+      Begin VB.PictureBox PEGFcardus 
+         Appearance      =   0  '平面
+         BackColor       =   &H00000000&
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9.75
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   3615
+         Index           =   3
+         Left            =   5400
+         Picture         =   "FormMainMode.frx":A1E1
+         ScaleHeight     =   3585
+         ScaleWidth      =   2505
+         TabIndex        =   70
+         Top             =   600
+         Width           =   2535
+         Begin VB.Label PEGFusbi1 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   550
+            TabIndex        =   73
+            Top             =   3240
+            Width           =   375
+         End
+         Begin VB.Label PEGFusbi2 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   1200
+            TabIndex        =   72
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFusbi3 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   1920
+            TabIndex        =   71
+            Top             =   3240
+            Width           =   615
+         End
+      End
+      Begin VB.PictureBox PEGFcardcom 
+         Appearance      =   0  '平面
+         BackColor       =   &H00000000&
+         ForeColor       =   &H80000008&
+         Height          =   3615
+         Index           =   1
+         Left            =   3360
+         Picture         =   "FormMainMode.frx":E084
+         ScaleHeight     =   3585
+         ScaleWidth      =   2505
+         TabIndex        =   66
+         Top             =   6240
+         Width           =   2535
+         Begin VB.Label PEGFcardcompi1 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   495
+            Index           =   1
+            Left            =   480
+            TabIndex        =   69
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFcardcompi2 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   1
+            Left            =   1200
+            TabIndex        =   68
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFcardcompi3 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   1
+            Left            =   1920
+            TabIndex        =   67
+            Top             =   3240
+            Width           =   615
+         End
+      End
+      Begin VB.PictureBox PEGFcardcom 
+         Appearance      =   0  '平面
+         BackColor       =   &H00000000&
+         ForeColor       =   &H80000008&
+         Height          =   3615
+         Index           =   2
+         Left            =   6000
+         Picture         =   "FormMainMode.frx":11F27
+         ScaleHeight     =   3585
+         ScaleWidth      =   2505
+         TabIndex        =   62
+         Top             =   6240
+         Width           =   2535
+         Begin VB.Label PEGFcardcompi1 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   495
+            Index           =   2
+            Left            =   480
+            TabIndex        =   65
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFcardcompi2 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   1200
+            TabIndex        =   64
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFcardcompi3 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   1920
+            TabIndex        =   63
+            Top             =   3240
+            Width           =   615
+         End
+      End
+      Begin VB.PictureBox PEGFcardcom 
+         Appearance      =   0  '平面
+         BackColor       =   &H00000000&
+         ForeColor       =   &H80000008&
+         Height          =   3615
+         Index           =   3
+         Left            =   8640
+         Picture         =   "FormMainMode.frx":15DCA
+         ScaleHeight     =   3585
+         ScaleWidth      =   2505
+         TabIndex        =   58
+         Top             =   6240
+         Width           =   2535
+         Begin VB.Label PEGFcardcompi1 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   495
+            Index           =   3
+            Left            =   480
+            TabIndex        =   61
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFcardcompi2 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   1200
+            TabIndex        =   60
+            Top             =   3240
+            Width           =   495
+         End
+         Begin VB.Label PEGFcardcompi3 
+            Alignment       =   2  '置中對齊
+            BackStyle       =   0  '透明
+            Caption         =   "?"
+            BeginProperty Font 
+               Name            =   "Bradley Gratis"
+               Size            =   18
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   1920
+            TabIndex        =   59
+            Top             =   3240
+            Width           =   615
+         End
+      End
+      Begin VB.Label Label1 
+         BackStyle       =   0  '透明
+         Caption         =   "GameSetting"
+         BeginProperty Font 
+            Name            =   "Bradley Gratis"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
+         Left            =   240
+         TabIndex        =   109
+         Top             =   120
+         Width           =   1455
+      End
+      Begin VB.Label Label2 
+         BackStyle       =   0  '透明
+         Caption         =   "自由戰鬥模式遊戲引導設定"
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   255
+         Left            =   1680
+         TabIndex        =   108
+         Top             =   195
+         Width           =   2535
+      End
+      Begin VB.Image Image4 
+         Height          =   465
+         Left            =   0
+         Picture         =   "FormMainMode.frx":19C6D
+         Top             =   0
+         Width           =   11400
+      End
+   End
    Begin VB.PictureBox PEAttackingForm 
       Appearance      =   0  '平面
       BackColor       =   &H00FFFFFF&
@@ -31,7 +1041,7 @@ Begin VB.Form FormMainMode
       ForeColor       =   &H80000008&
       Height          =   9910
       Left            =   7440
-      Picture         =   "FormMainMode.frx":0CCA
+      Picture         =   "FormMainMode.frx":1C05C
       ScaleHeight     =   9915
       ScaleWidth      =   11340
       TabIndex        =   0
@@ -42,7 +1052,7 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   0
          Left            =   1080
-         TabIndex        =   197
+         TabIndex        =   191
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
@@ -53,7 +1063,7 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   0
          Left            =   0
-         TabIndex        =   196
+         TabIndex        =   190
          Top             =   6240
          Visible         =   0   'False
          Width           =   2535
@@ -73,7 +1083,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   405
          Left            =   8760
-         TabIndex        =   193
+         TabIndex        =   187
          Top             =   9360
          Width           =   975
       End
@@ -90,7 +1100,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   405
          Left            =   8040
-         TabIndex        =   192
+         TabIndex        =   186
          Top             =   9360
          Width           =   615
       End
@@ -107,7 +1117,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   375
          Left            =   9840
-         TabIndex        =   191
+         TabIndex        =   185
          Top             =   9360
          Width           =   1215
       End
@@ -125,10 +1135,10 @@ Begin VB.Form FormMainMode
          Height          =   495
          Index           =   3
          Left            =   5040
-         Picture         =   "FormMainMode.frx":22BA9
+         Picture         =   "FormMainMode.frx":3DF3B
          ScaleHeight     =   495
          ScaleWidth      =   2520
-         TabIndex        =   173
+         TabIndex        =   167
          Top             =   9360
          Width           =   2520
          Begin VB.Label uspi5 
@@ -148,7 +1158,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   2280
-            TabIndex        =   179
+            TabIndex        =   173
             Top             =   360
             Width           =   255
          End
@@ -169,7 +1179,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   1560
-            TabIndex        =   178
+            TabIndex        =   172
             Top             =   360
             Width           =   255
          End
@@ -190,7 +1200,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   960
-            TabIndex        =   177
+            TabIndex        =   171
             Top             =   360
             Width           =   255
          End
@@ -211,7 +1221,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   240
-            TabIndex        =   176
+            TabIndex        =   170
             Top             =   360
             Width           =   255
          End
@@ -232,7 +1242,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   2040
-            TabIndex        =   175
+            TabIndex        =   169
             Top             =   -30
             Width           =   495
          End
@@ -252,7 +1262,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   120
-            TabIndex        =   174
+            TabIndex        =   168
             Top             =   0
             Width           =   2535
          End
@@ -262,7 +1272,7 @@ Begin VB.Form FormMainMode
          Left            =   5160
          ScaleHeight     =   2115
          ScaleWidth      =   6075
-         TabIndex        =   164
+         TabIndex        =   158
          Top             =   6600
          Visible         =   0   'False
          Width           =   6135
@@ -271,18 +1281,6 @@ Begin VB.Form FormMainMode
             Interval        =   10
             Left            =   4680
             Top             =   240
-         End
-         Begin VB.Timer 智慧型AI_使用者出牌 
-            Enabled         =   0   'False
-            Interval        =   10
-            Left            =   240
-            Top             =   840
-         End
-         Begin VB.Timer 移動階段_階段前啟動 
-            Enabled         =   0   'False
-            Interval        =   10
-            Left            =   1920
-            Top             =   960
          End
          Begin VB.Timer 移動階段_階段初始 
             Enabled         =   0   'False
@@ -316,7 +1314,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   960
-            TabIndex        =   172
+            TabIndex        =   166
             Top             =   480
             Visible         =   0   'False
             Width           =   975
@@ -335,7 +1333,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   1920
-            TabIndex        =   171
+            TabIndex        =   165
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -354,7 +1352,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   1920
-            TabIndex        =   170
+            TabIndex        =   164
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -372,7 +1370,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   3840
-            TabIndex        =   169
+            TabIndex        =   163
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -390,7 +1388,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   3840
-            TabIndex        =   168
+            TabIndex        =   162
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -408,7 +1406,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2880
-            TabIndex        =   167
+            TabIndex        =   161
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -426,7 +1424,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2880
-            TabIndex        =   166
+            TabIndex        =   160
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -445,7 +1443,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2640
-            TabIndex        =   165
+            TabIndex        =   159
             Top             =   1080
             Visible         =   0   'False
             Width           =   1335
@@ -518,7 +1516,7 @@ Begin VB.Form FormMainMode
          BorderStyle     =   0  '沒有框線
          Caption         =   "Frame1"
          Height          =   2775
-         Left            =   7680
+         Left            =   7920
          TabIndex        =   36
          Top             =   3360
          Width           =   2205
@@ -827,12 +1825,6 @@ Begin VB.Form FormMainMode
          Left            =   8280
          Top             =   1560
       End
-      Begin VB.Timer tr牌組_翻牌 
-         Enabled         =   0   'False
-         Interval        =   10
-         Left            =   1080
-         Top             =   3600
-      End
       Begin VB.Timer tr牌組_回牌_使用者 
          Enabled         =   0   'False
          Interval        =   200
@@ -896,7 +1888,7 @@ Begin VB.Form FormMainMode
          Height          =   495
          Index           =   1
          Left            =   0
-         Picture         =   "FormMainMode.frx":22DF1
+         Picture         =   "FormMainMode.frx":3E183
          ScaleHeight     =   495
          ScaleWidth      =   2520
          TabIndex        =   29
@@ -1042,7 +2034,7 @@ Begin VB.Form FormMainMode
          Height          =   495
          Index           =   2
          Left            =   2520
-         Picture         =   "FormMainMode.frx":23039
+         Picture         =   "FormMainMode.frx":3E3CB
          ScaleHeight     =   495
          ScaleWidth      =   2520
          TabIndex        =   22
@@ -1188,7 +2180,7 @@ Begin VB.Form FormMainMode
          Height          =   495
          Index           =   3
          Left            =   5040
-         Picture         =   "FormMainMode.frx":23281
+         Picture         =   "FormMainMode.frx":3E613
          ScaleHeight     =   495
          ScaleWidth      =   2520
          TabIndex        =   15
@@ -1334,7 +2326,7 @@ Begin VB.Form FormMainMode
          Height          =   495
          Index           =   2
          Left            =   2520
-         Picture         =   "FormMainMode.frx":234C9
+         Picture         =   "FormMainMode.frx":3E85B
          ScaleHeight     =   495
          ScaleWidth      =   2520
          TabIndex        =   8
@@ -1480,7 +2472,7 @@ Begin VB.Form FormMainMode
          Height          =   495
          Index           =   1
          Left            =   0
-         Picture         =   "FormMainMode.frx":23711
+         Picture         =   "FormMainMode.frx":3EAA3
          ScaleHeight     =   495
          ScaleWidth      =   2520
          TabIndex        =   1
@@ -1669,7 +2661,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image PEAFbloodbackimage2 
          Height          =   690
          Left            =   10080
-         Picture         =   "FormMainMode.frx":23959
+         Picture         =   "FormMainMode.frx":3ECEB
          Top             =   5440
          Width           =   1275
       End
@@ -1716,14 +2708,14 @@ Begin VB.Form FormMainMode
       Begin VB.Image PEAFbloodbackimage1 
          Height          =   690
          Left            =   0
-         Picture         =   "FormMainMode.frx":240A0
+         Picture         =   "FormMainMode.frx":3F432
          Top             =   5440
          Width           =   1290
       End
       Begin UnlightVBE.uc擲骰介面 PEAFDiceInterface 
          Height          =   9910
          Left            =   0
-         TabIndex        =   195
+         TabIndex        =   189
          Top             =   0
          Width           =   11340
          _ExtentX        =   2566
@@ -1742,14 +2734,14 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   2520
-         TabIndex        =   190
+         TabIndex        =   184
          Top             =   6600
          Width           =   135
       End
       Begin VB.Image bnok 
          Height          =   1050
          Left            =   8040
-         Picture         =   "FormMainMode.frx":24830
+         Picture         =   "FormMainMode.frx":3FBC2
          Top             =   8280
          Visible         =   0   'False
          Width           =   1500
@@ -1758,7 +2750,7 @@ Begin VB.Form FormMainMode
          Height          =   1335
          Index           =   0
          Left            =   5280
-         TabIndex        =   189
+         TabIndex        =   183
          Top             =   1200
          Visible         =   0   'False
          Width           =   855
@@ -1778,7 +2770,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   9120
-         TabIndex        =   188
+         TabIndex        =   182
          Top             =   720
          Width           =   135
       End
@@ -1800,7 +2792,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   1
          Left            =   6960
-         TabIndex        =   187
+         TabIndex        =   181
          Top             =   600
          Width           =   2055
       End
@@ -1822,7 +2814,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   2
          Left            =   4920
-         TabIndex        =   186
+         TabIndex        =   180
          Top             =   600
          Width           =   2055
       End
@@ -1844,7 +2836,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   3
          Left            =   2880
-         TabIndex        =   185
+         TabIndex        =   179
          Top             =   600
          Width           =   2055
       End
@@ -1866,7 +2858,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   4
          Left            =   840
-         TabIndex        =   184
+         TabIndex        =   178
          Top             =   600
          Width           =   2055
       End
@@ -1888,7 +2880,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   4
          Left            =   9140
-         TabIndex        =   183
+         TabIndex        =   177
          Top             =   6240
          Width           =   2205
       End
@@ -1910,7 +2902,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   3
          Left            =   6930
-         TabIndex        =   182
+         TabIndex        =   176
          Top             =   6240
          Width           =   2205
       End
@@ -1932,7 +2924,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   2
          Left            =   4730
-         TabIndex        =   181
+         TabIndex        =   175
          Top             =   6240
          Width           =   2205
       End
@@ -1954,7 +2946,7 @@ Begin VB.Form FormMainMode
          Height          =   375
          Index           =   1
          Left            =   2520
-         TabIndex        =   180
+         TabIndex        =   174
          Top             =   6240
          Width           =   2205
       End
@@ -1972,7 +2964,7 @@ Begin VB.Form FormMainMode
          Height          =   1080
          Index           =   0
          Left            =   3120
-         Picture         =   "FormMainMode.frx":2873F
+         Picture         =   "FormMainMode.frx":43AD1
          Tag             =   "movejpg"
          Top             =   2160
          Visible         =   0   'False
@@ -1981,28 +2973,28 @@ Begin VB.Form FormMainMode
       Begin VB.Image atkdef2 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":2A0B2
+         Picture         =   "FormMainMode.frx":45444
          Top             =   1860
          Width           =   2280
       End
       Begin VB.Image atkdef1 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":2A7FC
+         Picture         =   "FormMainMode.frx":45B8E
          Top             =   1590
          Width           =   2280
       End
       Begin VB.Image draw2 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":2AF52
+         Picture         =   "FormMainMode.frx":462E4
          Top             =   1080
          Width           =   2295
       End
       Begin VB.Image move2 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":2B5B9
+         Picture         =   "FormMainMode.frx":4694B
          Top             =   1320
          Width           =   2280
       End
@@ -2010,7 +3002,7 @@ Begin VB.Form FormMainMode
          Height          =   2865
          Index           =   1
          Left            =   2040
-         Picture         =   "FormMainMode.frx":2BCDB
+         Picture         =   "FormMainMode.frx":4706D
          Tag             =   "personusminijpg"
          Top             =   3120
          Visible         =   0   'False
@@ -2056,7 +3048,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image Image2 
          Height          =   120
          Left            =   5280
-         Picture         =   "FormMainMode.frx":2D809
+         Picture         =   "FormMainMode.frx":48B9B
          Top             =   6120
          Width           =   780
       End
@@ -2081,7 +3073,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image timeup 
          Height          =   105
          Left            =   5290
-         Picture         =   "FormMainMode.frx":2D89C
+         Picture         =   "FormMainMode.frx":48C2E
          Top             =   4720
          Visible         =   0   'False
          Width           =   750
@@ -2163,7 +3155,7 @@ Begin VB.Form FormMainMode
          Height          =   2880
          Index           =   2
          Left            =   9960
-         Picture         =   "FormMainMode.frx":2D908
+         Picture         =   "FormMainMode.frx":48C9A
          Tag             =   "personcomminijpg"
          Top             =   3120
          Visible         =   0   'False
@@ -2214,28 +3206,28 @@ Begin VB.Form FormMainMode
       Begin VB.Image draw1 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2F332
+         Picture         =   "FormMainMode.frx":4A6C4
          Top             =   1080
          Width           =   2040
       End
       Begin VB.Image move1 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2F4B1
+         Picture         =   "FormMainMode.frx":4A843
          Top             =   1340
          Width           =   2040
       End
       Begin VB.Image move3 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2F64D
+         Picture         =   "FormMainMode.frx":4A9DF
          Top             =   1610
          Width           =   2040
       End
       Begin VB.Image move4 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2F8D6
+         Picture         =   "FormMainMode.frx":4AC68
          Top             =   1880
          Width           =   2040
       End
@@ -2269,7 +3261,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image cardpagejpg 
          Height          =   915
          Left            =   0
-         Picture         =   "FormMainMode.frx":2FB53
+         Picture         =   "FormMainMode.frx":4AEE5
          Top             =   960
          Width           =   1125
       End
@@ -2296,1147 +3288,11 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc戰鬥系統牌型介面 PEAFInterface 
          Height          =   9910
          Left            =   0
-         TabIndex        =   194
+         TabIndex        =   188
          Top             =   0
          Width           =   11340
          _ExtentX        =   2143
          _ExtentY        =   2778
-      End
-   End
-   Begin VB.PictureBox PEGameFreeModeSettingForm 
-      Appearance      =   0  '平面
-      BackColor       =   &H80000000&
-      BorderStyle     =   0  '沒有框線
-      ForeColor       =   &H80000008&
-      Height          =   9915
-      Left            =   5400
-      ScaleHeight     =   9915
-      ScaleWidth      =   11340
-      TabIndex        =   57
-      Top             =   240
-      Visible         =   0   'False
-      Width           =   11340
-      Begin VB.PictureBox Picture3 
-         Appearance      =   0  '平面
-         BackColor       =   &H80000005&
-         ForeColor       =   &H80000008&
-         Height          =   1815
-         Left            =   0
-         ScaleHeight     =   1785
-         ScaleWidth      =   11385
-         TabIndex        =   82
-         Top             =   4320
-         Width           =   11415
-         Begin VB.ComboBox personlevelus 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   1
-            Left            =   120
-            TabIndex        =   97
-            Top             =   0
-            Width           =   855
-         End
-         Begin VB.ComboBox personlevelus 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   2
-            Left            =   2760
-            TabIndex        =   96
-            Top             =   0
-            Width           =   855
-         End
-         Begin VB.ComboBox personlevelus 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   3
-            Left            =   5400
-            TabIndex        =   95
-            Top             =   0
-            Width           =   855
-         End
-         Begin VB.ComboBox personnameus 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   1
-            Left            =   1080
-            TabIndex        =   94
-            Top             =   0
-            Width           =   1575
-         End
-         Begin VB.ComboBox personnameus 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   2
-            Left            =   3720
-            TabIndex        =   93
-            Top             =   0
-            Width           =   1575
-         End
-         Begin VB.ComboBox personnameus 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   3
-            Left            =   6360
-            TabIndex        =   92
-            Top             =   0
-            Width           =   1575
-         End
-         Begin VB.ComboBox personlevelcom 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   1
-            Left            =   3360
-            TabIndex        =   91
-            Top             =   1440
-            Width           =   855
-         End
-         Begin VB.ComboBox personlevelcom 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   2
-            Left            =   6000
-            TabIndex        =   90
-            Top             =   1440
-            Width           =   855
-         End
-         Begin VB.ComboBox personlevelcom 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   3
-            Left            =   8640
-            TabIndex        =   89
-            Top             =   1440
-            Width           =   855
-         End
-         Begin VB.ComboBox personnamecom 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   1
-            Left            =   4320
-            TabIndex        =   88
-            Top             =   1440
-            Width           =   1575
-         End
-         Begin VB.ComboBox personnamecom 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   2
-            Left            =   6960
-            TabIndex        =   87
-            Top             =   1440
-            Width           =   1575
-         End
-         Begin VB.ComboBox personnamecom 
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   375
-            Index           =   3
-            Left            =   9600
-            TabIndex        =   86
-            Top             =   1440
-            Width           =   1575
-         End
-         Begin VB.OptionButton opnpersonvs 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "3v3"
-            Height          =   375
-            Index           =   2
-            Left            =   120
-            TabIndex        =   84
-            Top             =   1080
-            Width           =   1695
-         End
-         Begin VB.CommandButton personreadifus 
-            Caption         =   "讀入..."
-            Height          =   495
-            Left            =   2040
-            TabIndex        =   83
-            Top             =   720
-            Width           =   975
-         End
-         Begin MSComDlg.CommonDialog cdgpersonus 
-            Left            =   3000
-            Top             =   720
-            _ExtentX        =   847
-            _ExtentY        =   847
-            _Version        =   393216
-            DialogTitle     =   "UnlightVBE-卡片人物資訊-開啟檔案"
-         End
-         Begin VB.OptionButton opnpersonvs 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "1v1"
-            Height          =   495
-            Index           =   1
-            Left            =   120
-            TabIndex        =   85
-            Top             =   720
-            Value           =   -1  'True
-            Width           =   855
-         End
-         Begin UnlightVBE.大人物形像 personfus 
-            Height          =   1215
-            Left            =   0
-            TabIndex        =   113
-            Top             =   0
-            Width           =   3135
-            _ExtentX        =   5530
-            _ExtentY        =   2143
-         End
-         Begin VB.Image bnstart 
-            Height          =   510
-            Left            =   9600
-            Picture         =   "FormMainMode.frx":303B6
-            Top             =   600
-            Width           =   1440
-         End
-         Begin VB.Image bnabout 
-            Height          =   390
-            Left            =   8280
-            Picture         =   "FormMainMode.frx":30F0C
-            Top             =   720
-            Width           =   1320
-         End
-         Begin VB.Image bnconfig 
-            Height          =   390
-            Left            =   7080
-            Picture         =   "FormMainMode.frx":31577
-            Top             =   720
-            Width           =   1320
-         End
-         Begin VB.Label Label3 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "VS"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   20.25
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H000000FF&
-            Height          =   495
-            Left            =   5400
-            TabIndex        =   112
-            Top             =   600
-            Width           =   735
-         End
-         Begin VB.Label personresetus 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "重設"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   1
-            Left            =   1200
-            TabIndex        =   111
-            Top             =   360
-            Width           =   495
-         End
-         Begin VB.Label personresetus 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "重設"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   2
-            Left            =   3840
-            TabIndex        =   110
-            Top             =   360
-            Width           =   495
-         End
-         Begin VB.Label personresetus 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "重設"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   3
-            Left            =   6480
-            TabIndex        =   109
-            Top             =   360
-            Width           =   495
-         End
-         Begin VB.Label personresetcom 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "重設"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   1
-            Left            =   4320
-            TabIndex        =   108
-            Top             =   1200
-            Width           =   495
-         End
-         Begin VB.Label personresetcom 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "重設"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   2
-            Left            =   6960
-            TabIndex        =   107
-            Top             =   1200
-            Width           =   495
-         End
-         Begin VB.Label personresetcom 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "重設"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   3
-            Left            =   9600
-            TabIndex        =   106
-            Top             =   1200
-            Width           =   495
-         End
-         Begin VB.Label personsettingus 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "人物設定"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   1
-            Left            =   120
-            TabIndex        =   105
-            Top             =   360
-            Visible         =   0   'False
-            Width           =   855
-         End
-         Begin VB.Label personsettingus 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "人物設定"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   2
-            Left            =   2760
-            TabIndex        =   104
-            Top             =   360
-            Visible         =   0   'False
-            Width           =   855
-         End
-         Begin VB.Label personsettingus 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "人物設定"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   3
-            Left            =   5400
-            TabIndex        =   103
-            Top             =   360
-            Visible         =   0   'False
-            Width           =   855
-         End
-         Begin VB.Label personsettingcom 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "人物設定"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   1
-            Left            =   3360
-            TabIndex        =   102
-            Top             =   1200
-            Visible         =   0   'False
-            Width           =   855
-         End
-         Begin VB.Label personsettingcom 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "人物設定"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   2
-            Left            =   6000
-            TabIndex        =   101
-            Top             =   1200
-            Visible         =   0   'False
-            Width           =   855
-         End
-         Begin VB.Label personsettingcom 
-            BackColor       =   &H00FFFFFF&
-            Caption         =   "人物設定"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9.75
-               Charset         =   136
-               Weight          =   400
-               Underline       =   -1  'True
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FF0000&
-            Height          =   255
-            Index           =   3
-            Left            =   8640
-            TabIndex        =   100
-            Top             =   1200
-            Visible         =   0   'False
-            Width           =   855
-         End
-         Begin VB.Label Label4 
-            BackColor       =   &H00FFFFFF&
-            BackStyle       =   0  '透明
-            Caption         =   "1P"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   15.75
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   495
-            Left            =   8040
-            TabIndex        =   99
-            Top             =   0
-            Width           =   735
-         End
-         Begin VB.Label Label5 
-            BackColor       =   &H00FFFFFF&
-            BackStyle       =   0  '透明
-            Caption         =   "COM"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   15.75
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   615
-            Left            =   2400
-            TabIndex        =   98
-            Top             =   1400
-            Width           =   855
-         End
-      End
-      Begin VB.PictureBox PEGFcardus 
-         Appearance      =   0  '平面
-         BackColor       =   &H00000000&
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   3615
-         Index           =   1
-         Left            =   120
-         Picture         =   "FormMainMode.frx":31B87
-         ScaleHeight     =   3585
-         ScaleWidth      =   2505
-         TabIndex        =   78
-         Top             =   600
-         Width           =   2535
-         Begin VB.Label PEGFusbi1 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   550
-            TabIndex        =   81
-            Top             =   3240
-            Width           =   375
-         End
-         Begin VB.Label PEGFusbi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   1200
-            TabIndex        =   80
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFusbi3 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   1920
-            TabIndex        =   79
-            Top             =   3240
-            Width           =   615
-         End
-      End
-      Begin VB.PictureBox PEGFcardus 
-         Appearance      =   0  '平面
-         BackColor       =   &H00000000&
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   3615
-         Index           =   2
-         Left            =   2760
-         Picture         =   "FormMainMode.frx":35A2A
-         ScaleHeight     =   3585
-         ScaleWidth      =   2505
-         TabIndex        =   74
-         Top             =   600
-         Width           =   2535
-         Begin VB.Label PEGFusbi1 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   550
-            TabIndex        =   77
-            Top             =   3240
-            Width           =   375
-         End
-         Begin VB.Label PEGFusbi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   1200
-            TabIndex        =   76
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFusbi3 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   1920
-            TabIndex        =   75
-            Top             =   3240
-            Width           =   615
-         End
-      End
-      Begin VB.PictureBox PEGFcardus 
-         Appearance      =   0  '平面
-         BackColor       =   &H00000000&
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   3615
-         Index           =   3
-         Left            =   5400
-         Picture         =   "FormMainMode.frx":398CD
-         ScaleHeight     =   3585
-         ScaleWidth      =   2505
-         TabIndex        =   70
-         Top             =   600
-         Width           =   2535
-         Begin VB.Label PEGFusbi1 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   550
-            TabIndex        =   73
-            Top             =   3240
-            Width           =   375
-         End
-         Begin VB.Label PEGFusbi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   1200
-            TabIndex        =   72
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFusbi3 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   1920
-            TabIndex        =   71
-            Top             =   3240
-            Width           =   615
-         End
-      End
-      Begin VB.PictureBox PEGFcardcom 
-         Appearance      =   0  '平面
-         BackColor       =   &H00000000&
-         ForeColor       =   &H80000008&
-         Height          =   3615
-         Index           =   1
-         Left            =   3360
-         Picture         =   "FormMainMode.frx":3D770
-         ScaleHeight     =   3585
-         ScaleWidth      =   2505
-         TabIndex        =   66
-         Top             =   6240
-         Width           =   2535
-         Begin VB.Label PEGFcardcompi1 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   495
-            Index           =   1
-            Left            =   480
-            TabIndex        =   69
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFcardcompi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   1200
-            TabIndex        =   68
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFcardcompi3 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   1920
-            TabIndex        =   67
-            Top             =   3240
-            Width           =   615
-         End
-      End
-      Begin VB.PictureBox PEGFcardcom 
-         Appearance      =   0  '平面
-         BackColor       =   &H00000000&
-         ForeColor       =   &H80000008&
-         Height          =   3615
-         Index           =   2
-         Left            =   6000
-         Picture         =   "FormMainMode.frx":41613
-         ScaleHeight     =   3585
-         ScaleWidth      =   2505
-         TabIndex        =   62
-         Top             =   6240
-         Width           =   2535
-         Begin VB.Label PEGFcardcompi1 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   495
-            Index           =   2
-            Left            =   480
-            TabIndex        =   65
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFcardcompi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   1200
-            TabIndex        =   64
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFcardcompi3 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   1920
-            TabIndex        =   63
-            Top             =   3240
-            Width           =   615
-         End
-      End
-      Begin VB.PictureBox PEGFcardcom 
-         Appearance      =   0  '平面
-         BackColor       =   &H00000000&
-         ForeColor       =   &H80000008&
-         Height          =   3615
-         Index           =   3
-         Left            =   8640
-         Picture         =   "FormMainMode.frx":454B6
-         ScaleHeight     =   3585
-         ScaleWidth      =   2505
-         TabIndex        =   58
-         Top             =   6240
-         Width           =   2535
-         Begin VB.Label PEGFcardcompi1 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   495
-            Index           =   3
-            Left            =   480
-            TabIndex        =   61
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFcardcompi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   1200
-            TabIndex        =   60
-            Top             =   3240
-            Width           =   495
-         End
-         Begin VB.Label PEGFcardcompi3 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "?"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   1920
-            TabIndex        =   59
-            Top             =   3240
-            Width           =   615
-         End
-      End
-      Begin VB.Label Label1 
-         BackStyle       =   0  '透明
-         Caption         =   "GameSetting"
-         BeginProperty Font 
-            Name            =   "Bradley Gratis"
-            Size            =   15.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FFFFFF&
-         Height          =   375
-         Left            =   240
-         TabIndex        =   115
-         Top             =   120
-         Width           =   1455
-      End
-      Begin VB.Label Label2 
-         BackStyle       =   0  '透明
-         Caption         =   "自由戰鬥模式遊戲引導設定"
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FFFFFF&
-         Height          =   255
-         Left            =   1680
-         TabIndex        =   114
-         Top             =   195
-         Width           =   2535
-      End
-      Begin VB.Image Image4 
-         Height          =   465
-         Left            =   0
-         Picture         =   "FormMainMode.frx":49359
-         Top             =   0
-         Width           =   11400
       End
    End
    Begin VB.PictureBox PEMusicForm 
@@ -3448,7 +3304,7 @@ Begin VB.Form FormMainMode
       Left            =   1320
       ScaleHeight     =   7935
       ScaleWidth      =   11895
-      TabIndex        =   198
+      TabIndex        =   192
       Top             =   1200
       Visible         =   0   'False
       Width           =   11895
@@ -3462,7 +3318,7 @@ Begin VB.Form FormMainMode
          Height          =   855
          Index           =   0
          Left            =   840
-         TabIndex        =   199
+         TabIndex        =   193
          Top             =   3480
          Width           =   1095
          _ExtentX        =   1931
@@ -3478,7 +3334,7 @@ Begin VB.Form FormMainMode
       Left            =   3480
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   116
+      TabIndex        =   110
       Top             =   960
       Visible         =   0   'False
       Width           =   11340
@@ -3504,7 +3360,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   615
          Left            =   8280
-         TabIndex        =   117
+         TabIndex        =   111
          Top             =   9120
          Visible         =   0   'False
          Width           =   2655
@@ -3520,7 +3376,7 @@ Begin VB.Form FormMainMode
       Picture         =   "FormMainMode.frx":4B748
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   118
+      TabIndex        =   112
       Top             =   240
       Visible         =   0   'False
       Width           =   11340
@@ -3551,7 +3407,7 @@ Begin VB.Form FormMainMode
          Left            =   6285
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   119
+         TabIndex        =   113
          Top             =   3240
          Visible         =   0   'False
          Width           =   2535
@@ -3572,7 +3428,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   1
             Left            =   480
-            TabIndex        =   122
+            TabIndex        =   116
             Top             =   3240
             Width           =   495
          End
@@ -3593,7 +3449,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   121
+            TabIndex        =   115
             Top             =   3240
             Width           =   495
          End
@@ -3614,7 +3470,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   120
+            TabIndex        =   114
             Top             =   3240
             Width           =   615
          End
@@ -3628,7 +3484,7 @@ Begin VB.Form FormMainMode
          Left            =   7485
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   149
+         TabIndex        =   143
          Top             =   3600
          Visible         =   0   'False
          Width           =   2535
@@ -3649,7 +3505,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   152
+            TabIndex        =   146
             Top             =   3240
             Width           =   615
          End
@@ -3670,7 +3526,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   151
+            TabIndex        =   145
             Top             =   3240
             Width           =   495
          End
@@ -3691,7 +3547,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   2
             Left            =   480
-            TabIndex        =   150
+            TabIndex        =   144
             Top             =   3240
             Width           =   495
          End
@@ -3714,7 +3570,7 @@ Begin VB.Form FormMainMode
          Left            =   2805
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   123
+         TabIndex        =   117
          Top             =   3240
          Visible         =   0   'False
          Width           =   2535
@@ -3735,7 +3591,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   550
-            TabIndex        =   126
+            TabIndex        =   120
             Top             =   3240
             Width           =   375
          End
@@ -3756,7 +3612,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   125
+            TabIndex        =   119
             Top             =   3240
             Width           =   495
          End
@@ -3777,7 +3633,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   124
+            TabIndex        =   118
             Top             =   3240
             Width           =   615
          End
@@ -3800,7 +3656,7 @@ Begin VB.Form FormMainMode
          Left            =   1485
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   141
+         TabIndex        =   135
          Top             =   3600
          Visible         =   0   'False
          Width           =   2535
@@ -3821,7 +3677,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   144
+            TabIndex        =   138
             Top             =   3240
             Width           =   615
          End
@@ -3842,7 +3698,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   143
+            TabIndex        =   137
             Top             =   3240
             Width           =   495
          End
@@ -3863,7 +3719,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   550
-            TabIndex        =   142
+            TabIndex        =   136
             Top             =   3240
             Width           =   375
          End
@@ -3877,7 +3733,7 @@ Begin VB.Form FormMainMode
          Left            =   8565
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   153
+         TabIndex        =   147
          Top             =   3960
          Visible         =   0   'False
          Width           =   2535
@@ -3898,7 +3754,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   156
+            TabIndex        =   150
             Top             =   3240
             Width           =   615
          End
@@ -3919,7 +3775,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   155
+            TabIndex        =   149
             Top             =   3240
             Width           =   495
          End
@@ -3940,7 +3796,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   3
             Left            =   480
-            TabIndex        =   154
+            TabIndex        =   148
             Top             =   3240
             Width           =   495
          End
@@ -3963,7 +3819,7 @@ Begin VB.Form FormMainMode
          Left            =   360
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   145
+         TabIndex        =   139
          Top             =   3960
          Visible         =   0   'False
          Width           =   2535
@@ -3984,7 +3840,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   148
+            TabIndex        =   142
             Top             =   3240
             Width           =   615
          End
@@ -4005,7 +3861,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   147
+            TabIndex        =   141
             Top             =   3240
             Width           =   495
          End
@@ -4026,7 +3882,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   550
-            TabIndex        =   146
+            TabIndex        =   140
             Top             =   3240
             Width           =   375
          End
@@ -4041,7 +3897,7 @@ Begin VB.Form FormMainMode
          Picture         =   "FormMainMode.frx":7A5FC
          ScaleHeight     =   1455
          ScaleWidth      =   11415
-         TabIndex        =   128
+         TabIndex        =   122
          Top             =   8160
          Visible         =   0   'False
          Width           =   11415
@@ -4052,7 +3908,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   480
-            TabIndex        =   140
+            TabIndex        =   134
             Top             =   120
             Width           =   1935
          End
@@ -4063,112 +3919,112 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   6840
-            TabIndex        =   139
-            Top             =   120
-            Width           =   2055
-         End
-         Begin VB.Label cardusspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號1"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   1
-            Left            =   1560
-            TabIndex        =   138
-            Top             =   120
-            Width           =   3135
-         End
-         Begin VB.Label cardcomspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號1"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   1
-            Left            =   7920
-            TabIndex        =   137
-            Top             =   120
-            Width           =   3135
-         End
-         Begin VB.Label cardusname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物2"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   480
-            TabIndex        =   136
-            Top             =   480
-            Width           =   1935
-         End
-         Begin VB.Label cardusname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物3"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   480
-            TabIndex        =   135
-            Top             =   840
-            Width           =   1935
-         End
-         Begin VB.Label cardusspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號2"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   2
-            Left            =   1560
-            TabIndex        =   134
-            Top             =   480
-            Width           =   3135
-         End
-         Begin VB.Label cardusspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號3"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   3
-            Left            =   1560
             TabIndex        =   133
-            Top             =   840
+            Top             =   120
+            Width           =   2055
+         End
+         Begin VB.Label cardusspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號1"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   1
+            Left            =   1560
+            TabIndex        =   132
+            Top             =   120
             Width           =   3135
          End
-         Begin VB.Label cardcomname 
+         Begin VB.Label cardcomspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號1"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   1
+            Left            =   7920
+            TabIndex        =   131
+            Top             =   120
+            Width           =   3135
+         End
+         Begin VB.Label cardusname 
             BackStyle       =   0  '透明
             Caption         =   "人物2"
             ForeColor       =   &H00FFFFFF&
             Height          =   375
             Index           =   2
-            Left            =   6840
-            TabIndex        =   132
-            Top             =   480
-            Width           =   2055
-         End
-         Begin VB.Label cardcomname 
-            BackStyle       =   0  '透明
-            Caption         =   "人物3"
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   6840
-            TabIndex        =   131
-            Top             =   840
-            Width           =   2055
-         End
-         Begin VB.Label cardcomspname 
-            Alignment       =   1  '靠右對齊
-            BackStyle       =   0  '透明
-            Caption         =   "稱號2"
-            ForeColor       =   &H00008080&
-            Height          =   375
-            Index           =   2
-            Left            =   7920
+            Left            =   480
             TabIndex        =   130
             Top             =   480
+            Width           =   1935
+         End
+         Begin VB.Label cardusname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物3"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   480
+            TabIndex        =   129
+            Top             =   840
+            Width           =   1935
+         End
+         Begin VB.Label cardusspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號2"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   2
+            Left            =   1560
+            TabIndex        =   128
+            Top             =   480
+            Width           =   3135
+         End
+         Begin VB.Label cardusspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號3"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   3
+            Left            =   1560
+            TabIndex        =   127
+            Top             =   840
+            Width           =   3135
+         End
+         Begin VB.Label cardcomname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物2"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   2
+            Left            =   6840
+            TabIndex        =   126
+            Top             =   480
+            Width           =   2055
+         End
+         Begin VB.Label cardcomname 
+            BackStyle       =   0  '透明
+            Caption         =   "人物3"
+            ForeColor       =   &H00FFFFFF&
+            Height          =   375
+            Index           =   3
+            Left            =   6840
+            TabIndex        =   125
+            Top             =   840
+            Width           =   2055
+         End
+         Begin VB.Label cardcomspname 
+            Alignment       =   1  '靠右對齊
+            BackStyle       =   0  '透明
+            Caption         =   "稱號2"
+            ForeColor       =   &H00008080&
+            Height          =   375
+            Index           =   2
+            Left            =   7920
+            TabIndex        =   124
+            Top             =   480
             Width           =   3135
          End
          Begin VB.Label cardcomspname 
@@ -4179,7 +4035,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   7920
-            TabIndex        =   129
+            TabIndex        =   123
             Top             =   840
             Width           =   3135
          End
@@ -4194,7 +4050,7 @@ Begin VB.Form FormMainMode
          Picture         =   "FormMainMode.frx":82F78
          ScaleHeight     =   1905
          ScaleWidth      =   11415
-         TabIndex        =   127
+         TabIndex        =   121
          Top             =   0
          Visible         =   0   'False
          Width           =   11415
@@ -4238,7 +4094,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc對話 PEASpersontalk 
          Height          =   1935
          Left            =   0
-         TabIndex        =   163
+         TabIndex        =   157
          Top             =   -120
          Visible         =   0   'False
          Width           =   5775
@@ -4248,7 +4104,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 大人物形像_電腦 
          Height          =   10005
          Left            =   20040
-         TabIndex        =   157
+         TabIndex        =   151
          Top             =   -480
          Width           =   5895
          _ExtentX        =   10398
@@ -4257,7 +4113,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 大人物形像_使用者 
          Height          =   10005
          Left            =   -9960
-         TabIndex        =   158
+         TabIndex        =   152
          Top             =   -480
          Width           =   6015
          _ExtentX        =   10610
@@ -4266,7 +4122,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 upjpg_2 
          Height          =   1935
          Left            =   0
-         TabIndex        =   159
+         TabIndex        =   153
          Top             =   -480
          Visible         =   0   'False
          Width           =   11415
@@ -4284,7 +4140,7 @@ Begin VB.Form FormMainMode
       Picture         =   "FormMainMode.frx":8E4A4
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   160
+      TabIndex        =   154
       Top             =   -1680
       Visible         =   0   'False
       Width           =   11340
@@ -4301,7 +4157,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   9480
-         TabIndex        =   162
+         TabIndex        =   156
          Top             =   8760
          Visible         =   0   'False
          Width           =   1455
@@ -4313,7 +4169,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   7680
-         TabIndex        =   161
+         TabIndex        =   155
          Top             =   8760
          Visible         =   0   'False
          Width           =   1455
@@ -4393,12 +4249,10 @@ End Sub
 Private Sub atkingtrcom_Timer()
 If 目前數(29) = 1 Then
    目前數(31) = 0
-'   Formatkingcom.Left = FormMainMode.Left + 5295
    Formatkingcom.Left = FormMainMode.Left + (FormMainMode.Width - Formatkingcom.Width)
    Formatkingcom.Top = FormMainMode.Top + 380
    atkingtrcom.Enabled = False
    Formatkingcom.t1.Enabled = True
-'   技能動畫顯示_電腦tr.Enabled = True
    Formatkingcom.Show 0, Me
 Else
    目前數(29) = 目前數(29) + 1
@@ -4412,7 +4266,6 @@ If 目前數(29) = 1 Then
    Formatkingus.Top = FormMainMode.Top + 380
    atkingtrus.Enabled = False
    Formatkingus.t1.Enabled = True
-'   技能動畫顯示_使用者tr.Enabled = True
    Formatkingus.Show 0, Me
 Else
    目前數(29) = 目前數(29) + 1
@@ -4456,9 +4309,6 @@ For i = 1 To 公用牌實體卡片分隔紀錄數(1)
    card(i).CardEventType = False
 Next
 End Sub
-
-
-
 
 Private Sub bnreturn_Click()
 bnreturnt_Click
@@ -4835,18 +4685,7 @@ Else
 End If
 顯示列1.顯示列圖片 = app_path & "gif\system\linemove.png"
 cnmove.Visible = False
-'cnmove2.Visible = True
-'turnpageonin = 1
 戰鬥系統類.cleanatkingpagetot
-'==============
-'For i = 1 To UBound(atkingck)
-'     atkingck(i, 1) = 1
-'     atkingck(i, 2) = 0
-'Next
-'For i = 1 To UBound(atkingckai)
-'     atkingckai(i, 1) = 1
-'     atkingckai(i, 2) = 0
-'Next
 '======================電腦方事件卡先出制度
 If 電腦方事件卡是否出完選擇數 = False Then
     GoTo 電腦方事件卡先出制度_執行階段2
@@ -4855,23 +4694,9 @@ End If
 電腦方事件卡先出制度_執行階段結束:
 '----------以下為電腦判斷出牌程式碼（移動階段1）
 '====================試驗智慧型AI出牌系統
-'If 智慧型AI系統_目前可執行之人物判斷(namecom(角色人物對戰人數(2, 2))) = True Then
     智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 2, 3, namecom(角色人物對戰人數(2, 2)), movecp, 0
     GoTo 智慧型AI出牌_執行階段結束
-'End If
-'=========以下為技能檢查及啟動
-'   If turnatk = 3 Then
-'      AI技能.雪莉_巨大黑犬 '(階段1)
-'   End If
-''============以下是異常狀態檢查及啟動
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 17) = True Then
-'      異常狀態檢查數(17, 1) = 1
-'      異常狀態.麻痺_電腦  '(階段1)
-'      電腦方移動階段選擇數 = 2
-'      GoTo 麻痺_電腦_執行階段2
-'End If
-''======================
-
+'======================
 Dim movecomatk1, movecomatk2 As Integer
 戰鬥系統類.moveatkin
 
@@ -4883,27 +4708,8 @@ For i = 1 To 公用牌實體卡片分隔紀錄數(1)
        If pagecardnum(i, 3) = a5a Then movecomatk2 = Val(movecomatk2) + Val(pagecardnum(i, 4))
    End If
 Next
+'===========================================
 麻痺_電腦_執行階段2: '異常狀態-麻痺-電腦-程式跳入點(執行階段2)
-''=====================以下是異常狀態檢查及啟動
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
-'      異常狀態檢查數(21, 1) = 2
-'      異常狀態.中毒_電腦  '(階段2)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 3) = True Then
-'      異常狀態檢查數(3, 1) = 1
-'      異常狀態.MOV加_電腦  '(階段1)
-'End If
-'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 6) = True Then
-'      異常狀態檢查數(6, 1) = 1
-'      異常狀態.MOV減_電腦  '(階段1)
-'End If
-''=========
-'AI人物.史塔夏 2
-'AI人物.全人物通用 1   '===異常狀態-MOV減-有效移動值判斷處理
-''==============
-'AI人物.阿奇波爾多 1
-'AI人物.艾伯李斯特 2
-'AI人物.CC 2
 '===========================================
 If movecomatk1 > movecomatk2 Then
       電腦方移動階段選擇數 = 1
@@ -4948,50 +4754,9 @@ cnmove2.Visible = False
 End Sub
 
 Private Sub comaiatk_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-For i = 1 To 3
-  cardcom(i).Visible = False
-Next
-'Select Case Index
-'   Case 1
-'       Select Case comaiatk(Index).Caption
-'            Case "自殺傾向"
-'              akhpnm = 1
-'            Case "猛擊"
-'              akhpnm = 4
-'            Case "輪旋曲-琉璃色的微風"
-'              akhpnm = 10
-'            Case "Ex輪旋曲-琉璃色的微風"
-'              akhpnm = 16
-'            Case "重壓"
-'              akhpnm = 23
-'            Case "冰結之翼"
-'              akhpnm = 24
-'        End Select
-'   Case 2
-'       Select Case comaiatk(Index).Caption
-'            Case "異質者"
-'              akhpnm = 7
-'            Case "超再生"
-'              akhpnm = 22
-'            Case "煉獄之翼"
-'              akhpnm = 25
-'        End Select
-'   Case 3
-'       Select Case comaiatk(Index).Caption
-'            Case "巨大黑犬"
-'              akhpnm = 3
-'            Case "混沌之翼"
-'              akhpnm = 26
-'        End Select
-'   Case 4
-'       Select Case comaiatk(Index).Caption
-'            Case "飛刃雨"
-'              akhpnm = 2
-'            Case "終曲-無盡輪迴的終結"
-'              akhpnm = 12
-'       End Select
-'End Select
-'技能說明載入 akhpnm
+    For i = 1 To 3
+      cardcom(i).Visible = False
+    Next
     戰鬥系統類.技能說明載入_電腦 Index
     
     atkinghelpc.Left = atkinghelpxy(2, Index, 1)
@@ -5000,20 +4765,14 @@ Next
     atkinghelpc.Visible = True
 End Sub
 
-
-
-
 Private Sub compi1_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
 cardcom(Index).Left = compiin(Index).Left
 cardcom(Index).Top = 480
 cardcom(Index).ZOrder
 If 人物卡面背面編號紀錄數(1) = 2 And 人物卡面背面編號紀錄數(2) = Index Then
-'    PEAFcardback(1).Visible = True
     cardcom(Index).Visible = True
-'    PEAFcardback(1).ZOrder
 Else
     cardcom(Index).Visible = True
-'    PEAFcardback(1).Visible = False
 End If
 Select Case Index
    Case 1
@@ -5029,35 +4788,22 @@ End Select
 atkinghelpc.Visible = False
 End Sub
 
-
 Private Sub compi4_Change(Index As Integer)
   If Val(compi4(Index).Caption) = Val(livecommax(Index)) Then
    compi4(Index).ForeColor = RGB(255, 255, 255)
-'   cardcompi1(Index).ForeColor = RGB(255, 255, 255)
-'   cardbackcom(Index).Visible = False
  End If
  If Val(compi4(Index).Caption) < Val(livecommax(Index)) Then
    compi4(Index).ForeColor = RGB(255, 255, 128)
-'   cardcompi1(Index).ForeColor = RGB(255, 255, 128)
-'   cardbackcom(Index).Visible = False
  End If
  If Val(compi4(Index).Caption) <= Val(livecom41(Index)) Then
    compi4(Index).ForeColor = RGB(255, 0, 0)
-'   cardcompi1(Index).ForeColor = RGB(255, 0, 0)
-'   cardbackcom(Index).Visible = False
  End If
  If Val(compi4(Index).Caption) = 0 And compi1(Index).Caption = "" Then
    compi4(Index).ForeColor = RGB(255, 255, 255)
-'   cardcompi1(Index).ForeColor = RGB(255, 255, 255)
-'   cardbackcom(Index).Visible = False
  End If
  If Val(compi4(Index).Caption) <= 0 Then
     If compi1(Index).Caption <> "" Then
         compi4(Index).Caption = 0
-'        cardcompi1(Index).Caption = 0
-'        cardbackcom(Index).Visible = True
-    Else
-'        cardbackcom(Index).Visible = False
     End If
  End If
 End Sub
@@ -5127,23 +4873,17 @@ End Sub
 
 
 Private Sub cn1_Click()
-'draw1.Visible = False
-'draw2.Visible = True
 turnatk = 4
 戰鬥系統類.音量靜音調節設定
 '====================
-'目前數(1) = 1
 目前數(2) = 1
 電腦方事件卡是否出完選擇數 = False
-'If 牌總階段數(3) > 9 Then 牌總階段數(3) = 9 '現行限制(總擁有牌最大數)
-'Erase atkingck
 '===========================執行階段插入點(0)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 0, 1
 '============================
 cn1.Visible = False
 目前數(15) = 1
 發牌檢查.Enabled = True
-'FormMainMode.wmpse6.Controls.play
 End Sub
 
 Private Sub cn2_Click()
@@ -5176,7 +4916,6 @@ Else
     顯示列1.顯示列圖片 = app_path & "gif\system\lineusatk2.png"
 End If
 cn2.Visible = False
-'cn22.Visible = True
 bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
 bnok.Visible = True
 '=============
@@ -5203,32 +4942,10 @@ goicheck(2) = 0
 chkcomck = 0
 atkingtrn(1) = 0
 atkingtrn(2) = 0
-'Erase 異常狀態_混沌紀錄數
-'Erase 異常狀態_AI_混沌紀錄數
-''=====
-'If atkingck(49, 2) = 1 And atking_尤莉卡_超載目前階段紀錄數(3) = 2 Then
-'   atkingck(49, 1) = 5
-'   技能.尤莉卡_超載 '(階段5)
-'End If
-'If atkingckai(139, 2) = 1 And atking_AI_尤莉卡_超載目前階段紀錄數(3) = 2 Then
-'   atkingckai(139, 1) = 5
-'   AI技能.尤莉卡_超載 '(階段5)
-'End If
 '=====
 If turnatk = 1 Then
  戰鬥系統類.chkdefcom
 End If
-'==============以下是技能檢查及啟動
-'If uspi1(角色人物對戰人數(1, 2)).Caption = "音音夢" Then
-'    If atking_音音夢_成長模式狀態數(2) = 1 And turnatk = 1 Then
-'       atking_音音夢_成長模式狀態數(1) = 2
-'       戰鬥系統類.特殊_音音夢_成長狀態_使用者 '(階段2)
-'    End If
-'End If
-'If turnatk = 1 Then
-'    atkingckai(44, 1) = 1
-'    AI技能.庫勒尼西_沙漠中的海市蜃樓 '(階段1)
-'End If
 '======================================
 Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
@@ -5254,7 +4971,6 @@ End Sub
 
 
 Private Sub cn22_Click()
-'turnpageonin = 0
 cn22.Visible = False
 OK按鈕牌完成移動檢查.Enabled = True
 End Sub
@@ -5301,17 +5017,6 @@ liveus(角色人物對戰人數(1, 2)) = Val(uspi4(角色人物對戰人數(1, 2)).Caption)
 骰數零檢查值(1) = False
 骰數零檢查值(2) = False
 是否系統公骰 = False
-'Erase 異常狀態_混沌紀錄數
-'Erase 異常狀態_AI_混沌紀錄數
-''=====
-'If atkingck(49, 2) = 1 And atking_尤莉卡_超載目前階段紀錄數(3) = 2 Then
-'   atkingck(49, 1) = 5
-'   技能.尤莉卡_超載 '(階段5)
-'End If
-'If atkingckai(139, 2) = 1 And atking_AI_尤莉卡_超載目前階段紀錄數(3) = 2 Then
-'   atkingckai(139, 1) = 5
-'   AI技能.尤莉卡_超載 '(階段5)
-'End If
 '=====
 目前數(6) = 0
 目前數(21) = 1
@@ -5340,71 +5045,19 @@ End If
 電腦方事件卡先出制度_執行階段結束:
 '----------以下為電腦判斷出牌程式碼（攻擊方）
 '====================試驗智慧型AI出牌系統
-'If 智慧型AI系統_目前可執行之人物判斷(namecom(角色人物對戰人數(2, 2))) = True Then
-    Dim wtyr As Integer '暫時變數
-    If moveturn = 1 Then wtyr = 1 Else wtyr = 0
-    智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 2, 1, namecom(角色人物對戰人數(2, 2)), movecp, wtyr
-    GoTo 智慧型AI出牌_執行階段結束
-'End If
-   '============以下是技能檢查及啟動
-'    If turnatk = 2 Then
-'        atkingckai(1, 1) = 1
-'       AI技能.雪莉_自殺傾向 (0)  '(階段1)
-'    End If
-'    If turnatk = 2 And movecp = 3 Then
-'       atkingckai(5, 1) = 1
-'       AI技能.雪莉_飛刃雨 '(階段1)
-'    End If
-'    If turnatk = 2 Then
-'       atkingckai(48, 1) = 5
-'       AI技能.傑多_因果之幻 '(階段5)
-'    End If
-'    If turnatk = 2 And movecp < 3 Then
-'        atkingckai(11, 1) = 1
-'       AI技能.蕾_終曲_無盡輪迴的終結  '(階段1)
-'    End If
-'    '==========
-'    AI人物.CC 1
-'    AI人物.史塔夏 1
-'    AI人物.庫勒尼西 1
-     '==================
+Dim wtyr As Integer '暫時變數
+If moveturn = 1 Then wtyr = 1 Else wtyr = 0
+智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 2, 1, namecom(角色人物對戰人數(2, 2)), movecp, wtyr
+GoTo 智慧型AI出牌_執行階段結束
+ '==================
 If turnatk = 2 And movecp = 1 Then
    戰鬥系統類.comatk1
 ElseIf turnatk = 2 And movecp > 1 Then
    戰鬥系統類.comatk2
 End If
-'==============
-'AI人物.艾依查庫 1
-'AI人物.艾伯李斯特 1
-'AI人物.利恩 1
-'AI人物.蕾格烈芙 1
-'AI人物.阿奇波爾多 2
-'AI人物.瑪格莉特 1
-'AI人物.多妮妲 1
-''==========
-'If moveturn = 1 Then
-'    AI人物.全人物通用 2
-'End If
 '==============================
 智慧型AI出牌_執行階段結束:
 '==============================
-'If compi1(角色人物對戰人數(2, 2)).Caption = "音音夢" Then
-'    If atking_AI_音音夢_成長模式狀態數(2) = 1 And turnatk = 2 Then
-'       atking_AI_音音夢_成長模式狀態數(1) = 2
-'       戰鬥系統類.特殊_音音夢_成長狀態_電腦 '(階段2)
-'    End If
-'End If
-'If atkingckai(5, 2) = 1 Then
-'    atkingckai(5, 1) = 2
-'    AI技能.雪莉_飛刃雨 '(階段2)
-'ElseIf atkingckai(5, 2) = 0 Then
-'    atkingckai(5, 1) = 3  '(目標階段3)
-'End If
-'If turnatk = 2 Then
-'    atkingck(128, 1) = 1
-'    技能.庫勒尼西_沙漠中的海市蜃樓 '(階段1)
-'End If
-'=========
 電腦方事件卡先出制度_執行階段2:
 If 電腦方事件卡是否出完選擇數 = False Then
     '==========
@@ -5425,11 +5078,7 @@ ElseIf 電腦方事件卡是否出完選擇數 = True Then  '電腦方事件卡先出制度_結束後階段2
 End If
 End Sub
 
-
-
-
 Private Sub cn32_Click()
-'turnpageonin = 0
 cn32.Visible = False
 OK按鈕牌完成移動檢查.Enabled = True
 End Sub
@@ -5438,50 +5087,6 @@ Private Sub cn4_Click()
 Dim uscomvsn As Integer
 cn4.Visible = False
 turnatk = 5
-'atkingtrn(1) = 0
-'atkingtrn(2) = 0
-'=================以下是技能檢查及啟動(回合結束階段1)
-'If turnatk = 5 And atkingck(34, 2) = 1 Then
-'    atkingck(34, 1) = 2
-'    技能.CC_白銀戰機 '(階段2)
-'End If
-'If turnatk = 5 And atkingck(33, 2) = 1 Then
-'    atkingck(33, 1) = 2
-'    技能.CC_滅菌空間 '(階段2)
-'End If
-'If turnatk = 5 And atkingckai(103, 2) = 1 Then
-'    atkingckai(103, 1) = 2
-'    AI技能.CC_滅菌空間 '(階段2)
-'End If
-'If turnatk = 5 And atkingckai(33, 2) = 1 Then
-'    atkingckai(33, 1) = 2
-'    AI技能.CC_白銀戰機 '(階段2)
-'End If
-''=================
-'技能動畫顯示階段數 = 7
-'戰鬥系統類.技能啟動數量檢查
-''=================以下是技能檢查及啟動(回合結束階段2)
-''==================
-'If turnatk = 5 And atkingck(34, 2) = 1 Then
-'    atkingck(34, 1) = 3
-'    技能.CC_白銀戰機 '(階段3)
-'End If
-'If turnatk = 5 And atkingck(33, 2) = 1 Then
-'    atkingck(33, 1) = 3
-'    技能.CC_滅菌空間 '(階段3)
-'End If
-''===================
-'If turnatk = 5 And atkingckai(103, 2) = 1 Then
-'    atkingckai(103, 1) = 3
-'    AI技能.CC_滅菌空間 '(階段3)
-'End If
-'If turnatk = 5 And atkingckai(33, 2) = 1 Then
-'    atkingckai(33, 1) = 3
-'    AI技能.CC_白銀戰機 '(階段3)
-'End If
-''=================
-'atkingtrtot.Interval = 600
-'atkingtrtot.Enabled = True
 If moveturn = 1 Then uscomvsn = 2 Else uscomvsn = 1
 '===========================執行階段插入點(50)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomvsn, 50, 1
@@ -5498,32 +5103,6 @@ End Sub
 
 Private Sub Command1_Click()
 End
-End Sub
-
-Private Sub Command2_Click()
-'MsgBox "劍：" & atkingpagetot(2, 1) & Space(5) & "防：" & atkingpagetot(2, 2) & Space(5) & "移：" & atkingpagetot(2, 3) & Space(5) & "特：" & atkingpagetot(2, 4) & Space(5) & "槍：" & atkingpagetot(2, 5)
-'MsgBox livecom & ";" & livecommax
-'MsgBox "3:" & 攻擊防禦骰子總數(3) & "     " & "4:" & 攻擊防禦骰子總數(4)
-'智慧型AI系統類.智慧型AI系統計算_引導程序_試驗1 1, 1, "艾伯李斯特", 1
-'智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 1, 3, "艾伯李斯特", 3, 0
-End Sub
-
-
-
-Private Sub messageus_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-'For i = 1 To 公用牌實體卡片分隔紀錄數(1)
-'   card(i).card_MouseExit
-'Next
-'For i = 1 To 3
-'    PEAFcardusbackclick(i).Visible = False
-'Next
-'PEAFcardback(1).Visible = False
-'For i = 2 To 3
-'     cardus(角色待機人物紀錄數(1, i)).Visible = False
-'Next
-'If turnpageonin = 1 Then
-'    bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-'End If
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
@@ -5566,7 +5145,6 @@ For i = 1 To 2
     Next
 Next
 '==============
-'liveus(角色人物對戰人數(1, 2)) = Val(usbi1(角色人物對戰人數(1, 2)).Caption)
 BattleTurn = BattleTurn + 1
 PEAFInterface.turn = BattleTurn
 顯示列1.goi1顯示 = False
@@ -5587,8 +5165,6 @@ Else
     FormMainMode.PEAFInterface.stagejpg = app_path & "gif\system\stageblack.gif"
 End If
 顯示列1.顯示列圖片 = app_path & "gif\system\DRAW.png"
-'cn4.Visible = False
-'cn1.Visible = True
 '==============
 小人物頭像移動方向數(1) = 2
 小人物頭像移動方向數(2) = 2
@@ -5618,319 +5194,9 @@ Private Sub pagecomglead_Change()
 pageglead(2) = Val(pagecomglead.Caption)
 End Sub
 
-Sub pagecomqlead_Change()
-'atkingckai(26, 1) = 1
-'atkingckai(98, 1) = 1
-'atkingckai(12, 1) = 2
-'atkingckai(82, 1) = 2
-''============以下是技能檢查
-'If turnatk = 2 And 階段狀態數 = 3 Then
-'    AI技能.雪莉_飛刃雨 '(階段3/4)
-'    AI技能.蕾_終曲_無盡輪迴的終結 '(階段1)
-'    AI技能.古魯瓦爾多_猛擊  '(階段1)
-'    AI技能.蕾_輪旋曲_琉璃色的微風 '(階段1)
-'    AI技能.南瓜王_重壓 '(階段1)
-'    AI技能.妖精王妃_冰結之翼 '(階段1)
-'    AI技能.蕾_EX_輪旋曲_琉璃色的微風 '(階段1)
-'    AI技能.吸血姬蕾米雅_吸血  '(階段1)
-'    AI技能.吸血姬蕾米雅_高貴的晚餐 '(階段1)
-'    AI技能.艾伯李斯特_精密射擊  '(階段1)
-'    AI技能.史塔夏_愚者之手  '(階段1)
-'    AI技能.史塔夏_命運的鐵門  '(階段1)
-'    AI技能.阿貝爾_霸王閃擊  '(階段1)
-'    AI技能.阿貝爾_幻影劍舞  '(階段1)
-'    AI技能.布勞_時間爆彈  '(階段1)
-'    AI技能.艾依查庫_連射  '(階段1)
-'    AI技能.艾依查庫_神速之劍 (0) '(階段1)
-'    AI技能.梅倫_Gamble '(階段1)
-'    AI技能.羅莎琳_染血之刃 '(階段1)
-'    AI技能.CC_白銀戰機 '(階段1)
-'    AI技能.帕茉_戰慄的狼牙 '(階段1)
-'    AI技能.帕茉_慈悲的藍眼 '(階段1)
-'    AI技能.帕茉_靜謐之背 '(階段1)
-'    AI技能.艾茵_十三隻眼 '(階段1)
-'    AI技能.夏洛特_冬之夢 '(階段1)
-'    AI技能.泰瑞爾_Chr_799 '(階段1)
-'    AI技能.泰瑞爾_Rud_913 '(階段1)
-'    AI技能.泰瑞爾_Wil_846 '(階段1)
-'    AI技能.瑪格莉特_地獄獵心獸 '(階段1)
-'    AI技能.傑多_因果之幻 '(階段1)
-'    AI技能.CC_高頻電磁手術刀 '(階段1)
-'    AI技能.伊芙琳_紅蓮車輪 '(階段1)
-'    AI技能.多妮妲_律死擊 '(階段1)
-'    AI技能.多妮妲_殘虐傾向 '(階段1)
-'    AI技能.庫勒尼西_深淵 '(階段1)
-'    AI技能.羅莎琳_黑霧的纏繞 '(階段1)
-'    AI技能.梅倫_Lowball '(階段1)
-'    AI技能.艾伯李斯特_雷擊 '(階段1)
-'    AI技能.艾依查庫_憤怒一擊 '(階段1)
-'    AI技能.阿貝爾_閃電旋風刺 '(階段1)
-'    AI技能.利恩_劫影攻擊 '(階段1)
-'    AI技能.利恩_毒牙 '(階段1)
-'    AI技能.利恩_背刺 '(階段1)
-'    AI技能.瑪格莉特_月光 '(階段1)
-'    AI技能.蕾格烈芙_CTL '(階段1)
-'    AI技能.蕾格烈芙_BPA '(階段1)
-'    AI技能.阿奇波爾多_致命槍擊 '(階段1)
-'    AI技能.阿奇波爾多_劫影攻擊 '(階段1)
-'    AI技能.洛洛妮_砲擊壓制 '(階段1)
-'    AI技能.洛洛妮_貪婪之刃與嗜血之槍  '(階段1)
-'    AI技能.艾蕾可_聖王威光  '(階段1)
-'    AI技能.露緹亞_腐朽之靈  '(階段1)
-'    AI技能.露緹亞_渦騎劍閃 (0) '(階段1)
-'    AI技能.梅莉_夢幻魔杖 '(階段1)
-'    AI技能.梅莉_夢境搖籃 '(階段1)
-'    AI技能.貝琳達_裂地冰牙 '(階段1)
-'    AI技能.貝琳達_溶魂之雨 '(階段1)
-'    AI技能.蕾_EX_終曲_無盡輪迴的終結 '(階段1)
-'    AI技能.克頓_隱蔽射擊 '(階段1)
-'    AI技能.尤莉卡_奸佞的鐵鎚 '(階段1)
-'    AI技能.羅莎琳_EX_染血之刃 '(階段1)
-'ElseIf turnatk = 3 And 階段狀態數 = 3 Then
-'    AI技能.雪莉_巨大黑犬 '(階段2)
-'    AI技能.南瓜王_超再生 '(階段1)
-'    AI技能.妖精王妃_混沌之翼 '(階段1)
-'    AI技能.音音夢_美味牛奶 '(階段1)
-'    AI技能.艾伯李斯特_智略 '(階段1)
-'    AI技能.史塔夏_殺戮器官 '(階段1)
-'    AI技能.阿奇波爾多_大地崩壞 '(階段1)
-'    AI技能.艾蕾可_救濟天使  '(階段1)
-'    AI技能.CC_滅菌空間  '(階段1)
-'    AI技能.梅莉_綿羊幻夢  '(階段1)
-'    AI技能.古魯瓦爾多_必殺架勢  '(階段1)
-'    AI技能.古魯瓦爾多_精神力吸收  '(階段1)
-'    AI技能.帕茉_憤怒之爪  '(階段1)
-'    AI技能.伊芙琳_怠惰的墓表 '(階段1)
-'    AI技能.伊芙琳_赤紅石榴 '(階段1)
-'    AI技能.布勞_發條機構 '(階段1)
-'    AI技能.布勞_夜幕時分 '(階段1)
-'    AI技能.阿貝爾_抽刀斷水計 '(階段1)
-'    AI技能.夏洛特_夜未央 '(階段1)
-'    AI技能.夏洛特_幸福的理由 '(階段1)
-'    AI技能.瑪格莉特_末日幻影 '(階段1)
-'    AI技能.蕾格烈芙_SSS '(階段1)
-'    AI技能.多妮妲_超級女主角 '(階段1)
-'    AI技能.傑多_因果之線 '(階段1)
-'    AI技能.貝琳達_雪光 '(階段1)
-'    AI技能.洛洛妮_逆轉戰局的槍響 '(階段1)
-'    AI技能.克頓_惡意情報 '(階段1)
-'    AI技能.艾茵_一顆心 '(階段1)
-'    AI技能.尤莉卡_超載 '(階段1)
-'ElseIf turnatk = 1 And 階段狀態數 = 3 Then
-'    AI技能.雪莉_異質者 '(階段2)
-'    AI技能.妖精王妃_煉獄之翼 '(階段1)
-'    AI技能.吸血姬蕾米雅_消失 '(階段1)
-'    AI技能.艾依查庫_不屈之心 '(階段1)
-'    AI技能.音音夢_溫柔注射 '(階段1)
-'    AI技能.梅倫_Jackpot '(階段1)
-'    AI技能.艾茵_兩個身體 '(階段1)
-'    AI技能.瑪格莉特_恍惚 '(階段1)
-'    AI技能.庫勒尼西_黑暗漩渦 '(階段1)
-'    AI技能.蕾格烈芙_LAR '(階段1)
-'    AI技能.蕾_協奏曲_加百烈的守護 '(階段1)
-'    AI技能.史塔夏_時間種子 '(階段1)
-'    AI技能.艾茵_九個靈魂 '(階段1)
-'    AI技能.CC_原子之心 '(階段1)
-'    AI技能.阿奇波爾多_防護射擊 '(階段1)
-'    AI技能.蕾_EX_協奏曲_加百烈的守護 '(階段1)
-'    AI技能.羅莎琳_咀咒的刻印  '(階段1)
-'    AI技能.伊芙琳_慟哭之歌  '(階段1)
-'    AI技能.古魯瓦爾多_血之恩賜  '(階段1)
-'    AI技能.蕾_EX_安魂曲_死神的鎮魂歌 '(階段1)
-'    AI技能.梅倫_High_hand '(階段1)
-'    AI技能.艾伯李斯特_茨林 '(階段1)
-'    AI技能.布勞_時間追獵 '(階段1)
-'    AI技能.利恩_反擊的狼煙 '(階段1)
-'    AI技能.泰瑞爾_Von_541 '(階段1)
-'    AI技能.庫勒尼西_瘋狂眼窩 '(階段1)
-'    AI技能.多妮妲_異質者 '(階段2)
-'    AI技能.洛洛妮_風暴感知 '(階段1)
-'    AI技能.夏洛特_大聖堂 '(階段1)
-'    AI技能.艾蕾可_王座之炎 '(階段1/2)
-'    AI技能.艾蕾可_白百合 '(階段1)
-'    AI技能.露緹亞_朦朧之暗 '(階段1)
-'    AI技能.露緹亞_暗影之翼 '(階段1)
-'    AI技能.梅莉_徬徨夢羽  '(階段1)
-'    AI技能.音音夢_秘密苦藥  '(階段1)
-'    AI技能.傑多_因果之輪 '(階段1)
-'    AI技能.傑多_因果之刻 '(階段1)
-'    AI技能.貝琳達_水晶幻鏡 '(階段1)
-'    AI技能.蕾_安魂曲_死神的鎮魂歌 '(階段1)
-'    AI技能.羅莎琳_黑霧幻影 '(階段1)
-'    AI技能.羅莎琳_EX_黑霧幻影 '(階段1)
-'    AI技能.克頓_竊取資料 '(階段1)
-'    AI技能.克頓_逃亡計畫 '(階段1)
-'    AI技能.尤莉卡_不善的信仰 '(階段1)
-'    AI技能.尤莉卡_曲惡的安寧 '(階段1)
-'End If
-'==================
-'===========================執行階段插入點(43-2)
-'執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 3
-''============================
-'戰鬥系統類.骰量更新顯示
-End Sub
 
 Private Sub pageusglead_Change()
 pageglead(1) = Val(pageusglead.Caption)
-End Sub
-
-Private Sub pageusqlead_Change()
-'atkingck(79, 1) = 1
-'atkingck(101, 1) = 1
-''============以下是技能檢查
-'If turnatk = 1 And 階段狀態數 = 1 Then
-'   技能.雪莉_飛刃雨 '(階段1/2)
-'   技能.雪莉_VBE_飛刃雨 '(階段1/2)
-'   技能.古魯瓦爾多_猛擊 '(階段1)
-'   技能.帕茉_慈悲的藍眼 '(階段1)
-'   技能.帕茉_靜謐之背 '(階段1)
-'   技能.蕾_輪旋曲_琉璃色的微風 '(階段1)
-'   技能.蕾_EX_輪旋曲_琉璃色的微風 '(階段1)
-'   技能.蕾_終曲_無盡輪迴的終結 '(階段1)
-'   技能.艾茵_十三隻眼 '(階段1)
-'   技能.帕茉_戰慄的狼牙 '(階段1)
-'   技能.史塔夏_愚者之手 '(階段1)
-'   技能.史塔夏_命運的鐵門 '(階段1)
-'   技能.CC_白銀戰機 '(階段1)
-'   技能.CC_高頻電磁手術刀 '(階段1)
-'   技能.羅莎琳_染血之刃 '(階段1)
-'   技能.羅莎琳_黑霧的纏繞 '(階段1)
-'   技能.伊芙琳_紅蓮車輪 '(階段1)
-'   技能.梅倫_Lowball '(階段1)
-'   技能.梅倫_Gamble '(階段1)
-'   技能.艾伯李斯特_精密射擊 '(階段1)
-'   技能.艾伯李斯特_雷擊 '(階段1)
-'   技能.艾依查庫_連射 '(階段1)
-'   技能.艾依查庫_神速之劍 (0) '(階段1)
-'   技能.艾依查庫_憤怒一擊 '(階段1)
-'   技能.布勞_時間爆彈 '(階段1)
-'   技能.阿貝爾_霸王閃擊 '(階段1)
-'   技能.阿貝爾_閃電旋風刺  '(階段1)
-'   技能.阿貝爾_幻影劍舞  '(階段1)
-'   技能.利恩_劫影攻擊  '(階段1)
-'   技能.利恩_毒牙  '(階段1)
-'   技能.利恩_背刺  '(階段1)
-'   技能.夏洛特_冬之夢  '(階段1)
-'   技能.泰瑞爾_Rud_913  '(階段1)
-'   技能.泰瑞爾_Chr_799  '(階段1)
-'   技能.泰瑞爾_Wil_846  '(階段1)
-'   技能.瑪格莉特_月光  '(階段1)
-'   技能.瑪格莉特_地獄獵心獸  '(階段1)
-'   技能.庫勒尼西_深淵  '(階段1)
-'   技能.蕾格烈芙_CTL  '(階段1)
-'   技能.蕾格烈芙_BPA  '(階段1)
-'   技能.多妮妲_殘虐傾向  '(階段1)
-'   技能.多妮妲_律死擊 '(階段1)
-'   技能.傑多_因果之幻 '(階段1)
-'   技能.阿奇波爾多_致命槍擊 '(階段1)
-'   技能.阿奇波爾多_劫影攻擊 '(階段1)
-'   技能.洛洛妮_砲擊壓制 '(階段1)
-'   技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段1)
-'   技能.克頓_隱蔽射擊 '(階段1)
-'   技能.露緹亞_腐朽之靈  '(階段1)
-'   技能.露緹亞_渦騎劍閃 (0) '(階段1)
-'   技能.艾蕾可_聖王威光  '(階段1)
-'   技能.梅莉_夢幻魔杖  '(階段1)
-'   技能.梅莉_夢境搖籃  '(階段1)
-'   技能.貝琳達_裂地冰牙 '(階段1)
-'   技能.貝琳達_溶魂之雨 '(階段1)
-'   技能.蕾_EX_終曲_無盡輪迴的終結 '(階段1)
-'   技能.尤莉卡_奸佞的鐵鎚 '(階段1)
-'   技能.羅莎琳_EX_染血之刃 '(階段1)
-'ElseIf turnatk = 3 And 階段狀態數 = 1 Then
-'   技能.雪莉_巨大黑犬 '(階段1)
-'   技能.雪莉_VBE_巨大黑犬 '(階段1)
-'   技能.帕茉_憤怒之爪 '(階段1)
-'   技能.古魯瓦爾多_必殺架勢 '(階段1)
-'   技能.史塔夏_殺戮器官 '(階段1)
-'   技能.CC_滅菌空間 '(階段1)
-'   技能.艾茵_一顆心 '(階段1)
-'   技能.伊芙琳_怠惰的墓表 '(階段1)
-'   技能.伊芙琳_赤紅石榴 '(階段1)
-'   技能.古魯瓦爾多_精神力吸收 '(階段1)
-'   技能.音音夢_美味牛奶 '(階段1)
-'   技能.艾伯李斯特_智略 '(階段1)
-'   技能.布勞_發條機構 '(階段1)
-'   技能.布勞_夜幕時分 '(階段1)
-'   技能.阿貝爾_抽刀斷水計 '(階段1)
-'   技能.夏洛特_夜未央 '(階段1)
-'   技能.夏洛特_幸福的理由 '(階段1)
-'   技能.瑪格莉特_末日幻影 '(階段1)
-'   技能.蕾格烈芙_SSS '(階段1)
-'   技能.多妮妲_超級女主角 '(階段1)
-'   技能.傑多_因果之線 '(階段1)
-'   技能.阿奇波爾多_大地崩壞 '(階段1)
-'   技能.洛洛妮_逆轉戰局的槍響 '(階段1)
-'   技能.克頓_惡意情報 '(階段1)
-'   技能.艾蕾可_救濟天使 '(階段1)
-'   技能.梅莉_綿羊幻夢 '(階段1)
-'   技能.貝琳達_雪光 '(階段1)
-'   技能.尤莉卡_超載 '(階段1)
-'ElseIf turnatk = 2 And 階段狀態數 = 1 Then
-'   技能.雪莉_異質者 '(階段1)
-'   技能.雪莉_VBE_異質者 '(階段1)
-'   技能.蕾_協奏曲_加百烈的守護 '(階段1)
-'   技能.蕾_安魂曲_死神的鎮魂歌 '(階段1)
-'   技能.蕾_EX_安魂曲_死神的鎮魂歌 '(階段1)
-'   技能.史塔夏_時間種子 '(階段1)
-'   技能.艾茵_九個靈魂 '(階段1)
-'   技能.艾茵_兩個身體 '(階段1)
-'   技能.CC_原子之心 '(階段1)
-'   技能.蕾_EX_協奏曲_加百烈的守護 '(階段1)
-'   技能.羅莎琳_咀咒的刻印 '(階段1)
-'   技能.羅莎琳_黑霧幻影 '(階段1)
-'   技能.羅莎琳_EX_黑霧幻影 '(階段1)
-'   技能.伊芙琳_慟哭之歌 '(階段1)
-'   技能.古魯瓦爾多_血之恩賜 '(階段1)
-'   技能.梅倫_High_hand '(階段1)
-'   技能.梅倫_Jackpot '(階段1)
-'   技能.音音夢_溫柔注射 '(階段1)
-'   技能.音音夢_秘密苦藥 '(階段1)
-'   技能.艾伯李斯特_茨林 '(階段1)
-'   技能.艾依查庫_不屈之心 '(階段1)
-'   技能.布勞_時間追獵 '(階段1)
-'   技能.利恩_反擊的狼煙  '(階段1)
-'   技能.夏洛特_大聖堂  '(階段1)
-'   技能.泰瑞爾_Von_541  '(階段1)
-'   技能.瑪格莉特_恍惚  '(階段1)
-'   技能.庫勒尼西_瘋狂眼窩 '(階段1)
-'   技能.庫勒尼西_黑暗漩渦 '(階段1)
-'   技能.蕾格烈芙_LAR '(階段1)
-'   技能.多妮妲_異質者 '(階段1)
-'   技能.傑多_因果之輪 '(階段1)
-'   技能.傑多_因果之刻 '(階段1)
-'   技能.阿奇波爾多_防護射擊 '(階段1)
-'   技能.洛洛妮_風暴感知 '(階段1)
-'   技能.克頓_竊取資料 '(階段1)
-'   技能.克頓_逃亡計畫 '(階段1)
-'   技能.露緹亞_朦朧之暗 '(階段1)
-'   技能.露緹亞_暗影之翼 '(階段1)
-'   技能.艾蕾可_王座之炎 '(階段1/2)
-'   技能.艾蕾可_白百合  '(階段1)
-'   技能.梅莉_徬徨夢羽  '(階段1)
-'   技能.貝琳達_水晶幻鏡  '(階段1)
-'   技能.尤莉卡_不善的信仰 '(階段1)
-'   技能.尤莉卡_曲惡的安寧 '(階段1)
-'End If
-'==================
-'Select Case turnatk
-'    Case 1
-'        '===========================執行階段插入點(ATK-42/DEF-43)
-'        執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 4
-'        執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 4
-'        '============================
-'    Case 2
-'        '===========================執行階段插入點(ATK-42/DEF-43)
-'        執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 42, 4
-'        執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 43, 4
-'        '============================
-'    Case 3
-'        '===========================執行階段插入點(44)
-'        執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 3
-'        '============================
-'End Select
-'戰鬥系統類.骰量更新顯示
-
 End Sub
 
 Private Sub PEAEtr1_Timer()
@@ -5984,8 +5250,6 @@ For i = 1 To 公用牌實體卡片分隔紀錄數(1)
 Next
 For i = 1 To 3
   cardcom(i).Visible = False
-'  PEAFcardusbackclick(i).Visible = False
-'  PEAFcardcombackclick(i).Visible = False
 Next
 For i = 1 To 3
   If i <> 角色人物對戰人數(1, 2) Then
@@ -5993,7 +5257,6 @@ For i = 1 To 3
   End If
 Next
 atkinghelpc.Visible = False
-'PEAFcardback(1).Visible = False
 If turnpageonin = 1 Then
     bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
 End If
@@ -6046,10 +5309,6 @@ End Sub
 
 Private Sub trend_Timer()
 If trend暫時變數 = 4 Then
-'   Formend.Left = FormMainMode.Left
-'   Formend.Top = FormMainMode.Top
-'   FormMainMode.Visible = False
-'   Formend.Visible = True
    一般系統類.主選單_PEAttackingEndingForm顯示
    PEAttackingForm.Visible = False
    PEAEtr1num = 0
@@ -6066,127 +5325,6 @@ End If
 End Sub
 
 Sub trgoi1_Timer()
-'If Val(pageusqlead) = 0 And turnatk = 1 And 階段狀態數 = 1 Then
-'    攻擊防禦骰子總數(1) = 0
-'    攻擊防禦骰子總數(3) = 0
-'    goicheck(1) = 0
-'End If
-'If Val(pageusqlead) = 0 And turnatk = 2 And 階段狀態數 = 1 Then
-'    攻擊防禦骰子總數(1) = 0
-'    攻擊防禦骰子總數(3) = 0
-'    goidefus = 0
-'    戰鬥系統類.chkdef
-'End If
-'
-'If atkingpagetot(1, 1) = 0 And turnatk = 1 And movecp = 1 And goicheck(1) = 1 And 階段狀態數 = 1 Then
-'   goicheck(1) = 0
-'   攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - atkus(角色人物對戰人數(1, 2))
-'   攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - atkus(角色人物對戰人數(1, 2))
-  '=========以下是技能檢查及發動(當前檢查類型：劍)
-'   If 異常狀態檢查數(13, 2) = 1 Then
-'      異常狀態檢查數(13, 1) = 2
-'      異常狀態.聖痕_使用者 '(階段2)
-''   End If
-''   If 異常狀態檢查數(24, 2) = 1 Then
-'      異常狀態檢查數(24, 1) = 2
-'      異常狀態.能力低下_使用者 '(階段2)
-''   End If
-''   If 異常狀態檢查數(7, 2) = 1 Then
-'      異常狀態檢查數(7, 1) = 3
-'      異常狀態.ATK加_使用者 '(階段3)
-''   End If
-''   If 異常狀態檢查數(10, 2) = 1 Then
-'      異常狀態檢查數(10, 1) = 3
-'      異常狀態.ATK減_使用者 '(階段3)
-''   End If
-'      異常狀態檢查數(39, 1) = 2
-'      異常狀態.臨界_使用者 '(階段2)
-   '==============
-'   If 攻擊防禦骰子總數(1) < 0 Then 攻擊防禦骰子總數(1) = 0
-'End If
-'If atkingpagetot(1, 5) = 0 And turnatk = 1 And movecp > 1 And goicheck(1) = 1 And 階段狀態數 = 1 Then
-'   goicheck(1) = 0
-'   攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - atkus(角色人物對戰人數(1, 2))
-'   攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - atkus(角色人物對戰人數(1, 2))
-  '=========以下是技能檢查及發動(當前檢查類型：槍)
-''   If 異常狀態檢查數(13, 2) = 1 Then
-'      異常狀態檢查數(13, 1) = 2
-'      異常狀態.聖痕_使用者 '(階段2)
-''   End If
-''   If 異常狀態檢查數(24, 2) = 1 Then
-'      異常狀態檢查數(24, 1) = 2
-'      異常狀態.能力低下_使用者 '(階段2)
-''   End If
-''   If 異常狀態檢查數(7, 2) = 1 Then
-'      異常狀態檢查數(7, 1) = 3
-'      異常狀態.ATK加_使用者 '(階段3)
-''   End If
-''   If 異常狀態檢查數(10, 2) = 1 Then
-'      異常狀態檢查數(10, 1) = 3
-'      異常狀態.ATK減_使用者 '(階段3)
-''   End If
-'      異常狀態檢查數(39, 1) = 2
-'      異常狀態.臨界_使用者 '(階段2)
-   '==============
-'   If 攻擊防禦骰子總數(1) < 0 Then 攻擊防禦骰子總數(1) = 0
-'End If
-'If turnatk = 1 And movecp = 1 Then
-' 戰鬥系統類.chkus1
-'ElseIf turnatk = 1 And movecp > 1 Then
-' 戰鬥系統類.chkus2
-'End If
-'=========以下是技能檢查及發動
-'If atkingck(9, 2) = 1 And turnatk = 1 And 階段狀態數 = 1 Then
-'   atkingck(9, 1) = 2
-'   技能.帕茉_慈悲的藍眼 '(階段2)
-'ElseIf atkingck(9, 2) = 0 And turnatk = 1 And atking_帕茉_慈悲的藍眼_tot(2) = 1 And 階段狀態數 = 1 Then
-'   atkingck(9, 1) = 3
-'   技能.帕茉_慈悲的藍眼 '(階段3)
-'End If
-'If atkingckai(37, 2) = 1 And turnatk = 2 And 階段狀態數 = 1 Then
-'   atkingckai(37, 1) = 5
-'   AI技能.艾茵_十三隻眼 '(階段5)
-'End If
-'If atkingck(16, 2) = 1 And turnatk = 1 And 階段狀態數 = 1 Then
-'   atkingck(16, 1) = 2
-'   技能.艾茵_十三隻眼 '(階段2)
-'ElseIf atkingck(16, 2) = 0 And turnatk = 1 And atking_艾茵_十三隻眼_tot(2) = 1 And 階段狀態數 = 1 Then
-'   atkingck(16, 1) = 3
-'   技能.艾茵_十三隻眼 '(階段3)
-'End If
-'If uspi1(角色人物對戰人數(1, 2)).Caption = "史塔夏" Then
-'    If atking_史塔夏_殺戮模式狀態數(2) = 1 And turnatk = 1 And 階段狀態數 = 1 And 攻擊防禦骰子總數(1) > 0 Then
-'       atking_史塔夏_殺戮模式狀態數(1) = 1
-'       戰鬥系統類.特殊_史塔夏_殺戮狀態_使用者 '(階段1)
-'    ElseIf atking_史塔夏_殺戮模式狀態數(2) = 1 And turnatk = 1 And 階段狀態數 = 1 And 攻擊防禦骰子總數(1) = 0 Then
-'       atking_史塔夏_殺戮模式狀態數(1) = 2
-'       戰鬥系統類.特殊_史塔夏_殺戮狀態_使用者 '(階段2)
-'    End If
-'End If
-'If uspi1(角色人物對戰人數(1, 2)).Caption = "音音夢" Then
-'    If atking_音音夢_成長模式狀態數(2) = 1 And turnatk = 1 And 階段狀態數 = 1 And 攻擊防禦骰子總數(1) = 0 Then
-'       atking_音音夢_成長模式狀態數(1) = 1
-'       戰鬥系統類.特殊_音音夢_成長狀態_使用者 '(階段1)
-'    End If
-'End If
-''======
-'If 異常狀態_混沌紀錄數(3) = 1 And turnatk = 1 And 階段狀態數 = 1 And 攻擊防禦骰子總數(1) = 0 Then
-'    異常狀態檢查數(31, 1) = 3
-'    異常狀態.混沌_使用者 '(階段3)
-'Else
-'    異常狀態檢查數(31, 1) = 1
-'    異常狀態.混沌_使用者 '(階段1)
-'End If
-''======
-'If atking_尤莉卡_超載目前階段紀錄數(3) = 2 And atkingck(49, 2) = 1 Then
-'    If atking_尤莉卡_超載目前階段紀錄數(4) = 1 And turnatk = 1 And 階段狀態數 = 1 And 攻擊防禦骰子總數(1) = 0 Then
-'        atkingck(49, 1) = 5
-'        技能.尤莉卡_超載 '(階段5)
-'    Else
-'        atkingck(49, 1) = 4
-'        技能.尤莉卡_超載 '(階段4)
-'    End If
-'End If
 '=========更新骰子總數量表示
 If 攻擊防禦骰子總數(1) < 0 Then
    顯示列1.goi1 = 0
@@ -6195,121 +5333,9 @@ Else
 End If
 FormMainMode.trgoi1.Enabled = False
 '=====================
-
-'=====================
 End Sub
 
 Sub trgoi2_Timer()
-'If Val(pagecomqlead) = 0 And turnatk = 2 And 階段狀態數 = 3 Then
-' 攻擊防禦骰子總數(2) = 0
-' 攻擊防禦骰子總數(4) = 0
-' goicheck(2) = 0
-'End If
-'
-'If Val(pagecomqlead) = 0 And turnatk = 1 And 階段狀態數 = 3 Then
-'    攻擊防禦骰子總數(2) = 0
-'    攻擊防禦骰子總數(4) = 0
-'    chkcomck = 0
-'    戰鬥系統類.chkdefcom
-'End If
-''================
-'If atkingpagetot(2, 1) = 0 And turnatk = 2 And movecp = 1 And goicheck(2) = 1 And 階段狀態數 = 3 Then
-'   goicheck(2) = 0
-'   攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - atkcom(角色人物對戰人數(2, 2))
-'   攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - atkcom(角色人物對戰人數(2, 2))
-  '=========以下是技能檢查及發動(當前檢查類型：劍)
-'      異常狀態檢查數(26, 1) = 2
-'      異常狀態.聖痕_電腦 '(階段2)
-'      '=========
-'      異常狀態檢查數(1, 1) = 3
-'      異常狀態.ATK加_電腦 '(階段3)
-'      '=========
-'      異常狀態檢查數(4, 1) = 3
-'      異常狀態.ATK減_電腦 '(階段3)
-'      '=========
-'      異常狀態檢查數(25, 1) = 2
-'      異常狀態.能力低下_電腦 '(階段2)
-'End If
-'If atkingpagetot(2, 5) = 0 And turnatk = 2 And movecp > 1 And goicheck(2) = 1 And 階段狀態數 = 3 Then
-'   goicheck(2) = 0
-'   攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - atkcom(角色人物對戰人數(2, 2))
-'   攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - atkcom(角色人物對戰人數(2, 2))
-  '=========以下是技能檢查及發動(當前檢查類型：槍)
-'      異常狀態檢查數(26, 1) = 2
-'      異常狀態.聖痕_電腦 '(階段2)
-'      '=======
-'      異常狀態檢查數(1, 1) = 3
-'      異常狀態.ATK加_電腦 '(階段3)
-'      '=======
-'      異常狀態檢查數(4, 1) = 3
-'      異常狀態.ATK減_電腦 '(階段3)
-'      '=========
-'      異常狀態檢查數(25, 1) = 2
-'      異常狀態.能力低下_電腦 '(階段2)
-'End If
-'If turnatk = 2 Then
-' 戰鬥系統類.chkcom
-'End If
-'=========以下是技能檢查及發動
-'If atkingckai(14, 2) = 0 And turnatk = 2 And 階段狀態數 = 3 Then
-'   atkingckai(14, 1) = 1
-'   AI技能.羊角獸2012_致命衝撞 '(階段1)
-'End If
-'If atkingckai(15, 2) = 0 And turnatk = 1 And 階段狀態數 = 3 Then
-'   atkingckai(15, 1) = 1
-'   AI技能.羊角獸2012_致命格擋 '(階段1)
-'End If
-'================
-'If turnatk = 1 And atkingck(19, 2) = 1 And 階段狀態數 = 3 Then
-'    atkingck(19, 1) = 4
-'    技能.蕾_EX_輪旋曲_琉璃色的微風  '(階段4)
-'End If
-'If turnatk = 1 And atkingck(13, 2) = 1 And 階段狀態數 = 3 Then
-'    atkingck(13, 1) = 4
-'    技能.蕾_輪旋曲_琉璃色的微風  '(階段4)
-'End If
-''================
-'If atkingckai(35, 2) = 1 And turnatk = 2 And 階段狀態數 = 3 Then
-'   atkingckai(35, 1) = 2
-'   AI技能.帕茉_慈悲的藍眼 '(階段2)
-'ElseIf atkingckai(35, 2) = 0 And turnatk = 2 And atking_AI_帕茉_慈悲的藍眼_tot(2) = 1 And 階段狀態數 = 3 Then
-'   atkingckai(35, 1) = 3
-'   AI技能.帕茉_慈悲的藍眼 '(階段3)
-'End If
-'If atkingck(16, 2) = 1 And turnatk = 1 And 階段狀態數 = 3 Then
-'   atkingck(16, 1) = 5
-'   技能.艾茵_十三隻眼 '(階段5)
-'End If
-'If atkingckai(37, 2) = 1 And turnatk = 2 And 階段狀態數 = 3 Then
-'   atkingckai(37, 1) = 2
-'   AI技能.艾茵_十三隻眼 '(階段2)
-'ElseIf atkingckai(37, 2) = 0 And turnatk = 2 And atking_AI_艾茵_十三隻眼_tot(2) = 1 And 階段狀態數 = 3 Then
-'   atkingckai(37, 1) = 3
-'   AI技能.艾茵_十三隻眼 '(階段3)
-'End If
-'If compi1(角色人物對戰人數(2, 2)).Caption = "史塔夏" Then
-'    If atking_AI_史塔夏_殺戮模式狀態數(2) = 1 And turnatk = 2 And 階段狀態數 = 3 And 攻擊防禦骰子總數(2) > 0 Then
-'       atking_AI_史塔夏_殺戮模式狀態數(1) = 1
-'       戰鬥系統類.特殊_史塔夏_殺戮狀態_電腦 '(階段1)
-'    ElseIf atking_AI_史塔夏_殺戮模式狀態數(2) = 1 And turnatk = 2 And 階段狀態數 = 3 And 攻擊防禦骰子總數(2) = 0 Then
-'       atking_AI_史塔夏_殺戮模式狀態數(1) = 2
-'       戰鬥系統類.特殊_史塔夏_殺戮狀態_電腦 '(階段2)
-'    End If
-'End If
-'If compi1(角色人物對戰人數(2, 2)).Caption = "音音夢" Then
-'    If atking_AI_音音夢_成長模式狀態數(2) = 1 And turnatk = 2 And 階段狀態數 = 3 And 攻擊防禦骰子總數(2) = 0 Then
-'       atking_AI_音音夢_成長模式狀態數(1) = 1
-'       戰鬥系統類.特殊_音音夢_成長狀態_電腦 '(階段1)
-'    End If
-'End If
-''=============
-'異常狀態檢查數(32, 1) = 1
-'異常狀態.混沌_電腦  '(階段1)
-''=============
-'If atking_AI_尤莉卡_超載目前階段紀錄數(3) = 2 And atkingckai(139, 2) = 1 Then
-'    atkingckai(139, 1) = 4
-'    AI技能.尤莉卡_超載 '(階段4)
-'End If
 '=========更新骰子總數量表示
 If 攻擊防禦骰子總數(2) < 0 Then
    顯示列1.goi2 = 0
@@ -6320,45 +5346,13 @@ trgoi2.Enabled = False
 
 End Sub
 
-
 Private Sub trnextend_Timer()
-'============以下是技能檢查及啟動
-'  If turnatk = 2 And atkingck(81, 2) = 1 Then
-'       atkingck(81, 1) = 3
-'       技能.艾依查庫_不屈之心  '(階段3)
-'  End If
-'  If turnatk = 1 And atkingckai(27, 2) = 1 Then
-'       atkingckai(27, 1) = 3
-'       AI技能.艾依查庫_不屈之心  '(階段3)
-'  End If
-'=============
 Select Case Val(擲骰表單溝通暫時變數(3))
    Case 1
       傷害執行_使用者 (Val(擲骰表單溝通暫時變數(2)))
    Case 2
       傷害執行_電腦 (Val(擲骰表單溝通暫時變數(2)))
 End Select
-'============以下是技能檢查及啟動
-'  If turnatk = 2 And atkingck(43, 2) = 1 Then
-'       atkingck(43, 1) = 4
-'       技能.雪莉_VBE_異質者  '(階段4)
-'  End If
-'  If turnatk = 2 And atkingck(14, 2) = 1 Then
-'       atkingck(14, 1) = 3
-'       技能.蕾_安魂曲_死神的鎮魂歌  '(階段3)
-'  End If
-'  If turnatk = 2 And atkingck(62, 2) = 1 Then
-'       atkingck(62, 1) = 3
-'       技能.蕾_EX_安魂曲_死神的鎮魂歌  '(階段3)
-'  End If
-'  If turnatk = 1 And atkingckai(126, 2) = 1 Then
-'       atkingckai(126, 1) = 3
-'       AI技能.蕾_安魂曲_死神的鎮魂歌  '(階段3)
-'  End If
-'  If turnatk = 1 And atkingckai(63, 2) = 1 Then
-'       atkingckai(63, 1) = 3
-'       AI技能.蕾_EX_安魂曲_死神的鎮魂歌  '(階段3)
-'  End If
 '=============
 等待時間佇列(2).Add 21
 等待時間_2.Enabled = True
@@ -6431,7 +5425,6 @@ Select Case timelineout1.X1
             timelineout2.BorderColor = RGB(255, 118, 28)
             '=========時間軸(外)
             時間軸顏色變化紀錄暫時變數(4, 1) = 1
-'            時間軸顏色變化紀錄暫時變數(1, 1) = 3
             時間軸顏色變化紀錄暫時變數(4, 2) = 0
             時間軸顏色變化紀錄暫時變數(4, 3) = 0
             timelinein1.BorderColor = RGB(0, 0, 0)
@@ -6451,11 +5444,8 @@ Select Case timelineout1.X1
            時間軸顏色變化紀錄暫時變數(3, 3) = 時間軸顏色變化紀錄暫時變數(3, 3) - 1
        End If
        '===================時間軸(外)
-'       時間軸顏色變化紀錄暫時變數(4, 2) = 時間軸顏色變化紀錄暫時變數(4, 2) + 1
        Select Case 時間軸顏色變化紀錄暫時變數(4, 1)
            Case 1
-'               If 時間軸顏色變化紀錄暫時變數(4, 2) >= 時間軸顏色變化紀錄暫時變數(1, 1) Then
-'                    時間軸顏色變化紀錄暫時變數(4, 2) = 0
                     If 255 - Val(時間軸顏色變化紀錄暫時變數(4, 3)) < 9 Then
                        timelinein1.BorderColor = RGB(255, 0, 0)
                        timelinein2.BorderColor = RGB(255, 0, 0)
@@ -6465,7 +5455,6 @@ Select Case timelineout1.X1
                        timelinein2.BorderColor = RGB(Val(時間軸顏色變化紀錄暫時變數(4, 3)) + 9, 0, 0)
                        時間軸顏色變化紀錄暫時變數(4, 3) = Val(時間軸顏色變化紀錄暫時變數(4, 3)) + 9
                     End If
-'                End If
                 If 時間軸顏色變化紀錄暫時變數(4, 3) = 255 Then
                     時間軸顏色變化紀錄暫時變數(4, 1) = 2
                 End If
@@ -6482,10 +5471,6 @@ Select Case timelineout1.X1
                 If 時間軸顏色變化紀錄暫時變數(4, 3) = 0 Then
                     時間軸顏色變化紀錄暫時變數(4, 1) = 1
                 End If
-'            Case 3
-'               時間軸顏色變化紀錄暫時變數(4, 1) = 1
-'            Case 4
-'               時間軸顏色變化紀錄暫時變數(4, 1) = 2
        End Select
 End Select
 If timelineout1.X1 >= timelineout1.X2 Then
@@ -6558,25 +5543,6 @@ Do
 Loop
 End Sub
 
-Private Sub tr牌組_翻牌_Timer()
-'=======固定牌位置
-'card(目前數(16)).Left = 240
-'card(目前數(16)).Top = 960
-''===========
-'戰鬥系統類.執行動作_翻牌 目前數(16)
-'tr牌組_翻牌.Enabled = False
-    '==============以下是技能檢查及啟動
-'    If atkingck(54, 2) = 1 Then
-'      atkingck(54, 1) = 5
-'      技能.羅莎琳_黑霧幻影 '(階段5)
-'   End If
-'   If atkingck(55, 2) = 1 Then
-'      atkingck(55, 1) = 5
-'      技能.羅莎琳_EX_黑霧幻影 '(階段5)
-'   End If
-   '=======================
-End Sub
-
 Private Sub tr電腦牌_偷牌_Timer()
 戰鬥系統類.執行動作_電腦牌_偷牌_使用者 目前數(16)
 tr電腦牌_偷牌.Enabled = False
@@ -6588,45 +5554,8 @@ tr電腦牌_棄牌.Enabled = False
 End Sub
 
 Private Sub tr電腦牌_翻牌_Timer()
-戰鬥系統類.執行動作_翻牌 目前數(16)
-tr電腦牌_翻牌.Enabled = False
-    '==============以下是技能檢查及啟動
-'    If atkingck(61, 2) = 1 Then
-'      atkingck(61, 1) = 4
-'      技能.古魯瓦爾多_精神力吸收 '(階段4)
-'    End If
-'    If atkingck(37, 2) = 1 Then
-'      atkingck(37, 1) = 4
-'      技能.艾茵_一顆心 '(階段4)
-'    End If
-'   If atkingck(56, 2) = 1 Then
-'      atkingck(56, 1) = 4
-'      技能.伊芙琳_怠惰的墓表 '(階段4)
-'   End If
-'   If atkingck(59, 2) = 1 Then
-'      atkingck(59, 1) = 5
-'      技能.伊芙琳_赤紅石榴 '(階段5)
-'   End If
-'   If atkingck(72, 2) = 1 Then
-'      atkingck(72, 1) = 6
-'      技能.艾伯李斯特_雷擊 '(階段6)
-'   End If
-'   If atkingck(122, 2) = 1 Then
-'      atkingck(122, 1) = 4
-'      技能.瑪格莉特_月光 '(階段4)
-'   End If
-'   If atkingck(129, 2) = 1 Then
-'      atkingck(129, 1) = 6
-'      技能.庫勒尼西_瘋狂眼窩 '(階段6)
-'   End If
-'   If atkingck(144, 2) = 1 Then
-'      atkingck(144, 1) = 4
-'      技能.傑多_因果之線 '(階段4)
-'   End If
-'   If atkingck(156, 2) = 1 Then
-'      atkingck(156, 1) = 4
-'      技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段4)
-'   End If
+    戰鬥系統類.執行動作_翻牌 目前數(16)
+    tr電腦牌_翻牌.Enabled = False
     If 執行階段系統_搜尋正在執行之執行階段("AtkingDestroyCards") <> 0 Then
         vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingDestroyCards")) = 2 '(階段2)
     End If
@@ -6681,24 +5610,16 @@ End Sub
 
 Private Sub uspi4_Change(Index As Integer)
 If Val(uspi4(Index).Caption) = Val(liveusmax(Index)) Then
-'   usbi1(Index).ForeColor = RGB(255, 255, 255)
    uspi4(Index).ForeColor = RGB(255, 255, 255)
-'   cardbackus(Index).Visible = False
 End If
  If Val(uspi4(Index).Caption) < Val(liveusmax(Index)) Then
-'   usbi1(Index).ForeColor = RGB(255, 255, 128)
    uspi4(Index).ForeColor = RGB(255, 255, 128)
-'   cardbackus(Index).Visible = False
  End If
  If Val(uspi4(Index).Caption) <= Val(liveus41(Index)) Then
-'   usbi1(Index).ForeColor = RGB(255, 0, 0)
    uspi4(Index).ForeColor = RGB(255, 0, 0)
-'   cardbackus(Index).Visible = False
  End If
 If Val(uspi4(Index).Caption) <= 0 Then
-'    usbi1(Index).Caption = 0
     uspi4(Index).Caption = 0
-'    cardbackus(Index).Visible = True
 End If
 End Sub
 Private Sub 人物消失檢查_Timer()
@@ -6725,14 +5646,6 @@ If 顯示列1.使用者方小人物圖片width > 1440 Then
 Else
     pnm = 1440 - 顯示列1.使用者方小人物圖片width
 End If
-'Select Case 角色人物對戰人數(1, 2)
-'    Case 1
-'        pnm = Val(formsettingpersonus.personfleftall.Text)
-'    Case 2
-'        pnm = Val(formsettingpersonus2.personfleftall.Text)
-'    Case 3
-'        pnm = Val(formsettingpersonus3.personfleftall.Text)
-'End Select
 Select Case 小人物頭像移動方向數(1)
     Case 1
         If 顯示列1.使用者方小人物圖片left >= pnm Then
@@ -6768,14 +5681,6 @@ If 顯示列1.電腦方小人物圖片width > 1440 Then
 Else
     pnm = FormMainMode.ScaleWidth - 1440
 End If
-'Select Case 角色人物對戰人數(2, 2)
-'    Case 1
-'        pnm = Val(formsettingpersoncom.personfleftall.Text)
-'    Case 2
-'        pnm = Val(formsettingpersoncom2.personfleftall.Text)
-'    Case 3
-'        pnm = Val(formsettingpersoncom3.personfleftall.Text)
-'End Select
 Select Case 小人物頭像移動方向數(2)
     Case 1
         If 顯示列1.電腦方小人物圖片left <= pnm Then
@@ -6878,59 +5783,10 @@ End If
 '================================
 電腦方事件卡先出制度_執行階段結束:
 '====================試驗智慧型AI出牌系統
-'If 智慧型AI系統_目前可執行之人物判斷(namecom(角色人物對戰人數(2, 2))) = True Then
-    Dim wtyr As Integer '暫時變數
-    If moveturn = 2 Then wtyr = 1 Else wtyr = 0
-    智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 2, 2, namecom(角色人物對戰人數(2, 2)), movecp, wtyr
-    GoTo 智慧型AI出牌_執行階段結束
-'End If
-'============以下是技能檢查及啟動
-'If turnatk = 1 And moveturn = 1 And 異常狀態檢查數(18, 2) = 0 Then
-'    AI技能.雪莉_異質者 '(階段1)
-'    AI技能.多妮妲_異質者  '(階段1)
-'End If
-''===================(技能-雪莉/多妮妲-異質者-AI 先攻時檢查)
-'If turnatk = 1 And atkingckai(12, 2) = 1 And moveturn = 1 Then
-'    GoTo AI技能_雪莉_多妮妲_異質者_執行階段2
-'End If
-'===================
-'----------以下為電腦判斷出牌程式碼（防禦方）
-For j = 1 To 公用牌實體卡片分隔紀錄數(1)
-     If pagecardnum(j, 1) = a2a And Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
-       pagecardnum(j, 11) = 1
-     ElseIf pagecardnum(j, 3) = a2a And Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
-       cspce = pagecardnum(j, 1)
-       cspme = pagecardnum(j, 2)
-       pagecardnum(j, 1) = pagecardnum(j, 3)
-       pagecardnum(j, 2) = pagecardnum(j, 4)
-       pagecardnum(j, 3) = cspce
-       pagecardnum(j, 4) = cspme
-       If pageonin(j) = 2 Then
-          pageonin(j) = 1
-       Else
-          pageonin(j) = 2
-       End If
-       pagecardnum(j, 11) = 1
-     End If
-Next
-
-'============以下是技能檢查及啟動
-'If turnatk = 1 And moveturn = 2 And 異常狀態檢查數(18, 2) = 0 Then
-'    AI技能.雪莉_異質者 '(階段1)
-'    AI技能.多妮妲_異質者  '(階段1)
-'End If
-'==============
-'AI人物.艾伯李斯特 1
-'AI人物.梅倫 1
-'AI人物.夏洛特 1
-'AI人物.艾蕾可 1
-''==============
-'If moveturn = 2 Then
-'   AI人物.全人物通用 2
-'End If
-'===============
-'AI技能_雪莉_多妮妲_異質者_執行階段2:
-智慧型AI出牌_執行階段結束:
+Dim wtyr As Integer '暫時變數
+If moveturn = 2 Then wtyr = 1 Else wtyr = 0
+智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 2, 2, namecom(角色人物對戰人數(2, 2)), movecp, wtyr
+'================
 電腦方事件卡先出制度_執行階段2:
 '================
 攻擊階段_階段1.Enabled = False
@@ -6964,453 +5820,6 @@ HP檢查變數 = False
 戰鬥系統類.骰量更新顯示
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
-'===========以下是技能檢查及啟動(AI技能-C.C.-原子之心)
-'If turnatk = 1 And atkingckai(57, 2) = 1 Then
-'    atkingckai(57, 1) = 2
-'    AI技能.CC_原子之心  '(階段2)
-'End If
-''===============以下是技能檢查及啟動(AI-傑多-因果之輪)
-'If turnatk = 1 And atkingckai(120, 2) = 1 And atkingckai(120, 1) = 1 Then
-'   atkingckai(120, 1) = 2
-'   AI技能.傑多_因果之輪 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 1 And atkingckai(120, 2) = 1 And atkingckai(120, 1) = 4 Then
-'   AI技能.傑多_因果之輪 '(階段4)
-'End If
-''===============以下是技能檢查及啟動(AI-克頓-竊取資料)
-'If turnatk = 1 And atkingckai(131, 2) = 1 And atkingckai(131, 1) = 1 Then
-'   atkingckai(131, 1) = 2
-'   AI技能.克頓_竊取資料 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 1 And atkingckai(131, 2) = 1 And atkingckai(131, 1) = 4 Then
-'   AI技能.克頓_竊取資料 '(階段4)
-'End If
-''===============以下是技能檢查及啟動(梅莉-夢幻魔杖)
-'If turnatk = 1 And atkingck(106, 2) = 1 And atkingck(106, 1) = 1 Then
-'   atkingck(106, 1) = 2
-'   技能.梅莉_夢幻魔杖 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 1 And atkingck(106, 2) = 1 And atkingck(106, 1) = 4 Then
-'   技能.梅莉_夢幻魔杖 '(階段4)
-'End If
-''===============以下是技能檢查及啟動(AI-梅莉-徬徨夢羽)
-'If turnatk = 1 And atkingckai(100, 2) = 1 And atkingckai(100, 1) = 1 Then
-'   atkingckai(100, 1) = 2
-'   AI技能.梅莉_徬徨夢羽 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 1 And atkingckai(100, 2) = 1 And atkingckai(100, 1) = 4 Then
-'   AI技能.梅莉_徬徨夢羽 '(階段4)
-'End If
-''=====================
-'技能動畫顯示階段數 = 1
-'戰鬥系統類.技能啟動數量檢查
-'    '=================以下是技能檢查及啟動(AI技能-C.C.-原子之心)
-'    If turnatk = 1 And atkingckai(57, 2) = 1 Then
-'        atkingckai(57, 1) = 3
-'        AI技能.CC_原子之心  '(階段3)
-''        GoTo AI技能_CC_原子之心_跳入點
-'    End If
-'   '============以下是技能檢查及啟動
-'    If turnatk = 1 And atkingckai(28, 2) = 1 Then
-'       atkingckai(28, 1) = 2
-'       AI技能.音音夢_溫柔注射  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(58, 2) = 1 Then
-'       atkingckai(58, 1) = 2
-'       AI技能.蕾_EX_協奏曲_加百烈的守護  '(階段2)
-'    End If
-'   '==========================
-'    If turnatk = 1 And atkingck(1, 2) = 1 Then
-'       atkingck(1, 1) = 3
-'       技能.雪莉_自殺傾向 Index  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(42, 2) = 1 Then
-'       atkingck(42, 1) = 3
-'       技能.雪莉_VBE_自殺傾向 Index  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(3, 2) = 1 Then
-'       atkingck(3, 1) = 3
-'       技能.雪莉_飛刃雨 '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(45, 2) = 1 Then
-'       atkingck(45, 1) = 3
-'       技能.雪莉_VBE_飛刃雨  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(6, 2) = 1 Then
-'       atkingck(6, 1) = 2
-'       技能.古魯瓦爾多_猛擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(9, 2) = 1 Then
-'       atkingck(9, 1) = 4
-'       技能.帕茉_慈悲的藍眼 '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(18, 2) = 1 Then
-'       atkingck(18, 1) = 2
-'       技能.帕茉_戰慄的狼牙 '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(17, 2) = 1 Then
-'       atkingck(17, 1) = 2
-'       技能.帕茉_靜謐之背 '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(15, 2) = 1 Then
-'       atkingck(15, 1) = 2
-'       技能.蕾_終曲_無盡輪迴的終結  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(23, 2) = 1 Then
-'       atkingck(23, 1) = 2
-'       技能.史塔夏_愚者之手  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(25, 2) = 1 Then
-'       atkingck(25, 1) = 2
-'       技能.史塔夏_命運的鐵門  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(35, 2) = 1 Then
-'       atkingck(35, 1) = 2
-'       技能.CC_高頻電磁手術刀  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(51, 2) = 1 Then
-'       atkingck(51, 1) = 2
-'       技能.羅莎琳_染血之刃  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(50, 2) = 1 Then
-'       atkingck(50, 1) = 2
-'       技能.羅莎琳_EX_染血之刃  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(52, 2) = 1 Then
-'       atkingck(52, 1) = 2
-'       技能.羅莎琳_黑霧的纏繞  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(58, 2) = 1 Then
-'       atkingck(58, 1) = 2
-'       技能.伊芙琳_紅蓮車輪  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(65, 2) = 1 Then
-'       atkingck(65, 1) = 2
-'       技能.梅倫_Lowball  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(66, 2) = 1 Then
-'       atkingck(66, 1) = 2
-'       技能.梅倫_Gamble  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(69, 2) = 1 Then
-'       atkingck(69, 1) = 3
-'       技能.音音夢_愉快抽血 Index  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(71, 2) = 1 Then
-'       atkingck(71, 1) = 2
-'       技能.艾伯李斯特_精密射擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(72, 2) = 1 Then
-'       atkingck(72, 1) = 2
-'       技能.艾伯李斯特_雷擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(78, 2) = 1 Then
-'       atkingck(78, 1) = 2
-'       技能.艾依查庫_連射  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(79, 2) = 1 Then
-'       atkingck(79, 1) = 4
-'       技能.艾依查庫_神速之劍 (0) '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(80, 2) = 1 Then
-'       atkingck(80, 1) = 2
-'       技能.艾依查庫_憤怒一擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(84, 2) = 1 Then
-'       atkingck(84, 1) = 2
-'       技能.布勞_時間爆彈  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(86, 2) = 1 Then
-'       atkingck(86, 1) = 2
-'       技能.阿貝爾_霸王閃擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(87, 2) = 1 Then
-'       atkingck(87, 1) = 2
-'       技能.阿貝爾_閃電旋風刺  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(88, 2) = 1 Then
-'       atkingck(88, 1) = 2
-'       技能.阿貝爾_幻影劍舞  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(90, 2) = 1 Then
-'       atkingck(90, 1) = 2
-'       技能.利恩_劫影攻擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(91, 2) = 1 Then
-'       atkingck(91, 1) = 2
-'       技能.利恩_毒牙  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(93, 2) = 1 Then
-'       atkingck(93, 1) = 2
-'       技能.利恩_背刺  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(95, 2) = 1 Then
-'       atkingck(95, 1) = 2
-'       技能.夏洛特_冬之夢  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(116, 2) = 1 Then
-'       atkingck(116, 1) = 2
-'       技能.泰瑞爾_Rud_913  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(118, 2) = 1 Then
-'       atkingck(118, 1) = 2
-'       技能.泰瑞爾_Chr_799  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(119, 2) = 1 Then
-'       atkingck(119, 1) = 2
-'       技能.泰瑞爾_Wil_846  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(122, 2) = 1 Then
-'       atkingck(122, 1) = 2
-'       技能.瑪格莉特_月光  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(125, 2) = 1 Then
-'       atkingck(125, 1) = 2
-'       技能.瑪格莉特_地獄獵心獸  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(130, 2) = 1 Then
-'       atkingck(130, 1) = 2
-'       技能.庫勒尼西_深淵  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(135, 2) = 1 Then
-'       atkingck(135, 1) = 2
-'       技能.蕾格烈芙_CTL  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(136, 2) = 1 Then
-'       atkingck(136, 1) = 2
-'       技能.蕾格烈芙_BPA  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(140, 2) = 1 Then
-'       atkingck(140, 1) = 2
-'       技能.多妮妲_殘虐傾向  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(143, 2) = 1 Then
-'       atkingck(143, 1) = 2
-'       技能.多妮妲_律死擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(150, 2) = 1 Then
-'       atkingck(150, 1) = 2
-'       技能.阿奇波爾多_致命槍擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(151, 2) = 1 Then
-'       atkingck(151, 1) = 2
-'       技能.阿奇波爾多_劫影攻擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(155, 2) = 1 Then
-'       atkingck(155, 1) = 2
-'       技能.洛洛妮_砲擊壓制  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(156, 2) = 1 Then
-'       atkingck(156, 1) = 2
-'       技能.洛洛妮_貪婪之刃與嗜血之槍  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(159, 2) = 1 Then
-'       atkingck(159, 1) = 2
-'       技能.克頓_隱蔽射擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(98, 2) = 1 Then
-'       atkingck(98, 1) = 2
-'       技能.露緹亞_腐朽之靈  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(101, 2) = 1 Then
-'       atkingck(101, 1) = 4
-'       技能.露緹亞_渦騎劍閃 (0)  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(104, 2) = 1 Then
-'       atkingck(104, 1) = 2
-'       技能.艾蕾可_聖王威光  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(109, 2) = 1 Then
-'       atkingck(109, 1) = 2
-'       技能.梅莉_夢境搖籃  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(112, 2) = 1 Then
-'       atkingck(112, 1) = 2
-'       技能.貝琳達_裂地冰牙  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(113, 2) = 1 Then
-'       atkingck(113, 1) = 2
-'       技能.貝琳達_溶魂之雨  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(161, 2) = 1 Then
-'       atkingck(161, 1) = 2
-'       技能.蕾_EX_終曲_無盡輪迴的終結  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(46, 2) = 1 Then
-'       atkingck(46, 1) = 2
-'       技能.尤莉卡_奸佞的鐵鎚  '(階段2)
-'    End If
-'    '=================================================
-'    If turnatk = 1 And atkingckai(9, 2) = 1 Then
-'       atkingckai(9, 1) = 2
-'       AI技能.妖精王妃_煉獄之翼  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(18, 2) = 1 Then
-'       atkingckai(18, 1) = 2
-'       AI技能.吸血姬蕾米雅_消失  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(27, 2) = 1 Then
-'       atkingckai(27, 1) = 2
-'       AI技能.艾依查庫_不屈之心  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(31, 2) = 1 Then
-'       atkingckai(31, 1) = 2
-'       AI技能.梅倫_Jackpot  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(38, 2) = 1 Then
-'       atkingckai(38, 1) = 2
-'       AI技能.艾茵_兩個身體  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(42, 2) = 1 Then
-'       atkingckai(42, 1) = 2
-'       AI技能.瑪格莉特_恍惚  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(44, 2) = 1 Then
-'       atkingckai(44, 1) = 2
-'       AI技能.庫勒尼西_沙漠中的海市蜃樓  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(46, 2) = 1 Then
-'       atkingckai(46, 1) = 2
-'       AI技能.庫勒尼西_黑暗漩渦  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(47, 2) = 1 Then
-'       atkingckai(47, 1) = 2
-'       AI技能.蕾格烈芙_LAR  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(54, 2) = 1 Then
-'       atkingckai(54, 1) = 2
-'       AI技能.蕾_協奏曲_加百烈的守護  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(55, 2) = 1 Then
-'       atkingckai(55, 1) = 2
-'       AI技能.史塔夏_時間種子  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(56, 2) = 1 Then
-'       atkingckai(56, 1) = 2
-'       AI技能.艾茵_九個靈魂  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(49, 2) = 1 Then
-'       atkingckai(49, 1) = 2
-'       AI技能.阿奇波爾多_防護射擊  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(60, 2) = 1 Then
-'       atkingckai(60, 1) = 2
-'       AI技能.羅莎琳_咀咒的刻印  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(61, 2) = 1 Then
-'       atkingckai(61, 1) = 2
-'       AI技能.伊芙琳_慟哭之歌  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(62, 2) = 1 Then
-'       atkingckai(62, 1) = 2
-'       AI技能.古魯瓦爾多_血之恩賜  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(63, 2) = 1 Then
-'       atkingckai(63, 1) = 2
-'       AI技能.蕾_EX_安魂曲_死神的鎮魂歌  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(64, 2) = 1 Then
-'       atkingckai(64, 1) = 2
-'       AI技能.梅倫_High_hand  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(67, 2) = 1 Then
-'       atkingckai(67, 1) = 2
-'       AI技能.艾伯李斯特_茨林  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(70, 2) = 1 Then
-'       atkingckai(70, 1) = 2
-'       AI技能.布勞_時間追獵  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(74, 2) = 1 Then
-'       atkingckai(74, 1) = 2
-'       AI技能.利恩_反擊的狼煙  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(76, 2) = 1 Then
-'       atkingckai(76, 1) = 2
-'       AI技能.泰瑞爾_Von_541  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(79, 2) = 1 Then
-'       atkingckai(79, 1) = 2
-'       AI技能.庫勒尼西_瘋狂眼窩  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(85, 2) = 1 Then
-'       atkingckai(85, 1) = 2
-'       AI技能.洛洛妮_風暴感知  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(91, 2) = 1 Then
-'       atkingckai(91, 1) = 3
-'       AI技能.艾蕾可_王座之炎  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(92, 2) = 1 Then
-'       atkingckai(92, 1) = 2
-'       AI技能.艾蕾可_白百合  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(96, 2) = 1 Then
-'       atkingckai(96, 1) = 2
-'       AI技能.露緹亞_朦朧之暗  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(112, 2) = 1 Then
-'       atkingckai(112, 1) = 2
-'       AI技能.音音夢_秘密苦藥  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(121, 2) = 1 Then
-'       atkingckai(121, 1) = 2
-'       AI技能.傑多_因果之刻  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(123, 2) = 1 Then
-'       atkingckai(123, 1) = 2
-'       AI技能.貝琳達_水晶幻鏡  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(126, 2) = 1 Then
-'       atkingckai(126, 1) = 2
-'       AI技能.蕾_安魂曲_死神的鎮魂歌  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(128, 2) = 1 Then
-'       atkingckai(128, 1) = 2
-'       AI技能.羅莎琳_黑霧幻影  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(132, 2) = 1 Then
-'       atkingckai(132, 1) = 2
-'       AI技能.克頓_逃亡計畫  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(137, 2) = 1 Then
-'       atkingckai(137, 1) = 2
-'       AI技能.尤莉卡_不善的信仰  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingckai(138, 2) = 1 Then
-'       atkingckai(138, 1) = 2
-'       AI技能.尤莉卡_曲惡的安寧  '(階段2)
-'    End If
-'    '==============(相同骰子類)
-'    If turnatk = 1 And atkingckai(15, 2) = 1 Then
-'        atkingckai(15, 1) = 2
-'       AI技能.羊角獸2012_致命格擋  '(階段2)
-'    End If
-'    '==============(減低對手防禦類)
-'    If turnatk = 1 And atkingck(13, 2) = 1 Then
-'       atkingck(13, 1) = 3
-'       技能.蕾_輪旋曲_琉璃色的微風  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(19, 2) = 1 Then
-'       atkingck(19, 1) = 3
-'       技能.蕾_EX_輪旋曲_琉璃色的微風  '(階段3)
-'    End If
-'    '===============================================
-'    If turnatk = 1 And atkingck(16, 2) = 1 Then
-'       atkingck(16, 1) = 4
-'       技能.艾茵_十三隻眼  '(階段4)
-'    End If
-'     '==================
-'    If turnatk = 1 And atkingckai(90, 2) = 1 Then
-'       atkingckai(90, 1) = 2
-'       AI技能.夏洛特_大聖堂  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(147, 2) = 1 Then
-'       atkingck(147, 1) = 2
-'       技能.傑多_因果之幻  '(階段2)
-'    End If
-'==================
-'AI技能_CC_原子之心_跳入點:      'AI技能-C.C.-原子之心-程式跳入點
 '===========================執行階段插入點(ATK-10/DEF-30)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 10, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 30, 2
@@ -7430,66 +5839,23 @@ End If
 If 攻擊防禦骰子總數(2) <= 0 Then
    骰數零檢查值(2) = True
 End If
-'========================================
-'  For p = 1 To 攻擊防禦骰子總數(1)
-'     Randomize
-'     i = Int(Rnd() * 6) + 1
-'     If i = 1 Or i = 6 Then 擲骰表單溝通暫時變數(7) = Val(擲骰表單溝通暫時變數(7)) + 1
-'  Next
-'  For p = 1 To 攻擊防禦骰子總數(2)
-'     Randomize
-'     j = Int(Rnd() * 6) + 1
-'     If j = 1 Or j = 6 Then 擲骰表單溝通暫時變數(8) = Val(擲骰表單溝通暫時變數(8)) + 1
-'  Next
-  '=============================
-'    If turnatk = 1 And atkingckai(12, 2) = 1 Then
-'        atkingckai(12, 1) = 3
-'        AI技能.雪莉_異質者  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(82, 2) = 1 Then
-'        atkingckai(82, 1) = 3
-'        AI技能.多妮妲_異質者  '(階段3)
-'    End If
-    '===================
-    '===========================執行階段插入點(ATK-12/DEF-32)
-    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 12, 2
-    執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 32, 2
-    '============================
-      階段狀態數 = 2
-'      atkingtrtot.Interval = 600
-'      atkingtrtot.Enabled = True
-     攻擊階段_階段2.Enabled = False
-     '============================
-     HP檢查變數 = True
-     HP檢查階段數 = 2
-     目前數(10) = 1
-     收牌階段_計算.Enabled = True
+'===========================執行階段插入點(ATK-12/DEF-32)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 12, 2
+執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 32, 2
+'============================
+階段狀態數 = 2
+攻擊階段_階段2.Enabled = False
+'============================
+HP檢查變數 = True
+HP檢查階段數 = 2
+目前數(10) = 1
+收牌階段_計算.Enabled = True
 End Sub
-
-
 
 Private Sub 攻擊階段_階段初始_Timer()
 戰鬥系統類.時間軸_重設
 trtimeline.Enabled = True
 電腦方事件卡是否出完選擇數 = False
-''============以下是技能檢查及啟動
-'    If turnatk = 1 And atkingck(13, 2) = 1 Then
-'       atkingck(13, 1) = 2
-'       技能.蕾_輪旋曲_琉璃色的微風  '(階段2)
-'    End If
-'    If turnatk = 1 And atkingck(19, 2) = 1 Then
-'       atkingck(19, 1) = 2
-'       技能.蕾_EX_輪旋曲_琉璃色的微風  '(階段2)
-'    End If
-'    If atkingck(16, 2) = 1 And turnatk = 1 Then
-'        atkingck(16, 1) = 5
-'        技能.艾茵_十三隻眼 '(階段5)
-'        trgoi2_Timer
-'    End If
-'=====================
-'=====================
-'--------以下為防回牌程式碼
-'cn22.Visible = False
 '==============================
 戰鬥系統類.骰量更新顯示
 FormMainMode.trgoi1_Timer
@@ -7513,462 +5879,6 @@ HP檢查變數 = False
 戰鬥系統類.骰量更新顯示
 FormMainMode.trgoi1_Timer
 FormMainMode.trgoi2_Timer
-'===========以下是技能檢查及啟動(技能-C.C.-原子之心)
-'If turnatk = 2 And atkingck(36, 2) = 1 Then
-'    atkingck(36, 1) = 2
-'    技能.CC_原子之心  '(階段2)
-'End If
-''===============以下是技能檢查及啟動(傑多-因果之輪)
-'If turnatk = 2 And atkingck(145, 2) = 1 And atkingck(145, 1) = 1 Then
-'   atkingck(145, 1) = 2
-'   技能.傑多_因果之輪 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 2 And atkingck(145, 2) = 1 And atkingck(145, 1) = 4 Then
-'   技能.傑多_因果之輪 '(階段4)
-'End If
-''===============以下是技能檢查及啟動(克頓-竊取資料)
-'If turnatk = 2 And atkingck(157, 2) = 1 And atkingck(157, 1) = 1 Then
-'   atkingck(157, 1) = 2
-'   技能.克頓_竊取資料 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 2 And atkingck(157, 2) = 1 And atkingck(157, 1) = 4 Then
-'   技能.克頓_竊取資料 '(階段4)
-'End If
-''===============以下是技能檢查及啟動(AI-梅莉-夢幻魔杖)
-'If turnatk = 2 And atkingckai(99, 2) = 1 And atkingckai(99, 1) = 1 Then
-'   atkingckai(99, 1) = 2
-'   AI技能.梅莉_夢幻魔杖 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 2 And atkingckai(99, 2) = 1 And atkingckai(99, 1) = 4 Then
-'   AI技能.梅莉_夢幻魔杖 '(階段4)
-'End If
-''===============以下是技能檢查及啟動(梅莉-徬徨夢羽)
-'If turnatk = 2 And atkingck(107, 2) = 1 And atkingck(107, 1) = 1 Then
-'   atkingck(107, 1) = 2
-'   技能.梅莉_徬徨夢羽 '(階段2)
-'   Exit Sub
-'ElseIf turnatk = 2 And atkingck(107, 2) = 1 And atkingck(107, 1) = 4 Then
-'   技能.梅莉_徬徨夢羽 '(階段4)
-'End If
-''========================
-'技能動畫顯示階段數 = 1
-'戰鬥系統類.技能啟動數量檢查
-'    '=================以下是技能檢查及啟動(技能-C.C.-原子之心)
-'    If turnatk = 2 And atkingck(36, 2) = 1 Then
-'        atkingck(36, 1) = 3
-'        技能.CC_原子之心  '(階段3)
-''        GoTo 技能_CC_原子之心_跳入點
-'    End If
-'   '============以下是技能檢查及啟動
-'   If turnatk = 2 And atkingck(38, 2) = 1 Then
-'       atkingck(38, 1) = 2
-'       技能.蕾_EX_協奏曲_加百烈的守護  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(68, 2) = 1 Then
-'       atkingck(68, 1) = 2
-'       技能.音音夢_溫柔注射  '(階段2)
-'    End If
-'    '----------------------
-'    If turnatk = 2 And atkingckai(1, 2) = 1 Then
-'       atkingckai(1, 1) = 4
-'       AI技能.雪莉_自殺傾向 (0)  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(5, 2) = 1 Then
-'       atkingckai(5, 1) = 5
-'       AI技能.雪莉_飛刃雨   '(階段5)
-'    End If
-'    If turnatk = 2 And atkingckai(3, 2) = 1 Then
-'       atkingckai(3, 1) = 2
-'       AI技能.古魯瓦爾多_猛擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(11, 2) = 1 Then
-'       atkingckai(11, 1) = 3
-'       AI技能.蕾_終曲_無盡輪迴的終結   '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(7, 2) = 1 Then
-'       atkingckai(7, 1) = 2
-'       AI技能.南瓜王_重壓  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(8, 2) = 1 Then
-'       atkingckai(8, 1) = 2
-'       AI技能.妖精王妃_冰結之翼  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(16, 2) = 1 Then
-'       atkingckai(16, 1) = 2
-'       AI技能.吸血姬蕾米雅_吸血   '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(17, 2) = 1 Then
-'       atkingckai(17, 1) = 2
-'       AI技能.吸血姬蕾米雅_高貴的晚餐   '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(19, 2) = 1 Then
-'       atkingckai(19, 1) = 2
-'       AI技能.艾伯李斯特_精密射擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(20, 2) = 1 Then
-'       atkingckai(20, 1) = 2
-'       AI技能.史塔夏_愚者之手  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(21, 2) = 1 Then
-'       atkingckai(21, 1) = 2
-'       AI技能.史塔夏_命運的鐵門  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(22, 2) = 1 Then
-'       atkingckai(22, 1) = 2
-'       AI技能.阿貝爾_霸王閃擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(23, 2) = 1 Then
-'       atkingckai(23, 1) = 2
-'       AI技能.阿貝爾_幻影劍舞  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(24, 2) = 1 Then
-'       atkingckai(24, 1) = 2
-'       AI技能.布勞_時間爆彈  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(25, 2) = 1 Then
-'       atkingckai(25, 1) = 2
-'       AI技能.艾依查庫_連射  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(26, 2) = 1 Then
-'       atkingckai(26, 1) = 4
-'       AI技能.艾依查庫_神速之劍 (0) '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(30, 2) = 1 Then
-'       atkingckai(30, 1) = 2
-'       AI技能.梅倫_Gamble  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(32, 2) = 1 Then
-'       atkingckai(32, 1) = 2
-'       AI技能.羅莎琳_染血之刃  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(140, 2) = 1 Then
-'       atkingckai(140, 1) = 2
-'       AI技能.羅莎琳_EX_染血之刃  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(34, 2) = 1 Then
-'       atkingckai(34, 1) = 2
-'       AI技能.帕茉_戰慄的狼牙  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(36, 2) = 1 Then
-'       atkingckai(36, 1) = 2
-'       AI技能.帕茉_靜謐之背  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(35, 2) = 1 Then
-'       atkingckai(35, 1) = 4
-'       AI技能.帕茉_慈悲的藍眼   '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(39, 2) = 1 Then
-'       atkingckai(39, 1) = 2
-'       AI技能.夏洛特_冬之夢  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(40, 2) = 1 Then
-'       atkingckai(40, 1) = 2
-'       AI技能.泰瑞爾_Rud_913  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(77, 2) = 1 Then
-'       atkingckai(77, 1) = 2
-'       AI技能.泰瑞爾_Chr_799  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(41, 2) = 1 Then
-'       atkingckai(41, 1) = 2
-'       AI技能.泰瑞爾_Wil_846  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(43, 2) = 1 Then
-'       atkingckai(43, 1) = 2
-'       AI技能.瑪格莉特_地獄獵心獸  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(50, 2) = 1 Then
-'       atkingckai(50, 1) = 2
-'       AI技能.CC_高頻電磁手術刀  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(51, 2) = 1 Then
-'       atkingckai(51, 1) = 2
-'       AI技能.伊芙琳_紅蓮車輪  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(53, 2) = 1 Then
-'       atkingckai(53, 1) = 2
-'       AI技能.多妮妲_殘虐傾向  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(52, 2) = 1 Then
-'       atkingckai(52, 1) = 2
-'       AI技能.多妮妲_律死擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(45, 2) = 1 Then
-'       atkingckai(45, 1) = 2
-'       AI技能.庫勒尼西_深淵  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(59, 2) = 1 Then
-'       atkingckai(59, 1) = 2
-'       AI技能.羅莎琳_黑霧的纏繞  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(65, 2) = 1 Then
-'       atkingckai(65, 1) = 2
-'       AI技能.梅倫_Lowball  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(66, 2) = 1 Then
-'       atkingckai(66, 1) = 2
-'       AI技能.艾伯李斯特_雷擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(69, 2) = 1 Then
-'       atkingckai(69, 1) = 2
-'       AI技能.艾依查庫_憤怒一擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(71, 2) = 1 Then
-'       atkingckai(71, 1) = 2
-'       AI技能.阿貝爾_閃電旋風刺  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(72, 2) = 1 Then
-'       atkingckai(72, 1) = 2
-'       AI技能.利恩_劫影攻擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(73, 2) = 1 Then
-'       atkingckai(73, 1) = 2
-'       AI技能.利恩_毒牙  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(75, 2) = 1 Then
-'       atkingckai(75, 1) = 2
-'       AI技能.利恩_背刺  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(78, 2) = 1 Then
-'       atkingckai(78, 1) = 2
-'       AI技能.瑪格莉特_月光  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(80, 2) = 1 Then
-'       atkingckai(80, 1) = 2
-'       AI技能.蕾格烈芙_CTL  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(81, 2) = 1 Then
-'       atkingckai(81, 1) = 2
-'       AI技能.蕾格烈芙_BPA  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(83, 2) = 1 Then
-'       atkingckai(83, 1) = 2
-'       AI技能.阿奇波爾多_致命槍擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(84, 2) = 1 Then
-'       atkingckai(84, 1) = 2
-'       AI技能.阿奇波爾多_劫影攻擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(86, 2) = 1 Then
-'       atkingckai(86, 1) = 2
-'       AI技能.洛洛妮_砲擊壓制  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(87, 2) = 1 Then
-'       atkingckai(87, 1) = 2
-'       AI技能.洛洛妮_貪婪之刃與嗜血之槍  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(93, 2) = 1 Then
-'       atkingckai(93, 1) = 2
-'       AI技能.艾蕾可_聖王威光  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(95, 2) = 1 Then
-'       atkingckai(95, 1) = 2
-'       AI技能.露緹亞_腐朽之靈  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(98, 2) = 1 Then
-'       atkingckai(98, 1) = 4
-'       AI技能.露緹亞_渦騎劍閃 (0) '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(102, 2) = 1 Then
-'       atkingckai(102, 1) = 2
-'       AI技能.梅莉_夢境搖籃  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(111, 2) = 1 Then
-'       atkingckai(111, 1) = 3
-'       AI技能.音音夢_愉快抽血 (0) '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(124, 2) = 1 Then
-'       atkingckai(124, 1) = 2
-'       AI技能.貝琳達_裂地冰牙  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(125, 2) = 1 Then
-'       atkingckai(125, 1) = 2
-'       AI技能.貝琳達_溶魂之雨  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(127, 2) = 1 Then
-'       atkingckai(127, 1) = 2
-'       AI技能.蕾_EX_終曲_無盡輪迴的終結  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(133, 2) = 1 Then
-'       atkingckai(133, 1) = 2
-'       AI技能.克頓_隱蔽射擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(136, 2) = 1 Then
-'       atkingckai(136, 1) = 2
-'       AI技能.尤莉卡_奸佞的鐵鎚  '(階段2)
-'    End If
-'    '========================================
-'    If turnatk = 2 And atkingck(32, 2) = 1 Then
-'       atkingck(32, 1) = 2
-'       技能.艾茵_兩個身體  '(階段2)
-'    End If
-'   If turnatk = 2 And atkingck(26, 2) = 1 Then
-'       atkingck(26, 1) = 2
-'       技能.艾茵_九個靈魂  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(11, 2) = 1 Then
-'       atkingck(11, 1) = 2
-'       技能.蕾_協奏曲_加百烈的守護  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(14, 2) = 1 Then
-'       atkingck(14, 1) = 2
-'       技能.蕾_安魂曲_死神的鎮魂歌  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(62, 2) = 1 Then
-'       atkingck(62, 1) = 2
-'       技能.蕾_EX_安魂曲_死神的鎮魂歌  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(24, 2) = 1 Then
-'       atkingck(24, 1) = 2
-'       技能.史塔夏_時間種子  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(54, 2) = 1 Then
-'       atkingck(54, 1) = 2
-'       技能.羅莎琳_黑霧幻影  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(55, 2) = 1 Then
-'       atkingck(55, 1) = 2
-'       技能.羅莎琳_EX_黑霧幻影  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(60, 2) = 1 Then
-'       atkingck(60, 1) = 2
-'       技能.古魯瓦爾多_血之恩賜  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(63, 2) = 1 Then
-'       atkingck(63, 1) = 2
-'       技能.梅倫_High_hand  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(64, 2) = 1 Then
-'       atkingck(64, 1) = 2
-'       技能.梅倫_Jackpot  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(70, 2) = 1 Then
-'       atkingck(70, 1) = 2
-'       技能.音音夢_秘密苦藥  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(73, 2) = 1 Then
-'       atkingck(73, 1) = 2
-'       技能.艾伯李斯特_茨林  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(81, 2) = 1 Then
-'       atkingck(81, 1) = 2
-'       技能.艾依查庫_不屈之心  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(92, 2) = 1 Then
-'       atkingck(92, 1) = 2
-'       技能.利恩_反擊的狼煙  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(117, 2) = 1 Then
-'       atkingck(117, 1) = 2
-'       技能.泰瑞爾_Von_541  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(123, 2) = 1 Then
-'       atkingck(123, 1) = 2
-'       技能.瑪格莉特_恍惚  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(128, 2) = 1 Then
-'       atkingck(128, 1) = 2
-'       技能.庫勒尼西_沙漠中的海市蜃樓  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(129, 2) = 1 Then
-'       atkingck(129, 1) = 2
-'       技能.庫勒尼西_瘋狂眼窩  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(131, 2) = 1 Then
-'       atkingck(131, 1) = 2
-'       技能.庫勒尼西_黑暗漩渦  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(137, 2) = 1 Then
-'       atkingck(137, 1) = 2
-'       技能.蕾格烈芙_LAR  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(146, 2) = 1 Then
-'       atkingck(146, 1) = 2
-'       技能.傑多_因果之刻  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(152, 2) = 1 Then
-'       atkingck(152, 1) = 2
-'       技能.阿奇波爾多_防護射擊  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(154, 2) = 1 Then
-'       atkingck(154, 1) = 2
-'       技能.洛洛妮_風暴感知   '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(158, 2) = 1 Then
-'       atkingck(158, 1) = 2
-'       技能.克頓_逃亡計畫   '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(99, 2) = 1 Then
-'       atkingck(99, 1) = 2
-'       技能.露緹亞_朦朧之暗  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(100, 2) = 1 Then
-'       atkingck(100, 1) = 2
-'       技能.露緹亞_暗影之翼  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(102, 2) = 1 Then
-'       atkingck(102, 1) = 3
-'       技能.艾蕾可_王座之炎  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(103, 2) = 1 Then
-'       atkingck(103, 1) = 2
-'       技能.艾蕾可_白百合  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(111, 2) = 1 Then
-'       atkingck(111, 1) = 2
-'       技能.貝琳達_水晶幻鏡  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(47, 2) = 1 Then
-'       atkingck(47, 1) = 2
-'       技能.尤莉卡_不善的信仰  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(48, 2) = 1 Then
-'       atkingck(48, 1) = 2
-'       技能.尤莉卡_曲惡的安寧  '(階段2)
-'    End If
-'    '====================
-'    If turnatk = 2 And atkingckai(14, 2) = 1 Then
-'       atkingckai(14, 1) = 2
-'       AI技能.羊角獸2012_致命衝撞   '(階段2)
-'    End If
-'    '====================
-'    If turnatk = 2 And atkingckai(4, 2) = 1 Then
-'       atkingckai(4, 1) = 2
-'       AI技能.蕾_輪旋曲_琉璃色的微風  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(13, 2) = 1 Then
-'       atkingckai(13, 1) = 2
-'       AI技能.蕾_EX_輪旋曲_琉璃色的微風  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(53, 2) = 1 Then
-'       atkingck(53, 1) = 2
-'       技能.羅莎琳_咀咒的刻印  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(57, 2) = 1 Then
-'       atkingck(57, 1) = 2
-'       技能.伊芙琳_慟哭之歌  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingck(83, 2) = 1 Then
-'       atkingck(83, 1) = 2
-'       技能.布勞_時間追獵  '(階段2)
-'    End If
-'    '==============================================
-'    If turnatk = 2 And atkingckai(37, 2) = 1 Then
-'       atkingckai(37, 1) = 4
-'       AI技能.艾茵_十三隻眼  '(階段4)
-'    End If
-'    '======================
-'    If turnatk = 2 And atkingck(94, 2) = 1 Then
-'       atkingck(94, 1) = 2
-'       技能.夏洛特_大聖堂  '(階段2)
-'    End If
-'    If turnatk = 2 And atkingckai(48, 2) = 1 Then
-'       atkingckai(48, 1) = 2
-'       AI技能.傑多_因果之幻  '(階段2)
-'    End If
-'==================
-'技能_CC_原子之心_跳入點: '技能-C.C.-原子之心-程式跳入點
-'=================
 '===========================執行階段插入點(ATK-10/DEF-30)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 10, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 30, 2
@@ -7987,44 +5897,17 @@ End If
 If 攻擊防禦骰子總數(1) <= 0 Then
    骰數零檢查值(1) = True
 End If
-'======================
-'  For p = 1 To 攻擊防禦骰子總數(1)
-'     Randomize
-'     i = Int(Rnd() * 6) + 1
-'     If i = 1 Or i = 6 Then 擲骰表單溝通暫時變數(7) = Val(擲骰表單溝通暫時變數(7)) + 1
-'  Next
-'  For q = 1 To 攻擊防禦骰子總數(2)
-'    Randomize
-'     j = Int(Rnd() * 6) + 1
-'     If j = 1 Or j = 6 Then 擲骰表單溝通暫時變數(8) = Val(擲骰表單溝通暫時變數(8)) + 1
-'  Next
-  '==================
-'  If turnatk = 2 And atkingck(10, 2) = 1 Then
-'       atkingck(10, 1) = 2
-'       技能.雪莉_異質者  '(階段2)
-'  End If
-'  If turnatk = 2 And atkingck(43, 2) = 1 Then
-'       atkingck(43, 1) = 2
-'       技能.雪莉_VBE_異質者  '(階段2)
-'  End If
-'  If turnatk = 2 And atkingck(141, 2) = 1 Then
-'       atkingck(141, 1) = 2
-'       技能.多妮妲_異質者  '(階段2)
-'  End If
-  '=================
 '===========================執行階段插入點(ATK-12/DEF-32)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 12, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 32, 2
 '============================
-   階段狀態數 = 4
-'   atkingtrtot.Interval = 600
-'   atkingtrtot.Enabled = True
-   防禦階段_階段初始.Enabled = False
-   '============================
-   HP檢查變數 = True
-   HP檢查階段數 = 2
-   目前數(10) = 1
-   收牌階段_計算.Enabled = True
+階段狀態數 = 4
+防禦階段_階段初始.Enabled = False
+'============================
+HP檢查變數 = True
+HP檢查階段數 = 2
+目前數(10) = 1
+收牌階段_計算.Enabled = True
 End Sub
 
 Sub 使用者出牌_AI出牌控制_Timer()
@@ -8103,19 +5986,6 @@ If 目前數(4) >= 900 Then
              If 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards")) = 2 '(階段2)
             End If
-'            If atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 10 Then
-'               atkingck(59, 1) = 4
-'               技能.伊芙琳_赤紅石榴  '(階段4)
-'               Exit Sub
-'           ElseIf atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 11 Then
-'               atkingck(59, 1) = 6
-'               技能.伊芙琳_赤紅石榴  '(階段6)
-'               Exit Sub
-'           ElseIf atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 12 Then
-'               atkingck(59, 1) = 9
-'               技能.伊芙琳_赤紅石榴  '(階段9)
-'               Exit Sub
-'           End If
        Case 3
            '===========事件卡執行_詛咒術_電腦(階段3)
             事件卡記錄暫時數(2, 3) = 3
@@ -8124,65 +5994,16 @@ If 目前數(4) >= 900 Then
             If 執行階段系統_搜尋正在執行之執行階段("AtkingDestroyCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingDestroyCards")) = 2 '(階段2)
             End If
-'            If atkingckai(66, 2) = 1 Then
-'               atkingckai(66, 1) = 4
-'               AI技能.艾伯李斯特_雷擊  '(階段4)
-'               Exit Sub
-'            End If
        Case 5
              If 執行階段系統_搜尋正在執行之執行階段("AtkingGiveCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingGiveCards")) = 2 '(階段2)
             End If
-'            If atkingckai(78, 2) = 1 Then
-'               atkingckai(78, 1) = 4
-'               AI技能.瑪格莉特_月光  '(階段4)
-'               Exit Sub
-'            End If
-'       Case 6
-'            If atkingckai(79, 2) = 1 Then
-'               atkingckai(79, 1) = 4
-'               AI技能.庫勒尼西_瘋狂眼窩  '(階段4)
-'               Exit Sub
-'            End If
-'        Case 7
-'            If atkingckai(87, 2) = 1 Then
-'               atkingckai(87, 1) = 3
-'               AI技能.洛洛妮_貪婪之刃與嗜血之槍  '(階段3)
-'               Exit Sub
-'            End If
-'        Case 8
-'            If atkingckai(105, 2) = 1 Then
-'               atkingckai(105, 1) = 5
-'               AI技能.古魯瓦爾多_精神力吸收  '(階段5)
-'               Exit Sub
-'            End If
-'        Case 9
-'            If atkingckai(107, 2) = 1 Then
-'               AI技能.伊芙琳_怠惰的墓表  '(階段4/5)
-'               Exit Sub
-'            End If
-'        Case 10
-'            If atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 10 Then
-'               atkingckai(108, 1) = 4
-'               AI技能.伊芙琳_赤紅石榴  '(階段4)
-'               Exit Sub
-'           ElseIf atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 11 Then
-'               atkingckai(108, 1) = 6
-'               AI技能.伊芙琳_赤紅石榴  '(階段6)
-'               Exit Sub
-'           ElseIf atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 12 Then
-'               atkingckai(108, 1) = 9
-'               AI技能.伊芙琳_赤紅石榴  '(階段9)
-'               Exit Sub
-'           End If
         Case 11
             等待時間佇列(2).Add 38
             等待時間_2.Enabled = True
     End Select
 End If
 End Sub
-
-
 
 Private Sub 使用者出牌_出牌對齊_靠右_Timer()
 For i = 1 To pageusqlead
@@ -8196,7 +6017,6 @@ Next
 目前數(3) = 目前數(3) + (480 / 10)
 If 目前數(3) >= 480 Then
     使用者出牌_出牌對齊_靠右.Enabled = False
-'    對齊完成檢查.Enabled = True
 End If
 End Sub
 
@@ -8207,11 +6027,8 @@ Next
 目前數(3) = 目前數(3) + (480 / 10)
 If 目前數(3) >= 480 Then
     使用者出牌_出牌對齊_靠左.Enabled = False
-'    對齊完成檢查.Enabled = True
 End If
 End Sub
-
-
 
 Private Sub 移動階段_階段初始_Timer()
 If 目前數(31) = 0 Then
@@ -8225,61 +6042,13 @@ If 目前數(31) = 0 Then
     Vss_PersonAttackFirstControlNum = 0
     '===========================執行階段插入點(2)
     戰鬥系統類.移動階段移動前執行階段呼叫 2
-    '============================
     '===========================執行階段插入點(3)
     戰鬥系統類.移動階段移動前執行階段呼叫 3
-    '============================
     '===========================執行階段插入點(4)
     戰鬥系統類.移動階段移動前執行階段呼叫 4
-    '============================
-    '=====================以下是異常狀態檢查及啟動
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 21) = True And livecom(角色人物對戰人數(2, 2)) <= 1 Then
-    '      異常狀態檢查數(21, 1) = 2
-    '      異常狀態.中毒_電腦  '(階段2)
-    'End If
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 3) = True Then
-    '      異常狀態檢查數(3, 1) = 1
-    '      異常狀態.MOV加_電腦  '(階段1)
-    'End If
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 6) = True Then
-    '      異常狀態檢查數(6, 1) = 1
-    '      異常狀態.MOV減_電腦  '(階段1)
-    'End If
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(2, 17) = True Then
-    '      異常狀態檢查數(17, 1) = 1
-    '      異常狀態.麻痺_電腦  '(階段1)
-    'End If
     '===========================執行階段插入點(70)
     戰鬥系統類.移動階段移動前執行階段呼叫 70
     '============================
-    'movecheckcom = movecom
-    '顯示列1.電腦方移動值 = movecheckcom
-    '========================================
-    
-    '===========
-    'atkingtrn(1) = Val(atkingtrn(1)) + Val(atkingtrn(3))
-    'atkingtrn(2) = Val(atkingtrn(2)) + Val(atkingtrn(4))
-    'atkingtrn(3) = 0
-    'atkingtrn(4) = 0
-
-    '=====================================================
-    
-    '===============以下是技能檢查及啟動
-    
-    '===============以下是異常狀態檢查及啟動
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 9) = True Then
-    '      異常狀態檢查數(9, 1) = 1
-    '      異常狀態.MOV加_使用者  '(階段1)
-    'End If
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 12) = True Then
-    '      異常狀態檢查數(12, 1) = 1
-    '      異常狀態.MOV減_使用者  '(階段1)
-    'End If
-    'If turnatk = 3 And 執行動作_檢查是否有指定異常狀態(1, 16) = True Then
-    '      異常狀態檢查數(16, 1) = 1
-    '      異常狀態.麻痺_使用者  '(階段1)
-    'End If
-    '=================================
     If Vss_PersonMoveControlNum(1, 2) = 0 Then
         moveus = moveus + Vss_PersonMoveControlNum(1, 1)
     Else
@@ -8393,236 +6162,11 @@ If 目前數(31) = 0 Then
             If mfd = 2 Then 戰鬥系統類.movetncom
         End If
     End If
-    
-'    If Val(顯示列1.使用者方移動值) > 6 Then
-'        顯示列1.使用者方移動值 = 6
-'    End If
-'    If Val(顯示列1.電腦方移動值) > 6 Then
-'        顯示列1.電腦方移動值 = 6
-'    End If
-    
     擲骰表單溝通暫時變數(4) = moveturn
-    '技能動畫顯示階段數 = 2
-    '戰鬥系統類.技能啟動數量檢查
     HP檢查變數 = False
     等待時間佇列(2).Add 23
     FormMainMode.等待時間_2.Enabled = True
 Else
-   '============以下是技能檢查及啟動
-'   If turnatk = 3 And atkingck(4, 2) = 1 Then
-'      atkingck(4, 1) = 2
-'      技能.雪莉_巨大黑犬 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(44, 2) = 1 Then
-'      atkingck(44, 1) = 2
-'      技能.雪莉_VBE_巨大黑犬 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(2, 2) = 1 Then
-'      atkingckai(2, 1) = 3
-'      AI技能.雪莉_巨大黑犬 '(階段3)
-'   End If
-'   If turnatk = 3 And atkingck(105, 2) = 1 Then
-'      atkingck(105, 1) = 2
-'      技能.艾蕾可_救濟天使  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(94, 2) = 1 Then
-'      atkingckai(94, 1) = 2
-'      AI技能.艾蕾可_救濟天使  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(7, 2) = 1 Then
-'      atkingck(7, 1) = 2
-'      技能.帕茉_憤怒之爪  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(12, 2) = 1 Then
-'      atkingck(12, 1) = 2
-'      技能.古魯瓦爾多_必殺架勢 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(61, 2) = 1 Then
-'      atkingck(61, 1) = 2
-'      技能.古魯瓦爾多_精神力吸收 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(21, 2) = 1 Then
-'      atkingck(21, 1) = 2
-'      技能.史塔夏_殺戮器官 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(37, 2) = 1 Then
-'      atkingck(37, 1) = 2
-'      技能.艾茵_一顆心 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(59, 2) = 1 Then
-'      atkingck(59, 1) = 2
-'      技能.伊芙琳_赤紅石榴 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(67, 2) = 1 Then
-'      atkingck(67, 1) = 2
-'      技能.音音夢_美味牛奶 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(74, 2) = 1 Then
-'      atkingck(74, 1) = 2
-'      技能.艾伯李斯特_智略 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(82, 2) = 1 Then
-'      atkingck(82, 1) = 2
-'      技能.布勞_發條機構 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(85, 2) = 1 Then
-'      atkingck(85, 1) = 2
-'      技能.布勞_夜幕時分 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(89, 2) = 1 Then
-'      atkingck(89, 1) = 2
-'      技能.阿貝爾_抽刀斷水計 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(96, 2) = 1 Then
-'      atkingck(96, 1) = 2
-'      技能.夏洛特_夜未央 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(97, 2) = 1 Then
-'      atkingck(97, 1) = 2
-'      技能.夏洛特_幸福的理由 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(138, 2) = 1 Then
-'      atkingck(138, 1) = 2
-'      技能.蕾格烈芙_SSS '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(142, 2) = 1 Then
-'      atkingck(142, 1) = 2
-'      技能.多妮妲_超級女主角 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(144, 2) = 1 Then
-'      atkingck(144, 1) = 2
-'      技能.傑多_因果之線 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(149, 2) = 1 Then
-'      atkingck(149, 1) = 2
-'      技能.阿奇波爾多_大地崩壞 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingck(49, 2) = 1 Then
-'      atkingck(49, 1) = 2
-'      技能.尤莉卡_超載 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(6, 2) = 1 Then
-'      atkingckai(6, 1) = 2
-'      AI技能.南瓜王_超再生 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(10, 2) = 1 Then
-'      atkingckai(10, 1) = 2
-'      AI技能.妖精王妃_混沌之翼 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(29, 2) = 1 Then
-'      atkingckai(29, 1) = 2
-'      AI技能.音音夢_美味牛奶 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(68, 2) = 1 Then
-'      atkingckai(68, 1) = 2
-'      AI技能.艾伯李斯特_智略 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(88, 2) = 1 Then
-'      atkingckai(88, 1) = 2
-'      AI技能.史塔夏_殺戮器官 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(89, 2) = 1 Then
-'      atkingckai(89, 1) = 2
-'      AI技能.阿奇波爾多_大地崩壞 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(104, 2) = 1 Then
-'      atkingckai(104, 1) = 2
-'      AI技能.古魯瓦爾多_必殺架勢 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(105, 2) = 1 Then
-'      atkingckai(105, 1) = 2
-'      AI技能.古魯瓦爾多_精神力吸收  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(106, 2) = 1 Then
-'      atkingckai(106, 1) = 2
-'      AI技能.帕茉_憤怒之爪  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(108, 2) = 1 Then
-'      atkingckai(108, 1) = 2
-'      AI技能.伊芙琳_赤紅石榴  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(109, 2) = 1 Then
-'      atkingckai(109, 1) = 2
-'      AI技能.布勞_發條機構  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(110, 2) = 1 Then
-'      atkingckai(110, 1) = 2
-'      AI技能.布勞_夜幕時分  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(113, 2) = 1 Then
-'      atkingckai(113, 1) = 2
-'      AI技能.阿貝爾_抽刀斷水計  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(114, 2) = 1 Then
-'      atkingckai(114, 1) = 2
-'      AI技能.夏洛特_夜未央  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(115, 2) = 1 Then
-'      atkingckai(115, 1) = 2
-'      AI技能.夏洛特_幸福的理由  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(117, 2) = 1 Then
-'      atkingckai(117, 1) = 2
-'      AI技能.蕾格烈芙_SSS  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(118, 2) = 1 Then
-'      atkingckai(118, 1) = 2
-'      AI技能.多妮妲_超級女主角  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(119, 2) = 1 Then
-'      atkingckai(119, 1) = 2
-'      AI技能.傑多_因果之線  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(135, 2) = 1 Then
-'      atkingckai(135, 1) = 2
-'      AI技能.艾茵_一顆心  '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(139, 2) = 1 Then
-'      atkingckai(139, 1) = 2
-'      AI技能.尤莉卡_超載  '(階段2)
-'   End If
-'   '======================距離相關類(使用者)
-'   If turnatk = 3 And atkingck(56, 2) = 1 Then
-'      atkingck(56, 1) = 2
-'      技能.伊芙琳_怠惰的墓表 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(107, 2) = 1 Then
-'      atkingckai(107, 1) = 2
-'      AI技能.伊芙琳_怠惰的墓表 '(階段2)
-'   End If
-'    If turnatk = 3 And atkingck(124, 2) = 1 Then
-'      atkingck(124, 1) = 2
-'      技能.瑪格莉特_末日幻影 '(階段2)
-'   End If
-'   If turnatk = 3 And atkingckai(116, 2) = 1 Then
-'      atkingckai(116, 1) = 2
-'      AI技能.瑪格莉特_末日幻影 '(階段2)
-'   End If
-'   '==========以下是異常狀態繼承回合／檢查及啟動(特殊)
-'      異常狀態檢查數(15, 1) = 1
-'      異常狀態.自壞_使用者  '(階段1)
-'      '========
-'      異常狀態檢查數(16, 1) = 2
-'      異常狀態.麻痺_使用者  '(階段2)
-'      '========
-'      異常狀態檢查數(37, 1) = 1
-'      異常狀態.再生_使用者  '(階段1)
-'     '========
-'      異常狀態檢查數(38, 1) = 1
-'      異常狀態.再生_電腦  '(階段1)
-'      '==========
-'      異常狀態檢查數(20, 1) = 1
-'      異常狀態.中毒_使用者  '(階段1)
-'      '========
-'      異常狀態檢查數(17, 1) = 2
-'      異常狀態.麻痺_電腦  '(階段2)
-'      '========
-'      異常狀態檢查數(19, 1) = 1
-'      異常狀態.自壞_電腦  '(階段1)
-'      '========
-'      異常狀態檢查數(21, 1) = 1
-'      異常狀態.中毒_電腦  '(階段1)
-'   '==============
     '===========================執行階段插入點(5)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 moveturn, 5, 1
     '============================
@@ -8641,110 +6185,12 @@ End If
 移動階段_階段初始.Enabled = False
 End Sub
 
-Sub 移動階段_階段前啟動_Timer()
-'atkingtrn(3) = atkingtrn(1)
-'atkingtrn(4) = atkingtrn(2)
-'atkingtrn(1) = 0
-'atkingtrn(2) = 0
-'=================以下是技能檢查及啟動(移動階段開始階段1)
-'If turnatk = 3 And atkingck(153, 2) = 1 Then
-'   atkingck(153, 1) = 2
-'   技能.洛洛妮_逆轉戰局的槍響  '(階段2)
-'End If
-'If turnatk = 3 And atkingck(160, 2) = 1 Then
-'   atkingck(160, 1) = 2
-'   技能.克頓_惡意情報  '(階段2)
-'End If
-'If turnatk = 3 And atkingck(108, 2) = 1 Then
-'   atkingck(108, 1) = 2
-'   技能.梅莉_綿羊幻夢  '(階段2)
-'End If
-'If turnatk = 3 And atkingckai(101, 2) = 1 Then
-'   atkingckai(101, 1) = 2
-'   AI技能.梅莉_綿羊幻夢  '(階段2)
-'End If
-'If turnatk = 3 And atkingck(110, 2) = 1 Then
-'   atkingck(110, 1) = 2
-'   技能.貝琳達_雪光 '(階段2)
-'End If
-'If turnatk = 3 And atkingckai(122, 2) = 1 Then
-'   atkingckai(122, 1) = 2
-'   AI技能.貝琳達_雪光 '(階段2)
-'End If
-'If turnatk = 3 And atkingckai(130, 2) = 1 Then
-'   atkingckai(130, 1) = 2
-'   AI技能.洛洛妮_逆轉戰局的槍響 '(階段2)
-'End If
-'If turnatk = 3 And atkingckai(134, 2) = 1 Then
-'   atkingckai(134, 1) = 2
-'   AI技能.克頓_惡意情報 '(階段2)
-'End If
-'=================
-'技能動畫顯示階段數 = 5
-'戰鬥系統類.技能啟動數量檢查
-'=================以下是技能檢查及啟動(移動階段開始階段2)
-'If turnatk = 3 And atkingck(153, 2) = 1 Then
-'   atkingck(153, 1) = 3
-'   技能.洛洛妮_逆轉戰局的槍響  '(階段3)
-'End If
-'If turnatk = 3 And atkingck(160, 2) = 1 Then
-'   atkingck(160, 1) = 3
-'   技能.克頓_惡意情報  '(階段3)
-'End If
-'If turnatk = 3 And atkingck(108, 2) = 1 Then
-'   atkingck(108, 1) = 3
-'   技能.梅莉_綿羊幻夢  '(階段3)
-'End If
-'If turnatk = 3 And atkingckai(101, 2) = 1 Then
-'   atkingckai(101, 1) = 3
-'   AI技能.梅莉_綿羊幻夢  '(階段3)
-'End If
-'If turnatk = 3 And atkingck(110, 2) = 1 Then
-'   atkingck(110, 1) = 3
-'   技能.貝琳達_雪光 '(階段3)
-'End If
-'If turnatk = 3 And atkingckai(122, 2) = 1 Then
-'   atkingckai(122, 1) = 3
-'   AI技能.貝琳達_雪光 '(階段3)
-'End If
-'If turnatk = 3 And atkingckai(130, 2) = 1 Then
-'   atkingckai(130, 1) = 3
-'   AI技能.洛洛妮_逆轉戰局的槍響 '(階段3)
-'End If
-'If turnatk = 3 And atkingckai(134, 2) = 1 Then
-'   atkingckai(134, 1) = 3
-'   AI技能.克頓_惡意情報 '(階段3)
-'End If
-'=================
-'atkingtrtot.Interval = 600
-'atkingtrtot.Enabled = True
-'Erase Vss_PersonMoveActionChangeNum
-'Erase Vss_PersonMoveControlNum
-''===========================執行階段插入點(2)
-'執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 2, 1
-''============================
-''===========================執行階段插入點(3)
-'執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 3, 1
-''============================
-''===========================執行階段插入點(4)
-'執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 4, 1
-''============================
-'移動階段_階段前啟動.Enabled = False
-'等待時間佇列(1).Add 26
-'目前數(31) = 0
-'等待時間.Enabled = True
-End Sub
-
 Private Sub 移動圖片完成檢查_Timer()
 If 顯示列1.移動方向圖片顯示 = False Then
    收牌階段_計算.Enabled = True
    移動圖片完成檢查.Enabled = False
    bnok.Visible = False
 End If
-End Sub
-
-Sub 智慧型AI_使用者出牌_Timer()
-
 End Sub
 
 Private Sub 牌移動_Timer()
@@ -8766,15 +6212,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
           目前數(8) = 0
           電腦出牌_手牌對齊.Enabled = True
       Case 3
-'          If turnatk = 3 And atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 11 Then
-'               atkingck(59, 1) = 8
-'               技能.伊芙琳_赤紅石榴  '(階段8)
-'               Exit Sub
-'          ElseIf turnatk = 3 And atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 12 Then
-'               atkingck(59, 1) = 11
-'               技能.伊芙琳_赤紅石榴  '(階段11)
-'               Exit Sub
-'          End If
+            'Nothing
       Case 4
              card(目前數(20)).Visible = False
             目前數(4) = 0
@@ -8865,154 +6303,14 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
             If 執行階段系統_搜尋正在執行之執行階段("AtkingDrawCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingDrawCards")) = 1 '(階段1)
             End If
-'           If turnatk = 2 And atkingck(54, 2) = 1 Then
-'               atkingck(54, 1) = 4
-'               技能.羅莎琳_黑霧幻影  '(階段4)
-'               Exit Sub
-'          End If
-'          If turnatk = 2 And atkingck(55, 2) = 1 Then
-'               atkingck(55, 1) = 4
-'               技能.羅莎琳_EX_黑霧幻影  '(階段4)
-'               Exit Sub
-'          End If
         Case 22
            If 執行階段系統_搜尋正在執行之執行階段("AtkingGetUsedCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingGetUsedCards")) = 2 '(階段2)
             End If
-'           If turnatk = 2 And atkingck(64, 2) = 1 Then
-'               atkingck(64, 1) = 5
-'               技能.梅倫_Jackpot  '(階段5)
-'               Exit Sub
-'          End If
-'          If turnatk = 1 And atkingckai(31, 2) = 1 Then
-'               atkingckai(31, 1) = 5
-'               AI技能.梅倫_Jackpot  '(階段5)
-'               Exit Sub
-'          End If
         Case 23
             If 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards")) = 3 '(階段3)
             End If
-'           If turnatk = 3 And atkingck(74, 2) = 1 Then
-'               atkingck(74, 1) = 3
-'               技能.艾伯李斯特_智略  '(階段3)
-'               Exit Sub
-'          End If
-'          If turnatk = 3 And atkingckai(68, 2) = 1 Then
-'               atkingckai(68, 1) = 3
-'               AI技能.艾伯李斯特_智略  '(階段3)
-'               Exit Sub
-'          End If
-'        Case 24
-'          If turnatk = 3 And atkingck(82, 2) = 1 Then
-'               atkingck(82, 1) = 4
-'               技能.布勞_發條機構  '(階段4)
-'               Exit Sub
-'          End If
-'        Case 25
-'          If turnatk = 2 And atkingck(92, 2) = 1 Then
-'               atkingck(92, 1) = 3
-'               技能.利恩_反擊的狼煙  '(階段3)
-'               Exit Sub
-'          End If
-'          If turnatk = 1 And atkingckai(74, 2) = 1 Then
-'               atkingckai(74, 1) = 3
-'               AI技能.利恩_反擊的狼煙  '(階段3)
-'               Exit Sub
-'          End If
-'        Case 26
-'          If turnatk = 2 And atkingck(146, 2) = 1 Then
-'               atkingck(146, 1) = 5
-'               技能.傑多_因果之刻 '(階段5)
-'               Exit Sub
-'          End If
-'        Case 27
-'          If turnatk = 3 And atkingck(153, 2) = 1 Then
-'               atkingck(153, 1) = 4
-'               技能.洛洛妮_逆轉戰局的槍響 '(階段4)
-'               Exit Sub
-'          End If
-'        Case 28
-'          If turnatk = 3 And atkingck(160, 2) = 1 Then
-'               atkingck(160, 1) = 4
-'               技能.克頓_惡意情報 '(階段4)
-'               Exit Sub
-'          End If
-'        Case 29
-'          If turnatk = 3 And atkingck(108, 2) = 1 Then
-'               atkingck(108, 1) = 4
-'               技能.梅莉_綿羊幻夢 '(階段4)
-'               Exit Sub
-'          End If
-'        Case 30
-'          If turnatk = 3 And atkingckai(101, 2) = 1 Then
-'               atkingckai(101, 1) = 4
-'               AI技能.梅莉_綿羊幻夢 '(階段4)
-'               Exit Sub
-'          End If
-'        Case 31
-'           If turnatk = 3 And atkingck(110, 2) = 1 Then
-'               atkingck(110, 1) = 4
-'               技能.貝琳達_雪光 '(階段4)
-'               Exit Sub
-'          End If
-'        Case 32
-'           If turnatk = 2 And atkingck(111, 2) = 1 Then
-'               atkingck(111, 1) = 5
-'               技能.貝琳達_水晶幻鏡  '(階段5)
-'               Exit Sub
-'          End If
-'        Case 33
-'          If turnatk = 3 And atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 11 Then
-'               atkingckai(108, 1) = 8
-'               AI技能.伊芙琳_赤紅石榴  '(階段8)
-'               Exit Sub
-'          ElseIf turnatk = 3 And atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 12 Then
-'               atkingckai(108, 1) = 11
-'               AI技能.伊芙琳_赤紅石榴  '(階段11)
-'               Exit Sub
-'          End If
-'        Case 34
-'          If turnatk = 3 And atkingckai(109, 2) = 1 Then
-'               atkingckai(109, 1) = 4
-'               AI技能.布勞_發條機構  '(階段4)
-'               Exit Sub
-'          End If
-'        Case 35
-'          If turnatk = 1 And atkingckai(121, 2) = 1 Then
-'               atkingckai(121, 1) = 5
-'               AI技能.傑多_因果之刻 '(階段5)
-'               Exit Sub
-'          End If
-'        Case 36
-'           If turnatk = 3 And atkingckai(122, 2) = 1 Then
-'               atkingckai(122, 1) = 4
-'               AI技能.貝琳達_雪光 '(階段4)
-'               Exit Sub
-'          End If
-'        Case 37
-'           If turnatk = 1 And atkingckai(123, 2) = 1 Then
-'               atkingckai(123, 1) = 5
-'               AI技能.貝琳達_水晶幻鏡  '(階段5)
-'               Exit Sub
-'          End If
-'        Case 38
-'           If turnatk = 1 And atkingckai(128, 2) = 1 Then
-'               atkingckai(128, 1) = 4
-'               AI技能.羅莎琳_黑霧幻影  '(階段4)
-'               Exit Sub
-'          End If
-'          If turnatk = 1 And atkingckai(129, 2) = 1 Then
-'               atkingckai(129, 1) = 4
-'               AI技能.羅莎琳_EX_黑霧幻影  '(階段4)
-'               Exit Sub
-'          End If
-'       Case 39
-'          If turnatk = 3 And atkingckai(130, 2) = 1 Then
-'               atkingckai(130, 1) = 4
-'               AI技能.洛洛妮_逆轉戰局的槍響 '(階段4)
-'               Exit Sub
-'          End If
       Case 40
           等待時間佇列(2).Add 37
           等待時間_2.Enabled = True
@@ -9039,9 +6337,6 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
            事件卡記錄暫時數(2, 3) = 5
            事件卡.聖水_電腦 0, 0
    End Select
-'   If turnatk = 4 Then
-'      發牌檢查.Enabled = True
-'   End If
 End If
 End Sub
 
@@ -9100,11 +6395,9 @@ If Val(pageusglead) >= 牌總階段數(1) Then
 End If
 End Sub
 
-
 Private Sub 發牌_電腦階段_Timer()
 '-----------電腦階段
 Dim m As Integer '暫時變數
-'Do While 目前數(1) >= Val(pagecomglead) And 目前數(1) <= 牌總階段數(2)
 Do While Val(pagecomglead) < 牌總階段數(2)
           Randomize
           m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
@@ -9124,15 +6417,12 @@ End If
 End Sub
 
 Private Sub 發牌檢查_Timer()
-'If 目前數(1) > 牌總階段數(3) Then
 If (Val(pageusglead) >= 牌總階段數(1) And Val(pagecomglead) >= 牌總階段數(2)) Or BattleCardNum <= 0 Then
-'   cnmove.Visible = True
    發牌檢查.Enabled = False
    目前數(15) = 0
    等待時間佇列(1).Add 3
    等待時間.Enabled = True
 Else
-   '發牌_使用者階段.Enabled = True
    Select Case 目前數(2)
        Case 1
            發牌_使用者階段.Enabled = True
@@ -9141,14 +6431,11 @@ Else
            發牌_電腦階段.Enabled = True
            發牌檢查.Enabled = False
         Case 3
-'           目前數(1) = 目前數(1) + 1
            目前數(2) = 1
-           '發牌檢查.Enabled = True
     End Select
 End If
 
 End Sub
-
 
 Private Sub 等待時間_2_Timer()
 Select Case 目前數(14)
@@ -9266,51 +6553,15 @@ Select Case 目前數(14)
             Case 23
                 目前數(31) = 1
                 FormMainMode.移動階段_階段初始.Enabled = True
-'               If atkingck(122, 2) = 1 Then
-'                    atkingck(122, 1) = 6
-'                    技能.瑪格莉特_月光 '(階段6)
-'                End If
             Case 24
-'                戰鬥系統類.擲骰表單顯示
                 If FormMainMode.PEAFDiceInterface.DiceStop = True Or 骰數零檢查值(1) = True Or 骰數零檢查值(2) = True Then
                     If 執行階段系統_搜尋正在執行之執行階段("BattleStartDice") <> 0 Then
-'                        Dim uscomt As Integer
-'                        Dim atknumtnum As Integer
-'                        '================
-'                        Select Case vbecommadnum(3, 執行階段系統_搜尋正在執行之執行階段("BattleStartDice"))
-'                            Case Is <= 12 '==主動技-使用者
-'                                uscomt = 1
-'                                For pnnumt = 1 To 4
-'                                    For atknumt = 1 To 4
-'                                        If (uscomt - 1) * 12 + (4 * pnnumt - 4) + atknumt = vbecommadnum(3, 執行階段系統_搜尋正在執行之執行階段("BattleStartDice")) Then
-'                                            atknumtnum = atknumt
-'                                            pnnumt = 4 '跳離For
-'                                        End If
-'                                    Next
-'                                Next
-'                            Case Is <= 24 '==主動技-電腦
-'                                uscomt = 2
-'                                For pnnumt = 1 To 4
-'                                    For atknumt = 1 To 4
-'                                        If (uscomt - 1) * 12 + (4 * pnnumt - 4) + atknumt = vbecommadnum(3, 執行階段系統_搜尋正在執行之執行階段("BattleStartDice")) Then
-'                                            atknumtnum = atknumt
-'                                            pnnumt = 4 '跳離For
-'                                        End If
-'                                    Next
-'                                Next
-'                        End Select
-'                        '================
                         vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("BattleStartDice")) = 2 '(階段2)
-'                        執行指令集.執行指令_執行擲骰子 uscomt, 1, atknumtnum
                     End If
                 Else
                     等待時間佇列(2).Add 24
                     等待時間_2.Enabled = True
                 End If
-'               If atkingck(122, 2) = 1 Then
-'                    atkingck(122, 1) = 7
-'                    技能.瑪格莉特_月光 '(階段7)
-'                End If
             Case 25
                 If FormMainMode.PEAFDiceInterface.DiceStop = True Or 骰數零檢查值(1) = True Or 骰數零檢查值(2) = True Then
                     戰鬥系統類.擲骰後續判斷
@@ -9318,30 +6569,6 @@ Select Case 目前數(14)
                     等待時間佇列(2).Add 25
                     等待時間_2.Enabled = True
                 End If
-'               If atkingckai(78, 2) = 1 Then
-'                    atkingckai(78, 1) = 5
-'                    AI技能.瑪格莉特_月光 '(階段5)
-'                End If
-'            Case 26
-'               If atkingckai(78, 2) = 1 Then
-'                    atkingckai(78, 1) = 6
-'                    AI技能.瑪格莉特_月光 '(階段6)
-'                End If
-'            Case 27
-'                If atkingck(153, 2) = 1 Then
-'                    atkingck(153, 1) = 5
-'                    技能.洛洛妮_逆轉戰局的槍響 '(階段5)
-'                End If
-'            Case 28
-'                If atkingck(156, 2) = 1 Then
-'                    atkingck(156, 1) = 5
-'                    技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段5)
-'                End If
-'            Case 29
-'                If atkingckai(87, 2) = 1 Then
-'                    atkingckai(87, 1) = 4
-'                    AI技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段4)
-'                End If
             Case 30
                 If 電腦出牌_亮牌.Enabled = False Then
                     顯示列1.移動方向圖片顯示 = True
@@ -9350,48 +6577,6 @@ Select Case 目前數(14)
                     等待時間佇列(2).Add 30
                     等待時間_2.Enabled = True
                 End If
-'            Case 31
-'                If atkingck(108, 2) = 1 Then
-'                    atkingck(108, 1) = 5
-'                    技能.梅莉_綿羊幻夢 '(階段5)
-'                End If
-'            Case 32
-'                If atkingckai(101, 2) = 1 Then
-'                    atkingckai(101, 1) = 5
-'                    AI技能.梅莉_綿羊幻夢 '(階段5)
-'                End If
-'            Case 33
-'                If atkingck(110, 2) = 1 Then
-'                    atkingck(110, 1) = 5
-'                    技能.貝琳達_雪光 '(階段5)
-'                End If
-'            Case 34
-'                 If atkingckai(107, 2) = 1 Then
-'                    atkingckai(107, 1) = 6
-'                    AI技能.伊芙琳_怠惰的墓表 '(階段6)
-'                 End If
-'            Case 35
-'                If atkingckai(122, 2) = 1 Then
-'                    atkingckai(122, 1) = 5
-'                    AI技能.貝琳達_雪光 '(階段5)
-'                End If
-'            Case 36
-'                If atkingckai(130, 2) = 1 Then
-'                    atkingckai(130, 1) = 5
-'                    AI技能.洛洛妮_逆轉戰局的槍響 '(階段5)
-'                End If
-'            Case 37
-'                If turnatk = 3 And atkingckai(134, 2) = 1 Then
-'                     atkingckai(134, 1) = 4
-'                     AI技能.克頓_惡意情報 '(階段4)
-'                     Exit Sub
-'                End If
-'            Case 38
-'                If atkingckai(134, 2) = 1 Then
-'                   atkingckai(134, 1) = 5
-'                   AI技能.克頓_惡意情報  '(階段5)
-'                   Exit Sub
-'                End If
             Case 39
                 '===========事件卡執行_聖水_使用者(階段1>2)
                 事件卡記錄暫時數(1, 3) = 2
@@ -9417,14 +6602,12 @@ Select Case 目前數(14)
                 FormMainMode.使用者出牌_AI出牌控制_事件卡.Enabled = True
             Case 46
                 '====================試驗智慧型AI出牌系統
-'                If 智慧型AI系統_目前可執行之人物判斷(nameus(角色人物對戰人數(1, 2))) = True Then
-                    Dim wtyr As Integer '暫時變數
-                    If (moveturn = 1 And turnatk = 2) Or (moveturn = 2 And turnatk = 1) Then wtyr = 1 Else wtyr = 0
-                    智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 1, turnatk, nameus(角色人物對戰人數(1, 2)), movecp, wtyr
-                    智慧型AI系統類.智慧型AI系統_使用者出牌階段判斷反轉
-                    目前數(32) = 1
-                    FormMainMode.使用者出牌_AI出牌控制.Enabled = True
-'                End If
+                Dim wtyr As Integer '暫時變數
+                If (moveturn = 1 And turnatk = 2) Or (moveturn = 2 And turnatk = 1) Then wtyr = 1 Else wtyr = 0
+                智慧型AI系統類.智慧型AI系統計算_引導程序_選擇 1, turnatk, nameus(角色人物對戰人數(1, 2)), movecp, wtyr
+                智慧型AI系統類.智慧型AI系統_使用者出牌階段判斷反轉
+                目前數(32) = 1
+                FormMainMode.使用者出牌_AI出牌控制.Enabled = True
             Case 47
                 '=============使用者方選擇行動
                 If turnatk = 3 Then
@@ -9454,11 +6637,6 @@ Select Case 目前數(22)
       End If
       If 等待時間佇列(1).Count = 0 Then Exit Sub
       Select Case 等待時間佇列(1).Item(1)
-          Case 1
-'              If atkingck(56, 2) = 1 Then
-'                  atkingck(56, 1) = 6
-'                  技能.伊芙琳_怠惰的墓表 '(階段6)
-'              End If
           Case 2   '========開始初始階段2
              等待時間佇列(1).Add 5
              等待時間.Enabled = True
@@ -9469,12 +6647,6 @@ Select Case 目前數(22)
                 戰鬥系統類.廣播訊息 "現在的距離" & movecp & "。"
                 交換角色紀錄暫時變數(4) = 1
                 戰鬥系統類.執行動作_移動階段選擇執行
-'                Select Case moveturn
-'                  Case 1
-'                     cn2_Click
-'                  Case 2
-'                     cn3_Click
-'                End Select
            Case 5
               cn1_Click
            Case 6
@@ -9531,15 +6703,12 @@ Select Case 目前數(22)
                         '============================
                     End Select
                 End If
-'                擲骰表單溝通暫時變數(5) = 擲骰表單溝通暫時變數(7)
-'                擲骰表單溝通暫時變數(6) = 擲骰表單溝通暫時變數(8)
                 擲骰表單溝通暫時變數(9) = 攻擊防禦骰子總數(1)
                 擲骰表單溝通暫時變數(10) = 攻擊防禦骰子總數(2)
                 是否系統公骰 = True
                 戰鬥系統類.擲骰表單顯示
                 等待時間佇列(2).Add 25
                 FormMainMode.等待時間_2.Enabled = True
-'                FormMainMode.骰子執行完啟動.Enabled = True
            Case 13
                等待時間佇列(1).Add 9
                等待時間.Enabled = True
@@ -9548,11 +6717,6 @@ Select Case 目前數(22)
                等待時間.Enabled = True
            Case 15
                cn4_Click
-           Case 16
-'               If atkingck(61, 2) = 1 Then
-'                  atkingck(61, 1) = 6
-'                  技能.古魯瓦爾多_精神力吸收 '(階段6)
-'              End If
            Case 17
               '===========================執行階段插入點(9)
                執行階段系統類.執行階段系統總主要程序_執行階段開始 moveturn, 9, 1
@@ -9580,84 +6744,14 @@ Select Case 目前數(22)
                 戰鬥系統類.事件卡處理_分派_電腦方
                 等待時間佇列(1).Add 6
                 等待時間.Enabled = True
-            Case 23
-'                If atkingck(122, 2) = 1 Then
-'                    atkingck(122, 1) = 6
-'                    技能.瑪格莉特_月光 '(階段6)
-'                End If
-'            Case 24
-'                If atkingck(146, 2) = 1 Then
-'                    atkingck(146, 1) = 5
-'                    技能.傑多_因果之刻 '(階段5)
-'                End If
-'            Case 25
-'                If atkingckai(78, 2) = 1 Then
-'                    atkingckai(78, 1) = 5
-'                    AI技能.瑪格莉特_月光 '(階段5)
-'                End If
-'            Case 26
-'                移動階段_階段初始.Enabled = True
-'            Case 27
-'                If atkingck(156, 2) = 1 Then
-'                    atkingck(156, 1) = 5
-'                    技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段5)
-'                End If
-'            Case 28
-'                If atkingckai(87, 2) = 1 Then
-'                    atkingckai(87, 1) = 4
-'                    AI技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段4)
-'                End If
-'            Case 29
-'                If atkingck(111, 2) = 1 Then
-'                    atkingck(111, 1) = 5
-'                    技能.貝琳達_水晶幻鏡 '(階段5)
-'                End If
             Case 30
                 電腦出牌.Enabled = True
-'            Case 31
-'                 If atkingckai(105, 2) = 1 Then
-'                    atkingckai(105, 1) = 6
-'                    AI技能.古魯瓦爾多_精神力吸收 '(階段6)
-'                 End If
-'            Case 32
-'                 If atkingckai(107, 2) = 1 Then
-'                    atkingckai(107, 1) = 5
-'                    AI技能.伊芙琳_怠惰的墓表 '(階段5)
-'                 End If
-'            Case 33
-'                 If atkingck(59, 2) = 1 Then
-'                        atking_伊芙琳_赤紅石榴階段紀錄數(0, 4) = atking_伊芙琳_赤紅石榴階段紀錄數(0, 4) + 1
-'                        If atking_伊芙琳_赤紅石榴階段紀錄數(0, 4) < 2 Then
-'                            等待時間佇列(1).Add 33
-'                            等待時間.Enabled = True
-'                        Else
-'                             atkingck(59, 1) = 12
-'                             技能.伊芙琳_赤紅石榴 '(階段12)
-'                        End If
-'                 End If
-'            Case 34
-'                If atkingckai(121, 2) = 1 Then
-'                    atkingckai(121, 1) = 5
-'                    AI技能.傑多_因果之刻 '(階段5)
-'                End If
-'            Case 35
-'                If atkingckai(123, 2) = 1 Then
-'                    atkingckai(123, 1) = 5
-'                    AI技能.貝琳達_水晶幻鏡 '(階段5)
-'                End If
             Case 36
                 FormMainMode.trend.Enabled = True
-            Case 37
-'                If atkingckai(87, 2) = 1 Then
-'                    atkingckai(87, 1) = 5
-'                    AI技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段5)
-'                End If
       End Select
       等待時間佇列(1).Remove 1
 End Select
 End Sub
-
-
 
 Private Sub 電腦出牌_Timer()
 電腦出牌.Enabled = False
@@ -9794,7 +6888,6 @@ If 電腦方事件卡是否出完選擇數 = True Then
 End If
 End Sub
 
-
 Private Sub 電腦出牌_手牌對齊_Timer()
 If 目前數(8) < 240 Then
     For i = 1 To Val(pagecomglead)
@@ -9818,83 +6911,18 @@ Else
             If 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards")) = 3 '(階段3)
             End If
-'           If atkingck(56, 2) = 1 And atkingck(56, 1) <> 6 Then
-'               atkingck(56, 1) = 5
-'               技能.伊芙琳_怠惰的墓表 '(階段5)
-'           ElseIf atkingck(56, 2) = 1 And atkingck(56, 1) = 6 Then
-'               技能.伊芙琳_怠惰的墓表 '(階段6)
-'           End If
         Case 4
             If 執行階段系統_搜尋正在執行之執行階段("AtkingDestroyCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingDestroyCards")) = 3 '(階段3)
             End If
-'           If atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 10 Then
-'               atkingck(59, 1) = 4
-'               技能.伊芙琳_赤紅石榴  '(階段4)
-'               Exit Sub
-'           ElseIf atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 11 Then
-'               atkingck(59, 1) = 7
-'               技能.伊芙琳_赤紅石榴  '(階段7)
-'               Exit Sub
-'           ElseIf atkingck(59, 2) = 1 And atking_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 12 Then
-'               atkingck(59, 1) = 10
-'               技能.伊芙琳_赤紅石榴  '(階段10)
-'               Exit Sub
-'           End If
         Case 5
             If 執行階段系統_搜尋正在執行之執行階段("AtkingGiveCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingGiveCards")) = 3 '(階段3)
             End If
-'           If atkingck(61, 2) = 1 Then
-'               atkingck(61, 1) = 5
-'               技能.古魯瓦爾多_精神力吸收 '(階段5)
-'           End If
         Case 6
            '===========事件卡執行_詛咒術_使用者(階段3)
             事件卡記錄暫時數(1, 3) = 3
             事件卡.詛咒術_使用者 0, 0
-        Case 7
-'            If turnatk = 1 And atkingck(72, 2) = 1 Then
-'               atkingck(72, 1) = 4
-'               技能.艾伯李斯特_雷擊  '(階段4)
-'               Exit Sub
-'            End If
-'        Case 8
-'            If turnatk = 1 And atkingck(122, 2) = 1 Then
-'               atkingck(122, 1) = 5
-'               技能.瑪格莉特_月光  '(階段5)
-'               Exit Sub
-'            End If
-'        Case 9
-'            If turnatk = 2 And atkingck(129, 2) = 1 Then
-'               atkingck(129, 1) = 4
-'               技能.庫勒尼西_瘋狂眼窩  '(階段4)
-'               Exit Sub
-'            End If
-'        Case 10
-'            If atkingck(156, 2) = 1 Then
-'                atkingck(156, 1) = 3
-'                技能.洛洛妮_貪婪之刃與嗜血之槍 '(階段3)
-'            End If
-'        Case 11
-'            If atkingck(160, 2) = 1 Then
-'                atkingck(160, 1) = 5
-'                技能.克頓_惡意情報 '(階段5)
-'            End If
-'        Case 12
-'           If atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 10 Then
-'               atkingckai(108, 1) = 4
-'               AI技能.伊芙琳_赤紅石榴  '(階段4)
-'               Exit Sub
-'           ElseIf atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 11 Then
-'               atkingckai(108, 1) = 7
-'               AI技能.伊芙琳_赤紅石榴  '(階段7)
-'               Exit Sub
-'           ElseIf atkingckai(108, 2) = 1 And atking_AI_伊芙琳_赤紅石榴階段紀錄數(0, 1) = 12 Then
-'               atkingckai(108, 1) = 10
-'               AI技能.伊芙琳_赤紅石榴  '(階段10)
-'               Exit Sub
-'           End If
     End Select
     
 End If
@@ -9956,471 +6984,9 @@ If 使用者出牌_出牌對齊_靠左.Enabled = False And 使用者出牌_出牌對齊_靠右.Enabled
 End If
 End Sub
 
-
-
-
 Private Sub 骰子執行完啟動_Timer()
 Dim uscomvsn As Integer
 骰子執行完啟動.Enabled = False
-'===========結束技能跳回執行點
-'   If turnatk = 2 And atkingck(54, 2) = 1 And atkingck(54, 1) = 6 Then
-'       技能.羅莎琳_黑霧幻影  '(階段6)
-'       GoTo 技能_羅莎琳_黑霧幻影_跳入點
-'   End If
-'   If turnatk = 2 And atkingck(55, 2) = 1 And atkingck(55, 1) = 6 Then
-'       技能.羅莎琳_EX_黑霧幻影  '(階段6)
-'       GoTo 技能_羅莎琳_黑霧幻影_跳入點
-'   End If
-'   If turnatk = 1 And atkingckai(128, 2) = 1 And atkingckai(128, 1) = 6 Then
-'       AI技能.羅莎琳_黑霧幻影  '(階段6)
-'       GoTo AI技能_羅莎琳_黑霧幻影_跳入點
-'   End If
-'   If turnatk = 1 And atkingckai(129, 2) = 1 And atkingckai(129, 1) = 6 Then
-'       AI技能.羅莎琳_EX_黑霧幻影  '(階段6)
-'       GoTo AI技能_羅莎琳_黑霧幻影_跳入點
-'   End If
-'   If turnatk = 1 And atkingck(72, 2) = 1 And atkingck(72, 1) = 5 Then
-'       技能.艾伯李斯特_雷擊  '(階段5)
-'       GoTo 技能_艾伯李斯特_雷擊_跳入點
-'   End If
-'   If turnatk = 2 And atkingck(92, 2) = 1 And atkingck(92, 1) = 4 Then
-'       技能.利恩_反擊的狼煙  '(階段4)
-'       GoTo 技能_利恩_反擊的狼煙_跳入點
-'   End If
-'   If turnatk = 1 And atkingckai(74, 2) = 1 And atkingckai(74, 1) = 4 Then
-'       AI技能.利恩_反擊的狼煙  '(階段4)
-'       GoTo 技能_利恩_反擊的狼煙_跳入點
-'   End If
-'   If turnatk = 2 And atkingck(129, 2) = 1 And atkingck(129, 1) = 5 Then
-'       技能.庫勒尼西_瘋狂眼窩  '(階段5)
-'       GoTo 技能_庫勒尼西_瘋狂眼窩_跳入點
-'   End If
-'   If turnatk = 1 And atkingckai(79, 2) = 1 And atkingckai(79, 1) = 5 Then
-'       AI技能.庫勒尼西_瘋狂眼窩  '(階段5)
-'       GoTo 技能_庫勒尼西_瘋狂眼窩_跳入點
-'   End If
-'   If turnatk = 2 And atkingckai(66, 2) = 1 And atkingckai(66, 1) = 5 Then
-'       AI技能.艾伯李斯特_雷擊  '(階段5)
-'       GoTo 技能_艾伯李斯特_雷擊_跳入點
-'   End If
-''========================完成HP檢查
-''  If 目前數(26) = 1 Then
-''      GoTo HP檢查完畢_跳入點
-''  End If
-''=========================以下是技能檢查及啟動(擲多次骰子)
-'    If turnatk = 2 And atkingck(94, 2) = 1 And atkingck(94, 1) = 3 Then
-'       技能.夏洛特_大聖堂  '(階段3)
-'       Exit Sub
-'    ElseIf turnatk = 2 And atkingck(94, 2) = 1 And atkingck(94, 1) = 4 Then
-'       技能.夏洛特_大聖堂  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingckai(90, 2) = 1 And atkingckai(90, 1) = 3 Then
-'       AI技能.夏洛特_大聖堂  '(階段3)
-'       Exit Sub
-'    ElseIf turnatk = 1 And atkingckai(90, 2) = 1 And atkingckai(90, 1) = 4 Then
-'       AI技能.夏洛特_大聖堂  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(147, 2) = 1 And atkingck(147, 1) = 3 Then
-'       技能.傑多_因果之幻  '(階段3)
-'       Exit Sub
-'    ElseIf turnatk = 1 And atkingck(147, 2) = 1 And atkingck(147, 1) = 4 Then
-'       技能.傑多_因果之幻  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(48, 2) = 1 And atkingckai(48, 1) = 3 Then
-'       AI技能.傑多_因果之幻  '(階段3)
-'       Exit Sub
-'    ElseIf turnatk = 2 And atkingckai(48, 2) = 1 And atkingckai(48, 1) = 4 Then
-'       AI技能.傑多_因果之幻  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(159, 2) = 1 And atkingck(159, 1) = 3 Then
-'       技能.克頓_隱蔽射擊  '(階段3)
-'       Exit Sub
-'    ElseIf turnatk = 1 And atkingck(159, 2) = 1 And atkingck(159, 1) = 4 Then
-'       技能.克頓_隱蔽射擊  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(133, 2) = 1 And atkingckai(133, 1) = 3 Then
-'       AI技能.克頓_隱蔽射擊  '(階段3)
-'       Exit Sub
-'    ElseIf turnatk = 2 And atkingckai(133, 2) = 1 And atkingckai(133, 1) = 4 Then
-'       AI技能.克頓_隱蔽射擊  '(階段4)
-'    End If
-''============以下是技能檢查及啟動
-'    '=============================(梅倫-Lowball/Gamble)
-'    If turnatk = 1 And atkingck(65, 2) = 1 Then
-'       atkingck(65, 1) = 3
-'       技能.梅倫_Lowball  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(65, 2) = 1 Then
-'       atkingckai(65, 1) = 3
-'       AI技能.梅倫_Lowball  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(66, 2) = 1 Then
-'       atkingck(66, 1) = 3
-'       技能.梅倫_Gamble  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(30, 2) = 1 Then
-'       atkingckai(30, 1) = 3
-'       AI技能.梅倫_Gamble  '(階段3)
-'    End If
-'    '=============================(普通)
-'    If turnatk = 1 And atkingck(25, 2) = 1 Then
-'       atkingck(25, 1) = 4
-'       技能.史塔夏_命運的鐵門  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(23, 2) = 1 Then
-'        技能.史塔夏_愚者之手 '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(35, 2) = 1 Then
-'       atkingck(35, 1) = 3
-'       技能.CC_高頻電磁手術刀  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(50, 2) = 1 Then
-'       atkingckai(50, 1) = 3
-'       AI技能.CC_高頻電磁手術刀  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(58, 2) = 1 Then
-'       atkingck(58, 1) = 4
-'       技能.伊芙琳_紅蓮車輪  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(51, 2) = 1 Then
-'       atkingckai(51, 1) = 4
-'       AI技能.伊芙琳_紅蓮車輪  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(20, 2) = 1 Then
-'        AI技能.史塔夏_愚者之手 '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(21, 2) = 1 Then
-'       atkingckai(21, 1) = 4
-'       AI技能.史塔夏_命運的鐵門  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(98, 2) = 1 Then
-'       atkingck(98, 1) = 3
-'       技能.露緹亞_腐朽之靈  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(95, 2) = 1 Then
-'       atkingckai(95, 1) = 3
-'       AI技能.露緹亞_腐朽之靈  '(階段3)
-'    End If
-'    '=======================(追加攻擊骰數類)
-'    If turnatk = 1 And atkingck(17, 2) = 1 Then
-'       技能.帕茉_靜謐之背  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(36, 2) = 1 Then
-'       atkingckai(36, 1) = 3
-'       AI技能.帕茉_靜謐之背  '(階段3)
-'    End If
-'    '=======================(減輕攻擊骰數類)
-'    If turnatk = 1 And atkingckai(18, 2) = 1 Then
-'       AI技能.吸血姬蕾米雅_消失  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(38, 2) = 1 Then
-'        atkingck(38, 1) = 4
-'        技能.蕾_EX_協奏曲_加百烈的守護  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingckai(58, 2) = 1 Then
-'        atkingckai(58, 1) = 4
-'        AI技能.蕾_EX_協奏曲_加百烈的守護  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingck(102, 2) = 1 Then
-'       atkingck(102, 1) = 4
-'       技能.艾蕾可_王座之炎  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingckai(91, 2) = 1 Then
-'       atkingckai(91, 1) = 4
-'       AI技能.艾蕾可_王座之炎  '(階段4)
-'    End If
-'    '===============(骰數其他類)
-'    If turnatk = 2 And atkingck(137, 2) = 1 Then
-'       atkingck(137, 1) = 4
-'       技能.蕾格烈芙_LAR  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingckai(47, 2) = 1 Then
-'       atkingckai(47, 1) = 4
-'       AI技能.蕾格烈芙_LAR  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingck(117, 2) = 1 Then
-'       atkingck(117, 1) = 3
-'       技能.泰瑞爾_Von_541  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(76, 2) = 1 Then
-'       atkingckai(76, 1) = 3
-'       AI技能.泰瑞爾_Von_541  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(103, 2) = 1 Then
-'       atkingck(103, 1) = 3
-'       技能.艾蕾可_白百合  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(92, 2) = 1 Then
-'       atkingckai(92, 1) = 3
-'       AI技能.艾蕾可_白百合  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(104, 2) = 1 Then
-'       atkingck(104, 1) = 4
-'       技能.艾蕾可_聖王威光  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(93, 2) = 1 Then
-'       atkingckai(93, 1) = 4
-'       AI技能.艾蕾可_聖王威光  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(106, 2) = 1 Then
-'       atkingck(106, 1) = 5
-'       技能.梅莉_夢幻魔杖  '(階段5)
-'    End If
-'    If turnatk = 2 And atkingckai(99, 2) = 1 Then
-'       atkingckai(99, 1) = 5
-'       AI技能.梅莉_夢幻魔杖  '(階段5)
-'    End If
-'    '=================(防禦成功類)
-'    If turnatk = 2 And atkingck(123, 2) = 1 Then
-'       atkingck(123, 1) = 3
-'       技能.瑪格莉特_恍惚 '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(42, 2) = 1 Then
-'       atkingckai(42, 1) = 3
-'       AI技能.瑪格莉特_恍惚 '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(47, 2) = 1 Then
-'       atkingck(47, 1) = 3
-'       技能.尤莉卡_不善的信仰  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(137, 2) = 1 Then
-'       atkingckai(137, 1) = 3
-'       AI技能.尤莉卡_不善的信仰  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(54, 2) = 1 Then
-'       atkingck(54, 1) = 4
-'       技能.羅莎琳_黑霧幻影  '(階段4)
-'       Exit Sub
-'    End If
-'    If turnatk = 2 And atkingck(55, 2) = 1 Then
-'       atkingck(55, 1) = 4
-'       技能.羅莎琳_EX_黑霧幻影  '(階段4)
-'       Exit Sub
-'    End If
-'    If turnatk = 1 And atkingckai(128, 2) = 1 Then
-'       atkingckai(128, 1) = 4
-'       AI技能.羅莎琳_黑霧幻影 '(階段4)
-'       Exit Sub
-'    End If
-'    If turnatk = 1 And atkingckai(129, 2) = 1 Then
-'       atkingckai(129, 1) = 4
-'       AI技能.羅莎琳_EX_黑霧幻影 '(階段4)
-'       Exit Sub
-'    End If
-'    '=====================
-'技能_羅莎琳_黑霧幻影_跳入點: '技能-羅莎琳-(普、Ex)-黑霧幻影 結束執行繼續點
-'AI技能_羅莎琳_黑霧幻影_跳入點: '技能-AI-羅莎琳-(普、Ex)-黑霧幻影 結束執行繼續點
-'    '=======================(攻擊成功類)
-'    If turnatk = 2 And atkingckai(7, 2) = 1 Then
-'       AI技能.南瓜王_重壓  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(16, 2) = 1 Then
-'       AI技能.吸血姬蕾米雅_吸血  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(51, 2) = 1 Then
-'       atkingck(51, 1) = 4
-'       技能.羅莎琳_染血之刃  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(50, 2) = 1 Then
-'       atkingck(50, 1) = 4
-'       技能.羅莎琳_EX_染血之刃  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(52, 2) = 1 Then
-'       atkingck(52, 1) = 3
-'       技能.羅莎琳_黑霧的纏繞  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(90, 2) = 1 Then
-'       atkingck(90, 1) = 3
-'       技能.利恩_劫影攻擊  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(91, 2) = 1 Then
-'       atkingck(91, 1) = 3
-'       技能.利恩_毒牙  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(72, 2) = 1 Then
-'       atkingckai(72, 1) = 3
-'       AI技能.利恩_劫影攻擊  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(73, 2) = 1 Then
-'       atkingckai(73, 1) = 3
-'       AI技能.利恩_毒牙  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(140, 2) = 1 Then
-'       atkingck(140, 1) = 3
-'       技能.多妮妲_殘虐傾向  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(143, 2) = 1 Then
-'       atkingck(143, 1) = 3
-'       技能.多妮妲_律死擊  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(151, 2) = 1 Then
-'       atkingck(151, 1) = 3
-'       技能.阿奇波爾多_劫影攻擊  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(155, 2) = 1 Then
-'       atkingck(155, 1) = 3
-'       技能.洛洛妮_砲擊壓制  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(112, 2) = 1 Then
-'       atkingck(112, 1) = 3
-'       技能.貝琳達_裂地冰牙  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(124, 2) = 1 Then
-'       atkingckai(124, 1) = 3
-'       AI技能.貝琳達_裂地冰牙  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(86, 2) = 1 Then
-'       atkingckai(86, 1) = 3
-'       AI技能.洛洛妮_砲擊壓制  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(53, 2) = 1 Then
-'       atkingckai(53, 1) = 3
-'       AI技能.多妮妲_殘虐傾向  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(52, 2) = 1 Then
-'       atkingckai(52, 1) = 3
-'       AI技能.多妮妲_律死擊  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(59, 2) = 1 Then
-'       atkingckai(59, 1) = 3
-'       AI技能.羅莎琳_黑霧的纏繞  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(32, 2) = 1 Then
-'       atkingckai(32, 1) = 4
-'       AI技能.羅莎琳_染血之刃  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(140, 2) = 1 Then
-'       atkingckai(140, 1) = 4
-'       AI技能.羅莎琳_EX_染血之刃  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(84, 2) = 1 Then
-'       atkingckai(84, 1) = 3
-'       AI技能.阿奇波爾多_劫影攻擊  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(46, 2) = 1 Then
-'       atkingck(46, 1) = 4
-'       技能.尤莉卡_奸佞的鐵鎚  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingckai(136, 2) = 1 Then
-'       atkingckai(136, 1) = 4
-'       AI技能.尤莉卡_奸佞的鐵鎚  '(階段4)
-'    End If
-'    '====================以下是異常狀態檢查及啟動(狂戰士、恐怖)
-'    異常狀態檢查數(27, 1) = 1
-'    異常狀態.狂戰士_使用者  '(階段1)
-'    '=============
-'    異常狀態檢查數(28, 1) = 1
-'    異常狀態.狂戰士_電腦  '(階段1)
-'    '=============
-'    異常狀態檢查數(29, 1) = 1
-'    異常狀態.恐怖_使用者  '(階段1)
-'    '=============
-'    異常狀態檢查數(30, 1) = 1
-'    異常狀態.恐怖_電腦   '(階段1)
-'    '=======================(防禦骰數相關類)
-'    If turnatk = 2 And atkingck(60, 2) = 1 Then
-'       atkingck(60, 1) = 4
-'       技能.古魯瓦爾多_血之恩賜  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingckai(62, 2) = 1 Then
-'       atkingckai(62, 1) = 4
-'       AI技能.古魯瓦爾多_血之恩賜  '(階段4)
-'    End If
-'    If turnatk = 2 And atkingck(73, 2) = 1 Then
-'       atkingck(73, 1) = 4
-'       技能.艾伯李斯特_茨林  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingckai(67, 2) = 1 Then
-'       atkingckai(67, 1) = 4
-'       AI技能.艾伯李斯特_茨林  '(階段4)
-'    End If
-''=============
-''HP檢查完畢_跳入點:
-''==========================
-'技能_艾伯李斯特_雷擊_跳入點: '(一般/AI)技能-艾伯李斯特-雷擊 結束執行繼續點
-'技能_利恩_反擊的狼煙_跳入點: '(一般/AI)技能-利恩-反擊的狼煙 結束執行繼續點
-'技能_庫勒尼西_瘋狂眼窩_跳入點: '(一般/AI)技能-庫勒尼西-瘋狂眼窩 結束執行繼續點
-''=======================
-''If 目前數(26) = 0 Then
-''    HP檢查階段數 = 5
-''    戰鬥系統類.雙方HP檢查
-''    Exit Sub
-''End If
-''=============以下是技能檢查及啟動(回牌及抽牌類)
-'    If turnatk = 2 And atkingck(92, 2) = 1 Then
-'       atkingck(92, 1) = 3
-'       技能.利恩_反擊的狼煙  '(階段3)
-'       Exit Sub
-'    End If
-'    If turnatk = 1 And atkingckai(74, 2) = 1 Then
-'       atkingckai(74, 1) = 3
-'       AI技能.利恩_反擊的狼煙  '(階段3)
-'       Exit Sub
-'    End If
-'    '===============以下是異常狀態檢查及啟動(骰數傷害歸0)
-'     If turnatk = 2 Then
-'        異常狀態檢查數(14, 1) = 1
-'        異常狀態.不死_使用者 '(階段1)
-'    End If
-'    '=================
-'    If turnatk = 1 Then
-'        異常狀態檢查數(18, 1) = 1
-'        異常狀態.不死_電腦 '(階段1)
-'    End If
-'    '========================(丟棄牌類)
-'    If turnatk = 1 And atkingck(72, 2) = 1 Then
-'       atkingck(72, 1) = 3
-'       技能.艾伯李斯特_雷擊  '(階段3)
-'       Exit Sub
-'    End If
-'    If turnatk = 2 And atkingckai(66, 2) = 1 Then
-'       atkingckai(66, 1) = 3
-'       AI技能.艾伯李斯特_雷擊  '(階段3)
-'       Exit Sub
-'    End If
-'    If turnatk = 2 And atkingck(129, 2) = 1 Then
-'       atkingck(129, 1) = 3
-'       技能.庫勒尼西_瘋狂眼窩  '(階段3)
-'       Exit Sub
-'    End If
-'    If turnatk = 1 And atkingckai(79, 2) = 1 Then
-'       atkingckai(79, 1) = 3
-'       AI技能.庫勒尼西_瘋狂眼窩  '(階段3)
-'       Exit Sub
-'    End If
-''=============================(傷害骰數轉移類)
-'    If turnatk = 2 And atkingckai(11, 2) = 1 Then
-'       atkingckai(11, 1) = 4
-'       AI技能.蕾_終曲_無盡輪迴的終結  '(階段4)
-'    End If
-'    If turnatk = 1 And atkingck(15, 2) = 1 Then
-'       atkingck(15, 1) = 3
-'       技能.蕾_終曲_無盡輪迴的終結  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingck(161, 2) = 1 Then
-'       atkingck(161, 1) = 3
-'       技能.蕾_EX_終曲_無盡輪迴的終結  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingckai(127, 2) = 1 Then
-'       atkingckai(127, 1) = 3
-'       AI技能.蕾_EX_終曲_無盡輪迴的終結  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(32, 2) = 1 Then
-'       atkingck(32, 1) = 3
-'       技能.艾茵_兩個身體  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(38, 2) = 1 Then
-'       atkingckai(38, 1) = 3
-'       AI技能.艾茵_兩個身體  '(階段3)
-'    End If
-'    If turnatk = 2 And atkingck(158, 2) = 1 Then
-'       atkingck(158, 1) = 3
-'       技能.克頓_逃亡計畫  '(階段3)
-'    End If
-'    If turnatk = 1 And atkingckai(132, 2) = 1 Then
-'       atkingckai(132, 1) = 3
-'       AI技能.克頓_逃亡計畫  '(階段3)
-'    End If
 '===========================
 If Val(擲骰表單溝通暫時變數(4)) = 1 Then
    Select Case Val(擲骰表單溝通暫時變數(1))
@@ -10470,34 +7036,29 @@ End If
 trnextend.Enabled = True
 End Sub
 
-
-
-
-
 Private Sub 影子設定_Click()
-'測試表單.Visible = True
-測試表單.smallleftus.Caption = personusminijpg.小人物影子Left
-測試表單.smalltopus.Caption = personusminijpg.小人物影子top差
-測試表單.smallleftcom.Caption = personcomminijpg.小人物影子Left
-測試表單.smalltopcom.Caption = personcomminijpg.小人物影子top差
-測試表單.smallpnleftus.Caption = personusminijpg.Left
-測試表單.smallpntopus.Caption = personusminijpg.Top
-測試表單.smallpnleftcom.Caption = personcomminijpg.Left
-測試表單.smallpntopcom.Caption = personcomminijpg.Top
-測試表單.personfus.Caption = 顯示列1.使用者方小人物圖片left
-測試表單.personfcom.Caption = 顯示列1.電腦方小人物圖片left
+FormDevSetting.smallleftus.Caption = personusminijpg.小人物影子Left
+FormDevSetting.smalltopus.Caption = personusminijpg.小人物影子top差
+FormDevSetting.smallleftcom.Caption = personcomminijpg.小人物影子Left
+FormDevSetting.smalltopcom.Caption = personcomminijpg.小人物影子top差
+FormDevSetting.smallpnleftus.Caption = personusminijpg.Left
+FormDevSetting.smallpntopus.Caption = personusminijpg.Top
+FormDevSetting.smallpnleftcom.Caption = personcomminijpg.Left
+FormDevSetting.smallpntopcom.Caption = personcomminijpg.Top
+FormDevSetting.personfus.Caption = 顯示列1.使用者方小人物圖片left
+FormDevSetting.personfcom.Caption = 顯示列1.電腦方小人物圖片left
 If Formsetting.checktest.Value = 1 Then
-    測試表單.Height = 6825
+    FormDevSetting.Height = 6825
 ElseIf Formsetting.checktestpersondown.Value = 1 Then
-    測試表單.Height = 3075
+    FormDevSetting.Height = 3075
 End If
 '=================
 戰鬥系統類.時間軸_停止
 '=================
-測試表單.Show 1
+FormDevSetting.Show 1
 End Sub
 Private Sub bnabout_Click()
-Form2.Show 1
+FormAbout.Show 1
 一般系統類.音效播放 11
 End Sub
 
@@ -10509,13 +7070,10 @@ Formsetting.Top = FormMainMode.Top + 300
 Formsetting.Show 1
 End Sub
 
-
 Private Sub bnstart_Click()
 PEGameFreeModeSettingForm.Enabled = False
 一般系統類.開始遊戲進行程序
 End Sub
-
-
 
 Private Sub Form_Load()
 '============
@@ -10537,52 +7095,6 @@ Private Sub personreadifus_Click()
 cdgpersonus.ShowOpen
 Formgamesetting.Visible = True
 人物系統類.卡片人物資訊讀入_初階段 cdgpersonus.filename
-End Sub
-
-Private Sub personsettingcom_Click(Index As Integer)
-Select Case Index
-   Case 1
-        formsettingpersoncom.Left = FormMainMode.Left + 2205
-        formsettingpersoncom.Top = FormMainMode.Top + 2000
-        formsettingpersoncom.Height = 6915
-        formsettingpersoncom.Width = 7065
-        formsettingpersoncom.Visible = True
-   Case 2
-        formsettingpersoncom2.Left = FormMainMode.Left + 2205
-        formsettingpersoncom2.Top = FormMainMode.Top + 2000
-        formsettingpersoncom2.Height = 6915
-        formsettingpersoncom2.Width = 7065
-        formsettingpersoncom2.Visible = True
-  Case 3
-        formsettingpersoncom3.Left = FormMainMode.Left + 2205
-        formsettingpersoncom3.Top = FormMainMode.Top + 2000
-        formsettingpersoncom3.Height = 6915
-        formsettingpersoncom3.Width = 7065
-        formsettingpersoncom3.Visible = True
-End Select
-End Sub
-
-Private Sub personsettingus_Click(Index As Integer)
-Select Case Index
-   Case 1
-        formsettingpersonus.Left = Me.Left + 2205
-        formsettingpersonus.Top = Me.Top + 2000
-        formsettingpersonus.Height = 6915
-        formsettingpersonus.Width = 7065
-        formsettingpersonus.Visible = True
-   Case 2
-        formsettingpersonus2.Left = Me.Left + 2205
-        formsettingpersonus2.Top = Me.Top + 2000
-        formsettingpersonus2.Height = 6915
-        formsettingpersonus2.Width = 7065
-        formsettingpersonus2.Visible = True
-  Case 3
-        formsettingpersonus3.Left = Me.Left + 2205
-        formsettingpersonus3.Top = Me.Top + 2000
-        formsettingpersonus3.Height = 6915
-        formsettingpersonus3.Width = 7065
-        formsettingpersonus3.Visible = True
-End Select
 End Sub
 Private Sub personlevelcom_Click(Index As Integer)
 人物系統類.清除角色人物資訊變數 2, Index
@@ -10617,7 +7129,6 @@ End If
 End Sub
 
 Private Sub personnameus_Click(Index As Integer)
-'MsgBox formmainmode.personnameus(index).ListIndex
 If 選單使用者事件 = True Then
     更新人物清單_使用者方_變更 Index
     If personnameus(Index).Text = "" Or personnameus(Index).Text = "《隨機》" Then
@@ -10631,16 +7142,13 @@ If 選單使用者事件 = True Then
 End If
 End Sub
 
-
 Private Sub personresetcom_Click(Index As Integer)
 personnamecom(Index).ListIndex = -1
-'personlevelcom(Index).ListIndex = -1
 personlevelcom(Index).Clear
 End Sub
 
 Private Sub personresetus_Click(Index As Integer)
 personnameus(Index).ListIndex = -1
-'personlevelus(Index).ListIndex = -1
 personlevelus(Index).Clear
 End Sub
 Private Sub start1_Timer()
@@ -10648,8 +7156,6 @@ If st > 200 Then
    stup.Enabled = True
    stdown.Enabled = True
    start1.Enabled = False
-'   cardustr.Enabled = True
-'   cardcomtr.Enabled = True
    start2.Enabled = True
    For i = 1 To 3
       If PEASusbi1(i).Caption = "0" Then
@@ -10684,9 +7190,6 @@ If st > 200 Then
    upjpg_2.Visible = True
    開始卡片移動動畫完成數(1, 4) = 角色人物對戰人數(1, 1)
    開始卡片移動動畫完成數(2, 4) = 角色人物對戰人數(2, 1)
-'ElseIf st = 150 Then
-'   FormMainMode.wmp.Controls.play
-'   st = Val(st) + 1
 Else
   st = Val(st) + 1
 End If
@@ -10694,13 +7197,8 @@ End Sub
 
 Private Sub start2_Timer()
 If sq = 401 Then
-'   stup.Enabled = True
-'   stdown.Enabled = True
-'   start2.Enabled = False
    tr大人物形像_使用者.Enabled = True
    tr大人物形像_電腦.Enabled = True
-'   cardustr.Enabled = True
-'   cardcomtr.Enabled = True
    sq = Val(sq) + 1
 ElseIf sq = 500 Then
    一般系統類.主選單_PEAttackingForm顯示
@@ -10759,7 +7257,6 @@ Dim bigw As Integer
 Dim kp As Integer
 
 bigw = 大人物形像_使用者.大人物圖片width / 2
-'If 2580 - bigw < 0 Or formsettingpersonus.atkingjpgleftallzero.Value = 1 Then
 If 2580 - bigw < 0 Or Val(VBEPerson(1, 1, 2, 2, 5)) = 1 Then
     bigall = 0
 Else
@@ -10774,7 +7271,6 @@ If sq <= 400 Then
        swq = 0
        PEASpke.Enabled = True
    Else
-'       If Abs(大人物形像_使用者.Left - bigall) < kp And 大人物形像_使用者.Left >= 0 Then
        If Abs(大人物形像_使用者.Left - bigall) < kp Then
           大人物形像_使用者.Left = 大人物形像_使用者.Left + Abs(大人物形像_使用者.Left - bigall)
        Else
@@ -10797,9 +7293,6 @@ Private Sub tr大人物形像_電腦_Timer()
 Dim kr As Integer, kn As Integer
 
 kn = 大人物形像_電腦.大人物圖片width
-'If kn > 5460 Then
-'   kn = 5460
-'End If
 Dim bigwn, bigall As Integer
 bigwn = (大人物形像_電腦.大人物圖片width / 2)
 If 8760 - bigwn > Val(FormMainMode.ScaleWidth) - Val(大人物形像_電腦.大人物圖片width) Or Val(VBEPerson(2, 1, 2, 2, 5)) = 1 Then
@@ -10807,7 +7300,6 @@ If 8760 - bigwn > Val(FormMainMode.ScaleWidth) - Val(大人物形像_電腦.大人物圖片w
 Else
     bigall = 8760 - bigwn
 End If
-'kr = (大人物形像_電腦.大人物圖片width / 28)
 kr = (Val(FormMainMode.ScaleWidth) - bigall) / 30
 If sq <= 400 Then
    If 大人物形像_電腦.Left <= bigall Then

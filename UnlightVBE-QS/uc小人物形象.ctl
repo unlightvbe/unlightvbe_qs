@@ -31,7 +31,7 @@ Begin VB.UserControl 小人物形象
       Width           =   2055
       _ExtentX        =   3625
       _ExtentY        =   5741
-      Image           =   "小人物形象.ctx":0000
+      Image           =   "uc小人物形象.ctx":0000
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage image2 
@@ -41,7 +41,7 @@ Begin VB.UserControl 小人物形象
       Width           =   2055
       _ExtentX        =   3625
       _ExtentY        =   1508
-      Image           =   "小人物形象.ctx":0018
+      Image           =   "uc小人物形象.ctx":0018
       Scaler          =   3
    End
 End
@@ -63,12 +63,6 @@ Dim m_smalllive As Boolean
 Dim m_smallreturn As Boolean
 Dim m_smallreset As Boolean
 
-'Public Property Get 表單寬度() As Integer
-'   表單寬度 = m_totwidth
-'End Property
-'Public Property Get 表單高度() As Integer
-'   表單高度 = m_totheight
-'End Property
 Public Property Get 小人物影子Left() As Integer
    小人物影子Left = m_smalldownleft
 End Property
@@ -87,14 +81,6 @@ End Property
 Public Property Get 小人物影子圖片() As String
    小人物影子圖片 = m_smallimagedown
 End Property
-'Public Property Let 表單寬度(ByVal New_表單寬度 As Integer)
-'   m_totwidth = New_表單寬度
-'   PropertyChanged "表單寬度"
-'End Property
-'Public Property Let 表單高度(ByVal New_表單高度 As Integer)
-'   m_totheight = New_表單高度
-'   PropertyChanged "表單高度"
-'End Property
 Public Property Let 小人物影子Left(ByVal New_小人物影子Left As Integer)
    m_smalldownleft = New_小人物影子Left
    PropertyChanged "小人物影子Left"
@@ -116,7 +102,6 @@ Public Property Let 小人物圖片(ByVal New_小人物圖片 As String)
        image1.Top = 0
        Me.小人物圖片height = image1.Height
        Me.小人物圖片width = image1.Width
-'       image1.Opacity = 100
        Me.小人物消失 = False
        Me.小人物顯現 = False
    End If

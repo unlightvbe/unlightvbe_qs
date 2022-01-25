@@ -17,19 +17,12 @@ a = 14
 If FormMainMode.PEStext1.FontName <> "Bradley Gratis" Then
     '===========PEAttackingForm
     For i = 1 To 3
-'       FormMainMode.usbi1(i).FontSize = a
-'        FormMainMode.usbi2(i).FontSize = a
-'        FormMainMode.usbi3(i).FontSize = a
-'        FormMainMode.cardcompi1(i).FontSize = a
-'        FormMainMode.cardcompi2(i).FontSize = a
-'        FormMainMode.cardcompi3(i).FontSize = a
         FormMainMode.compi4(i).FontSize = a
         FormMainMode.uspi4(i).FontSize = a
     Next
     FormMainMode.pageul.FontSize = 24
     FormMainMode.bloodnumcom1.FontSize = 20
     FormMainMode.bloodnumcom2.FontSize = 10
-'    FormMainMode.turni.FontSize = 20
     FormMainMode.bloodnumus1.FontSize = 20
     FormMainMode.bloodnumus2.FontSize = 10
     '===========PEGameFreeModeSettingForm
@@ -204,9 +197,9 @@ If Formsetting.大亂鬥選項.Value = 1 Then
 End If
 '=======檢查設定
 If 角色人物選擇空值檢查(personvsp) = False Then
-   Form9.Left = FormMainMode.Left + 1185
-   Form9.Top = FormMainMode.Top + 3030
-   Form9.Show 1
+   FormHint.Left = FormMainMode.Left + 1185
+   FormHint.Top = FormMainMode.Top + 3030
+   FormHint.Show 1
 Else
 '-------------
     Select Case personvsp
@@ -507,7 +500,7 @@ Dim mypath As String, mydir As String
                     ReDim Preserve DirectoryBuff(UBound(DirectoryBuff) + 1)
                     DirectoryBuff(UBound(DirectoryBuff)) = mypath + mydir
                 Else
-                    If 測試1.GetExtName(mydir) = "uleci" Then
+                    If Utils.GetExtName(mydir) = "uleci" Then
                         人物系統類.卡片人物資訊讀入_初階段 mypath + mydir
                     End If
                 End If
@@ -1155,25 +1148,12 @@ End Function
 Sub 戰鬥系統表單讀入程序()
 Dim 暫時數(2) As Integer '按鈕座標暫時變數
 Dim i As Integer, ckl As Integer, mm As Integer, w As Integer  '暫時變數
-'    app_path = App.Path
-'    If Right$(app_path, 1) <> "\" Then app_path = app_path & "\"
 '------------
 goidefus = 0
 movecp = 2
 turnpageonin = 0
 trend暫時變數 = 0
 FormMainMode.PEAFInterface.MessageClear
-'----------
-'For i = 1 To 公用牌實體卡片分隔紀錄數(1)
-' FormMainMode.cge(i).Visible = False
-' FormMainMode.cgen(i).Visible = False
-' FormMainMode.cqe(i).Visible = False
-' FormMainMode.cqen(i).Visible = False
-' FormMainMode.cgu(i).Visible = False
-' FormMainMode.cqu(i).Visible = False
-' FormMainMode.card(i).BackColor = RGB(0, 0, 0)
-'Next
-
 '----------------------------寫入技能欄座標
 atkinghelpxy(1, 1, 1) = 2520
 atkinghelpxy(1, 2, 1) = 4730
@@ -1254,15 +1234,6 @@ FormMainMode.cn3.Visible = False
 FormMainMode.cn32.Visible = False
 FormMainMode.cn4.Visible = False
 FormMainMode.atkinghelpc.Visible = False
-'For i = 1 To 42
-'   FormMainMode.personusspe(i).Visible = False
-'   FormMainMode.personcomspe(i).Visible = False
-'Next
-'================================
-'For i = 1 To 3
-'    FormMainMode.cardbackus(i).大人物圖片 = app_path & "gif\system\cardblack.png"
-'    FormMainMode.cardbackcom(i).大人物圖片 = app_path & "gif\system\cardblack.png"
-'Next
 '---------以下是設定技能字體大小
 For i = 1 To 4
     If Val(VBEPerson(1, 1, 2, 3, 5)) = 0 Then
@@ -1355,7 +1326,6 @@ For i = 2 To 3
    Else
        FormMainMode.uspiin(i).Visible = False
        FormMainMode.uspi4(i).Caption = 0
-'       FormMainMode.usbi1(i).Caption = 0
        FormMainMode.cardus(i).CardMain_角色HP = 0
    End If
    If 角色人物對戰人數(2, 1) >= i Then
@@ -1364,7 +1334,6 @@ For i = 2 To 3
    Else
        FormMainMode.compiin(i).Visible = False
        FormMainMode.compi4(i).Caption = 0
-'       FormMainMode.cardcompi1(i).Caption = 0
        FormMainMode.cardcom(i).CardMain_角色HP = 0
    End If
 Next
@@ -1386,9 +1355,6 @@ For w = 1 To 角色人物對戰人數(1, 1)
     liveus(w) = Val(VBEPerson(1, w, 1, 3, 1))
     uslevel(w) = Val(VBEPerson(1, w, 1, 2, 2))
     nameus(w) = VBEPerson(1, w, 1, 1, 1)
-'    FormMainMode.usbi1(w).Caption = liveus(w)
-'    FormMainMode.usbi2(w).Caption = atkus(w)
-'    FormMainMode.usbi3(w).Caption = defus(w)
     FormMainMode.cardus(w).CardMain_角色HP = liveus(w)
     FormMainMode.cardus(w).CardMain_角色ATK = atkus(w)
     FormMainMode.cardus(w).CardMain_角色DEF = defus(w)
@@ -1417,7 +1383,6 @@ FormMainMode.顯示列1.使用者方小人物圖片left = -FormMainMode.顯示列1.使用者方小人
 FormMainMode.personusminijpg.小人物影子Left = Val(VBEPerson(1, 1, 2, 1, 5))
 FormMainMode.personusminijpg.小人物影子top差 = Val(VBEPerson(1, 1, 2, 1, 6))
 FormMainMode.personusminijpg.小人物影像反轉 = False
-'戰鬥系統類.人物交換_使用者_指定交換 1
 '=======以下為角色人物設定(電腦)
 角色人物對戰人數(2, 2) = 1
 For w = 1 To 角色人物對戰人數(2, 1)
@@ -1435,9 +1400,6 @@ For w = 1 To 角色人物對戰人數(2, 1)
     FormMainMode.compi5(w).Caption = livecommax(w)
     FormMainMode.compi1(w).Caption = namecom(w)
     livecom41(w) = livecommax(w) \ 3
-'    FormMainMode.cardcompi1(w).Caption = livecom(w)
-'    FormMainMode.cardcompi2(w).Caption = atkcom(w)
-'    FormMainMode.cardcompi3(w).Caption = defcom(w)
     FormMainMode.cardcom(w).CardMain_角色HP = livecom(w)
     FormMainMode.cardcom(w).CardMain_角色HPMAX = livecommax(w)
     FormMainMode.cardcom(w).CardMain_角色ATK = atkcom(w)
@@ -1459,7 +1421,6 @@ FormMainMode.personcomminijpg.小人物影子Left = Val(VBEPerson(2, 1, 2, 1, 5))
 FormMainMode.personcomminijpg.小人物影子top差 = Val(VBEPerson(2, 1, 2, 1, 6))
 FormMainMode.personcomminijpg.小人物影像反轉 = True
 '==================執行小人物立繪指定及距離指定
-'戰鬥系統類.人物交換_使用者_指定交換 1
 執行動作_距離變更 movecp, False
 '================仿對戰模式設定
 If Formsetting.chkpersonvsmode.Value = 1 Then
@@ -1470,9 +1431,6 @@ If Formsetting.chkpersonvsmode.Value = 1 Then
         FormMainMode.compidef(i).Caption = ""
         FormMainMode.compi4(i).Caption = ""
         FormMainMode.compi5(i).Caption = ""
-'        FormMainMode.cardcompi1(i).Caption = "?"
-'        FormMainMode.cardcompi2(i).Caption = "?"
-'        FormMainMode.cardcompi3(i).Caption = "?"
         FormMainMode.cardcom(i).CardMain_角色HP = -99
         FormMainMode.cardcom(i).CardMain_角色ATK = -99
         FormMainMode.cardcom(i).CardMain_角色DEF = -99
@@ -1503,7 +1461,6 @@ FormMainMode.PEAFInterface.turn = BattleTurn
 End Sub
 Sub 自由戰鬥模式設定表單讀入程序()
 Dim i, j As Integer
-'MsgBox "1-5-2-1"
 選單使用者事件 = True
 選單電腦事件 = True
 FormMainMode.cdgpersonus.Filter = "UnlightVBE 卡片人物資訊檔(*.uleci)|*.uleci"
@@ -1521,9 +1478,7 @@ For i = 1 To 3
     FormMainMode.personlevelus(i).Clear
     FormMainMode.personlevelcom(i).Clear
 Next
-'MsgBox "1-5-2-2"
 一般系統類.卡片人物資訊載入_搜尋檔案
-'MsgBox "1-5-2-5"
 '===============調整預設
 If FormMainMode.personnameus(1).ListCount > 0 Then
     For i = 1 To 3
@@ -1532,20 +1487,8 @@ If FormMainMode.personnameus(1).ListCount > 0 Then
     Next
 End If
 FormMainMode.opnpersonvs(2).Value = True
-
-
-'一般系統類.判斷字型_formgamesetting
 FormMainMode.cMusicPlayer(0).MusicPlay
-'一般系統類.檢查音樂播放 0
 FormMainMode.personreadifus.Visible = False
-'---------以下是設計物件顯示
-For i = 1 To 3
-    FormMainMode.personsettingus(i).Caption = "人物資訊"
-    FormMainMode.personsettingcom(i).Caption = "人物資訊"
-    FormMainMode.personsettingus(i).Visible = False
-    FormMainMode.personsettingcom(i).Visible = False
-Next
-'MsgBox "1-5-2-6"
 End Sub
 Sub 遊戲初始讀入程序()
 '=====以下是背景音樂及SE初始設定
@@ -1625,36 +1568,27 @@ Dim i As Integer '暫時變數
 '======================
 FormMainMode.downjpg.Top = Val(FormMainMode.Height)
 FormMainMode.upjpg_2.大人物圖片 = App.Path & "\gif\system\startupjpg.png"
-'FormMainMode.upjpg.Top = -Val(FormMainMode.upjpg.Height)
 FormMainMode.upjpg_2.Top = -Val(FormMainMode.upjpg.Height)
 For i = 1 To 3
-'   FormMainMode.cardus(i).Top = -Val(FormMainMode.Height)
-'   FormMainMode.cardcom(i).Top = -Val(FormMainMode.Height)
    FormMainMode.PEAScardus(i).Top = -Val(FormMainMode.PEAScardus(i).Height)
    FormMainMode.PEAScardcom(i).Top = -Val(FormMainMode.PEAScardcom(i).Height)
 Next
 FormMainMode.大人物形像_使用者.大人物圖片 = VBEPerson(1, 1, 1, 5, 3)
 FormMainMode.大人物形像_使用者.大人物影像反轉 = False
-'FormMainMode.大人物形像_使用者.Height = formsettingpersonus.bight.Text
 FormMainMode.大人物形像_使用者.Top = 8400 - FormMainMode.大人物形像_使用者.大人物圖片height
-'If FormMainMode.大人物形像_使用者.Top < 0 Then FormMainMode.大人物形像_使用者.Top = 0
 FormMainMode.大人物形像_使用者.Width = FormMainMode.大人物形像_使用者.大人物圖片width
 FormMainMode.大人物形像_使用者.Left = -FormMainMode.大人物形像_使用者.大人物圖片width
 FormMainMode.大人物形像_電腦.大人物圖片 = VBEPerson(2, 1, 1, 5, 3)
 FormMainMode.大人物形像_電腦.大人物影像反轉 = True
-'FormMainMode.大人物形像_電腦.Height = formsettingpersoncom.bight.Text
 FormMainMode.大人物形像_電腦.Top = 8400 - FormMainMode.大人物形像_電腦.大人物圖片height
-'If FormMainMode.大人物形像_電腦.Top < 0 Then FormMainMode.大人物形像_電腦.Top = 0
 FormMainMode.大人物形像_電腦.Width = FormMainMode.大人物形像_電腦.大人物圖片width
 FormMainMode.大人物形像_電腦.Left = FormMainMode.ScaleWidth
 st = 0
 sq = 0
-'一般系統類.判斷字型_form8
 FormMainMode.start1.Enabled = True
 End Sub
 Sub 自由戰鬥模式設定表單基本設定程序()
 Dim i As Integer '暫時變數
-'MsgBox "1-5-3-1"
 Formsetting.對戰地圖選擇.ListIndex = 0
 Formsetting.BGM選擇.ListIndex = 0
 For i = 1 To 18
@@ -1684,20 +1618,10 @@ Formsetting.cbsimilarlevel.AddItem "R5"
 Formsetting.cbsimilarlevel.AddItem "N1"
 Formsetting.cbsimilarlevel.ListIndex = 4
 '=============================
-If FormMainMode.personsettingus(1).Caption = "人物資訊" Then
-'    Formsetting.其他設定.Visible = False
-    Formsetting.chkpersonvsmode.Value = 1
-    Formsetting.persontgruoncom(4).Value = True
-    Formsetting.persontgruonus(4).Value = True
-    Formsetting.ckendturn.Value = 1
-'    Formsetting.chkusenewaipersonauto.Visible = False
-'    FormMainMode.Caption = FormMainMode.Tag & "  [" & Form2.aboutvn.Caption & "]"
-End If
-'MsgBox "1-5-3-2"
-End Sub
-Sub 檢查音樂播放(ByVal num As Integer)
-'音樂檢查播放目標數 = num
-'FormMainMode.PEMtr1.Enabled = True
+Formsetting.chkpersonvsmode.Value = 1
+Formsetting.persontgruoncom(4).Value = True
+Formsetting.persontgruonus(4).Value = True
+Formsetting.ckendturn.Value = 1
 End Sub
 Sub 清除戰鬥系統所有變數值()
 'Erase atkingno '技能發動排序暫時圖片路徑儲存變數(技能發動順序8~1,1.圖片路徑/2.(1)使用者/(2)電腦方/3.Left/4.Top(座標)/5.視窗寬度(Width)/6.視窗高度(Height)/7.技能編號/8.技能執行中時啟動值/9.技能執行中換圖片檢查值/10.第2張圖片路徑)
@@ -1754,47 +1678,7 @@ Erase 戰鬥擲骰介面人物立繪圖路徑紀錄數 '戰鬥系統擲骰介面雙方人物立繪圖路徑紀錄數
 Erase 人物實際狀態資料庫 '人物實際狀態資料
 '===================
 Erase 事件卡記錄暫時數 '事件卡使用紀錄暫時變數(0.(1)總共給予回合數,1.使用者/2.電腦,1.總共數值/2.目前處理數值/3.目前階段/4.事件卡牌編號/5.事件分類/6.是否啟動)
-'Erase 異常狀態_混沌紀錄數 '異常狀態-混沌-骰量紀錄暫時變數(1.紀錄數值(原始)/2.紀錄數值(變更後)/3.數值紀錄是否啟動/4.攻擊防禦模式階段數)
 ''===================
-'atking_sheri_4_tot = 0  '技能-雪莉-飛刃雨出牌量儲存變數
-'atking_sheri_4_tot_ai = 0 '技能-AI-雪莉-飛刃雨出牌量儲存變數
-'Erase atking_帕茉_慈悲的藍眼_tot  '技能-帕茉-慈悲的藍眼骰子量紀錄暫時變數(1.數值/2.是否啟動)
-'Erase atking_艾茵_十三隻眼_tot '技能.艾茵_十三隻眼骰子量紀錄暫時變數(1.數值/2.是否啟動)
-'Erase atking_史塔夏_殺戮模式狀態數 '史塔夏殺戮模式狀態檢查數(1.狀態執行階段/2.狀態啟動檢查值/3.紀錄數值(原始)/4.紀錄數值(變更後)/5.數值紀錄是否啟動)
-'Erase atking_音音夢_成長模式狀態數 '音音夢成長模式狀態檢查數(1.狀態執行階段/2.狀態啟動檢查值)
-'atking_蕾_守護模式狀態啟動值 = False '技能-蕾-Ex-協奏曲-加百烈的守護免除直傷模式啟動值
-'Erase atking_羅莎琳_黑霧幻影紀錄狀態數 '技能-羅莎琳-黑霧幻影(普、EX)紀錄對手出牌編號數
-'Erase atking_伊芙琳_怠惰的墓表紀錄數 '技能-伊芙琳-怠惰的墓表紀錄對手牌編號暫時數(0.總共張數值/1~2牌編號)
-'Erase atking_伊芙琳_赤紅石榴階段紀錄數 '技能-伊芙琳-赤紅石榴紀錄效果及階段暫時數(0.(1).當前效果/(2).當前效果階段,1~106.(1)牌號選定紀錄值)
-'Erase atking_古魯瓦爾多_精神力吸收紀錄數 '技能-古魯瓦爾多-精神力吸收紀錄對手牌編號暫時數(0.總共張數值/1~106牌編號選擇值)
-'Erase atking_梅倫_Jackpot紀錄數 '技能-梅倫-Jackpot抽牌紀錄數(1.總共數/2.目前數)
-'Erase atking_艾伯李斯特_雷擊紀錄數 '技能-艾伯李斯特-雷擊丟棄對手牌紀錄數(1.總共數/2.目前數)
-'atking_艾伯李斯特_智略紀錄數 = 0 '技能-艾伯李斯特-智略抽牌目前數
-'Erase atking_艾依查庫_神速之劍計算數值紀錄數  '技能-艾依查庫-神速之劍計算劍數值紀錄暫時數(1.目前計算數值/2.(廢除))
-'atking_布勞_發條機構紀錄數 = 0 '技能-布勞-發條機構抽牌目前數
-'Erase atking_利恩_反擊的狼煙紀錄數 '技能-利恩-反擊的狼煙抽牌目前數(1.總共數/2.目前數)
-'Erase atking_夏洛特_大聖堂骰量紀錄數 '技能-夏洛特-大聖堂擲骰量紀錄數(1.第1次(公骰)結果/2.第2次(技能)結果/3.分析後結果)
-'Erase atking_瑪格莉特_月光紀錄數 '技能-瑪格莉特-月光紀錄對手牌編號暫時數(0.目前丟棄張數值/1~106牌編號選擇值/107.總共能丟棄張數值)
-'atking_庫勒尼西_瘋狂眼窩紀錄數 = 0 '技能-庫勒尼西-瘋狂眼窩丟棄對手牌紀錄目前數
-'Erase atking_傑多_因果之刻記錄數 '技能-傑多-因果之刻紀錄對手出牌編號數(1~106.記錄牌編號/107.總共回張數/108.目前數)
-'Erase atking_傑多_因果之幻骰量紀錄數 '技能-傑多-因果之幻擲骰量紀錄數(1.第1次(公骰)結果/2.第2次(技能)結果/3.分析後結果)
-'atking_阿奇波爾多_防護射擊_槍數值紀錄數 = 0 '技能-阿奇波爾多-防護射擊目前累計加槍數值紀錄數
-'Erase atking_洛洛妮_逆轉戰局的槍響_抽牌紀錄數 '技能-洛洛妮-逆轉戰局的槍響抽牌目前數(1.總共數/2.目前數)
-'atking_洛洛妮_貪婪之刃與嗜血之槍_搶牌紀錄數 = 0 '技能-洛洛妮-貪婪之刃與嗜血之槍搶牌目前數
-'Erase atking_克頓_竊取資料_奪牌紀錄數  '技能-克頓-竊取資料奪取對手出牌牌號紀錄數(1.奪牌編號/2.奪牌原方出牌順序)
-'Erase atking_克頓_隱蔽射擊骰量紀錄數 '技能-克頓-隱蔽射擊擲骰量紀錄數(1.第1次(公骰)結果/2.第2次(技能)結果/3.分析後總結果)
-'Erase atking_克頓_惡意情報紀錄數 '技能-克頓-惡意情報紀錄對手牌編號暫時數(0.目前階段/1~106牌編號選擇值)
-'atking_露緹亞_渦騎劍閃計算張數紀錄數 = 0 '技能-露緹亞-渦騎劍閃計算劍卡張數值紀錄暫時數
-'atking_艾蕾可_王座之炎計算出牌張數紀錄數 = 0 '技能-艾蕾可-王座之炎計算出牌張數值紀錄暫時數
-'Erase atking_艾蕾可_聖王威光紀錄數  '技能-艾蕾可-聖王威光紀錄暫時數(1.對手當回合防禦力/2.對手當回合出牌數/3.使用者當回合攻擊力)
-'Erase atking_梅莉_綿羊幻夢_抽牌紀錄數 '技能-梅莉-綿羊幻夢抽牌目前數(1.總共數/2.目前數)
-'Erase atking_AI_梅莉_綿羊幻夢_抽牌紀錄數 '技能-AI-梅莉-綿羊幻夢抽牌目前數(1.總共數/2.目前數)
-'Erase atking_貝琳達_雪光_抽牌紀錄數  '技能-貝琳達-雪光抽牌目前數(1.總共數/2.目前數)
-'Erase atking_貝琳達_水晶幻鏡紀錄狀態數   '技能-貝琳達-水晶幻鏡紀錄對手出牌編號數
-'Erase atking_貝琳達_溶魂之雨_攻擊力加成紀錄數  '技能-貝琳達-溶魂之雨攻擊力加成暫時紀錄數(1.是否10張已+10/2.是否15張已+15)
-'atking_蕾_終曲_無盡輪迴的終結紀錄數 = 0 '技能-蕾-Ex-終曲-無盡輪迴的終結紀錄對手之防禦牌值暫時數
-''================
-'Erase 夏洛特_階段處理記錄數 '智慧型AI-夏洛特-戰略判斷紀錄數(1.當前階段實行/2.目標結束之回合數)
 vbecommadtotplay = 0
 ReDim vbecommadnum(1 To 7, vbecommadtotplay)
 ReDim vbecommadstr(1 To 3, vbecommadtotplay)

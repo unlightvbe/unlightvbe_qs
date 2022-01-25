@@ -1049,7 +1049,6 @@ End Property
 Public Property Let CardMain_角色HP(ByVal New_CardMain_角色HP As Integer)
    m_cardmain_personhp = New_CardMain_角色HP
    PropertyChanged "CardMain_角色HP"
-'   If Me.CardMain_角色HP < 0 And Me.CardMain_角色HP <> -99 Then Me.CardMain_角色HP = 0
    '========================
    If Me.CardMain_角色HP = -99 Then
        personlabelhp.Caption = "?"
@@ -1420,8 +1419,6 @@ m_cardbackcheck = 2
 End Sub
 
 Private Sub PEAFcardback_Click()
-'wmp1.Controls.stop
-'wmp1.Controls.play
 card.Visible = False
 card.Left = 0
 card.Top = 0
@@ -1454,8 +1451,6 @@ Next
 End Sub
 
 Private Sub PEAFcardbackpassive_Click()
-'wmp1.Controls.stop
-'wmp1.Controls.play
 card.Visible = False
 card.Left = 0
 card.Top = 0
@@ -1488,8 +1483,6 @@ Next
 End Sub
 
 Private Sub PEAFcardusbackclick_Click(ByVal Button As Integer)
-'wmp1.Controls.stop
-'wmp1.Controls.play
 If m_cardbackcheck <= 1 Then
     PEAFcardback.Visible = False
     PEAFcardback.Left = 0
@@ -1549,10 +1542,6 @@ Call PEAFcardbackBR_MouseMove(Index, 0, 0, 0, 0)
 End Sub
 
 Private Sub UserControl_Initialize()
-'wmp1.settings.volume = 20
-'wmp1.settings.playCount = 1
-'wmp1.URL = App.Path & "\mp3\ulse23.mp3"
-'wmp1.Controls.stop
 If personlabelhp.FontName <> "Bradley Gratis" Then
     personlabelhp.FontSize = 14
     personlabelatk.FontSize = 14

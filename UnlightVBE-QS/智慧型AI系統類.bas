@@ -142,74 +142,6 @@ Select Case turn
 End Select
 End Sub
 Sub 智慧型AI系統計算_二階段_計算期望值_個別技能(ByVal name As String, ByVal turn As Integer, ByVal movecpre As Integer, ByVal uscom As Integer)
-'智慧型AI系統類.檢查人物技能是否有EX技 uscom, name
-'If personatkingtfr(5) = 1 Then
-'   Exit Sub '有封印狀態時無法發動技能
-'End If
-'Select Case name
-'     Case "艾伯李斯特"
-'           智慧型AI人物類.艾伯李斯特 turn, movecpre, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "雪莉"
-'           智慧型AI人物類.雪莉 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "艾茵"
-'           智慧型AI人物類.艾茵 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "古魯瓦爾多"
-'           智慧型AI人物類.古魯瓦爾多 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "帕茉"
-'           智慧型AI人物類.帕茉 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "史塔夏"
-'           智慧型AI人物類.史塔夏 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "C.C."
-'           智慧型AI人物類.CC turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "伊芙琳"
-'           智慧型AI人物類.伊芙琳 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "布勞"
-'           智慧型AI人物類.布勞 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "梅倫"
-'           智慧型AI人物類.梅倫 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "音音夢"
-'           智慧型AI人物類.音音夢 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "艾依查庫"
-'           智慧型AI人物類.艾依查庫 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "阿貝爾"
-'           智慧型AI人物類.阿貝爾 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "利恩"
-'           智慧型AI人物類.利恩 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "夏洛特"
-'           智慧型AI人物類.夏洛特 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "泰瑞爾"
-'           智慧型AI人物類.泰瑞爾 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "瑪格莉特"
-'           智慧型AI人物類.瑪格莉特 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "庫勒尼西"
-'           智慧型AI人物類.庫勒尼西 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "蕾格烈芙"
-'           智慧型AI人物類.蕾格烈芙 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "多妮妲"
-'           智慧型AI人物類.多妮妲 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "傑多"
-'           智慧型AI人物類.傑多 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "阿奇波爾多"
-'           智慧型AI人物類.阿奇波爾多 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "露緹亞"
-'           智慧型AI人物類.露緹亞 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "梅莉"
-'           智慧型AI人物類.梅莉 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "貝琳達"
-'           智慧型AI人物類.貝琳達 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "蕾"
-'           智慧型AI人物類.蕾 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "羅莎琳"
-'           智慧型AI人物類.羅莎琳 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "洛洛妮"
-'           智慧型AI人物類.洛洛妮 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "克頓"
-'           智慧型AI人物類.克頓 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "艾蕾可"
-'           智慧型AI人物類.艾蕾可 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'     Case "尤莉卡"
-'           智慧型AI人物類.尤莉卡 turn, movecpre, uscom, personatkingtfr(1), personatkingtfr(2), personatkingtfr(3), personatkingtfr(4)
-'End Select
 '===========================執行階段插入點(99)
 智慧型AI系統類.智慧型AI系統_執行階段99_主動技能執行 uscom, turn, movecpre
 '============================
@@ -519,29 +451,6 @@ If cardAInumselect2 = "" Then  '沒有任何組合符合條件
     cardAInumselect2 = "-10=-10"
 End If
 End Sub
-Sub 智慧型AI系統計算_四階段_比序_2_超額比序判斷_1()
-'cardAInumselect3 = Split(cardAInumselect2, "=")
-'If UBound(cardAInumselect3) > 1 Then
-'    For i = 1 To cardAITotalNUM
-'        For j = 1 To cardAInumuscom
-'             If cardAInumcaseperson(Val(cardAInumFinal2(i, 2)), 2, j) < 0 Then
-'                 cardAInumFinal2(i, 3) = 1
-'             End If
-'             cardAInumFinal2(i, 4) = Val(cardAInumFinal2(i, 4)) + Val(cardAInumcaseperson(cardAInumFinal2(i, 2), 2, j))
-'        Next
-'    Next
-'    '===============
-'    Erase cardAInumselect3
-'    cardAInumselect2 = ""
-'    '======
-'    For i = 1 To cardAITotalNUM
-'        If cardAInumFinal2(i, 1) = cardAInumselect1 And cardAInumFinal2(i, 3) = 0 Then
-'            cardAInumselect2 = cardAInumselect2 & "=" & cardAInumFinal2(i, 2)
-'        End If
-'    Next
-'    cardAInumselect3 = Split(cardAInumselect2, "=")
-'End If
-End Sub
 Sub 智慧型AI系統計算_四階段_比序_2_超額比序判斷_2()
 cardAInumselect3 = Split(cardAInumselect2, "=")
 If UBound(cardAInumselect3) > 1 Then
@@ -622,26 +531,24 @@ Select Case uscom
 End Select
 End Sub
 Sub 智慧型AI系統計算_暫時匯出(ByVal uscom As Integer)
-'If Formsetting.checktest.Value = 1 Then
-''    Open App.Path & "\test\out1.txt" For Output As #1
-'    Open App.Path & "\test\AIout" & Format(Now, "_yyyy-m-d_hh-mm-ss_") & BattleTurn & "turn_" & 戰鬥系統類.turnatk & "_" & uscom & "_1.txt" For Output As #1
-'    For i = 1 To cardAITotalNUM
-'        Print #1, cardAInumnm(Val(cardAInumFinal2(i, 2)) - 1) & "=" & cardAInumFinal2(i, 1) & "/" & cardAInumFinal2(i, 4) & "#" & cardAInumFinal2(i, 2) & "@";
-'        For k = 1 To cardAInumuscom
-'            Print #1, cardAInumcaseperson(Val(cardAInumFinal2(i, 2)), 2, k) & "=";
-'        Next
-'        Print #1,
-'    Next
-'    Close
-'    'MsgBox "已匯出完畢1"
-'End If
+If Formsetting.checktest.Value = 1 Then
+    Open App.Path & "\test\AIout" & Format(Now, "_yyyy-m-d_hh-mm-ss_") & BattleTurn & "turn_" & 戰鬥系統類.turnatk & "_" & uscom & "_1.txt" For Output As #1
+    For i = 1 To cardAITotalNUM
+        Print #1, cardAInumnm(Val(cardAInumFinal2(i, 2)) - 1) & "=" & cardAInumFinal2(i, 1) & "/" & cardAInumFinal2(i, 4) & "#" & cardAInumFinal2(i, 2) & "@";
+        For k = 1 To cardAInumuscom
+            Print #1, cardAInumcaseperson(Val(cardAInumFinal2(i, 2)), 2, k) & "=";
+        Next
+        Print #1,
+    Next
+    Close
+End If
 End Sub
 Sub 智慧型AI系統計算_引導程序_試驗1(ByVal uscom As Integer, ByVal turn As Integer, ByVal name As String, ByVal movecpre As Integer)
 智慧型AI系統類.智慧型AI系統計算_一階段_初始 uscom
 智慧型AI系統類.智慧型AI系統計算_二階段_計算期望值_初始 turn, movecpre, uscom
 智慧型AI系統類.智慧型AI系統計算_二階段_計算期望值_個別技能 name, turn, movecpre, uscom
 智慧型AI系統類.智慧型AI系統計算_三階段_統計排列
-智慧型AI系統類.智慧型AI系統計算_暫時匯出 uscom
+'智慧型AI系統類.智慧型AI系統計算_暫時匯出 uscom
 End Sub
 Sub 智慧型AI系統計算_引導程序_選擇(ByVal uscom As Integer, ByVal turn As Integer, ByVal name As String, ByVal movecpre As Integer, ByVal choose As Integer)
 Dim CardMaxNum As Integer
@@ -660,9 +567,8 @@ ElseIf Val(pageglead(uscom)) > 0 And Val(pageglead(uscom)) <= CardMaxNum Then
     智慧型AI系統類.智慧型AI系統計算_二階段_計算期望值_個別技能 name, turn, movecpre, uscom
     智慧型AI系統類.智慧型AI系統計算_三階段_統計排列
     智慧型AI系統類.智慧型AI系統計算_四階段_比序_1_初始
-'    智慧型AI系統類.智慧型AI系統計算_四階段_比序_2_超額比序判斷_1
     智慧型AI系統類.智慧型AI系統計算_四階段_比序_2_超額比序判斷_2
-    智慧型AI系統類.智慧型AI系統計算_暫時匯出 uscom
+    '智慧型AI系統類.智慧型AI系統計算_暫時匯出 uscom
     智慧型AI系統類.智慧型AI系統計算_四階段_比序_3_選擇組合
     If turn = 3 And cardAInumchoose > 0 Then
         智慧型AI系統類.智慧型AI系統計算_引導程序_移動階段續 uscom, turn, name, movecpre, choose, pageglead(uscom)
@@ -681,84 +587,11 @@ If Val(pagenumber) > 0 Then
             智慧型AI系統類.智慧型AI系統計算_移動階段續_正向面_四階段_統計估計期望值及判斷 uscom
             智慧型AI系統類.智慧型AI系統計算_移動階段續_正向面_五階段_實行選牌 choose, uscom, pagenumber
         Case False
-'            智慧型AI系統類.智慧型AI系統計算_移動階段續_否定面_一階段_重設期望值_個別
             智慧型AI系統類.智慧型AI系統計算_移動階段續_否定面_二階段_選擇行動 uscom
             智慧型AI系統類.智慧型AI系統計算_最後階段_實行選牌 choose, uscom
     End Select
 End If
 End Sub
-Function 智慧型AI系統_目前可執行之人物判斷(ByVal name As String) As Boolean
-If Formsetting.chkusenewai.Value = 0 Then
-    智慧型AI系統_目前可執行之人物判斷 = False
-    Exit Function
-End If
-Select Case name
-    Case "艾伯李斯特"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "雪莉"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "艾茵"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "古魯瓦爾多"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "帕茉"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "史塔夏"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "C.C."
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "伊芙琳"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "布勞"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "梅倫"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "音音夢"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "艾依查庫"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "阿貝爾"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "利恩"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "夏洛特"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "泰瑞爾"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "瑪格莉特"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "庫勒尼西"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "蕾格烈芙"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "多妮妲"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "傑多"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "阿奇波爾多"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "露緹亞"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "梅莉"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "貝琳達"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "蕾"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "羅莎琳"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "洛洛妮"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "克頓"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "艾蕾可"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case "尤莉卡"
-            智慧型AI系統_目前可執行之人物判斷 = True
-    Case Else
-            智慧型AI系統_目前可執行之人物判斷 = False
-End Select
-End Function
 Function 階層數(ByVal num As Integer) As Single
 Dim w As Double
 w = 1
@@ -795,14 +628,6 @@ For i = 1 To 2 ^ n1
     End If
 Next
 wtpnum = Split(wtstr, "=")
-'If UBound(wtpnum) = wtall Then
-'    MsgBox wtstr
-'    For i = 1 To UBound(wtpnum)
-'        Debug.Print wtpnum(i) & "=" & cardAInumnm(wtpnum(i) - 1)
-'    Next
-'Else
-'    MsgBox "失敗"
-'End If
 For i = 1 To UBound(wtpnum)
     cardAInumMOVnm(i) = cardAInumnm(wtpnum(i) - 1)
 Next
@@ -848,14 +673,6 @@ Else
     智慧型AI系統計算_移動階段續_判斷出牌資格 = False
 End If
 End Function
-Sub 智慧型AI系統計算_移動階段續_否定面_一階段_重設期望值_個別()
-'For i = 1 To cardAInumuscom
-'    If cardAInumcaseperson(cardAInumchoose, 2, i) < 10 Then
-'        cardAInumcaseperson(cardAInumchoose, 2, i) = 0
-'        cardAInumMOVmain(2, i) = 0
-'    End If
-'Next
-End Sub
 Sub 智慧型AI系統計算_移動階段續_正向面_一階段_準備進行資料()
 Dim wercnum As Integer, werct As String, werpnum As Integer
 ReDim cardcountAInumMOV(1 To cardAInumuscom, 1 To 5) As String
@@ -866,23 +683,17 @@ For k = 1 To cardAInumuscom
               If cardcountAInum(k, 1) = a3a And cardAInumMOVmain(2, k) = 0 Then
                   wercnum = Val(wercnum) + 1
                   werct = werct & "=" & k
-'              ElseIf cardAInumMOVmain(2, k) >= 10 Then
-'                 werpnum = Val(werpnum) + 1
               End If
          Case 1
               If cardcountAInum(k, 3) = a3a And cardAInumMOVmain(2, k) = 0 Then
                   wercnum = Val(wercnum) + 1
                   werct = werct & "=" & k
-'              ElseIf cardAInumMOVmain(2, k) >= 10 Then
-'                 werpnum = Val(werpnum) + 1
               End If
     End Select
     For q = 1 To 5
          cardcountAInumMOV(k, q) = cardcountAInum(k, q)
     Next
 Next
-'===============
-'If Val(werpnum) >= 1 Then werpnum = 1
 '===============
 ReDim cardAInumMOVnmtot(0 To (2 ^ wercnum), 1 To 8) As String
 cardAInumMOVnmtot(0, 1) = werct
@@ -907,7 +718,6 @@ For i = 1 To Val(cardAInumMOVnmtot(0, 3))
         cardAInumMOVnmtot(0, 2) = Val(cardAInumMOVnmtot(0, 2)) + Val(wernum)
 Next
 '=====================進行剩餘移動牌之排列組合串整合
-'werpstr = Split(cardAInumMOVnmtot(1, 1), "=")
 For i = 1 To 2 ^ Val(cardAInumMOVnmtot(0, 3))
     weru = 0
     werstru = ""
@@ -923,10 +733,6 @@ For i = 1 To 2 ^ Val(cardAInumMOVnmtot(0, 3))
                             wermovnm = Val(wermovnm) + Val(cardcountAInum(k, 2))
                             wermovynm = Val(wermovynm) + 1
                         ElseIf Mid(cardAInumMOVnmtot(i, 1), weru, 1) = 0 Then
-'                            werstru = werstru & "1"
-'                            wermovnm = Val(wermovnm) + Val(cardcountAInum(k, 2))
-'                            wermovynm = Val(wermovynm) + 1
-'                        Else
                             werstru = werstru & "n"
                         End If
                     ElseIf cardAInumMOVmain(2, k) = 1 Then
@@ -946,10 +752,6 @@ For i = 1 To 2 ^ Val(cardAInumMOVnmtot(0, 3))
                             wermovynm = Val(wermovynm) + 1
                             wermovnm = Val(wermovnm) + Val(cardcountAInum(k, 4))
                         ElseIf Mid(cardAInumMOVnmtot(i, 1), weru, 1) = 0 Then
-'                            werstru = werstru & "1"
-'                            wermovynm = Val(wermovynm) + 1
-'                            wermovnm = Val(wermovnm) + Val(cardcountAInum(k, 4))
-'                        Else
                             werstru = werstru & "n"
                         End If
                     ElseIf cardAInumMOVmain(2, k) = 1 Then
@@ -1017,7 +819,6 @@ For i = 1 To 2 ^ Val(cardAInumMOVnmtot(0, 3))
                 智慧型AI系統類.智慧型AI系統計算_二階段_計算期望值_個別技能 name, turnm, movecpren, uscom
                 智慧型AI系統類.智慧型AI系統計算_三階段_統計排列
                 智慧型AI系統類.智慧型AI系統計算_四階段_比序_1_初始
-'                智慧型AI系統類.智慧型AI系統計算_四階段_比序_2_超額比序判斷_1
                 智慧型AI系統類.智慧型AI系統計算_四階段_比序_2_超額比序判斷_2
                 智慧型AI系統類.智慧型AI系統計算_四階段_比序_3_選擇組合
         Else
@@ -1180,13 +981,6 @@ Else
 End If
 End Sub
 Sub 智慧型AI系統計算_移動階段續_正向面_五階段_實行選牌(ByVal choose As Integer, ByVal uscom As Integer, ByVal pagenumber As Integer)
-'Dim wer As Integer '暫時變數
-'If choose = 1 Then
-'    wer = 0
-'Else
-'    wer = 1
-'End If
-'=================
 Dim pu As Integer '暫時變數
 '=======================如組合符合出牌條件的話
 Select Case uscom
@@ -1282,9 +1076,8 @@ If Val(pageglead(uscom)) > CardNumMax Then
         智慧型AI系統類.智慧型AI系統計算_二階段_計算期望值_個別技能 name, turn, movecpre, uscom
         智慧型AI系統類.智慧型AI系統計算_三階段_統計排列
         智慧型AI系統類.智慧型AI系統計算_四階段_比序_1_初始
-    '    智慧型AI系統類.智慧型AI系統計算_四階段_比序_2_超額比序判斷_1
         智慧型AI系統類.智慧型AI系統計算_四階段_比序_2_超額比序判斷_2
-        智慧型AI系統類.智慧型AI系統計算_暫時匯出 uscom
+        '智慧型AI系統類.智慧型AI系統計算_暫時匯出 uscom
         智慧型AI系統類.智慧型AI系統計算_四階段_比序_3_選擇組合
         If turn = 3 And cardAInumchoose > 0 Then
             智慧型AI系統類.智慧型AI系統計算_引導程序_移動階段續 uscom, turn, name, movecpre, choose, (CardNowNUM2 - CardNowNUM1 + 1)
@@ -1794,7 +1587,6 @@ If Vss_EventActiveAIScoreNum(1) = 1 Then
         For i = 3 To UBound(Vss_EventActiveAIScoreNum)
             If Vss_EventActiveAIScoreNum(i) > 0 And Vss_EventActiveAIScoreNum(i) <= cardAInumuscom Then
                 cardAInumcaseperson(cardAICaseNum, 2, Vss_EventActiveAIScoreNum(i)) = 1
-'                 MsgBox vstest & Chr(10) & cardcountAInum(Vss_EventActiveAIScoreNum(i), 1) & "," & cardcountAInum(Vss_EventActiveAIScoreNum(i), 2) & ",  " & cardcountAInum(Vss_EventActiveAIScoreNum(i), 3) & "," & cardcountAInum(Vss_EventActiveAIScoreNum(i), 4) & Chr(10) & "uscom:" & uscom & "  ,atkingnum:" & atkingnum
             End If
         Next
     End If

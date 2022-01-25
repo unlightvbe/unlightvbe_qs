@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "ComDlg32.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TabCtl32.Ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.4#0"; "comctl32.Ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.4#0"; "COMCTL32.OCX"
 Begin VB.Form Formsetting 
    Appearance      =   0  '平面
    BorderStyle     =   1  '單線固定
@@ -2577,23 +2577,8 @@ For i = 1 To 18
     personcom(i).AddItem "移3/特3"
     persontgus(i).Visible = False
     persontgcom(i).Visible = False
-'    personus(i).ListIndex = 0
-'    personcom(i).ListIndex = 0
 Next
-'persontgruonus(1).Value = True
-'persontgruoncom(1).Value = True
-'lopnmusictext.Visible = False
-If FormMainMode.personsettingus(1).Caption <> "人物資訊" Then
-'    其他設定.Visible = False
-'    chkpersonvsmode.Value = 1
-'    persontgruonus(4).Value = True
-'    ckendturn.Value = 1
-    checktest.Value = 1
-End If
-End Sub
-
-Private Sub Frame1_DragDrop(Source As Control, X As Single, Y As Single)
-
+'checktest.Value = 1
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)

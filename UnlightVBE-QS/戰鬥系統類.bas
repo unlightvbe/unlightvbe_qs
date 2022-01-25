@@ -18,8 +18,6 @@ Public Const b7b As Integer = 7
 Public Const b8b As Integer = 8
 Public Const b9b As Integer = 9
 
-'Public atkingno(1 To 8, 1 To 11) As String '技能發動排序暫時圖片路徑儲存變數(技能發動順序8~1,1.圖片路徑/2.(1)使用者/(2)電腦方/3.Left/4.Top(座標)/5.視窗寬度(Width)/6.視窗高度(Height)/7.技能編號/8.技能執行中時啟動值/9.技能執行中換圖片檢查值/10.第2張圖片路徑)
-'Public atkingsecondjpg As String '技能發動第二張圖片路徑
 Public goicheck(1 To 2) As Integer   '攻擊/防禦模式加骰數值檢查碼
 Public pageonin(1 To 999) As Integer  '牌張正反面檢查碼
 Public liveus(1 To 3) As Integer, livecom(1 To 3) As Integer, liveusmax(1 To 3) As Integer, livecommax(1 To 3) As Integer
@@ -35,10 +33,8 @@ Public movedsus As Integer   '使用者移動階段決定值變數
 Public turnpageonin As Integer  '階段是否可出牌變數(一般)
 Public turnpageoninatking As Integer  '階段是否可出牌變數(技能使用)
 Public goickus As Integer '牌值一次檢查碼
-'Public atkingck(1 To 161, 1 To 2) As Integer '技能階段啟動碼(x.人物技能編號,1.技能執行階段/2.技能啟動檢查值)
 Public atkingck(1 To 2, 1 To 3, 1 To 8, 1 To 3) As Integer '技能階段啟動碼(1.使用者/2.電腦,1~3.人物編號/1~4人物自身技能項目;5~8人物自身被動技項目,1.技能啟動標記/2.這回合間啟動次數(主動技->動畫執行)/3.這場戰鬥間啟動次數(主動技->動畫執行))
 Public atkingckdice(1 To 2, 1 To 2, 1 To 4) As String '人物技能骰子影響紀錄暫時變數(1.使用者/2.電腦,1.對使用者/2.對電腦,1.主動技/2.被動技/3.異常狀態/4.人物實際狀態,對總骰數之影響量變化串)
-'Public atkingckai(1 To 140, 1 To 2) As Integer 'AI技能階段啟動碼(x.人物技能編號,1.技能執行階段/2.技能啟動檢查值)
 Public atkingtrn(1 To 4) As Integer '技能計數器暫時儲存變數(1.使用者(現)/2.電腦(現)/3.使用者(備份)/4.電腦(備份))
 Public akhpnm As Integer  '技能說明暫時變數
 Public turnatk As Integer  '攻擊／防禦階段變數(1.使用者攻擊、電腦防禦,2.使用者防禦、電腦攻擊,3.發牌、移動)
@@ -47,7 +43,6 @@ Public HP檢查變數 As Boolean 'HP檢查階段是否已檢查變數
 Public HP檢查階段數 As Integer 'HP檢查階段變數(1.移動階段後,2.攻擊/防禦階段前,3.攻/防禦階段後)
 Public 距離單位(1 To 2, 1 To 2, 1 To 2) As Integer  '距離單位暫時儲存資料(1.HP血條/2.牌移動,1.使用者/2.電腦,1.Left單位/2.Top單位)
 Public personminixy(1 To 2, 1 To 3, 1 To 3, 1 To 2) As Integer '小人物圖片座標指定資料(1.使用者/2.電腦,第n位,1.近距離/2.中距離/3.遠距離,1.Left/2.Top(座標))
-'Public 人物異常狀態資料庫(1 To 2, 1 To 3, 1 To 14, 1 To 4) As String '異常狀態資料(1.使用者/2.電腦,第x個異常狀態,1.狀態數值/2.狀態統計數(剩餘回合/累計)/3.技能唯一識別碼/4.異常狀態圖片路徑)
 Public 異常狀態檢查數(1 To 40, 1 To 2) As Integer '異常狀態啟動碼(x.異常狀態編號,1.狀態執行階段/2.狀態啟動檢查值)
 Public 技能動畫顯示階段數 As Integer '技能動畫計數器階段碼(1.攻擊/防禦階段-普通,2.移動階段-普通/3.發牌階段後、移動階段前/4.移動階段後/5.攻擊階段後/6.防禦階段後/7.回合結束時)
 Public 攻擊防禦骰子總數(1 To 4) As Integer '攻擊/防禦模式骰子數量資料(1.使用者(總)/2.電腦(總)/3.使用者(原)/4.電腦(原))
@@ -66,7 +61,6 @@ Public 時間軸顏色變化紀錄暫時變數(1 To 4, 1 To 3) As Integer '時間軸進行顏色變化
 Public 開始卡片移動動畫完成數(1 To 2, 1 To 4) As Integer   '開始時每張卡片移動動畫完成紀錄數(1.使用者/2.電腦,1~3.卡片/4.目前第幾張)
 Public 交換角色紀錄暫時變數(1 To 4) As Integer '交換角色雙方紀錄暫時數(1.使用者/2.電腦/3.是否當下首次/4.交換角色完執行階段數)
 Public pageeventnum(1 To 2, 1 To 18, 1 To 2) As String '事件卡排列紀錄資料(1.使用者/2.電腦,1~18-編號,1.事件卡名稱/2.事件卡檔案名稱)
-'Public 擲骰後骰傷害數 As Integer '戰鬥系統表單-fm2.Caption的變數表示
 Public 戰鬥模式勝敗紀錄數 As Integer '戰鬥系統當前勝敗紀錄暫時變數(1.使用者方勝利/2.使用者方敗北/3.平手)
 Public 電腦方移動階段選擇數 As Integer '移動階段電腦方選擇之行動暫時變數
 Public 電腦方事件卡是否出完選擇數 As Boolean '電腦方先出事件卡是否出完暫時紀錄
@@ -129,9 +123,6 @@ For i = 1 To Len(ph)
 Next
 執行動作_路徑使用新式異常狀態圖案 = ph
 End Function
-Sub 自動捲軸捲動()
-'FormMainMode.messageus.ListIndex = FormMainMode.messageus.ListCount - 1
-End Sub
 Sub 傷害執行_技能直傷_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
 If tot <= 0 Then Exit Sub
 If isEvent = True Then
@@ -158,7 +149,6 @@ Select Case num
       If tot > 0 And liveus(角色人物對戰人數(1, 2)) > 0 Then
           If tot >= liveus(角色人物對戰人數(1, 2)) Then
              戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
-'                 FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = 0
              FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
              FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = 0
              liveus(角色人物對戰人數(1, 2)) = 0
@@ -166,7 +156,6 @@ Select Case num
              FormMainMode.bloodlineout1.Width = 0
              牌總階段數(1) = 牌總階段數(1) + 1
           Else
-'                 FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = Val(FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption) - tot
              FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2)) - tot
              FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = Val(FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption) - tot
              liveus(角色人物對戰人數(1, 2)) = liveus(角色人物對戰人數(1, 2)) - tot
@@ -181,17 +170,14 @@ Select Case num
           If tot >= liveus(角色待機人物紀錄數(1, num)) Then
              liveus(角色待機人物紀錄數(1, num)) = 0
              If FormMainMode.uspi1(角色待機人物紀錄數(1, num)).Caption = "" Then
-'                     FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
                  FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = -liveusmax(角色待機人物紀錄數(1, num))
                  FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
              Else
-'                     FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = 0
                  FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 0
                  FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = 0
              End If
              牌總階段數(1) = 牌總階段數(1) + 1
           Else
-'                 FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = Val(FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption) - tot
              FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = Val(FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption) - tot
              FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = Val(FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption)
              liveus(角色待機人物紀錄數(1, num)) = liveus(角色待機人物紀錄數(1, num)) - tot
@@ -292,7 +278,6 @@ For uscom = 1 To 2
             '=======人物實際狀態
             解析骰量變化 atkingckdice(1, 2, 4), 2
             '===================================
-'            FormMainMode.trgoi2_Timer
     End Select
 Next
 End Sub
@@ -332,7 +317,6 @@ If Vss_EventHPLActionOffNum = 0 Then
                         戰鬥系統類.廣播訊息 "你的HP恢復了" & tot & "點。"
                         FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width + 距離單位(1, 1, 1) * tot
                         liveus(角色人物對戰人數(1, 2)) = Val(liveus(角色人物對戰人數(1, 2))) + tot
-'                        FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = liveus(角色人物對戰人數(1, 2))
                         FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2))
                         FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = liveus(角色人物對戰人數(1, 2))
                         FormMainMode.bloodnumus1.Caption = liveus(角色人物對戰人數(1, 2))
@@ -341,7 +325,6 @@ If Vss_EventHPLActionOffNum = 0 Then
                            戰鬥系統類.廣播訊息 "你的HP恢復了" & Val(liveusmax(角色人物對戰人數(1, 2))) - Val(liveus(角色人物對戰人數(1, 2))) & "點。"
                            FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width + 距離單位(1, 1, 1) * (Val(liveusmax(角色人物對戰人數(1, 2))) - Val(liveus(角色人物對戰人數(1, 2))))
                            liveus(角色人物對戰人數(1, 2)) = Val(liveusmax(角色人物對戰人數(1, 2)))
-'                           FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = liveus(角色人物對戰人數(1, 2))
                            FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2))
                            FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = liveus(角色人物對戰人數(1, 2))
                            FormMainMode.bloodnumus1.Caption = liveus(角色人物對戰人數(1, 2))
@@ -351,24 +334,14 @@ If Vss_EventHPLActionOffNum = 0 Then
        Case Is > 1
             If liveus(角色待機人物紀錄數(1, num)) > 0 And tot > 0 Then
                    If liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) >= tot Then
-    '                    戰鬥系統類.廣播訊息 "你的HP恢復了" & tot & "點。"
-    '                    formmainmode.bloodlineout1.Width = formmainmode.bloodlineout1.Width + 距離單位(1, 1, 1) * tot
                         liveus(角色待機人物紀錄數(1, num)) = Val(liveus(角色待機人物紀錄數(1, num))) + tot
-'                        FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = liveus(角色待機人物紀錄數(1, num))
                         FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = liveus(角色待機人物紀錄數(1, num))
                         FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = liveus(角色待機人物紀錄數(1, num))
-    '                    formmainmode.bloodnumus1.Caption = liveus(角色待機人物紀錄數(1, num))
-    '                    戰鬥系統類.自動捲軸捲動
                   ElseIf liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) < tot Then
                         If liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) > 0 Then
-    '                       戰鬥系統類.廣播訊息 "你的HP恢復了" & Val(liveusmax(角色待機人物紀錄數(1, num))) - Val(liveus(角色待機人物紀錄數(1, num))) & "點。"
-    '                       formmainmode.bloodlineout1.Width = formmainmode.bloodlineout1.Width + 距離單位(1, 1, 1) * (Val(liveusmax(角色待機人物紀錄數(1, num))) - Val(liveus(角色待機人物紀錄數(1, num))))
                            liveus(角色待機人物紀錄數(1, num)) = Val(liveusmax(角色待機人物紀錄數(1, num)))
-'                           FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = liveus(角色待機人物紀錄數(1, num))
                            FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = liveus(角色待機人物紀錄數(1, num))
                            FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = liveus(角色待機人物紀錄數(1, num))
-    '                       formmainmode.bloodnumus1.Caption = liveus(角色待機人物紀錄數(1, num))
-    '                       戰鬥系統類.自動捲軸捲動
                         End If
                   End If
             End If
@@ -401,7 +374,6 @@ If Vss_EventHPLActionOffNum = 0 Then
                         戰鬥系統類.廣播訊息 "對方的HP恢復了" & tot & "點。"
                         FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left - 距離單位(1, 2, 1) * tot
                         livecom(角色人物對戰人數(2, 2)) = Val(livecom(角色人物對戰人數(2, 2))) + tot
-'                        FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption = livecom(角色人物對戰人數(2, 2))
                         FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2))
                         FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = livecom(角色人物對戰人數(2, 2))
                         FormMainMode.bloodnumcom1.Caption = livecom(角色人物對戰人數(2, 2))
@@ -410,7 +382,6 @@ If Vss_EventHPLActionOffNum = 0 Then
                            戰鬥系統類.廣播訊息 "對方的HP恢復了" & Val(livecommax(角色人物對戰人數(2, 2))) - Val(livecom(角色人物對戰人數(2, 2))) & "點。"
                            FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left - 距離單位(1, 2, 1) * (Val(livecommax(角色人物對戰人數(2, 2))) - Val(livecom(角色人物對戰人數(2, 2))))
                            livecom(角色人物對戰人數(2, 2)) = Val(livecommax(角色人物對戰人數(2, 2)))
-'                           FormMainMode.cardcompi1(角色人物對戰人數(2, 2)).Caption = livecom(角色人物對戰人數(2, 2))
                            FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2))
                            FormMainMode.compi4(角色人物對戰人數(2, 2)).Caption = livecom(角色人物對戰人數(2, 2))
                            FormMainMode.bloodnumcom1.Caption = livecom(角色人物對戰人數(2, 2))
@@ -421,17 +392,14 @@ If Vss_EventHPLActionOffNum = 0 Then
             If livecom(角色待機人物紀錄數(2, num)) > 0 And tot > 0 Then
                    If livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) >= tot Then
                         livecom(角色待機人物紀錄數(2, num)) = Val(livecom(角色待機人物紀錄數(2, num))) + tot
-'                        FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = Val(FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption) + tot
                         FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
                         FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = Val(FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption) + tot
                   ElseIf livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) < tot Then
                            livecom(角色待機人物紀錄數(2, num)) = Val(livecommax(角色待機人物紀錄數(2, num)))
                            If FormMainMode.compi1(角色待機人物紀錄數(2, num)).Caption = "" Then
-'                                FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = 0
                                 FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
                                 FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = 0
                            Else
-'                                FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = livecom(角色待機人物紀錄數(2, num))
                                 FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
                                 FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = livecom(角色待機人物紀錄數(2, num))
                            End If
@@ -601,21 +569,18 @@ Sub 執行動作_使用者_棄牌(ByVal n As Integer)
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) - 1
     目前數(5) = pagecardnum(n, 7)
     pagecardnum(n, 6) = 3
-'    戰鬥系統類.座標計算_使用者手牌
     牌移動暫時變數(1) = 240
     牌移動暫時變數(2) = 960
     牌移動暫時變數(3) = n
     pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
     pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
-'    牌順序增加_手牌_使用者 n
     目前數(15) = 4
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_牌組_回牌_使用者(ByVal n As Integer)
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-'    目前數(9) = pagecardnum(n, 7)
     pagecardnum(n, 5) = 1
     pagecardnum(n, 6) = 1
     戰鬥系統類.座標計算_使用者手牌
@@ -865,8 +830,6 @@ Select Case m
     FormMainMode.movejpg.小人物圖片 = app_path & "\gif\system\short.png"
     FormMainMode.movejpg.Left = 4440
     FormMainMode.movejpg.Top = 2520
-'    formmainmode.personusminijpg.Left = personminixy(1, 角色人物對戰人數(1, 2), 1, 1)
-'    formmainmode.personcomminijpg.Left = personminixy(2, 角色人物對戰人數(2, 2), 1, 1)
     FormMainMode.personusminijpg.Left = 4320 - anw(1)
     FormMainMode.personusminijpg.Top = 5880 - anh(1)
     FormMainMode.personcomminijpg.Left = 7080 - anw(2)
@@ -875,8 +838,6 @@ Select Case m
     FormMainMode.movejpg.小人物圖片 = app_path & "\gif\system\middle.png"
     FormMainMode.movejpg.Left = 2880
     FormMainMode.movejpg.Top = 2000
-'    formmainmode.personusminijpg.Left = personminixy(1, 角色人物對戰人數(1, 2), 2, 1)
-'    formmainmode.personcomminijpg.Left = personminixy(2, 角色人物對戰人數(2, 2), 2, 1)
     FormMainMode.personusminijpg.Left = 2640 - anw(1)
     FormMainMode.personusminijpg.Top = 5880 - anh(1)
     FormMainMode.personcomminijpg.Left = 8680 - anw(2)
@@ -885,20 +846,12 @@ Select Case m
     FormMainMode.movejpg.小人物圖片 = app_path & "\gif\system\long.png"
     FormMainMode.movejpg.Left = 1080
     FormMainMode.movejpg.Top = 2360
-'    formmainmode.personusminijpg.Left = personminixy(1, 角色人物對戰人數(1, 2), 3, 1)
-'    formmainmode.personcomminijpg.Left = personminixy(2, 角色人物對戰人數(2, 2), 3, 1)
     FormMainMode.personusminijpg.Left = 1040 - anw(1)
     FormMainMode.personusminijpg.Top = 5880 - anh(1)
     FormMainMode.personcomminijpg.Left = 10320 - anw(2)
     FormMainMode.personcomminijpg.Top = 5880 - anh(2)
 End Select
-'============以下是異常狀態檢查及啟動
-'異常狀態檢查數(33, 1) = 1
-'異常狀態.咒縛_使用者 m  '(階段1)
-''=====
-'異常狀態檢查數(34, 1) = 1
-'異常狀態.咒縛_電腦 m  '(階段1)
-'============
+
 movecp = m
 End Sub
 Sub 計算牌移動距離單位()
@@ -934,10 +887,8 @@ For i = 1 To 角色人物對戰人數(uscom, 1)
         For k = numNow To 14
             Select Case uscom
                 Case 1
-'                        FormMainMode.cardus(角色待機人物紀錄數(1, i)).Buff_異常狀態_隱藏 = k
                     FormMainMode.cardus(角色待機人物紀錄數(1, i)).更改異常狀態資料 k, 0, 0, 0, False
                 Case 2
-'                        FormMainMode.cardcom(角色待機人物紀錄數(2, i)).Buff_異常狀態_隱藏 = k
                     FormMainMode.cardcom(角色待機人物紀錄數(2, i)).更改異常狀態資料 k, 0, 0, 0, False
             End Select
         Next
@@ -945,324 +896,7 @@ For i = 1 To 角色人物對戰人數(uscom, 1)
 Next
 
 End Sub
-Sub 特殊_史塔夏_殺戮狀態_使用者()
-'Select Case atking_史塔夏_殺戮模式狀態數(1)
-'   Case 1
-'            If atking_史塔夏_殺戮模式狀態數(5) = 0 Then
-'                atking_史塔夏_殺戮模式狀態數(3) = 攻擊防禦骰子總數(1)
-'                atking_史塔夏_殺戮模式狀態數(4) = 攻擊防禦骰子總數(1) * 2
-'                atking_史塔夏_殺戮模式狀態數(5) = 1
-'                攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) * 2
-'            ElseIf atking_史塔夏_殺戮模式狀態數(5) = 1 Then
-'                atking_史塔夏_殺戮模式狀態數(3) = atking_史塔夏_殺戮模式狀態數(3) + (攻擊防禦骰子總數(1) - atking_史塔夏_殺戮模式狀態數(4))
-'                攻擊防禦骰子總數(1) = atking_史塔夏_殺戮模式狀態數(3) * 2
-'                atking_史塔夏_殺戮模式狀態數(4) = atking_史塔夏_殺戮模式狀態數(3) * 2
-'            End If
-'    Case 2
-'           atking_史塔夏_殺戮模式狀態數(3) = 0
-'           atking_史塔夏_殺戮模式狀態數(4) = 0
-'           atking_史塔夏_殺戮模式狀態數(5) = 0
-'    Case 3
-'            FormMainMode.personusminijpg.Visible = False
-'            FormMainMode.personusminijpg.小人物圖片 = app_path & "gif\史塔夏\一般\Staciamini1.png"
-'            FormMainMode.personusminijpg.小人物影子圖片 = app_path & "gif\史塔夏\一般\Staciaminidown1.png"
-'            FormMainMode.personusminijpg.小人物影子Left = 10
-'            FormMainMode.personusminijpg.小人物影子top差 = -50
-'            Form6.jpgus.大人物圖片 = app_path & "gif\史塔夏\一般\Staciaperson1.png"
-'            FormMainMode.顯示列1.使用者方小人物圖片 = app_path & "gif\史塔夏\一般\Staciaf1.png"
-'            atking_史塔夏_殺戮模式狀態數(2) = 0
-'            atking_史塔夏_殺戮模式狀態數(3) = 0
-'            atking_史塔夏_殺戮模式狀態數(4) = 0
-'            atking_史塔夏_殺戮模式狀態數(5) = 0
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personusminijpg.Visible = True
-'    Case 4
-'            FormMainMode.personusminijpg.Visible = False
-'            FormMainMode.personusminijpg.小人物圖片 = app_path & "gif\史塔夏\殺戮\Staciamini1.png"
-'            FormMainMode.personusminijpg.小人物影子圖片 = app_path & "gif\史塔夏\殺戮\Staciaminidown1.png"
-'            FormMainMode.personusminijpg.小人物影子Left = -90
-'            FormMainMode.personusminijpg.小人物影子top差 = -60
-'            Form6.jpgus.大人物圖片 = app_path & "gif\史塔夏\殺戮\Staciaperson1.png"
-'            FormMainMode.顯示列1.使用者方小人物圖片 = app_path & "gif\史塔夏\殺戮\Staciaf1.png"
-''            formsettingpersonus.smalldownleft = -90
-''            formsettingpersonus.smalldowntop = -60
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personusminijpg.Visible = True
-'End Select
-End Sub
-Sub 特殊_史塔夏_殺戮狀態_電腦()
-'Select Case atking_AI_史塔夏_殺戮模式狀態數(1)
-'   Case 1
-'            If atking_AI_史塔夏_殺戮模式狀態數(5) = 0 Then
-'                atking_AI_史塔夏_殺戮模式狀態數(3) = 攻擊防禦骰子總數(2)
-'                atking_AI_史塔夏_殺戮模式狀態數(4) = 攻擊防禦骰子總數(2) * 2
-'                atking_AI_史塔夏_殺戮模式狀態數(5) = 1
-'                攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) * 2
-'            ElseIf atking_AI_史塔夏_殺戮模式狀態數(5) = 1 Then
-'                atking_AI_史塔夏_殺戮模式狀態數(3) = atking_AI_史塔夏_殺戮模式狀態數(3) + (攻擊防禦骰子總數(2) - atking_AI_史塔夏_殺戮模式狀態數(4))
-'                攻擊防禦骰子總數(2) = atking_AI_史塔夏_殺戮模式狀態數(3) * 2
-'                atking_AI_史塔夏_殺戮模式狀態數(4) = atking_AI_史塔夏_殺戮模式狀態數(3) * 2
-'            End If
-'    Case 2
-'           atking_AI_史塔夏_殺戮模式狀態數(3) = 0
-'           atking_AI_史塔夏_殺戮模式狀態數(4) = 0
-'           atking_AI_史塔夏_殺戮模式狀態數(5) = 0
-'    Case 3
-'            FormMainMode.personcomminijpg.Visible = False
-'            FormMainMode.personcomminijpg.小人物圖片 = app_path & "gif\史塔夏\一般\Staciamini2.png"
-'            FormMainMode.personcomminijpg.小人物影子圖片 = app_path & "gif\史塔夏\一般\Staciaminidown2.png"
-'            FormMainMode.personcomminijpg.小人物影子Left = 10
-'            FormMainMode.personcomminijpg.小人物影子top差 = -50
-'            Form6.jpgcom.大人物圖片 = app_path & "gif\史塔夏\一般\Staciaperson2.png"
-'            FormMainMode.顯示列1.電腦方小人物圖片 = app_path & "gif\史塔夏\一般\Staciaf2.png"
-'            atking_AI_史塔夏_殺戮模式狀態數(2) = 0
-'            atking_AI_史塔夏_殺戮模式狀態數(3) = 0
-'            atking_AI_史塔夏_殺戮模式狀態數(4) = 0
-'            atking_AI_史塔夏_殺戮模式狀態數(5) = 0
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personcomminijpg.Visible = True
-'    Case 4
-'            FormMainMode.personcomminijpg.Visible = False
-'            FormMainMode.personcomminijpg.小人物圖片 = app_path & "gif\史塔夏\殺戮\Staciamini2.png"
-'            FormMainMode.personcomminijpg.小人物影子圖片 = app_path & "gif\史塔夏\殺戮\Staciaminidown2.png"
-'            FormMainMode.personcomminijpg.小人物影子Left = 90
-'            FormMainMode.personcomminijpg.小人物影子top差 = -60
-'            Form6.jpgcom.大人物圖片 = app_path & "gif\史塔夏\殺戮\Staciaperson2.png"
-'            FormMainMode.顯示列1.電腦方小人物圖片 = app_path & "gif\史塔夏\殺戮\Staciaf2.png"
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personcomminijpg.Visible = True
-'End Select
-End Sub
 
-Sub 特殊_音音夢_成長狀態_使用者()
-'Select Case atking_音音夢_成長模式狀態數(1)
-'   Case 1
-'            攻擊防禦骰子總數(1) = 10
-'    Case 2
-'           攻擊防禦骰子總數(1) = 10
-'           戰鬥系統類.直接寫入顯示列數值 1, 10
-'    Case 3
-'            FormMainMode.personusminijpg.Visible = False
-'            FormMainMode.personusminijpg.小人物圖片 = app_path & "gif\音音夢\一般\Nenemmini1.png"
-'            FormMainMode.personusminijpg.小人物影子圖片 = app_path & "gif\音音夢\一般\Nenemminidown1.png"
-'            FormMainMode.personusminijpg.小人物影子Left = 10
-'            FormMainMode.personusminijpg.小人物影子top差 = -20
-'            Form6.jpgus.大人物圖片 = app_path & "gif\音音夢\一般\Nenemperson1.png"
-'            FormMainMode.顯示列1.使用者方小人物圖片 = app_path & "gif\音音夢\一般\Nenemf1.png"
-'            atking_音音夢_成長模式狀態數(2) = 0
-''            formsettingpersonus.smalldownleft = 10
-''            formsettingpersonus.smalldowntop = -20
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personusminijpg.Visible = True
-'    Case 4
-'            FormMainMode.personusminijpg.Visible = False
-'            FormMainMode.personusminijpg.小人物圖片 = app_path & "gif\音音夢\成長\Nenemmini1.png"
-'            FormMainMode.personusminijpg.小人物影子圖片 = app_path & "gif\音音夢\成長\Nenemminidown1.png"
-'            FormMainMode.personusminijpg.小人物影子Left = 20
-'            FormMainMode.personusminijpg.小人物影子top差 = -90
-'            Form6.jpgus.大人物圖片 = app_path & "gif\音音夢\成長\Nenemperson1.png"
-'            FormMainMode.顯示列1.使用者方小人物圖片 = app_path & "gif\音音夢\成長\Nenemf1.png"
-''            formsettingpersonus.smalldownleft = 20
-''            formsettingpersonus.smalldowntop = -90
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personusminijpg.Visible = True
-'End Select
-End Sub
-Sub 特殊_音音夢_成長狀態_電腦()
-'Select Case atking_AI_音音夢_成長模式狀態數(1)
-'   Case 1
-'            攻擊防禦骰子總數(2) = 10
-'    Case 2
-'           攻擊防禦骰子總數(2) = 10
-'           戰鬥系統類.直接寫入顯示列數值 2, 10
-'    Case 3
-'            FormMainMode.personcomminijpg.Visible = False
-'            FormMainMode.personcomminijpg.小人物圖片 = app_path & "gif\音音夢\一般\Nenemmini2.png"
-'            FormMainMode.personcomminijpg.小人物影子圖片 = app_path & "gif\音音夢\一般\Nenemminidown2.png"
-'            FormMainMode.personcomminijpg.小人物影子Left = 10
-'            FormMainMode.personcomminijpg.小人物影子top差 = -20
-'            Form6.jpgcom.大人物圖片 = app_path & "gif\音音夢\一般\Nenemperson2.png"
-'            FormMainMode.顯示列1.電腦方小人物圖片 = app_path & "gif\音音夢\一般\Nenemf2.png"
-'            atking_AI_音音夢_成長模式狀態數(2) = 0
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personcomminijpg.Visible = True
-'    Case 4
-'            FormMainMode.personcomminijpg.Visible = False
-'            FormMainMode.personcomminijpg.小人物圖片 = app_path & "gif\音音夢\成長\Nenemmini2.png"
-'            FormMainMode.personcomminijpg.小人物影子圖片 = app_path & "gif\音音夢\成長\Nenemminidown2.png"
-'            FormMainMode.personcomminijpg.小人物影子Left = 20
-'            FormMainMode.personcomminijpg.小人物影子top差 = -90
-'            Form6.jpgus.大人物圖片 = app_path & "gif\音音夢\成長\Nenemperson2.png"
-'            FormMainMode.顯示列1.使用者方小人物圖片 = app_path & "gif\音音夢\成長\Nenemf2.png"
-'            戰鬥系統類.執行動作_距離變更 movecp
-'            FormMainMode.personcomminijpg.Visible = True
-'End Select
-End Sub
-
-Sub 特殊_布勞_一般立繪更換_使用者()
-'Dim m As Integer
-'Randomize
-'m = Int(Rnd() * 3) + 1
-'Select Case m
-'    Case 1
-'       Form6.jpgus.大人物圖片 = app_path & "gif\布勞\Blauperson1-1.png"
-'    Case 2
-'       Form6.jpgus.大人物圖片 = app_path & "gif\布勞\Blauperson1-2.png"
-'    Case 3
-'       Form6.jpgus.大人物圖片 = app_path & "gif\布勞\Blauperson1-3.png"
-'End Select
-End Sub
-Sub 特殊_布勞_一般立繪更換_電腦()
-'Dim m As Integer
-'Randomize
-'m = Int(Rnd() * 3) + 1
-'Select Case m
-'    Case 1
-'       Form6.jpgcom.大人物圖片 = app_path & "gif\布勞\Blauperson2-1.png"
-'    Case 2
-'       Form6.jpgcom.大人物圖片 = app_path & "gif\布勞\Blauperson2-2.png"
-'    Case 3
-'       Form6.jpgcom.大人物圖片 = app_path & "gif\布勞\Blauperson2-3.png"
-'End Select
-End Sub
-Function 特殊_尤莉卡_檢查超載是否啟動_使用者() As Boolean
-'If atkingck(49, 2) = 1 And atking_尤莉卡_超載目前階段紀錄數(3) > 0 Then
-'    特殊_尤莉卡_檢查超載是否啟動_使用者 = True
-'Else
-'    特殊_尤莉卡_檢查超載是否啟動_使用者 = False
-'End If
-End Function
-Function 特殊_尤莉卡_檢查超載是否啟動_電腦() As Boolean
-'If atkingckai(139, 2) = 1 And atking_AI_尤莉卡_超載目前階段紀錄數(3) > 0 Then
-'    特殊_尤莉卡_檢查超載是否啟動_電腦 = True
-'Else
-'    特殊_尤莉卡_檢查超載是否啟動_電腦 = False
-'End If
-End Function
-Sub comatk_AI_雪莉_巨大黑犬_劍(ByVal i As Integer)
-'            If Val(pagecardnum(i, 6)) = 1 And Val(pagecardnum(i, 5)) = 2 Then
-'               If pagecardnum(i, 1) = a1a Then
-'                  pagecardnum(i, 11) = 1
-'              ElseIf pagecardnum(i, 3) = a1a Then
-'                  cspce = pagecardnum(i, 1)
-'                  cspme = pagecardnum(i, 2)
-'                  pagecardnum(i, 1) = pagecardnum(i, 3)
-'                  pagecardnum(i, 2) = pagecardnum(i, 4)
-'                  pagecardnum(i, 3) = cspce
-'                  pagecardnum(i, 4) = cspme
-'                  If pageonin(i) = 2 Then
-'                     pageonin(i) = 1
-'                  Else
-'                     pageonin(i) = 2
-'                  End If
-'                  pagecardnum(i, 11) = 1
-'               End If
-'            End If
-
-End Sub
-Sub comatk_AI_雪莉_飛刃雨_移(j As Integer)
-'If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 Then
-'     If pagecardnum(j, 1) = a3a And Val(pagecardnum(j, 2)) = 1 Then
-'       pagecardnum(j, 11) = 1
-'     ElseIf pagecardnum(j, 3) = a3a And Val(pagecardnum(j, 4)) = 1 Then
-'       cspce = pagecardnum(j, 1)
-'       cspme = pagecardnum(j, 2)
-'       pagecardnum(j, 1) = pagecardnum(j, 3)
-'       pagecardnum(j, 2) = pagecardnum(j, 4)
-'       pagecardnum(j, 3) = cspce
-'       pagecardnum(j, 4) = cspme
-'       If pageonin(j) = 2 Then
-'          pageonin(j) = 1
-'       Else
-'          pageonin(j) = 2
-'       End If
-'       pagecardnum(j, 11) = 1
-'     End If
-'  End If
-End Sub
-Sub comatk_AI_傑多_因果之幻_移(j As Integer)
-'If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 Then
-'     If pagecardnum(j, 1) = a3a And Val(pagecardnum(j, 2)) >= 1 Then
-'       pagecardnum(j, 11) = 1
-'     ElseIf pagecardnum(j, 3) = a3a And Val(pagecardnum(j, 4)) >= 1 Then
-'       cspce = pagecardnum(j, 1)
-'       cspme = pagecardnum(j, 2)
-'       pagecardnum(j, 1) = pagecardnum(j, 3)
-'       pagecardnum(j, 2) = pagecardnum(j, 4)
-'       pagecardnum(j, 3) = cspce
-'       pagecardnum(j, 4) = cspme
-'       If pageonin(j) = 2 Then
-'          pageonin(j) = 1
-'       Else
-'          pageonin(j) = 2
-'       End If
-'       pagecardnum(j, 11) = 1
-'     End If
-'  End If
-End Sub
-Sub comatk_AI_雪莉_自殺傾向_特(ByVal a As Integer)
-'            If Val(pagecardnum(a, 6)) = 1 And Val(pagecardnum(a, 5)) = 2 And Val(pagecardnum(a, 5)) <> 1 Then
-'               If pagecardnum(a, 1) = a4a Then
-'                  pagecardnum(a, 11) = 1
-'              ElseIf pagecardnum(a, 3) = a4a Then
-'                  cspce = pagecardnum(a, 1)
-'                  cspme = pagecardnum(a, 2)
-'                  pagecardnum(a, 1) = pagecardnum(a, 3)
-'                  pagecardnum(a, 2) = pagecardnum(a, 4)
-'                  pagecardnum(a, 3) = cspce
-'                  pagecardnum(a, 4) = cspme
-'                  If pageonin(a) = 2 Then
-'                     pageonin(a) = 1
-'                  Else
-'                     pageonin(a) = 2
-'                  End If
-'                  pagecardnum(a, 11) = 1
-'               End If
-'            End If
-
-End Sub
-Sub comatk_AI_雪莉_多妮妲_異質者_特(ByVal a As Integer)
-'            If Val(pagecardnum(a, 6)) = 1 And Val(pagecardnum(a, 5)) = 2 Then
-'               If pagecardnum(a, 1) = a4a Then
-'                  pagecardnum(a, 11) = 1
-'              ElseIf pagecardnum(a, 3) = a4a Then
-'                  cspce = pagecardnum(a, 1)
-'                  cspme = pagecardnum(a, 2)
-'                  pagecardnum(a, 1) = pagecardnum(a, 3)
-'                  pagecardnum(a, 2) = pagecardnum(a, 4)
-'                  pagecardnum(a, 3) = cspce
-'                  pagecardnum(a, 4) = cspme
-'                  If pageonin(a) = 2 Then
-'                     pageonin(a) = 1
-'                  Else
-'                     pageonin(a) = 2
-'                  End If
-'                  pagecardnum(a, 11) = 1
-'               End If
-'            End If
-
-End Sub
-Sub comatk_AI_蕾_終曲_無盡輪迴的終結_特(ByVal a As Integer)
-'            If Val(pagecardnum(a, 6)) = 1 And Val(pagecardnum(a, 5)) = 2 Then
-'               If pagecardnum(a, 1) = a4a Then
-'                  pagecardnum(a, 11) = 1
-'              ElseIf pagecardnum(a, 3) = a4a Then
-'                  cspce = pagecardnum(a, 1)
-'                  cspme = pagecardnum(a, 2)
-'                  pagecardnum(a, 1) = pagecardnum(a, 3)
-'                  pagecardnum(a, 2) = pagecardnum(a, 4)
-'                  pagecardnum(a, 3) = cspce
-'                  pagecardnum(a, 4) = cspme
-'                  If pageonin(a) = 2 Then
-'                     pageonin(a) = 1
-'                  Else
-'                     pageonin(a) = 2
-'                  End If
-'                  pagecardnum(a, 11) = 1
-'               End If
-'            End If
-
-End Sub
 Sub 直接寫入顯示列數值(ByVal n As Integer, ByVal num As Integer)
 If num < 0 Then num = 0
 Select Case n
@@ -1275,7 +909,6 @@ End Sub
 Sub 小人物頭像執行完判斷_使用者()
 If turnatk = 1 Or turnatk = 2 Then
    turnpageonin = 1
-'   階段狀態數 = 1
     If Vss_EventPlayerAllActionOffNum(1) = 1 Then
         For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
             FormMainMode.card(ckl).CardEnabledType = False
@@ -1310,13 +943,11 @@ End Sub
 Sub 公用牌變背面()
 FormMainMode.card(牌移動暫時變數(3)).Width = 720
 FormMainMode.card(牌移動暫時變數(3)).Height = 990
-'FormMainMode.card(牌移動暫時變數(3)).Picture = LoadPicture(app_path & "card\cardback.bmp")
 FormMainMode.card(牌移動暫時變數(3)).LocationType = 3
 End Sub
 Sub 公用牌回復正面(ByVal num As Integer)
 FormMainMode.card(num).Width = 810
 FormMainMode.card(num).Height = 1260
-'FormMainMode.card(num).Picture = LoadPicture(app_path & "card\" & pagecardnum(num, 8) & "-" & pageonin(num) & ".bmp")
 FormMainMode.card(num).LocationType = 1
 FormMainMode.card(num).CardEventType = False
 End Sub
@@ -1381,11 +1012,6 @@ For o = 1 To Val(pagegustot) - 1
   Next
 Next
 
-'For i = 1 To pagegustot
-'   MsgBox "出牌順序(pagecardnum)：" & pagecardnum(出牌順序統計暫時變數(i, 2), 7)
-'   MsgBox "出牌順序：" & 出牌順序統計暫時變數(i, 1)
-'   MsgBox "牌號：" & 出牌順序統計暫時變數(i, 2)
-'Next
 End Sub
 Sub 出牌順序計算_電腦_手牌()
 Dim pagegustot As Integer '暫時變數
@@ -1494,7 +1120,6 @@ Dim ahmt As String
 FormMainMode.atkinghelpt1.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 2)
 FormMainMode.atkinghelpt2.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 3)
 FormMainMode.atkinghelpt3.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 4)
-'FormMainMode.atkinghelpt4.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 5)
 ahmt = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 5)
 For i = 1 To Len(ahmt)
     If Mid(ahmt, i, 1) = "&" Then
@@ -1502,7 +1127,6 @@ For i = 1 To Len(ahmt)
     End If
 Next
 FormMainMode.atkinghelpt4.Caption = ahmt
-'MsgBox VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 5)
 If VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 6) <> "" Then
     FormMainMode.atkinghelpt3.FontSize = Val(VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 6))
 Else
@@ -1519,7 +1143,6 @@ Dim ahmt As String
 FormMainMode.atkinghelpt1.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 2)
 FormMainMode.atkinghelpt2.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 3)
 FormMainMode.atkinghelpt3.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 4)
-'FormMainMode.atkinghelpt4.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 5)
 ahmt = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 5)
 For i = 1 To Len(ahmt)
     If Mid(ahmt, i, 1) = "&" Then
@@ -1589,22 +1212,18 @@ If Val(擲骰表單溝通暫時變數(4)) = 1 Then
    Select Case Val(擲骰表單溝通暫時變數(1))
     Case 1
        If 擲骰表單溝通暫時變數(4) = 1 Then
-'           cn3.Visible = True
            擲骰表單溝通暫時變數(1) = 2
            等待時間佇列(1).Add 14
            FormMainMode.等待時間.Enabled = True
        Else
-'           cn4.Visible = True
            等待時間佇列(1).Add 15
            FormMainMode.等待時間.Enabled = True
        End If
     Case 2
        If 擲骰表單溝通暫時變數(4) = 1 Then
-'          cn4.Visible = True
           等待時間佇列(1).Add 15
           FormMainMode.等待時間.Enabled = True
        Else
-'          cn2.Visible = True
           擲骰表單溝通暫時變數(1) = 2
           等待時間佇列(1).Add 13
           FormMainMode.等待時間.Enabled = True
@@ -1614,23 +1233,19 @@ Else
    Select Case Val(擲骰表單溝通暫時變數(1))
     Case 1
        If 擲骰表單溝通暫時變數(4) = 1 Then
-'          cn4.Visible = True
           等待時間佇列(1).Add 15
           FormMainMode.等待時間.Enabled = True
        Else
-'          cn2.Visible = True
           擲骰表單溝通暫時變數(1) = 2
           等待時間佇列(1).Add 13
           FormMainMode.等待時間.Enabled = True
        End If
     Case 2
        If 擲骰表單溝通暫時變數(4) = 1 Then
-'           cn3.Visible = True
            擲骰表單溝通暫時變數(1) = 2
            等待時間佇列(1).Add 14
            FormMainMode.等待時間.Enabled = True
        Else
-'           cn4.Visible = True
            等待時間佇列(1).Add 15
            FormMainMode.等待時間.Enabled = True
        End If
@@ -1684,28 +1299,10 @@ If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 2 Then
     FormMainMode.pagecomglead = Val(FormMainMode.pagecomglead) - 1
     FormMainMode.pagecomqlead = Val(FormMainMode.pagecomqlead) + 1
     pagecardnum(Index, 11) = 2
-    '===============
-'    Erase atkingckdice
    '===================以下是出牌對齊
     目前數(7) = 0
     戰鬥系統類.出牌順序計算_電腦_出牌
     FormMainMode.電腦出牌_出牌對齊_靠左.Enabled = True
-    '============以下是技能檢查及啟動
-'    atkingckai(1, 1) = 2
-'    If turnatk = 2 Then
-'       AI技能.雪莉_自殺傾向 Index '(階段2)
-'       AI技能.音音夢_愉快抽血 Index '(階段1)
-'    End If
-'    If turnatk = 2 And atkingckai(26, 2) = 1 Then
-'        atkingckai(26, 1) = 2
-'        AI技能.艾依查庫_神速之劍 Index '(階段2)
-'        atkingckai(26, 1) = 1
-'    End If
-'    If turnatk = 2 And atkingckai(98, 2) = 1 Then
-'        atkingckai(98, 1) = 2
-'        AI技能.露緹亞_渦騎劍閃 Index  '(階段2)
-'        atkingckai(98, 1) = 1
-'    End If
    '=============以下是牌移動(出牌)(電腦)
     戰鬥系統類.座標計算_電腦出牌
     牌移動暫時變數(3) = Index
@@ -1737,7 +1334,6 @@ If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 2 Then
        事件卡記錄暫時數(2, 3) = 1
        事件卡.聖水_電腦 Index, pagecardnum(Index, 2)
    End If
-   '===================
     '==============================================
     Select Case turnatk
         Case 1
@@ -1802,24 +1398,6 @@ If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
     FormMainMode.pagecomglead = Val(FormMainMode.pagecomglead) + 1
     FormMainMode.pagecomqlead = Val(FormMainMode.pagecomqlead) - 1
     pagecardnum(Index, 11) = 0
-    '===============
-'    Erase atkingckdice
-   '============以下是技能檢查及啟動
-'    atkingckai(1, 1) = 2
-'    If turnatk = 2 Then
-'       AI技能.雪莉_自殺傾向 Index '(階段2)
-'       AI技能.音音夢_愉快抽血 Index '(階段1)
-'    End If
-'    If turnatk = 2 And atkingckai(26, 2) = 1 Then
-'        atkingckai(26, 1) = 2
-'        AI技能.艾依查庫_神速之劍 Index '(階段2)
-'        atkingckai(26, 1) = 1
-'    End If
-'    If turnatk = 2 And atkingckai(98, 2) = 1 Then
-'        atkingckai(98, 1) = 2
-'        AI技能.露緹亞_渦騎劍閃 Index  '(階段2)
-'        atkingckai(98, 1) = 1
-'    End If
    '=============以下是牌移動(回牌)(電腦)
     戰鬥系統類.座標計算_電腦手牌
     牌移動暫時變數(3) = Index
@@ -1838,7 +1416,6 @@ If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
     If 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards") <> 0 Then
         vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards")) = 2 '(階段2)
     End If
-    '====================
     '==============================================
     Select Case turnatk
         Case 1
@@ -1869,13 +1446,10 @@ pagecardnum(Index, 4) = uspme
 一般系統類.音效播放 3
 If pageonin(Index) = 1 Then
    pageonin(Index) = 2
-'   FormMainMode.card(Index).Picture = LoadPicture(app_path & "card\" & pagecardnum(Index, 8) & "-" & pageonin(Index) & ".bmp")
 Else
    pageonin(Index) = 1
-'   FormMainMode.card(Index).Picture = LoadPicture(app_path & "card\" & pagecardnum(Index, 8) & "-" & pageonin(Index) & ".bmp")
 End If
 FormMainMode.card(Index).CardRotationType = pageonin(Index)
-'goickus = 0
 
    If pagecardnum(Index, 1) = a1a Then
       atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) + pagecardnum(Index, 2)
@@ -1947,26 +1521,7 @@ FormMainMode.card(Index).CardRotationType = pageonin(Index)
    If pagecardnum(Index, 3) = a4a Then
       atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) - pagecardnum(Index, 4)
    End If
-    '============以下是技能檢查及啟動
-'    If turnatk = 2 Then
-'        atkingckai(26, 1) = 3
-'        AI技能.艾依查庫_神速之劍 Index '(階段3)
-'        atkingckai(1, 1) = 3
-'        AI技能.雪莉_自殺傾向 Index  '(階段3)
-'        atkingckai(111, 1) = 2
-'        AI技能.音音夢_愉快抽血 Index '(階段2)
-'    End If
-'    If turnatk = 2 Then
-'        atkingckai(98, 1) = 3
-'        AI技能.露緹亞_渦騎劍閃 Index '(階段3)
-'    End If
-    '=================
-'    atkingckai(1, 1) = 1
-'    atkingckai(111, 1) = 1
-    '===============
-'    Call FormMainMode.pagecomqlead_Change
 '==============================================
-'Erase atkingckdice
 Select Case turnatk
     Case 1
         '===========================執行階段插入點(ATK-42/DEF-43)
@@ -2011,7 +1566,6 @@ If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
      If moveturn = 1 Then
        Select Case 擲骰表單溝通暫時變數(1)
           Case 1
-'             Form6.Left = FormMainMode.Left
               FormMainMode.PEAFDiceInterface.DiceATKMode = 1
               FormMainMode.PEAFDiceInterface.DiceInputMode = 2
               FormMainMode.PEAFDiceInterface.diceusTotal = 擲骰表單溝通暫時變數(9)
@@ -2023,7 +1577,6 @@ If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
               FormMainMode.PEAFDiceInterface.dicevoice = Formsetting.seve.Caption
               FormMainMode.PEAFDiceInterface.DiceStart = True
           Case 2
-'             Form6.Left = FormMainMode.Left + 1665
               FormMainMode.PEAFDiceInterface.DiceATKMode = 2
               FormMainMode.PEAFDiceInterface.DiceInputMode = 2
               FormMainMode.PEAFDiceInterface.diceusTotal = 擲骰表單溝通暫時變數(9)
@@ -2038,7 +1591,6 @@ If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
      ElseIf moveturn = 2 Then
         Select Case 擲骰表單溝通暫時變數(1)
            Case 1
-'              Form6.Left = FormMainMode.Left + 1665
               FormMainMode.PEAFDiceInterface.DiceATKMode = 2
               FormMainMode.PEAFDiceInterface.DiceInputMode = 2
               FormMainMode.PEAFDiceInterface.diceusTotal = 擲骰表單溝通暫時變數(9)
@@ -2050,7 +1602,6 @@ If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
               FormMainMode.PEAFDiceInterface.dicevoice = Formsetting.seve.Caption
               FormMainMode.PEAFDiceInterface.DiceStart = True
            Case 2
-'             Form6.Left = FormMainMode.Left
               FormMainMode.PEAFDiceInterface.DiceATKMode = 1
               FormMainMode.PEAFDiceInterface.DiceInputMode = 2
               FormMainMode.PEAFDiceInterface.diceusTotal = 擲骰表單溝通暫時變數(9)
@@ -2063,11 +1614,6 @@ If 骰數零檢查值(1) = False And 骰數零檢查值(2) = False Then
               FormMainMode.PEAFDiceInterface.DiceStart = True
          End Select
      End If
-     '========================
-'      等待時間佇列(2).Add 25
-'      FormMainMode.等待時間_2.Enabled = True
-'     Form6.Top = FormMainMode.Top + 825
-'     Form6.Show 1
 Else
    '========================
      目前數(26) = 0
@@ -2138,15 +1684,11 @@ Erase 人物消失檢查暫時變數
 If livecom(角色人物對戰人數(2, 2)) <= 0 Then
    人物消失檢查暫時變數(3) = 1
    If livecom(角色待機人物紀錄數(2, 2)) > 0 Then
-'       人物交換_電腦_指定交換 2
        person(2) = 2
        交換角色紀錄暫時變數(2) = 1
-'       牌總階段數(2) = 牌總階段數(2) + 1
    ElseIf livecom(角色待機人物紀錄數(2, 3)) > 0 Then
-'       人物交換_電腦_指定交換 3
        交換角色紀錄暫時變數(2) = 1
        person(2) = 2
-'       牌總階段數(2) = 牌總階段數(2) + 1
    Else
        person(2) = 1
    End If
@@ -2154,10 +1696,8 @@ End If
 If liveus(角色人物對戰人數(1, 2)) <= 0 Then
    人物消失檢查暫時變數(2) = 1
    If liveus(角色待機人物紀錄數(1, 2)) > 0 Or liveus(角色待機人物紀錄數(1, 3)) > 0 Then
-'       執行動作_交換人物角色_初始
        person(1) = 2
        交換角色紀錄暫時變數(1) = 1
-'       牌總階段數(1) = 牌總階段數(1) + 1
    Else
        person(1) = 1
    End If
@@ -2197,16 +1737,12 @@ If FormMainMode.人物消失檢查.Enabled = False Then
         等待時間佇列(1).Add 4
         FormMainMode.等待時間.Enabled = True
      Case 2
-'         atkingnumtot = 0
           等待時間佇列(1).Add 11
           FormMainMode.等待時間.Enabled = True
      Case 3
         戰鬥系統類.階段執行判斷
      Case 4
         FormMainMode.NextTurn_階段2.Enabled = True
-'     Case 5
-'        目前數(26) = 1
-'        formmainmode.骰子執行完啟動.Enabled = True
   End Select
 End If
 End Sub
@@ -2225,26 +1761,15 @@ If BattleTurn >= Val(Formsetting.ckendturnnum.Text) And Formsetting.ckendturn.Va
          Next
         '==============
         If num(1) > num(2) Then
-'           Formend.Picture = LoadPicture(app_path & "gif\gamewin.jpg")
            戰鬥模式勝敗紀錄數 = 1
            FormMainMode.trend.Enabled = True
         ElseIf num(1) < num(2) Then
-'           Formend.Picture = LoadPicture(app_path & "gif\gamelose.jpg")
            戰鬥模式勝敗紀錄數 = 2
            FormMainMode.trend.Enabled = True
         ElseIf num(1) = num(2) Then
-        '   Randomize
-        '   inp = Int(Rnd() * 2) + 1
-        '   Select Case inp
-        '       Case 1
-        '           Formend.Picture = LoadPicture(app_path & "gif\gamewin.jpg")
-        '           戰鬥模式勝敗紀錄數=1
-        '           formmainmode.trend.Enabled = True
-        '       Case 2
-'                   Formend.Picture = LoadPicture(app_path & "gif\gamelose.jpg")
-                   戰鬥模式勝敗紀錄數 = 2
-                   FormMainMode.trend.Enabled = True
-        '    End Select
+            '無條件敗北
+            戰鬥模式勝敗紀錄數 = 2
+            FormMainMode.trend.Enabled = True
         End If
 Else
      雙方HP檢查_結束回合檢查 = False
@@ -2274,21 +1799,6 @@ If goicheck(2) = 0 Then
     攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
     goicheck(2) = 1
   End If
-  If goicheck(2) = 1 Then
-    '=========以下是技能檢查及發動
-'        異常狀態檢查數(1, 1) = 1
-'        異常狀態.ATK加_電腦 '(階段1)
-'        '=======
-'        異常狀態檢查數(26, 1) = 1
-'        異常狀態.聖痕_電腦 '(階段1)
-'        '=======
-'        異常狀態檢查數(4, 1) = 1
-'        異常狀態.ATK減_電腦 '(階段1)
-'        '=======
-'        異常狀態檢查數(25, 1) = 1
-'        異常狀態.能力低下_電腦 '(階段1)
-'     '==============
-  End If
 End If
 End Sub
 Sub chkdef()
@@ -2297,24 +1807,6 @@ If goidefus = 0 Then
  攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + defus(角色人物對戰人數(1, 2))
  FormMainMode.顯示列1.goi1 = Val(FormMainMode.顯示列1.goi1) + defus(角色人物對戰人數(1, 2))
  goidefus = 1
-   '=========以下是技能檢查及發動
-''   If 異常狀態檢查數(8, 2) = 1 Then
-'      異常狀態檢查數(8, 1) = 1
-'      異常狀態.DEF加_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(11, 2) = 1 Then
-'      異常狀態檢查數(11, 1) = 1
-'      異常狀態.DEF減_使用者 '(階段1)
-''   End If
-'   異常狀態檢查數(13, 1) = 1
-'   異常狀態.聖痕_使用者 '(階段1)
-'   '====
-'   異常狀態檢查數(24, 1) = 1
-'   異常狀態.能力低下_使用者 '(階段1)
-'   '====
-'   異常狀態檢查數(39, 1) = 1
-'   異常狀態.臨界_使用者 '(階段1)
-'   '==============
 End If
 End Sub
 Sub chkdefcom()
@@ -2323,21 +1815,6 @@ If chkcomck = 0 Then
  攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + defcom(角色人物對戰人數(2, 2))
  FormMainMode.顯示列1.goi2 = Val(FormMainMode.顯示列1.goi2) + defcom(角色人物對戰人數(2, 2))
  chkcomck = 1
-    '=========以下是技能檢查及發動
-''   If 異常狀態檢查數(8, 2) = 1 Then
-'      異常狀態檢查數(2, 1) = 1
-'      異常狀態.DEF加_電腦  '(階段1)
-''   End If
-''   If 異常狀態檢查數(11, 2) = 1 Then
-'      異常狀態檢查數(5, 1) = 1
-'      異常狀態.DEF減_電腦 '(階段1)
-''   End If
-'   異常狀態檢查數(26, 1) = 2
-'   異常狀態.聖痕_電腦 '(階段2)
-'   '===
-'   異常狀態檢查數(25, 1) = 1
-'   異常狀態.能力低下_電腦 '(階段1)
-   '==============
 End If
 End Sub
 Sub chkus1()
@@ -2346,58 +1823,7 @@ If goicheck(1) = 0 Then
    攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkus(角色人物對戰人數(1, 2))
    攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
    goicheck(1) = 1
-   '=========以下是技能檢查及發動
-'   If 異常狀態檢查數(13, 2) = 1 Then
-'      異常狀態檢查數(13, 1) = 1
-'      異常狀態.聖痕_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(24, 2) = 1 Then
-'      異常狀態檢查數(24, 1) = 1
-'      異常狀態.能力低下_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(7, 2) = 1 Then
-'      異常狀態檢查數(7, 1) = 1
-'      異常狀態.ATK加_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(10, 2) = 1 Then
-'      異常狀態檢查數(10, 1) = 1
-'      異常狀態.ATK減_使用者 '(階段1)
-''   End If
-'    '====
-'    異常狀態檢查數(39, 1) = 1
-'    異常狀態.臨界_使用者  '(階段1)
-   '==============
   End If
-End If
-End Sub
-Sub chkus2()
-If goicheck(1) = 0 Then
-'  If atkingpagetot(1, 5) > 0 Then
-'   攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + atkus(角色人物對戰人數(1, 2))
-'   攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
-'   goicheck(1) = 1
-   '=========以下是技能檢查及發動
-''   If 異常狀態檢查數(13, 2) = 1 Then
-'      異常狀態檢查數(13, 1) = 1
-'      異常狀態.聖痕_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(24, 2) = 1 Then
-'      異常狀態檢查數(24, 1) = 1
-'      異常狀態.能力低下_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(7, 2) = 1 Then
-'      異常狀態檢查數(7, 1) = 1
-'      異常狀態.ATK加_使用者 '(階段1)
-''   End If
-''   If 異常狀態檢查數(10, 2) = 1 Then
-'      異常狀態檢查數(10, 1) = 1
-'      異常狀態.ATK減_使用者 '(階段1)
-''   End If
-'    '====
-'    異常狀態檢查數(39, 1) = 1
-'    異常狀態.臨界_使用者  '(階段1)
-   '==============
-'  End If
 End If
 End Sub
 Sub cleanatkingpagetot()
@@ -2536,25 +1962,21 @@ Loop
 End Sub
 Sub movetnus()
 戰鬥系統類.廣播訊息 "你有主動權。"
-'戰鬥系統類.廣播訊息 "現在的距離" & movecp & "。"
 FormMainMode.move3.Picture = LoadPicture(app_path & "gif\system\atk1.gif")
 FormMainMode.move4.Picture = LoadPicture(app_path & "gif\system\def1.gif")
 FormMainMode.atkdef1.Picture = LoadPicture(app_path & "gif\system\atk2.gif")
 FormMainMode.atkdef2.Picture = LoadPicture(app_path & "gif\system\def2.gif")
 moveturn = 1
-'cn2.Visible = True
 FormMainMode.cnmove2.Visible = False
 擲骰表單溝通暫時變數(1) = 1
 End Sub
 Sub movetncom()
 戰鬥系統類.廣播訊息 "對方有主動權。"
-'戰鬥系統類.廣播訊息 "現在的距離" & movecp & "。"
 FormMainMode.move3.Picture = LoadPicture(app_path & "gif\system\def1.gif")
 FormMainMode.move4.Picture = LoadPicture(app_path & "gif\system\atk1.gif")
 FormMainMode.atkdef1.Picture = LoadPicture(app_path & "gif\system\def2.gif")
 FormMainMode.atkdef2.Picture = LoadPicture(app_path & "gif\system\atk2.gif")
 moveturn = 2
-'cn3.Visible = True
 FormMainMode.cnmove2.Visible = False
 擲骰表單溝通暫時變數(1) = 1
 End Sub
@@ -2569,7 +1991,6 @@ VBEStageNum(3) = num '交換後人物編號
 '===========================執行階段插入點(41)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 41, 1
 '============================
-'=======================
 FormMainMode.personusminijpg.小人物消失 = True
 Do Until FormMainMode.personusminijpg.小人物消失 = False
     DoEvents
@@ -2619,7 +2040,6 @@ For n = 5 To 8
        End If
     End If
 Next
-'FormMainMode.personusminijpg.Visible = False
 If 人物實際狀態資料庫(1, 角色人物對戰人數(1, 2), 1) <> "" And Val(人物實際狀態資料庫(1, 角色人物對戰人數(1, 2), 2)) = 1 Then
     FormMainMode.personusminijpg.小人物圖片 = 人物實際狀態資料庫(1, 角色人物對戰人數(1, 2), 4)
     FormMainMode.personusminijpg.小人物影子圖片 = 人物實際狀態資料庫(1, 角色人物對戰人數(1, 2), 5)
@@ -2636,7 +2056,6 @@ Else
     戰鬥擲骰介面人物立繪圖路徑紀錄數(1) = VBEPerson(1, 角色人物對戰人數(1, 2), 1, 5, 3)
 End If
 FormMainMode.顯示列1.使用者方小人物圖片left = -(FormMainMode.顯示列1.使用者方小人物圖片width)
-'FormMainMode.personusminijpg.Visible = True
 '--------------------------計算新距離單位(HP血條)
 距離單位(1, 1, 1) = 5295 \ liveusmax(角色人物對戰人數(1, 2))
 FormMainMode.bloodlineout1.Width = (距離單位(1, 1, 1) * liveus(角色人物對戰人數(1, 2)))
@@ -2644,31 +2063,11 @@ FormMainMode.bloodnumus1.Caption = liveus(角色人物對戰人數(1, 2))
 FormMainMode.bloodnumus2.Caption = liveusmax(角色人物對戰人數(1, 2))
 '========================
 執行動作_距離變更 movecp, False
-'========================以下是技能檢查及啟動
-'If FormMainMode.uspi1(角色人物對戰人數(1, 2)).Caption = "史塔夏" Then
-'    If atking_史塔夏_殺戮模式狀態數(2) = 1 Then
-'       atking_史塔夏_殺戮模式狀態數(1) = 4
-'       戰鬥系統類.特殊_史塔夏_殺戮狀態_使用者 '(階段4)
-'    End If
-'End If
-'If FormMainMode.uspi1(角色人物對戰人數(1, 2)).Caption = "音音夢" Then
-'    If atking_音音夢_成長模式狀態數(2) = 1 Then
-'       atking_音音夢_成長模式狀態數(1) = 4
-'       戰鬥系統類.特殊_音音夢_成長狀態_使用者 '(階段4)
-'    End If
-'End If
-'=============================
+'========================
 For i = 1 To 4
     戰鬥系統類.人物技能欄燈開關 False, i
 Next
 '=============================
-'If FormMainMode.uspi1(角色人物對戰人數(1, 2)).Caption = "尤莉卡" And atking_尤莉卡_超載目前階段紀錄數(3) > 0 Then
-'    atkingck(49, 2) = 1
-'    atkingck(49, 1) = 7
-'    技能.尤莉卡_超載  '(階段7)
-'End If
-'==========
-'=======================
 FormMainMode.personusminijpg.小人物顯現 = True
 Do Until FormMainMode.personusminijpg.小人物顯現 = False
     DoEvents
@@ -2687,7 +2086,6 @@ VBEStageNum(3) = num '交換後人物編號
 '===========================執行階段插入點(41)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 41, 1
 '============================
-'=======================
 FormMainMode.personcomminijpg.小人物消失 = True
 Do Until FormMainMode.personcomminijpg.小人物消失 = False
     DoEvents
@@ -2746,9 +2144,6 @@ End If
 FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色圖片 = VBEPerson(2, 角色人物對戰人數(2, 2), 1, 5, 5)
 FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.ScaleWidth
 戰鬥系統類.技能說明載入_人物卡片背面_電腦 角色人物對戰人數(2, 2)
-'FormMainMode.personcomminijpg.Left = personminixy(2, 角色人物對戰人數(2, 2), movecp, 1)
-'FormMainMode.personcomminijpg.Top = personminixy(2, 角色人物對戰人數(2, 2), movecp, 2)
-'FormMainMode.personcomminijpg.Visible = True
 FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2))
 FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HPMAX = livecommax(角色人物對戰人數(2, 2))
 FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色ATK = atkcom(角色人物對戰人數(2, 2))
@@ -2767,13 +2162,6 @@ FormMainMode.bloodnumcom2.Caption = livecommax(角色人物對戰人數(2, 2))
 '==============================
 執行動作_距離變更 movecp, False
 '=============================
-'If FormMainMode.compi1(角色人物對戰人數(2, 2)).Caption = "尤莉卡" And atking_AI_尤莉卡_超載目前階段紀錄數(3) > 0 Then
-'    atkingckai(139, 2) = 1
-'    atkingckai(139, 1) = 7
-'    AI技能.尤莉卡_超載  '(階段7)
-'End If
-'==========
-'=======================
 FormMainMode.personcomminijpg.小人物顯現 = True
 Do Until FormMainMode.personcomminijpg.小人物顯現 = False
     DoEvents
@@ -3716,61 +3104,6 @@ ElseIf Formsetting.persontgruoncom(4).Value = True Then '=====隨機
             Formsetting.personcom(i).ListIndex = m
          Next
     End If
-'ElseIf Formsetting.persontgruoncom(5).Value = True Then '=====隨機(不含特)
-'    If Formsetting.persontgrecom.Value = 1 Then '===遵守規則
-'        For i = 1 To 18
-'             Do
-'                Randomize
-'                m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
-'                If 一般系統類.事件卡資料庫(Formsetting.personcom(i).List(m), 1) = Formsetting.persontgcom(i).Caption Or _
-'                   一般系統類.事件卡資料庫(Formsetting.personcom(i).List(m), 1) = 0 Then
-'                   ay = Split(一般系統類.事件卡資料庫(Formsetting.personcom(i).List(m), 3), "=")
-'                   If ay(0) = a4a And ay(2) = a4a Then
-'                   Else
-'                        Formsetting.personcom(i).ListIndex = m
-'                        Exit Do
-'                   End If
-'                End If
-'             Loop
-'         Next
-'         If 事件卡記錄暫時數(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
-'            For i = 7 To 18
-'                Randomize
-'                m = Int(Rnd() * 3) + 1
-'                Select Case m
-'                   Case 1
-'                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-'                         If Formsetting.personcom(i).List(j) = "劍1" Then
-'                             Formsetting.personcom(i).ListIndex = j
-'                         End If
-'                      Next
-'                   Case 2
-'                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-'                         If Formsetting.personcom(i).List(j) = "槍1" Then
-'                             Formsetting.personcom(i).ListIndex = j
-'                         End If
-'                      Next
-'                   Case 3
-'                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-'                         If Formsetting.personcom(i).List(j) = "防1" Then
-'                             Formsetting.personcom(i).ListIndex = j
-'                         End If
-'                      Next
-'                End Select
-'            Next
-'        End If
-'    Else '=============================不遵守規則
-'         For i = 1 To 18
-'            Randomize
-'            m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
-'            ay = Split(一般系統類.事件卡資料庫(Formsetting.personcom(i).List(m), 3), "=")
-'            If ay(0) = a4a And ay(2) = a4a Then
-'                 i = i - 1
-'            Else
-'                 Formsetting.personcom(i).ListIndex = m
-'            End If
-'         Next
-'    End If
 End If
 End Sub
 Sub 事件卡處理_分派_使用者方()
@@ -3849,89 +3182,7 @@ Else
     事件卡記錄暫時數(0, 1) = 12
 End If
 End Sub
-Function 執行動作_檢查是否有指定異常狀態(ByVal uscom As Integer, ByVal num As String) As Boolean
-'執行動作_檢查是否有指定異常狀態 = False
-'Select Case uscom
-'   Case 1
-'        For i = 1 To 14
-'           If 人物異常狀態資料庫(1, 角色人物對戰人數(1, 2), i, 3) = Num Then
-'               執行動作_檢查是否有指定異常狀態 = True
-'           End If
-'        Next
-'   Case 2
-'        For i = 1 To 14
-'            If 人物異常狀態資料庫(2, 角色人物對戰人數(2, 2), i, 3) = Num Then
-'                執行動作_檢查是否有指定異常狀態 = True
-'            End If
-'        Next
-'End Select
-End Function
 Sub 執行動作_防禦階段結束時技能啟動()
-'atkingtrn(1) = 0
-'atkingtrn(2) = 0
-''=================以下是技能檢查及啟動(回合結束階段1)
-'If turnatk = 2 And atkingck(64, 2) = 1 Then
-'   atkingck(64, 1) = 3
-'   技能.梅倫_Jackpot  '(階段3)
-'End If
-'If turnatk = 2 And atkingck(146, 2) = 1 Then
-'   atkingck(146, 1) = 3
-'   技能.傑多_因果之刻  '(階段3)
-'End If
-'If turnatk = 2 And atkingck(100, 2) = 1 Then
-'   atkingck(100, 1) = 2
-'   技能.露緹亞_暗影之翼  '(階段2)
-'End If
-'If turnatk = 2 And atkingck(111, 2) = 1 Then
-'   atkingck(111, 1) = 3
-'   技能.貝琳達_水晶幻鏡  '(階段3)
-'End If
-''===========以下是技能檢查及啟動((一般/AI)技能-C.C.-原子之心)
-''If atkingck(36, 2) = 1 Then
-''    atkingck(36, 1) = 2
-''    技能.CC_原子之心  '(階段2)
-''End If
-''If atkingckai(57, 2) = 1 Then
-''    atkingckai(57, 1) = 2
-''    AI技能.CC_原子之心  '(階段2)
-''End If
-''=================
-'技能動畫顯示階段數 = 9
-'戰鬥系統類.技能啟動數量檢查
-''=================以下是技能檢查及啟動(回合結束階段2)
-''If atkingckai(57, 2) = 1 Then
-''    GoTo AI技能_CC_原子之心_跳入點_DEF
-''End If
-''===================
-'If turnatk = 2 And atkingck(64, 2) = 1 Then
-'   atkingck(64, 1) = 4
-'   技能.梅倫_Jackpot  '(階段4)
-'End If
-'If turnatk = 2 And atkingck(146, 2) = 1 Then
-'   atkingck(146, 1) = 4
-'   技能.傑多_因果之刻  '(階段4)
-'End If
-'If turnatk = 2 And atkingck(100, 2) = 1 Then
-'   atkingck(100, 1) = 3
-'   技能.露緹亞_暗影之翼  '(階段3)
-'End If
-'If turnatk = 2 And atkingck(111, 2) = 1 Then
-'   atkingck(111, 1) = 4
-'   技能.貝琳達_水晶幻鏡  '(階段4)
-'End If
-''=================
-''AI技能_CC_原子之心_跳入點_DEF:
-''=====================================
-''If atkingck(36, 2) = 1 Then
-''    GoTo 技能_CC_原子之心_跳入點_DEF
-''End If
-''================
-'
-''================
-''技能_CC_原子之心_跳入點_DEF:
-''================
-'FormMainMode.atkingtrtot.Interval = 600
-'FormMainMode.atkingtrtot.Enabled = True
 '===========================執行階段插入點(ATK-14/DEF-34)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 14, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 34, 2
@@ -3948,69 +3199,6 @@ HP檢查階段數 = 3
 戰鬥系統類.雙方HP檢查
 End Sub
 Sub 執行動作_攻擊階段結束時技能啟動()
-'atkingtrn(1) = 0
-'atkingtrn(2) = 0
-'=================以下是技能檢查及啟動(回合結束階段1)
-'If turnatk = 1 And atkingckai(31, 2) = 1 Then
-'   atkingckai(31, 1) = 3
-'   AI技能.梅倫_Jackpot  '(階段3)
-'End If
-'If turnatk = 1 And atkingckai(97, 2) = 1 Then
-'   atkingckai(97, 1) = 2
-'   AI技能.露緹亞_暗影之翼  '(階段2)
-'End If
-'If turnatk = 1 And atkingckai(121, 2) = 1 Then
-'   atkingckai(121, 1) = 3
-'   AI技能.傑多_因果之刻  '(階段3)
-'End If
-'If turnatk = 1 And atkingckai(123, 2) = 1 Then
-'   atkingckai(123, 1) = 3
-'   AI技能.貝琳達_水晶幻鏡  '(階段3)
-'End If
-'===========以下是技能檢查及啟動((一般/AI)技能-C.C.-原子之心)
-'If atkingck(36, 2) = 1 Then
-'    atkingck(36, 1) = 2
-'    技能.CC_原子之心  '(階段2)
-'End If
-'If atkingckai(57, 2) = 1 Then
-'    atkingckai(57, 1) = 2
-'    AI技能.CC_原子之心  '(階段2)
-'End If
-'=================
-'技能動畫顯示階段數 = 9
-'戰鬥系統類.技能啟動數量檢查
-'=================以下是技能檢查及啟動(回合結束階段2)
-'If atkingckai(57, 2) = 1 Then
-'    GoTo AI技能_CC_原子之心_跳入點_ATK
-'End If
-'===================
-
-'===================
-'AI技能_CC_原子之心_跳入點_ATK:
-''=====================================
-'If atkingck(36, 2) = 1 Then
-'    GoTo 技能_CC_原子之心_跳入點_ATK
-'End If
-'===================
-'If turnatk = 1 And atkingckai(31, 2) = 1 Then
-'   atkingckai(31, 1) = 4
-'   AI技能.梅倫_Jackpot  '(階段4)
-'End If
-'If turnatk = 1 And atkingckai(97, 2) = 1 Then
-'   atkingckai(97, 1) = 3
-'   AI技能.露緹亞_暗影之翼  '(階段3)
-'End If
-'If turnatk = 1 And atkingckai(121, 2) = 1 Then
-'   atkingckai(121, 1) = 4
-'   AI技能.傑多_因果之刻  '(階段4)
-'End If
-'If turnatk = 1 And atkingckai(123, 2) = 1 Then
-'   atkingckai(123, 1) = 4
-'   AI技能.貝琳達_水晶幻鏡  '(階段4)
-'End If
-'=================
-'技能_CC_原子之心_跳入點_ATK:
-'=================
 '===========================執行階段插入點(ATK-14/DEF-34)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 14, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 34, 2
@@ -4023,8 +3211,6 @@ Sub 執行動作_攻擊階段結束時技能啟動()
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 16, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 36, 2
 '============================
-'FormMainMode.atkingtrtot.Interval = 600
-'FormMainMode.atkingtrtot.Enabled = True
 HP檢查階段數 = 3
 戰鬥系統類.雙方HP檢查
 End Sub
@@ -4055,18 +3241,6 @@ For i = 1 To 4
 Next
 End Sub
 
-Sub 執行動作_人物卡片背面解除亮光(ByVal n As Integer)
-'Select Case n
-'      Case 1
-'            For k = 1 To 4
-'                 FormMainMode.PEAFcardbackBR(k).Opacity = 0
-'            Next
-'      Case 2
-'            For k = 1 To 4
-'                 FormMainMode.PEAFcardbackBR(k + 4).Opacity = 0
-'            Next
-'End Select
-End Sub
 Sub 技能說明載入_人物卡片背面_交換角色()
 For n = 1 To 2
     For i = 1 To 4
@@ -5052,7 +4226,6 @@ If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
     Select Case num
        Case 1
             戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
-'            FormMainMode.usbi1(角色人物對戰人數(1, 2)).Caption = 0
             FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
             FormMainMode.uspi4(角色人物對戰人數(1, 2)).Caption = 0
             liveus(角色人物對戰人數(1, 2)) = 0
@@ -5063,11 +4236,9 @@ If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
        Case Is > 1
             liveus(角色待機人物紀錄數(1, num)) = 0
             If FormMainMode.uspi1(角色待機人物紀錄數(1, num)).Caption = "" Then
-'                FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
                 FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = -liveusmax(角色待機人物紀錄數(1, num))
                 FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = -liveusmax(角色待機人物紀錄數(1, num))
             Else
-'                FormMainMode.usbi1(角色待機人物紀錄數(1, num)).Caption = 0
                 FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 0
                 FormMainMode.uspi4(角色待機人物紀錄數(1, num)).Caption = 0
             End If
@@ -5106,11 +4277,9 @@ If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
         Case Is > 1
             If FormMainMode.compi1(角色待機人物紀錄數(2, num)).Caption = "" Then
                 FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num))
-'                FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = -livecommax(角色待機人物紀錄數(2, num))
                 FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = -livecommax(角色待機人物紀錄數(2, num))
             Else
                 FormMainMode.compi4(角色待機人物紀錄數(2, num)).Caption = 0
-'                FormMainMode.cardcompi1(角色待機人物紀錄數(2, num)).Caption = 0
                 FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
             End If
             livecom(角色待機人物紀錄數(2, num)) = 0
@@ -5224,19 +4393,7 @@ Sub 遊戲實體牌物件宣告程序()
 公用牌實體卡片分隔紀錄數(5) = -1
 For i = 1 To 公用牌實體卡片分隔紀錄數(1)
     Load FormMainMode.card(i)
-'    Load FormMainMode.cge(i)
-'    Load FormMainMode.cgen(i)
-'    Load FormMainMode.cqe(i)
-'    Load FormMainMode.cqen(i)
-'    Load FormMainMode.cgu(i)
-'    Load FormMainMode.cqu(i)
     Set FormMainMode.card(i).Container = FormMainMode.PEAttackingForm
-'    Set FormMainMode.cge(i).Container = FormMainMode.card(i)
-'    Set FormMainMode.cgen(i).Container = FormMainMode.card(i)
-'    Set FormMainMode.cqe(i).Container = FormMainMode.card(i)
-'    Set FormMainMode.cqen(i).Container = FormMainMode.card(i)
-'    Set FormMainMode.cgu(i).Container = FormMainMode.card(i)
-'    Set FormMainMode.cqu(i).Container = FormMainMode.card(i)
     FormMainMode.card(i).Left = 240
     FormMainMode.card(i).Top = 960
     FormMainMode.card(i).Visible = False

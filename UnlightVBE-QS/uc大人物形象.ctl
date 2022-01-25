@@ -18,7 +18,7 @@ Begin VB.UserControl 大人物形像
       Width           =   8895
       _ExtentX        =   15690
       _ExtentY        =   16113
-      Image           =   "小人物頭像.ctx":0000
+      Image           =   "uc大人物形象.ctx":0000
       Scaler          =   3
    End
 End

@@ -602,18 +602,12 @@ Public Property Let Passive_介面顯示(ByVal New_Passive_介面顯示 As Boolean)
        pageul.Visible = True
        pageul.ZOrder
        stagejpgn.Visible = True
-'       For i = 1 To 4
-'          Me.Passive_使用者_技能顯示 = i
-'          Me.Passive_電腦_技能顯示 = i
-'       Next
    End If
 End Property
 Public Property Get Message() As String
    Message = ""
 End Property
 Public Property Let Message(ByVal New_Message As String)
-'   戰鬥系統類.廣播訊息 New_Message
-'   messageus.ListIndex = messageus.ListCount - 1
    messagetext.MeaageText = New_Message
    PropertyChanged "Message"
 End Property

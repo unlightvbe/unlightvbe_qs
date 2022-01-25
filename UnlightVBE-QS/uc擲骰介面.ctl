@@ -352,10 +352,6 @@ Public Property Let PersonImage(ByVal New_PersonImage As String)
    person.AutoSize = False
    person.Height = 5190
    person.Top = 960
-'   person.Height = 3990
-'   person.Top = 2160
-'   person.Height = 4590
-'   person.Top = 1560
 End Property
 Public Property Get PersonImageLeftZero() As Boolean
    PersonImageLeftZero = m_PersonImageLeftZero

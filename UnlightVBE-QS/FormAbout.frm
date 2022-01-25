@@ -1,13 +1,13 @@
 VERSION 5.00
 Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
-Begin VB.Form Form2 
+Begin VB.Form FormAbout 
    BorderStyle     =   1  '單線固定
    Caption         =   "關於UnlightVBE-QS"
    ClientHeight    =   5535
    ClientLeft      =   5865
    ClientTop       =   3945
    ClientWidth     =   8400
-   Icon            =   "b.frx":0000
+   Icon            =   "FormAbout.frx":0000
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    MinButton       =   0   'False
@@ -33,7 +33,7 @@ Begin VB.Form Form2
          ForeColor       =   &H80000008&
          Height          =   1575
          Left            =   1200
-         Picture         =   "b.frx":0CCA
+         Picture         =   "FormAbout.frx":0CCA
          ScaleHeight     =   1575
          ScaleWidth      =   7815
          TabIndex        =   6
@@ -84,7 +84,7 @@ Begin VB.Form Form2
       Width           =   1320
       _ExtentX        =   2328
       _ExtentY        =   820
-      Image           =   "b.frx":95E8
+      Image           =   "FormAbout.frx":95E8
       Props           =   5
    End
    Begin VB.Label Label6 
@@ -110,13 +110,13 @@ Begin VB.Form Form2
    Begin VB.Image Image2 
       Height          =   615
       Left            =   6720
-      Picture         =   "b.frx":9C22
+      Picture         =   "FormAbout.frx":9C22
       Stretch         =   -1  'True
       Top             =   4800
       Width           =   1470
    End
    Begin VB.Label Label1 
-      Caption         =   "2019 By Andy Ciu."
+      Caption         =   "2022 By Andy Ciu."
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   11.25
@@ -133,7 +133,7 @@ Begin VB.Form Form2
       Width           =   3615
    End
    Begin VB.Label aboutvn 
-      Caption         =   "Bulid 0967"
+      Caption         =   "Bulid 0968"
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   12
@@ -184,27 +184,19 @@ Begin VB.Form Form2
       Width           =   3615
    End
 End
-Attribute VB_Name = "Form2"
+Attribute VB_Name = "FormAbout"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
-Form2.Visible = False
-End Sub
-
-
-Private Sub Form_Load()
-'=====以下為設計物件顯示
-'Label5.Visible = False
-'Label7.Visible = False
-
+FormAbout.Visible = False
 End Sub
 
 Private Sub Image2_Click()
-Form2.Visible = False
+FormAbout.Visible = False
 End Sub
 
 Private Sub Label6_Click()
-Form2.Visible = False
+FormAbout.Visible = False
 End Sub

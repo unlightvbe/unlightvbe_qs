@@ -927,9 +927,9 @@ Sub 執行階段系統_異常狀態類腳本搜尋()
                     ReDim Preserve DirectoryBuff(UBound(DirectoryBuff) + 1)
                     DirectoryBuff(UBound(DirectoryBuff)) = mypath + mydir
                 Else
-                    If 測試1.GetExtName(mydir) = "ulevsbf" And Index >= 1 Then
+                    If Utils.GetExtName(mydir) = "ulevsbf" And Index >= 1 Then
                         執行階段系統類.執行階段系統_初始_異常狀態類腳本加入紀錄 mydir, DirectoryBuff(Index) & "\"
-                    ElseIf 測試1.GetExtName(mydir) = "ulevsbf" And Index = 0 Then
+                    ElseIf Utils.GetExtName(mydir) = "ulevsbf" And Index = 0 Then
                         執行階段系統類.執行階段系統_初始_異常狀態類腳本加入紀錄 mydir, App.Path & "\Buff\"
                     End If
                 End If
@@ -968,9 +968,9 @@ Sub 執行階段系統_人物實際狀態類腳本搜尋()
                     ReDim Preserve DirectoryBuff(UBound(DirectoryBuff) + 1)
                     DirectoryBuff(UBound(DirectoryBuff)) = mypath + mydir
                 Else
-                    If 測試1.GetExtName(mydir) = "ulevsc" And Index >= 1 Then
+                    If Utils.GetExtName(mydir) = "ulevsc" And Index >= 1 Then
                         執行階段系統類.執行階段系統_初始_人物實際狀態類腳本加入紀錄 mydir, DirectoryBuff(Index) & "\"
-                    ElseIf 測試1.GetExtName(mydir) = "ulevsc" And Index = 0 Then
+                    ElseIf Utils.GetExtName(mydir) = "ulevsc" And Index = 0 Then
                         執行階段系統類.執行階段系統_初始_人物實際狀態類腳本加入紀錄 mydir, App.Path & "\CharacterActualStatus\"
                     End If
                 End If

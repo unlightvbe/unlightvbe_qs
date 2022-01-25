@@ -39,16 +39,13 @@ Public Property Let MeaageText(ByVal New_MeaageText As String)
    m_message(UBound(m_message)) = New_MeaageText
    PropertyChanged "MeaageText"
    '=================
-'   messagelabel.Caption = ""
    Cls
    If UBound(m_message) <= 5 Then
        For i = 1 To UBound(m_message)
-'           messagelabel.Caption = messagelabel.Caption & m_message(i) & Chr(10)
             Print " " & m_message(i)
        Next
    ElseIf UBound(m_message) > 5 Then
        For i = (UBound(m_message) - 5) + 1 To UBound(m_message)
-'           messagelabel.Caption = messagelabel.Caption & m_message(i) & Chr(10)
             Print " " & m_message(i)
        Next
    End If

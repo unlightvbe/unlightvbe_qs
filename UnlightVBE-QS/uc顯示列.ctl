@@ -74,7 +74,7 @@ Begin VB.UserControl 顯示列
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   2355
-      Image           =   "顯示列.ctx":0000
+      Image           =   "uc顯示列.ctx":0000
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage bn4 
@@ -84,14 +84,14 @@ Begin VB.UserControl 顯示列
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   2355
-      Image           =   "顯示列.ctx":0018
+      Image           =   "uc顯示列.ctx":0018
       Scaler          =   3
    End
    Begin VB.Image moverightjpg 
       Height          =   720
       Index           =   0
       Left            =   10080
-      Picture         =   "顯示列.ctx":0030
+      Picture         =   "uc顯示列.ctx":0030
       Top             =   480
       Width           =   525
    End
@@ -99,7 +99,7 @@ Begin VB.UserControl 顯示列
       Height          =   720
       Index           =   0
       Left            =   2760
-      Picture         =   "顯示列.ctx":01F5
+      Picture         =   "uc顯示列.ctx":01F5
       Top             =   360
       Width           =   525
    End
@@ -110,7 +110,7 @@ Begin VB.UserControl 顯示列
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   2355
-      Image           =   "顯示列.ctx":03B8
+      Image           =   "uc顯示列.ctx":03B8
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage bn22 
@@ -120,7 +120,7 @@ Begin VB.UserControl 顯示列
       Width           =   975
       _ExtentX        =   1720
       _ExtentY        =   1931
-      Image           =   "顯示列.ctx":03D0
+      Image           =   "uc顯示列.ctx":03D0
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage bn12 
@@ -130,7 +130,7 @@ Begin VB.UserControl 顯示列
       Width           =   975
       _ExtentX        =   1720
       _ExtentY        =   1720
-      Image           =   "顯示列.ctx":03E8
+      Image           =   "uc顯示列.ctx":03E8
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage bn3 
@@ -140,7 +140,7 @@ Begin VB.UserControl 顯示列
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   2566
-      Image           =   "顯示列.ctx":0400
+      Image           =   "uc顯示列.ctx":0400
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage bn2 
@@ -150,7 +150,7 @@ Begin VB.UserControl 顯示列
       Width           =   1095
       _ExtentX        =   1931
       _ExtentY        =   2143
-      Image           =   "顯示列.ctx":0418
+      Image           =   "uc顯示列.ctx":0418
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage bn1 
@@ -160,7 +160,7 @@ Begin VB.UserControl 顯示列
       Width           =   1095
       _ExtentX        =   1931
       _ExtentY        =   2143
-      Image           =   "顯示列.ctx":0430
+      Image           =   "uc顯示列.ctx":0430
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage image2 
@@ -170,7 +170,7 @@ Begin VB.UserControl 顯示列
       Width           =   4935
       _ExtentX        =   8705
       _ExtentY        =   1931
-      Image           =   "顯示列.ctx":0448
+      Image           =   "uc顯示列.ctx":0448
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage image1 
@@ -180,7 +180,7 @@ Begin VB.UserControl 顯示列
       Width           =   4935
       _ExtentX        =   8705
       _ExtentY        =   1931
-      Image           =   "顯示列.ctx":0460
+      Image           =   "uc顯示列.ctx":0460
       Scaler          =   3
    End
    Begin ImageX.aicAlphaImage aie1 
@@ -190,7 +190,7 @@ Begin VB.UserControl 顯示列
       Width           =   12075
       _ExtentX        =   21299
       _ExtentY        =   2778
-      Image           =   "顯示列.ctx":0478
+      Image           =   "uc顯示列.ctx":0478
       Scaler          =   3
       Props           =   17
    End
@@ -321,13 +321,13 @@ Public Property Let 使用者方小人物圖片(ByVal New_使用者方小人物圖片 As String)
    m_smallimageus = New_使用者方小人物圖片
    PropertyChanged "使用者方小人物圖片"
    If Me.使用者方小人物圖片 <> "" Then
-       Image1.AutoSize = True
-       Image1.AutoRedraw = True
-       Image1.LoadImage_FromFile Me.使用者方小人物圖片
-       Image1.Top = 0
-       Image1.Left = 0
-       Me.使用者方小人物圖片width = Image1.Width
-       Image1.Mirror = aiMirrorNone
+       image1.AutoSize = True
+       image1.AutoRedraw = True
+       image1.LoadImage_FromFile Me.使用者方小人物圖片
+       image1.Top = 0
+       image1.Left = 0
+       Me.使用者方小人物圖片width = image1.Width
+       image1.Mirror = aiMirrorNone
     End If
 End Property
 Public Property Get 電腦方小人物圖片() As String
@@ -402,7 +402,7 @@ End Property
 Public Property Let 使用者方小人物圖片left(ByVal new使用者方小人物圖片left As Integer)
     m_smallimageusleft = new使用者方小人物圖片left
    PropertyChanged "使用者方小人物圖片left"
-   Image1.Left = Me.使用者方小人物圖片left
+   image1.Left = Me.使用者方小人物圖片left
 End Property
 Public Property Let 電腦方小人物圖片left(ByVal new電腦方小人物圖片left As Integer)
     m_smallimagecomleft = new電腦方小人物圖片left
@@ -666,24 +666,6 @@ bn12.LoadImage_FromFile App.Path & "\gif\system\left_2.png"
 bn22.LoadImage_FromFile App.Path & "\gif\system\rest_2.png"
 bn32.LoadImage_FromFile App.Path & "\gif\system\right_2.png"
 bn42.LoadImage_FromFile App.Path & "\gif\system\change_2.png"
-'Me.goi1顯示 = True
-'Me.goi2顯示 = True
-'Me.使用者方小人物圖片left = 0
-'Me.電腦方小人物圖片left = 7680
-'bn1.Left = 4200
-'bn1.Top = 100
-'bn2.Left = 5340
-'bn2.Top = 100
-'bn3.Left = 6480
-'bn3.Top = 100
-'bn12.Left = 4200
-'bn12.Top = 100
-'bn22.Left = 5340
-'bn22.Top = 100
-'bn32.Left = 6480
-'bn32.Top = 100
-'bn4.Visible = False
-'bn42.Visible = False
 Me.移動階段圖顯示 = False
 Me.移動階段選擇值 = 0
 
