@@ -442,6 +442,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_diceus As String, m_dicecom As String
 Dim m_start As Boolean, m_stop As Boolean
 Dim m_DiceATKMode As Integer

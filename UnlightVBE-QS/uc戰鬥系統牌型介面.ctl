@@ -400,6 +400,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_Turn As Integer, m_cardnum As Integer, m_passivevisble As Boolean
 Public Property Get turn() As Integer
    turn = m_Turn
@@ -563,6 +564,7 @@ End Property
 Public Property Let Passive_技能一方全重設(ByVal New_Passive_技能一方全重設 As Integer)
    PropertyChanged "Passive_技能一方全重設"
    '=================
+   Dim i As Integer
    Select Case New_Passive_技能一方全重設
        Case 1
            For i = 1 To 4
@@ -587,6 +589,7 @@ Public Property Let Passive_介面顯示(ByVal New_Passive_介面顯示 As Boolean)
    m_passivevisble = New_Passive_介面顯示
    PropertyChanged "Passive_介面顯示"
    '=================
+   Dim i As Integer
    If Me.Passive_介面顯示 = False Then
        cardunderjpg.Visible = False
        cardpagejpg.Visible = False

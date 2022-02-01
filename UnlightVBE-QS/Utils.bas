@@ -1,4 +1,5 @@
 Attribute VB_Name = "Utils"
+Option Explicit
 Public Sub SearchDirectory()
   Dim mypath As String, mydir As String
   Dim DirectoryBuff()

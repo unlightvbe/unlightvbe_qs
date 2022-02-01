@@ -27,6 +27,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_smallimage As String
 Dim m_bighei As Integer
 Dim m_bigwh As Integer

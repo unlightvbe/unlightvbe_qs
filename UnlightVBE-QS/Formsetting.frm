@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.4#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "COMCTL32.OCX"
 Begin VB.Form Formsetting 
    Appearance      =   0  '平面
    BorderStyle     =   1  '單線固定
@@ -2282,7 +2282,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
+Option Explicit
 Private Sub checktest_Click()
 If checktest.Value = 1 Then
     persontgreus.Value = 0
@@ -2324,6 +2324,7 @@ End If
 End Sub
 
 Private Sub cksemute_Click()
+Dim i As Integer
 If cksemute.Value = 1 Then
     For i = 1 To FormMainMode.cMusicPlayer.UBound
         FormMainMode.cMusicPlayer(i).Mute = True
@@ -2377,6 +2378,7 @@ VBEError:
 End Sub
 
 Private Sub Form_Activate()
+Dim i As Integer
 Formsetting.Width = 9315
 Formsetting.Height = 9150
 For i = 1 To 3
@@ -2398,6 +2400,8 @@ Next
 End Sub
 
 Private Sub Form_Load()
+Dim i As Integer
+
 對戰地圖選擇.AddItem "《隨機》"
 對戰地圖選擇.AddItem "人魂墓地"
 對戰地圖選擇.AddItem "白魔的圓環石陣"
@@ -2724,6 +2728,8 @@ End Select
 End Sub
 
 Private Sub persontgrecom_Click()
+Dim i As Integer
+
 If persontgrecom.Value = 1 Then
     For i = 1 To 18
        personcom_Click (i)
@@ -2740,6 +2746,8 @@ End If
 End Sub
 
 Private Sub persontgreus_Click()
+Dim i As Integer
+
 If persontgreus.Value = 1 Then
     For i = 1 To 18
        personus_Click (i)
@@ -2754,6 +2762,8 @@ End If
 End Sub
 
 Private Sub persontgruoncom_Click(Index As Integer)
+Dim i As Integer
+
 Select Case Index
     Case 1
        For i = 1 To 18
@@ -2775,6 +2785,8 @@ End Select
 End Sub
 
 Private Sub persontgruonus_Click(Index As Integer)
+Dim i As Integer
+
 Select Case Index
     Case 1
        For i = 1 To 18
@@ -2848,6 +2860,8 @@ seve.Caption = sdrse.Value
 End Sub
 
 Private Sub sdrse_Scroll()
+Dim i As Integer
+
 seve.Caption = sdrse.Value
 For i = 1 To FormMainMode.cMusicPlayer.UBound
     FormMainMode.cMusicPlayer(i).Volume = sdrse.Value
@@ -2943,6 +2957,8 @@ Loop
 End Sub
 
 Sub 對戰地圖選擇_Click()
+Dim i As Integer
+
 Select Case 對戰地圖選擇.Text
    Case "冰封湖畔(舊)"
       BGM選擇.ListIndex = 13

@@ -37,7 +37,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   20
       Left            =   3480
-      Picture         =   "UserControl1.ctx":0000
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":0000
       Top             =   0
       Width           =   750
    End
@@ -45,7 +45,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   19
       Left            =   2640
-      Picture         =   "UserControl1.ctx":0690
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":0690
       Top             =   0
       Width           =   750
    End
@@ -53,7 +53,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   18
       Left            =   1800
-      Picture         =   "UserControl1.ctx":0D20
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":0D20
       Top             =   0
       Width           =   750
    End
@@ -61,7 +61,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   17
       Left            =   960
-      Picture         =   "UserControl1.ctx":13B0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":13B0
       Top             =   0
       Width           =   750
    End
@@ -69,7 +69,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   16
       Left            =   120
-      Picture         =   "UserControl1.ctx":1A40
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":1A40
       Top             =   0
       Width           =   750
    End
@@ -77,7 +77,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   15
       Left            =   3480
-      Picture         =   "UserControl1.ctx":20D0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":20D0
       Top             =   840
       Width           =   750
    End
@@ -85,7 +85,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   14
       Left            =   2640
-      Picture         =   "UserControl1.ctx":2760
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":2760
       Top             =   840
       Width           =   750
    End
@@ -93,7 +93,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   13
       Left            =   1800
-      Picture         =   "UserControl1.ctx":2DF0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":2DF0
       Top             =   840
       Width           =   750
    End
@@ -101,7 +101,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   12
       Left            =   960
-      Picture         =   "UserControl1.ctx":3480
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":3480
       Top             =   840
       Width           =   750
    End
@@ -109,7 +109,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   11
       Left            =   120
-      Picture         =   "UserControl1.ctx":3B10
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":3B10
       Top             =   840
       Width           =   750
    End
@@ -117,7 +117,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   10
       Left            =   3480
-      Picture         =   "UserControl1.ctx":41A0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":41A0
       Top             =   1680
       Width           =   750
    End
@@ -125,7 +125,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   9
       Left            =   2640
-      Picture         =   "UserControl1.ctx":4830
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":4830
       Top             =   1680
       Width           =   750
    End
@@ -133,7 +133,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   8
       Left            =   1800
-      Picture         =   "UserControl1.ctx":4EC0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":4EC0
       Top             =   1680
       Width           =   750
    End
@@ -141,7 +141,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   7
       Left            =   960
-      Picture         =   "UserControl1.ctx":5550
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":5550
       Top             =   1680
       Width           =   750
    End
@@ -149,7 +149,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   6
       Left            =   120
-      Picture         =   "UserControl1.ctx":5BE0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":5BE0
       Top             =   1680
       Width           =   750
    End
@@ -157,7 +157,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   5
       Left            =   3480
-      Picture         =   "UserControl1.ctx":6270
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":6270
       Top             =   2520
       Width           =   750
    End
@@ -165,7 +165,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   4
       Left            =   2640
-      Picture         =   "UserControl1.ctx":6900
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":6900
       Top             =   2520
       Width           =   750
    End
@@ -173,7 +173,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   3
       Left            =   1800
-      Picture         =   "UserControl1.ctx":6F90
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":6F90
       Top             =   2520
       Width           =   750
    End
@@ -181,7 +181,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   2
       Left            =   960
-      Picture         =   "UserControl1.ctx":7620
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":7620
       Top             =   2520
       Width           =   750
    End
@@ -189,7 +189,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   1
       Left            =   120
-      Picture         =   "UserControl1.ctx":7CB0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":7CB0
       Top             =   2520
       Width           =   750
    End
@@ -197,7 +197,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   5
       Left            =   3480
-      Picture         =   "UserControl1.ctx":8340
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":8340
       Top             =   4680
       Width           =   750
    End
@@ -205,7 +205,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   4
       Left            =   2640
-      Picture         =   "UserControl1.ctx":8632
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":8632
       Top             =   4680
       Width           =   750
    End
@@ -213,7 +213,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   3
       Left            =   1800
-      Picture         =   "UserControl1.ctx":8924
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":8924
       Top             =   4680
       Width           =   750
    End
@@ -221,7 +221,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   2
       Left            =   960
-      Picture         =   "UserControl1.ctx":8C16
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":8C16
       Top             =   4680
       Width           =   750
    End
@@ -229,7 +229,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   1
       Left            =   120
-      Picture         =   "UserControl1.ctx":8F08
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":8F08
       Top             =   4680
       Width           =   750
    End
@@ -237,7 +237,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   10
       Left            =   3480
-      Picture         =   "UserControl1.ctx":91FA
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":91FA
       Top             =   5520
       Width           =   750
    End
@@ -245,7 +245,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   9
       Left            =   2640
-      Picture         =   "UserControl1.ctx":94EC
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":94EC
       Top             =   5520
       Width           =   750
    End
@@ -253,7 +253,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   8
       Left            =   1800
-      Picture         =   "UserControl1.ctx":97DE
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":97DE
       Top             =   5520
       Width           =   750
    End
@@ -261,7 +261,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   7
       Left            =   960
-      Picture         =   "UserControl1.ctx":9AD0
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":9AD0
       Top             =   5520
       Width           =   750
    End
@@ -269,7 +269,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   6
       Left            =   120
-      Picture         =   "UserControl1.ctx":9DC2
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":9DC2
       Top             =   5520
       Width           =   750
    End
@@ -277,7 +277,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   15
       Left            =   3480
-      Picture         =   "UserControl1.ctx":A0B4
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":A0B4
       Top             =   6360
       Width           =   750
    End
@@ -285,7 +285,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   14
       Left            =   2640
-      Picture         =   "UserControl1.ctx":A3A6
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":A3A6
       Top             =   6360
       Width           =   750
    End
@@ -293,7 +293,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   13
       Left            =   1800
-      Picture         =   "UserControl1.ctx":A698
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":A698
       Top             =   6360
       Width           =   750
    End
@@ -301,7 +301,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   12
       Left            =   960
-      Picture         =   "UserControl1.ctx":A98A
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":A98A
       Top             =   6360
       Width           =   750
    End
@@ -309,7 +309,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   11
       Left            =   120
-      Picture         =   "UserControl1.ctx":AC7C
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":AC7C
       Top             =   6360
       Width           =   750
    End
@@ -317,7 +317,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   20
       Left            =   3480
-      Picture         =   "UserControl1.ctx":AF6E
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":AF6E
       Top             =   7200
       Width           =   750
    End
@@ -325,7 +325,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   19
       Left            =   2640
-      Picture         =   "UserControl1.ctx":B260
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":B260
       Top             =   7200
       Width           =   750
    End
@@ -333,7 +333,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   18
       Left            =   1800
-      Picture         =   "UserControl1.ctx":B552
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":B552
       Top             =   7200
       Width           =   750
    End
@@ -341,7 +341,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   17
       Left            =   960
-      Picture         =   "UserControl1.ctx":B844
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":B844
       Top             =   7200
       Width           =   750
    End
@@ -349,7 +349,7 @@ Begin VB.UserControl uc§ðÀ»¨¾¿mµøµ¡
       Height          =   750
       Index           =   16
       Left            =   120
-      Picture         =   "UserControl1.ctx":BB36
+      Picture         =   "uc§ðÀ»¨¾¿mµøµ¡.ctx":BB36
       Top             =   7200
       Width           =   750
    End
@@ -359,14 +359,14 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-'Dim m_showusnum As Integer
- Dim m_adcomtext As Integer
- Dim m_adustext As Integer
- Dim adusall As Integer
- Dim adcomall As Integer
- Dim hideall As Integer
- Dim m_adcgetext As Integer
- Dim m_adwaittext As Boolean
+Option Explicit
+Dim m_adcomtext As Integer
+Dim m_adustext As Integer
+Dim adusall As Integer
+Dim adcomall As Integer
+Dim hideall As Integer
+Dim m_adcgetext As Integer
+Dim m_adwaittext As Boolean
  
  
 Private Sub t1_Timer()
@@ -418,6 +418,7 @@ End If
 End Sub
 
 Private Sub UserControl_Show()
+Dim i As Integer
 adusall = 1
 adcomall = 1
 t1.Enabled = True

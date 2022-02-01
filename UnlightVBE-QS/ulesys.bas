@@ -1,4 +1,5 @@
 Attribute VB_Name = "一般系統類"
+Option Explicit
 Public app_path As String  '路徑設定碼
 Public 角色人物對戰人數(1 To 2, 1 To 2) As Integer '雙方對戰角色人數紀錄數(1.使用者/2.電腦,1.總共人數/2.目前第幾位)
 Public 角色待機人物紀錄數(1 To 2, 1 To 3) As Integer '雙方待機角色人物編號紀錄數(1.使用者/2.電腦,1.場上角色/2~3.待機角色第n位編號)
@@ -406,6 +407,7 @@ Dim levelmark As Integer
 Dim tempnum As Integer
 Dim personlist As ComboBox
 Dim temppass As Boolean
+Dim i As Integer
 levelmark = Formsetting.cbsimilarlevel.ListIndex
 tempnum = 1
 Select Case uscom
@@ -1147,7 +1149,7 @@ End Select
 End Function
 Sub 戰鬥系統表單讀入程序()
 Dim 暫時數(2) As Integer '按鈕座標暫時變數
-Dim i As Integer, ckl As Integer, mm As Integer, w As Integer  '暫時變數
+Dim i As Integer, j As Integer, ckl As Integer, mm As Integer, w As Integer '暫時變數
 '------------
 goidefus = 0
 movecp = 2
@@ -1491,6 +1493,7 @@ FormMainMode.cMusicPlayer(0).MusicPlay
 FormMainMode.personreadifus.Visible = False
 End Sub
 Sub 遊戲初始讀入程序()
+Dim i As Integer
 '=====以下是背景音樂及SE初始設定
     For i = FormMainMode.cMusicPlayer.UBound + 1 To 8
         Load FormMainMode.cMusicPlayer(i)
@@ -1624,6 +1627,7 @@ Formsetting.persontgruonus(4).Value = True
 Formsetting.ckendturn.Value = 1
 End Sub
 Sub 清除戰鬥系統所有變數值()
+Dim i As Integer, j As Integer '暫時變數
 'Erase atkingno '技能發動排序暫時圖片路徑儲存變數(技能發動順序8~1,1.圖片路徑/2.(1)使用者/(2)電腦方/3.Left/4.Top(座標)/5.視窗寬度(Width)/6.視窗高度(Height)/7.技能編號/8.技能執行中時啟動值/9.技能執行中換圖片檢查值/10.第2張圖片路徑)
 Erase goicheck   '攻擊/防禦模式加骰數值檢查碼
 Erase liveus
@@ -1672,7 +1676,6 @@ Erase pageeventnum '事件卡排列紀錄資料(1.使用者/2.電腦,1~18-編號,1.事件卡名稱/2.
 Erase 人物卡面背面編號紀錄數  '人物卡片背面技能說明人物編號暫時變數(1.(1).使用者/(2).電腦,2.第n位)
 Erase 擲骰表單溝通暫時變數 'Form6表單值溝通暫時變數(1.一回合中先後判斷(1.前/2.後),2.原始骰值(使用者)-擲骰後有效傷害數,3.原始骰值(電腦)-擲骰後傷害對象(1.使用者/2.電腦),4.(1.使用者先攻/2.電腦先攻))
 Erase 公用牌各牌類型紀錄數 '各場景公用牌牌類型紀錄暫時變數(0.(1)目前已發牌總數量/(2)目前場景牌總數量,1~31.(1)目前已使用之牌數/(2)該牌型能使用之總數量)
-atkingsecondjpg = ""
 Erase 公用牌實體卡片分隔紀錄數 '戰鬥系統實體牌相關紀錄數(1.總共牌數/2.公牌牌數/3.使用者事件卡最底編號/4.電腦事件卡最底編號)
 Erase 戰鬥擲骰介面人物立繪圖路徑紀錄數 '戰鬥系統擲骰介面雙方人物立繪圖路徑紀錄數(1.使用者方/2.電腦方)
 Erase 人物實際狀態資料庫 '人物實際狀態資料
@@ -1714,7 +1717,7 @@ For i = 1 To 3
 Next
 End Sub
 Sub 自由戰鬥模式設定表單各式設定讀入程序()
-Dim ne As Integer, nd As Integer '暫時變數
+Dim i As Integer, ne As Integer, nd As Integer  '暫時變數
 '========角色色格讀入
 For i = 1 To 18
     ne = i Mod 6
@@ -1729,6 +1732,7 @@ Next
 End Sub
 Sub 通知表單顯示(ByVal num As Integer)
 Dim pstr() As String
+Dim k As Integer
 Select Case num
     Case 1
         FormMessage.Label2 = "大小姐您好" & Chr(10)
@@ -1779,4 +1783,16 @@ Select Case num
         Exit Sub
 End Select
 FormMainMode.cMusicPlayer(num).MusicPlay
+End Sub
+Sub 離開遊戲提示(Cancel As Integer, UnloadMode As Integer)
+Dim YesNo As VbMsgBoxResult
+If UnloadMode = 0 Then
+   YesNo = MsgBox("確定離開遊戲?", 36, "UnlightVBE-系統提示")
+   If YesNo = VbMsgBoxResult.vbYes Then
+    End
+   Else
+    Cancel = 1
+   End If
+End If
+
 End Sub

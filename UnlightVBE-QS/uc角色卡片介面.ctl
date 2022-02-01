@@ -949,6 +949,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_cardmain_jpg As String
 Dim m_cardmain_personhp As Integer, m_cardmain_personhpmax As Integer, m_cardmain_personhp41 As Integer
 Dim m_cardmain_personatk As Integer
@@ -969,12 +970,15 @@ If buffnum >= 1 And buffnum <= 14 Then
 End If
 End Sub
 Public Sub 異常狀態全重設()
+Dim i As Integer
 For i = 1 To 14
     personspe(i).Visible = False
 Next
 End Sub
 Public Sub CardBack全重設()
 Erase m_cardback_activehelp
+Dim i As Integer, k As Integer
+
 m_cardback_activecheck = 0
 m_cardback_passivecheck = 0
 m_cardbackcheck = 0
@@ -1161,6 +1165,8 @@ Public Property Get CardBack_主動技_技能說明() As String
 End Property
 Public Property Let CardBack_主動技_技能說明(ByVal New_CardBack_主動技_技能說明 As String)
    Dim buffstr() As String
+   Dim i As Integer
+   
    buffstr = Split(New_CardBack_主動技_技能說明, "#")
    If buffstr(0) <> "" And Val(buffstr(1)) >= 1 And Val(buffstr(1)) <= 4 Then
        For i = 1 To Len(buffstr(0))
@@ -1374,6 +1380,8 @@ Public Property Get CardBack_被動技_技能說明() As String
 End Property
 Public Property Let CardBack_被動技_技能說明(ByVal New_CardBack_被動技_技能說明 As String)
    Dim buffstr() As String
+   Dim i As Integer
+   
    buffstr = Split(New_CardBack_被動技_技能說明, "#")
    If buffstr(0) <> "" And Val(buffstr(1)) >= 1 And Val(buffstr(1)) <= 4 Then
        For i = 1 To Len(buffstr(0))
@@ -1429,6 +1437,7 @@ m_cardbackcheck = 1
 End Sub
 
 Private Sub PEAFcardback_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 For i = 1 To 4
     If i <> m_cardback_activecheck Then
         PEAFcardbackBR(i).Opacity = 0
@@ -1442,6 +1451,7 @@ PEAFpersoncardback_main.Caption = m_cardback_activehelp(Index)
 End Sub
 
 Private Sub PEAFcardbackBR_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 PEAFcardbackBR(Index).Opacity = 100
 For i = 1 To 4
     If i <> m_cardback_activecheck And i <> Index Then
@@ -1460,20 +1470,13 @@ PEAFcardbackpassive.Visible = False
 m_cardbackcheck = 2
 End Sub
 
-Private Sub PEAFcardbackpassive_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-For i = 1 To 4
-    If i <> m_cardback_passivecheck And i <> Index Then
-        PEAFcardbackpassiveBR(i).Opacity = 0
-    End If
-Next
-End Sub
-
 Private Sub PEAFcardbackpassiveBR_Click(Index As Integer, ByVal Button As Integer)
 m_cardback_passivecheck = Index
 PEAFpersoncardback_passivemain.Caption = m_cardback_passivehelp(Index)
 End Sub
 
 Private Sub PEAFcardbackpassiveBR_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 PEAFcardbackpassiveBR(Index).Opacity = 50
 For i = 1 To 4
     If i <> m_cardback_passivecheck And i <> Index Then
@@ -1506,6 +1509,7 @@ Call PEAFcardback_Click
 End Sub
 
 Private Sub PEAFpersoncardback_main_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 For i = 1 To 4
     If i <> m_cardback_activecheck Then
         PEAFcardbackBR(i).Opacity = 0
@@ -1518,6 +1522,7 @@ Call PEAFcardbackpassive_Click
 End Sub
 
 Private Sub PEAFpersoncardback_passivemain_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 For i = 1 To 4
     If i <> m_cardback_passivecheck Then
         PEAFcardbackpassiveBR(i).Opacity = 0

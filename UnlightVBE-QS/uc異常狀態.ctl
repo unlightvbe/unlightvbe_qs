@@ -80,6 +80,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_personimg As String
 Dim m_personnum As Integer
 Dim m_personturn As Integer

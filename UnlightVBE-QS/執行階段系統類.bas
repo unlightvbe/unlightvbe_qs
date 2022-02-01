@@ -1,4 +1,5 @@
 Attribute VB_Name = "執行階段系統類"
+Option Explicit
 Public VBEPersonVS(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)  As Variant  'VBE人物統一變數-VS版
 Public atkingpagetotVS(1 To 2, 1 To 5) As Variant  '每階段出牌種類及數值統計資料-VS版
 Public VBEPersonBuffVSF() As Variant '異常狀態資料-VS-F版
@@ -40,6 +41,7 @@ End Sub
 Sub 執行階段73_指令_異常狀態控制_全部清除(ByVal uscom As Integer, ByVal num As Integer)
 Dim vbecommadnumSecond As Integer '本層執行階段編號數
 Dim buffobj As clsStatus
+Dim i As Integer
 '=======================
 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
 '=======================
@@ -92,6 +94,8 @@ End Sub
 Sub 執行階段系統總主要程序_執行階段開始(ByVal uscomFirst As Integer, ByVal ns As Integer, ByVal nstype As Integer)
     Dim vbecommadtotplayNow As Integer '本層執行階段編號數
     '==nstype(1.全執行(驗證)/2.只執行一次(驗證)/3.全執行(不驗證)/4.只執行一次(不驗證)
+    Dim i As Integer, k As Integer, w As Integer, atkingnum As Integer
+    Dim n As clsStatus
     '=======================
     vbecommadtotplayNow = 執行階段系統_宣告開始或結束(1)
     '=======================
@@ -166,6 +170,7 @@ Function 執行階段系統_驗證(ByVal atkingnum As Integer, ByVal ns As Integer, ByVa
     If Formsetting.checktest.Value = 0 Then On Error GoTo vscheckerr
     Dim vsstr1 As String, vsstr2 As String, vsstr3() As String, vsstr4 As String
     Dim textlinea As String, str As String
+    Dim k As Integer, p As Integer
     '==========================
     If (uscom = 1 And liveus(personnum) <= 0 And 角色人物對戰人數(uscom, 2) <> personnum) Or _
        (uscom = 2 And livecom(personnum) <= 0 And 角色人物對戰人數(uscom, 2) <> personnum) Then
@@ -294,6 +299,7 @@ VssAdminReTry:
 '=====================================
 Exit Function
 '===========
+Dim i As Integer
 For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
    FormMainMode.PEAFvssc(i).Reset
 Next
@@ -320,6 +326,7 @@ VssAdminReTry:
 '=====================================
 Exit Function
 '===========
+Dim i As Integer
 For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
    FormMainMode.PEAFvssc(i).Reset
 Next
@@ -347,6 +354,7 @@ VssAdminReTry:
 '=====================================
 Exit Function
 '===========
+Dim i As Integer
 For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
    FormMainMode.PEAFvssc(i).Reset
 Next
@@ -373,6 +381,7 @@ VssAdminReTry:
 '=====================================
 Exit Function
 '===========
+Dim i As Integer
 For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
    FormMainMode.PEAFvssc(i).Reset
 Next
@@ -401,6 +410,8 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
     Erase VBEActualStatusVS '人物實際狀態資料-VS版
     '===========================
     Dim q As Integer, w As Integer, rr As Integer, tempc As Integer, buffobj As clsStatus
+    Dim i As Integer, j As Integer, k As Integer, m As Integer, p As Integer
+    
     tempc = 1
     For i = 1 To 2
         For j = 1 To 3
@@ -890,6 +901,7 @@ Sub 執行階段系統遊戲初始總程序()
 End Sub
 Sub 執行階段系統_初始_腳本物件創立(ByVal num As Integer)
        If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
+       Dim i As Integer
         '==========
         For i = 1 To num
            Load FormMainMode.PEAFvssc(i)
@@ -1000,11 +1012,10 @@ Sub 執行階段系統_初始_人物主動及被動技能類資料讀入()
 If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
 Dim vsstr As String, 文件字串() As String
 Dim atknum As Integer, uscomn As Integer, pnnum As Integer
-Dim tot As Integer
+Dim tot As Integer, i As Integer, k As Integer
 atknum = 1: uscomn = 1: pnnum = 1
 tot = 1
 Do
-    textlinea = ""
     vsstr = ""
     Select Case tot
          Case Is <= 24
@@ -1093,6 +1104,8 @@ Sub 執行階段系統_初始_異常狀態類資料讀入()
 If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
 ReDim VBEVSSBuffStr1(UBound(VBEVSSBuffStr2))
 Dim vsstr As String
+Dim i As Integer
+
 For i = 1 To UBound(VBEVSSBuffStr2)
     vsstr = FormMainMode.PEAFvssc(i + 54).Run("main", 1)
     VBEVSSBuffStr1(i) = vsstr
@@ -1107,6 +1120,8 @@ Sub 執行階段系統_初始_人物實際狀態類資料讀入()
 If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
 ReDim VBEVSSActualStatusStr1(UBound(VBEVSSActualStatusStr2))
 Dim vsstr As String, textlinea As String, str As String
+Dim i As Integer
+
 For i = 1 To UBound(VBEVSSActualStatusStr2)
     Open VBEVSSActualStatusStr2(i) For Input As #1
     Do Until EOF(1)
@@ -1129,6 +1144,8 @@ vssyserror:
 End Sub
 Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As Integer, ByVal akstr As String, ByVal ns As Integer, ByVal PersonBattleNum As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim buffvssnum As Integer, BuffPersonType As Integer, buffobj As clsStatus '暫時變數
+    Dim p As Integer
+    
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
     If 執行階段系統類.執行階段系統_驗證(9, ns, akstr, uscom, personnum) = True Then
            Set buffobj = 人物異常狀態列表(uscom, personnum)(akstr)
@@ -1161,6 +1178,7 @@ Sub 執行階段系統總主要程序_人物實際狀態(ByVal uscom As Integer, ByVal personnum 
     End If
 End Sub
 Function 執行階段系統_搜尋正在執行之執行階段(ByVal vscmdname As String) As Integer
+    Dim i As Integer
     For i = 1 To vbecommadtotplay
          If vbecommadstr(1, i) = vscmdname Then
              執行階段系統_搜尋正在執行之執行階段 = i

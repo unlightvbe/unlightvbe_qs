@@ -26,6 +26,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_message() As String
 Private Sub UserControl_Initialize()
 ReDim m_message(0) As String

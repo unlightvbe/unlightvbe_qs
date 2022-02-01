@@ -1,4 +1,5 @@
 Attribute VB_Name = "戰鬥系統類"
+Option Explicit
 Public Const a1a As String = "ATK-劍"
 Public Const a2a As String = "DEF"
 Public Const a3a As String = "MOV"
@@ -115,6 +116,7 @@ End Select
 
 End Sub
 Function 執行動作_路徑使用新式異常狀態圖案(ByVal ph As String) As String
+Dim i As Integer
 For i = 1 To Len(ph)
     If Mid(ph, i, 1) = "." Then
         ph = Mid(ph, 1, i - 1) & "new" & Right(ph, 4)
@@ -192,6 +194,7 @@ Sub 骰量更新顯示()
 Erase 顯示列雙方數值鎖定紀錄數
 Erase atkingckdice
 Erase Vss_EventPersonAbilityDiceChangeNum
+Dim uscom As Integer
 '===========================執行階段插入點(45)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 45, 1
 '============================
@@ -722,6 +725,7 @@ Sub 執行動作_電腦_棄牌(ByVal n As Integer)
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_洗牌()
+Dim g As Integer
 For g = 1 To 公用牌實體卡片分隔紀錄數(2)
      If pagecardnum(g, 6) = 3 Then
          公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) - 1
@@ -795,11 +799,11 @@ Sub 執行動作_清除所有異常狀態(ByVal uscom As Integer, ByVal num As Integer)
 '==================
 執行階段系統類.執行階段73_指令_異常狀態控制_全部清除 uscom, num
 '==================
-Dim tempnum As Integer
+Dim tempnum As Integer, i As Integer
 tempnum = 1
 For i = 1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count
     If VBEStageRemoveBuffAllNum(i) = False Then
-        人物異常狀態列表(uscom, 角色待機人物紀錄數(uscomt, num)).Remove tempnum
+        人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Remove tempnum
     Else
         tempnum = tempnum + 1
     End If
@@ -869,11 +873,11 @@ End If
 End Sub
 Sub 異常狀態顯示更新(ByVal uscom As Integer)
 Dim numNow As Integer, obj As clsStatus
+Dim i As Integer, k As Integer
 
 For i = 1 To 角色人物對戰人數(uscom, 1)
     numNow = 1
-    For Each n In 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, i))
-        Set obj = n
+    For Each obj In 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, i))
         Select Case uscom
             Case 1
                 FormMainMode.cardus(角色待機人物紀錄數(1, i)).更改異常狀態資料 numNow, obj.ImagePath, obj.Value, obj.Total, True
@@ -907,6 +911,8 @@ Select Case n
 End Select
 End Sub
 Sub 小人物頭像執行完判斷_使用者()
+Dim ckl As Integer
+
 If turnatk = 1 Or turnatk = 2 Then
    turnpageonin = 1
     If Vss_EventPlayerAllActionOffNum(1) = 1 Then
@@ -953,6 +959,8 @@ FormMainMode.card(num).CardEventType = False
 End Sub
 Sub 出牌順序計算_使用者_手牌()
 Dim pagegustot As Integer '暫時變數
+Dim i As Integer, j As Integer, o As Integer
+Dim g As Integer, h As Integer
 
 For i = 1 To 999
    For j = 1 To 2
@@ -984,6 +992,8 @@ Next
 End Sub
 Sub 出牌順序計算_使用者_出牌()
 Dim pagegustot As Integer '暫時變數
+Dim i As Integer, j As Integer, o As Integer
+Dim g As Integer, h As Integer
 
 For i = 1 To 999
    For j = 1 To 2
@@ -1015,6 +1025,8 @@ Next
 End Sub
 Sub 出牌順序計算_電腦_手牌()
 Dim pagegustot As Integer '暫時變數
+Dim i As Integer, j As Integer, o As Integer
+Dim g As Integer, h As Integer
 
 For i = 1 To 999
    For j = 1 To 2
@@ -1049,6 +1061,8 @@ Next
 End Sub
 Sub 出牌順序計算_電腦_出牌()
 Dim pagegustot As Integer '暫時變數
+Dim i As Integer, j As Integer, o As Integer
+Dim g As Integer, h As Integer
 
 For i = 1 To 999
    For j = 1 To 2
@@ -1078,6 +1092,8 @@ For o = 1 To Val(pagegustot) - 1
 Next
 End Sub
 Sub 收牌計算距離單位_使用者()
+Dim i As Integer
+
 For i = 1 To 999
     距離單位_收牌暫時數(i, 1) = 0
     距離單位_收牌暫時數(i, 2) = 0
@@ -1097,6 +1113,8 @@ For i = 1 To pageqlead(1)
 Next
 End Sub
 Sub 收牌計算距離單位_電腦()
+Dim i As Integer
+
 For i = 1 To 999
     距離單位_收牌暫時數(i, 1) = 0
     距離單位_收牌暫時數(i, 2) = 0
@@ -1117,6 +1135,8 @@ Next
 End Sub
 Sub 技能說明載入_使用者(ByVal n As Integer)
 Dim ahmt As String
+Dim i As Integer
+
 FormMainMode.atkinghelpt1.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 2)
 FormMainMode.atkinghelpt2.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 3)
 FormMainMode.atkinghelpt3.Caption = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 4)
@@ -1140,6 +1160,8 @@ End If
 End Sub
 Sub 技能說明載入_電腦(ByVal n As Integer)
 Dim ahmt As String
+Dim i As Integer
+
 FormMainMode.atkinghelpt1.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 2)
 FormMainMode.atkinghelpt2.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 3)
 FormMainMode.atkinghelpt3.Caption = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 4)
@@ -1163,6 +1185,8 @@ Else
 End If
 End Sub
 Sub 音量靜音調節設定()
+Dim i As Integer
+
 If Formsetting.cksemute.Value = 1 Then
     For i = 1 To FormMainMode.cMusicPlayer.UBound
         FormMainMode.cMusicPlayer(i).Mute = True
@@ -1437,6 +1461,8 @@ If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
 End If
 End Sub
 Sub 電腦牌_模擬轉牌_外(ByVal Index As Integer)
+Dim uspce As String, uspme As String
+
 uspce = pagecardnum(Index, 1)
 uspme = pagecardnum(Index, 2)
 pagecardnum(Index, 1) = pagecardnum(Index, 3)
@@ -1542,6 +1568,7 @@ End Select
 End Sub
 Sub 骰數零執行判斷()
     Dim ustruenum As Integer, comtruenum As Integer
+    Dim p As Integer, i As Integer, j As Integer
     '==無介面表示，需自行擲骰
     For p = 1 To 擲骰表單溝通暫時變數(9)
        Randomize Timer
@@ -1748,6 +1775,8 @@ End If
 End Sub
 Function 雙方HP檢查_結束回合檢查() As Boolean
 Dim num(1 To 2) As Integer '選擇人物暫時變數
+Dim i As Integer
+
 If BattleTurn >= Val(Formsetting.ckendturnnum.Text) And Formsetting.ckendturn.Value = 1 Then
         雙方HP檢查_結束回合檢查 = True
         '==============
@@ -1777,6 +1806,7 @@ End If
 End Function
 
 Sub checkpage()
+Dim i As Integer
 
 For i = 1 To 目前數(11)
   If 目前數(10) = 1 Then
@@ -1827,6 +1857,8 @@ If goicheck(1) = 0 Then
 End If
 End Sub
 Sub cleanatkingpagetot()
+Dim i As Integer, j As Integer
+
 For i = 1 To 2
      For j = 1 To 5
         atkingpagetot(i, j) = 0
@@ -1834,6 +1866,8 @@ For i = 1 To 2
 Next
 End Sub
 Sub comatk1()
+Dim a As Integer
+Dim cspce As String, cspme As String
 
 For a = 1 To 公用牌實體卡片分隔紀錄數(1)
   If Val(pagecardnum(a, 6)) = 1 And Val(pagecardnum(a, 5)) = 2 And Val(pagecardnum(a, 11)) <> 1 Then
@@ -1857,6 +1891,8 @@ For a = 1 To 公用牌實體卡片分隔紀錄數(1)
 Next
 End Sub
 Sub comatk2()
+Dim j As Integer
+Dim cspce As String, cspme As String
 
 For j = 1 To 公用牌實體卡片分隔紀錄數(1)
   If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
@@ -1881,6 +1917,9 @@ Next
 End Sub
 Sub comatk_智慧型AI引導程序_超出牌張數(ByVal turn As Integer, ByVal movecpre As Integer, ByVal choose As Integer)
 Dim werstr As String, werbo As Boolean
+Dim a As Integer, k As Integer
+Dim cspce As String, cspme As String
+
 If movecpre = 1 And turn = 1 Then
    werstr = a1a
 ElseIf movecpre > 1 And turn = 1 Then
@@ -1920,6 +1959,9 @@ For a = 1 To 公用牌實體卡片分隔紀錄數(1)
 Next
 End Sub
 Sub moveatkin()
+Dim j As Integer
+Dim cspce As String, cspme As String
+
 Do
     For j = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
       If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
@@ -1981,7 +2023,7 @@ FormMainMode.cnmove2.Visible = False
 擲骰表單溝通暫時變數(1) = 1
 End Sub
 Sub 人物交換_使用者_指定交換(ByVal num As Integer)
-Dim ae As Integer
+Dim ae As Integer, n As Integer, i As Integer
 '=======================
 ReDim VBEStageNum(0 To 3) As Integer
 VBEStageNum(0) = 41
@@ -2076,7 +2118,7 @@ Loop
 End Sub
 
 Sub 人物交換_電腦_指定交換(ByVal num As Integer)
-Dim ae As Integer
+Dim ae As Integer, n As Integer
 '=======================
 ReDim VBEStageNum(0 To 3) As Integer
 VBEStageNum(0) = 41
@@ -2169,7 +2211,7 @@ Loop
 '=======================
 End Sub
 Sub 執行動作_交換人物角色_使用者_初始()
-Dim i As Integer
+Dim i As Integer, k As Integer
 Dim ne As Integer
 Dim numNow As Integer, obj As clsStatus
 
@@ -2188,8 +2230,7 @@ Next
 ne = 1
 For k = 2 To 3
     numNow = 1
-    For Each n In 人物異常狀態列表(1, 角色待機人物紀錄數(1, k))
-        Set obj = n
+    For Each obj In 人物異常狀態列表(1, 角色待機人物紀錄數(1, k))
         Formchangeperson.card(ne).更改異常狀態資料 numNow, obj.ImagePath, obj.Value, obj.Total, True
         numNow = numNow + 1
         If numNow > 14 Then Exit For
@@ -2282,7 +2323,7 @@ Sub 執行動作_交換人物角色_結束執行()
 End Sub
 Sub 事件卡處理_指定_使用者方()
 Dim kp(1 To 18)  As Integer '事件卡標記暫時數
-Dim m, km As Integer
+Dim m As Integer, km As Integer, i As Integer
 If 事件卡記錄暫時數(0, 1) = 18 Then
     Do
         Randomize
@@ -2313,7 +2354,8 @@ End If
 End Sub
 Sub 事件卡處理_指定_電腦方()
 Dim kp(1 To 18)  As Integer '事件卡標記暫時數
-Dim m, km As Integer
+Dim m As Integer, km As Integer, i As Integer
+
 If 事件卡記錄暫時數(0, 1) = 18 Then
     Do
         Randomize
@@ -2344,7 +2386,8 @@ End If
 End Sub
 Sub 事件卡處理_初始_使用者方()
 Dim ck As Boolean
-Dim m As Integer
+Dim m As Integer, i As Integer, j As Integer
+
 If Formsetting.persontgruonus(1).Value = True Then '=====(無)
     For i = 1 To 18
        Randomize
@@ -2732,8 +2775,9 @@ ElseIf Formsetting.persontgruonus(4).Value = True Then '=====隨機
 End If
 End Sub
 Sub 事件卡處理_初始_電腦方()
-Dim m As Integer
+Dim m As Integer, i As Integer, j As Integer
 Dim ay() As String
+
 If Formsetting.persontgruoncom(1).Value = True Then '=====(無)
     For i = 1 To 18
        Randomize
@@ -3140,7 +3184,7 @@ If tn <= 18 Then
 End If
 End Sub
 Sub 事件卡處理_分派_電腦方()
-Dim tn As Integer
+Dim tn As Integer, i As Integer
 Dim ay() As String
 tn = BattleTurn
 If tn <= 18 Then
@@ -3215,6 +3259,7 @@ HP檢查階段數 = 3
 戰鬥系統類.雙方HP檢查
 End Sub
 Sub 技能說明載入_人物卡片背面_使用者(ByVal n As Integer)
+Dim i As Integer
 For i = 1 To 4
     '==============================主動技
     FormMainMode.cardus(n).CardBack_主動技_技能名稱 = VBEPerson(1, n, 3, i, 1) & "#" & i
@@ -3228,6 +3273,7 @@ For i = 1 To 4
 Next
 End Sub
 Sub 技能說明載入_人物卡片背面_電腦(ByVal n As Integer)
+Dim i As Integer
 For i = 1 To 4
     '==============================主動技
     FormMainMode.cardcom(n).CardBack_主動技_技能名稱 = VBEPerson(2, n, 3, i, 1) & "#" & i
@@ -3242,6 +3288,7 @@ Next
 End Sub
 
 Sub 技能說明載入_人物卡片背面_交換角色()
+Dim n As Integer, i As Integer
 For n = 1 To 2
     For i = 1 To 4
         '==============================主動技
@@ -4202,6 +4249,7 @@ Select Case name
 End Select
 End Sub
 Sub 公用牌未使用檢查()
+Dim i As Integer
 For i = Val(公用牌各牌類型紀錄數(0, 2)) + 1 To 70
      pagecardnum(i, 6) = 5
 Next
@@ -4344,6 +4392,8 @@ End If
 End Sub
 Sub 解析骰量變化(ByVal str As String, ByVal uscom As Integer)
 Dim cmdstr() As String
+Dim i As Integer
+
 cmdstr = Split(str, "=")
 If 顯示列雙方數值鎖定紀錄數(uscom) = False Then
     For i = 0 To UBound(cmdstr) - 1
@@ -4367,6 +4417,7 @@ If 顯示列雙方數值鎖定紀錄數(uscom) = False Then
 End If
 End Sub
 Sub 遊戲對戰結束物件消滅()
+Dim i As Integer
 '==========
 For i = 1 To FormMainMode.PEAFvssc.UBound
    Unload FormMainMode.PEAFvssc(i)
@@ -4386,6 +4437,8 @@ Next
 '==========
 End Sub
 Sub 遊戲實體牌物件宣告程序()
+Dim i As Integer
+
 公用牌實體卡片分隔紀錄數(1) = 公用牌各牌類型紀錄數(0, 2) + 18 + 18
 公用牌實體卡片分隔紀錄數(2) = 公用牌各牌類型紀錄數(0, 2)
 公用牌實體卡片分隔紀錄數(3) = 公用牌各牌類型紀錄數(0, 2) + 18
@@ -4405,6 +4458,8 @@ Sub 廣播訊息(ByVal messagestr As String)
 FormMainMode.PEAFInterface.Message = messagestr
 End Sub
 Sub 遊戲角色卡片物件創立()
+Dim i As Integer
+
 For i = 1 To 3
     Load FormMainMode.cardus(i)
     Load FormMainMode.cardcom(i)
@@ -4415,6 +4470,8 @@ FormMainMode.PEAFInterface.Cardnum = BattleCardNum
 FormMainMode.pageul.Caption = BattleCardNum
 End Sub
 Sub 執行動作_電腦方各階段出牌完畢後行動(ByVal turnnum As Integer)
+Dim ckl As Integer
+
 Select Case turnnum
     Case 1
         FormMainMode.攻擊階段_階段2.Enabled = True

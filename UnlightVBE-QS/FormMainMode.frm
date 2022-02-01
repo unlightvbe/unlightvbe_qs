@@ -4197,6 +4197,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
 Private Sub atkinghelpc_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 atkinghelpc.Visible = False
 End Sub
@@ -4281,6 +4282,7 @@ End
 End Sub
 
 Sub bnok_Click()
+Dim i As Integer
 If turnpageonin = 1 Then
     turnpageonin = 0
     For i = 1 To 公用牌實體卡片分隔紀錄數(1)
@@ -4302,6 +4304,7 @@ End If
 End Sub
 
 Private Sub bnok_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 If turnpageonin = 1 Then
     bnok.Picture = LoadPicture(app_path & "gif\system\ok_2.jpg")
 End If
@@ -4647,6 +4650,7 @@ End If
 End Sub
 
 Sub cnmove_Click()
+Dim i As Integer, med As Integer
 '======================
 If 電腦方事件卡是否出完選擇數 = True Then
     GoTo 電腦方事件卡先出制度_執行階段結束
@@ -4754,6 +4758,7 @@ cnmove2.Visible = False
 End Sub
 
 Private Sub comaiatk_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Dim i As Integer
     For i = 1 To 3
       cardcom(i).Visible = False
     Next
@@ -4861,14 +4866,7 @@ End Select
 atkinghelpc.Visible = False
 End Sub
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-If UnloadMode = 0 Then
-  YesNo = MsgBox("確定離開遊戲?", 36, "UnlightVBE-系統提示")
-  If YesNo = 6 Then
-    End
-  Else
-    Cancel = 1
-  End If
-End If
+一般系統類.離開遊戲提示 Cancel, UnloadMode
 End Sub
 
 
@@ -5106,6 +5104,7 @@ End
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
+Dim i As Integer
 For i = 1 To cMusicPlayer.UBound
     Unload cMusicPlayer(i)
 Next
@@ -5113,6 +5112,7 @@ End Sub
 
 Private Sub NextTurn_階段2_Timer()
 Dim uscomvsn As Integer
+Dim i As Integer, j As Integer, k As Integer
 goidefus = 0
 '======以下為洗牌程式碼
 If BattleCardNum < 牌總階段數(1) + 牌總階段數(2) Then
@@ -5245,6 +5245,7 @@ End If
 End Sub
 
 Private Sub PEAttackingForm_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 For i = 1 To 公用牌實體卡片分隔紀錄數(1)
    card(i).CardEventType = False
 Next
@@ -5263,6 +5264,7 @@ End If
 End Sub
 
 Private Sub personatk_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Dim i As Integer
 For i = 1 To 公用牌實體卡片分隔紀錄數(1)
    card(i).CardEventType = False
 Next
@@ -5360,6 +5362,8 @@ trnextend.Enabled = False
 End Sub
 
 Private Sub trtimeline_Timer()
+Dim i As Integer
+
 timelineout1.X1 = timelineout1.X1 + 2
 timelineout2.X2 = timelineout2.X2 - 2
 For i = 1 To 3
@@ -5925,6 +5929,8 @@ End If
 End Sub
 
 Sub 使用者出牌_AI出牌控制_事件卡_Timer()
+Dim i As Integer
+
 If turnpageonin = 1 And 牌移動.Enabled = False Then
     For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
         If Val(pagecardnum(i, 5)) = 1 And Val(pagecardnum(i, 6)) = 1 Then
@@ -5956,6 +5962,7 @@ End Sub
 
 
 Private Sub 使用者出牌_手牌對齊_Timer()
+Dim i As Integer
 For i = 1 To Val(pageusglead)
    If 出牌順序統計暫時變數(2, i, 1) > 目前數(5) Then
       If 目前數(13) = 0 Then
@@ -6006,6 +6013,7 @@ End If
 End Sub
 
 Private Sub 使用者出牌_出牌對齊_靠右_Timer()
+Dim i As Integer
 For i = 1 To pageusqlead
    If 出牌順序統計暫時變數(1, i, 1) < 目前數(5) Then
       card(出牌順序統計暫時變數(1, i, 2)).Left = card(出牌順序統計暫時變數(1, i, 2)).Left + (480 / 10)
@@ -6021,6 +6029,7 @@ End If
 End Sub
 
 Private Sub 使用者出牌_出牌對齊_靠左_Timer()
+Dim i As Integer
 For i = 1 To (pageusqlead - 1)
    card(出牌順序統計暫時變數(1, i, 2)).Left = card(出牌順序統計暫時變數(1, i, 2)).Left - (480 / 10)
 Next
@@ -6032,7 +6041,7 @@ End Sub
 
 Private Sub 移動階段_階段初始_Timer()
 If 目前數(31) = 0 Then
-    Dim movecpn As Integer
+    Dim movecpn As Integer, mfd As Integer
     movecpn = movecp
     '===============
     movecom = atkingpagetot(2, 3)
@@ -6194,6 +6203,8 @@ End If
 End Sub
 
 Private Sub 牌移動_Timer()
+Dim i As Integer
+
 card(牌移動暫時變數(3)).Left = card(牌移動暫時變數(3)).Left + 距離單位(2, 1, 1)
 card(牌移動暫時變數(3)).Top = card(牌移動暫時變數(3)).Top + 距離單位(2, 1, 2)
 If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時變數(2) - card(牌移動暫時變數(3)).Top) <= 50 Then
@@ -6342,6 +6353,8 @@ End Sub
 
 
 Private Sub 牌移動_收牌_Timer()
+Dim i As Integer
+
 If 目前數(11) = pageqlead(目前數(10)) Then
 '   FormMainMode.wmpse1.Controls.stop
 '    FormMainMode.wmpse1.Controls.play
@@ -6438,6 +6451,7 @@ End If
 End Sub
 
 Private Sub 等待時間_2_Timer()
+Dim ckl As Integer
 Select Case 目前數(14)
    Case 0
       目前數(14) = 目前數(14) + 1
@@ -6754,6 +6768,9 @@ End Select
 End Sub
 
 Private Sub 電腦出牌_Timer()
+Dim i As Integer
+Dim cspce As String, cspme As String
+
 電腦出牌.Enabled = False
 If 電腦方事件卡是否出完選擇數 = False Then
      '=========================專屬事件卡出牌階段
@@ -6889,6 +6906,8 @@ End If
 End Sub
 
 Private Sub 電腦出牌_手牌對齊_Timer()
+Dim i As Integer
+
 If 目前數(8) < 240 Then
     For i = 1 To Val(pagecomglead)
        If 出牌順序統計暫時變數(4, i, 1) > 目前數(9) Then
@@ -6930,6 +6949,8 @@ End Sub
 
 
 Private Sub 電腦出牌_出牌對齊_靠右_Timer()
+Dim i As Integer
+
 For i = 1 To Val(pagecomqlead)
    If 出牌順序統計暫時變數(3, i, 1) < 目前數(9) Then
       card(出牌順序統計暫時變數(3, i, 2)).Left = card(出牌順序統計暫時變數(3, i, 2)).Left + (480 / 10)
@@ -6945,6 +6966,8 @@ End If
 End Sub
 
 Private Sub 電腦出牌_出牌對齊_靠左_Timer()
+Dim i As Integer
+
 For i = 1 To (pageqlead(2) - 1)
    card(出牌順序統計暫時變數(3, i, 2)).Left = card(出牌順序統計暫時變數(3, i, 2)).Left - (480 / 10)
 Next
@@ -7081,6 +7104,7 @@ app_path = App.Path
 If Right$(app_path, 1) <> "\" Then app_path = app_path & "\"
 '==============
 Dim cmstr() As String
+Dim i As Integer
 
 cmstr = Split(Command$, "/")
 If UBound(cmstr) > 0 Then
@@ -7093,7 +7117,6 @@ End If
 End Sub
 Private Sub personreadifus_Click()
 cdgpersonus.ShowOpen
-Formgamesetting.Visible = True
 人物系統類.卡片人物資訊讀入_初階段 cdgpersonus.filename
 End Sub
 Private Sub personlevelcom_Click(Index As Integer)
@@ -7152,6 +7175,7 @@ personnameus(Index).ListIndex = -1
 personlevelus(Index).Clear
 End Sub
 Private Sub start1_Timer()
+Dim i As Integer
 If st > 200 Then
    stup.Enabled = True
    stdown.Enabled = True
@@ -7323,6 +7347,7 @@ End If
 End Sub
 
 Private Sub cardcomtr_Timer()
+Dim i As Integer
 If sq <= 400 Then
   For i = 3 To 1 Step -1
      If PEAScardcom(i).Visible = True Then
@@ -7376,6 +7401,7 @@ End If
 End Sub
 
 Private Sub cardustr_Timer()
+Dim i As Integer
 If sq <= 400 Then
   For i = 3 To 1 Step -1
      If PEAScardus(i).Visible = True Then

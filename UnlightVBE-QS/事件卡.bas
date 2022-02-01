@@ -1,4 +1,5 @@
 Attribute VB_Name = "事件卡"
+Option Explicit
 Public 事件卡記錄暫時數(0 To 2, 1 To 6) As Integer '事件卡使用紀錄暫時變數(0.(1)總共給予回合數,1.使用者/2.電腦,1.總共數值/2.目前處理數值/3.目前階段/4.事件卡牌編號/5.事件分類/6.是否啟動)
 Sub 機會_使用者(ByVal num As Integer, ByVal tot As Integer)
 Select Case 事件卡記錄暫時數(1, 3)

@@ -55,6 +55,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_persontalkstr As String
 Dim m_persontalkyn As Boolean
 Public Property Get ¹ï¸Ü¤å¦r() As String

@@ -50,6 +50,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_totwidth As Integer
 Dim m_totheight As Integer
 Dim m_smalldowntop As Integer

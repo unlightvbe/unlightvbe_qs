@@ -28,6 +28,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_invent As Integer
 Dim m_picture As String
 Dim m_num As Integer
@@ -45,9 +46,9 @@ Public Property Let 圖片(ByVal New_圖片 As String)
    m_picture = New_圖片
    PropertyChanged "圖片"
    '============
-   Image1.LoadImage_FromFile Me.圖片
-   Image1.Left = 0
-   Image1.Top = 0
+   image1.LoadImage_FromFile Me.圖片
+   image1.Left = 0
+   image1.Top = 0
 End Property
 Public Property Get 項目編號() As Integer
    項目編號 = m_num
@@ -58,14 +59,14 @@ Public Property Let 項目編號(ByVal New_項目編號 As Integer)
    '==============
    Select Case Me.物件類別
         Case 1
-             Image1.Left = Val(Me.項目編號) * -315
-             Image1.Top = 0
+             image1.Left = Val(Me.項目編號) * -315
+             image1.Top = 0
         Case 2
-             Image1.Left = (Val(Me.項目編號) - 1) * -120
-             Image1.Top = 0
+             image1.Left = (Val(Me.項目編號) - 1) * -120
+             image1.Top = 0
         Case 3
-             Image1.Left = 0
-             Image1.Top = (Val(Me.項目編號) - 1) * -210
+             image1.Left = 0
+             image1.Top = (Val(Me.項目編號) - 1) * -210
     End Select
 End Property
 

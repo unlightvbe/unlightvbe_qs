@@ -127,6 +127,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_diceusStr As String, m_dicecomStr As String
 Dim m_diceusTotal As Integer, m_dicecomTotal As Integer
 Dim m_diceusTrue As Integer, m_dicecomTrue As Integer
@@ -458,6 +459,8 @@ End If
 End Sub
 
 Private Sub trdiceon_true_Timer()
+Dim i As Integer
+
 If TrDiceOnTrueNum >= 10 Then
     trdiceon_true.Enabled = False
     TrDiceOffTrueNum1 = 1
@@ -712,6 +715,7 @@ For i = 1 To Me.dicecomTrue
 Next
 End Sub
 Private Sub ÂY»ëª«¥ó¨ø¸ü()
+Dim i As Integer
 For i = 1 To dicemini1.UBound
     Unload dicemini1(i)
 Next
@@ -729,6 +733,7 @@ For i = 1 To ucMusicPlayer.UBound
 Next
 End Sub
 Private Sub AdjustVolume()
+Dim i As Integer
 For i = 1 To ucMusicPlayer.UBound
     ucMusicPlayer(i).Volume = Me.dicevoice
 Next

@@ -30,8 +30,8 @@ Begin VB.Form Formchangeperson
       TabIndex        =   1
       Top             =   480
       Width           =   2535
-      _ExtentX        =   2355
-      _ExtentY        =   3625
+      _extentx        =   2355
+      _extenty        =   3625
    End
    Begin UnlightVBE.uc角色卡片介面 card 
       Height          =   3615
@@ -40,8 +40,8 @@ Begin VB.Form Formchangeperson
       TabIndex        =   0
       Top             =   480
       Width           =   2535
-      _ExtentX        =   2355
-      _ExtentY        =   3625
+      _extentx        =   2355
+      _extenty        =   3625
    End
    Begin VB.Timer 使用者方智慧型AI_自動控制選人 
       Enabled         =   0   'False
@@ -77,6 +77,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
 Dim changepersonComplete As Boolean
 Sub bnok_Click(Index As Integer)
 If liveus(角色待機人物紀錄數(1, Index + 1)) > 0 Then
@@ -124,6 +125,7 @@ Unload Me
 End Sub
 
 Sub 使用者方智慧型AI_自動控制選人_Timer()
+Dim i As Integer
 For i = 1 To 2
     If liveus(角色待機人物紀錄數(1, i + 1)) > 0 Then
         Formchangeperson.bnok_Click (i)

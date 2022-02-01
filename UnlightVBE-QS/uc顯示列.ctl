@@ -200,6 +200,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
 Dim m_smallimage As String
 Dim m_smallimageus As String
 Dim m_smallimagecom As String
@@ -444,6 +445,8 @@ Public Property Let 電腦方小人物圖片width(ByVal new電腦方小人物圖片width As Inte
    PropertyChanged "電腦方小人物圖片width"
 End Property
 Public Property Let 移動方向圖片顯示(ByVal new移動方向圖片顯示 As Boolean)
+   Dim i As Integer
+   
    m_moveleftrightc = new移動方向圖片顯示
    PropertyChanged "移動方向圖片顯示"
    If Me.移動方向圖片顯示 = True Then
@@ -559,6 +562,8 @@ Me.移動階段選擇值 = 4
 End Sub
 
 Private Sub trmovehide_Timer()
+Dim i As Integer
+
 Select Case trmovehidetime
  Case 2
    If 移動圖片顯示數(1, 2) = 1 And 移動圖片顯示數(2, 2) = 2 Then

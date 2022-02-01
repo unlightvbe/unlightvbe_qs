@@ -26,7 +26,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-
+Option Explicit
 Dim m_smallimage As String
 Public Property Get 技能圖片() As String
    技能圖片 = m_smallimage
@@ -35,8 +35,8 @@ Public Property Let 技能圖片(ByVal New_技能圖片 As String)
    m_smallimage = New_技能圖片
    PropertyChanged "技能圖片"
    If Me.技能圖片 <> "" Then
-       Image1.LoadImage_FromFile Me.技能圖片
-       Image1.Top = 0
-       Image1.Left = 0
+       image1.LoadImage_FromFile Me.技能圖片
+       image1.Top = 0
+       image1.Left = 0
     End If
 End Property
