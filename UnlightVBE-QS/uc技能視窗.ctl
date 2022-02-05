@@ -12,12 +12,12 @@ Begin VB.UserControl uc技能視窗
    ScaleWidth      =   11490
    Windowless      =   -1  'True
    Begin ImageX.aicAlphaImage Image1 
-      Height          =   10155
+      Height          =   9900
       Left            =   -120
       Top             =   0
-      Width           =   11355
-      _ExtentX        =   20029
-      _ExtentY        =   17912
+      Width           =   10215
+      _ExtentX        =   18018
+      _ExtentY        =   17463
       Image           =   "uc技能視窗.ctx":0000
    End
 End

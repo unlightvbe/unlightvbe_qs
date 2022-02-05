@@ -275,39 +275,6 @@ Else
     '===========================戰鬥系統主表單讀入(測)
     執行階段系統類.執行階段系統遊戲初始總程序
     戰鬥系統類.遊戲角色卡片物件創立
-    '===========================
-    For n = 1 To 4
-        If VBEPerson(1, 1, 3, n, 1) = "" Then
-           FormMainMode.personatk(n).Visible = False
-        Else
-           FormMainMode.personatk(n).Caption = VBEPerson(1, 1, 3, n, 1)
-           FormMainMode.personatk(n).Visible = True
-        End If
-        '=============
-        If VBEPerson(2, 1, 3, n, 1) = "" Then
-           FormMainMode.comaiatk(n).Visible = False
-        Else
-           FormMainMode.comaiatk(n).Caption = VBEPerson(2, 1, 3, n, 1)
-           FormMainMode.comaiatk(n).Visible = True
-        End If
-    Next
-    FormMainMode.PEAFInterface.Passive_技能一方全重設 = 1
-    FormMainMode.PEAFInterface.Passive_技能一方全重設 = 2
-    For n = 5 To 8
-        If VBEPerson(1, 1, 3, n, 1) = "" Then
-           FormMainMode.PEAFInterface.Passive_使用者_技能隱藏 = n - 4
-        Else
-           FormMainMode.PEAFInterface.Passive_使用者_技能名稱 = VBEPerson(1, 1, 3, n, 1) & "#" & n - 4
-           FormMainMode.PEAFInterface.Passive_使用者_技能顯示 = n - 4
-        End If
-        '=============
-        If VBEPerson(2, 1, 3, n, 1) = "" Then
-           FormMainMode.PEAFInterface.Passive_電腦_技能隱藏 = n - 4
-        Else
-           FormMainMode.PEAFInterface.Passive_電腦_技能名稱 = VBEPerson(2, 1, 3, n, 1) & "#" & n - 4
-           FormMainMode.PEAFInterface.Passive_電腦_技能顯示 = n - 4
-        End If
-    Next
     '===============================對戰圖片載入(隨機組合)-前置階段
     If Formsetting.BGM選擇.Text = "《隨機-地圖組合》" Then
         If Formsetting.對戰地圖選擇.Text = "《隨機》" Then
@@ -516,9 +483,9 @@ Dim mypath As String, mydir As String
   Loop
 'MsgBox "1-5-2-4"
 End Sub
-Function 事件卡資料庫(ByVal name As String, ByVal 目標 As Integer) As String
+Function 事件卡資料庫(ByVal Name As String, ByVal 目標 As Integer) As String
 '目標:1-傳回分類號/2-傳回事件卡檔案名稱/3-傳回類型數值
-Select Case name
+Select Case Name
     Case "劍1"
        Select Case 目標
            Case 1
@@ -1149,13 +1116,15 @@ End Select
 End Function
 Sub 戰鬥系統表單讀入程序()
 Dim 暫時數(2) As Integer '按鈕座標暫時變數
-Dim i As Integer, j As Integer, ckl As Integer, mm As Integer, w As Integer '暫時變數
+Dim i As Integer, j As Integer, ckl As Integer, mm As Integer, w As Integer, n As Integer '暫時變數
 '------------
 goidefus = 0
 movecp = 2
 turnpageonin = 0
 trend暫時變數 = 0
 FormMainMode.PEAFInterface.MessageClear
+FormMainMode.PEAFInterface.BnOKStopListen
+FormMainMode.PEAFInterface.BnOKVisable False
 '----------------------------寫入技能欄座標
 atkinghelpxy(1, 1, 1) = 2520
 atkinghelpxy(1, 2, 1) = 4730
@@ -1186,11 +1155,6 @@ If Formsetting.checktest.Value = 0 Then
     FormMainMode.影子設定.Visible = False
 End If
 
-FormMainMode.小人物角色基準線.Visible = False
-For i = 1 To 6
-   FormMainMode.小人物距離基準線(i).Visible = False
-Next
-
 If Formsetting.checktestpersondown.Value = 1 Then
     FormMainMode.影子設定.Visible = True
 End If
@@ -1218,13 +1182,6 @@ FormMainMode.cn22.Left = 暫時數(2)
 FormMainMode.cn3.Left = 暫時數(2)
 FormMainMode.cn32.Left = 暫時數(2)
 FormMainMode.cn4.Left = 暫時數(2)
-'=====================以下是技能欄顏色顯示
-For i = 1 To 4
-    FormMainMode.personatk(i).ForeColor = RGB(192, 192, 192)
-    FormMainMode.personatk(i).BackColor = RGB(0, 0, 0)
-    FormMainMode.comaiatk(i).ForeColor = RGB(192, 192, 192)
-    FormMainMode.comaiatk(i).BackColor = RGB(0, 0, 0)
-Next
 '=====================
 FormMainMode.顯示列1.goi1顯示 = False
 FormMainMode.顯示列1.goi2顯示 = False
@@ -1235,20 +1192,6 @@ FormMainMode.cn22.Visible = False
 FormMainMode.cn3.Visible = False
 FormMainMode.cn32.Visible = False
 FormMainMode.cn4.Visible = False
-FormMainMode.atkinghelpc.Visible = False
-'---------以下是設定技能字體大小
-For i = 1 To 4
-    If Val(VBEPerson(1, 1, 2, 3, 5)) = 0 Then
-       FormMainMode.personatk(i).FontSize = VBEPerson(1, 1, 2, 3, i)
-    Else
-       FormMainMode.personatk(i).FontSize = 12
-    End If
-    If Val(VBEPerson(2, 1, 2, 3, 5)) = 0 Then
-       FormMainMode.comaiatk(i).FontSize = VBEPerson(2, 1, 2, 3, i)
-    Else
-       FormMainMode.comaiatk(i).FontSize = 12
-    End If
-Next
 '===========================系統顯示介面設定
 If 系統顯示界面紀錄數 = 1 Then
     FormMainMode.PEAFInterface.Passive_介面顯示 = False
@@ -1264,7 +1207,7 @@ If 系統顯示界面紀錄數 = 1 Then
     FormMainMode.move2.Visible = False
 Else
     FormMainMode.PEAFInterface.Passive_介面顯示 = True
-    FormMainMode.PEAFInterface.stagejpg = app_path & "gif\system\stageblack.gif"
+    FormMainMode.PEAFInterface.stagejpg app_path & "gif\system\stageblack.gif"
     FormMainMode.cardpagejpg.Visible = False
     FormMainMode.pageul.Visible = False
     FormMainMode.draw1.Visible = False
@@ -1422,6 +1365,47 @@ FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.ScaleWidth
 FormMainMode.personcomminijpg.小人物影子Left = Val(VBEPerson(2, 1, 2, 1, 5))
 FormMainMode.personcomminijpg.小人物影子top差 = Val(VBEPerson(2, 1, 2, 1, 6))
 FormMainMode.personcomminijpg.小人物影像反轉 = True
+'==================寫入技能欄座標
+atkinghelpxy(1, 1, 1) = 2520
+atkinghelpxy(1, 2, 1) = 4730
+atkinghelpxy(1, 3, 1) = 6930
+atkinghelpxy(1, 4, 1) = 9140
+
+atkinghelpxy(2, 1, 1) = 6840
+atkinghelpxy(2, 2, 1) = 4560
+atkinghelpxy(2, 3, 1) = 2280
+atkinghelpxy(2, 4, 1) = 0
+For i = 1 To 4
+    atkinghelpxy(1, i, 2) = 3000
+    atkinghelpxy(2, i, 2) = 960
+Next
+'===========================技能說明載入
+戰鬥系統類.技能說明載入_使用者
+戰鬥系統類.技能說明載入_電腦
+FormMainMode.PEAFInterface.Passive_技能一方全重設 1
+FormMainMode.PEAFInterface.Passive_技能一方全重設 2
+For n = 5 To 8
+    If VBEPerson(1, 1, 3, n, 1) = "" Then
+       FormMainMode.PEAFInterface.Passive_使用者_技能隱藏 n - 4
+    Else
+       FormMainMode.PEAFInterface.Passive_使用者_技能名稱 VBEPerson(1, 1, 3, n, 1), n - 4
+       FormMainMode.PEAFInterface.Passive_使用者_技能顯示 n - 4
+    End If
+    '=============
+    If VBEPerson(2, 1, 3, n, 1) = "" Then
+       FormMainMode.PEAFInterface.Passive_電腦_技能隱藏 n - 4
+    Else
+       FormMainMode.PEAFInterface.Passive_電腦_技能名稱 VBEPerson(2, 1, 3, n, 1), n - 4
+       FormMainMode.PEAFInterface.Passive_電腦_技能顯示 n - 4
+    End If
+Next
+FormMainMode.PEAFatkinghelpc.Visible = False
+'=====================以下是技能欄顏色顯示
+For i = 1 To 2
+    For j = 1 To 4
+        FormMainMode.PEAFInterface.ActiveSkillLight i, j, False
+    Next
+Next
 '==================執行小人物立繪指定及距離指定
 執行動作_距離變更 movecp, False
 '================仿對戰模式設定
@@ -1594,12 +1578,13 @@ Sub 自由戰鬥模式設定表單基本設定程序()
 Dim i As Integer '暫時變數
 Formsetting.對戰地圖選擇.ListIndex = 0
 Formsetting.BGM選擇.ListIndex = 0
+Formsetting.comboeventcarrdus.ListIndex = 2
+Formsetting.comboeventcarrdcom.ListIndex = 2
+Formsetting.cbsimilarlevel.ListIndex = 4
 For i = 1 To 18
     Formsetting.personus(i).ListIndex = 0
     Formsetting.personcom(i).ListIndex = 0
 Next
-Formsetting.persontgruonus(1).Value = True
-Formsetting.persontgruoncom(1).Value = True
 Formsetting.lopnmusictext.Visible = False
 Formsetting.lopnmapjpgtext.Visible = False
 Formsetting.ckendturnnum.Text = 18
@@ -1607,23 +1592,7 @@ Formsetting.t1.Tab = 0
 Formsetting.chkusenewai.Value = 1
 Formsetting.chkusenewpage.Value = 1
 Formsetting.chkusenewinterface.Value = 1
-'=============================
-Formsetting.cbsimilarlevel.AddItem "LV1"
-Formsetting.cbsimilarlevel.AddItem "LV2"
-Formsetting.cbsimilarlevel.AddItem "LV3"
-Formsetting.cbsimilarlevel.AddItem "LV4"
-Formsetting.cbsimilarlevel.AddItem "LV5"
-Formsetting.cbsimilarlevel.AddItem "R1"
-Formsetting.cbsimilarlevel.AddItem "R2"
-Formsetting.cbsimilarlevel.AddItem "R3"
-Formsetting.cbsimilarlevel.AddItem "R4"
-Formsetting.cbsimilarlevel.AddItem "R5"
-Formsetting.cbsimilarlevel.AddItem "N1"
-Formsetting.cbsimilarlevel.ListIndex = 4
-'=============================
 Formsetting.chkpersonvsmode.Value = 1
-Formsetting.persontgruoncom(4).Value = True
-Formsetting.persontgruonus(4).Value = True
 Formsetting.ckendturn.Value = 1
 End Sub
 Sub 清除戰鬥系統所有變數值()

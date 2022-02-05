@@ -11,6 +11,8 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
+Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
 Private oVBEPersonVS()  As Variant  'VBE人物統一變數-VS版
 Private oatkingpagetotVS() As Variant  '每階段出牌種類及數值統計資料-VS版
 Private oVBEPersonBuffVSF() As Variant '異常狀態資料-VS-F版

@@ -9,7 +9,7 @@ Begin VB.Form Formsetting
    ClientHeight    =   8730
    ClientLeft      =   6330
    ClientTop       =   2535
-   ClientWidth     =   17670
+   ClientWidth     =   18150
    BeginProperty Font 
       Name            =   "微軟正黑體"
       Size            =   12
@@ -24,13 +24,13 @@ Begin VB.Form Formsetting
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   8730
-   ScaleWidth      =   17670
+   ScaleWidth      =   18150
    Begin VB.Frame 表單_系統 
       Caption         =   "系統"
       Height          =   5895
       Left            =   9480
-      TabIndex        =   135
-      Top             =   2160
+      TabIndex        =   125
+      Top             =   3240
       Width           =   9015
       Begin VB.ComboBox cbsimilarlevel 
          BeginProperty Font 
@@ -44,7 +44,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   360
          Left            =   4560
-         TabIndex        =   150
+         TabIndex        =   140
          Text            =   "Combo1"
          Top             =   2880
          Width           =   975
@@ -62,7 +62,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   149
+         TabIndex        =   139
          Top             =   2880
          Width           =   6495
       End
@@ -73,7 +73,7 @@ Begin VB.Form Formsetting
          Height          =   300
          Left            =   3000
          MaxLength       =   2
-         TabIndex        =   146
+         TabIndex        =   136
          Text            =   "7"
          Top             =   5040
          Width           =   375
@@ -91,7 +91,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   145
+         TabIndex        =   135
          Top             =   5040
          Width           =   6495
       End
@@ -108,7 +108,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   144
+         TabIndex        =   134
          Top             =   1440
          Width           =   2895
       End
@@ -125,7 +125,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   141
+         TabIndex        =   131
          Top             =   2400
          Width           =   6495
       End
@@ -142,7 +142,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   375
          Left            =   240
-         TabIndex        =   138
+         TabIndex        =   128
          Top             =   1920
          Width           =   6135
       End
@@ -159,7 +159,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   137
+         TabIndex        =   127
          Top             =   960
          Width           =   6495
       End
@@ -176,7 +176,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   136
+         TabIndex        =   126
          Top             =   480
          Width           =   6495
       End
@@ -193,7 +193,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   375
          Left            =   600
-         TabIndex        =   151
+         TabIndex        =   141
          Top             =   3240
          Width           =   8175
       End
@@ -210,7 +210,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   375
          Left            =   240
-         TabIndex        =   147
+         TabIndex        =   137
          Top             =   5400
          Width           =   5655
       End
@@ -220,9 +220,26 @@ Begin VB.Form Formsetting
       Height          =   5895
       Left            =   9480
       TabIndex        =   51
-      Top             =   2040
+      Top             =   1800
       Visible         =   0   'False
       Width           =   9015
+      Begin VB.ComboBox comboeventcarrdcom 
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9.75
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   6000
+         Style           =   2  '單純下拉式
+         TabIndex        =   142
+         Top             =   360
+         Width           =   2655
+      End
       Begin VB.CheckBox persontgrecom 
          Caption         =   "遵守Unlight事件卡規則"
          BeginProperty Font 
@@ -236,94 +253,10 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   108
+         TabIndex        =   98
          Top             =   360
          Value           =   1  '核取
          Width           =   2535
-      End
-      Begin VB.PictureBox Picture3 
-         Appearance      =   0  '平面
-         BorderStyle     =   0  '沒有框線
-         ForeColor       =   &H80000008&
-         Height          =   615
-         Left            =   5160
-         ScaleHeight     =   615
-         ScaleWidth      =   3615
-         TabIndex        =   103
-         Top             =   240
-         Width           =   3615
-         Begin VB.OptionButton persontgruoncom 
-            Caption         =   "無"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   225
-            Index           =   1
-            Left            =   120
-            TabIndex        =   107
-            Top             =   0
-            Width           =   615
-         End
-         Begin VB.OptionButton persontgruoncom 
-            Caption         =   "自訂"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   300
-            Index           =   2
-            Left            =   120
-            TabIndex        =   106
-            Top             =   240
-            Width           =   735
-         End
-         Begin VB.OptionButton persontgruoncom 
-            Caption         =   "選擇最大值"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   240
-            Index           =   3
-            Left            =   1080
-            TabIndex        =   105
-            Top             =   0
-            Width           =   1215
-         End
-         Begin VB.OptionButton persontgruoncom 
-            Caption         =   "隨機"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   360
-            Index           =   4
-            Left            =   1080
-            TabIndex        =   104
-            Top             =   220
-            Width           =   735
-         End
       End
       Begin VB.Frame Frame4 
          Height          =   1695
@@ -973,8 +906,8 @@ Begin VB.Form Formsetting
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   3000
-         TabIndex        =   109
+         Left            =   2880
+         TabIndex        =   99
          Top             =   360
          Width           =   2175
       End
@@ -983,14 +916,14 @@ Begin VB.Form Formsetting
       Caption         =   "一般設定"
       Height          =   6015
       Left            =   120
-      TabIndex        =   111
+      TabIndex        =   101
       Top             =   2040
       Width           =   9015
       Begin VB.Frame 其他設定 
          Caption         =   "其他設定"
          Height          =   1215
          Left            =   120
-         TabIndex        =   129
+         TabIndex        =   119
          Top             =   4560
          Width           =   8775
          Begin VB.TextBox 大亂鬥模式選項_牌數 
@@ -1000,7 +933,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Left            =   3240
             MaxLength       =   2
-            TabIndex        =   148
+            TabIndex        =   138
             Text            =   "17"
             Top             =   720
             Width           =   375
@@ -1012,7 +945,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Left            =   3240
             MaxLength       =   2
-            TabIndex        =   132
+            TabIndex        =   122
             Text            =   "4"
             Top             =   360
             Width           =   375
@@ -1021,7 +954,7 @@ Begin VB.Form Formsetting
             Caption         =   "挑戰模式（對戰對手多發        張牌）(Max:30)"
             Height          =   300
             Left            =   240
-            TabIndex        =   133
+            TabIndex        =   123
             Top             =   360
             Width           =   5655
          End
@@ -1038,7 +971,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   5880
-            TabIndex        =   131
+            TabIndex        =   121
             Top             =   360
             Width           =   2535
          End
@@ -1046,7 +979,7 @@ Begin VB.Form Formsetting
             Caption         =   "大亂鬥模式（雙方角色發        張牌，HP=99） (Min:1)"
             Height          =   375
             Left            =   240
-            TabIndex        =   130
+            TabIndex        =   120
             Top             =   720
             Width           =   6255
          End
@@ -1055,13 +988,13 @@ Begin VB.Form Formsetting
          Caption         =   "其他"
          Height          =   1215
          Left            =   120
-         TabIndex        =   125
+         TabIndex        =   115
          Top             =   3240
          Width           =   8775
          Begin VB.TextBox ckendturnnum 
             Height          =   420
             Left            =   1080
-            TabIndex        =   126
+            TabIndex        =   116
             Text            =   "18"
             Top             =   600
             Width           =   495
@@ -1070,7 +1003,7 @@ Begin VB.Form Formsetting
             Caption         =   "仿對戰模式"
             Height          =   300
             Left            =   240
-            TabIndex        =   128
+            TabIndex        =   118
             Top             =   280
             Width           =   1575
          End
@@ -1078,7 +1011,7 @@ Begin VB.Form Formsetting
             Caption         =   "對戰           回合"
             Height          =   375
             Left            =   240
-            TabIndex        =   127
+            TabIndex        =   117
             Top             =   600
             Width           =   1935
          End
@@ -1087,7 +1020,7 @@ Begin VB.Form Formsetting
          Caption         =   "背景圖片及音樂"
          Height          =   2895
          Left            =   120
-         TabIndex        =   112
+         TabIndex        =   102
          Top             =   360
          Width           =   8775
          Begin VB.CommandButton Command2 
@@ -1103,7 +1036,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   4080
-            TabIndex        =   139
+            TabIndex        =   129
             Top             =   1920
             Width           =   1095
          End
@@ -1119,7 +1052,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   6120
-            TabIndex        =   117
+            TabIndex        =   107
             Text            =   "Combo1"
             Top             =   2280
             Width           =   2535
@@ -1137,7 +1070,7 @@ Begin VB.Form Formsetting
             ForeColor       =   &H000000FF&
             Height          =   435
             Left            =   2880
-            TabIndex        =   116
+            TabIndex        =   106
             Text            =   "Combo2"
             Top             =   2280
             Width           =   2295
@@ -1155,7 +1088,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   7560
-            TabIndex        =   115
+            TabIndex        =   105
             Top             =   1920
             Width           =   1095
          End
@@ -1172,7 +1105,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   300
             Left            =   7920
-            TabIndex        =   114
+            TabIndex        =   104
             Top             =   480
             Width           =   735
          End
@@ -1189,7 +1122,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   300
             Left            =   7920
-            TabIndex        =   113
+            TabIndex        =   103
             Top             =   960
             Width           =   735
          End
@@ -1214,7 +1147,7 @@ Begin VB.Form Formsetting
          Begin ComctlLib.Slider sdrbgm 
             Height          =   495
             Left            =   4680
-            TabIndex        =   142
+            TabIndex        =   132
             Top             =   360
             Width           =   2775
             _ExtentX        =   4895
@@ -1229,7 +1162,7 @@ Begin VB.Form Formsetting
          Begin ComctlLib.Slider sdrse 
             Height          =   495
             Left            =   4680
-            TabIndex        =   143
+            TabIndex        =   133
             Top             =   840
             Width           =   2775
             _ExtentX        =   4895
@@ -1254,7 +1187,7 @@ Begin VB.Form Formsetting
             BackColor       =   &H00FFFFFF&
             Height          =   255
             Left            =   2880
-            TabIndex        =   140
+            TabIndex        =   130
             Top             =   1800
             Visible         =   0   'False
             Width           =   3255
@@ -1272,7 +1205,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   5400
-            TabIndex        =   124
+            TabIndex        =   114
             Top             =   2280
             Width           =   855
          End
@@ -1289,7 +1222,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   3720
-            TabIndex        =   123
+            TabIndex        =   113
             Top             =   480
             Width           =   1095
          End
@@ -1306,7 +1239,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   3960
-            TabIndex        =   122
+            TabIndex        =   112
             Top             =   960
             Width           =   855
          End
@@ -1316,7 +1249,7 @@ Begin VB.Form Formsetting
             Caption         =   "50"
             Height          =   375
             Left            =   7320
-            TabIndex        =   121
+            TabIndex        =   111
             Top             =   480
             Width           =   495
          End
@@ -1326,7 +1259,7 @@ Begin VB.Form Formsetting
             Caption         =   "45"
             Height          =   375
             Left            =   7320
-            TabIndex        =   120
+            TabIndex        =   110
             Top             =   960
             Width           =   495
          End
@@ -1334,7 +1267,7 @@ Begin VB.Form Formsetting
             BackColor       =   &H00FFFFFF&
             Height          =   255
             Left            =   5400
-            TabIndex        =   119
+            TabIndex        =   109
             Top             =   1440
             Visible         =   0   'False
             Width           =   3255
@@ -1363,7 +1296,7 @@ Begin VB.Form Formsetting
             ForeColor       =   &H00FFFFFF&
             Height          =   975
             Left            =   960
-            TabIndex        =   118
+            TabIndex        =   108
             Top             =   960
             Visible         =   0   'False
             Width           =   1095
@@ -1382,7 +1315,7 @@ Begin VB.Form Formsetting
    Begin TabDlg.SSTab t1 
       Height          =   6615
       Left            =   0
-      TabIndex        =   134
+      TabIndex        =   124
       Top             =   1560
       Width           =   9255
       _ExtentX        =   16325
@@ -1420,94 +1353,29 @@ Begin VB.Form Formsetting
    Begin VB.Frame 事件卡_使用者 
       Caption         =   "事件卡編輯(使用者方)"
       Height          =   5895
-      Left            =   9600
+      Left            =   9360
       TabIndex        =   5
       Top             =   240
       Visible         =   0   'False
       Width           =   9015
-      Begin VB.PictureBox persontgrenus 
-         Appearance      =   0  '平面
-         BorderStyle     =   0  '沒有框線
-         ForeColor       =   &H80000008&
-         Height          =   495
+      Begin VB.ComboBox comboeventcarrdus 
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   9.75
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         ItemData        =   "Formsetting.frx":0D3A
          Left            =   6000
-         ScaleHeight     =   495
-         ScaleWidth      =   2775
-         TabIndex        =   98
-         Top             =   240
-         Width           =   2775
-         Begin VB.OptionButton persontgruonus 
-            Caption         =   "隨機"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   300
-            Index           =   4
-            Left            =   1080
-            TabIndex        =   102
-            Top             =   240
-            Width           =   1215
-         End
-         Begin VB.OptionButton persontgruonus 
-            Caption         =   "選擇最大值"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   300
-            Index           =   3
-            Left            =   1080
-            TabIndex        =   101
-            Top             =   0
-            Width           =   1215
-         End
-         Begin VB.OptionButton persontgruonus 
-            Caption         =   "自訂"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   300
-            Index           =   2
-            Left            =   120
-            TabIndex        =   100
-            Top             =   240
-            Width           =   855
-         End
-         Begin VB.OptionButton persontgruonus 
-            Caption         =   "無"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   9
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   300
-            Index           =   1
-            Left            =   120
-            TabIndex        =   99
-            Top             =   0
-            Width           =   1215
-         End
+         List            =   "Formsetting.frx":0D3C
+         Style           =   2  '單純下拉式
+         TabIndex        =   143
+         Top             =   360
+         Width           =   2655
       End
       Begin VB.CheckBox persontgreus 
          Caption         =   "遵守Unlight事件卡規則"
@@ -2175,8 +2043,8 @@ Begin VB.Form Formsetting
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   3840
-         TabIndex        =   110
+         Left            =   2880
+         TabIndex        =   100
          Top             =   360
          Width           =   2175
       End
@@ -2215,7 +2083,7 @@ Begin VB.Form Formsetting
       Begin VB.Image Image2 
          Height          =   480
          Left            =   3480
-         Picture         =   "Formsetting.frx":0D3A
+         Picture         =   "Formsetting.frx":0D3E
          Top             =   120
          Width           =   2145
       End
@@ -2244,7 +2112,7 @@ Begin VB.Form Formsetting
       ForeColor       =   &H80000008&
       Height          =   1455
       Left            =   240
-      Picture         =   "Formsetting.frx":18BD
+      Picture         =   "Formsetting.frx":18C1
       ScaleHeight     =   1455
       ScaleWidth      =   1455
       TabIndex        =   0
@@ -2287,14 +2155,14 @@ Private Sub checktest_Click()
 If checktest.Value = 1 Then
     persontgreus.Value = 0
     persontgrecom.Value = 0
-    persontgruoncom(3).Value = True
-    persontgruonus(3).Value = True
+    comboeventcarrdus.ListIndex = 1
+    comboeventcarrdcom.ListIndex = 1
     Formsetting.對戰地圖選擇.ListIndex = Formsetting.對戰地圖選擇.ListCount - 1
 Else
     persontgreus.Value = 1
     persontgrecom.Value = 1
-    persontgruoncom(1).Value = True
-    persontgruonus(1).Value = True
+    comboeventcarrdus.ListIndex = 0
+    comboeventcarrdcom.ListIndex = 0
     Formsetting.對戰地圖選擇.ListIndex = 0
 End If
 End Sub
@@ -2332,6 +2200,34 @@ If cksemute.Value = 1 Then
 Else
     For i = 1 To FormMainMode.cMusicPlayer.UBound
         FormMainMode.cMusicPlayer(i).Mute = False
+    Next
+End If
+End Sub
+
+Sub comboeventcarrdcom_Click()
+Dim i As Integer
+
+If comboeventcarrdcom.Text = "自訂" Then
+    For i = 1 To 18
+        personcom(i).Enabled = True
+    Next
+Else
+    For i = 1 To 18
+        personcom(i).Enabled = False
+    Next
+End If
+End Sub
+
+Sub comboeventcarrdus_Click()
+Dim i As Integer
+
+If comboeventcarrdus.Text = "自訂" Then
+    For i = 1 To 18
+        personus(i).Enabled = True
+    Next
+Else
+    For i = 1 To 18
+        personus(i).Enabled = False
     Next
 End If
 End Sub
@@ -2488,6 +2384,7 @@ For i = 1 To 18
     personus(i).AddItem "HP回復1"
     personus(i).AddItem "HP回復2"
     personus(i).AddItem "HP回復3"
+    personus(i).AddItem "聖水"
     personus(i).AddItem "劍3/槍1"
     personus(i).AddItem "劍4/槍2"
     personus(i).AddItem "劍5/槍3"
@@ -2556,6 +2453,7 @@ For i = 1 To 18
     personcom(i).AddItem "HP回復1"
     personcom(i).AddItem "HP回復2"
     personcom(i).AddItem "HP回復3"
+    personcom(i).AddItem "聖水"
     personcom(i).AddItem "劍3/槍1"
     personcom(i).AddItem "劍4/槍2"
     personcom(i).AddItem "劍5/槍3"
@@ -2581,7 +2479,22 @@ For i = 1 To 18
     personcom(i).AddItem "移3/特3"
     persontgus(i).Visible = False
     persontgcom(i).Visible = False
+    '=================================
+    
 Next
+Formsetting.事件卡設定_列表填入 1, True
+Formsetting.事件卡設定_列表填入 2, True
+Formsetting.cbsimilarlevel.AddItem "LV1"
+Formsetting.cbsimilarlevel.AddItem "LV2"
+Formsetting.cbsimilarlevel.AddItem "LV3"
+Formsetting.cbsimilarlevel.AddItem "LV4"
+Formsetting.cbsimilarlevel.AddItem "LV5"
+Formsetting.cbsimilarlevel.AddItem "R1"
+Formsetting.cbsimilarlevel.AddItem "R2"
+Formsetting.cbsimilarlevel.AddItem "R3"
+Formsetting.cbsimilarlevel.AddItem "R4"
+Formsetting.cbsimilarlevel.AddItem "R5"
+Formsetting.cbsimilarlevel.AddItem "N1"
 'checktest.Value = 1
 End Sub
 
@@ -2636,29 +2549,19 @@ Private Sub personnamecom_Change(Index As Integer)
 If persontgrecom.Value = 1 Then
     If FormMainMode.opnpersonvs(2).Value = True Then
         If personnamecom(Index).Caption = "《隨機》" Then
-            If persontgruoncom(2).Value = True Then
-                persontgruoncom(2).Value = False
-                persontgruoncom(1).Value = True
-                persontgruoncom_Click (1)
-            End If
-            persontgruoncom(2).Enabled = False
+            Formsetting.事件卡設定_列表填入 2, False
             personwagcom.Visible = True
         ElseIf personnamecom(1).Caption <> "《隨機》" And personnamecom(2).Caption <> "《隨機》" And _
             personnamecom(3).Caption <> "《隨機》" Then
-            persontgruoncom(2).Enabled = True
+            Formsetting.事件卡設定_列表填入 2, True
             personwagcom.Visible = False
         End If
     Else
         If personnamecom(1).Caption = "《隨機》" Then
-            If persontgruoncom(2).Value = True Then
-                persontgruoncom(2).Value = False
-                persontgruoncom(1).Value = True
-                persontgruoncom_Click (1)
-            End If
-            persontgruoncom(2).Enabled = False
+            Formsetting.事件卡設定_列表填入 2, False
             personwagcom.Visible = True
         ElseIf personnamecom(1).Caption <> "《隨機》" Then
-            persontgruoncom(2).Enabled = True
+            Formsetting.事件卡設定_列表填入 2, True
             personwagcom.Visible = False
         End If
     End If
@@ -2669,29 +2572,19 @@ Private Sub personnameus_Change(Index As Integer)
 If persontgreus.Value = 1 Then
     If FormMainMode.opnpersonvs(2).Value = True Then
         If personnameus(Index).Caption = "《隨機》" Then
-            If persontgruonus(2).Value = True Then
-                persontgruonus(2).Value = False
-                persontgruonus(1).Value = True
-                persontgruonus_Click (1)
-            End If
-            persontgruonus(2).Enabled = False
+            Formsetting.事件卡設定_列表填入 1, False
             personwagus.Visible = True
         ElseIf personnameus(1).Caption <> "《隨機》" And personnameus(2).Caption <> "《隨機》" And _
             personnameus(3).Caption <> "《隨機》" Then
-            persontgruonus(2).Enabled = True
+            Formsetting.事件卡設定_列表填入 1, True
             personwagus.Visible = False
         End If
     Else
         If personnameus(1).Caption = "《隨機》" Then
-            If persontgruonus(2).Value = True Then
-                persontgruonus(2).Value = False
-                persontgruonus(1).Value = True
-                persontgruonus_Click (1)
-            End If
-            persontgruonus(2).Enabled = False
+            Formsetting.事件卡設定_列表填入 1, False
             personwagus.Visible = True
         ElseIf personnameus(1).Caption <> "《隨機》" Then
-            persontgruonus(2).Enabled = True
+            Formsetting.事件卡設定_列表填入 1, True
             personwagus.Visible = False
         End If
     End If
@@ -2739,9 +2632,8 @@ If persontgrecom.Value = 1 Then
     Next
 Else
    personwagcom.Visible = False
-   persontgruoncom(2).Enabled = True
+   Formsetting.事件卡設定_列表填入 2, True
 End If
-
     
 End Sub
 
@@ -2757,54 +2649,8 @@ If persontgreus.Value = 1 Then
     Next
 Else
    personwagus.Visible = False
-   persontgruonus(2).Enabled = True
+   Formsetting.事件卡設定_列表填入 1, True
 End If
-End Sub
-
-Private Sub persontgruoncom_Click(Index As Integer)
-Dim i As Integer
-
-Select Case Index
-    Case 1
-       For i = 1 To 18
-           personcom(i).Enabled = False
-       Next
-    Case 2
-       For i = 1 To 18
-           personcom(i).Enabled = True
-       Next
-    Case 3
-       For i = 1 To 18
-           personcom(i).Enabled = False
-       Next
-    Case 4
-       For i = 1 To 18
-           personcom(i).Enabled = False
-       Next
-End Select
-End Sub
-
-Private Sub persontgruonus_Click(Index As Integer)
-Dim i As Integer
-
-Select Case Index
-    Case 1
-       For i = 1 To 18
-           personus(i).Enabled = False
-       Next
-    Case 2
-       For i = 1 To 18
-           personus(i).Enabled = True
-       Next
-    Case 3
-       For i = 1 To 18
-           personus(i).Enabled = False
-       Next
-    Case 4
-       For i = 1 To 18
-           personus(i).Enabled = False
-       Next
-End Select
 End Sub
 
 Private Sub persontgus_Change(Index As Integer)
@@ -2985,4 +2831,43 @@ Else
    randombk.Visible = True
 End If
 
+End Sub
+Sub 事件卡設定_列表填入(ByVal uscom As Integer, ByVal isCustom As Boolean)
+Dim tmpindex As Integer
+Select Case uscom
+    Case 1
+        If Formsetting.comboeventcarrdus.ListCount > 0 Then
+            tmpindex = Formsetting.comboeventcarrdus.ListIndex
+        End If
+        Formsetting.comboeventcarrdus.Clear
+        Formsetting.comboeventcarrdus.AddItem "無"
+        Formsetting.comboeventcarrdus.AddItem "最大值"
+        Formsetting.comboeventcarrdus.AddItem "隨機"
+        Formsetting.comboeventcarrdus.AddItem "隨機(不含聖水)"
+        If isCustom = True Then
+            Formsetting.comboeventcarrdus.AddItem "自訂"
+        End If
+        If tmpindex >= 0 And tmpindex < Formsetting.comboeventcarrdus.ListCount Then
+            Formsetting.comboeventcarrdus.ListIndex = tmpindex
+        Else
+            Formsetting.comboeventcarrdus.ListIndex = 2
+        End If
+    Case 2
+        If Formsetting.comboeventcarrdcom.ListCount > 0 Then
+            tmpindex = Formsetting.comboeventcarrdcom.ListIndex
+        End If
+        Formsetting.comboeventcarrdcom.Clear
+        Formsetting.comboeventcarrdcom.AddItem "無"
+        Formsetting.comboeventcarrdcom.AddItem "最大值"
+        Formsetting.comboeventcarrdcom.AddItem "隨機"
+        Formsetting.comboeventcarrdcom.AddItem "隨機(不含聖水)"
+        If isCustom = True Then
+            Formsetting.comboeventcarrdcom.AddItem "自訂"
+        End If
+        If tmpindex >= 0 And tmpindex < Formsetting.comboeventcarrdcom.ListCount Then
+            Formsetting.comboeventcarrdcom.ListIndex = tmpindex
+        Else
+            Formsetting.comboeventcarrdcom.ListIndex = 2
+        End If
+End Select
 End Sub

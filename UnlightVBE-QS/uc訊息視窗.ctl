@@ -31,26 +31,22 @@ Dim m_message() As String
 Private Sub UserControl_Initialize()
 ReDim m_message(0) As String
 End Sub
-Public Property Get MeaageText() As String
-   MeaageText = ""
-End Property
-Public Property Let MeaageText(ByVal New_MeaageText As String)
-   Dim i As Integer
-   ReDim Preserve m_message(UBound(m_message) + 1) As String
-   m_message(UBound(m_message)) = New_MeaageText
-   PropertyChanged "MeaageText"
-   '=================
-   Cls
-   If UBound(m_message) <= 5 Then
-       For i = 1 To UBound(m_message)
-            Print " " & m_message(i)
-       Next
-   ElseIf UBound(m_message) > 5 Then
-       For i = (UBound(m_message) - 5) + 1 To UBound(m_message)
-            Print " " & m_message(i)
-       Next
-   End If
-End Property
+Sub MeaageText(ByVal textstr As String)
+    Dim i As Integer
+    ReDim Preserve m_message(UBound(m_message) + 1) As String
+    m_message(UBound(m_message)) = textstr
+    '=================
+    Cls
+    If UBound(m_message) <= 5 Then
+        For i = 1 To UBound(m_message)
+             Print " " & m_message(i)
+        Next
+    ElseIf UBound(m_message) > 5 Then
+        For i = (UBound(m_message) - 5) + 1 To UBound(m_message)
+             Print " " & m_message(i)
+        Next
+    End If
+End Sub
 Sub MessageTextClear()
 Cls
 ReDim m_message(0) As String

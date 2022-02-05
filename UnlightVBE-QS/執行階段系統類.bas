@@ -38,29 +38,35 @@ Sub 執行階段系統總主要程序_人物被動技能(ByVal uscom As Integer, ByVal personnum 
            執行指令集.執行指令集總程序執行 執行階段系統_執行腳本_人物被動技能類(atkingnum, ns, uscom, personnum, PassivePersonType), passivevssnum, uscom, atkingnum, ns, vbecommadtotplayNow
     End If
 End Sub
-Sub 執行階段73_指令_異常狀態控制_全部清除(ByVal uscom As Integer, ByVal num As Integer)
+Sub 執行階段73_指令_異常狀態控制_全部清除(ByVal uscom As Integer, ByVal num As Integer, Optional ByVal isHPW As Boolean = False)
 Dim vbecommadnumSecond As Integer '本層執行階段編號數
 Dim buffobj As clsStatus
 Dim i As Integer
-'=======================
-vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
-'=======================
-Dim VBEStageNumMainSec(0 To 1) As Integer
-VBEStageNumMainSec(0) = 73
-VBEStageNumMainSec(1) = 1
-ReDim VBEStageRemoveBuffAllNum(1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count) As Boolean
-'=======================
-For i = 1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count
-    Set buffobj = 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num))(i)
-    Vss_EventRemoveBuffActionOffNum = 0
-    執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffobj.Identifier, 73, num, VBEStageNumMainSec, vbecommadnumSecond
-    If Vss_EventRemoveBuffActionOffNum = 1 Then
-         VBEStageRemoveBuffAllNum(i) = True
+If 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count > 0 Then
+    '=======================
+    vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
+    '=======================
+    Dim VBEStageNumMainSec(0 To 1) As Integer
+    VBEStageNumMainSec(0) = 73
+    If isHPW = True Then
+        VBEStageNumMainSec(1) = 2
+    Else
+        VBEStageNumMainSec(1) = 1
     End If
-Next
-'=======================
-執行階段系統_宣告開始或結束 2
-'=======================
+    ReDim VBEStageRemoveBuffAllNum(1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count) As Boolean
+    '=======================
+    For i = 1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count
+        Set buffobj = 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num))(i)
+        Vss_EventRemoveBuffActionOffNum = 0
+        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffobj.Identifier, 73, num, VBEStageNumMainSec, vbecommadnumSecond
+        If Vss_EventRemoveBuffActionOffNum = 1 Then
+             VBEStageRemoveBuffAllNum(i) = True
+        End If
+    Next
+    '=======================
+    執行階段系統_宣告開始或結束 2
+    '=======================
+End If
 End Sub
 Sub 執行階段73_指令_異常狀態控制_特定清除(ByVal uscom As Integer, ByVal num As Integer, ByVal akstr As String)
 Dim vbecommadnumSecond As Integer '本層執行階段編號數

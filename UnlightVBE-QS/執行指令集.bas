@@ -232,16 +232,16 @@ Sub 執行指令_技能燈控制(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
                             Case 1
                                  Select Case Val(commadstr3(0))
                                     Case 1
-                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈發亮 = atkingnum - 4
+                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈發亮 atkingnum - 4
                                     Case 2
-                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈變暗 = atkingnum - 4
+                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈變暗 atkingnum - 4
                                   End Select
                             Case 2
                                   Select Case Val(commadstr3(0))
                                     Case 1
-                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈發亮 = atkingnum - 4
+                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈發亮 atkingnum - 4
                                     Case 2
-                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈變暗 = atkingnum - 4
+                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈變暗 atkingnum - 4
                                   End Select
                         End Select
             End Select
@@ -289,16 +289,16 @@ Sub 執行指令_技能燈控制_其他(ByVal uscom As Integer, ByVal commadtype As Integer
                             Case 1
                                  Select Case Val(commadstr3(2))
                                     Case 1
-                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈發亮 = Val(commadstr3(1))
+                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈發亮 Val(commadstr3(1))
                                     Case 2
-                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈變暗 = Val(commadstr3(1))
+                                        FormMainMode.PEAFInterface.Passive_使用者_技能燈變暗 Val(commadstr3(1))
                                   End Select
                             Case 2
                                   Select Case Val(commadstr3(2))
                                     Case 1
-                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈發亮 = Val(commadstr3(1))
+                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈發亮 Val(commadstr3(1))
                                     Case 2
-                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈變暗 = Val(commadstr3(1))
+                                        FormMainMode.PEAFInterface.Passive_電腦_技能燈變暗 Val(commadstr3(1))
                                   End Select
                         End Select
             End Select
@@ -1713,7 +1713,7 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
                 personStatus.Total = personStatus.Total - 1
                 '=======================
                 If personStatus.Total <= 0 Then
-                    執行階段73_指令_異常狀態控制_主動清除 uscom, vbecommadnum(6, vbecommadtotplayNow), buffvssnum
+                    執行階段系統類.執行階段73_指令_異常狀態控制_主動清除 uscom, vbecommadnum(6, vbecommadtotplayNow), buffvssnum
                     人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow)).Remove buffvssnum
                     vbecommadnum(2, vbecommadtotplayNow) = 2
                     Exit Sub
@@ -1778,7 +1778,7 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
             End If
             If 人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Count = 0 Then GoTo VssCommadExit
             '===========================================
-            執行階段73_指令_異常狀態控制_全部清除 uscomt, Val(commadstr3(1))
+            執行階段系統類.執行階段73_指令_異常狀態控制_全部清除 uscomt, Val(commadstr3(1))
             tempnum = 1
             For i = 1 To 人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Count
                 If VBEStageRemoveBuffAllNum(i) = False Then
@@ -1843,7 +1843,7 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
             End If
             '===========================================
             If CollectionExists(人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))), commadstr3(2)) = True Then
-                執行階段73_指令_異常狀態控制_特定清除 uscomt, Val(commadstr3(1)), commadstr3(2)
+                執行階段系統類.執行階段73_指令_異常狀態控制_特定清除 uscomt, Val(commadstr3(1)), commadstr3(2)
                 If Vss_EventRemoveBuffActionOffNum = 0 Then
                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
                 End If

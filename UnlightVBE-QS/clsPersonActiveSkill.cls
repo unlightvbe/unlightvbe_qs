@@ -6,14 +6,21 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "clsStatus"
+Attribute VB_Name = "clsPersonActiveSkill"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
 Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
-Public Value As Integer '異常狀態數值
-Public Total As Integer '異常狀態統計數(剩餘回合/累計)
-Public Identifier As String '技能唯一識別碼
-Public ImagePath As String '異常狀態圖片路徑
+Public Name As String '名稱
+Public Stage As String '階段
+Public Distance As String '距離
+Public card As String '卡片
+Public Effect As String '效果
+Public NameFontSize As Integer '名稱字體大小
+Public cardFontSize As Integer '卡片字體大小
+Public EffectFontSize As Integer '效果字體大小
+
+
+

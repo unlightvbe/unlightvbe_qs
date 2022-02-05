@@ -32,14 +32,14 @@ Select Case 事件卡記錄暫時數(1, 3)
         '=====================
         事件卡記錄暫時數(1, 2) = 1
         turnpageonin = 0
-        FormMainMode.bnok.Enabled = False
+        FormMainMode.PEAFInterface.BnOKEnabled False
         If BattleCardNum < 事件卡記錄暫時數(1, 1) Then
            戰鬥系統類.執行動作_洗牌
         End If
     Case 3
          If 事件卡記錄暫時數(1, 2) > 事件卡記錄暫時數(1, 1) Or BattleCardNum <= 0 Then
              turnpageonin = 1
-             FormMainMode.bnok.Enabled = True
+             FormMainMode.PEAFInterface.BnOKStartListen
              事件卡記錄暫時數(1, 6) = 0
              Exit Sub
          End If
@@ -113,7 +113,7 @@ Select Case 事件卡記錄暫時數(1, 3)
     Case 2
         事件卡記錄暫時數(1, 2) = 1
         turnpageonin = 0
-        FormMainMode.bnok.Enabled = False
+        FormMainMode.PEAFInterface.BnOKEnabled False
         '=======================
         Do Until 事件卡記錄暫時數(1, 2) > 事件卡記錄暫時數(1, 1) Or Val(FormMainMode.pagecomglead.Caption) <= 0
             Randomize
@@ -171,7 +171,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         事件卡記錄暫時數(1, 2) = 1
     Case 6
         turnpageonin = 1
-        FormMainMode.bnok.Enabled = True
+        FormMainMode.PEAFInterface.BnOKStartListen
         事件卡記錄暫時數(1, 6) = 0
 End Select
 End Sub
@@ -259,7 +259,7 @@ Select Case 事件卡記錄暫時數(1, 3)
     Case 2
         事件卡記錄暫時數(1, 2) = 1
         turnpageonin = 0
-        FormMainMode.bnok.Enabled = False
+        FormMainMode.PEAFInterface.BnOKEnabled False
         '=======================
         戰鬥系統類.回復執行_使用者 Val(事件卡記錄暫時數(1, 1)), 1, 0
         等待時間佇列(2).Add 17
@@ -286,7 +286,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         '=====================
     Case 4
         turnpageonin = 1
-        FormMainMode.bnok.Enabled = True
+        FormMainMode.PEAFInterface.BnOKStartListen
         事件卡記錄暫時數(1, 6) = 0
 End Select
 End Sub
@@ -346,9 +346,9 @@ Select Case 事件卡記錄暫時數(1, 3)
     Case 2
         事件卡記錄暫時數(1, 2) = 1
         turnpageonin = 0
-        FormMainMode.bnok.Enabled = False
+        FormMainMode.PEAFInterface.BnOKEnabled False
         '=======================
-        戰鬥系統類.執行動作_清除所有異常狀態 1, 1
+        戰鬥系統類.執行動作_清除所有異常狀態_聖水 1, 1
         FormMainMode.trgoi1_Timer
         等待時間佇列(2).Add 40
         FormMainMode.等待時間_2.Enabled = True
@@ -374,7 +374,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         '=====================
     Case 4
         turnpageonin = 1
-        FormMainMode.bnok.Enabled = True
+        FormMainMode.PEAFInterface.BnOKStartListen
         事件卡記錄暫時數(1, 6) = 0
 End Select
 End Sub
@@ -391,7 +391,7 @@ Select Case 事件卡記錄暫時數(2, 3)
     Case 2
         事件卡記錄暫時數(2, 2) = 1
         '=======================
-        戰鬥系統類.執行動作_清除所有異常狀態 2, 1
+        戰鬥系統類.執行動作_清除所有異常狀態_聖水 2, 1
         FormMainMode.trgoi2_Timer
         等待時間佇列(2).Add 42
         FormMainMode.等待時間_2.Enabled = True

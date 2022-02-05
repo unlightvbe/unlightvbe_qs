@@ -18,8 +18,8 @@ ___
 4. 在專案中你會看到一些被註解起來的code，此為正常現象。
 5. 因為本人我也很久沒碰了，所以......請加油。
 
-#### 注意！本專案為Big5編碼，CRLF換行，請在push時將git的換行符號自動轉換的功能關閉
-命令列輸入：```git config --global core.autocrlf false```
+#### 注意！本專案為Big5編碼，CRLF換行，請將git的換行符號自動轉換的功能關閉
+專案目錄下輸入：```git config core.autocrlf false```
 ___
 
 ## Linux Wine 環境配置（試驗）  

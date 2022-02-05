@@ -9,14 +9,197 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    ClientTop       =   0
    ClientWidth     =   11340
    ClipBehavior    =   0  '無
-   HitBehavior     =   0  '無
+   HitBehavior     =   2  '使用繪圖區域
    ScaleHeight     =   9915
    ScaleWidth      =   11340
    Windowless      =   -1  'True
+   Begin VB.Image bnok 
+      Height          =   1050
+      Left            =   7440
+      Picture         =   "uc戰鬥系統牌型介面.ctx":0000
+      Top             =   8160
+      Width           =   1500
+   End
+   Begin VB.Label activecom 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   4
+      Left            =   0
+      TabIndex        =   18
+      Top             =   600
+      Width           =   2205
+   End
+   Begin VB.Label activecom 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   3
+      Left            =   2280
+      TabIndex        =   17
+      Top             =   600
+      Width           =   2205
+   End
+   Begin VB.Label activecom 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   2
+      Left            =   4560
+      TabIndex        =   16
+      Top             =   600
+      Width           =   2205
+   End
+   Begin VB.Label activecom 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   1
+      Left            =   6840
+      TabIndex        =   15
+      Top             =   600
+      Width           =   2205
+   End
+   Begin VB.Label activeus 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   4
+      Left            =   9120
+      TabIndex        =   14
+      Top             =   6240
+      Width           =   2205
+   End
+   Begin VB.Label activeus 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   3
+      Left            =   6960
+      TabIndex        =   13
+      Top             =   6240
+      Width           =   2205
+   End
+   Begin VB.Label activeus 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   2
+      Left            =   4800
+      TabIndex        =   12
+      Top             =   6240
+      Width           =   2205
+   End
+   Begin VB.Label activeus 
+      Alignment       =   2  '置中對齊
+      Appearance      =   0  '平面
+      BackColor       =   &H00000000&
+      Caption         =   "人物技能"
+      BeginProperty Font 
+         Name            =   "Kozuka Mincho Pro M"
+         Size            =   12
+         Charset         =   0
+         Weight          =   500
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00E0E0E0&
+      Height          =   375
+      Index           =   1
+      Left            =   2640
+      TabIndex        =   11
+      Top             =   6240
+      Width           =   2205
+   End
    Begin VB.Image cardpagejpg 
       Height          =   465
       Left            =   240
-      Picture         =   "uc戰鬥系統牌型介面.ctx":0000
+      Picture         =   "uc戰鬥系統牌型介面.ctx":3F0F
       Top             =   960
       Width           =   570
    End
@@ -120,7 +303,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":04C1
+      Image           =   "uc戰鬥系統牌型介面.ctx":43D0
       Opacity         =   70
       Props           =   5
    End
@@ -132,7 +315,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":0DFF
+      Image           =   "uc戰鬥系統牌型介面.ctx":4D0E
       Opacity         =   70
       Props           =   5
    End
@@ -144,7 +327,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":173D
+      Image           =   "uc戰鬥系統牌型介面.ctx":564C
       Opacity         =   70
       Props           =   5
    End
@@ -156,7 +339,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":207B
+      Image           =   "uc戰鬥系統牌型介面.ctx":5F8A
       Opacity         =   70
       Props           =   5
    End
@@ -256,7 +439,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":29B9
+      Image           =   "uc戰鬥系統牌型介面.ctx":68C8
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -269,7 +452,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":3323
+      Image           =   "uc戰鬥系統牌型介面.ctx":7232
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -282,7 +465,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":3C8D
+      Image           =   "uc戰鬥系統牌型介面.ctx":7B9C
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -295,7 +478,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":45F7
+      Image           =   "uc戰鬥系統牌型介面.ctx":8506
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -303,7 +486,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image stagejpgn 
       Height          =   270
       Left            =   9120
-      Picture         =   "uc戰鬥系統牌型介面.ctx":4F61
+      Picture         =   "uc戰鬥系統牌型介面.ctx":8E70
       Top             =   1080
       Width           =   2280
    End
@@ -339,7 +522,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image cardbackjpg 
       Height          =   1455
       Left            =   2535
-      Picture         =   "uc戰鬥系統牌型介面.ctx":543E
+      Picture         =   "uc戰鬥系統牌型介面.ctx":934D
       Top             =   6600
       Width           =   8910
    End
@@ -376,7 +559,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image turnpe 
       Height          =   420
       Left            =   10200
-      Picture         =   "uc戰鬥系統牌型介面.ctx":2F878
+      Picture         =   "uc戰鬥系統牌型介面.ctx":33787
       Top             =   480
       Width           =   1125
    End
@@ -390,7 +573,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image cardunderjpg 
       Height          =   270
       Left            =   0
-      Picture         =   "uc戰鬥系統牌型介面.ctx":2FD22
+      Picture         =   "uc戰鬥系統牌型介面.ctx":33C31
       Top             =   1080
       Width           =   2280
    End
@@ -401,7 +584,12 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
-Dim m_Turn As Integer, m_cardnum As Integer, m_passivevisble As Boolean
+Private m_Turn As Integer, m_cardnum As Integer, m_passivevisble As Boolean, m_bnoktype As Integer
+
+Public Event ActiveMouseMove(ByVal uscom As Integer, ByVal num As Integer)
+Public Event InterfaceMouseMove()
+Public Event BnOKMouseMove()
+Public Event BnOKClick()
 Public Property Get turn() As Integer
    turn = m_Turn
 End Property
@@ -430,158 +618,6 @@ Public Property Let Cardnum(ByVal New_Cardnum As Integer)
         pageul.FontSize = 24
    End If
 End Property
-Public Property Get stagejpg() As String
-   stagejpg = ""
-End Property
-Public Property Let stagejpg(ByVal New_Stagejpg As String)
-   PropertyChanged "Stagejpg"
-   '=================
-   If New_Stagejpg <> "" Then
-       stagejpgn.Picture = LoadPicture(New_Stagejpg)
-   End If
-End Property
-Public Property Get Passive_使用者_技能名稱() As String
-   Passive_使用者_技能名稱 = ""
-End Property
-Public Property Let Passive_使用者_技能名稱(ByVal New_Passive_使用者_技能名稱 As String)
-   PropertyChanged "Passive_使用者_技能名稱"
-   '=================
-   Dim pstr() As String
-   pstr = Split(New_Passive_使用者_技能名稱, "#")
-   If pstr(0) <> "" And Val(pstr(1)) >= 1 And Val(pstr(1)) <= 4 Then
-       passivetext_us(Val(pstr(1))).Caption = pstr(0)
-   End If
-End Property
-Public Property Get Passive_使用者_技能燈發亮() As Integer
-   Passive_使用者_技能燈發亮 = 0
-End Property
-Public Property Let Passive_使用者_技能燈發亮(ByVal New_Passive_使用者_技能燈發亮 As Integer)
-   PropertyChanged "Passive_使用者_技能燈發亮"
-   '=================
-   If New_Passive_使用者_技能燈發亮 >= 1 And New_Passive_使用者_技能燈發亮 <= 4 Then
-       passivelight_us(New_Passive_使用者_技能燈發亮).ClearImage
-       passivelight_us(New_Passive_使用者_技能燈發亮).LoadImage_FromFile App.Path & "\gif\system\passivelighton.png"
-       passivelight_us(New_Passive_使用者_技能燈發亮).Mirror = aiMirrorHorizontal
-'        passivelight_us(New_Passive_使用者_技能燈發亮).Picture = LoadPicture(App.Path & "\gif\system\passivelightonus.gif")
-   End If
-End Property
-Public Property Get Passive_使用者_技能燈變暗() As Integer
-   Passive_使用者_技能燈變暗 = 0
-End Property
-Public Property Let Passive_使用者_技能燈變暗(ByVal New_Passive_使用者_技能燈變暗 As Integer)
-   PropertyChanged "Passive_使用者_技能燈變暗"
-   '=================
-   If New_Passive_使用者_技能燈變暗 >= 1 And New_Passive_使用者_技能燈變暗 <= 4 Then
-       passivelight_us(New_Passive_使用者_技能燈變暗).ClearImage
-       passivelight_us(New_Passive_使用者_技能燈變暗).LoadImage_FromFile App.Path & "\gif\system\passivelightoff.png"
-       passivelight_us(New_Passive_使用者_技能燈變暗).Mirror = aiMirrorHorizontal
-   End If
-End Property
-Public Property Get Passive_使用者_技能顯示() As Integer
-   Passive_使用者_技能顯示 = 0
-End Property
-Public Property Let Passive_使用者_技能顯示(ByVal New_Passive_使用者_技能顯示 As Integer)
-   PropertyChanged "Passive_使用者_技能顯示"
-   '=================
-   If New_Passive_使用者_技能顯示 >= 1 And New_Passive_使用者_技能顯示 <= 4 Then
-       passivelight_us(New_Passive_使用者_技能顯示).Visible = True
-       passivetext_us(New_Passive_使用者_技能顯示).Visible = True
-   End If
-End Property
-Public Property Get Passive_使用者_技能隱藏() As Integer
-   Passive_使用者_技能隱藏 = 0
-End Property
-Public Property Let Passive_使用者_技能隱藏(ByVal New_Passive_使用者_技能隱藏 As Integer)
-   PropertyChanged "Passive_使用者_技能隱藏"
-   '=================
-   If New_Passive_使用者_技能隱藏 >= 1 And New_Passive_使用者_技能隱藏 <= 4 Then
-       passivelight_us(New_Passive_使用者_技能隱藏).Visible = False
-       passivetext_us(New_Passive_使用者_技能隱藏).Visible = False
-   End If
-End Property
-Public Property Get Passive_電腦_技能顯示() As Integer
-   Passive_電腦_技能顯示 = 0
-End Property
-Public Property Let Passive_電腦_技能顯示(ByVal New_Passive_電腦_技能顯示 As Integer)
-   PropertyChanged "Passive_電腦_技能顯示"
-   '=================
-   If New_Passive_電腦_技能顯示 >= 1 And New_Passive_電腦_技能顯示 <= 4 Then
-       passivelight_com(New_Passive_電腦_技能顯示).Visible = True
-       passivetext_com(New_Passive_電腦_技能顯示).Visible = True
-   End If
-End Property
-Public Property Get Passive_電腦_技能隱藏() As Integer
-   Passive_電腦_技能隱藏 = 0
-End Property
-Public Property Let Passive_電腦_技能隱藏(ByVal New_Passive_電腦_技能隱藏 As Integer)
-   PropertyChanged "Passive_電腦_技能隱藏"
-   '=================
-   If New_Passive_電腦_技能隱藏 >= 1 And New_Passive_電腦_技能隱藏 <= 4 Then
-       passivelight_com(New_Passive_電腦_技能隱藏).Visible = False
-       passivetext_com(New_Passive_電腦_技能隱藏).Visible = False
-   End If
-End Property
-Public Property Get Passive_電腦_技能燈發亮() As Integer
-   Passive_電腦_技能燈發亮 = 0
-End Property
-Public Property Let Passive_電腦_技能燈發亮(ByVal New_Passive_電腦_技能燈發亮 As Integer)
-   PropertyChanged "Passive_電腦_技能燈發亮"
-   '=================
-   If New_Passive_電腦_技能燈發亮 >= 1 And New_Passive_電腦_技能燈發亮 <= 4 Then
-       passivelight_com(New_Passive_電腦_技能燈發亮).ClearImage
-       passivelight_com(New_Passive_電腦_技能燈發亮).LoadImage_FromFile App.Path & "\gif\system\passivelighton.png"
-       passivelight_com(New_Passive_電腦_技能燈發亮).Mirror = aiMirrorNone
-'        passivelight_com(New_Passive_使用者_技能燈發亮).Picture = LoadPicture(App.Path & "\gif\system\passivelightoncom.gif")
-   End If
-End Property
-Public Property Get Passive_電腦_技能燈變暗() As Integer
-   Passive_電腦_技能燈變暗 = 0
-End Property
-Public Property Let Passive_電腦_技能燈變暗(ByVal New_Passive_電腦_技能燈變暗 As Integer)
-   PropertyChanged "Passive_電腦_技能燈變暗"
-   '=================
-   If New_Passive_電腦_技能燈變暗 >= 1 And New_Passive_電腦_技能燈變暗 <= 4 Then
-       passivelight_com(New_Passive_電腦_技能燈變暗).ClearImage
-       passivelight_com(New_Passive_電腦_技能燈變暗).LoadImage_FromFile App.Path & "\gif\system\passivelightoff.png"
-       passivelight_com(New_Passive_電腦_技能燈變暗).Mirror = aiMirrorNone
-   End If
-End Property
-Public Property Get Passive_電腦_技能名稱() As String
-   Passive_電腦_技能名稱 = ""
-End Property
-Public Property Let Passive_電腦_技能名稱(ByVal New_Passive_電腦_技能名稱 As String)
-   PropertyChanged "Passive_電腦_技能名稱"
-   '=================
-   Dim pstr() As String
-   pstr = Split(New_Passive_電腦_技能名稱, "#")
-   If pstr(0) <> "" And Val(pstr(1)) >= 1 And Val(pstr(1)) <= 4 Then
-       passivetext_com(Val(pstr(1))).Caption = pstr(0)
-   End If
-End Property
-Public Property Get Passive_技能一方全重設() As Integer
-   Passive_技能一方全重設 = 0
-End Property
-Public Property Let Passive_技能一方全重設(ByVal New_Passive_技能一方全重設 As Integer)
-   PropertyChanged "Passive_技能一方全重設"
-   '=================
-   Dim i As Integer
-   Select Case New_Passive_技能一方全重設
-       Case 1
-           For i = 1 To 4
-               passivelight_us(i).Visible = False
-               Me.Passive_使用者_技能燈變暗 = i
-               passivetext_us(i).Visible = False
-               passivetext_us(i).Caption = ""
-           Next
-       Case 2
-           For i = 1 To 4
-               passivelight_com(i).Visible = False
-               Me.Passive_電腦_技能燈變暗 = i
-               passivetext_com(i).Visible = False
-               passivetext_com(i).Caption = ""
-           Next
-   End Select
-End Property
 Public Property Get Passive_介面顯示() As Boolean
    Passive_介面顯示 = m_passivevisble
 End Property
@@ -596,8 +632,8 @@ Public Property Let Passive_介面顯示(ByVal New_Passive_介面顯示 As Boolean)
        pageul.Visible = False
        stagejpgn.Visible = False
        For i = 1 To 4
-          Me.Passive_使用者_技能隱藏 = i
-          Me.Passive_電腦_技能隱藏 = i
+          Me.Passive_使用者_技能隱藏 i
+          Me.Passive_電腦_技能隱藏 i
        Next
    Else
        cardunderjpg.Visible = True
@@ -607,14 +643,188 @@ Public Property Let Passive_介面顯示(ByVal New_Passive_介面顯示 As Boolean)
        stagejpgn.Visible = True
    End If
 End Property
-Public Property Get Message() As String
-   Message = ""
-End Property
-Public Property Let Message(ByVal New_Message As String)
-   messagetext.MeaageText = New_Message
-   PropertyChanged "Message"
-End Property
 Sub MessageClear()
 messagetext.MessageTextClear
 End Sub
+Sub Passive_技能一方全重設(ByVal uscom As Integer)
+Dim i As Integer
+Select Case uscom
+    Case 1
+        For i = 1 To 4
+            passivelight_us(i).Visible = False
+            Me.Passive_使用者_技能燈變暗 i
+            passivetext_us(i).Visible = False
+            passivetext_us(i).Caption = ""
+        Next
+    Case 2
+        For i = 1 To 4
+            passivelight_com(i).Visible = False
+            Me.Passive_電腦_技能燈變暗 i
+            passivetext_com(i).Visible = False
+            passivetext_com(i).Caption = ""
+        Next
+End Select
+End Sub
+Sub Passive_電腦_技能名稱(ByVal name As String, ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivetext_com(num).Caption = name
+End Sub
+Sub Passive_電腦_技能燈變暗(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_com(num).ClearImage
+    passivelight_com(num).LoadImage_FromFile App.Path & "\gif\system\passivelightoff.png"
+    passivelight_com(num).Mirror = aiMirrorNone
+End Sub
+Sub Passive_電腦_技能燈發亮(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_com(num).ClearImage
+    passivelight_com(num).LoadImage_FromFile App.Path & "\gif\system\passivelighton.png"
+    passivelight_com(num).Mirror = aiMirrorNone
+End Sub
+Sub Passive_電腦_技能隱藏(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_com(num).Visible = False
+    passivetext_com(num).Visible = False
+End Sub
+Sub Passive_電腦_技能顯示(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_com(num).Visible = True
+    passivetext_com(num).Visible = True
+End Sub
+Sub Passive_使用者_技能隱藏(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_us(num).Visible = False
+    passivetext_us(num).Visible = False
+End Sub
+Sub Passive_使用者_技能顯示(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_us(num).Visible = True
+    passivetext_us(num).Visible = True
+End Sub
+Sub Passive_使用者_技能燈變暗(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_us(num).ClearImage
+    passivelight_us(num).LoadImage_FromFile App.Path & "\gif\system\passivelightoff.png"
+    passivelight_us(num).Mirror = aiMirrorHorizontal
+End Sub
+Sub Passive_使用者_技能燈發亮(ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivelight_us(num).ClearImage
+    passivelight_us(num).LoadImage_FromFile App.Path & "\gif\system\passivelighton.png"
+    passivelight_us(num).Mirror = aiMirrorHorizontal
+End Sub
+Sub Passive_使用者_技能名稱(ByVal name As String, ByVal num As Integer)
+    If num < 1 Or num > 4 Then Exit Sub
+    passivetext_us(num).Caption = name
+End Sub
+Sub stagejpg(ByVal filestr As String)
+    If filestr <> "" Then
+       stagejpgn.Picture = LoadPicture(filestr)
+   End If
+End Sub
+Sub Message(ByVal msgstr As String)
+    messagetext.MeaageText msgstr
+End Sub
 
+Private Sub activecom_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+RaiseEvent ActiveMouseMove(2, Index)
+End Sub
+
+Private Sub activeus_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+RaiseEvent ActiveMouseMove(1, Index)
+End Sub
+
+Private Sub bnok_Click()
+RaiseEvent BnOKClick
+End Sub
+
+Private Sub bnok_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+If m_bnoktype = 1 Then
+    bnok.Picture = LoadPicture(app_path & "gif\system\ok_2.jpg")
+    m_bnoktype = 2
+End If
+RaiseEvent BnOKMouseMove
+End Sub
+
+Private Sub cardunderjpg_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+RaiseEvent InterfaceMouseMove
+End Sub
+
+Private Sub stagejpgn_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+RaiseEvent InterfaceMouseMove
+End Sub
+Sub ActiveDescription(ByVal uscom As Integer, ByVal num As Integer, ByVal skillobj As clsPersonActiveSkill)
+Me.ActiveSkillName uscom, num, skillobj.name
+Me.ActiveSkillNameFontSize uscom, num, skillobj.NameFontSize
+End Sub
+
+Sub ActiveSkillLight(ByVal uscom As Integer, ByVal num As Integer, ByVal isOn As Boolean)
+Select Case uscom
+ Case 1
+    If isOn = True Then
+       activeus(num).ForeColor = RGB(255, 255, 0)
+       activeus(num).BackColor = RGB(47, 94, 94)
+    Else
+       activeus(num).ForeColor = RGB(192, 192, 192)
+       activeus(num).BackColor = RGB(0, 0, 0)
+    End If
+ Case 2
+    If isOn = True Then
+       activecom(num).ForeColor = RGB(255, 255, 0)
+       activecom(num).BackColor = RGB(47, 94, 94)
+    Else
+       activecom(num).ForeColor = RGB(192, 192, 192)
+       activecom(num).BackColor = RGB(0, 0, 0)
+    End If
+End Select
+    
+End Sub
+Sub ActiveSkillVisable(ByVal uscom As Integer, ByVal num As Integer, ByVal isOn As Boolean)
+Select Case uscom
+ Case 1
+    activeus(num).Visible = isOn
+ Case 2
+    activecom(num).Visible = isOn
+End Select
+End Sub
+Sub ActiveSkillName(ByVal uscom As Integer, ByVal num As Integer, ByVal namestr As String)
+Select Case uscom
+ Case 1
+    activeus(num).Caption = namestr
+ Case 2
+    activecom(num).Caption = namestr
+End Select
+End Sub
+Sub ActiveSkillNameFontSize(ByVal uscom As Integer, ByVal num As Integer, ByVal sizenum As Integer)
+Select Case uscom
+ Case 1
+    activeus(num).FontSize = sizenum
+ Case 2
+    activecom(num).FontSize = sizenum
+End Select
+End Sub
+
+Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+RaiseEvent InterfaceMouseMove
+If bnok.Visible = True And bnok.Enabled = True And m_bnoktype <> 1 Then
+    bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+    m_bnoktype = 1
+End If
+End Sub
+Sub BnOKStartListen()
+bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+m_bnoktype = 1
+bnok.Enabled = True
+bnok.Visible = True
+End Sub
+Sub BnOKStopListen()
+bnok.Picture = LoadPicture(app_path & "gif\system\ok_3.jpg")
+m_bnoktype = 3
+bnok.Enabled = False
+End Sub
+Sub BnOKVisable(ByVal isOn As Boolean)
+bnok.Visible = isOn
+End Sub
+Sub BnOKEnabled(ByVal isOn As Boolean)
+bnok.Enabled = isOn
+End Sub

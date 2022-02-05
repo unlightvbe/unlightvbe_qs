@@ -78,42 +78,9 @@ Public ¤Hª«¹ê»Úª¬ºA¸ê®Æ®w(1 To 2, 1 To 3, 1 To 9) As String '¤Hª«¹ê»Úª¬ºA¸ê®Æ
 Public ¨t²ÎÅã¥Ü¬É­±¬ö¿ý¼Æ As Integer '¾Ô°«¨t²ÎÅã¥Ü¤¶­±³]©w¬ö¿ý¼Æ(1.ÂÂª©/2.·sª©)
 Public µ¥«Ý®É¶¡¦î¦C(1 To 2) As New Collection '¾Ô°«¨t²Îµ¥«Ý®É¶¡­p¼Æ¾¹¤u§@¦î¦C
 Public ¤Hª«²§±`ª¬ºA¦Cªí(1 To 2, 1 To 3) As Collection '²§±`ª¬ºA¦Cªí(1.¨Ï¥ÎªÌ/2.¹q¸£,²Än¦ì)
-Sub ¤Hª«§Þ¯àÄæ¿O¶}Ãö(ByVal k As Boolean, ByVal n As Integer)
-Select Case n
-   Case 1
-      If k = True Then
-         FormMainMode.personatk(1).ForeColor = RGB(255, 255, 0)
-         FormMainMode.personatk(1).BackColor = RGB(47, 94, 94)
-      Else
-         FormMainMode.personatk(1).ForeColor = RGB(192, 192, 192)
-         FormMainMode.personatk(1).BackColor = RGB(0, 0, 0)
-      End If
-   Case 2
-      If k = True Then
-         FormMainMode.personatk(2).ForeColor = RGB(255, 255, 0)
-         FormMainMode.personatk(2).BackColor = RGB(47, 94, 94)
-      Else
-         FormMainMode.personatk(2).ForeColor = RGB(192, 192, 192)
-         FormMainMode.personatk(2).BackColor = RGB(0, 0, 0)
-      End If
-   Case 3
-      If k = True Then
-         FormMainMode.personatk(3).ForeColor = RGB(255, 255, 0)
-         FormMainMode.personatk(3).BackColor = RGB(47, 94, 94)
-      Else
-         FormMainMode.personatk(3).ForeColor = RGB(192, 192, 192)
-         FormMainMode.personatk(3).BackColor = RGB(0, 0, 0)
-      End If
-   Case 4
-      If k = True Then
-         FormMainMode.personatk(4).ForeColor = RGB(255, 255, 0)
-         FormMainMode.personatk(4).BackColor = RGB(47, 94, 94)
-      Else
-         FormMainMode.personatk(4).ForeColor = RGB(192, 192, 192)
-         FormMainMode.personatk(4).BackColor = RGB(0, 0, 0)
-      End If
-End Select
-
+Public ActiveSkillObj(1 To 2, 1 To 4) As clsPersonActiveSkill '¾Ô°«¨t²Î¥D°Ê§Þ¯à»¡©úª«¥ó(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,²Än­Ó)
+Sub ¤Hª«§Þ¯àÄæ¿O¶}Ãö(ByVal isOn As Boolean, ByVal num As Integer)
+FormMainMode.PEAFInterface.ActiveSkillLight 1, num, isOn
 End Sub
 Function °õ¦æ°Ê§@_¸ô®|¨Ï¥Î·s¦¡²§±`ª¬ºA¹Ï®×(ByVal ph As String) As String
 Dim i As Integer
@@ -795,20 +762,22 @@ Next
 BattleCardNum = Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)) - Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 1))
 ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¨t²ÎÁ`¥dµP±i¼Æ§ó·s
 End Sub
-Sub °õ¦æ°Ê§@_²M°£©Ò¦³²§±`ª¬ºA(ByVal uscom As Integer, ByVal num As Integer)
-'==================
-°õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q73_«ü¥O_²§±`ª¬ºA±±¨î_¥þ³¡²M°£ uscom, num
-'==================
-Dim tempnum As Integer, i As Integer
-tempnum = 1
-For i = 1 To ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Count
-    If VBEStageRemoveBuffAllNum(i) = False Then
-        ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Remove tempnum
-    Else
-        tempnum = tempnum + 1
-    End If
-Next
-¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÅã¥Ü§ó·s uscom
+Sub °õ¦æ°Ê§@_²M°£©Ò¦³²§±`ª¬ºA_¸t¤ô(ByVal uscom As Integer, ByVal num As Integer)
+If ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Count > 0 Then
+    '==================
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q73_«ü¥O_²§±`ª¬ºA±±¨î_¥þ³¡²M°£ uscom, num, True
+    '==================
+    Dim tempnum As Integer, i As Integer
+    tempnum = 1
+    For i = 1 To ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Count
+        If VBEStageRemoveBuffAllNum(i) = False Then
+            ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Remove tempnum
+        Else
+            tempnum = tempnum + 1
+        End If
+    Next
+    ¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÅã¥Ü§ó·s uscom
+End If
 End Sub
 Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean)
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(47)
@@ -919,14 +888,14 @@ If turnatk = 1 Or turnatk = 2 Then
         For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
             FormMainMode.card(ckl).CardEnabledType = False
         Next
-        FormMainMode.bnok.Enabled = False
+        FormMainMode.PEAFInterface.BnOKEnabled False
         µ¥«Ý®É¶¡¦î¦C(2).Add 47
         FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
     ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
         For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
             FormMainMode.card(ckl).CardEnabledType = False
         Next
-        FormMainMode.bnok.Enabled = False
+        FormMainMode.PEAFInterface.BnOKEnabled False
         µ¥«Ý®É¶¡¦î¦C(2).Add 45
         FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
     End If
@@ -1133,56 +1102,98 @@ For i = 1 To pageqlead(2)
     ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 3) = ¥XµP¶¶§Ç²Î­p¼È®ÉÅÜ¼Æ(3, i, 2)
 Next
 End Sub
-Sub §Þ¯à»¡©ú¸ü¤J_¨Ï¥ÎªÌ(ByVal n As Integer)
-Dim ahmt As String
-Dim i As Integer
+Sub §Þ¯à»¡©ú¸ü¤J_¨Ï¥ÎªÌ()
+Dim i As Integer, ahmt As String, n As Integer
+Dim tmpobj As clsPersonActiveSkill
 
-FormMainMode.atkinghelpt1.Caption = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 2)
-FormMainMode.atkinghelpt2.Caption = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 3)
-FormMainMode.atkinghelpt3.Caption = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 4)
-ahmt = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 5)
-For i = 1 To Len(ahmt)
-    If Mid(ahmt, i, 1) = "&" Then
-        Mid(ahmt, i, 1) = Chr(10)
+For n = 1 To 4
+    Set tmpobj = New clsPersonActiveSkill
+    If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1) = "" Then
+       FormMainMode.PEAFInterface.ActiveDescription 1, n, tmpobj
+       FormMainMode.PEAFInterface.ActiveSkillVisable 1, n, False
+    Else
+        tmpobj.Name = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1)
+        
+        If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 2, 3, 5) = 1 Then
+            tmpobj.NameFontSize = 12
+        Else
+            tmpobj.NameFontSize = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 2, 3, n)
+        End If
+        
+        tmpobj.Stage = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 2)
+        tmpobj.Distance = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 3)
+        tmpobj.card = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 4)
+        ahmt = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 5)
+        For i = 1 To Len(ahmt)
+            If Mid(ahmt, i, 1) = "&" Then
+                Mid(ahmt, i, 1) = Chr(10)
+            End If
+        Next
+        tmpobj.Effect = ahmt
+        If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 6) <> "" Then
+            tmpobj.cardFontSize = Val(VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 6))
+        Else
+            tmpobj.cardFontSize = 10
+        End If
+        If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 7) <> "" Then
+            tmpobj.EffectFontSize = Val(VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 7))
+        Else
+            tmpobj.EffectFontSize = 10
+        End If
+        
+        FormMainMode.PEAFInterface.ActiveDescription 1, n, tmpobj
+        Set ¾Ô°«¨t²ÎÃþ.ActiveSkillObj(1, n) = tmpobj
+        FormMainMode.PEAFInterface.ActiveSkillVisable 1, n, True
+        If atkingck(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), n, 1) = 1 Then
+            ¾Ô°«¨t²ÎÃþ.¤Hª«§Þ¯àÄæ¿O¶}Ãö True, n
+        End If
     End If
 Next
-FormMainMode.atkinghelpt4.Caption = ahmt
-If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 6) <> "" Then
-    FormMainMode.atkinghelpt3.FontSize = Val(VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 6))
-Else
-    FormMainMode.atkinghelpt3.FontSize = 10
-End If
-If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 7) <> "" Then
-    FormMainMode.atkinghelpt4.FontSize = Val(VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 7))
-Else
-    FormMainMode.atkinghelpt4.FontSize = 10
-End If
 End Sub
-Sub §Þ¯à»¡©ú¸ü¤J_¹q¸£(ByVal n As Integer)
-Dim ahmt As String
-Dim i As Integer
+Sub §Þ¯à»¡©ú¸ü¤J_¹q¸£()
+Dim i As Integer, ahmt As String, n As Integer
+Dim tmpobj As clsPersonActiveSkill
 
-FormMainMode.atkinghelpt1.Caption = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 2)
-FormMainMode.atkinghelpt2.Caption = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 3)
-FormMainMode.atkinghelpt3.Caption = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 4)
-ahmt = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 5)
-For i = 1 To Len(ahmt)
-    If Mid(ahmt, i, 1) = "&" Then
-        Mid(ahmt, i, 1) = Chr(10)
+For n = 1 To 4
+    Set tmpobj = New clsPersonActiveSkill
+    If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1) = "" Then
+        FormMainMode.PEAFInterface.ActiveDescription 2, n, tmpobj
+        FormMainMode.PEAFInterface.ActiveSkillVisable 2, n, False
+    Else
+        tmpobj.Name = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1)
+        
+        If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 2, 3, 5) = 1 Then
+            tmpobj.NameFontSize = 12
+        Else
+            tmpobj.NameFontSize = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 2, 3, n)
+        End If
+    
+        tmpobj.Stage = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 2)
+        tmpobj.Distance = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 3)
+        tmpobj.card = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 4)
+        ahmt = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 5)
+        For i = 1 To Len(ahmt)
+            If Mid(ahmt, i, 1) = "&" Then
+                Mid(ahmt, i, 1) = Chr(10)
+            End If
+        Next
+        tmpobj.Effect = ahmt
+        If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 6) <> "" Then
+            tmpobj.cardFontSize = Val(VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 6))
+        Else
+            tmpobj.cardFontSize = 10
+        End If
+        If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 7) <> "" Then
+            tmpobj.EffectFontSize = Val(VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 7))
+        Else
+            tmpobj.EffectFontSize = 10
+        End If
+       
+        FormMainMode.PEAFInterface.ActiveDescription 2, n, tmpobj
+        Set ¾Ô°«¨t²ÎÃþ.ActiveSkillObj(2, n) = tmpobj
+        FormMainMode.PEAFInterface.ActiveSkillVisable 2, n, True
     End If
 Next
-FormMainMode.atkinghelpt4.Caption = ahmt
-
-If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 6) <> "" Then
-    FormMainMode.atkinghelpt3.FontSize = Val(VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 6))
-Else
-    FormMainMode.atkinghelpt3.FontSize = 10
-End If
-If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 7) <> "" Then
-    FormMainMode.atkinghelpt4.FontSize = Val(VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 7))
-Else
-    FormMainMode.atkinghelpt4.FontSize = 10
-End If
 End Sub
 Sub ­µ¶qÀR­µ½Õ¸`³]©w()
 Dim i As Integer
@@ -2023,7 +2034,8 @@ FormMainMode.cnmove2.Visible = False
 ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(1) = 1
 End Sub
 Sub ¤Hª«¥æ´«_¨Ï¥ÎªÌ_«ü©w¥æ´«(ByVal num As Integer)
-Dim ae As Integer, n As Integer, i As Integer
+Dim ae As Integer, n As Integer, i As Integer, ahmt As String
+Dim tmpobj As clsPersonActiveSkill
 '=======================
 ReDim VBEStageNum(0 To 3) As Integer
 VBEStageNum(0) = 41
@@ -2052,33 +2064,18 @@ FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Left = 0
 FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Top = 6240
 FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).ZOrder
 FormMainMode.cardus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)).Visible = True
-For n = 1 To 4
-    If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1) = "" Then
-       FormMainMode.personatk(n).Caption = ""
-       FormMainMode.personatk(n).Visible = False
-    Else
-       FormMainMode.personatk(n).Caption = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1)
-       If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 2, 3, 5) = 1 Then
-           FormMainMode.personatk(n).FontSize = 12
-       Else
-           FormMainMode.personatk(n).FontSize = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 2, 3, n)
-       End If
-       FormMainMode.personatk(n).Visible = True
-       If atkingck(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), n, 1) = 1 Then
-           ¾Ô°«¨t²ÎÃþ.¤Hª«§Þ¯àÄæ¿O¶}Ãö True, n
-       End If
-    End If
-Next
-FormMainMode.PEAFInterface.Passive_§Þ¯à¤@¤è¥þ­«³] = 1
+'=======================
+¾Ô°«¨t²ÎÃþ.§Þ¯à»¡©ú¸ü¤J_¨Ï¥ÎªÌ
+FormMainMode.PEAFInterface.Passive_§Þ¯à¤@¤è¥þ­«³] 1
 For n = 5 To 8
     If VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1) = "" Then
-       FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯àÁôÂÃ = n - 4
+       FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯àÁôÂÃ n - 4
     Else
-       FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯à¦WºÙ = VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1) & "#" & n - 4
-       FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯àÅã¥Ü = n - 4
+       FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯à¦WºÙ VBEPerson(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), 3, n, 1), n - 4
+       FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯àÅã¥Ü n - 4
        '=======================
        If atkingck(1, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2), n, 1) = 1 Then
-           FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯à¿Oµo«G = n - 4
+           FormMainMode.PEAFInterface.Passive_¨Ï¥ÎªÌ_§Þ¯à¿Oµo«G n - 4
        End If
     End If
 Next
@@ -2139,30 +2136,18 @@ ae = ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)
 ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, 1) = ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)
 FormMainMode.compiin(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).Left = 2520 * (num - 1)
 FormMainMode.compiin(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)).Left = 0
-For n = 1 To 4
-    If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1) = "" Then
-       FormMainMode.comaiatk(n).Caption = ""
-       FormMainMode.comaiatk(n).Visible = False
-    Else
-       FormMainMode.comaiatk(n).Caption = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1)
-       If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 2, 3, 5) = 1 Then
-           FormMainMode.comaiatk(n).FontSize = 12
-       Else
-           FormMainMode.comaiatk(n).FontSize = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 2, 3, n)
-       End If
-       FormMainMode.comaiatk(n).Visible = True
-    End If
-Next
-FormMainMode.PEAFInterface.Passive_§Þ¯à¤@¤è¥þ­«³] = 2
+'=======================
+¾Ô°«¨t²ÎÃþ.§Þ¯à»¡©ú¸ü¤J_¹q¸£
+FormMainMode.PEAFInterface.Passive_§Þ¯à¤@¤è¥þ­«³] 2
 For n = 5 To 8
     If VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1) = "" Then
-       FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯àÁôÂÃ = n - 4
+       FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯àÁôÂÃ n - 4
     Else
-       FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯à¦WºÙ = VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1) & "#" & n - 4
-       FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯àÅã¥Ü = n - 4
+       FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯à¦WºÙ VBEPerson(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), 3, n, 1), n - 4
+       FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯àÅã¥Ü n - 4
        '=======================
        If atkingck(2, ¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2), n, 1) = 1 Then
-           FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯à¿Oµo«G = n - 4
+           FormMainMode.PEAFInterface.Passive_¹q¸£_§Þ¯à¿Oµo«G n - 4
        End If
     End If
 Next
@@ -2386,9 +2371,9 @@ End If
 End Sub
 Sub ¨Æ¥ó¥d³B²z_ªì©l_¨Ï¥ÎªÌ¤è()
 Dim ck As Boolean
-Dim m As Integer, i As Integer, j As Integer
+Dim m As Integer, i As Integer, j As Integer, tmpfailed As Integer
 
-If Formsetting.persontgruonus(1).Value = True Then '=====(µL)
+If Formsetting.comboeventcarrdus.Text = "µL" Then '=====(µL)
     For i = 1 To 18
        Randomize
        m = Int(Rnd() * 3) + 1
@@ -2413,7 +2398,7 @@ If Formsetting.persontgruonus(1).Value = True Then '=====(µL)
              Next
        End Select
     Next
-ElseIf Formsetting.persontgruonus(2).Value = True Then '=====¦Û­q
+ElseIf Formsetting.comboeventcarrdus.Text = "¦Û­q" Then '=====¦Û­q
    If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgreus.Value = 0 Then
         For i = 1 To 18
 '            If Formsetting.personus(i).Text = "(µL)" Then
@@ -2470,7 +2455,7 @@ ElseIf Formsetting.persontgruonus(2).Value = True Then '=====¦Û­q
              End If
          Next
     End If
-ElseIf Formsetting.persontgruonus(3).Value = True Then '===============¿ï¾Ü³Ì¤j­È
+ElseIf Formsetting.comboeventcarrdus.Text = "³Ì¤j­È" Then '===============¿ï¾Ü³Ì¤j­È
     If Formsetting.persontgreus.Value = 1 Then  '===¿í¦u³W«h
          For i = 1 To 18
              Select Case Formsetting.persontgus(i).Caption
@@ -2726,17 +2711,22 @@ ElseIf Formsetting.persontgruonus(3).Value = True Then '===============¿ï¾Ü³Ì¤j­
             Loop
         Next
     End If
-ElseIf Formsetting.persontgruonus(4).Value = True Then '=====ÀH¾÷
+ElseIf Formsetting.comboeventcarrdus.Text = "ÀH¾÷" Or Formsetting.comboeventcarrdus.Text = "ÀH¾÷(¤£§t¸t¤ô)" Then '=====ÀH¾÷
     If Formsetting.persontgreus.Value = 1 Then '===¿í¦u³W«h
         For i = 1 To 18
+             tmpfailed = 0
              Do
                 Randomize
                 m = Int(Rnd() * (Formsetting.personus(i).ListCount - 1)) + 1
                 If ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).List(m), 1) = Formsetting.persontgus(i).Caption Or _
-                   ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).List(m), 1) = 0 Then
-                   Formsetting.personus(i).ListIndex = m
-                   Exit Do
+                   (tmpfailed > 10 And ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).List(m), 1) = 0) Then
+                    If Formsetting.comboeventcarrdus.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personus(i).List(m) = "¸t¤ô" Then
+                    Else
+                        Formsetting.personus(i).ListIndex = m
+                        Exit Do
+                    End If
                 End If
+                tmpfailed = tmpfailed + 1
              Loop
          Next
         If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 Then
@@ -2769,16 +2759,20 @@ ElseIf Formsetting.persontgruonus(4).Value = True Then '=====ÀH¾÷
          For i = 1 To 18
             Randomize
             m = Int(Rnd() * (Formsetting.personus(i).ListCount - 1)) + 1
-            Formsetting.personus(i).ListIndex = m
+            If Formsetting.comboeventcarrdus.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personus(i).List(m) = "¸t¤ô" Then
+                i = i - 1
+            Else
+                Formsetting.personus(i).ListIndex = m
+            End If
          Next
     End If
 End If
 End Sub
 Sub ¨Æ¥ó¥d³B²z_ªì©l_¹q¸£¤è()
-Dim m As Integer, i As Integer, j As Integer
+Dim m As Integer, i As Integer, j As Integer, tmpfailed As Integer
 Dim ay() As String
 
-If Formsetting.persontgruoncom(1).Value = True Then '=====(µL)
+If Formsetting.comboeventcarrdcom.Text = "µL" Then '=====(µL)
     For i = 1 To 18
        Randomize
        m = Int(Rnd() * 3) + 1
@@ -2803,7 +2797,7 @@ If Formsetting.persontgruoncom(1).Value = True Then '=====(µL)
              Next
        End Select
     Next
-ElseIf Formsetting.persontgruoncom(2).Value = True Then '=====¦Û­q
+ElseIf Formsetting.comboeventcarrdcom.Text = "¦Û­q" Then '=====¦Û­q
    If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgrecom.Value = 0 Then
         For i = 1 To 18
 '            If Formsetting.personcom(i).Text = "(µL)" Then
@@ -2860,7 +2854,7 @@ ElseIf Formsetting.persontgruoncom(2).Value = True Then '=====¦Û­q
              End If
          Next
     End If
-ElseIf Formsetting.persontgruoncom(3).Value = True Then '=====¿ï¾Ü³Ì¤j­È
+ElseIf Formsetting.comboeventcarrdcom.Text = "³Ì¤j­È" Then '=====¿ï¾Ü³Ì¤j­È
     If Formsetting.persontgrecom.Value = 1 Then  '===¿í¦u³W«h
          For i = 1 To 18
              Select Case Formsetting.persontgcom(i).Caption
@@ -3102,17 +3096,22 @@ ElseIf Formsetting.persontgruoncom(3).Value = True Then '=====¿ï¾Ü³Ì¤j­È
             Loop
         Next
     End If
-ElseIf Formsetting.persontgruoncom(4).Value = True Then '=====ÀH¾÷
+ElseIf Formsetting.comboeventcarrdcom.Text = "ÀH¾÷" Or Formsetting.comboeventcarrdcom.Text = "ÀH¾÷(¤£§t¸t¤ô)" Then '=====ÀH¾÷
     If Formsetting.persontgrecom.Value = 1 Then '===¿í¦u³W«h
         For i = 1 To 18
+             tmpfailed = 0
              Do
                 Randomize
                 m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
                 If ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).List(m), 1) = Formsetting.persontgcom(i).Caption Or _
-                   ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).List(m), 1) = 0 Then
-                   Formsetting.personcom(i).ListIndex = m
-                   Exit Do
+                   (tmpfailed > 10 And ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).List(m), 1) = 0) Then
+                    If Formsetting.comboeventcarrdcom.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personcom(i).List(m) = "¸t¤ô" Then
+                    Else
+                        Formsetting.personcom(i).ListIndex = m
+                        Exit Do
+                    End If
                 End If
+                tmpfailed = tmpfailed + 1
              Loop
          Next
          If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
@@ -3145,7 +3144,11 @@ ElseIf Formsetting.persontgruoncom(4).Value = True Then '=====ÀH¾÷
          For i = 1 To 18
             Randomize
             m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
-            Formsetting.personcom(i).ListIndex = m
+            If Formsetting.comboeventcarrdcom.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personcom(i).List(m) = "¸t¤ô" Then
+                i = i - 1
+            Else
+                Formsetting.personcom(i).ListIndex = m
+            End If
          Next
     End If
 End If
@@ -3810,8 +3813,8 @@ If Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 1)) < Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)) Then
         End Select
 End If
 End Sub
-Sub ¤½¥ÎµP¦a¹ÏµPºØÃþ°t¸m(ByVal name As String)
-Select Case name
+Sub ¤½¥ÎµP¦a¹ÏµPºØÃþ°t¸m(ByVal Name As String)
+Select Case Name
      Case "µÜ¤B¨©¾|®æ«°³ù"
            ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2) = 57
            ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(1, 2) = 6
@@ -4455,7 +4458,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
 Next
 End Sub
 Sub ¼s¼½°T®§(ByVal messagestr As String)
-FormMainMode.PEAFInterface.Message = messagestr
+FormMainMode.PEAFInterface.Message messagestr
 End Sub
 Sub ¹CÀ¸¨¤¦â¥d¤ùª«¥ó³Ð¥ß()
 Dim i As Integer
@@ -4476,8 +4479,7 @@ Select Case turnnum
     Case 1
         FormMainMode.§ðÀ»¶¥¬q_¶¥¬q2.Enabled = True
     Case 2
-        FormMainMode.bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-        FormMainMode.bnok.Visible = True
+        FormMainMode.PEAFInterface.BnOKStartListen
         '==============
         ¤p¤Hª«ÀY¹³²¾°Ê¤è¦V¼Æ(1) = 1
         ¤p¤Hª«ÀY¹³²¾°Ê¤è¦V¼Æ(2) = 2
@@ -4491,20 +4493,19 @@ Select Case turnnum
     Case 3
         turnpageonin = 1
         ¶¥¬qª¬ºA¼Æ = 1
-        FormMainMode.bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-        FormMainMode.bnok.Visible = True
+        FormMainMode.PEAFInterface.BnOKStartListen
         If Vss_EventPlayerAllActionOffNum(1) = 1 Then
             For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
                 FormMainMode.card(ckl).CardEnabledType = False
             Next
-            FormMainMode.bnok.Enabled = False
+            FormMainMode.PEAFInterface.BnOKEnabled False
             µ¥«Ý®É¶¡¦î¦C(2).Add 47
             FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
         ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
             For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
                 FormMainMode.card(ckl).CardEnabledType = False
             Next
-            FormMainMode.bnok.Enabled = False
+            FormMainMode.PEAFInterface.BnOKEnabled False
             µ¥«Ý®É¶¡¦î¦C(2).Add 45
             FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
         End If
