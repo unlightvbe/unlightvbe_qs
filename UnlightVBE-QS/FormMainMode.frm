@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{0E59F1D2-1FBE-11D0-8FF2-00A0D10038BC}#1.0#0"; "msscript.ocx"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Begin VB.Form FormMainMode 
    BorderStyle     =   1  '單線固定
    Caption         =   "UnlightVBE-QS Origin"
@@ -30,20 +31,20 @@ Begin VB.Form FormMainMode
       BorderStyle     =   0  '沒有框線
       ForeColor       =   &H80000008&
       Height          =   9910
-      Left            =   7440
+      Left            =   3000
       Picture         =   "FormMainMode.frx":0CCA
       ScaleHeight     =   9915
       ScaleWidth      =   11340
       TabIndex        =   0
-      Top             =   600
+      Top             =   120
       Visible         =   0   'False
       Width           =   11340
       Begin UnlightVBE.uc角色卡片介面 cardcom 
          Height          =   3615
          Index           =   0
-         Left            =   1080
-         TabIndex        =   173
-         Top             =   6240
+         Left            =   600
+         TabIndex        =   130
+         Top             =   6120
          Visible         =   0   'False
          Width           =   2535
          _ExtentX        =   2355
@@ -53,8 +54,8 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   0
          Left            =   0
-         TabIndex        =   172
-         Top             =   6240
+         TabIndex        =   129
+         Top             =   6120
          Visible         =   0   'False
          Width           =   2535
          _ExtentX        =   2355
@@ -73,7 +74,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   405
          Left            =   8760
-         TabIndex        =   169
+         TabIndex        =   126
          Top             =   9360
          Width           =   975
       End
@@ -90,7 +91,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   405
          Left            =   8040
-         TabIndex        =   168
+         TabIndex        =   125
          Top             =   9360
          Width           =   615
       End
@@ -107,162 +108,16 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   375
          Left            =   9840
-         TabIndex        =   167
+         TabIndex        =   124
          Top             =   9360
          Width           =   1215
-      End
-      Begin VB.PictureBox uspiin 
-         BorderStyle     =   0  '沒有框線
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   495
-         Index           =   3
-         Left            =   5040
-         Picture         =   "FormMainMode.frx":22BA9
-         ScaleHeight     =   495
-         ScaleWidth      =   2520
-         TabIndex        =   157
-         Top             =   9360
-         Width           =   2520
-         Begin VB.Label uspi5 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   2280
-            TabIndex        =   163
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspidef 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   1560
-            TabIndex        =   162
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspiatk 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   960
-            TabIndex        =   161
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   240
-            TabIndex        =   160
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspi4 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "2"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   2040
-            TabIndex        =   159
-            Top             =   -30
-            Width           =   495
-         End
-         Begin VB.Label uspi1 
-            BackStyle       =   0  '透明
-            Caption         =   "測試3"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   12
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   120
-            TabIndex        =   158
-            Top             =   0
-            Width           =   2535
-         End
       End
       Begin VB.PictureBox PEAFtoolbox 
          Height          =   2175
          Left            =   4920
          ScaleHeight     =   2115
          ScaleWidth      =   6075
-         TabIndex        =   148
+         TabIndex        =   112
          Top             =   6240
          Visible         =   0   'False
          Width           =   6135
@@ -304,7 +159,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   960
-            TabIndex        =   156
+            TabIndex        =   120
             Top             =   480
             Visible         =   0   'False
             Width           =   975
@@ -323,7 +178,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   1920
-            TabIndex        =   155
+            TabIndex        =   119
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -342,7 +197,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   1920
-            TabIndex        =   154
+            TabIndex        =   118
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -360,7 +215,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   3840
-            TabIndex        =   153
+            TabIndex        =   117
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -378,7 +233,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   3840
-            TabIndex        =   152
+            TabIndex        =   116
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -396,7 +251,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2880
-            TabIndex        =   151
+            TabIndex        =   115
             Top             =   720
             Visible         =   0   'False
             Width           =   975
@@ -414,7 +269,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2880
-            TabIndex        =   150
+            TabIndex        =   114
             Top             =   360
             Visible         =   0   'False
             Width           =   975
@@ -433,7 +288,7 @@ Begin VB.Form FormMainMode
             EndProperty
             Height          =   375
             Left            =   2640
-            TabIndex        =   149
+            TabIndex        =   113
             Top             =   1080
             Visible         =   0   'False
             Width           =   1335
@@ -699,737 +554,6 @@ Begin VB.Form FormMainMode
          Left            =   10560
          Top             =   2640
       End
-      Begin VB.PictureBox uspiin 
-         BorderStyle     =   0  '沒有框線
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00E0E0E0&
-         Height          =   495
-         Index           =   1
-         Left            =   0
-         Picture         =   "FormMainMode.frx":22DF1
-         ScaleHeight     =   495
-         ScaleWidth      =   2520
-         TabIndex        =   29
-         Top             =   9360
-         Width           =   2520
-         Begin VB.Label uspi1 
-            BackStyle       =   0  '透明
-            Caption         =   "測試1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   12
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   120
-            TabIndex        =   35
-            Top             =   0
-            Width           =   2535
-         End
-         Begin VB.Label uspi4 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "2"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   2040
-            TabIndex        =   34
-            Top             =   -30
-            Width           =   495
-         End
-         Begin VB.Label uspi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   240
-            TabIndex        =   33
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspiatk 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   960
-            TabIndex        =   32
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspidef 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   1560
-            TabIndex        =   31
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspi5 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   2280
-            TabIndex        =   30
-            Top             =   360
-            Width           =   255
-         End
-      End
-      Begin VB.PictureBox uspiin 
-         BorderStyle     =   0  '沒有框線
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   495
-         Index           =   2
-         Left            =   2520
-         Picture         =   "FormMainMode.frx":23039
-         ScaleHeight     =   495
-         ScaleWidth      =   2520
-         TabIndex        =   22
-         Top             =   9360
-         Width           =   2520
-         Begin VB.Label uspi5 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   2280
-            TabIndex        =   28
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspidef 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   1560
-            TabIndex        =   27
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspiatk 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   960
-            TabIndex        =   26
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   240
-            TabIndex        =   25
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label uspi4 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "2"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   2040
-            TabIndex        =   24
-            Top             =   -30
-            Width           =   495
-         End
-         Begin VB.Label uspi1 
-            BackStyle       =   0  '透明
-            Caption         =   "測試2"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   12
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   120
-            TabIndex        =   23
-            Top             =   0
-            Width           =   2535
-         End
-      End
-      Begin VB.PictureBox compiin 
-         BorderStyle     =   0  '沒有框線
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   495
-         Index           =   3
-         Left            =   5040
-         Picture         =   "FormMainMode.frx":23281
-         ScaleHeight     =   495
-         ScaleWidth      =   2520
-         TabIndex        =   15
-         Top             =   0
-         Width           =   2520
-         Begin VB.Label compi1 
-            BackStyle       =   0  '透明
-            Caption         =   "測試3"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   12
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   120
-            TabIndex        =   21
-            Top             =   0
-            Width           =   2535
-         End
-         Begin VB.Label compi4 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "2"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   3
-            Left            =   2040
-            TabIndex        =   20
-            Top             =   -30
-            Width           =   495
-         End
-         Begin VB.Label compi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   240
-            TabIndex        =   19
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compiatk 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   960
-            TabIndex        =   18
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compidef 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   1560
-            TabIndex        =   17
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compi5 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   3
-            Left            =   2280
-            TabIndex        =   16
-            Top             =   360
-            Width           =   255
-         End
-      End
-      Begin VB.PictureBox compiin 
-         BorderStyle     =   0  '沒有框線
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   495
-         Index           =   2
-         Left            =   2520
-         Picture         =   "FormMainMode.frx":234C9
-         ScaleHeight     =   495
-         ScaleWidth      =   2520
-         TabIndex        =   8
-         Top             =   0
-         Width           =   2520
-         Begin VB.Label compi1 
-            BackStyle       =   0  '透明
-            Caption         =   "艾伯李斯特"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   12
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   120
-            TabIndex        =   14
-            Top             =   0
-            Width           =   2535
-         End
-         Begin VB.Label compi4 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "2"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   2
-            Left            =   2040
-            TabIndex        =   13
-            Top             =   -30
-            Width           =   495
-         End
-         Begin VB.Label compi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   240
-            TabIndex        =   12
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compiatk 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   960
-            TabIndex        =   11
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compidef 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   1560
-            TabIndex        =   10
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compi5 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   2
-            Left            =   2280
-            TabIndex        =   9
-            Top             =   360
-            Width           =   255
-         End
-      End
-      Begin VB.PictureBox compiin 
-         BorderStyle     =   0  '沒有框線
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   9.75
-            Charset         =   136
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   495
-         Index           =   1
-         Left            =   0
-         Picture         =   "FormMainMode.frx":23711
-         ScaleHeight     =   495
-         ScaleWidth      =   2520
-         TabIndex        =   1
-         Top             =   0
-         Width           =   2520
-         Begin VB.Label compi1 
-            BackStyle       =   0  '透明
-            Caption         =   "艾伯李斯特"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   12
-               Charset         =   136
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   120
-            TabIndex        =   7
-            Top             =   0
-            Width           =   2535
-         End
-         Begin VB.Label compi4 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "2"
-            BeginProperty Font 
-               Name            =   "Bradley Gratis"
-               Size            =   18
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   375
-            Index           =   1
-            Left            =   2040
-            TabIndex        =   6
-            Top             =   -30
-            Width           =   495
-         End
-         Begin VB.Label compi2 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   240
-            TabIndex        =   5
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compiatk 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   960
-            TabIndex        =   4
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compidef 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   1560
-            TabIndex        =   3
-            Top             =   360
-            Width           =   255
-         End
-         Begin VB.Label compi5 
-            Alignment       =   2  '置中對齊
-            BackStyle       =   0  '透明
-            Caption         =   "1"
-            BeginProperty Font 
-               Name            =   "微軟正黑體"
-               Size            =   6
-               Charset         =   136
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   255
-            Index           =   1
-            Left            =   2280
-            TabIndex        =   2
-            Top             =   360
-            Width           =   255
-         End
-      End
       Begin VB.Timer tr使用者牌_偷牌 
          Enabled         =   0   'False
          Interval        =   10
@@ -1442,10 +566,70 @@ Begin VB.Form FormMainMode
          Left            =   7560
          Top             =   1080
       End
+      Begin UnlightVBE.uc角色小卡 PEAFpersoncardcom 
+         Height          =   495
+         Index           =   3
+         Left            =   5040
+         TabIndex        =   139
+         Top             =   0
+         Width           =   2535
+         _ExtentX        =   4471
+         _ExtentY        =   873
+      End
+      Begin UnlightVBE.uc角色小卡 PEAFpersoncardcom 
+         Height          =   495
+         Index           =   2
+         Left            =   2520
+         TabIndex        =   138
+         Top             =   0
+         Width           =   2535
+         _ExtentX        =   4471
+         _ExtentY        =   873
+      End
+      Begin UnlightVBE.uc角色小卡 PEAFpersoncardcom 
+         Height          =   495
+         Index           =   1
+         Left            =   0
+         TabIndex        =   137
+         Top             =   0
+         Width           =   2535
+         _ExtentX        =   4471
+         _ExtentY        =   873
+      End
+      Begin UnlightVBE.uc角色小卡 PEAFpersoncardus 
+         Height          =   495
+         Index           =   3
+         Left            =   5040
+         TabIndex        =   136
+         Top             =   9360
+         Width           =   2535
+         _ExtentX        =   4471
+         _ExtentY        =   873
+      End
+      Begin UnlightVBE.uc角色小卡 PEAFpersoncardus 
+         Height          =   495
+         Index           =   2
+         Left            =   2520
+         TabIndex        =   135
+         Top             =   9360
+         Width           =   2535
+         _ExtentX        =   4471
+         _ExtentY        =   873
+      End
+      Begin UnlightVBE.uc角色小卡 PEAFpersoncardus 
+         Height          =   495
+         Index           =   1
+         Left            =   0
+         TabIndex        =   134
+         Top             =   9360
+         Width           =   2535
+         _ExtentX        =   4471
+         _ExtentY        =   873
+      End
       Begin UnlightVBE.uc技能說明 PEAFatkinghelpc 
          Height          =   3255
          Left            =   2640
-         TabIndex        =   176
+         TabIndex        =   133
          Top             =   3000
          Width           =   2295
          _ExtentX        =   4048
@@ -1454,7 +638,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc戰鬥系統牌型介面 PEAFInterface 
          Height          =   9910
          Left            =   0
-         TabIndex        =   170
+         TabIndex        =   127
          Top             =   0
          Width           =   11340
          _ExtentX        =   2143
@@ -1476,7 +660,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   11040
-         TabIndex        =   37
+         TabIndex        =   2
          Top             =   5850
          Width           =   300
       End
@@ -1498,14 +682,14 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   495
          Left            =   10560
-         TabIndex        =   38
+         TabIndex        =   3
          Top             =   5600
          Width           =   375
       End
       Begin VB.Image PEAFbloodbackimage2 
          Height          =   690
          Left            =   10080
-         Picture         =   "FormMainMode.frx":23959
+         Picture         =   "FormMainMode.frx":22BA9
          Top             =   5440
          Width           =   1275
       End
@@ -1525,7 +709,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   590
-         TabIndex        =   39
+         TabIndex        =   4
          Top             =   5820
          Width           =   300
       End
@@ -1545,21 +729,21 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   495
          Left            =   30
-         TabIndex        =   40
+         TabIndex        =   5
          Top             =   5600
          Width           =   450
       End
       Begin VB.Image PEAFbloodbackimage1 
          Height          =   690
          Left            =   0
-         Picture         =   "FormMainMode.frx":240A0
+         Picture         =   "FormMainMode.frx":232F0
          Top             =   5440
          Width           =   1290
       End
       Begin UnlightVBE.uc擲骰介面 PEAFDiceInterface 
          Height          =   9910
          Left            =   0
-         TabIndex        =   171
+         TabIndex        =   128
          Top             =   0
          Width           =   11340
          _ExtentX        =   2566
@@ -1578,7 +762,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   2520
-         TabIndex        =   166
+         TabIndex        =   123
          Top             =   6600
          Width           =   135
       End
@@ -1586,7 +770,7 @@ Begin VB.Form FormMainMode
          Height          =   1335
          Index           =   0
          Left            =   5280
-         TabIndex        =   165
+         TabIndex        =   122
          Top             =   1200
          Visible         =   0   'False
          Width           =   855
@@ -1606,55 +790,45 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   9120
-         TabIndex        =   164
+         TabIndex        =   121
          Top             =   720
          Width           =   135
       End
       Begin UnlightVBE.顯示列 顯示列1 
          Height          =   1215
          Left            =   0
-         TabIndex        =   36
+         TabIndex        =   1
          Top             =   3520
          Visible         =   0   'False
          Width           =   11415
          _ExtentX        =   20135
          _ExtentY        =   2143
       End
-      Begin VB.Image PEAFtest 
-         Height          =   1080
-         Index           =   0
-         Left            =   3120
-         Picture         =   "FormMainMode.frx":24830
-         Tag             =   "movejpg"
-         Top             =   2160
-         Visible         =   0   'False
-         Width           =   5490
-      End
       Begin VB.Image atkdef2 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":261A3
+         Picture         =   "FormMainMode.frx":23A80
          Top             =   1860
          Width           =   2280
       End
       Begin VB.Image atkdef1 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":268ED
+         Picture         =   "FormMainMode.frx":241CA
          Top             =   1590
          Width           =   2280
       End
       Begin VB.Image draw2 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":27043
+         Picture         =   "FormMainMode.frx":24920
          Top             =   1080
          Width           =   2295
       End
       Begin VB.Image move2 
          Height          =   270
          Left            =   9120
-         Picture         =   "FormMainMode.frx":276AA
+         Picture         =   "FormMainMode.frx":24F87
          Top             =   1320
          Width           =   2280
       End
@@ -1662,7 +836,7 @@ Begin VB.Form FormMainMode
          Height          =   2865
          Index           =   1
          Left            =   2040
-         Picture         =   "FormMainMode.frx":27DCC
+         Picture         =   "FormMainMode.frx":256A9
          Tag             =   "personusminijpg"
          Top             =   3120
          Visible         =   0   'False
@@ -1681,7 +855,7 @@ Begin VB.Form FormMainMode
          EndProperty
          Height          =   255
          Left            =   2040
-         TabIndex        =   43
+         TabIndex        =   8
          Top             =   5880
          Width           =   135
       End
@@ -1701,14 +875,14 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H80000008&
          Height          =   255
          Left            =   8880
-         TabIndex        =   42
+         TabIndex        =   7
          Top             =   2160
          Width           =   135
       End
       Begin VB.Image Image2 
          Height          =   120
          Left            =   5280
-         Picture         =   "FormMainMode.frx":298FA
+         Picture         =   "FormMainMode.frx":271D7
          Top             =   6120
          Width           =   780
       End
@@ -1733,7 +907,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image timeup 
          Height          =   105
          Left            =   5290
-         Picture         =   "FormMainMode.frx":2998D
+         Picture         =   "FormMainMode.frx":2726A
          Top             =   4720
          Visible         =   0   'False
          Width           =   750
@@ -1760,7 +934,7 @@ Begin VB.Form FormMainMode
          Height          =   2880
          Index           =   2
          Left            =   9960
-         Picture         =   "FormMainMode.frx":299F9
+         Picture         =   "FormMainMode.frx":272D6
          Tag             =   "personcomminijpg"
          Top             =   3120
          Visible         =   0   'False
@@ -1811,53 +985,44 @@ Begin VB.Form FormMainMode
       Begin VB.Image draw1 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2B423
+         Picture         =   "FormMainMode.frx":28D00
          Top             =   1080
          Width           =   2040
       End
       Begin VB.Image move1 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2B5A2
+         Picture         =   "FormMainMode.frx":28E7F
          Top             =   1340
          Width           =   2040
       End
       Begin VB.Image move3 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2B73E
+         Picture         =   "FormMainMode.frx":2901B
          Top             =   1610
          Width           =   2040
       End
       Begin VB.Image move4 
          Height          =   240
          Left            =   9360
-         Picture         =   "FormMainMode.frx":2B9C7
+         Picture         =   "FormMainMode.frx":292A4
          Top             =   1880
          Width           =   2040
       End
       Begin UnlightVBE.小人物形象 personusminijpg 
          Height          =   4935
          Left            =   0
-         TabIndex        =   44
+         TabIndex        =   9
          Top             =   1320
          Width           =   5775
          _ExtentX        =   10186
          _ExtentY        =   8705
       End
-      Begin UnlightVBE.小人物形象 movejpg 
-         Height          =   2535
-         Left            =   120
-         TabIndex        =   46
-         Top             =   1080
-         Width           =   11175
-         _ExtentX        =   19711
-         _ExtentY        =   4471
-      End
       Begin VB.Image cardpagejpg 
          Height          =   915
          Left            =   0
-         Picture         =   "FormMainMode.frx":2BC44
+         Picture         =   "FormMainMode.frx":29521
          Top             =   960
          Width           =   1125
       End
@@ -1877,18 +1042,29 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   495
          Left            =   960
-         TabIndex        =   41
+         TabIndex        =   6
          Top             =   1100
          Width           =   855
       End
       Begin UnlightVBE.小人物形象 personcomminijpg 
          Height          =   4935
          Left            =   5520
-         TabIndex        =   45
+         TabIndex        =   10
          Top             =   1320
          Width           =   5895
          _ExtentX        =   10398
          _ExtentY        =   8705
+      End
+      Begin ImageX.aicAlphaImage PEAFMoveRange 
+         Height          =   1080
+         Left            =   2880
+         Top             =   2160
+         Width           =   5490
+         _ExtentX        =   9684
+         _ExtentY        =   1905
+         Image           =   "FormMainMode.frx":29D84
+         Scaler          =   3
+         Props           =   5
       End
    End
    Begin VB.PictureBox PEGameFreeModeSettingForm 
@@ -1900,7 +1076,7 @@ Begin VB.Form FormMainMode
       Left            =   2760
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   47
+      TabIndex        =   11
       Top             =   -360
       Visible         =   0   'False
       Width           =   11340
@@ -1912,7 +1088,7 @@ Begin VB.Form FormMainMode
          Left            =   0
          ScaleHeight     =   1785
          ScaleWidth      =   11385
-         TabIndex        =   72
+         TabIndex        =   36
          Top             =   4320
          Width           =   11415
          Begin VB.ComboBox personlevelus 
@@ -1928,7 +1104,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   120
-            TabIndex        =   87
+            TabIndex        =   51
             Top             =   0
             Width           =   855
          End
@@ -1945,7 +1121,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   2760
-            TabIndex        =   86
+            TabIndex        =   50
             Top             =   0
             Width           =   855
          End
@@ -1962,7 +1138,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   5400
-            TabIndex        =   85
+            TabIndex        =   49
             Top             =   0
             Width           =   855
          End
@@ -1979,7 +1155,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1080
-            TabIndex        =   84
+            TabIndex        =   48
             Top             =   0
             Width           =   1575
          End
@@ -1996,7 +1172,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   3720
-            TabIndex        =   83
+            TabIndex        =   47
             Top             =   0
             Width           =   1575
          End
@@ -2013,7 +1189,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   6360
-            TabIndex        =   82
+            TabIndex        =   46
             Top             =   0
             Width           =   1575
          End
@@ -2030,7 +1206,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   3360
-            TabIndex        =   81
+            TabIndex        =   45
             Top             =   1440
             Width           =   855
          End
@@ -2047,7 +1223,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   6000
-            TabIndex        =   80
+            TabIndex        =   44
             Top             =   1440
             Width           =   855
          End
@@ -2064,7 +1240,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   8640
-            TabIndex        =   79
+            TabIndex        =   43
             Top             =   1440
             Width           =   855
          End
@@ -2081,7 +1257,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   4320
-            TabIndex        =   78
+            TabIndex        =   42
             Top             =   1440
             Width           =   1575
          End
@@ -2098,7 +1274,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   6960
-            TabIndex        =   77
+            TabIndex        =   41
             Top             =   1440
             Width           =   1575
          End
@@ -2115,7 +1291,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   9600
-            TabIndex        =   76
+            TabIndex        =   40
             Top             =   1440
             Width           =   1575
          End
@@ -2125,7 +1301,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   120
-            TabIndex        =   74
+            TabIndex        =   38
             Top             =   1080
             Width           =   1695
          End
@@ -2133,7 +1309,7 @@ Begin VB.Form FormMainMode
             Caption         =   "讀入..."
             Height          =   495
             Left            =   2040
-            TabIndex        =   73
+            TabIndex        =   37
             Top             =   720
             Width           =   975
          End
@@ -2151,7 +1327,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   1
             Left            =   120
-            TabIndex        =   75
+            TabIndex        =   39
             Top             =   720
             Value           =   -1  'True
             Width           =   855
@@ -2159,7 +1335,7 @@ Begin VB.Form FormMainMode
          Begin UnlightVBE.大人物形像 personfus 
             Height          =   1215
             Left            =   0
-            TabIndex        =   97
+            TabIndex        =   61
             Top             =   0
             Width           =   3135
             _ExtentX        =   5530
@@ -2168,21 +1344,21 @@ Begin VB.Form FormMainMode
          Begin VB.Image bnstart 
             Height          =   510
             Left            =   9600
-            Picture         =   "FormMainMode.frx":2C4A7
+            Picture         =   "FormMainMode.frx":2E650
             Top             =   600
             Width           =   1440
          End
          Begin VB.Image bnabout 
             Height          =   390
             Left            =   8280
-            Picture         =   "FormMainMode.frx":2CFFD
+            Picture         =   "FormMainMode.frx":2F1A6
             Top             =   720
             Width           =   1320
          End
          Begin VB.Image bnconfig 
             Height          =   390
             Left            =   7080
-            Picture         =   "FormMainMode.frx":2D668
+            Picture         =   "FormMainMode.frx":2F811
             Top             =   720
             Width           =   1320
          End
@@ -2201,7 +1377,7 @@ Begin VB.Form FormMainMode
             ForeColor       =   &H000000FF&
             Height          =   495
             Left            =   5400
-            TabIndex        =   96
+            TabIndex        =   60
             Top             =   600
             Width           =   735
          End
@@ -2221,7 +1397,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   1
             Left            =   1200
-            TabIndex        =   95
+            TabIndex        =   59
             Top             =   360
             Width           =   495
          End
@@ -2241,7 +1417,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   2
             Left            =   3840
-            TabIndex        =   94
+            TabIndex        =   58
             Top             =   360
             Width           =   495
          End
@@ -2261,7 +1437,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   6480
-            TabIndex        =   93
+            TabIndex        =   57
             Top             =   360
             Width           =   495
          End
@@ -2281,7 +1457,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   1
             Left            =   4320
-            TabIndex        =   92
+            TabIndex        =   56
             Top             =   1200
             Width           =   495
          End
@@ -2301,7 +1477,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   2
             Left            =   6960
-            TabIndex        =   91
+            TabIndex        =   55
             Top             =   1200
             Width           =   495
          End
@@ -2321,7 +1497,7 @@ Begin VB.Form FormMainMode
             Height          =   255
             Index           =   3
             Left            =   9600
-            TabIndex        =   90
+            TabIndex        =   54
             Top             =   1200
             Width           =   495
          End
@@ -2341,7 +1517,7 @@ Begin VB.Form FormMainMode
             ForeColor       =   &H00000000&
             Height          =   495
             Left            =   8040
-            TabIndex        =   89
+            TabIndex        =   53
             Top             =   0
             Width           =   735
          End
@@ -2361,7 +1537,7 @@ Begin VB.Form FormMainMode
             ForeColor       =   &H00000000&
             Height          =   615
             Left            =   2400
-            TabIndex        =   88
+            TabIndex        =   52
             Top             =   1400
             Width           =   855
          End
@@ -2382,10 +1558,10 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   1
          Left            =   120
-         Picture         =   "FormMainMode.frx":2DC78
+         Picture         =   "FormMainMode.frx":2FE21
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   68
+         TabIndex        =   32
          Top             =   600
          Width           =   2535
          Begin VB.Label PEGFusbi1 
@@ -2405,7 +1581,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   550
-            TabIndex        =   71
+            TabIndex        =   35
             Top             =   3240
             Width           =   375
          End
@@ -2426,7 +1602,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   70
+            TabIndex        =   34
             Top             =   3240
             Width           =   495
          End
@@ -2447,7 +1623,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   69
+            TabIndex        =   33
             Top             =   3240
             Width           =   615
          End
@@ -2468,10 +1644,10 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   2
          Left            =   2760
-         Picture         =   "FormMainMode.frx":31B1B
+         Picture         =   "FormMainMode.frx":33CC4
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   64
+         TabIndex        =   28
          Top             =   600
          Width           =   2535
          Begin VB.Label PEGFusbi1 
@@ -2491,7 +1667,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   550
-            TabIndex        =   67
+            TabIndex        =   31
             Top             =   3240
             Width           =   375
          End
@@ -2512,7 +1688,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   66
+            TabIndex        =   30
             Top             =   3240
             Width           =   495
          End
@@ -2533,7 +1709,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   65
+            TabIndex        =   29
             Top             =   3240
             Width           =   615
          End
@@ -2554,10 +1730,10 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   3
          Left            =   5400
-         Picture         =   "FormMainMode.frx":359BE
+         Picture         =   "FormMainMode.frx":37B67
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   60
+         TabIndex        =   24
          Top             =   600
          Width           =   2535
          Begin VB.Label PEGFusbi1 
@@ -2577,7 +1753,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   550
-            TabIndex        =   63
+            TabIndex        =   27
             Top             =   3240
             Width           =   375
          End
@@ -2598,7 +1774,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   62
+            TabIndex        =   26
             Top             =   3240
             Width           =   495
          End
@@ -2619,7 +1795,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   61
+            TabIndex        =   25
             Top             =   3240
             Width           =   615
          End
@@ -2631,10 +1807,10 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   1
          Left            =   3360
-         Picture         =   "FormMainMode.frx":39861
+         Picture         =   "FormMainMode.frx":3BA0A
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   56
+         TabIndex        =   20
          Top             =   6240
          Width           =   2535
          Begin VB.Label PEGFcardcompi1 
@@ -2654,7 +1830,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   1
             Left            =   480
-            TabIndex        =   59
+            TabIndex        =   23
             Top             =   3240
             Width           =   495
          End
@@ -2675,7 +1851,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   58
+            TabIndex        =   22
             Top             =   3240
             Width           =   495
          End
@@ -2696,7 +1872,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   57
+            TabIndex        =   21
             Top             =   3240
             Width           =   615
          End
@@ -2708,10 +1884,10 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   2
          Left            =   6000
-         Picture         =   "FormMainMode.frx":3D704
+         Picture         =   "FormMainMode.frx":3F8AD
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   52
+         TabIndex        =   16
          Top             =   6240
          Width           =   2535
          Begin VB.Label PEGFcardcompi1 
@@ -2731,7 +1907,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   2
             Left            =   480
-            TabIndex        =   55
+            TabIndex        =   19
             Top             =   3240
             Width           =   495
          End
@@ -2752,7 +1928,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   54
+            TabIndex        =   18
             Top             =   3240
             Width           =   495
          End
@@ -2773,7 +1949,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   53
+            TabIndex        =   17
             Top             =   3240
             Width           =   615
          End
@@ -2785,10 +1961,10 @@ Begin VB.Form FormMainMode
          Height          =   3615
          Index           =   3
          Left            =   8640
-         Picture         =   "FormMainMode.frx":415A7
+         Picture         =   "FormMainMode.frx":43750
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   48
+         TabIndex        =   12
          Top             =   6240
          Width           =   2535
          Begin VB.Label PEGFcardcompi1 
@@ -2808,7 +1984,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   3
             Left            =   480
-            TabIndex        =   51
+            TabIndex        =   15
             Top             =   3240
             Width           =   495
          End
@@ -2829,7 +2005,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   50
+            TabIndex        =   14
             Top             =   3240
             Width           =   495
          End
@@ -2850,7 +2026,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   49
+            TabIndex        =   13
             Top             =   3240
             Width           =   615
          End
@@ -2870,7 +2046,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   240
-         TabIndex        =   99
+         TabIndex        =   63
          Top             =   120
          Width           =   1455
       End
@@ -2889,14 +2065,14 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   1680
-         TabIndex        =   98
+         TabIndex        =   62
          Top             =   195
          Width           =   2535
       End
       Begin VB.Image Image4 
          Height          =   465
          Left            =   0
-         Picture         =   "FormMainMode.frx":4544A
+         Picture         =   "FormMainMode.frx":475F3
          Top             =   0
          Width           =   11400
       End
@@ -2910,7 +2086,7 @@ Begin VB.Form FormMainMode
       Left            =   1320
       ScaleHeight     =   7935
       ScaleWidth      =   11895
-      TabIndex        =   174
+      TabIndex        =   131
       Top             =   1200
       Visible         =   0   'False
       Width           =   11895
@@ -2924,7 +2100,7 @@ Begin VB.Form FormMainMode
          Height          =   855
          Index           =   0
          Left            =   840
-         TabIndex        =   175
+         TabIndex        =   132
          Top             =   3480
          Width           =   1095
          _ExtentX        =   1931
@@ -2940,7 +2116,7 @@ Begin VB.Form FormMainMode
       Left            =   3480
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   100
+      TabIndex        =   64
       Top             =   960
       Visible         =   0   'False
       Width           =   11340
@@ -2966,7 +2142,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   615
          Left            =   8280
-         TabIndex        =   101
+         TabIndex        =   65
          Top             =   9120
          Visible         =   0   'False
          Width           =   2655
@@ -2979,10 +2155,10 @@ Begin VB.Form FormMainMode
       ForeColor       =   &H80000008&
       Height          =   9915
       Left            =   3120
-      Picture         =   "FormMainMode.frx":47839
+      Picture         =   "FormMainMode.frx":499E2
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   102
+      TabIndex        =   66
       Top             =   240
       Visible         =   0   'False
       Width           =   11340
@@ -3013,7 +2189,7 @@ Begin VB.Form FormMainMode
          Left            =   6285
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   103
+         TabIndex        =   67
          Top             =   3240
          Visible         =   0   'False
          Width           =   2535
@@ -3034,7 +2210,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   1
             Left            =   480
-            TabIndex        =   106
+            TabIndex        =   70
             Top             =   3240
             Width           =   495
          End
@@ -3055,7 +2231,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   105
+            TabIndex        =   69
             Top             =   3240
             Width           =   495
          End
@@ -3076,7 +2252,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   104
+            TabIndex        =   68
             Top             =   3240
             Width           =   615
          End
@@ -3090,7 +2266,7 @@ Begin VB.Form FormMainMode
          Left            =   7485
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   133
+         TabIndex        =   97
          Top             =   3600
          Visible         =   0   'False
          Width           =   2535
@@ -3111,7 +2287,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   136
+            TabIndex        =   100
             Top             =   3240
             Width           =   615
          End
@@ -3132,7 +2308,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   135
+            TabIndex        =   99
             Top             =   3240
             Width           =   495
          End
@@ -3153,7 +2329,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   2
             Left            =   480
-            TabIndex        =   134
+            TabIndex        =   98
             Top             =   3240
             Width           =   495
          End
@@ -3176,7 +2352,7 @@ Begin VB.Form FormMainMode
          Left            =   2805
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   107
+         TabIndex        =   71
          Top             =   3240
          Visible         =   0   'False
          Width           =   2535
@@ -3197,7 +2373,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   550
-            TabIndex        =   110
+            TabIndex        =   74
             Top             =   3240
             Width           =   375
          End
@@ -3218,7 +2394,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1200
-            TabIndex        =   109
+            TabIndex        =   73
             Top             =   3240
             Width           =   495
          End
@@ -3239,7 +2415,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1920
-            TabIndex        =   108
+            TabIndex        =   72
             Top             =   3240
             Width           =   615
          End
@@ -3262,7 +2438,7 @@ Begin VB.Form FormMainMode
          Left            =   1485
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   125
+         TabIndex        =   89
          Top             =   3600
          Visible         =   0   'False
          Width           =   2535
@@ -3283,7 +2459,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1920
-            TabIndex        =   128
+            TabIndex        =   92
             Top             =   3240
             Width           =   615
          End
@@ -3304,7 +2480,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1200
-            TabIndex        =   127
+            TabIndex        =   91
             Top             =   3240
             Width           =   495
          End
@@ -3325,7 +2501,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   550
-            TabIndex        =   126
+            TabIndex        =   90
             Top             =   3240
             Width           =   375
          End
@@ -3339,7 +2515,7 @@ Begin VB.Form FormMainMode
          Left            =   8565
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   137
+         TabIndex        =   101
          Top             =   3960
          Visible         =   0   'False
          Width           =   2535
@@ -3360,7 +2536,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   140
+            TabIndex        =   104
             Top             =   3240
             Width           =   615
          End
@@ -3381,7 +2557,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   139
+            TabIndex        =   103
             Top             =   3240
             Width           =   495
          End
@@ -3402,7 +2578,7 @@ Begin VB.Form FormMainMode
             Height          =   495
             Index           =   3
             Left            =   480
-            TabIndex        =   138
+            TabIndex        =   102
             Top             =   3240
             Width           =   495
          End
@@ -3425,7 +2601,7 @@ Begin VB.Form FormMainMode
          Left            =   360
          ScaleHeight     =   3585
          ScaleWidth      =   2505
-         TabIndex        =   129
+         TabIndex        =   93
          Top             =   3960
          Visible         =   0   'False
          Width           =   2535
@@ -3446,7 +2622,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1920
-            TabIndex        =   132
+            TabIndex        =   96
             Top             =   3240
             Width           =   615
          End
@@ -3467,7 +2643,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1200
-            TabIndex        =   131
+            TabIndex        =   95
             Top             =   3240
             Width           =   495
          End
@@ -3488,7 +2664,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   550
-            TabIndex        =   130
+            TabIndex        =   94
             Top             =   3240
             Width           =   375
          End
@@ -3500,10 +2676,10 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H80000008&
          Height          =   1455
          Left            =   45
-         Picture         =   "FormMainMode.frx":766ED
+         Picture         =   "FormMainMode.frx":78896
          ScaleHeight     =   1455
          ScaleWidth      =   11415
-         TabIndex        =   112
+         TabIndex        =   76
          Top             =   8160
          Visible         =   0   'False
          Width           =   11415
@@ -3514,7 +2690,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   480
-            TabIndex        =   124
+            TabIndex        =   88
             Top             =   120
             Width           =   1935
          End
@@ -3525,7 +2701,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   6840
-            TabIndex        =   123
+            TabIndex        =   87
             Top             =   120
             Width           =   2055
          End
@@ -3537,7 +2713,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   1560
-            TabIndex        =   122
+            TabIndex        =   86
             Top             =   120
             Width           =   3135
          End
@@ -3549,7 +2725,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   1
             Left            =   7920
-            TabIndex        =   121
+            TabIndex        =   85
             Top             =   120
             Width           =   3135
          End
@@ -3560,7 +2736,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   480
-            TabIndex        =   120
+            TabIndex        =   84
             Top             =   480
             Width           =   1935
          End
@@ -3571,7 +2747,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   480
-            TabIndex        =   119
+            TabIndex        =   83
             Top             =   840
             Width           =   1935
          End
@@ -3583,7 +2759,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   1560
-            TabIndex        =   118
+            TabIndex        =   82
             Top             =   480
             Width           =   3135
          End
@@ -3595,7 +2771,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   1560
-            TabIndex        =   117
+            TabIndex        =   81
             Top             =   840
             Width           =   3135
          End
@@ -3606,7 +2782,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   6840
-            TabIndex        =   116
+            TabIndex        =   80
             Top             =   480
             Width           =   2055
          End
@@ -3617,7 +2793,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   6840
-            TabIndex        =   115
+            TabIndex        =   79
             Top             =   840
             Width           =   2055
          End
@@ -3629,7 +2805,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   2
             Left            =   7920
-            TabIndex        =   114
+            TabIndex        =   78
             Top             =   480
             Width           =   3135
          End
@@ -3641,7 +2817,7 @@ Begin VB.Form FormMainMode
             Height          =   375
             Index           =   3
             Left            =   7920
-            TabIndex        =   113
+            TabIndex        =   77
             Top             =   840
             Width           =   3135
          End
@@ -3653,10 +2829,10 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H80000008&
          Height          =   1900
          Left            =   0
-         Picture         =   "FormMainMode.frx":7F069
+         Picture         =   "FormMainMode.frx":81212
          ScaleHeight     =   1905
          ScaleWidth      =   11415
-         TabIndex        =   111
+         TabIndex        =   75
          Top             =   0
          Visible         =   0   'False
          Width           =   11415
@@ -3700,7 +2876,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.uc對話 PEASpersontalk 
          Height          =   1935
          Left            =   0
-         TabIndex        =   147
+         TabIndex        =   111
          Top             =   -120
          Visible         =   0   'False
          Width           =   5775
@@ -3710,7 +2886,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 大人物形像_電腦 
          Height          =   10005
          Left            =   20040
-         TabIndex        =   141
+         TabIndex        =   105
          Top             =   -480
          Width           =   5895
          _ExtentX        =   10398
@@ -3719,7 +2895,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 大人物形像_使用者 
          Height          =   10005
          Left            =   -9960
-         TabIndex        =   142
+         TabIndex        =   106
          Top             =   -480
          Width           =   6015
          _ExtentX        =   10610
@@ -3728,7 +2904,7 @@ Begin VB.Form FormMainMode
       Begin UnlightVBE.大人物形像 upjpg_2 
          Height          =   1935
          Left            =   0
-         TabIndex        =   143
+         TabIndex        =   107
          Top             =   -480
          Visible         =   0   'False
          Width           =   11415
@@ -3743,10 +2919,10 @@ Begin VB.Form FormMainMode
       ForeColor       =   &H80000008&
       Height          =   9915
       Left            =   9120
-      Picture         =   "FormMainMode.frx":8A595
+      Picture         =   "FormMainMode.frx":8C73E
       ScaleHeight     =   9915
       ScaleWidth      =   11340
-      TabIndex        =   144
+      TabIndex        =   108
       Top             =   -1680
       Visible         =   0   'False
       Width           =   11340
@@ -3763,7 +2939,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   9480
-         TabIndex        =   146
+         TabIndex        =   110
          Top             =   8760
          Visible         =   0   'False
          Width           =   1455
@@ -3775,7 +2951,7 @@ Begin VB.Form FormMainMode
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   7680
-         TabIndex        =   145
+         TabIndex        =   109
          Top             =   8760
          Visible         =   0   'False
          Width           =   1455
@@ -3783,7 +2959,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image bn 
          Height          =   990
          Left            =   9480
-         Picture         =   "FormMainMode.frx":AD500
+         Picture         =   "FormMainMode.frx":AF6A9
          Top             =   8520
          Visible         =   0   'False
          Width           =   1470
@@ -3791,7 +2967,7 @@ Begin VB.Form FormMainMode
       Begin VB.Image bnreturn 
          Height          =   990
          Left            =   7680
-         Picture         =   "FormMainMode.frx":AE3F5
+         Picture         =   "FormMainMode.frx":B059E
          Top             =   8520
          Visible         =   0   'False
          Width           =   1470
@@ -4193,8 +3369,6 @@ movecheckcom = 0
 電腦方移動階段選擇數 = 0
 atkingtrn(1) = 0
 atkingtrn(2) = 0
-livecom(角色人物對戰人數(2, 2)) = Val(compi4(角色人物對戰人數(2, 2)).Caption)
-liveus(角色人物對戰人數(1, 2)) = Val(uspi4(角色人物對戰人數(1, 2)).Caption)
 turnatk = 3
 pageusqlead.Caption = 0
 pagecomqlead.Caption = 0
@@ -4282,102 +3456,9 @@ OK按鈕牌完成移動檢查.Enabled = True
 cnmove2.Visible = False
 End Sub
 
-Private Sub compi1_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-cardcom(Index).Left = compiin(Index).Left
-cardcom(Index).Top = 480
-cardcom(Index).ZOrder
-If 人物卡面背面編號紀錄數(1) = 2 And 人物卡面背面編號紀錄數(2) = Index Then
-    cardcom(Index).Visible = True
-Else
-    cardcom(Index).Visible = True
-End If
-Select Case Index
-   Case 1
-      cardcom(2).Visible = False
-      cardcom(3).Visible = False
-   Case 2
-      cardcom(1).Visible = False
-      cardcom(3).Visible = False
-   Case 3
-      cardcom(2).Visible = False
-      cardcom(1).Visible = False
-End Select
-End Sub
-
-Private Sub compi4_Change(Index As Integer)
-  If Val(compi4(Index).Caption) = Val(livecommax(Index)) Then
-   compi4(Index).ForeColor = RGB(255, 255, 255)
- End If
- If Val(compi4(Index).Caption) < Val(livecommax(Index)) Then
-   compi4(Index).ForeColor = RGB(255, 255, 128)
- End If
- If Val(compi4(Index).Caption) <= Val(livecom41(Index)) Then
-   compi4(Index).ForeColor = RGB(255, 0, 0)
- End If
- If Val(compi4(Index).Caption) = 0 And compi1(Index).Caption = "" Then
-   compi4(Index).ForeColor = RGB(255, 255, 255)
- End If
- If Val(compi4(Index).Caption) <= 0 Then
-    If compi1(Index).Caption <> "" Then
-        compi4(Index).Caption = 0
-    End If
- End If
-End Sub
-
-Private Sub compi4_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-cardcom(Index).Left = compiin(Index).Left
-cardcom(Index).Top = 480
-cardcom(Index).ZOrder
-If 人物卡面背面編號紀錄數(1) = 2 And 人物卡面背面編號紀錄數(2) = Index Then
-'    PEAFcardback(1).Visible = True
-    cardcom(Index).Visible = True
-'    PEAFcardback(1).ZOrder
-Else
-    cardcom(Index).Visible = True
-'    PEAFcardback(1).Visible = False
-End If
-Select Case Index
-   Case 1
-      cardcom(2).Visible = False
-      cardcom(3).Visible = False
-   Case 2
-      cardcom(1).Visible = False
-      cardcom(3).Visible = False
-   Case 3
-      cardcom(2).Visible = False
-      cardcom(1).Visible = False
-End Select
-End Sub
-
-
-Private Sub compiin_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-cardcom(Index).Left = compiin(Index).Left
-cardcom(Index).Top = 480
-cardcom(Index).ZOrder
-If 人物卡面背面編號紀錄數(1) = 2 And 人物卡面背面編號紀錄數(2) = Index Then
-'    PEAFcardback(1).Visible = True
-    cardcom(Index).Visible = True
-'    PEAFcardback(1).ZOrder
-Else
-    cardcom(Index).Visible = True
-'    PEAFcardback(1).Visible = False
-End If
-Select Case Index
-   Case 1
-      cardcom(2).Visible = False
-      cardcom(3).Visible = False
-   Case 2
-      cardcom(1).Visible = False
-      cardcom(3).Visible = False
-   Case 3
-      cardcom(2).Visible = False
-      cardcom(1).Visible = False
-End Select
-End Sub
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 一般系統類.離開遊戲提示 Cancel, UnloadMode
 End Sub
-
 
 Private Sub cn1_Click()
 turnatk = 4
@@ -4425,8 +3506,6 @@ End If
 cn2.Visible = False
 FormMainMode.PEAFInterface.BnOKStartListen
 '=============
-livecom(角色人物對戰人數(2, 2)) = Val(compi4(角色人物對戰人數(2, 2)).Caption)
-liveus(角色人物對戰人數(1, 2)) = Val(uspi4(角色人物對戰人數(1, 2)).Caption)
 戰鬥系統類.cleanatkingpagetot
 '==============
 顯示列1.goi1 = 0
@@ -4511,8 +3590,6 @@ End If
 turnatk = 2
 顯示列1.顯示列圖片 = app_path & "gif\system\lineusdef.png"
 戰鬥系統類.cleanatkingpagetot
-livecom(角色人物對戰人數(2, 2)) = Val(compi4(角色人物對戰人數(2, 2)).Caption)
-liveus(角色人物對戰人數(1, 2)) = Val(uspi4(角色人物對戰人數(1, 2)).Caption)
 '===============
 顯示列1.goi1 = 0
 顯示列1.goi2 = 0
@@ -4731,12 +3808,7 @@ End Select
 PEAEtr1num = PEAEtr1num + 1
 End Sub
 
-
-Private Sub PEAFatkinghelpc_MouseMove()
-PEAFatkinghelpc.Visible = False
-End Sub
-
-Private Sub PEAFInterface_ActiveMouseMove(ByVal uscom As Integer, ByVal num As Integer)
+Private Sub PEAFInterface_ActiveMouseEnter(ByVal uscom As Integer, ByVal num As Integer)
 Dim i As Integer
 Dim tmpobj As clsPersonActiveSkill
 
@@ -4760,6 +3832,10 @@ PEAFatkinghelpc.Left = atkinghelpxy(uscom, num, 1)
 PEAFatkinghelpc.Top = atkinghelpxy(uscom, num, 2)
 PEAFatkinghelpc.ZOrder
 PEAFatkinghelpc.Visible = True
+End Sub
+
+Private Sub PEAFInterface_ActiveMouseExit(ByVal uscom As Integer, ByVal num As Integer)
+PEAFatkinghelpc.Visible = False
 End Sub
 
 Sub PEAFInterface_BnOKClick()
@@ -4792,9 +3868,63 @@ Next
 End Sub
 
 Private Sub PEAFInterface_InterfaceMouseMove()
-If PEAFatkinghelpc.Visible = True Then
-    PEAFatkinghelpc.Visible = False
-End If
+Dim i As Integer
+For i = 1 To 公用牌實體卡片分隔紀錄數(1)
+   card(i).CardEventType = False
+Next
+For i = 1 To 3
+  cardcom(i).Visible = False
+Next
+For i = 1 To 3
+  If i <> 角色人物對戰人數(1, 2) Then
+     cardus(i).Visible = False
+  End If
+Next
+End Sub
+
+Private Sub PEAFpersoncardcom_MouseEnter(Index As Integer)
+cardcom(Index).Left = FormMainMode.PEAFpersoncardcom(Index).Left
+cardcom(Index).Top = 480
+cardcom(Index).Visible = True
+cardcom(Index).ZOrder
+Select Case Index
+   Case 1
+      cardcom(2).Visible = False
+      cardcom(3).Visible = False
+   Case 2
+      cardcom(1).Visible = False
+      cardcom(3).Visible = False
+   Case 3
+      cardcom(2).Visible = False
+      cardcom(1).Visible = False
+End Select
+End Sub
+
+Private Sub PEAFpersoncardus_MouseEnter(Index As Integer)
+cardus(Index).Left = FormMainMode.PEAFpersoncardus(Index).Left
+cardus(Index).Top = 5760
+cardus(Index).Visible = True
+cardus(Index).ZOrder
+Select Case Index
+   Case 1
+      If 角色人物對戰人數(1, 2) = 2 Then
+          cardus(3).Visible = False
+      Else
+          cardus(2).Visible = False
+      End If
+   Case 2
+      If 角色人物對戰人數(1, 2) = 1 Then
+          cardus(3).Visible = False
+      Else
+          cardus(1).Visible = False
+      End If
+   Case 3
+      If 角色人物對戰人數(1, 2) = 2 Then
+          cardus(1).Visible = False
+      Else
+          cardus(2).Visible = False
+      End If
+End Select
 End Sub
 
 Private Sub PEASpke_Timer()
@@ -5131,56 +4261,7 @@ Private Sub tr電腦牌_翻牌_Timer()
         事件卡.詛咒術_使用者 0, 0 '==事件卡執行_詛咒術_使用者(階段4)
    End If
 End Sub
-Private Sub uspi1_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-cardus(Index).Left = uspiin(Index).Left
-cardus(Index).Top = 5760
-cardus(Index).ZOrder
-If 人物卡面背面編號紀錄數(1) = 1 And 人物卡面背面編號紀錄數(2) = Index Then
-'    PEAFcardback(1).Visible = True
-    cardus(Index).Visible = True
-'    PEAFcardback(1).ZOrder
-Else
-    cardus(Index).Visible = True
-'    PEAFcardback(1).Visible = False
-End If
-Select Case Index
-   Case 1
-      If 角色人物對戰人數(1, 2) = 2 Then
-          cardus(3).Visible = False
-      Else
-          cardus(2).Visible = False
-      End If
-   Case 2
-      If 角色人物對戰人數(1, 2) = 1 Then
-          cardus(3).Visible = False
-      Else
-          cardus(1).Visible = False
-      End If
-   Case 3
-      If 角色人物對戰人數(1, 2) = 2 Then
-          cardus(1).Visible = False
-      Else
-          cardus(2).Visible = False
-      End If
-End Select
 
-End Sub
-
-
-Private Sub uspi4_Change(Index As Integer)
-If Val(uspi4(Index).Caption) = Val(liveusmax(Index)) Then
-   uspi4(Index).ForeColor = RGB(255, 255, 255)
-End If
- If Val(uspi4(Index).Caption) < Val(liveusmax(Index)) Then
-   uspi4(Index).ForeColor = RGB(255, 255, 128)
- End If
- If Val(uspi4(Index).Caption) <= Val(liveus41(Index)) Then
-   uspi4(Index).ForeColor = RGB(255, 0, 0)
- End If
-If Val(uspi4(Index).Caption) <= 0 Then
-    uspi4(Index).Caption = 0
-End If
-End Sub
 Private Sub 人物消失檢查_Timer()
 If 人物消失檢查暫時變數(1) = 10 Then
     If 人物消失檢查暫時變數(2) = 1 Then
@@ -5767,7 +4848,7 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
    card(牌移動暫時變數(3)).Top = 牌移動暫時變數(2)
    card(牌移動暫時變數(3)).ZOrder
    For i = 1 To 3
-       compiin(i).ZOrder
+       FormMainMode.PEAFpersoncardcom(i).ZOrder
    Next
    牌移動.Enabled = False
    Select Case 目前數(15)

@@ -13,12 +13,111 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    ScaleHeight     =   9915
    ScaleWidth      =   11340
    Windowless      =   -1  'True
-   Begin VB.Image bnok 
+   Begin ImageX.aicAlphaImage ImageMouseMoveActivecom 
+      Height          =   330
+      Index           =   4
+      Left            =   0
+      Top             =   600
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":0000
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActivecom 
+      Height          =   330
+      Index           =   3
+      Left            =   2280
+      Top             =   600
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":026F
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActivecom 
+      Height          =   330
+      Index           =   2
+      Left            =   4560
+      Top             =   600
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":04DE
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActivecom 
+      Height          =   330
+      Index           =   1
+      Left            =   6840
+      Top             =   600
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":074D
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActiveus 
+      Height          =   330
+      Index           =   4
+      Left            =   9240
+      Top             =   6240
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":09BC
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActiveus 
+      Height          =   330
+      Index           =   3
+      Left            =   6960
+      Top             =   6240
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":0C2B
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActiveus 
+      Height          =   330
+      Index           =   2
+      Left            =   4800
+      Top             =   6240
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":0E9A
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage ImageMouseMoveActiveus 
+      Height          =   330
+      Index           =   1
+      Left            =   2640
+      Top             =   6240
+      Width           =   2145
+      _ExtentX        =   3784
+      _ExtentY        =   582
+      Image           =   "uc戰鬥系統牌型介面.ctx":1109
+      Scaler          =   1
+      Props           =   5
+   End
+   Begin ImageX.aicAlphaImage bnok 
       Height          =   1050
-      Left            =   7440
-      Picture         =   "uc戰鬥系統牌型介面.ctx":0000
+      Left            =   7320
       Top             =   8160
       Width           =   1500
+      _ExtentX        =   2646
+      _ExtentY        =   1852
+      Image           =   "uc戰鬥系統牌型介面.ctx":1378
+      Props           =   5
    End
    Begin VB.Label activecom 
       Alignment       =   2  '置中對齊
@@ -199,7 +298,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image cardpagejpg 
       Height          =   465
       Left            =   240
-      Picture         =   "uc戰鬥系統牌型介面.ctx":3F0F
+      Picture         =   "uc戰鬥系統牌型介面.ctx":3899
       Top             =   960
       Width           =   570
    End
@@ -303,7 +402,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":43D0
+      Image           =   "uc戰鬥系統牌型介面.ctx":3D5A
       Opacity         =   70
       Props           =   5
    End
@@ -315,7 +414,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":4D0E
+      Image           =   "uc戰鬥系統牌型介面.ctx":4698
       Opacity         =   70
       Props           =   5
    End
@@ -327,7 +426,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":564C
+      Image           =   "uc戰鬥系統牌型介面.ctx":4FD6
       Opacity         =   70
       Props           =   5
    End
@@ -339,7 +438,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":5F8A
+      Image           =   "uc戰鬥系統牌型介面.ctx":5914
       Opacity         =   70
       Props           =   5
    End
@@ -439,7 +538,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":68C8
+      Image           =   "uc戰鬥系統牌型介面.ctx":6252
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -452,7 +551,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":7232
+      Image           =   "uc戰鬥系統牌型介面.ctx":6BBC
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -465,7 +564,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":7B9C
+      Image           =   "uc戰鬥系統牌型介面.ctx":7526
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -478,7 +577,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Width           =   1740
       _ExtentX        =   3069
       _ExtentY        =   450
-      Image           =   "uc戰鬥系統牌型介面.ctx":8506
+      Image           =   "uc戰鬥系統牌型介面.ctx":7E90
       Opacity         =   70
       Mirror          =   1
       Props           =   5
@@ -486,7 +585,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image stagejpgn 
       Height          =   270
       Left            =   9120
-      Picture         =   "uc戰鬥系統牌型介面.ctx":8E70
+      Picture         =   "uc戰鬥系統牌型介面.ctx":87FA
       Top             =   1080
       Width           =   2280
    End
@@ -522,7 +621,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image cardbackjpg 
       Height          =   1455
       Left            =   2535
-      Picture         =   "uc戰鬥系統牌型介面.ctx":934D
+      Picture         =   "uc戰鬥系統牌型介面.ctx":8CD7
       Top             =   6600
       Width           =   8910
    End
@@ -559,7 +658,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image turnpe 
       Height          =   420
       Left            =   10200
-      Picture         =   "uc戰鬥系統牌型介面.ctx":33787
+      Picture         =   "uc戰鬥系統牌型介面.ctx":33111
       Top             =   480
       Width           =   1125
    End
@@ -573,7 +672,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    Begin VB.Image cardunderjpg 
       Height          =   270
       Left            =   0
-      Picture         =   "uc戰鬥系統牌型介面.ctx":33C31
+      Picture         =   "uc戰鬥系統牌型介面.ctx":335BB
       Top             =   1080
       Width           =   2280
    End
@@ -590,6 +689,8 @@ Public Event ActiveMouseMove(ByVal uscom As Integer, ByVal num As Integer)
 Public Event InterfaceMouseMove()
 Public Event BnOKMouseMove()
 Public Event BnOKClick()
+Public Event ActiveMouseEnter(ByVal uscom As Integer, ByVal num As Integer)
+Public Event ActiveMouseExit(ByVal uscom As Integer, ByVal num As Integer)
 Public Property Get turn() As Integer
    turn = m_Turn
 End Property
@@ -643,6 +744,7 @@ Public Property Let Passive_介面顯示(ByVal New_Passive_介面顯示 As Boolean)
        stagejpgn.Visible = True
    End If
 End Property
+
 Sub MessageClear()
 messagetext.MessageTextClear
 End Sub
@@ -734,15 +836,21 @@ Private Sub activeus_MouseMove(Index As Integer, Button As Integer, Shift As Int
 RaiseEvent ActiveMouseMove(1, Index)
 End Sub
 
-Private Sub bnok_Click()
+Private Sub bnok_Click(ByVal Button As Integer)
 RaiseEvent BnOKClick
 End Sub
 
+Private Sub bnok_MouseEnter()
+bnok.LoadImage_FromFile app_path & "gif\system\ok_2.jpg"
+m_bnoktype = 2
+End Sub
+
+Private Sub bnok_MouseExit()
+bnok.LoadImage_FromFile app_path & "gif\system\ok_1.jpg"
+m_bnoktype = 1
+End Sub
+
 Private Sub bnok_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If m_bnoktype = 1 Then
-    bnok.Picture = LoadPicture(app_path & "gif\system\ok_2.jpg")
-    m_bnoktype = 2
-End If
 RaiseEvent BnOKMouseMove
 End Sub
 
@@ -750,11 +858,27 @@ Private Sub cardunderjpg_MouseMove(Button As Integer, Shift As Integer, X As Sin
 RaiseEvent InterfaceMouseMove
 End Sub
 
+Private Sub ImageMouseMoveActivecom_MouseEnter(Index As Integer)
+RaiseEvent ActiveMouseEnter(2, Index)
+End Sub
+
+Private Sub ImageMouseMoveActivecom_MouseExit(Index As Integer)
+RaiseEvent ActiveMouseExit(2, Index)
+End Sub
+
+Private Sub ImageMouseMoveActiveus_MouseEnter(Index As Integer)
+RaiseEvent ActiveMouseEnter(1, Index)
+End Sub
+
+Private Sub ImageMouseMoveActiveus_MouseExit(Index As Integer)
+RaiseEvent ActiveMouseExit(1, Index)
+End Sub
+
 Private Sub stagejpgn_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 RaiseEvent InterfaceMouseMove
 End Sub
 Sub ActiveDescription(ByVal uscom As Integer, ByVal num As Integer, ByVal skillobj As clsPersonActiveSkill)
-Me.ActiveSkillName uscom, num, skillobj.name
+Me.ActiveSkillName uscom, num, skillobj.Name
 Me.ActiveSkillNameFontSize uscom, num, skillobj.NameFontSize
 End Sub
 
@@ -796,6 +920,7 @@ Select Case uscom
 End Select
 End Sub
 Sub ActiveSkillNameFontSize(ByVal uscom As Integer, ByVal num As Integer, ByVal sizenum As Integer)
+If sizenum <= 7 Then Exit Sub
 Select Case uscom
  Case 1
     activeus(num).FontSize = sizenum
@@ -806,19 +931,15 @@ End Sub
 
 Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 RaiseEvent InterfaceMouseMove
-If bnok.Visible = True And bnok.Enabled = True And m_bnoktype <> 1 Then
-    bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
-    m_bnoktype = 1
-End If
 End Sub
 Sub BnOKStartListen()
-bnok.Picture = LoadPicture(app_path & "gif\system\ok_1.jpg")
+bnok.LoadImage_FromFile app_path & "gif\system\ok_1.jpg"
 m_bnoktype = 1
 bnok.Enabled = True
 bnok.Visible = True
 End Sub
 Sub BnOKStopListen()
-bnok.Picture = LoadPicture(app_path & "gif\system\ok_3.jpg")
+bnok.LoadImage_FromFile app_path & "gif\system\ok_3.jpg"
 m_bnoktype = 3
 bnok.Enabled = False
 End Sub

@@ -1,7 +1,8 @@
 VERSION 5.00
 Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Begin VB.UserControl uc技能說明 
-   BackColor       =   &H00FFFFFF&
+   Appearance      =   0  '平面
+   BackColor       =   &H80000005&
    BackStyle       =   0  '透明
    ClientHeight    =   3930
    ClientLeft      =   0
@@ -12,6 +13,16 @@ Begin VB.UserControl uc技能說明
    ScaleHeight     =   3930
    ScaleWidth      =   2805
    Windowless      =   -1  'True
+   Begin ImageX.aicAlphaImage ImageMouseMove 
+      Height          =   3570
+      Left            =   0
+      Top             =   0
+      Width           =   7500
+      _ExtentX        =   13229
+      _ExtentY        =   6297
+      Image           =   "uc技能說明.ctx":0000
+      Props           =   5
+   End
    Begin VB.Label atkinghelpi3 
       BackColor       =   &H00000000&
       BackStyle       =   0  '透明
@@ -199,7 +210,7 @@ Begin VB.UserControl uc技能說明
       Width           =   9600
       _ExtentX        =   16933
       _ExtentY        =   12700
-      Image           =   "uc技能說明.ctx":0000
+      Image           =   "uc技能說明.ctx":026F
       Opacity         =   75
       Props           =   5
    End
@@ -212,7 +223,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Private m_stage As String, m_distance As String, m_card As String, m_effect As String
 
-Public Event MouseMove()
+Public Event MouseEnter()
 Public Property Get Stage() As String
     Stage = m_stage
 End Property
@@ -257,46 +268,6 @@ Public Property Let Effect(ByVal vNewValue As Variant)
     atkinghelpt4.Caption = m_effect
 End Property
 
-Private Sub aicAlphaImage1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpi1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpi2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpi3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpi4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpi5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpt1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpt2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpt3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub atkinghelpt4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
-End Sub
-
-Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+Private Sub ImageMouseMove_MouseEnter()
+RaiseEvent MouseEnter
 End Sub

@@ -30,7 +30,7 @@ Begin VB.Form Formsetting
       Height          =   5895
       Left            =   9480
       TabIndex        =   125
-      Top             =   3240
+      Top             =   4320
       Width           =   9015
       Begin VB.ComboBox cbsimilarlevel 
          BeginProperty Font 
@@ -218,9 +218,9 @@ Begin VB.Form Formsetting
    Begin VB.Frame 事件卡_電腦 
       Caption         =   "事件卡編輯(電腦方)"
       Height          =   5895
-      Left            =   9480
+      Left            =   9360
       TabIndex        =   51
-      Top             =   1800
+      Top             =   2040
       Visible         =   0   'False
       Width           =   9015
       Begin VB.ComboBox comboeventcarrdcom 
@@ -2292,6 +2292,8 @@ For i = 1 To 3
        personlevelcom(i).Caption = ""
        personnamecom(i).Caption = FormMainMode.personnamecom(i).Text
    End If
+   personnameusChange i
+   personnamecomChange i
 Next
 End Sub
 
@@ -2545,7 +2547,7 @@ End If
 End Sub
 
 
-Private Sub personnamecom_Change(Index As Integer)
+Private Sub personnamecomChange(Index As Integer)
 If persontgrecom.Value = 1 Then
     If FormMainMode.opnpersonvs(2).Value = True Then
         If personnamecom(Index).Caption = "《隨機》" Then
@@ -2568,7 +2570,7 @@ If persontgrecom.Value = 1 Then
 End If
 End Sub
 
-Private Sub personnameus_Change(Index As Integer)
+Private Sub personnameusChange(Index As Integer)
 If persontgreus.Value = 1 Then
     If FormMainMode.opnpersonvs(2).Value = True Then
         If personnameus(Index).Caption = "《隨機》" Then
@@ -2628,7 +2630,7 @@ If persontgrecom.Value = 1 Then
        personcom_Click (i)
     Next
     For i = 1 To 3
-       personnamecom_Change (i)
+       personnamecomChange i
     Next
 Else
    personwagcom.Visible = False
@@ -2645,7 +2647,7 @@ If persontgreus.Value = 1 Then
        personus_Click (i)
     Next
     For i = 1 To 3
-       personnameus_Change (i)
+       personnameusChange i
     Next
 Else
    personwagus.Visible = False

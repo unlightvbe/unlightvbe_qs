@@ -85,12 +85,12 @@ End Property
 Public Property Let 小人物影子Left(ByVal New_小人物影子Left As Integer)
    m_smalldownleft = New_小人物影子Left
    PropertyChanged "小人物影子Left"
-   Image2.Left = Me.小人物影子Left
+   image2.Left = Me.小人物影子Left
 End Property
 Public Property Let 小人物影子top差(ByVal New_小人物影子top差 As Integer)
    m_smalldowntop = New_小人物影子top差
    PropertyChanged "小人物影子top差"
-   Image2.Top = image1.Height + Me.小人物影子top差
+   image2.Top = image1.Height + Me.小人物影子top差
 End Property
 Public Property Let 小人物圖片(ByVal New_小人物圖片 As String)
    m_smallimage = New_小人物圖片
@@ -111,12 +111,12 @@ Public Property Let 小人物影子圖片(ByVal New_小人物影子圖片 As String)
    m_smallimagedown = New_小人物影子圖片
    PropertyChanged "小人物影子圖片"
    If Me.小人物影子圖片 <> "" Then
-       Image2.AutoRedraw = True
-       Image2.AutoSize = True
-       Image2.LoadImage_FromFile Me.小人物影子圖片
-       Image2.Left = 0
-       Image2.Top = image1.Height
-       Image2.Opacity = 100
+       image2.AutoRedraw = True
+       image2.AutoSize = True
+       image2.LoadImage_FromFile Me.小人物影子圖片
+       image2.Left = 0
+       image2.Top = image1.Height
+       image2.Opacity = 100
    End If
 End Property
 Public Property Let 小人物圖片height(ByVal New_小人物圖片height As Integer)
@@ -147,7 +147,7 @@ Public Property Let 小人物重設(ByVal New_小人物重設 As Boolean)
    '=====================
    If Me.小人物重設 = True Then
        image1.Opacity = 100
-       Image2.Opacity = 100
+       image2.Opacity = 100
        Me.小人物影像反轉 = False
        Me.小人物消失 = False
        Me.小人物顯現 = False
@@ -174,20 +174,21 @@ Public Property Let 小人物影像反轉(ByVal New_小人物影像反轉 As Boolean)
    '=====================
    If Me.小人物影像反轉 = True Then
        image1.Mirror = aiMirrorHorizontal
-       Image2.Mirror = aiMirrorHorizontal
+       image2.Mirror = aiMirrorHorizontal
    Else
        image1.Mirror = aiMirrorNone
-       Image2.Mirror = aiMirrorNone
+       image2.Mirror = aiMirrorNone
    End If
 End Property
+
 Private Sub t1_Timer()
 If image1.Opacity <> 0 Then
     image1.Opacity = Val(image1.Opacity) - 1
 End If
-If Image2.Opacity <> 0 Then
-    Image2.Opacity = Val(Image2.Opacity) - 1
+If image2.Opacity <> 0 Then
+    image2.Opacity = Val(image2.Opacity) - 1
 End If
-If image1.Opacity = 0 And Image2.Opacity = 0 Then
+If image1.Opacity = 0 And image2.Opacity = 0 Then
     t1.Enabled = False
     Me.小人物消失 = False
 End If
@@ -197,10 +198,10 @@ Private Sub t2_Timer()
 If image1.Opacity <> 100 Then
     image1.Opacity = Val(image1.Opacity) + 2
 End If
-If Image2.Opacity <> 100 Then
-    Image2.Opacity = Val(Image2.Opacity) + 2
+If image2.Opacity <> 100 Then
+    image2.Opacity = Val(image2.Opacity) + 2
 End If
-If image1.Opacity = 100 And Image2.Opacity = 100 Then
+If image1.Opacity = 100 And image2.Opacity = 100 Then
     t2.Enabled = False
     Me.小人物顯現 = False
 End If

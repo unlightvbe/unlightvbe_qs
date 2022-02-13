@@ -17,10 +17,6 @@ Dim i, a As Integer
 a = 14
 If FormMainMode.PEStext1.FontName <> "Bradley Gratis" Then
     '===========PEAttackingForm
-    For i = 1 To 3
-        FormMainMode.compi4(i).FontSize = a
-        FormMainMode.uspi4(i).FontSize = a
-    Next
     FormMainMode.pageul.FontSize = 24
     FormMainMode.bloodnumcom1.FontSize = 20
     FormMainMode.bloodnumcom2.FontSize = 10
@@ -1254,31 +1250,36 @@ FormMainMode.pageusglead.Caption = 0
 FormMainMode.pagecomqlead.Caption = 0
 FormMainMode.pagecomglead.Caption = 0
 '=======以下為角色人物設定(總初設)
-FormMainMode.uspiin(1).Left = 0
-FormMainMode.uspiin(1).Visible = False
+FormMainMode.PEAFpersoncardus(1).Left = 0
+FormMainMode.PEAFpersoncardus(1).Visible = False
 FormMainMode.cardus(1).Left = 0
 FormMainMode.cardus(1).Top = 6240
 FormMainMode.cardus(1).ZOrder
 FormMainMode.cardus(1).Visible = True
-FormMainMode.compiin(1).Left = 0
+FormMainMode.PEAFpersoncardcom(1).Left = 0
+戰鬥系統類.PersonCardShowOnMode(1, 1) = True
+戰鬥系統類.PersonCardShowOnMode(2, 1) = True
+FormMainMode.PEAFpersoncardus(1).ShowOnMode = True
+FormMainMode.PEAFpersoncardcom(1).ShowOnMode = True
 '=======
 For i = 2 To 3
    If 角色人物對戰人數(1, 1) >= i Then
-       FormMainMode.uspiin(i).Visible = True
-       FormMainMode.uspiin(i).Left = 2520 * (i - 1)
-       FormMainMode.uspiin(i).Visible = True
+       FormMainMode.PEAFpersoncardus(i).ShowOnMode = True
+       FormMainMode.PEAFpersoncardus(i).Left = 2520 * (i - 1)
+       FormMainMode.PEAFpersoncardus(i).Visible = True
        FormMainMode.cardus(i).Visible = False
+       戰鬥系統類.PersonCardShowOnMode(1, i) = True
    Else
-       FormMainMode.uspiin(i).Visible = False
-       FormMainMode.uspi4(i).Caption = 0
+       FormMainMode.PEAFpersoncardus(i).Visible = False
        FormMainMode.cardus(i).CardMain_角色HP = 0
    End If
    If 角色人物對戰人數(2, 1) >= i Then
-       FormMainMode.compiin(i).Visible = True
-       FormMainMode.compiin(i).Left = 2520 * (i - 1)
+       戰鬥系統類.PersonCardShowOnMode(2, i) = False
+       FormMainMode.PEAFpersoncardcom(i).ShowOnMode = False
+       FormMainMode.PEAFpersoncardcom(i).Left = 2520 * (i - 1)
+       FormMainMode.PEAFpersoncardcom(i).Visible = True
    Else
-       FormMainMode.compiin(i).Visible = False
-       FormMainMode.compi4(i).Caption = 0
+       FormMainMode.PEAFpersoncardcom(i).Visible = False
        FormMainMode.cardcom(i).CardMain_角色HP = 0
    End If
 Next
@@ -1303,15 +1304,12 @@ For w = 1 To 角色人物對戰人數(1, 1)
     FormMainMode.cardus(w).CardMain_角色HP = liveus(w)
     FormMainMode.cardus(w).CardMain_角色ATK = atkus(w)
     FormMainMode.cardus(w).CardMain_角色DEF = defus(w)
-    FormMainMode.uspi1(w).Caption = nameus(w)
     liveusmax(w) = liveus(w)
-    FormMainMode.cardus(w).CardMain_角色HPMAX = liveusmax(w)
     liveus41(w) = liveusmax(w) \ 3
-    FormMainMode.uspi2(w).Caption = uslevel(w)
-    FormMainMode.uspiatk(w).Caption = atkus(w)
-    FormMainMode.uspidef(w).Caption = defus(w)
-    FormMainMode.uspi4(w).Caption = liveus(w)
-    FormMainMode.uspi5(w).Caption = liveusmax(w)
+    '=================
+    戰鬥系統類.介面角色小卡資訊寫入 1, w
+    '=================
+    FormMainMode.cardus(w).CardMain_角色HPMAX = liveusmax(w)
     FormMainMode.cardus(w).CardMain_是否為新樣式資訊 = CBool(Val(VBEPerson(1, w, 1, 3, 5)) = 1)
     '=================
     FormMainMode.cardus(w).異常狀態全重設
@@ -1338,12 +1336,9 @@ For w = 1 To 角色人物對戰人數(2, 1)
     comlevel(w) = Val(VBEPerson(2, w, 1, 2, 2))
     namecom(w) = VBEPerson(2, w, 1, 1, 1)
     livecommax(w) = livecom(w)
-    FormMainMode.compi2(w).Caption = comlevel(w)
-    FormMainMode.compiatk(w).Caption = atkcom(w)
-    FormMainMode.compidef(w).Caption = defcom(w)
-    FormMainMode.compi4(w).Caption = livecom(w)
-    FormMainMode.compi5(w).Caption = livecommax(w)
-    FormMainMode.compi1(w).Caption = namecom(w)
+    '=================
+    戰鬥系統類.介面角色小卡資訊寫入 2, w
+    '=================
     livecom41(w) = livecommax(w) \ 3
     FormMainMode.cardcom(w).CardMain_角色HP = livecom(w)
     FormMainMode.cardcom(w).CardMain_角色HPMAX = livecommax(w)
@@ -1411,12 +1406,7 @@ Next
 '================仿對戰模式設定
 If Formsetting.chkpersonvsmode.Value = 1 Then
     For i = 2 To 3
-        FormMainMode.compi1(i).Caption = ""
-        FormMainMode.compi2(i).Caption = ""
-        FormMainMode.compiatk(i).Caption = ""
-        FormMainMode.compidef(i).Caption = ""
-        FormMainMode.compi4(i).Caption = ""
-        FormMainMode.compi5(i).Caption = ""
+        FormMainMode.PEAFpersoncardcom(i).ShowOnMode = False
         FormMainMode.cardcom(i).CardMain_角色HP = -99
         FormMainMode.cardcom(i).CardMain_角色ATK = -99
         FormMainMode.cardcom(i).CardMain_角色DEF = -99
@@ -1675,8 +1665,8 @@ For i = 1 To 3
     FormMainMode.cardcomname(i).Visible = True
     FormMainMode.cardcomspname(i).Visible = True
     For j = 1 To 3
-        FormMainMode.compiin(j).Left = 2520 * (j - 1)
-        FormMainMode.uspiin(j).Left = 2520 * (j - 1)
+        FormMainMode.PEAFpersoncardcom(j).Left = 2520 * (j - 1)
+        FormMainMode.PEAFpersoncardus(j).Left = 2520 * (j - 1)
     Next
     '================
     If i >= 2 Then

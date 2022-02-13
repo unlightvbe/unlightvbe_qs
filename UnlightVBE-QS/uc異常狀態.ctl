@@ -1,7 +1,8 @@
 VERSION 5.00
 Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Begin VB.UserControl uc異常狀態 
-   BackColor       =   &H00E0E0E0&
+   Appearance      =   0  '平面
+   BackColor       =   &H80000005&
    BackStyle       =   0  '透明
    ClientHeight    =   1950
    ClientLeft      =   0

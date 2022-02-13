@@ -349,7 +349,8 @@ Select Case 事件卡記錄暫時數(1, 3)
         FormMainMode.PEAFInterface.BnOKEnabled False
         '=======================
         戰鬥系統類.執行動作_清除所有異常狀態_聖水 1, 1
-        FormMainMode.trgoi1_Timer
+        戰鬥系統類.骰量更新顯示
+        FormMainMode.trgoi1.Enabled = True
         等待時間佇列(2).Add 40
         FormMainMode.等待時間_2.Enabled = True
      Case 3
@@ -392,7 +393,8 @@ Select Case 事件卡記錄暫時數(2, 3)
         事件卡記錄暫時數(2, 2) = 1
         '=======================
         戰鬥系統類.執行動作_清除所有異常狀態_聖水 2, 1
-        FormMainMode.trgoi2_Timer
+        戰鬥系統類.骰量更新顯示
+        FormMainMode.trgoi2.Enabled = True
         等待時間佇列(2).Add 42
         FormMainMode.等待時間_2.Enabled = True
      Case 3
