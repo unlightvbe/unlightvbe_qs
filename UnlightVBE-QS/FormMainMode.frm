@@ -47,8 +47,8 @@ Begin VB.Form FormMainMode
          Top             =   6120
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin UnlightVBE.uc角色卡片介面 cardus 
          Height          =   3615
@@ -58,8 +58,8 @@ Begin VB.Form FormMainMode
          Top             =   6120
          Visible         =   0   'False
          Width           =   2535
-         _ExtentX        =   2355
-         _ExtentY        =   3625
+         _extentx        =   2355
+         _extenty        =   3625
       End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
@@ -641,8 +641,8 @@ Begin VB.Form FormMainMode
          TabIndex        =   127
          Top             =   0
          Width           =   11340
-         _ExtentX        =   2143
-         _ExtentY        =   2778
+         _extentx        =   2143
+         _extenty        =   2778
       End
       Begin VB.Label bloodnumcom2 
          Alignment       =   2  '置中對齊
@@ -3127,16 +3127,31 @@ pageonin(Index) = Val(card(Index).CardRotationType)
 Select Case turnatk
     Case 1
         '===========================執行階段插入點(ATK-42/DEF-43)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 42
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 4
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 43
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 4
         '============================
     Case 2
         '===========================執行階段插入點(ATK-42/DEF-43)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 42
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 42, 4
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 43
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 43, 4
         '============================
     Case 3
         '===========================執行階段插入點(44)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 44
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 44, 3
         '============================
 End Select
@@ -3283,7 +3298,6 @@ If pagecardnum(Index, 6) = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) An
    '=============
    turnpageonin = 0
    card(Index).LocationType = 1
-'   Erase atkingckdice
    '================
    目前數(5) = pagecardnum(Index, 7)
    pagecardnum(Index, 7) = Val(pageusleadmax(0)) + 1
@@ -3291,9 +3305,6 @@ If pagecardnum(Index, 6) = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) An
    pageqlead(1) = Val(pageqlead(1)) - 1
    pageusglead = Val(pageusglead) + 1
    pageusqlead = Val(pageusqlead) - 1
-'   目前數(1) = pageusglead
-   '============以下是技能檢查及啟動
-
    '=============以下是牌移動(回牌)(使用者)
     戰鬥系統類.座標計算_使用者手牌
     牌移動暫時變數(3) = Index
@@ -3322,16 +3333,31 @@ vsssystemplay:
 Select Case turnatk
     Case 1
         '===========================執行階段插入點(ATK-42/DEF-43)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 42
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 4
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 43
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 4
         '============================
     Case 2
         '===========================執行階段插入點(ATK-42/DEF-43)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 42
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 42, 4
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 43
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 43, 4
         '============================
     Case 3
         '===========================執行階段插入點(44)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 44
+        VBEStageNum(1) = -1 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 44, 3
         '============================
 End Select
@@ -3441,6 +3467,9 @@ If 電腦方事件卡是否出完選擇數 = False Then
     顯示列1.移動階段圖顯示 = True
     戰鬥系統類.時間軸_顯示
     一般系統類.音效播放 6
+    '===========================執行階段插入點(94)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 94, 3
+    '============================
 End If
 '======================電腦方事件卡先出制度_結束後階段2
 If 電腦方事件卡是否出完選擇數 = True Then
@@ -3536,7 +3565,9 @@ Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 17, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 37, 2
-'============================
+'===========================執行階段插入點(ATK-92/DEF-93)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 92, 4
+執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 93, 4
 '==============
 小人物頭像移動方向數(1) = 1
 小人物頭像移動方向數(2) = 2
@@ -3620,6 +3651,9 @@ Erase Vss_EventPlayerAllActionOffNum
 '===========================執行階段插入點(ATK-17/DEF-37)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 17, 2
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 37, 2
+'===========================執行階段插入點(ATK-92/DEF-93)
+執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 92, 4
+執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 93, 4
 '======================電腦方事件卡先出制度
 If 電腦方事件卡是否出完選擇數 = False Then
    GoTo 電腦方事件卡先出制度_執行階段2
@@ -3778,7 +3812,6 @@ End Sub
 Private Sub pagecomglead_Change()
 pageglead(2) = Val(pagecomglead.Caption)
 End Sub
-
 
 Private Sub pageusglead_Change()
 pageglead(1) = Val(pageusglead.Caption)

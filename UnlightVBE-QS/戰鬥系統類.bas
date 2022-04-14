@@ -250,7 +250,6 @@ For uscom = 1 To 2
 Next
 End Sub
 
-
 Sub 播放傷害音樂()
 Select Case movecp
     Case 1
@@ -1086,7 +1085,7 @@ For n = 1 To 4
        FormMainMode.PEAFInterface.ActiveDescription 1, n, tmpobj
        FormMainMode.PEAFInterface.ActiveSkillVisable 1, n, False
     Else
-        tmpobj.Name = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 1)
+        tmpobj.name = VBEPerson(1, 角色人物對戰人數(1, 2), 3, n, 1)
         
         If VBEPerson(1, 角色人物對戰人數(1, 2), 2, 3, 5) = 1 Then
             tmpobj.NameFontSize = 12
@@ -1134,7 +1133,7 @@ For n = 1 To 4
         FormMainMode.PEAFInterface.ActiveDescription 2, n, tmpobj
         FormMainMode.PEAFInterface.ActiveSkillVisable 2, n, False
     Else
-        tmpobj.Name = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 1)
+        tmpobj.name = VBEPerson(2, 角色人物對戰人數(2, 2), 3, n, 1)
         
         If VBEPerson(2, 角色人物對戰人數(2, 2), 2, 3, 5) = 1 Then
             tmpobj.NameFontSize = 12
@@ -1347,16 +1346,31 @@ If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 2 Then
     Select Case turnatk
         Case 1
             '===========================執行階段插入點(ATK-42/DEF-43)
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 42
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 4
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 43
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 4
             '============================
         Case 2
             '===========================執行階段插入點(ATK-42/DEF-43)
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 42
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 42, 4
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 43
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 43, 4
             '============================
         Case 3
             '===========================執行階段插入點(44)
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 44
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 44, 3
             '============================
     End Select
@@ -1429,16 +1443,31 @@ If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
     Select Case turnatk
         Case 1
             '===========================執行階段插入點(ATK-42/DEF-43)
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 42
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 4
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 43
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 4
             '============================
         Case 2
             '===========================執行階段插入點(ATK-42/DEF-43)
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 42
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 42, 4
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 43
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 43, 4
             '============================
         Case 3
             '===========================執行階段插入點(44)
+            ReDim VBEStageNum(0 To 1) As Integer
+            VBEStageNum(0) = 44
+            VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
             執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 44, 3
             '============================
     End Select
@@ -1536,16 +1565,31 @@ FormMainMode.card(Index).CardRotationType = pageonin(Index)
 Select Case turnatk
     Case 1
         '===========================執行階段插入點(ATK-42/DEF-43)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 42
+        VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 42, 4
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 43
+        VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 43, 4
         '============================
     Case 2
         '===========================執行階段插入點(ATK-42/DEF-43)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 42
+        VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 42, 4
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 43
+        VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 43, 4
         '============================
     Case 3
         '===========================執行階段插入點(44)
+        ReDim VBEStageNum(0 To 1) As Integer
+        VBEStageNum(0) = 44
+        VBEStageNum(1) = -2 '觸發方(1.使用者/2.電腦)
         執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 44, 3
         '============================
 End Select
@@ -3783,8 +3827,8 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
         End Select
 End If
 End Sub
-Sub 公用牌地圖牌種類配置(ByVal Name As String)
-Select Case Name
+Sub 公用牌地圖牌種類配置(ByVal name As String)
+Select Case name
      Case "萊丁貝魯格城堡"
            公用牌各牌類型紀錄數(0, 2) = 57
            公用牌各牌類型紀錄數(1, 2) = 6

@@ -46,7 +46,6 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
      If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
      Dim cmdnumnow As Integer
      Dim PersonCheckAtking As Boolean
-     PersonCheckAtking = 執行指令集_執行驗證(uscom, commadtype, atkingnum, vbecommadtotplayNow)
      Dim commadstr1()  As String, commadstr2() As String
      '===============================
      Do While vbecommadnum(1, vbecommadtotplayNow) <= vbecommadnum(5, vbecommadtotplayNow)
@@ -57,6 +56,7 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
         vbecommadstr(1, vbecommadtotplayNow) = commadstr2(0)
         vbecommadstr(3, vbecommadtotplayNow) = commadstr2(1)
         '=============================================
+        PersonCheckAtking = 執行指令集_執行驗證(uscom, commadtype, atkingnum, vbecommadtotplayNow)
         If PersonCheckAtking = False And _
                commadstr2(0) <> "AtkingLineLight" And commadstr2(0) <> "AtkingTurnOnOff" Then
                執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
@@ -191,9 +191,9 @@ Sub 執行指令集總程序執行(ByVal cmdstr As String, ByVal vsscnum As Integer, ByVal
 End Sub
 Function 執行指令集總程序_判斷執行階段類別(ByVal ns As Integer) As Integer
 Select Case ns
-    Case 42, 43, 44, 45, 99 '特殊型
+    Case 42, 43, 44, 45, 92, 93, 94, 99 '特殊型
         執行指令集總程序_判斷執行階段類別 = 2
-    Case 41, 46, 47, 48, 61, 62, 72, 73, 74, 75, 76, 77 '事件型
+    Case 41, 46, 47, 48, 49, 61, 62, 72, 73, 74, 75, 76, 77 '事件型
         執行指令集總程序_判斷執行階段類別 = 3
     Case Else  '普通型
         執行指令集總程序_判斷執行階段類別 = 1
@@ -205,7 +205,9 @@ Sub 執行指令_技能燈控制(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     If UBound(commadstr3) <> 0 Or vbecommadnum(3, vbecommadtotplayNow) > 48 Or _
-        ((commadtype <> 1 And commadtype <> 3) And (vbecommadnum(4, vbecommadtotplayNow) < 42 Or vbecommadnum(4, vbecommadtotplayNow) > 44)) Then GoTo VssCommadExit
+       ((commadtype <> 1 And commadtype <> 3) And _
+       Not (vbecommadnum(4, vbecommadtotplayNow) >= 42 And vbecommadnum(4, vbecommadtotplayNow) <= 44) And _
+       Not (vbecommadnum(4, vbecommadtotplayNow) >= 92 And vbecommadnum(4, vbecommadtotplayNow) <= 94)) Then GoTo VssCommadExit
     If 角色人物對戰人數(uscom, 2) <> vbecommadnum(7, vbecommadtotplayNow) Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
@@ -320,7 +322,9 @@ Sub 執行指令_技能啟動碼控制(ByVal uscom As Integer, ByVal commadtype As Integer,
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     If UBound(commadstr3) <> 0 Or vbecommadnum(3, vbecommadtotplayNow) > 48 Or _
-       ((commadtype <> 1 And commadtype <> 3) And (vbecommadnum(4, vbecommadtotplayNow) < 42 Or vbecommadnum(4, vbecommadtotplayNow) > 44)) Then GoTo VssCommadExit
+       ((commadtype <> 1 And commadtype <> 3) And _
+       Not (vbecommadnum(4, vbecommadtotplayNow) >= 42 And vbecommadnum(4, vbecommadtotplayNow) <= 44) And _
+       Not (vbecommadnum(4, vbecommadtotplayNow) >= 92 And vbecommadnum(4, vbecommadtotplayNow) <= 94)) Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
             Select Case vbecommadnum(3, vbecommadtotplayNow)
@@ -490,7 +494,6 @@ Sub 執行指令_總骰數變化量控制(ByVal uscom As Integer, ByVal commadtype As Intege
                          atkingckdice(uscom, uscomt, 3) = atkingckdice(uscom, uscomt, 3) & "@" & commadstr3(2) & "="
                      End If
             End Select
-'            戰鬥系統類.骰量更新顯示
             GoTo VssCommadExit
     End Select
         '============================
@@ -532,7 +535,6 @@ Sub 執行指令_總骰數總量控制(ByVal uscom As Integer, ByVal commadtype As Integer,
                 Case 6
                      攻擊防禦骰子總數(uscomt) = Val(commadstr3(2))
             End Select
-'            戰鬥系統類.骰量更新顯示
             GoTo VssCommadExit
     End Select
         '============================

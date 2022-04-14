@@ -448,24 +448,26 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                 For j = 1 To 6
                     If j = 1 Or j = 3 Then
                        Select Case pagecardnum(i, j)
-                           Case "ATK-劍"
-                               VBEPageCardNumVS(i, j) = 1
-                           Case "DEF"
-                               VBEPageCardNumVS(i, j) = 2
-                           Case "MOV"
-                               VBEPageCardNumVS(i, j) = 3
-                           Case "SPE"
-                               VBEPageCardNumVS(i, j) = 4
-                           Case "ATK-槍"
-                               VBEPageCardNumVS(i, j) = 5
-                           Case "DRAW"
-                               VBEPageCardNumVS(i, j) = 6
-                           Case "BRK"
-                               VBEPageCardNumVS(i, j) = 7
-                           Case "HPL"
-                               VBEPageCardNumVS(i, j) = 8
-                           Case Else
-                               VBEPageCardNumVS(i, j) = 0
+                            Case "ATK-劍"
+                                VBEPageCardNumVS(i, j) = 1
+                            Case "DEF"
+                                VBEPageCardNumVS(i, j) = 2
+                            Case "MOV"
+                                VBEPageCardNumVS(i, j) = 3
+                            Case "SPE"
+                                VBEPageCardNumVS(i, j) = 4
+                            Case "ATK-槍"
+                                VBEPageCardNumVS(i, j) = 5
+                            Case "DRAW"
+                                VBEPageCardNumVS(i, j) = 6
+                            Case "BRK"
+                                VBEPageCardNumVS(i, j) = 7
+                            Case "HPL"
+                                VBEPageCardNumVS(i, j) = 8
+                            Case "HPW"
+                                VBEPageCardNumVS(i, j) = 9
+                            Case Else
+                                VBEPageCardNumVS(i, j) = 0
                        End Select
                     Else
                        VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
@@ -576,6 +578,8 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                                     VBEVSStageNum(i) = VBEStageNumMain(i)
                             Next
                             VBEVSStageNum(3) = VBEStage7xAtkingInformation
+                        Case 42, 43, 44
+                            VBEVSStageNum(1) = Abs(VBEStageNumMain(1))
                         Case Else
                             For i = 1 To UBound(VBEStageNumMain)
                                     VBEVSStageNum(i) = VBEStageNumMain(i)
@@ -603,24 +607,26 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                 For j = 1 To 6
                      If j = 1 Or j = 3 Then
                        Select Case pagecardnum(i, j)
-                           Case "ATK-劍"
-                               VBEPageCardNumVS(i, j) = 1
-                           Case "DEF"
-                               VBEPageCardNumVS(i, j) = 2
-                           Case "MOV"
-                               VBEPageCardNumVS(i, j) = 3
-                           Case "SPE"
-                               VBEPageCardNumVS(i, j) = 4
-                           Case "ATK-槍"
-                               VBEPageCardNumVS(i, j) = 5
-                           Case "DRAW"
-                               VBEPageCardNumVS(i, j) = 6
-                           Case "BRK"
-                               VBEPageCardNumVS(i, j) = 7
-                           Case "HPL"
-                               VBEPageCardNumVS(i, j) = 8
-                           Case Else
-                               VBEPageCardNumVS(i, j) = 0
+                            Case "ATK-劍"
+                                VBEPageCardNumVS(i, j) = 1
+                            Case "DEF"
+                                VBEPageCardNumVS(i, j) = 2
+                            Case "MOV"
+                                VBEPageCardNumVS(i, j) = 3
+                            Case "SPE"
+                                VBEPageCardNumVS(i, j) = 4
+                            Case "ATK-槍"
+                                VBEPageCardNumVS(i, j) = 5
+                            Case "DRAW"
+                                VBEPageCardNumVS(i, j) = 6
+                            Case "BRK"
+                                VBEPageCardNumVS(i, j) = 7
+                            Case "HPL"
+                                VBEPageCardNumVS(i, j) = 8
+                            Case "HPW"
+                                VBEPageCardNumVS(i, j) = 9
+                            Case Else
+                                VBEPageCardNumVS(i, j) = 0
                        End Select
                     ElseIf j = 5 Then
                        If Val(pagecardnum(i, j)) = 2 Then
@@ -794,6 +800,8 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                             VBEVSStageNum(3) = VBEStageNumMain(4)
                             VBEVSStageNum(4) = VBEStageNumMain(3)
                             VBEVSStageNum(5) = VBEStageNumMain(5)
+                        Case 42, 43, 44
+                            If VBEStageNumMain(1) = -1 Then VBEVSStageNum(1) = 2 Else VBEVSStageNum(1) = 1
                         Case Else
                             For i = 1 To UBound(VBEStageNumMain)
                                     VBEVSStageNum(i) = VBEStageNumMain(i)
@@ -1006,13 +1014,13 @@ vssyserror:
 執行階段系統_錯誤訊息通知 1, "6"
 '===============
 End Sub
-Sub 執行階段系統_初始_異常狀態類腳本加入紀錄(ByVal str1 As String, ByVal personname As String)
+Sub 執行階段系統_初始_異常狀態類腳本加入紀錄(ByVal str1 As String, ByVal PersonName As String)
     ReDim Preserve VBEVSSBuffStr2(UBound(VBEVSSBuffStr2) + 1)
-    VBEVSSBuffStr2(UBound(VBEVSSBuffStr2)) = personname & str1
+    VBEVSSBuffStr2(UBound(VBEVSSBuffStr2)) = PersonName & str1
 End Sub
-Sub 執行階段系統_初始_人物實際狀態類腳本加入紀錄(ByVal str1 As String, ByVal personname As String)
+Sub 執行階段系統_初始_人物實際狀態類腳本加入紀錄(ByVal str1 As String, ByVal PersonName As String)
     ReDim Preserve VBEVSSActualStatusStr2(UBound(VBEVSSActualStatusStr2) + 1)
-    VBEVSSActualStatusStr2(UBound(VBEVSSActualStatusStr2)) = personname & str1
+    VBEVSSActualStatusStr2(UBound(VBEVSSActualStatusStr2)) = PersonName & str1
 End Sub
 Sub 執行階段系統_初始_人物主動及被動技能類資料讀入()
 If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
