@@ -197,15 +197,11 @@ Public Property Let CurrentHP(ByVal vNewValue As Integer)
     End If
     If m_ShowOnMode = True Then
         labelcurrenthp.Caption = m_CurrentHP
-        labelcurrenthp.Visible = True
-        Call HPColorChange
     Else
-        If m_CurrentHP - m_allhp = 0 Then
-            labelcurrenthp.Visible = False
-        Else
-            labelcurrenthp.Caption = m_CurrentHP - m_allhp
-        End If
+        labelcurrenthp.Caption = m_CurrentHP - m_allhp
     End If
+    labelcurrenthp.Visible = True
+    Call HPColorChange
 End Property
 
 Public Property Get Level() As Integer
@@ -309,16 +305,20 @@ End Sub
 Private Sub HPColorChange()
     If m_ShowOnMode = True Then
         If m_CurrentHP = m_allhp Then
-          labelcurrenthp.ForeColor = RGB(255, 255, 255)
+            labelcurrenthp.ForeColor = RGB(255, 255, 255)
         End If
         If m_CurrentHP < m_allhp Then
-          labelcurrenthp.ForeColor = RGB(255, 255, 128)
+            labelcurrenthp.ForeColor = RGB(255, 255, 128)
         End If
         If m_CurrentHP <= m_allhp / 3 Then
-          labelcurrenthp.ForeColor = RGB(255, 0, 0)
+            labelcurrenthp.ForeColor = RGB(255, 0, 0)
         End If
     Else
-        labelcurrenthp.ForeColor = RGB(255, 255, 255)
+        If m_CurrentHP = m_allhp Then
+            labelcurrenthp.ForeColor = RGB(255, 255, 255)
+        Else
+            labelcurrenthp.ForeColor = RGB(255, 0, 0)
+        End If
     End If
 End Sub
 Private Sub ShowOnModeChange()
@@ -337,6 +337,7 @@ Else
         labelcurrenthp.Visible = False
     Else
         labelcurrenthp.Caption = m_CurrentHP - m_allhp
+        labelcurrenthp.Visible = True
     End If
     labelname.Visible = False
     labellv.Caption = "?"

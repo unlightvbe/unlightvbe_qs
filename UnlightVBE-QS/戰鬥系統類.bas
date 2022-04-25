@@ -3184,7 +3184,7 @@ If tn <= 18 Then
             pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
             pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
             FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
             FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
             pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
             戰鬥系統類.座標計算_使用者手牌
@@ -3217,7 +3217,7 @@ If tn <= 18 Then
             pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
             pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
             FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
             pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
             戰鬥系統類.座標計算_電腦手牌
             牌移動暫時變數(3) = 公用牌實體卡片分隔紀錄數(3) + tn
@@ -3279,28 +3279,28 @@ Sub 技能說明載入_人物卡片背面_使用者(ByVal n As Integer)
 Dim i As Integer
 For i = 1 To 4
     '==============================主動技
-    FormMainMode.cardus(n).CardBack_主動技_技能名稱 = VBEPerson(1, n, 3, i, 1) & "#" & i
-    FormMainMode.cardus(n).CardBack_主動技_階段代碼 = VBEPerson(1, n, 3, i, 8) & "#" & i
-    FormMainMode.cardus(n).CardBack_主動技_距離代碼 = VBEPerson(1, n, 3, i, 9) & "#" & i
-    FormMainMode.cardus(n).CardBack_主動技_卡片代碼 = VBEPerson(1, n, 3, i, 10) & "#" & i
-    FormMainMode.cardus(n).CardBack_主動技_技能說明 = VBEPerson(1, n, 3, i, 5) & "#" & i
+    FormMainMode.cardus(n).CardBack_主動技_技能名稱 i, VBEPerson(1, n, 3, i, 1)
+    FormMainMode.cardus(n).CardBack_主動技_階段代碼 i, Val(VBEPerson(1, n, 3, i, 8))
+    FormMainMode.cardus(n).CardBack_主動技_距離代碼 i, VBEPerson(1, n, 3, i, 9)
+    FormMainMode.cardus(n).CardBack_主動技_卡片代碼 i, VBEPerson(1, n, 3, i, 10)
+    FormMainMode.cardus(n).CardBack_主動技_技能說明 i, VBEPerson(1, n, 3, i, 5)
     '==============================被動技
-    FormMainMode.cardus(n).CardBack_被動技_技能名稱 = VBEPerson(1, n, 3, i + 4, 1) & "#" & i
-    FormMainMode.cardus(n).CardBack_被動技_技能說明 = VBEPerson(1, n, 3, i + 4, 2) & "#" & i
+    FormMainMode.cardus(n).CardBack_被動技_技能名稱 i, VBEPerson(1, n, 3, i + 4, 1)
+    FormMainMode.cardus(n).CardBack_被動技_技能說明 i, VBEPerson(1, n, 3, i + 4, 2)
 Next
 End Sub
 Sub 技能說明載入_人物卡片背面_電腦(ByVal n As Integer)
 Dim i As Integer
 For i = 1 To 4
     '==============================主動技
-    FormMainMode.cardcom(n).CardBack_主動技_技能名稱 = VBEPerson(2, n, 3, i, 1) & "#" & i
-    FormMainMode.cardcom(n).CardBack_主動技_階段代碼 = VBEPerson(2, n, 3, i, 8) & "#" & i
-    FormMainMode.cardcom(n).CardBack_主動技_距離代碼 = VBEPerson(2, n, 3, i, 9) & "#" & i
-    FormMainMode.cardcom(n).CardBack_主動技_卡片代碼 = VBEPerson(2, n, 3, i, 10) & "#" & i
-    FormMainMode.cardcom(n).CardBack_主動技_技能說明 = VBEPerson(2, n, 3, i, 5) & "#" & i
+    FormMainMode.cardcom(n).CardBack_主動技_技能名稱 i, VBEPerson(2, n, 3, i, 1)
+    FormMainMode.cardcom(n).CardBack_主動技_階段代碼 i, Val(VBEPerson(2, n, 3, i, 8))
+    FormMainMode.cardcom(n).CardBack_主動技_距離代碼 i, VBEPerson(2, n, 3, i, 9)
+    FormMainMode.cardcom(n).CardBack_主動技_卡片代碼 i, VBEPerson(2, n, 3, i, 10)
+    FormMainMode.cardcom(n).CardBack_主動技_技能說明 i, VBEPerson(2, n, 3, i, 5)
     '==============================被動技
-    FormMainMode.cardcom(n).CardBack_被動技_技能名稱 = VBEPerson(2, n, 3, i + 4, 1) & "#" & i
-    FormMainMode.cardcom(n).CardBack_被動技_技能說明 = VBEPerson(2, n, 3, i + 4, 2) & "#" & i
+    FormMainMode.cardcom(n).CardBack_被動技_技能名稱 i, VBEPerson(2, n, 3, i + 4, 1)
+    FormMainMode.cardcom(n).CardBack_被動技_技能說明 i, VBEPerson(2, n, 3, i + 4, 2)
 Next
 End Sub
 
@@ -3309,14 +3309,14 @@ Dim n As Integer, i As Integer
 For n = 1 To 2
     For i = 1 To 4
         '==============================主動技
-        Formchangeperson.card(n).CardBack_主動技_技能名稱 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 1) & "#" & i
-        Formchangeperson.card(n).CardBack_主動技_階段代碼 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 8) & "#" & i
-        Formchangeperson.card(n).CardBack_主動技_距離代碼 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 9) & "#" & i
-        Formchangeperson.card(n).CardBack_主動技_卡片代碼 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 10) & "#" & i
-        Formchangeperson.card(n).CardBack_主動技_技能說明 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 5) & "#" & i
+        Formchangeperson.card(n).CardBack_主動技_技能名稱 i, VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 1)
+        Formchangeperson.card(n).CardBack_主動技_階段代碼 i, Val(VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 8))
+        Formchangeperson.card(n).CardBack_主動技_距離代碼 i, VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 9)
+        Formchangeperson.card(n).CardBack_主動技_卡片代碼 i, VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 10)
+        Formchangeperson.card(n).CardBack_主動技_技能說明 i, VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i, 5)
         '==============================被動技
-        Formchangeperson.card(n).CardBack_被動技_技能名稱 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i + 4, 1) & "#" & i
-        Formchangeperson.card(n).CardBack_被動技_技能說明 = VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i + 4, 2) & "#" & i
+        Formchangeperson.card(n).CardBack_被動技_技能名稱 i, VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i + 4, 1)
+        Formchangeperson.card(n).CardBack_被動技_技能說明 i, VBEPerson(1, 角色待機人物紀錄數(1, n + 1), 3, i + 4, 2)
     Next
 Next
 End Sub
@@ -3337,7 +3337,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\021.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\021.png"
                             pagecardnum(m, 8) = "021"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3352,7 +3352,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\019.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\019.png"
                             pagecardnum(m, 8) = "019"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3367,7 +3367,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\017.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\017.png"
                             pagecardnum(m, 8) = "017"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3382,7 +3382,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\025.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\025.png"
                             pagecardnum(m, 8) = "025"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3397,7 +3397,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\024.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\024.png"
                             pagecardnum(m, 8) = "024"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3412,7 +3412,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\023.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\023.png"
                             pagecardnum(m, 8) = "023"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3427,7 +3427,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\026.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\026.png"
                             pagecardnum(m, 8) = "026"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3442,7 +3442,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a3a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\027.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\027.png"
                             pagecardnum(m, 8) = "027"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3457,7 +3457,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a1a
                             pagecardnum(m, 4) = b6b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\001.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\001.png"
                             pagecardnum(m, 8) = "001"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3472,7 +3472,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\011.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\011.png"
                             pagecardnum(m, 8) = "011"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3487,7 +3487,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\007.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\007.png"
                             pagecardnum(m, 8) = "007"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3502,7 +3502,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\006.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\006.png"
                             pagecardnum(m, 8) = "006"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3517,7 +3517,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\004.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\004.png"
                             pagecardnum(m, 8) = "004"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3532,7 +3532,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b5b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\028.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\028.png"
                             pagecardnum(m, 8) = "028"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3547,7 +3547,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\012.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\012.png"
                             pagecardnum(m, 8) = "012"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3562,7 +3562,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\009.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\009.png"
                             pagecardnum(m, 8) = "009"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3577,7 +3577,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\008.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\008.png"
                             pagecardnum(m, 8) = "008"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3592,7 +3592,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\005.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\005.png"
                             pagecardnum(m, 8) = "005"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3607,7 +3607,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\013.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\013.png"
                             pagecardnum(m, 8) = "013"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3622,7 +3622,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\010.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\010.png"
                             pagecardnum(m, 8) = "010"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3637,7 +3637,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\003.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\003.png"
                             pagecardnum(m, 8) = "003"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3652,7 +3652,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\002.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\002.png"
                             pagecardnum(m, 8) = "002"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3667,7 +3667,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b4b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\015.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\015.png"
                             pagecardnum(m, 8) = "015"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3682,7 +3682,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\020.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\020.png"
                             pagecardnum(m, 8) = "020"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3697,7 +3697,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\018.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\018.png"
                             pagecardnum(m, 8) = "018"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3712,7 +3712,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\016.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\016.png"
                             pagecardnum(m, 8) = "016"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3727,7 +3727,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\014.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\014.png"
                             pagecardnum(m, 8) = "014"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3742,7 +3742,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b5b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\022.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\022.png"
                             pagecardnum(m, 8) = "022"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3757,7 +3757,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b5b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\029.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\029.png"
                             pagecardnum(m, 8) = "029"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1

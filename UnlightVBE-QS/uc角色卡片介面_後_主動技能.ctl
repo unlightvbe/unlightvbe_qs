@@ -1,0 +1,150 @@
+VERSION 5.00
+Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
+Begin VB.UserControl uc角色卡片介面_後_主動技能 
+   Appearance      =   0  '平面
+   BackColor       =   &H80000005&
+   BackStyle       =   0  '透明
+   ClientHeight    =   4380
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   6015
+   ClipBehavior    =   0  '無
+   HitBehavior     =   2  '使用繪圖區域
+   ScaleHeight     =   4380
+   ScaleWidth      =   6015
+   Windowless      =   -1  'True
+   Begin VB.Image cardpassiveChickimage 
+      Height          =   300
+      Left            =   1240
+      Top             =   0
+      Width           =   1260
+   End
+   Begin UnlightVBE.uc卡片背面_主動技能 cardbackStatus 
+      Height          =   495
+      Index           =   1
+      Left            =   100
+      TabIndex        =   0
+      Top             =   330
+      Width           =   2415
+      _ExtentX        =   4260
+      _ExtentY        =   873
+   End
+   Begin UnlightVBE.uc卡片背面_主動技能 cardbackStatus 
+      Height          =   495
+      Index           =   2
+      Left            =   100
+      TabIndex        =   1
+      Top             =   1280
+      Width           =   2415
+      _ExtentX        =   4260
+      _ExtentY        =   873
+   End
+   Begin UnlightVBE.uc卡片背面_主動技能 cardbackStatus 
+      Height          =   495
+      Index           =   3
+      Left            =   100
+      TabIndex        =   2
+      Top             =   800
+      Width           =   2415
+      _ExtentX        =   4260
+      _ExtentY        =   873
+   End
+   Begin UnlightVBE.uc卡片背面_主動技能 cardbackStatus 
+      Height          =   495
+      Index           =   4
+      Left            =   100
+      TabIndex        =   3
+      Top             =   1720
+      Width           =   2415
+      _ExtentX        =   4260
+      _ExtentY        =   873
+   End
+   Begin VB.Label personcardback_main 
+      BackStyle       =   0  '透明
+      Caption         =   "DEF+7。防禦成功時，對手受到與所超過之防禦同值的傷害"
+      BeginProperty Font 
+         Name            =   "Noto Sans T Chinese DemiLight"
+         Size            =   8.25
+         Charset         =   136
+         Weight          =   350
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   1215
+      Left            =   120
+      TabIndex        =   4
+      Top             =   2280
+      Width           =   2295
+   End
+   Begin ImageX.aicAlphaImage aicAlphaImage1 
+      Height          =   3600
+      Left            =   0
+      Top             =   0
+      Width           =   2520
+      _ExtentX        =   4445
+      _ExtentY        =   6350
+      Image           =   "uc角色卡片介面_後_主動技能.ctx":0000
+      Props           =   5
+   End
+End
+Attribute VB_Name = "uc角色卡片介面_後_主動技能"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+Option Explicit
+Private m_cardback_activecheck As Integer
+Public Event ClickPassive()
+Public Event ClickBack()
+Public Sub 全重設()
+Dim i As Integer, k As Integer
+For i = 1 To 4
+      Call cardbackStatus(i).ResetAll
+Next
+personcardback_main.Caption = ""
+m_cardback_activecheck = 0
+End Sub
+Public Sub 主動技_技能名稱(ByVal num As Integer, ByVal skillstr As String)
+    If num >= 1 And num <= 4 Then
+        cardbackStatus(num).SkillName = skillstr
+    End If
+End Sub
+Public Sub 主動技_技能說明(ByVal num As Integer, ByVal skillstr As String)
+    If num >= 1 And num <= 4 Then
+        cardbackStatus(num).SkillDescription = skillstr
+    End If
+End Sub
+Public Sub 主動技_階段代碼(ByVal num As Integer, ByVal newTurnNum As Integer)
+    If num >= 1 And num <= 4 Then
+        cardbackStatus(num).turnnum = newTurnNum
+    End If
+End Sub
+Public Sub 主動技_距離代碼(ByVal num As Integer, ByVal newstr As String)
+    If num >= 1 And num <= 4 Then
+        cardbackStatus(num).RangeStr = newstr
+    End If
+End Sub
+Public Sub 主動技_卡片代碼(ByVal num As Integer, ByVal newstr As String)
+    If num >= 1 And num <= 4 Then
+        cardbackStatus(num).CardStr = newstr
+    End If
+End Sub
+
+Private Sub aicAlphaImage1_Click(ByVal Button As Integer)
+RaiseEvent ClickBack
+End Sub
+
+Private Sub cardpassiveChickimage_Click()
+RaiseEvent ClickPassive
+End Sub
+
+Private Sub cardbackStatus_ClickBR(Index As Integer)
+m_cardback_activecheck = Index
+personcardback_main.Caption = cardbackStatus(Index).SkillDescription
+End Sub
+
+Private Sub personcardback_main_Click()
+RaiseEvent ClickBack
+End Sub

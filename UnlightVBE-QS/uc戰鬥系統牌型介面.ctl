@@ -297,7 +297,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
    End
    Begin VB.Image cardpagejpg 
       Height          =   465
-      Left            =   240
+      Left            =   120
       Picture         =   "uc戰鬥系統牌型介面.ctx":3899
       Top             =   960
       Width           =   570
@@ -604,7 +604,7 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       EndProperty
       ForeColor       =   &H00FFFFFF&
       Height          =   600
-      Left            =   720
+      Left            =   560
       TabIndex        =   2
       Top             =   960
       Width           =   855
@@ -669,12 +669,15 @@ Begin VB.UserControl uc戰鬥系統牌型介面
       Top             =   0
       Width           =   11415
    End
-   Begin VB.Image cardunderjpg 
-      Height          =   270
+   Begin ImageX.aicAlphaImage cardunderjpg 
+      Height          =   360
       Left            =   0
-      Picture         =   "uc戰鬥系統牌型介面.ctx":335BB
-      Top             =   1080
-      Width           =   2280
+      Top             =   1020
+      Width           =   1800
+      _ExtentX        =   3175
+      _ExtentY        =   635
+      Image           =   "uc戰鬥系統牌型介面.ctx":335BB
+      Props           =   5
    End
 End
 Attribute VB_Name = "uc戰鬥系統牌型介面"
@@ -714,9 +717,9 @@ Public Property Let Cardnum(ByVal New_Cardnum As Integer)
    '=================
    pageul.Caption = Me.Cardnum
    If pageul.FontName <> "Bradley Gratis" Then
-        pageul.FontSize = 20
+        pageul.FontSize = 16
    Else
-        pageul.FontSize = 24
+        pageul.FontSize = 20
    End If
 End Property
 Public Property Get Passive_介面顯示() As Boolean
@@ -878,7 +881,7 @@ Private Sub stagejpgn_MouseMove(Button As Integer, Shift As Integer, X As Single
 RaiseEvent InterfaceMouseMove
 End Sub
 Sub ActiveDescription(ByVal uscom As Integer, ByVal num As Integer, ByVal skillobj As clsPersonActiveSkill)
-Me.ActiveSkillName uscom, num, skillobj.Name
+Me.ActiveSkillName uscom, num, skillobj.name
 Me.ActiveSkillNameFontSize uscom, num, skillobj.NameFontSize
 End Sub
 

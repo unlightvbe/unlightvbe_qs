@@ -43,7 +43,7 @@ Public Property Let Filepath(ByVal New_Filepath As String)
     Set Player = New FilgraphManager
     Set PlayerAU = Player
     Set PlayerPos = Player
-    Player.RenderFile Me.Filepath
+    Player.RenderFile m_Filepath
     PlayerIsRender = True
 End Property
 Public Property Get IsLoop() As Boolean
@@ -70,7 +70,7 @@ Public Property Let Volume(ByVal New_Volume As Integer)
    m_Volume = New_Volume
    PropertyChanged "Volume"
    '========================
-    If Me.Mute = False And PlayerIsPlaying = True Then
+    If m_Mute = False And PlayerIsPlaying = True Then
          Me.AdjustVolume
     End If
 End Property
@@ -86,6 +86,7 @@ If PlayerPos.CurrentPosition > 0 Then PlayerPos.CurrentPosition = 0
 PlayerIsPlaying = False
 Timerplay.Enabled = False
 PlayerIsRender = False
+Me.Filepath = m_Filepath 'ReRender
 End Sub
 Private Sub Timerplay_Timer()
 If PlayerIsPlaying = True And PlayerPos.CurrentPosition > 0 Then
@@ -110,7 +111,7 @@ If PlayerIsRender = True Then
     If Me.Mute = True Then
         PlayerAU.Volume = -10000
     Else
-        PlayerAU.Volume = (Me.Volume * 40) - 4000
+        PlayerAU.Volume = (m_Volume * 40) - 4000
     End If
 End If
 End Sub

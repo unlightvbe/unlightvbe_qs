@@ -31,36 +31,14 @@ Begin VB.Form FormMainMode
       BorderStyle     =   0  '沒有框線
       ForeColor       =   &H80000008&
       Height          =   9910
-      Left            =   3000
+      Left            =   4800
       Picture         =   "FormMainMode.frx":0CCA
       ScaleHeight     =   9915
       ScaleWidth      =   11340
       TabIndex        =   0
-      Top             =   120
+      Top             =   720
       Visible         =   0   'False
       Width           =   11340
-      Begin UnlightVBE.uc角色卡片介面 cardcom 
-         Height          =   3615
-         Index           =   0
-         Left            =   600
-         TabIndex        =   130
-         Top             =   6120
-         Visible         =   0   'False
-         Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
-      End
-      Begin UnlightVBE.uc角色卡片介面 cardus 
-         Height          =   3615
-         Index           =   0
-         Left            =   0
-         TabIndex        =   129
-         Top             =   6120
-         Visible         =   0   'False
-         Width           =   2535
-         _extentx        =   2355
-         _extenty        =   3625
-      End
       Begin VB.CommandButton 影子設定 
          Caption         =   "影子設定"
          BeginProperty Font 
@@ -566,6 +544,36 @@ Begin VB.Form FormMainMode
          Left            =   7560
          Top             =   1080
       End
+      Begin UnlightVBE.uc角色卡片介面 cardcom 
+         Height          =   3615
+         Index           =   0
+         Left            =   600
+         TabIndex        =   130
+         Top             =   6120
+         Visible         =   0   'False
+         Width           =   2535
+         _ExtentX        =   2355
+         _ExtentY        =   3625
+      End
+      Begin UnlightVBE.uc角色卡片介面 cardus 
+         Height          =   3615
+         Index           =   0
+         Left            =   0
+         TabIndex        =   129
+         Top             =   6120
+         Visible         =   0   'False
+         Width           =   2535
+         _ExtentX        =   2355
+         _ExtentY        =   3625
+      End
+      Begin UnlightVBE.uc技能動畫介面 PEAFAnimateInterface 
+         Height          =   9910
+         Left            =   0
+         Top             =   0
+         Width           =   11340
+         _ExtentX        =   20003
+         _ExtentY        =   17489
+      End
       Begin UnlightVBE.uc角色小卡 PEAFpersoncardcom 
          Height          =   495
          Index           =   3
@@ -636,13 +644,13 @@ Begin VB.Form FormMainMode
          _ExtentY        =   5741
       End
       Begin UnlightVBE.uc戰鬥系統牌型介面 PEAFInterface 
-         Height          =   9910
+         Height          =   9915
          Left            =   0
          TabIndex        =   127
          Top             =   0
          Width           =   11340
-         _extentx        =   2143
-         _extenty        =   2778
+         _ExtentX        =   2143
+         _ExtentY        =   2778
       End
       Begin VB.Label bloodnumcom2 
          Alignment       =   2  '置中對齊
@@ -1064,7 +1072,7 @@ Begin VB.Form FormMainMode
          _ExtentY        =   1905
          Image           =   "FormMainMode.frx":29D84
          Scaler          =   3
-         Props           =   5
+         Props           =   13
       End
    End
    Begin VB.PictureBox PEGameFreeModeSettingForm 
@@ -1341,7 +1349,7 @@ Begin VB.Form FormMainMode
             _ExtentX        =   5530
             _ExtentY        =   2143
          End
-         Begin VB.Image bnstart 
+         Begin VB.Image PEGFbnstart 
             Height          =   510
             Left            =   9600
             Picture         =   "FormMainMode.frx":2E650
@@ -2077,36 +2085,6 @@ Begin VB.Form FormMainMode
          Width           =   11400
       End
    End
-   Begin VB.PictureBox PEMusicForm 
-      Appearance      =   0  '平面
-      BackColor       =   &H80000005&
-      BorderStyle     =   0  '沒有框線
-      ForeColor       =   &H80000008&
-      Height          =   7935
-      Left            =   1320
-      ScaleHeight     =   7935
-      ScaleWidth      =   11895
-      TabIndex        =   131
-      Top             =   1200
-      Visible         =   0   'False
-      Width           =   11895
-      Begin VB.Timer PEMFtr1 
-         Enabled         =   0   'False
-         Interval        =   10
-         Left            =   240
-         Top             =   1680
-      End
-      Begin UnlightVBE.ucMusicPlayer cMusicPlayer 
-         Height          =   855
-         Index           =   0
-         Left            =   840
-         TabIndex        =   132
-         Top             =   3480
-         Width           =   1095
-         _ExtentX        =   1931
-         _ExtentY        =   1508
-      End
-   End
    Begin VB.PictureBox PEStartForm 
       Appearance      =   0  '平面
       BackColor       =   &H00000000&
@@ -2146,6 +2124,36 @@ Begin VB.Form FormMainMode
          Top             =   9120
          Visible         =   0   'False
          Width           =   2655
+      End
+   End
+   Begin VB.PictureBox PEMusicForm 
+      Appearance      =   0  '平面
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  '沒有框線
+      ForeColor       =   &H80000008&
+      Height          =   7935
+      Left            =   1320
+      ScaleHeight     =   7935
+      ScaleWidth      =   11895
+      TabIndex        =   131
+      Top             =   1200
+      Visible         =   0   'False
+      Width           =   11895
+      Begin VB.Timer PEMFtr1 
+         Enabled         =   0   'False
+         Interval        =   10
+         Left            =   240
+         Top             =   1680
+      End
+      Begin UnlightVBE.ucMusicPlayer cMusicPlayer 
+         Height          =   855
+         Index           =   0
+         Left            =   840
+         TabIndex        =   132
+         Top             =   3480
+         Width           =   1095
+         _ExtentX        =   1931
+         _ExtentY        =   1508
       End
    End
    Begin VB.PictureBox PEAttackingStartForm 
@@ -3829,16 +3837,27 @@ Select Case PEAEtr1num
          End If
          FormMainMode.cMusicPlayer(0).MusicPlay
     Case 50
-         bnreturn.Visible = True
-         bnreturnt.Visible = True
-         bn.Visible = True
-         bnt.Visible = True
          PEAEtr1.Enabled = False
          '======================
          戰鬥系統類.遊戲對戰結束物件消滅
          '======================
+         If Formsetting.chkautocontinuemode.Value = 1 Then
+            bnreturnt_Click
+         End If
+         bnreturn.Visible = True
+         bnreturnt.Visible = True
+         bn.Visible = True
+         bnt.Visible = True
 End Select
 PEAEtr1num = PEAEtr1num + 1
+End Sub
+
+Private Sub PEAFAnimateInterface_AnimateCheckPoint(ByVal uscom As Integer)
+Vss_AtkingStartPlayNum(2) = 1 '技能執行中啟動
+End Sub
+
+Private Sub PEAFAnimateInterface_AnimateEnd(ByVal uscom As Integer)
+Vss_AtkingStartPlayNum(3) = 1
 End Sub
 
 Private Sub PEAFInterface_ActiveMouseEnter(ByVal uscom As Integer, ByVal num As Integer)
@@ -3857,14 +3876,16 @@ Select Case uscom
 End Select
 '============================
 Set tmpobj = 戰鬥系統類.ActiveSkillObj(uscom, num)
-PEAFatkinghelpc.Stage = tmpobj.Stage
-PEAFatkinghelpc.Distance = tmpobj.Distance
-PEAFatkinghelpc.card = tmpobj.card
-PEAFatkinghelpc.Effect = tmpobj.Effect
-PEAFatkinghelpc.Left = atkinghelpxy(uscom, num, 1)
-PEAFatkinghelpc.Top = atkinghelpxy(uscom, num, 2)
-PEAFatkinghelpc.ZOrder
-PEAFatkinghelpc.Visible = True
+If Not tmpobj Is Nothing Then
+    PEAFatkinghelpc.Stage = tmpobj.Stage
+    PEAFatkinghelpc.Distance = tmpobj.Distance
+    PEAFatkinghelpc.card = tmpobj.card
+    PEAFatkinghelpc.Effect = tmpobj.Effect
+    PEAFatkinghelpc.Left = atkinghelpxy(uscom, num, 1)
+    PEAFatkinghelpc.Top = atkinghelpxy(uscom, num, 2)
+    PEAFatkinghelpc.ZOrder
+    PEAFatkinghelpc.Visible = True
+End If
 End Sub
 
 Private Sub PEAFInterface_ActiveMouseExit(ByVal uscom As Integer, ByVal num As Integer)
@@ -5664,7 +5685,7 @@ If 目前數(6) > pageqlead(2) Then
 End If
     card(出牌順序統計暫時變數(3, 目前數(6), 2)).Width = 810
     card(出牌順序統計暫時變數(3, 目前數(6), 2)).Height = 1260
-    card(出牌順序統計暫時變數(3, 目前數(6), 2)).CardImage = app_path & "card\" & pagecardnum(出牌順序統計暫時變數(3, 目前數(6), 2), 8) & ".png"
+    card(出牌順序統計暫時變數(3, 目前數(6), 2)).cardImage = app_path & "card\" & pagecardnum(出牌順序統計暫時變數(3, 目前數(6), 2), 8) & ".png"
     card(出牌順序統計暫時變數(3, 目前數(6), 2)).CardRotationType = pageonin(出牌順序統計暫時變數(3, 目前數(6), 2))
     一般系統類.音效播放 4
 End Sub
@@ -5762,7 +5783,7 @@ Formsetting.Top = FormMainMode.Top + 300
 Formsetting.Show 1
 End Sub
 
-Private Sub bnstart_Click()
+Sub PEGFbnstart_Click()
 PEGameFreeModeSettingForm.Enabled = False
 一般系統類.開始遊戲進行程序
 End Sub

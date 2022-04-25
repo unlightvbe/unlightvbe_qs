@@ -479,9 +479,9 @@ Dim mypath As String, mydir As String
   Loop
 'MsgBox "1-5-2-4"
 End Sub
-Function 事件卡資料庫(ByVal Name As String, ByVal 目標 As Integer) As String
+Function 事件卡資料庫(ByVal name As String, ByVal 目標 As Integer) As String
 '目標:1-傳回分類號/2-傳回事件卡檔案名稱/3-傳回類型數值
-Select Case Name
+Select Case name
     Case "劍1"
        Select Case 目標
            Case 1
@@ -1434,6 +1434,8 @@ Next
 '==================
 BattleTurn = 1
 FormMainMode.PEAFInterface.turn = BattleTurn
+FormMainMode.PEAFAnimateInterface.MusicPlayerObj = FormMainMode.cMusicPlayer(5)
+FormMainMode.PEAFAnimateInterface.ImageMaskUse = Formsetting.chkImageMaskUse.Value
 End Sub
 Sub 自由戰鬥模式設定表單讀入程序()
 Dim i, j As Integer
@@ -1467,14 +1469,15 @@ FormMainMode.cMusicPlayer(0).MusicPlay
 FormMainMode.personreadifus.Visible = False
 End Sub
 Sub 遊戲初始讀入程序()
-Dim i As Integer
-'=====以下是背景音樂及SE初始設定
-    For i = FormMainMode.cMusicPlayer.UBound + 1 To 8
+    Dim i As Integer
+    '=====以下是背景音樂及SE初始設定
+    For i = FormMainMode.cMusicPlayer.UBound + 1 To 11
         Load FormMainMode.cMusicPlayer(i)
     Next
     FormMainMode.cMusicPlayer(0).Filepath = app_path & "mp3\ulbgm03.mp3"
     FormMainMode.cMusicPlayer(0).Volume = 50
     FormMainMode.cMusicPlayer(0).IsLoop = True
+    一般系統類.音效初始設定
     For i = 1 To FormMainMode.cMusicPlayer.UBound
           FormMainMode.cMusicPlayer(i).Volume = 45
     Next
@@ -1483,7 +1486,7 @@ Sub 主選單_PEStartForm顯示()
 FormMainMode.PEStartForm.Left = 0
 FormMainMode.PEStartForm.Top = 0
 FormMainMode.Width = 11430
-FormMainMode.Height = 10335
+FormMainMode.Height = 10325
 FormMainMode.PEStartForm.Visible = True
 FormMainMode.PEStartForm.ZOrder
 '====================
@@ -1495,7 +1498,7 @@ Sub 主選單_PEGameFreeModeSettingForm顯示()
 FormMainMode.PEGameFreeModeSettingForm.Left = 0
 FormMainMode.PEGameFreeModeSettingForm.Top = 0
 FormMainMode.Width = 11430
-FormMainMode.Height = 10335
+FormMainMode.Height = 10325
 FormMainMode.PEGameFreeModeSettingForm.Visible = True
 FormMainMode.PEGameFreeModeSettingForm.Enabled = True
 FormMainMode.PEGameFreeModeSettingForm.ZOrder
@@ -1506,13 +1509,15 @@ If 通知表單是否已出現 = False Then
         一般系統類.通知表單顯示 1
     End If
 End If
-
+If Formsetting.chkautocontinuemode.Value = 1 Then
+    FormMainMode.PEGFbnstart_Click
+End If
 End Sub
 Sub 主選單_PEAttackingForm顯示()
 FormMainMode.PEAttackingForm.Left = 0
 FormMainMode.PEAttackingForm.Top = 0
 FormMainMode.Width = 11430
-FormMainMode.Height = 10335
+FormMainMode.Height = 10325
 FormMainMode.PEAttackingForm.Visible = True
 FormMainMode.PEAttackingForm.ZOrder
 End Sub
@@ -1520,7 +1525,7 @@ Sub 主選單_PEAttackingStartForm顯示()
 FormMainMode.PEAttackingStartForm.Left = 0
 FormMainMode.PEAttackingStartForm.Top = 0
 FormMainMode.Width = 11430
-FormMainMode.Height = 10335
+FormMainMode.Height = 10325
 FormMainMode.PEASpersontalk.Visible = False
 FormMainMode.PEAttackingStartForm.Visible = True
 FormMainMode.PEAttackingStartForm.ZOrder
@@ -1531,7 +1536,7 @@ Sub 主選單_PEAttackingEndingForm顯示()
 FormMainMode.PEAttackingEndingForm.Left = 0
 FormMainMode.PEAttackingEndingForm.Top = 0
 FormMainMode.Width = 11430
-FormMainMode.Height = 10335
+FormMainMode.Height = 10325
 FormMainMode.PEAttackingEndingForm.Visible = True
 FormMainMode.PEAttackingEndingForm.ZOrder
 '================
@@ -1713,35 +1718,45 @@ Select Case num
 End Select
 End Sub
 Sub 音效播放(ByVal num As Integer)
-Select Case num
-    Case 1
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse06.mp3"
-    Case 2
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse09.mp3"
-    Case 3
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse08.mp3"
-    Case 4
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse29.mp3"
-    Case 5
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse13.mp3"
-    Case 6
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse12.mp3"
-    Case 7
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse11.mp3"
-    Case 8
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse10_f.mp3"
-    Case 9
-        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse23.mp3"
-    Case 10
-        FormMainMode.cMusicPlayer(1).Filepath = app_path & "mp3\ulse22.mp3"
-        FormMainMode.cMusicPlayer(1).MusicPlay
-        Exit Sub
-    Case 11
-        FormMainMode.cMusicPlayer(3).Filepath = app_path & "mp3\ulse01.mp3"
-        FormMainMode.cMusicPlayer(3).MusicPlay
-        Exit Sub
-End Select
+'Select Case num
+'    Case 1
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse06.mp3"
+'    Case 2
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse09.mp3"
+'    Case 3
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse08.mp3"
+'    Case 4
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse29.mp3"
+'    Case 5
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse13.mp3"
+'    Case 6
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse12.mp3"
+'    Case 7
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse11.mp3"
+'    Case 8
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse10_f.mp3"
+'    Case 9
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse23.mp3"
+'    Case 10
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse22.mp3"
+'    Case 11
+'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse01.mp3"
+'End Select
+FormMainMode.cMusicPlayer(num).MusicStop
 FormMainMode.cMusicPlayer(num).MusicPlay
+End Sub
+Sub 音效初始設定()
+FormMainMode.cMusicPlayer(1).Filepath = app_path & "mp3\ulse06.mp3"
+FormMainMode.cMusicPlayer(2).Filepath = app_path & "mp3\ulse09.mp3"
+FormMainMode.cMusicPlayer(3).Filepath = app_path & "mp3\ulse08.mp3"
+FormMainMode.cMusicPlayer(4).Filepath = app_path & "mp3\ulse29.mp3"
+FormMainMode.cMusicPlayer(5).Filepath = app_path & "mp3\ulse13.mp3"
+FormMainMode.cMusicPlayer(6).Filepath = app_path & "mp3\ulse12.mp3"
+FormMainMode.cMusicPlayer(7).Filepath = app_path & "mp3\ulse11.mp3"
+FormMainMode.cMusicPlayer(8).Filepath = app_path & "mp3\ulse10_f.mp3"
+FormMainMode.cMusicPlayer(9).Filepath = app_path & "mp3\ulse23.mp3"
+FormMainMode.cMusicPlayer(10).Filepath = app_path & "mp3\ulse22.mp3"
+FormMainMode.cMusicPlayer(11).Filepath = app_path & "mp3\ulse01.mp3"
 End Sub
 Sub 離開遊戲提示(Cancel As Integer, UnloadMode As Integer)
 Dim YesNo As VbMsgBoxResult

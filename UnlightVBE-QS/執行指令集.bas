@@ -80,6 +80,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                執行指令集.執行指令_場地距離控制 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "AtkingStartPlay"
                                執行指令集.執行指令_技能動畫執行 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "AtkingStartPlayAnimate"
+                               執行指令集.執行指令_技能動畫執行_逐格動畫 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                         Case "AtkingSeizeEnemyCards"
                                執行指令集.執行指令_奪取對手卡牌 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "AtkingDrawCards"
@@ -756,46 +758,9 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
     If UBound(commadstr3) <> 1 Or commadtype <> 1 Or atkingnum = 9 Or (vbecommadnum(4, vbecommadtotplayNow) = 13 Or vbecommadnum(4, vbecommadtotplayNow) = 33) Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Select Case uscom
-                Case 1 '==使用者方
-                        Formatkingus.atkingusjpg.LoadImage_FromFile App.Path & commadstr3(0)
-                        Formatkingcom.atkingcomjpg.Mirror = aiMirrorNone
-                        Formatkingus.atkingusjpg.Visible = False
-                        Formatkingus.atkingusjpg.ScaleMethod = aiActualSize
-                        Formatkingus.atkingusjpg.Left = 0
-                        Formatkingus.atkingusjpg.Top = 0
-                        Formatkingus.Width = Formatkingus.atkingusjpg.Width + 60
-                        Formatkingus.Height = Formatkingus.atkingusjpg.Height + 420
-                        目前數(29) = 0
-                        FormMainMode.atkingtrus.Enabled = True
-                Case 2 '==電腦方
-                        Formatkingcom.atkingcomjpg.LoadImage_FromFile App.Path & commadstr3(0)
-                        Formatkingcom.atkingcomjpg.Mirror = aiMirrorHorizontal
-                        Formatkingcom.atkingcomjpg.Visible = False
-                        Formatkingcom.atkingcomjpg.ScaleMethod = aiActualSize
-                        Formatkingcom.atkingcomjpg.Left = 0
-                        Formatkingcom.atkingcomjpg.Top = 0
-                        Formatkingcom.Width = Formatkingcom.atkingcomjpg.Width + 60
-                        Formatkingcom.Height = Formatkingcom.atkingcomjpg.Height + 420
-                        目前數(29) = 0
-                        FormMainMode.atkingtrcom.Enabled = True
-            End Select
-            Erase Vss_AtkingStartPlayNum
-            vbecommadnum(2, vbecommadtotplayNow) = 2 '==等待時間
-        Case 2
-            If Vss_AtkingStartPlayNum(1) = 1 Then
-                Select Case uscom
-                    Case 1 '==使用者方
-                            If commadstr3(1) <> "0" Then
-                                Formatkingus.atkingusjpg.LoadImage_FromFile App.Path & commadstr3(1)
-                            End If
-                    Case 2 '==電腦方
-                            If commadstr3(1) <> "0" Then
-                                Formatkingcom.atkingcomjpg.LoadImage_FromFile App.Path & commadstr3(1)
-                            End If
-                End Select
-                vbecommadnum(2, vbecommadtotplayNow) = 3 '==等待時間
-            End If
+            If commadstr3(1) = "0" Then commadstr3(1) = ""
+            執行指令集.Sub_技能動畫執行_靜態 commadstr3(0), commadstr3(1), uscom
+            vbecommadnum(2, vbecommadtotplayNow) = 3 '==等待時間
         Case 3
             If Vss_AtkingStartPlayNum(2) = 1 Then
                 Dim vbecommadnumSecond As Integer '本層執行階段編號數
@@ -822,6 +787,7 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
             End If
         Case 4
             If Vss_AtkingStartPlayNum(3) = 1 Then
+                FormMainMode.Enabled = True
                 GoTo VssCommadExit
             End If
     End Select
@@ -834,6 +800,98 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "AtkingStartPlay", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_技能動畫執行_逐格動畫(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    Dim piclist As Collection, i As Integer
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) > 2 Or commadtype <> 1 Or atkingnum = 9 Or (vbecommadnum(4, vbecommadtotplayNow) = 13 Or vbecommadnum(4, vbecommadtotplayNow) = 33) Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If Formsetting.chkAtkingAnimateDisable.Value = 1 Then
+                Dim tmpstr1 As String, tmpstr2 As String
+                Select Case UBound(commadstr3)
+                    Case 0
+                        tmpstr1 = commadstr3(0) & "4.png"
+                        tmpstr2 = commadstr3(0) & "12.png"
+                    Case 1
+                        tmpstr1 = commadstr3(0) & commadstr3(1) & ".png"
+                        tmpstr2 = ""
+                    Case 2
+                        tmpstr1 = commadstr3(0) & commadstr3(1) & ".png"
+                        tmpstr2 = commadstr3(0) & commadstr3(2) & ".png"
+                End Select
+                執行指令集.Sub_技能動畫執行_靜態 tmpstr1, tmpstr2, uscom
+            Else
+                Set piclist = New Collection
+                For i = 1 To 16
+                    piclist.Add App.Path & commadstr3(0) & i & ".png"
+                Next
+                FormMainMode.PEAFAnimateInterface.AnimatePictureList = piclist
+                FormMainMode.PEAFAnimateInterface.uscom = uscom
+                '=======================
+                Erase Vss_AtkingStartPlayNum
+                FormMainMode.PEAFAnimateInterface.ZOrder
+                FormMainMode.Enabled = False
+                FormMainMode.PEAFAnimateInterface.AnimateStart
+            End If
+            vbecommadnum(2, vbecommadtotplayNow) = 3 '==等待時間
+        Case 3
+            If Vss_AtkingStartPlayNum(2) = 1 Then
+                Dim vbecommadnumSecond As Integer '本層執行階段編號數
+                '=======================
+                vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
+                '=======================
+                Dim VBEStageNumMainSec(1 To 1) As Integer
+                Dim buffvssnum As String
+                If vbecommadnum(3, vbecommadtotplayNow) <= 24 Then
+                    執行階段系統類.執行階段系統總主要程序_人物主動技能 uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                ElseIf vbecommadnum(3, vbecommadtotplayNow) > 24 And vbecommadnum(3, vbecommadtotplayNow) <= 48 Then
+                    執行階段系統類.執行階段系統總主要程序_人物被動技能 uscom, vbecommadnum(7, vbecommadtotplayNow), atkingnum, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                ElseIf vbecommadnum(3, vbecommadtotplayNow) > 48 And vbecommadnum(3, vbecommadtotplayNow) <= 54 Then
+                    執行階段系統類.執行階段系統總主要程序_人物實際狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                Else
+                    buffvssnum = VBEVSSBuffStr1(vbecommadnum(3, vbecommadtotplayNow) - 54)
+                    If CollectionExists(人物異常狀態列表(uscom, vbecommadnum(7, vbecommadtotplayNow)), buffvssnum) = True Then
+                        執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, vbecommadnum(7, vbecommadtotplayNow), buffvssnum, 61, vbecommadnum(6, vbecommadtotplayNow), VBEStageNumMainSec, vbecommadnumSecond
+                    End If
+                End If
+                '=======================
+                執行階段系統_宣告開始或結束 2
+                vbecommadnum(2, vbecommadtotplayNow) = 4 '==等待時間
+            End If
+        Case 4
+            If Vss_AtkingStartPlayNum(3) = 1 Then
+                FormMainMode.Enabled = True
+                GoTo VssCommadExit
+            End If
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "AtkingStartPlayAnimate", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub Sub_技能動畫執行_靜態(ByVal commadstr3_1 As String, ByVal commadstr3_2 As String, ByVal uscom As Integer)
+    Dim piclist As Collection
+    Set piclist = New Collection
+    piclist.Add App.Path & commadstr3_1
+    If commadstr3_2 <> "" Then
+        piclist.Add App.Path & commadstr3_2
+    End If
+    FormMainMode.PEAFAnimateInterface.AnimatePictureList = piclist
+    FormMainMode.PEAFAnimateInterface.uscom = uscom
+    '=======================
+    Erase Vss_AtkingStartPlayNum
+    FormMainMode.PEAFAnimateInterface.ZOrder
+    FormMainMode.Enabled = False
+    FormMainMode.PEAFAnimateInterface.AnimateStart
 End Sub
 Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
@@ -994,7 +1052,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
                                                         pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
                                                     End If
@@ -1021,7 +1079,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 5) = 2
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardRotationType = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
                                                         pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
@@ -1578,7 +1636,7 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
         Case 1
         Case 3
             If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-                vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+                vbecommadnum(4, vbecommadtotplayNow) <= 73 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select
@@ -1701,7 +1759,7 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
         Case 1
         Case 3
             If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-                vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+                vbecommadnum(4, vbecommadtotplayNow) <= 73 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select
@@ -1761,7 +1819,7 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
         Case 1
         Case 3
             If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-                vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+                vbecommadnum(4, vbecommadtotplayNow) <= 73 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select
@@ -1826,7 +1884,7 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
         Case 1
         Case 3
             If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-                vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+                vbecommadnum(4, vbecommadtotplayNow) <= 73 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select

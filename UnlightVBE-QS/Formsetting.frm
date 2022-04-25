@@ -28,10 +28,44 @@ Begin VB.Form Formsetting
    Begin VB.Frame 表單_系統 
       Caption         =   "系統"
       Height          =   5895
-      Left            =   9480
+      Left            =   9360
       TabIndex        =   125
-      Top             =   4320
+      Top             =   1800
       Width           =   9015
+      Begin VB.CheckBox chkImageMaskUse 
+         Caption         =   "技能動畫圖片遮罩(#000000)"
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   11.25
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   300
+         Left            =   240
+         TabIndex        =   145
+         Top             =   3840
+         Width           =   6015
+      End
+      Begin VB.CheckBox chkautocontinuemode 
+         Caption         =   "自動繼續模式"
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   11.25
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   300
+         Left            =   240
+         TabIndex        =   144
+         Top             =   3480
+         Width           =   6495
+      End
       Begin VB.ComboBox cbsimilarlevel 
          BeginProperty Font 
             Name            =   "微軟正黑體"
@@ -220,7 +254,7 @@ Begin VB.Form Formsetting
       Height          =   5895
       Left            =   9360
       TabIndex        =   51
-      Top             =   2040
+      Top             =   1080
       Visible         =   0   'False
       Width           =   9015
       Begin VB.ComboBox comboeventcarrdcom 
