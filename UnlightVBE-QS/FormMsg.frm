@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Begin VB.Form FormMessage 
    BorderStyle     =   1  '³æ½u©T©w
    Caption         =   "UnlightVBE"
@@ -38,12 +39,21 @@ Begin VB.Form FormMessage
       ForeColor       =   &H80000008&
       Height          =   1455
       Left            =   360
-      Picture         =   "FormMsg.frx":0CCA
       ScaleHeight     =   1455
       ScaleWidth      =   1455
       TabIndex        =   0
       Top             =   240
       Width           =   1455
+      Begin ImageX.aicAlphaImage imageBlau 
+         Height          =   7290
+         Left            =   -240
+         Top             =   0
+         Width           =   2160
+         _ExtentX        =   3810
+         _ExtentY        =   12859
+         Image           =   "FormMsg.frx":0CCA
+         Props           =   5
+      End
    End
    Begin VB.TextBox Text1 
       Height          =   5655
@@ -51,7 +61,7 @@ Begin VB.Form FormMessage
       Locked          =   -1  'True
       MultiLine       =   -1  'True
       TabIndex        =   3
-      Text            =   "FormMsg.frx":3C5E
+      Text            =   "FormMsg.frx":121A2
       Top             =   2040
       Width           =   8175
    End
@@ -104,7 +114,7 @@ Begin VB.Form FormMessage
    Begin VB.Image bne 
       Height          =   615
       Left            =   7440
-      Picture         =   "FormMsg.frx":3E61
+      Picture         =   "FormMsg.frx":123A5
       Stretch         =   -1  'True
       Top             =   7680
       Width           =   1470

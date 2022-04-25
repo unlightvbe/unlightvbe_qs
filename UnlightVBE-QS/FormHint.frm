@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Begin VB.Form FormHint 
    BorderStyle     =   1  '單線固定
    ClientHeight    =   2805
@@ -19,12 +20,21 @@ Begin VB.Form FormHint
       ForeColor       =   &H80000008&
       Height          =   1455
       Left            =   360
-      Picture         =   "FormHint.frx":0CCA
       ScaleHeight     =   1455
       ScaleWidth      =   1455
       TabIndex        =   0
       Top             =   360
       Width           =   1455
+      Begin ImageX.aicAlphaImage imageBlau 
+         Height          =   7290
+         Left            =   -240
+         Top             =   0
+         Width           =   2160
+         _ExtentX        =   3810
+         _ExtentY        =   12859
+         Image           =   "FormHint.frx":0CCA
+         Props           =   5
+      End
    End
    Begin VB.Label bnet 
       Alignment       =   2  '置中對齊
@@ -74,7 +84,7 @@ Begin VB.Form FormHint
    Begin VB.Image bne 
       Height          =   615
       Left            =   7440
-      Picture         =   "FormHint.frx":3C5E
+      Picture         =   "FormHint.frx":121A2
       Stretch         =   -1  'True
       Top             =   2040
       Width           =   1470

@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "COMCTL32.OCX"
 Begin VB.Form Formsetting 
@@ -29,11 +30,11 @@ Begin VB.Form Formsetting
       Caption         =   "系統"
       Height          =   5895
       Left            =   9360
-      TabIndex        =   125
+      TabIndex        =   124
       Top             =   1800
       Width           =   9015
-      Begin VB.CheckBox chkImageMaskUse 
-         Caption         =   "技能動畫圖片遮罩(#000000)"
+      Begin VB.CheckBox chkAtkingAnimateDisable 
+         Caption         =   "技能動畫關閉逐格動畫支援"
          BeginProperty Font 
             Name            =   "微軟正黑體"
             Size            =   11.25
@@ -49,8 +50,8 @@ Begin VB.Form Formsetting
          Top             =   3840
          Width           =   6015
       End
-      Begin VB.CheckBox chkautocontinuemode 
-         Caption         =   "自動繼續模式"
+      Begin VB.CheckBox chkAtkingImageMaskUse 
+         Caption         =   "技能動畫圖片遮罩(#000000)"
          BeginProperty Font 
             Name            =   "微軟正黑體"
             Size            =   11.25
@@ -64,6 +65,23 @@ Begin VB.Form Formsetting
          Left            =   240
          TabIndex        =   144
          Top             =   3480
+         Width           =   6015
+      End
+      Begin VB.CheckBox chkautocontinuemode 
+         Caption         =   "自動繼續模式"
+         BeginProperty Font 
+            Name            =   "微軟正黑體"
+            Size            =   11.25
+            Charset         =   136
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   300
+         Left            =   240
+         TabIndex        =   143
+         Top             =   2520
          Width           =   6495
       End
       Begin VB.ComboBox cbsimilarlevel 
@@ -78,9 +96,9 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   360
          Left            =   4560
-         TabIndex        =   140
+         TabIndex        =   139
          Text            =   "Combo1"
-         Top             =   2880
+         Top             =   1920
          Width           =   975
       End
       Begin VB.CheckBox chkusesimilarlevel 
@@ -96,8 +114,8 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   139
-         Top             =   2880
+         TabIndex        =   138
+         Top             =   1920
          Width           =   6495
       End
       Begin VB.TextBox 自訂AI手牌張數 
@@ -107,7 +125,7 @@ Begin VB.Form Formsetting
          Height          =   300
          Left            =   3000
          MaxLength       =   2
-         TabIndex        =   136
+         TabIndex        =   135
          Text            =   "7"
          Top             =   5040
          Width           =   375
@@ -125,9 +143,9 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   135
+         TabIndex        =   134
          Top             =   5040
-         Width           =   6495
+         Width           =   3615
       End
       Begin VB.CheckBox chkusenewinterface 
          Caption         =   "使用新式階段顯示介面"
@@ -142,8 +160,8 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   134
-         Top             =   1440
+         TabIndex        =   133
+         Top             =   1200
          Width           =   2895
       End
       Begin VB.CheckBox chkusenewaipersonauto 
@@ -159,8 +177,8 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   131
-         Top             =   2400
+         TabIndex        =   130
+         Top             =   1560
          Width           =   6495
       End
       Begin VB.CheckBox checktestpersondown 
@@ -174,11 +192,11 @@ Begin VB.Form Formsetting
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   375
-         Left            =   240
-         TabIndex        =   128
-         Top             =   1920
-         Width           =   6135
+         Height          =   285
+         Left            =   5400
+         TabIndex        =   127
+         Top             =   5040
+         Width           =   3375
       End
       Begin VB.CheckBox chkusenewpage 
          Caption         =   "使用新式隨場景變化之行動卡牌組"
@@ -193,12 +211,13 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   127
-         Top             =   960
+         TabIndex        =   126
+         Top             =   840
          Width           =   6495
       End
       Begin VB.CheckBox chkusenewai 
          Caption         =   "電腦方使用「智能判斷型人工智慧AI」進行對戰"
+         Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "微軟正黑體"
             Size            =   11.25
@@ -210,8 +229,9 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   126
+         TabIndex        =   125
          Top             =   480
+         Value           =   2  '灰色
          Width           =   6495
       End
       Begin VB.Label Label8 
@@ -227,8 +247,8 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   375
          Left            =   600
-         TabIndex        =   141
-         Top             =   3240
+         TabIndex        =   140
+         Top             =   2280
          Width           =   8175
       End
       Begin VB.Label Label7 
@@ -244,7 +264,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   375
          Left            =   240
-         TabIndex        =   137
+         TabIndex        =   136
          Top             =   5400
          Width           =   5655
       End
@@ -253,7 +273,7 @@ Begin VB.Form Formsetting
       Caption         =   "事件卡編輯(電腦方)"
       Height          =   5895
       Left            =   9360
-      TabIndex        =   51
+      TabIndex        =   50
       Top             =   1080
       Visible         =   0   'False
       Width           =   9015
@@ -270,7 +290,7 @@ Begin VB.Form Formsetting
          Height          =   375
          Left            =   6000
          Style           =   2  '單純下拉式
-         TabIndex        =   142
+         TabIndex        =   141
          Top             =   360
          Width           =   2655
       End
@@ -287,7 +307,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   98
+         TabIndex        =   97
          Top             =   360
          Value           =   1  '核取
          Width           =   2535
@@ -295,7 +315,7 @@ Begin VB.Form Formsetting
       Begin VB.Frame Frame4 
          Height          =   1695
          Left            =   120
-         TabIndex        =   82
+         TabIndex        =   81
          Top             =   720
          Width           =   8535
          Begin VB.ComboBox personcom 
@@ -313,7 +333,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   2400
-            TabIndex        =   88
+            TabIndex        =   87
             Top             =   240
             Width           =   2295
          End
@@ -332,7 +352,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   2400
-            TabIndex        =   87
+            TabIndex        =   86
             Top             =   720
             Width           =   2295
          End
@@ -351,7 +371,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   2400
-            TabIndex        =   86
+            TabIndex        =   85
             Top             =   1200
             Width           =   2295
          End
@@ -370,7 +390,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   4
             Left            =   6000
-            TabIndex        =   85
+            TabIndex        =   84
             Top             =   240
             Width           =   2295
          End
@@ -389,7 +409,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   6
             Left            =   6000
-            TabIndex        =   83
+            TabIndex        =   82
             Top             =   1200
             Width           =   2295
          End
@@ -408,7 +428,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   5
             Left            =   6000
-            TabIndex        =   84
+            TabIndex        =   83
             Top             =   720
             Width           =   2295
          End
@@ -417,7 +437,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   2040
-            TabIndex        =   96
+            TabIndex        =   95
             Top             =   240
             Width           =   255
          End
@@ -426,7 +446,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   2040
-            TabIndex        =   95
+            TabIndex        =   94
             Top             =   720
             Width           =   255
          End
@@ -435,7 +455,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   2040
-            TabIndex        =   94
+            TabIndex        =   93
             Top             =   1200
             Width           =   255
          End
@@ -444,7 +464,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   4
             Left            =   5640
-            TabIndex        =   93
+            TabIndex        =   92
             Top             =   240
             Width           =   255
          End
@@ -453,7 +473,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   5
             Left            =   5640
-            TabIndex        =   92
+            TabIndex        =   91
             Top             =   720
             Width           =   255
          End
@@ -462,7 +482,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   6
             Left            =   5640
-            TabIndex        =   91
+            TabIndex        =   90
             Top             =   1200
             Width           =   255
          End
@@ -481,7 +501,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   120
-            TabIndex        =   90
+            TabIndex        =   89
             Top             =   720
             Width           =   495
          End
@@ -499,7 +519,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   600
-            TabIndex        =   89
+            TabIndex        =   88
             Top             =   720
             Width           =   1455
          End
@@ -507,7 +527,7 @@ Begin VB.Form Formsetting
       Begin VB.Frame Frame3 
          Height          =   1695
          Left            =   120
-         TabIndex        =   67
+         TabIndex        =   66
          Top             =   2400
          Width           =   8535
          Begin VB.ComboBox personcom 
@@ -525,7 +545,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   12
             Left            =   6000
-            TabIndex        =   73
+            TabIndex        =   72
             Top             =   1200
             Width           =   2295
          End
@@ -544,7 +564,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   11
             Left            =   6000
-            TabIndex        =   72
+            TabIndex        =   71
             Top             =   720
             Width           =   2295
          End
@@ -563,7 +583,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   10
             Left            =   6000
-            TabIndex        =   71
+            TabIndex        =   70
             Top             =   240
             Width           =   2295
          End
@@ -582,7 +602,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   9
             Left            =   2400
-            TabIndex        =   70
+            TabIndex        =   69
             Top             =   1200
             Width           =   2295
          End
@@ -601,7 +621,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   8
             Left            =   2400
-            TabIndex        =   69
+            TabIndex        =   68
             Top             =   720
             Width           =   2295
          End
@@ -620,7 +640,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   7
             Left            =   2400
-            TabIndex        =   68
+            TabIndex        =   67
             Top             =   240
             Width           =   2295
          End
@@ -638,7 +658,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   600
-            TabIndex        =   81
+            TabIndex        =   80
             Top             =   720
             Width           =   1215
          End
@@ -657,7 +677,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   120
-            TabIndex        =   80
+            TabIndex        =   79
             Top             =   720
             Width           =   495
          End
@@ -666,7 +686,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   12
             Left            =   5640
-            TabIndex        =   79
+            TabIndex        =   78
             Top             =   1200
             Width           =   255
          End
@@ -675,7 +695,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   11
             Left            =   5640
-            TabIndex        =   78
+            TabIndex        =   77
             Top             =   720
             Width           =   255
          End
@@ -684,7 +704,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   10
             Left            =   5640
-            TabIndex        =   77
+            TabIndex        =   76
             Top             =   240
             Width           =   255
          End
@@ -693,7 +713,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   9
             Left            =   2040
-            TabIndex        =   76
+            TabIndex        =   75
             Top             =   1200
             Width           =   255
          End
@@ -702,7 +722,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   8
             Left            =   2040
-            TabIndex        =   75
+            TabIndex        =   74
             Top             =   720
             Width           =   255
          End
@@ -711,7 +731,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   7
             Left            =   2040
-            TabIndex        =   74
+            TabIndex        =   73
             Top             =   240
             Width           =   255
          End
@@ -719,7 +739,7 @@ Begin VB.Form Formsetting
       Begin VB.Frame Frame2 
          Height          =   1695
          Left            =   120
-         TabIndex        =   52
+         TabIndex        =   51
          Top             =   4080
          Width           =   8535
          Begin VB.ComboBox personcom 
@@ -737,7 +757,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   18
             Left            =   6000
-            TabIndex        =   58
+            TabIndex        =   57
             Top             =   1200
             Width           =   2295
          End
@@ -756,7 +776,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   17
             Left            =   6000
-            TabIndex        =   57
+            TabIndex        =   56
             Top             =   720
             Width           =   2295
          End
@@ -775,7 +795,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   16
             Left            =   6000
-            TabIndex        =   56
+            TabIndex        =   55
             Top             =   240
             Width           =   2295
          End
@@ -794,7 +814,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   15
             Left            =   2400
-            TabIndex        =   55
+            TabIndex        =   54
             Top             =   1200
             Width           =   2295
          End
@@ -813,7 +833,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   14
             Left            =   2400
-            TabIndex        =   54
+            TabIndex        =   53
             Top             =   720
             Width           =   2295
          End
@@ -832,7 +852,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   13
             Left            =   2400
-            TabIndex        =   53
+            TabIndex        =   52
             Top             =   240
             Width           =   2295
          End
@@ -850,7 +870,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   600
-            TabIndex        =   66
+            TabIndex        =   65
             Top             =   720
             Width           =   1215
          End
@@ -869,7 +889,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   120
-            TabIndex        =   65
+            TabIndex        =   64
             Top             =   720
             Width           =   495
          End
@@ -878,7 +898,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   18
             Left            =   5640
-            TabIndex        =   64
+            TabIndex        =   63
             Top             =   1200
             Width           =   255
          End
@@ -887,7 +907,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   17
             Left            =   5640
-            TabIndex        =   63
+            TabIndex        =   62
             Top             =   720
             Width           =   255
          End
@@ -896,7 +916,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   16
             Left            =   5640
-            TabIndex        =   62
+            TabIndex        =   61
             Top             =   240
             Width           =   255
          End
@@ -905,7 +925,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   15
             Left            =   2040
-            TabIndex        =   61
+            TabIndex        =   60
             Top             =   1200
             Width           =   255
          End
@@ -914,7 +934,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   14
             Left            =   2040
-            TabIndex        =   60
+            TabIndex        =   59
             Top             =   720
             Width           =   255
          End
@@ -923,7 +943,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   13
             Left            =   2040
-            TabIndex        =   59
+            TabIndex        =   58
             Top             =   240
             Width           =   255
          End
@@ -941,7 +961,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   255
          Left            =   2880
-         TabIndex        =   99
+         TabIndex        =   98
          Top             =   360
          Width           =   2175
       End
@@ -950,14 +970,14 @@ Begin VB.Form Formsetting
       Caption         =   "一般設定"
       Height          =   6015
       Left            =   120
-      TabIndex        =   101
+      TabIndex        =   100
       Top             =   2040
       Width           =   9015
       Begin VB.Frame 其他設定 
-         Caption         =   "其他設定"
+         Caption         =   "額外模式設定"
          Height          =   1215
          Left            =   120
-         TabIndex        =   119
+         TabIndex        =   118
          Top             =   4560
          Width           =   8775
          Begin VB.TextBox 大亂鬥模式選項_牌數 
@@ -967,7 +987,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Left            =   3240
             MaxLength       =   2
-            TabIndex        =   138
+            TabIndex        =   137
             Text            =   "17"
             Top             =   720
             Width           =   375
@@ -979,7 +999,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Left            =   3240
             MaxLength       =   2
-            TabIndex        =   122
+            TabIndex        =   121
             Text            =   "4"
             Top             =   360
             Width           =   375
@@ -988,7 +1008,7 @@ Begin VB.Form Formsetting
             Caption         =   "挑戰模式（對戰對手多發        張牌）(Max:30)"
             Height          =   300
             Left            =   240
-            TabIndex        =   123
+            TabIndex        =   122
             Top             =   360
             Width           =   5655
          End
@@ -1005,7 +1025,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   5880
-            TabIndex        =   121
+            TabIndex        =   120
             Top             =   360
             Width           =   2535
          End
@@ -1013,7 +1033,7 @@ Begin VB.Form Formsetting
             Caption         =   "大亂鬥模式（雙方角色發        張牌，HP=99） (Min:1)"
             Height          =   375
             Left            =   240
-            TabIndex        =   120
+            TabIndex        =   119
             Top             =   720
             Width           =   6255
          End
@@ -1022,13 +1042,13 @@ Begin VB.Form Formsetting
          Caption         =   "其他"
          Height          =   1215
          Left            =   120
-         TabIndex        =   115
+         TabIndex        =   114
          Top             =   3240
          Width           =   8775
          Begin VB.TextBox ckendturnnum 
             Height          =   420
             Left            =   1080
-            TabIndex        =   116
+            TabIndex        =   115
             Text            =   "18"
             Top             =   600
             Width           =   495
@@ -1037,7 +1057,7 @@ Begin VB.Form Formsetting
             Caption         =   "仿對戰模式"
             Height          =   300
             Left            =   240
-            TabIndex        =   118
+            TabIndex        =   117
             Top             =   280
             Width           =   1575
          End
@@ -1045,7 +1065,7 @@ Begin VB.Form Formsetting
             Caption         =   "對戰           回合"
             Height          =   375
             Left            =   240
-            TabIndex        =   117
+            TabIndex        =   116
             Top             =   600
             Width           =   1935
          End
@@ -1054,7 +1074,7 @@ Begin VB.Form Formsetting
          Caption         =   "背景圖片及音樂"
          Height          =   2895
          Left            =   120
-         TabIndex        =   102
+         TabIndex        =   101
          Top             =   360
          Width           =   8775
          Begin VB.CommandButton Command2 
@@ -1070,7 +1090,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   4080
-            TabIndex        =   129
+            TabIndex        =   128
             Top             =   1920
             Width           =   1095
          End
@@ -1086,7 +1106,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   6120
-            TabIndex        =   107
+            TabIndex        =   106
             Text            =   "Combo1"
             Top             =   2280
             Width           =   2535
@@ -1104,7 +1124,7 @@ Begin VB.Form Formsetting
             ForeColor       =   &H000000FF&
             Height          =   435
             Left            =   2880
-            TabIndex        =   106
+            TabIndex        =   105
             Text            =   "Combo2"
             Top             =   2280
             Width           =   2295
@@ -1122,7 +1142,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   7560
-            TabIndex        =   105
+            TabIndex        =   104
             Top             =   1920
             Width           =   1095
          End
@@ -1139,7 +1159,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   300
             Left            =   7920
-            TabIndex        =   104
+            TabIndex        =   103
             Top             =   480
             Width           =   735
          End
@@ -1156,7 +1176,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   300
             Left            =   7920
-            TabIndex        =   103
+            TabIndex        =   102
             Top             =   960
             Width           =   735
          End
@@ -1181,7 +1201,7 @@ Begin VB.Form Formsetting
          Begin ComctlLib.Slider sdrbgm 
             Height          =   495
             Left            =   4680
-            TabIndex        =   132
+            TabIndex        =   131
             Top             =   360
             Width           =   2775
             _ExtentX        =   4895
@@ -1196,7 +1216,7 @@ Begin VB.Form Formsetting
          Begin ComctlLib.Slider sdrse 
             Height          =   495
             Left            =   4680
-            TabIndex        =   133
+            TabIndex        =   132
             Top             =   840
             Width           =   2775
             _ExtentX        =   4895
@@ -1221,7 +1241,7 @@ Begin VB.Form Formsetting
             BackColor       =   &H00FFFFFF&
             Height          =   255
             Left            =   2880
-            TabIndex        =   130
+            TabIndex        =   129
             Top             =   1800
             Visible         =   0   'False
             Width           =   3255
@@ -1239,7 +1259,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   5400
-            TabIndex        =   114
+            TabIndex        =   113
             Top             =   2280
             Width           =   855
          End
@@ -1256,7 +1276,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   3720
-            TabIndex        =   113
+            TabIndex        =   112
             Top             =   480
             Width           =   1095
          End
@@ -1273,7 +1293,7 @@ Begin VB.Form Formsetting
             EndProperty
             Height          =   375
             Left            =   3960
-            TabIndex        =   112
+            TabIndex        =   111
             Top             =   960
             Width           =   855
          End
@@ -1283,7 +1303,7 @@ Begin VB.Form Formsetting
             Caption         =   "50"
             Height          =   375
             Left            =   7320
-            TabIndex        =   111
+            TabIndex        =   110
             Top             =   480
             Width           =   495
          End
@@ -1293,7 +1313,7 @@ Begin VB.Form Formsetting
             Caption         =   "45"
             Height          =   375
             Left            =   7320
-            TabIndex        =   110
+            TabIndex        =   109
             Top             =   960
             Width           =   495
          End
@@ -1301,7 +1321,7 @@ Begin VB.Form Formsetting
             BackColor       =   &H00FFFFFF&
             Height          =   255
             Left            =   5400
-            TabIndex        =   109
+            TabIndex        =   108
             Top             =   1440
             Visible         =   0   'False
             Width           =   3255
@@ -1330,7 +1350,7 @@ Begin VB.Form Formsetting
             ForeColor       =   &H00FFFFFF&
             Height          =   975
             Left            =   960
-            TabIndex        =   108
+            TabIndex        =   107
             Top             =   960
             Visible         =   0   'False
             Width           =   1095
@@ -1349,13 +1369,14 @@ Begin VB.Form Formsetting
    Begin TabDlg.SSTab t1 
       Height          =   6615
       Left            =   0
-      TabIndex        =   124
+      TabIndex        =   123
       Top             =   1560
       Width           =   9255
       _ExtentX        =   16325
       _ExtentY        =   11668
       _Version        =   393216
       Tabs            =   4
+      Tab             =   3
       TabsPerRow      =   4
       TabHeight       =   697
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1369,7 +1390,7 @@ Begin VB.Form Formsetting
       EndProperty
       TabCaption(0)   =   "一般"
       TabPicture(0)   =   "Formsetting.frx":0CCA
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).ControlCount=   0
       TabCaption(1)   =   "事件卡（使用者）"
       TabPicture(1)   =   "Formsetting.frx":0CE6
@@ -1381,14 +1402,14 @@ Begin VB.Form Formsetting
       Tab(2).ControlCount=   0
       TabCaption(3)   =   "系統"
       TabPicture(3)   =   "Formsetting.frx":0D1E
-      Tab(3).ControlEnabled=   0   'False
+      Tab(3).ControlEnabled=   -1  'True
       Tab(3).ControlCount=   0
    End
    Begin VB.Frame 事件卡_使用者 
       Caption         =   "事件卡編輯(使用者方)"
       Height          =   5895
       Left            =   9360
-      TabIndex        =   5
+      TabIndex        =   4
       Top             =   240
       Visible         =   0   'False
       Width           =   9015
@@ -1407,7 +1428,7 @@ Begin VB.Form Formsetting
          Left            =   6000
          List            =   "Formsetting.frx":0D3C
          Style           =   2  '單純下拉式
-         TabIndex        =   143
+         TabIndex        =   142
          Top             =   360
          Width           =   2655
       End
@@ -1424,7 +1445,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   300
          Left            =   240
-         TabIndex        =   97
+         TabIndex        =   96
          Top             =   360
          Value           =   1  '核取
          Width           =   2535
@@ -1432,7 +1453,7 @@ Begin VB.Form Formsetting
       Begin VB.Frame f3 
          Height          =   1695
          Left            =   120
-         TabIndex        =   36
+         TabIndex        =   35
          Top             =   4080
          Width           =   8535
          Begin VB.ComboBox personus 
@@ -1450,7 +1471,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   13
             Left            =   2400
-            TabIndex        =   42
+            TabIndex        =   41
             Top             =   240
             Width           =   2295
          End
@@ -1469,7 +1490,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   14
             Left            =   2400
-            TabIndex        =   41
+            TabIndex        =   40
             Top             =   720
             Width           =   2295
          End
@@ -1488,7 +1509,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   15
             Left            =   2400
-            TabIndex        =   40
+            TabIndex        =   39
             Top             =   1200
             Width           =   2295
          End
@@ -1507,7 +1528,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   16
             Left            =   6000
-            TabIndex        =   39
+            TabIndex        =   38
             Top             =   240
             Width           =   2295
          End
@@ -1526,7 +1547,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   17
             Left            =   6000
-            TabIndex        =   38
+            TabIndex        =   37
             Top             =   720
             Width           =   2295
          End
@@ -1545,7 +1566,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   18
             Left            =   6000
-            TabIndex        =   37
+            TabIndex        =   36
             Top             =   1200
             Width           =   2295
          End
@@ -1554,7 +1575,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   13
             Left            =   2040
-            TabIndex        =   50
+            TabIndex        =   49
             Top             =   240
             Width           =   255
          End
@@ -1563,7 +1584,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   14
             Left            =   2040
-            TabIndex        =   49
+            TabIndex        =   48
             Top             =   720
             Width           =   255
          End
@@ -1572,7 +1593,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   15
             Left            =   2040
-            TabIndex        =   48
+            TabIndex        =   47
             Top             =   1200
             Width           =   255
          End
@@ -1581,7 +1602,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   16
             Left            =   5640
-            TabIndex        =   47
+            TabIndex        =   46
             Top             =   240
             Width           =   255
          End
@@ -1590,7 +1611,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   17
             Left            =   5640
-            TabIndex        =   46
+            TabIndex        =   45
             Top             =   720
             Width           =   255
          End
@@ -1599,7 +1620,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   18
             Left            =   5640
-            TabIndex        =   45
+            TabIndex        =   44
             Top             =   1200
             Width           =   255
          End
@@ -1618,7 +1639,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   120
-            TabIndex        =   44
+            TabIndex        =   43
             Top             =   720
             Width           =   495
          End
@@ -1636,7 +1657,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   600
-            TabIndex        =   43
+            TabIndex        =   42
             Top             =   720
             Width           =   735
          End
@@ -1644,7 +1665,7 @@ Begin VB.Form Formsetting
       Begin VB.Frame f2 
          Height          =   1695
          Left            =   120
-         TabIndex        =   21
+         TabIndex        =   20
          Top             =   2400
          Width           =   8535
          Begin VB.ComboBox personus 
@@ -1662,7 +1683,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   7
             Left            =   2400
-            TabIndex        =   27
+            TabIndex        =   26
             Top             =   240
             Width           =   2295
          End
@@ -1681,7 +1702,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   8
             Left            =   2400
-            TabIndex        =   26
+            TabIndex        =   25
             Top             =   720
             Width           =   2295
          End
@@ -1700,7 +1721,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   9
             Left            =   2400
-            TabIndex        =   25
+            TabIndex        =   24
             Top             =   1200
             Width           =   2295
          End
@@ -1719,7 +1740,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   10
             Left            =   6000
-            TabIndex        =   24
+            TabIndex        =   23
             Top             =   240
             Width           =   2295
          End
@@ -1738,7 +1759,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   11
             Left            =   6000
-            TabIndex        =   23
+            TabIndex        =   22
             Top             =   720
             Width           =   2295
          End
@@ -1757,7 +1778,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   12
             Left            =   6000
-            TabIndex        =   22
+            TabIndex        =   21
             Top             =   1200
             Width           =   2295
          End
@@ -1766,7 +1787,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   7
             Left            =   2040
-            TabIndex        =   35
+            TabIndex        =   34
             Top             =   240
             Width           =   255
          End
@@ -1775,7 +1796,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   8
             Left            =   2040
-            TabIndex        =   34
+            TabIndex        =   33
             Top             =   720
             Width           =   255
          End
@@ -1784,7 +1805,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   9
             Left            =   2040
-            TabIndex        =   33
+            TabIndex        =   32
             Top             =   1200
             Width           =   255
          End
@@ -1793,7 +1814,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   10
             Left            =   5640
-            TabIndex        =   32
+            TabIndex        =   31
             Top             =   240
             Width           =   255
          End
@@ -1802,7 +1823,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   11
             Left            =   5640
-            TabIndex        =   31
+            TabIndex        =   30
             Top             =   720
             Width           =   255
          End
@@ -1811,7 +1832,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   12
             Left            =   5640
-            TabIndex        =   30
+            TabIndex        =   29
             Top             =   1200
             Width           =   255
          End
@@ -1830,7 +1851,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   120
-            TabIndex        =   29
+            TabIndex        =   28
             Top             =   720
             Width           =   495
          End
@@ -1848,7 +1869,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   600
-            TabIndex        =   28
+            TabIndex        =   27
             Top             =   720
             Width           =   735
          End
@@ -1856,7 +1877,7 @@ Begin VB.Form Formsetting
       Begin VB.Frame f1 
          Height          =   1695
          Left            =   120
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   720
          Width           =   8535
          Begin VB.ComboBox personus 
@@ -1874,7 +1895,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   6
             Left            =   6000
-            TabIndex        =   13
+            TabIndex        =   12
             Top             =   1200
             Width           =   2295
          End
@@ -1893,7 +1914,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   5
             Left            =   6000
-            TabIndex        =   12
+            TabIndex        =   11
             Top             =   720
             Width           =   2295
          End
@@ -1912,7 +1933,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   4
             Left            =   6000
-            TabIndex        =   11
+            TabIndex        =   10
             Top             =   240
             Width           =   2295
          End
@@ -1931,7 +1952,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   2400
-            TabIndex        =   10
+            TabIndex        =   9
             Top             =   1200
             Width           =   2295
          End
@@ -1950,7 +1971,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   2400
-            TabIndex        =   9
+            TabIndex        =   8
             Top             =   720
             Width           =   2295
          End
@@ -1969,7 +1990,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   2400
-            TabIndex        =   8
+            TabIndex        =   7
             Top             =   240
             Width           =   2295
          End
@@ -1987,7 +2008,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   600
-            TabIndex        =   20
+            TabIndex        =   19
             Top             =   720
             Width           =   735
          End
@@ -2006,7 +2027,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   120
-            TabIndex        =   19
+            TabIndex        =   18
             Top             =   720
             Width           =   495
          End
@@ -2015,7 +2036,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   6
             Left            =   5640
-            TabIndex        =   18
+            TabIndex        =   17
             Top             =   1200
             Width           =   255
          End
@@ -2024,7 +2045,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   5
             Left            =   5640
-            TabIndex        =   17
+            TabIndex        =   16
             Top             =   720
             Width           =   255
          End
@@ -2033,7 +2054,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   4
             Left            =   5640
-            TabIndex        =   16
+            TabIndex        =   15
             Top             =   240
             Width           =   255
          End
@@ -2042,7 +2063,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   3
             Left            =   2040
-            TabIndex        =   15
+            TabIndex        =   14
             Top             =   1200
             Width           =   255
          End
@@ -2051,7 +2072,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   2
             Left            =   2040
-            TabIndex        =   14
+            TabIndex        =   13
             Top             =   720
             Width           =   255
          End
@@ -2060,7 +2081,7 @@ Begin VB.Form Formsetting
             Height          =   375
             Index           =   1
             Left            =   2040
-            TabIndex        =   7
+            TabIndex        =   6
             Top             =   240
             Width           =   255
          End
@@ -2078,7 +2099,7 @@ Begin VB.Form Formsetting
          EndProperty
          Height          =   255
          Left            =   2880
-         TabIndex        =   100
+         TabIndex        =   99
          Top             =   360
          Width           =   2175
       End
@@ -2094,32 +2115,15 @@ Begin VB.Form Formsetting
       TabIndex        =   3
       Top             =   8040
       Width           =   9255
-      Begin VB.Label Label3 
-         Alignment       =   2  '置中對齊
-         BackStyle       =   0  '透明
-         Caption         =   "OK"
-         BeginProperty Font 
-            Name            =   "微軟正黑體"
-            Size            =   15.75
-            Charset         =   136
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00000000&
-         Height          =   375
-         Left            =   4080
-         TabIndex        =   4
-         Top             =   120
-         Width           =   975
-      End
-      Begin VB.Image Image2 
+      Begin ImageX.aicAlphaImage imageOK 
          Height          =   480
-         Left            =   3480
-         Picture         =   "Formsetting.frx":0D3E
+         Left            =   3360
          Top             =   120
-         Width           =   2145
+         Width           =   2400
+         _ExtentX        =   4233
+         _ExtentY        =   847
+         Image           =   "Formsetting.frx":0D3E
+         Props           =   5
       End
       Begin VB.Shape Shape2 
          BackColor       =   &H00E0E0E0&
@@ -2146,12 +2150,21 @@ Begin VB.Form Formsetting
       ForeColor       =   &H80000008&
       Height          =   1455
       Left            =   240
-      Picture         =   "Formsetting.frx":18C1
       ScaleHeight     =   1455
       ScaleWidth      =   1455
       TabIndex        =   0
       Top             =   120
       Width           =   1455
+      Begin ImageX.aicAlphaImage imageBlau 
+         Height          =   7290
+         Left            =   -240
+         Top             =   0
+         Width           =   2160
+         _ExtentX        =   3810
+         _ExtentY        =   12859
+         Image           =   "Formsetting.frx":1FEB
+         Props           =   5
+      End
    End
    Begin VB.Label Label1 
       BackStyle       =   0  '透明
@@ -2536,10 +2549,10 @@ End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 Cancel = 1
-Image2_Click
+imageOK_Click 0
 End Sub
 
-Private Sub Image2_Click()
+Private Sub imageOK_Click(ByVal Button As Integer)
 Formsetting.Visible = False
 If Val(挑戰模式選項_牌數.Text) > 30 Then 挑戰模式選項_牌數.Text = 30
 If Val(大亂鬥模式選項_牌數.Text) < 1 Then 大亂鬥模式選項_牌數.Text = 1
@@ -2548,27 +2561,13 @@ If Val(ckendturnnum.Text) <= 0 Then
 End If
 End Sub
 
-Private Sub Label3_Click()
-Formsetting.Visible = False
-If Val(挑戰模式選項_牌數.Text) > 30 Then 挑戰模式選項_牌數.Text = 30
-If Val(大亂鬥模式選項_牌數.Text) < 1 Then 大亂鬥模式選項_牌數.Text = 1
-If Val(ckendturnnum.Text) <= 0 Then
-    ckendturnnum.Text = 18
-End If
+Private Sub imageOK_MouseEnter()
+imageOK.LoadImage_FromFile App.Path & "\gif\system\okbar_2.png"
 End Sub
 
-Private Sub Label9_Click()
-
+Private Sub imageOK_MouseExit()
+imageOK.LoadImage_FromFile App.Path & "\gif\system\okbar_1.png"
 End Sub
-
-Private Sub personcom1_Change(Index As Integer)
-
-End Sub
-
-Private Sub personcom1_Click(Index As Integer)
-
-End Sub
-
 
 Private Sub personcom_Click(Index As Integer)
 If personcom(Index).ListIndex <> 0 Then
@@ -2579,7 +2578,6 @@ If personcom(Index).ListIndex <> 0 Then
     End If
 End If
 End Sub
-
 
 Private Sub personnamecomChange(Index As Integer)
 If persontgrecom.Value = 1 Then

@@ -1435,7 +1435,7 @@ Next
 BattleTurn = 1
 FormMainMode.PEAFInterface.turn = BattleTurn
 FormMainMode.PEAFAnimateInterface.MusicPlayerObj = FormMainMode.cMusicPlayer(5)
-FormMainMode.PEAFAnimateInterface.ImageMaskUse = Formsetting.chkImageMaskUse.Value
+FormMainMode.PEAFAnimateInterface.ImageMaskUse = Formsetting.chkAtkingImageMaskUse.Value
 End Sub
 Sub 自由戰鬥模式設定表單讀入程序()
 Dim i, j As Integer
@@ -1464,7 +1464,6 @@ If FormMainMode.personnameus(1).ListCount > 0 Then
        FormMainMode.personnamecom(i).ListIndex = 0
     Next
 End If
-FormMainMode.opnpersonvs(2).Value = True
 FormMainMode.cMusicPlayer(0).MusicPlay
 FormMainMode.personreadifus.Visible = False
 End Sub
@@ -1499,6 +1498,13 @@ FormMainMode.PEGameFreeModeSettingForm.Left = 0
 FormMainMode.PEGameFreeModeSettingForm.Top = 0
 FormMainMode.Width = 11430
 FormMainMode.Height = 10325
+If FormMainMode.PEGFplayertext.FontName <> "Bradley Gratis" Then
+     FormMainMode.PEGFplayertext.FontSize = 16
+     FormMainMode.PEGFcomtext.FontSize = 16
+Else
+     FormMainMode.PEGFplayertext.FontSize = 20
+     FormMainMode.PEGFcomtext.FontSize = 20
+End If
 FormMainMode.PEGameFreeModeSettingForm.Visible = True
 FormMainMode.PEGameFreeModeSettingForm.Enabled = True
 FormMainMode.PEGameFreeModeSettingForm.ZOrder
@@ -1584,11 +1590,12 @@ Formsetting.lopnmusictext.Visible = False
 Formsetting.lopnmapjpgtext.Visible = False
 Formsetting.ckendturnnum.Text = 18
 Formsetting.t1.Tab = 0
-Formsetting.chkusenewai.Value = 1
+Formsetting.chkusenewai.Value = 2
 Formsetting.chkusenewpage.Value = 1
 Formsetting.chkusenewinterface.Value = 1
 Formsetting.chkpersonvsmode.Value = 1
 Formsetting.ckendturn.Value = 1
+Formsetting.chkAtkingImageMaskUse.Visible = False
 End Sub
 Sub 清除戰鬥系統所有變數值()
 Dim i As Integer, j As Integer '暫時變數
@@ -1718,30 +1725,6 @@ Select Case num
 End Select
 End Sub
 Sub 音效播放(ByVal num As Integer)
-'Select Case num
-'    Case 1
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse06.mp3"
-'    Case 2
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse09.mp3"
-'    Case 3
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse08.mp3"
-'    Case 4
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse29.mp3"
-'    Case 5
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse13.mp3"
-'    Case 6
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse12.mp3"
-'    Case 7
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse11.mp3"
-'    Case 8
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse10_f.mp3"
-'    Case 9
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse23.mp3"
-'    Case 10
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse22.mp3"
-'    Case 11
-'        FormMainMode.cMusicPlayer(num).Filepath = app_path & "mp3\ulse01.mp3"
-'End Select
 FormMainMode.cMusicPlayer(num).MusicStop
 FormMainMode.cMusicPlayer(num).MusicPlay
 End Sub
