@@ -96,15 +96,11 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Private m_cardback_activecheck As Integer
+Private m_ShowOnMode As Boolean
 Public Event ClickPassive()
 Public Event ClickBack()
 Public Sub 全重設()
-Dim i As Integer, k As Integer
-For i = 1 To 4
-      Call cardbackStatus(i).ResetAll
-Next
-personcardback_main.Caption = ""
-m_cardback_activecheck = 0
+Me.ShowOnMode = False
 End Sub
 Public Sub 主動技_技能名稱(ByVal num As Integer, ByVal skillstr As String)
     If num >= 1 And num <= 4 Then
@@ -141,10 +137,31 @@ RaiseEvent ClickPassive
 End Sub
 
 Private Sub cardbackStatus_ClickBR(Index As Integer)
-m_cardback_activecheck = Index
-personcardback_main.Caption = cardbackStatus(Index).SkillDescription
+If m_ShowOnMode = True Then
+    m_cardback_activecheck = Index
+    personcardback_main.Caption = cardbackStatus(Index).SkillDescription
+End If
 End Sub
 
 Private Sub personcardback_main_Click()
 RaiseEvent ClickBack
+End Sub
+
+Public Property Get ShowOnMode() As Boolean
+    ShowOnMode = m_ShowOnMode
+End Property
+
+Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
+    m_ShowOnMode = vNewValue
+    PropertyChanged "ShowOnMode"
+    Call ShowOnModeChange
+End Property
+
+Private Sub ShowOnModeChange()
+Dim i As Integer
+For i = 1 To 4
+    cardbackStatus(i).ShowOnMode = m_ShowOnMode
+Next
+personcardback_main.Caption = ""
+m_cardback_activecheck = 0
 End Sub

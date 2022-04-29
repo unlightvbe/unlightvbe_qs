@@ -1315,6 +1315,8 @@ For w = 1 To 角色人物對戰人數(1, 1)
     FormMainMode.cardus(w).異常狀態全重設
     FormMainMode.cardus(w).CardBack全重設
     戰鬥系統類.技能說明載入_人物卡片背面_使用者 w
+    FormMainMode.cardus(w).MusicPlayerObj = FormMainMode.cMusicPlayer(9)
+    FormMainMode.cardus(w).ShowOnMode = True
 Next
 FormMainMode.bloodnumus1.Caption = liveus(1)
 FormMainMode.bloodnumus2.Caption = liveusmax(1)
@@ -1349,6 +1351,8 @@ For w = 1 To 角色人物對戰人數(2, 1)
     FormMainMode.cardcom(w).異常狀態全重設
     FormMainMode.cardcom(w).CardBack全重設
     戰鬥系統類.技能說明載入_人物卡片背面_電腦 w
+    FormMainMode.cardcom(w).MusicPlayerObj = FormMainMode.cMusicPlayer(9)
+    FormMainMode.cardcom(w).ShowOnMode = True
 Next
 FormMainMode.bloodnumcom1.Caption = livecom(1)
 FormMainMode.bloodnumcom2.Caption = livecommax(1)
@@ -1407,11 +1411,7 @@ Next
 If Formsetting.chkpersonvsmode.Value = 1 Then
     For i = 2 To 3
         FormMainMode.PEAFpersoncardcom(i).ShowOnMode = False
-        FormMainMode.cardcom(i).CardMain_角色HP = -99
-        FormMainMode.cardcom(i).CardMain_角色ATK = -99
-        FormMainMode.cardcom(i).CardMain_角色DEF = -99
-        FormMainMode.cardcom(i).CardMain_角色圖片 = app_path & "gif\system\personunknown.jpg"
-        FormMainMode.cardcom(i).CardBack全重設
+        FormMainMode.cardcom(i).ShowOnMode = False
     Next
 End If
 '--------------------------計算距離單位(HP血條)

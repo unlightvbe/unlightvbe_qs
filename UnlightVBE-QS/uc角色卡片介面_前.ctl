@@ -13,6 +13,16 @@ Begin VB.UserControl uc角色卡片介面_前
    ScaleHeight     =   5190
    ScaleWidth      =   4785
    Windowless      =   -1  'True
+   Begin ImageX.aicAlphaImage cardback 
+      Height          =   3600
+      Left            =   0
+      Top             =   0
+      Width           =   2520
+      _ExtentX        =   4445
+      _ExtentY        =   6350
+      Image           =   "uc角色卡片介面_前.ctx":0000
+      Props           =   9
+   End
    Begin ImageX.aicAlphaImage cardbackclick 
       Height          =   795
       Left            =   480
@@ -21,18 +31,8 @@ Begin VB.UserControl uc角色卡片介面_前
       Width           =   1560
       _ExtentX        =   2752
       _ExtentY        =   1402
-      Image           =   "uc角色卡片介面_前.ctx":0000
+      Image           =   "uc角色卡片介面_前.ctx":024B
       Props           =   13
-   End
-   Begin ImageX.aicAlphaImage cardback 
-      Height          =   3600
-      Left            =   0
-      Top             =   0
-      Width           =   2520
-      _ExtentX        =   4445
-      _ExtentY        =   6350
-      Image           =   "uc角色卡片介面_前.ctx":2735
-      Props           =   9
    End
    Begin UnlightVBE.uc異常狀態 personspe 
       Height          =   375
@@ -256,6 +256,7 @@ Dim m_cardmain_personhp As Integer, m_cardmain_personhpmax As Integer, m_cardmai
 Dim m_cardmain_personatk As Integer
 Dim m_cardmain_persondef As Integer
 Dim m_cardmain_isnewtype As Boolean
+Dim m_ShowOnMode As Boolean
 Public Event CardClick()
 Public Sub 更改異常狀態資料(ByVal buffnum As Integer, ByVal ImagePath As String, ByVal num As Integer, ByVal tot As Integer, ByVal isVisible As Boolean)
 If buffnum >= 1 And buffnum <= 14 Then
@@ -282,8 +283,10 @@ End Property
 Public Property Let 角色圖片(ByVal New_角色圖片 As String)
    m_cardmain_jpg = New_角色圖片
    PropertyChanged "角色圖片"
-   If m_cardmain_jpg <> "" Then
-       cardImage.LoadImage_FromFile m_cardmain_jpg
+   If m_ShowOnMode = False Or m_cardmain_jpg = "" Then
+        cardImage.LoadImage_FromFile App.Path & "\gif\system\personunknown.jpg"
+   Else
+        cardImage.LoadImage_FromFile m_cardmain_jpg
    End If
 End Property
 Public Property Get 角色HP() As Integer
@@ -293,25 +296,30 @@ Public Property Let 角色HP(ByVal New_角色HP As Integer)
    m_cardmain_personhp = New_角色HP
    PropertyChanged "角色HP"
    '========================
-   If m_cardmain_personhp = -99 Then
-       personlabelhp.Caption = "?"
+   If m_ShowOnMode = False Then
+        If m_cardmain_personhp = m_cardmain_personhpmax Then
+            personlabelhp.Caption = "?"
+        Else
+            personlabelhp.Caption = m_cardmain_personhp - m_cardmain_personhpmax
+        End If
    Else
        personlabelhp.Caption = m_cardmain_personhp
    End If
-   If m_cardmain_personhp = m_cardmain_personhpmax Or m_cardmain_personhp = -99 Then
+   '========================
+   If m_cardmain_personhp = m_cardmain_personhpmax Then
         personlabelhp.ForeColor = RGB(255, 255, 255)
         personlabelhp.ForeColor = RGB(255, 255, 255)
         cardback.Opacity = 0
-   ElseIf m_cardmain_personhp < m_cardmain_personhpmax And m_cardmain_personhp > m_cardmain_personhp41 Then
+   ElseIf m_cardmain_personhp < m_cardmain_personhpmax And m_cardmain_personhp > m_cardmain_personhp41 And m_ShowOnMode = True Then
         personlabelhp.ForeColor = RGB(255, 255, 128)
         personlabelhp.ForeColor = RGB(255, 255, 128)
         cardback.Opacity = 0
-   ElseIf m_cardmain_personhp <= m_cardmain_personhp41 Then
+   ElseIf m_cardmain_personhp <= m_cardmain_personhp41 Or m_ShowOnMode = False Then
         personlabelhp.ForeColor = RGB(255, 0, 0)
         personlabelhp.ForeColor = RGB(255, 0, 0)
         cardback.Opacity = 0
    End If
-   If m_cardmain_personhp = 0 Then
+   If m_cardmain_personhp = 0 And m_ShowOnMode = True Then
         cardback.Opacity = 100
         cardback.ZOrder
         cardbackclick.Visible = False
@@ -337,7 +345,7 @@ End Property
 Public Property Let 角色ATK(ByVal New_角色ATK As Integer)
    m_cardmain_personatk = New_角色ATK
    PropertyChanged "角色ATK"
-   If m_cardmain_personatk = -99 Then
+   If m_ShowOnMode = False Then
        personlabelatk.Caption = "?"
    ElseIf m_cardmain_personatk < 0 Then
        m_cardmain_personatk = 0
@@ -352,7 +360,7 @@ End Property
 Public Property Let 角色DEF(ByVal New_角色DEF As Integer)
    m_cardmain_persondef = New_角色DEF
    PropertyChanged "角色DEF"
-   If m_cardmain_persondef = -99 Then
+   If m_ShowOnMode = False Then
        personlabeldef.Caption = "?"
    ElseIf m_cardmain_persondef < 0 Then
        m_cardmain_persondef = 0
@@ -384,13 +392,37 @@ Public Property Let 是否為新樣式資訊(ByVal New_是否為新樣式資訊 As Boolean)
    End If
 End Property
 
+Public Property Get ShowOnMode() As Boolean
+    ShowOnMode = m_ShowOnMode
+End Property
+
+Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
+    m_ShowOnMode = vNewValue
+    PropertyChanged "ShowOnMode"
+    Call ShowOnModeChange
+End Property
+
+Private Sub ShowOnModeChange()
+Dim i As Integer
+If m_ShowOnMode = True Then
+    Me.角色圖片 = m_cardmain_jpg
+    Me.角色HP = m_cardmain_personhp
+    Me.角色ATK = m_cardmain_personatk
+    Me.角色DEF = m_cardmain_persondef
+Else
+    cardImage.LoadImage_FromFile App.Path & "\gif\system\personunknown.jpg"
+    personlabelhp.Caption = "?"
+    personlabelatk.Caption = "?"
+    personlabeldef.Caption = "?"
+End If
+End Sub
+
 Private Sub cardback_Click(ByVal Button As Integer)
 RaiseEvent CardClick
 End Sub
 
 Private Sub cardback_MouseEnter()
 cardbackclick.Visible = True
-cardbackclick.ZOrder
 End Sub
 
 Private Sub cardback_MouseExit()

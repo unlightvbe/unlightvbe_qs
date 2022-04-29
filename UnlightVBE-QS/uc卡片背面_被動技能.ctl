@@ -62,6 +62,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Private m_SkillName As String
 Private m_SkillDescription As String
+Private m_ShowOnMode As Boolean
 Public Event ClickBR()
 
 Public Property Get SkillName() As String
@@ -72,13 +73,11 @@ Public Property Let SkillName(ByVal vNewValue As String)
     m_SkillName = vNewValue
     PropertyChanged "SkillName"
     '=====================
-    If m_SkillName <> "" Then
+    If m_SkillName <> "" And m_ShowOnMode = True Then
         personcardback_passivetext.Caption = m_SkillName
         personcardback_passivetext.Visible = True
-        aicAlphaImageBar.Enabled = True
     Else
         personcardback_passivetext.Visible = False
-        aicAlphaImageBar.Enabled = False
     End If
 End Property
 Public Property Get SkillDescription() As String
@@ -89,12 +88,32 @@ Public Property Let SkillDescription(ByVal vNewValue As String)
     m_SkillDescription = vNewValue
     PropertyChanged "SkillDescription"
 End Property
-Public Sub ResetAll()
+
+Public Property Get ShowOnMode() As Boolean
+    ShowOnMode = m_ShowOnMode
+End Property
+
+Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
+    m_ShowOnMode = vNewValue
+    PropertyChanged "ShowOnMode"
+    Call ShowOnModeChange
+End Property
+
+Private Sub ShowOnModeChange()
+If m_ShowOnMode = True Then
+    Me.SkillName = m_SkillName
+Else
     personcardback_passivetext.Visible = False
+End If
+End Sub
+Public Sub ResetAll()
+    Me.SkillName = ""
+    Me.SkillDescription = ""
+    Me.ShowOnMode = False
 End Sub
 
 Private Sub aicAlphaImageBar_Click(ByVal Button As Integer)
-    If personcardback_passivetext.Visible = True Then RaiseEvent ClickBR
+    RaiseEvent ClickBR
 End Sub
 
 Private Sub aicAlphaImageBar_MouseEnter()

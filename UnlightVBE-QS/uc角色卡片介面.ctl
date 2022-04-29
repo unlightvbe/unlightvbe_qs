@@ -46,7 +46,8 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
-Dim m_cardbackcheck As Integer
+Dim m_cardbackcheck As Integer, m_ShowOnMode As Boolean
+Private m_MusicPlayerObj As ucMusicPlayer
 
 Public Sub §ó§ï²§±`ª¬ºA¸ê®Æ(ByVal buffnum As Integer, ByVal ImagePath As String, ByVal num As Integer, ByVal tot As Integer, ByVal isVisible As Boolean)
 card.§ó§ï²§±`ª¬ºA¸ê®Æ buffnum, ImagePath, num, tot, isVisible
@@ -100,6 +101,23 @@ Public Property Let CardMain_¬O§_¬°·s¼Ë¦¡¸ê°T(ByVal New_CardMain_¬O§_¬°·s¼Ë¦¡¸ê°
    card.¬O§_¬°·s¼Ë¦¡¸ê°T = New_CardMain_¬O§_¬°·s¼Ë¦¡¸ê°T
    PropertyChanged "CardMain_¬O§_¬°·s¼Ë¦¡¸ê°T"
 End Property
+Public Property Get MusicPlayerObj() As ucMusicPlayer
+    Set MusicPlayerObj = m_MusicPlayerObj
+End Property
+
+Public Property Let MusicPlayerObj(ByVal vNewValue As ucMusicPlayer)
+    Set m_MusicPlayerObj = vNewValue
+    PropertyChanged "MusicPlayerObj"
+End Property
+Public Property Get ShowOnMode() As Boolean
+    ShowOnMode = m_ShowOnMode
+End Property
+
+Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
+    m_ShowOnMode = vNewValue
+    PropertyChanged "ShowOnMode"
+    Call ShowOnModeChange
+End Property
 Public Sub CardBack_¥D°Ê§Þ_§Þ¯à¦WºÙ(ByVal num As Integer, ByVal skillstr As String)
    cardback_active.¥D°Ê§Þ_§Þ¯à¦WºÙ num, skillstr
 End Sub
@@ -138,6 +156,8 @@ Else
     cardback_passive.ZOrder
     m_cardbackcheck = 2
 End If
+m_MusicPlayerObj.MusicStop
+m_MusicPlayerObj.MusicPlay
 card.Visible = False
 End Sub
 
@@ -149,6 +169,8 @@ card.Visible = True
 card.ZOrder
 cardback_active.Visible = False
 m_cardbackcheck = 1
+m_MusicPlayerObj.MusicStop
+m_MusicPlayerObj.MusicPlay
 End Sub
 
 Private Sub cardback_active_ClickPassive()
@@ -179,4 +201,11 @@ card.Visible = True
 card.ZOrder
 cardback_passive.Visible = False
 m_cardbackcheck = 2
+m_MusicPlayerObj.MusicStop
+m_MusicPlayerObj.MusicPlay
+End Sub
+Private Sub ShowOnModeChange()
+card.ShowOnMode = m_ShowOnMode
+cardback_active.ShowOnMode = m_ShowOnMode
+cardback_passive.ShowOnMode = m_ShowOnMode
 End Sub

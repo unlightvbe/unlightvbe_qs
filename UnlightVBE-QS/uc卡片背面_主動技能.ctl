@@ -153,6 +153,7 @@ Private m_TurnNum As Integer
 Private m_RangeStr As String
 Private m_CardStr As String
 Private m_SkillDescription As String
+Private m_ShowOnMode As Boolean
 Public Event ClickBR()
 Public Property Get SkillName() As String
     SkillName = m_SkillName
@@ -162,29 +163,20 @@ Public Property Let SkillName(ByVal vNewValue As String)
     m_SkillName = vNewValue
     PropertyChanged "SkillName"
     '=====================
-    If m_SkillName <> "" Then
+    If m_SkillName <> "" And m_ShowOnMode = True Then
         personcardback_text.Caption = m_SkillName
         personcardback_text.Visible = True
-        aicAlphaImageBar.Enabled = True
     Else
         personcardback_text.Visible = False
-        aicAlphaImageBar.Enabled = False
     End If
 End Property
 Public Sub ResetAll()
-    Dim k As Integer
-    personcardback_turn.Visible = False
-    personcardback_text.Visible = False
-    For k = 1 To 5
-        personcardback_num(k).Visible = False
-    Next
-    '================
-    For k = 1 To 3
-        personcardback_range(k).物件類別 = 2
-        personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
-        personcardback_range(k).項目編號 = 2
-    Next
-    '================
+    Me.SkillName = ""
+    Me.turnnum = 0
+    Me.RangeStr = ""
+    Me.CardStr = ""
+    Me.SkillDescription = ""
+    Me.ShowOnMode = False
 End Sub
 
 Public Property Get turnnum() As Integer
@@ -199,7 +191,7 @@ Public Property Let turnnum(ByVal vNewValue As Integer)
     End If
     PropertyChanged "turnnum"
     '=====================
-    If m_TurnNum <> 0 Then
+    If m_TurnNum <> 0 And m_ShowOnMode = True Then
         personcardback_turn.物件類別 = 3
         personcardback_turn.圖片 = App.Path & "\gif\system\cardback\CBturn.png"
         personcardback_turn.項目編號 = m_TurnNum
@@ -217,20 +209,28 @@ Public Property Let RangeStr(ByVal vNewValue As String)
     m_RangeStr = vNewValue
     PropertyChanged "RangeStr"
     '=====================
-    Dim k As Integer
-    For k = 1 To 3
-         personcardback_range(k).物件類別 = 2
-         personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
-         If Mid(m_RangeStr, k, 1) = 1 Then
-             If k < 3 Then
-                 personcardback_range(k).項目編號 = 1
+    If m_RangeStr <> "" And m_ShowOnMode = True Then
+        Dim k As Integer
+        For k = 1 To 3
+             personcardback_range(k).物件類別 = 2
+             personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
+             If Mid(m_RangeStr, k, 1) = 1 Then
+                 If k < 3 Then
+                     personcardback_range(k).項目編號 = 1
+                 Else
+                     personcardback_range(k).項目編號 = 3
+                 End If
              Else
-                 personcardback_range(k).項目編號 = 3
+                 personcardback_range(k).項目編號 = 2
              End If
-         Else
-             personcardback_range(k).項目編號 = 2
-         End If
-    Next
+        Next
+    Else
+        For k = 1 To 3
+            personcardback_range(k).物件類別 = 2
+            personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
+            personcardback_range(k).項目編號 = 2
+        Next
+    End If
 End Property
 
 Public Property Get CardStr() As String
@@ -241,32 +241,71 @@ Public Property Let CardStr(ByVal vNewValue As String)
     m_CardStr = vNewValue
     PropertyChanged "CardStr"
     '=====================
-    Dim strw As Variant, k As Integer, n As Integer
-    strw = Split(m_CardStr, "&")
-    For k = 0 To UBound(strw)
-        If Len(strw(k)) = 3 Then
-               personcardback_num(k + 1).物件類別 = 1
-               personcardback_num(k + 1).圖片 = App.Path & "\gif\system\cardback\CB" & Mid(strw(k), 1, 1) & "-" & Mid(strw(k), 3, 1) & ".png"
-               If Mid(strw(k), 2, 1) = "a" Then
-                    n = 10
-               ElseIf Mid(strw(k), 2, 1) = "b" Then
-                    n = 11
-               Else
-                    n = Val(Mid(strw(k), 2, 1))
-               End If
-               personcardback_num(k + 1).項目編號 = n
-               personcardback_num(k + 1).Visible = True
-        Else
-               personcardback_num(k + 1).Visible = False
-        End If
-    Next
-    For k = UBound(strw) + 1 To 4
-        personcardback_num(k + 1).Visible = False
-    Next
+    If m_CardStr <> "" And m_ShowOnMode = True Then
+        Dim strw As Variant, k As Integer, n As Integer
+        strw = Split(m_CardStr, "&")
+        For k = 0 To UBound(strw)
+            If Len(strw(k)) = 3 Then
+                   personcardback_num(k + 1).物件類別 = 1
+                   personcardback_num(k + 1).圖片 = App.Path & "\gif\system\cardback\CB" & Mid(strw(k), 1, 1) & "-" & Mid(strw(k), 3, 1) & ".png"
+                   If Mid(strw(k), 2, 1) = "a" Then
+                        n = 10
+                   ElseIf Mid(strw(k), 2, 1) = "b" Then
+                        n = 11
+                   Else
+                        n = Val(Mid(strw(k), 2, 1))
+                   End If
+                   personcardback_num(k + 1).項目編號 = n
+                   personcardback_num(k + 1).Visible = True
+            Else
+                   personcardback_num(k + 1).Visible = False
+            End If
+        Next
+        For k = UBound(strw) + 1 To 4
+            personcardback_num(k + 1).Visible = False
+        Next
+    Else
+        For k = 0 To 4
+            personcardback_num(k + 1).Visible = False
+        Next
+    End If
 End Property
 
+Public Property Get ShowOnMode() As Boolean
+    ShowOnMode = m_ShowOnMode
+End Property
+
+Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
+    m_ShowOnMode = vNewValue
+    PropertyChanged "ShowOnMode"
+    Call ShowOnModeChange
+End Property
+
+Private Sub ShowOnModeChange()
+If m_ShowOnMode = True Then
+    Me.SkillName = m_SkillName
+    Me.turnnum = m_TurnNum
+    Me.RangeStr = m_RangeStr
+    Me.CardStr = m_CardStr
+Else
+    Dim k As Integer
+    personcardback_turn.Visible = False
+    personcardback_text.Visible = False
+    For k = 1 To 5
+        personcardback_num(k).Visible = False
+    Next
+    '================
+    For k = 1 To 3
+        personcardback_range(k).物件類別 = 2
+        personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
+        personcardback_range(k).項目編號 = 2
+    Next
+    '================
+End If
+End Sub
+
 Private Sub aicAlphaImageBar_Click(ByVal Button As Integer)
-    If personcardback_text.Visible = True Then RaiseEvent ClickBR
+    RaiseEvent ClickBR
 End Sub
 
 Private Sub aicAlphaImageBar_MouseEnter()
