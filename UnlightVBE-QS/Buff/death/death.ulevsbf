@@ -18,6 +18,8 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
                 buff = buff & "BuffTurnEnd#0" & "="
             End If
         Case 73
-            buff = buff & "PersonBloodControl#1," & VBEAtkingVSS(0) & ",3,0" & "="
+            If VBEVSStageNum(1) = 0 Then
+                buff = buff & "PersonBloodControl#1," & VBEAtkingVSS(0) & ",3,0" & "="
+            End If
     End Select
 End Function
