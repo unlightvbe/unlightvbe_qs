@@ -37,7 +37,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           atking = atking & "EventTotalDiceChange#1,1,8" & "="
           atking = atking & "EventTotalDiceChange#2,2,6" & "="
         Case 11
-          atking = atking & "AtkingStartPlay#" & "\gif\Ria\atking1EX.jpg,0" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Ria\atking1EX.png,0" & "="
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
     End Select

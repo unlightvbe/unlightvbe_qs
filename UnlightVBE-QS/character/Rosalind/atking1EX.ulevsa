@@ -45,7 +45,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                     pageTempNum(i) = 0
                 End If
             Next
-            atking = atking & "AtkingStartPlay#" & "\gif\Rosalind\atkingEX1.jpg,0" & "="
+            atking = atking & "AtkingStartPlay#" & "\gif\Rosalind\atkingEX1.png,0" & "="
             atking = atking & "AtkingLineLight#2" & "="
         Case 23
             If VBEAtkingVSS(5) <= 0 Then

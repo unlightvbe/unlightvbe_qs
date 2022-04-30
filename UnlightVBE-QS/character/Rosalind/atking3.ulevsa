@@ -39,7 +39,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             Else
                 atking = atking & "PersonTotalDiceControl#2,4,2" & "="
             End If
-            atking = atking & "AtkingStartPlay#" & "\gif\Rosalind\atking3.jpg,0" & "="
+            atking = atking & "AtkingStartPlay#" & "\gif\Rosalind\atking3.png,0" & "="
             atking = atking & "AtkingLineLight#2" & "="
             atking = atking & "AtkingTurnOnOff#2" & "="
         Case 99

@@ -33,7 +33,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                End If
             End If
         Case 11
-            atking = atking & "AtkingStartPlay#" & "\gif\Alec\atking3-1.jpg,\gif\Alec\atking3-2.jpg" & "="
+            atking = atking & "AtkingStartPlay#" & "\gif\Alec\atking3-1.png,\gif\Alec\atking3-2.png" & "="
             atking = atking & "AtkingLineLight#2" & "="
             defnum = VBEAtkingVSS(8)
             cardnum = VBEAtkingVSS(3)

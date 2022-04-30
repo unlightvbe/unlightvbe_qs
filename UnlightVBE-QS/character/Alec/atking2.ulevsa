@@ -32,7 +32,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                End If
             End If
         Case 31
-            atking = atking & "AtkingStartPlay#" & "\gif\Alec\atking2-1.jpg,\gif\Alec\atking2-2.jpg" & "="
+            atking = atking & "AtkingStartPlay#" & "\gif\Alec\atking2-1.png,\gif\Alec\atking2-2.png" & "="
             atking = atking & "AtkingLineLight#2" & "="
         Case 23
             If VBEAtkingVSS(5) > 0 Then
