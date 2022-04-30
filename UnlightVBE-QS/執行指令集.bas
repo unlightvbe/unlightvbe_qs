@@ -114,6 +114,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                執行指令集.執行指令_異常狀態控制_全部清除_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "PersonRemoveBuffSelect"
                                執行指令集.執行指令_異常狀態控制_特定清除_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "PersonBuffTurnChange"
+                               執行指令集.執行指令_異常狀態控制_變更回合數 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "PersonAddActualStatus"
                                執行指令集.執行指令_人物實際狀態控制_加入 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "PersonRemoveActualStatus"
@@ -1052,7 +1054,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
                                                         pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
                                                     End If
@@ -1079,7 +1081,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 5) = 2
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardRotationType = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
                                                         pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
@@ -1934,6 +1936,84 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "PersonRemoveBuffSelect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_異常狀態控制_變更回合數(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    Dim buffvssnum As String
+    Dim vsstr As String
+    Dim uscomt As Integer
+    Dim personStatus As clsStatus
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 4 Or atkingnum = 9 Then GoTo VssCommadExit
+    Select Case commadtype
+        Case 1
+        Case 3
+            If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
+                vbecommadnum(4, vbecommadtotplayNow) <= 73 Then GoTo VssCommadExit
+        Case Else
+            GoTo VssCommadExit
+    End Select
+    Select Case Val(commadstr3(0))
+         Case 1
+               uscomt = uscom
+         Case 2
+               If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            '===========================================
+            If ((uscomt = 1 And liveus(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))) <= 0) Or _
+               (uscomt = 2 And livecom(角色待機人物紀錄數(uscomt, Val(commadstr3(1)))) <= 0)) Then
+               GoTo VssCommadExit
+            End If
+            '===========================================
+            If CollectionExists(人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))), commadstr3(2)) = True Then
+                Set personStatus = 人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))))(commadstr3(2))
+                Select Case Val(commadstr3(3))
+                    Case 1
+                       personStatus.Total = personStatus.Total + Val(commadstr3(4))
+                    Case 2
+                       personStatus.Total = personStatus.Total - Val(commadstr3(4))
+                    Case 3
+                       personStatus.Total = Val(commadstr3(4))
+                End Select
+                '=======================
+                If personStatus.Total <= 0 Then
+                    執行階段系統類.執行階段73_指令_異常狀態控制_主動清除 uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), commadstr3(2)
+                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
+                    VBEStage7xAtkingInformation = commadstr3(2)
+                    vbecommadnum(2, vbecommadtotplayNow) = 2
+                    Exit Sub
+                Else
+                    戰鬥系統類.異常狀態顯示更新 uscom
+                    GoTo VssCommadExit
+                End If
+            Else
+                GoTo VssCommadExit '未找到該異常狀態
+            End If
+        Case 2
+            ReDim VBEStageNum(0 To 3) As Integer
+            VBEStageNum(0) = 77
+            VBEStageNum(1) = uscomt '觸發事件方(1.使用者/2.電腦)
+            VBEStageNum(2) = 1 '解除狀態類別(1.異常狀態/2.人物實際狀態)
+            VBEStageNum(3) = 0 '技能唯一識別碼擺放用
+            '===========================執行階段插入點(77)
+            執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 77, 1
+            '============================
+            戰鬥系統類.異常狀態顯示更新 uscomt
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "PersonBuffTurnChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 
 Sub 執行指令_執行之異常狀態消滅無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)

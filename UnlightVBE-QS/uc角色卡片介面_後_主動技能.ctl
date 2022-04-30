@@ -31,7 +31,7 @@ Begin VB.UserControl uc角色卡片介面_後_主動技能
    End
    Begin UnlightVBE.uc卡片背面_主動技能 cardbackStatus 
       Height          =   495
-      Index           =   2
+      Index           =   3
       Left            =   100
       TabIndex        =   1
       Top             =   1280
@@ -41,7 +41,7 @@ Begin VB.UserControl uc角色卡片介面_後_主動技能
    End
    Begin UnlightVBE.uc卡片背面_主動技能 cardbackStatus 
       Height          =   495
-      Index           =   3
+      Index           =   2
       Left            =   100
       TabIndex        =   2
       Top             =   800
