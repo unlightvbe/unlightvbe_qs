@@ -296,9 +296,7 @@ If Vss_EventHPLActionOffNum = 0 Then
                 If liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) >= tot Then
                     liveus(角色待機人物紀錄數(1, num)) = Val(liveus(角色待機人物紀錄數(1, num))) + tot
                 ElseIf liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) < tot Then
-                    If liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) > 0 Then
-                       liveus(角色待機人物紀錄數(1, num)) = Val(liveusmax(角色待機人物紀錄數(1, num)))
-                    End If
+                    liveus(角色待機人物紀錄數(1, num)) = Val(liveusmax(角色待機人物紀錄數(1, num)))
                 End If
                 FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = liveus(角色待機人物紀錄數(1, num))
                 FormMainMode.PEAFpersoncardus(角色待機人物紀錄數(1, num)).CurrentHP = liveus(角色待機人物紀錄數(1, num))
@@ -347,15 +345,10 @@ If Vss_EventHPLActionOffNum = 0 Then
             If livecom(角色待機人物紀錄數(2, num)) > 0 And tot > 0 Then
                 If livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) >= tot Then
                     livecom(角色待機人物紀錄數(2, num)) = Val(livecom(角色待機人物紀錄數(2, num))) + tot
-                    FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
                 ElseIf livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) < tot Then
                     livecom(角色待機人物紀錄數(2, num)) = Val(livecommax(角色待機人物紀錄數(2, num)))
-                    If 戰鬥系統類.PersonCardShowOnMode(2, 角色待機人物紀錄數(2, num)) = False Then
-                         FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
-                    Else
-                         FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
-                    End If
                 End If
+                FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
                 FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = livecom(角色待機人物紀錄數(2, num))
             End If
     End Select
@@ -3174,7 +3167,7 @@ If tn <= 18 Then
             pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
             pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
             FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
             FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
             pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
             戰鬥系統類.座標計算_使用者手牌
@@ -3207,7 +3200,7 @@ If tn <= 18 Then
             pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
             pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
             FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
             pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
             戰鬥系統類.座標計算_電腦手牌
             牌移動暫時變數(3) = 公用牌實體卡片分隔紀錄數(3) + tn
@@ -3327,7 +3320,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\021.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\021.png"
                             pagecardnum(m, 8) = "021"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3342,7 +3335,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\019.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\019.png"
                             pagecardnum(m, 8) = "019"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3357,7 +3350,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\017.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\017.png"
                             pagecardnum(m, 8) = "017"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3372,7 +3365,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\025.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\025.png"
                             pagecardnum(m, 8) = "025"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3387,7 +3380,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\024.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\024.png"
                             pagecardnum(m, 8) = "024"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3402,7 +3395,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\023.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\023.png"
                             pagecardnum(m, 8) = "023"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3417,7 +3410,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\026.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\026.png"
                             pagecardnum(m, 8) = "026"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3432,7 +3425,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a3a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\027.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\027.png"
                             pagecardnum(m, 8) = "027"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3447,7 +3440,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a1a
                             pagecardnum(m, 4) = b6b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\001.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\001.png"
                             pagecardnum(m, 8) = "001"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3462,7 +3455,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\011.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\011.png"
                             pagecardnum(m, 8) = "011"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3477,7 +3470,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\007.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\007.png"
                             pagecardnum(m, 8) = "007"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3492,7 +3485,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\006.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\006.png"
                             pagecardnum(m, 8) = "006"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3507,7 +3500,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\004.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\004.png"
                             pagecardnum(m, 8) = "004"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3522,7 +3515,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b5b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\028.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\028.png"
                             pagecardnum(m, 8) = "028"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3537,7 +3530,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\012.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\012.png"
                             pagecardnum(m, 8) = "012"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3552,7 +3545,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\009.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\009.png"
                             pagecardnum(m, 8) = "009"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3567,7 +3560,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\008.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\008.png"
                             pagecardnum(m, 8) = "008"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3582,7 +3575,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b3b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\005.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\005.png"
                             pagecardnum(m, 8) = "005"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3597,7 +3590,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\013.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\013.png"
                             pagecardnum(m, 8) = "013"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3612,7 +3605,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\010.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\010.png"
                             pagecardnum(m, 8) = "010"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3627,7 +3620,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\003.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\003.png"
                             pagecardnum(m, 8) = "003"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3642,7 +3635,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\002.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\002.png"
                             pagecardnum(m, 8) = "002"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3657,7 +3650,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a5a
                             pagecardnum(m, 4) = b4b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\015.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\015.png"
                             pagecardnum(m, 8) = "015"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3672,7 +3665,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\020.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\020.png"
                             pagecardnum(m, 8) = "020"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3687,7 +3680,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\018.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\018.png"
                             pagecardnum(m, 8) = "018"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3702,7 +3695,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b1b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\016.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\016.png"
                             pagecardnum(m, 8) = "016"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3717,7 +3710,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b2b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\014.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\014.png"
                             pagecardnum(m, 8) = "014"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3732,7 +3725,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a2a
                             pagecardnum(m, 4) = b5b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\022.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\022.png"
                             pagecardnum(m, 8) = "022"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -3747,7 +3740,7 @@ If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
                             pagecardnum(m, 3) = a4a
                             pagecardnum(m, 4) = b5b
                             pagecardnum(m, 5) = k
-                            FormMainMode.card(m).CardImage = app_path & "card\029.png"
+                            FormMainMode.card(m).cardImage = app_path & "card\029.png"
                             pagecardnum(m, 8) = "029"
                             pageonin(m) = 1
                             pagecardnum(m, 6) = 1
@@ -4349,11 +4342,7 @@ If Vss_EventPersonResurrectActionOffNum = 0 Then
        Case Is > 1
             liveus(角色待機人物紀錄數(1, num)) = 1
             FormMainMode.PEAFpersoncardus(角色待機人物紀錄數(1, num)).CurrentHP = 1
-            If 戰鬥系統類.PersonCardShowOnMode(1, 角色待機人物紀錄數(1, num)) = False Then
-                FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = -liveusmax(角色待機人物紀錄數(1, num)) + 1
-            Else
-                FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 1
-            End If
+            FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 1
     End Select
 End If
 End Sub
@@ -4374,11 +4363,7 @@ If Vss_EventPersonResurrectActionOffNum = 0 Then
             livecom(角色人物對戰人數(2, 2)) = 1
             FormMainMode.bloodlineout2.Left = 11580 - 距離單位(1, 2, 1)
         Case Is > 1
-            If 戰鬥系統類.PersonCardShowOnMode(2, 角色待機人物紀錄數(2, num)) = False Then
-                FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = -livecommax(角色待機人物紀錄數(2, num)) + 1
-            Else
-                FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 1
-            End If
+            FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 1
             livecom(角色待機人物紀錄數(2, num)) = 1
             FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = 1
     End Select

@@ -1652,8 +1652,8 @@ Begin VB.Form FormMainMode
          TabIndex        =   126
          Top             =   0
          Width           =   11340
-         _extentx        =   2143
-         _extenty        =   2778
+         _ExtentX        =   2143
+         _ExtentY        =   2778
       End
       Begin VB.Label bloodnumcom2 
          Alignment       =   2  '¸m¤¤¹ï»ô
