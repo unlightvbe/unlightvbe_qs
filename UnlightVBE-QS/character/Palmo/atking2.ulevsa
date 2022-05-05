@@ -54,14 +54,14 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
         Case 99
             Dim numtot(1), buffnum
             k = 0 : buffnum = 0
-            If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(13) = 1 And VBEAtkingVSS(6) < 3 Then
+            If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(13) = 1 And VBEAtkingVSS(6) < 3 And (AtkingPagetotVS(1, 1) >= 3 And AtkingPagetotVS(1, 1) < 6 And AtkingPagetotVS(1, 5) >= 2) Then
                 For i = 1 To UBound(VBEPersonBuffVSS, 3)
                     If VBEPersonBuffVSS(1, 1, i) = "BUFFN01401" Then
                         buffnum = VBEPersonBuffVSF(1, 1, i, 2)
                         Exit For
                     End If
                 Next
-                If buffnum > 5 And (AtkingPagetotVS(1, 1) >= 3 And AtkingPagetotVS(1, 1) < 6 And AtkingPagetotVS(1, 5) >= 2) Then
+                If buffnum > 5 Then
                     atking = atking & "EventActiveAIScore#1,1"
                     Do
                         k = k + 1
