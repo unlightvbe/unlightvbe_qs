@@ -38,7 +38,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                End If
             End If
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Sheri\atking2.jpg,0" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Sheri\atking2.png,0" & "="
           atking = atking & "AtkingLineLight#2" & "="
         Case 26
           Dim n: n = 0

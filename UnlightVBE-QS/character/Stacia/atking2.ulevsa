@@ -44,7 +44,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           Next
           atking = atking & "EventTotalDiceChange#1,1," & personlivenum * 4 & "="
         Case 11
-          atking = atking & "AtkingStartPlay#" & "\gif\Stacia\atking2.jpg,0" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Stacia\atking2.png,0" & "="
           atking = atking & "AtkingLineLight#2" & "="
         Case 20
           If VBEActualStatusVS(1, 1, 1) = "UCASN00101" Then

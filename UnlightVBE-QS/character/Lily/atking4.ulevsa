@@ -35,7 +35,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                 End If
             End If
         Case 11
-          atking = atking & "AtkingStartPlay#" & "\gif\Lily\atking4_1.jpg,\gif\Lily\atking4_2.jpg" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Lily\atking4_1.png,\gif\Lily\atking4_2.png" & "="
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
           '======效果內容轉移至「紡織之陽」內執行(執行階段61)

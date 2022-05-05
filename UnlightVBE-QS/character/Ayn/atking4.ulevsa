@@ -5,7 +5,7 @@ Function main(a)
          Case 2
               main = "42#45#11#99"
          Case 3
-              main = "十三隻眼"
+              main = "十三隻眼"
          Case 4
               main = "攻擊#1"
          Case 5
@@ -46,7 +46,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             atking = atking & "EventTotalDiceChange#1,6,13" & "="
             atking = atking & "EventTotalDiceChange#2,6,0" & "="
         Case 11
-          atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking4.jpg,0" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking4.png,0" & "="
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
         Case 99

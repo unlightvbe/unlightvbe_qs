@@ -34,7 +34,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                End If
             End If
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Shalott\atking1.jpg,0" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Shalott\atking1.png,0" & "="
           atking = atking & "AtkingLineLight#2" & "="
         Case 33
           DiceRecord = 0

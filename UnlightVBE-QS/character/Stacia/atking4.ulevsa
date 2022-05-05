@@ -36,7 +36,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                 End If
           End If
         Case 11
-          atking = atking & "AtkingStartPlay#" & "\gif\Stacia\atking4.jpg,0" & "="
+          atking = atking & "AtkingStartPlay#" & "\gif\Stacia\atking4.png,0" & "="
           atking = atking & "AtkingLineLight#2" & "="
         Case 61
           If VBEActualStatusVS(1, 1, 1) = "UCASN00101" Then

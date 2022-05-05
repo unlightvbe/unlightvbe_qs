@@ -39,7 +39,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
           Dim m
           Randomize
           m = Int(Rnd() * 8) + 1
-          atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking3\main.jpg,\gif\Ayn\atking3\" & m & ".jpg="
+          atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking3\main.png,\gif\Ayn\atking3\" & m & ".png="
           atking = atking & "AtkingLineLight#2" & "="
           atking = atking & "AtkingTurnOnOff#2" & "="
         Case 61
