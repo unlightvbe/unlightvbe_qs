@@ -7,6 +7,7 @@ Reference=*\G{8C344710-5FEC-11CF-A0BF-00AA0062BE57}#1.0#0#C:\Program Files (x86)
 Reference=*\G{EE008642-64A8-11CE-920F-08002B369A33}#2.0#0#C:\WINDOWS\SysWow64\msrdo20.dll#Microsoft Remote Data Object 2.0
 Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#C:\Program Files (x86)\Common Files\System\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
 Object={0E59F1D2-1FBE-11D0-8FF2-00A0D10038BC}#1.0#0; msscript.ocx
+Reference=*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#C:\Windows\SysWOW64\scrrun.dll#Microsoft Scripting Runtime
 Object={F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0; COMDLG32.OCX
 Object={ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0; Imagex.ocx
 Object={BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0; TABCTL32.OCX

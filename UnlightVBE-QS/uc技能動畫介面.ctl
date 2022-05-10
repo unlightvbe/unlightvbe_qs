@@ -81,6 +81,8 @@ Private m_ImageMaskUse As Boolean
 Public Event AnimateCheckPoint(ByVal uscom As Integer)
 Public Event AnimateEnd(ByVal uscom As Integer)
 Private timernum As Integer
+Private AnimateImageDict As Dictionary
+Private AnimateImageShowList As Collection
 Private Sub Delay(ASecond As Double)
     Dim before
     before = Timer
@@ -89,15 +91,24 @@ Private Sub Delay(ASecond As Double)
     Loop Until (Timer - before >= ASecond)
 End Sub
 Public Sub AnimateStart()
-Dim i As Integer
+Dim i As Integer, k As Integer
+Set AnimateImageShowList = New Collection
 timernum = 0
 If m_AnimatePictureList.Count() >= 16 Then
     TimerObj.Interval = 45
     For i = 1 To m_AnimatePictureList.Count()
-        Load aicImageAnimate(i)
-        aicImageAnimate(i).Visible = False
-        aicImageAnimate(i).LoadImage_FromFile m_AnimatePictureList(i)
-        Call SetIAnimateImage(i)
+        If AnimateImageDict.Exists(m_AnimatePictureList(i)) Then
+            k = AnimateImageDict(m_AnimatePictureList(i))
+        Else
+            k = aicImageAnimate.UBound + 1
+            Load aicImageAnimate(k)
+            aicImageAnimate(k).LoadImage_FromFile m_AnimatePictureList(i)
+            AnimateImageDict(m_AnimatePictureList(i)) = k
+        End If
+        '=====================================
+        aicImageAnimate(k).Visible = False
+        Call SetIAnimateImage(k)
+        AnimateImageShowList.Add k
     Next
 Else
     TimerObj.Interval = 90
@@ -130,7 +141,7 @@ End Property
 
 Private Sub aicImage_FadeTerminated(Index As Integer, ByVal CurrentOpacity As Long)
 If CurrentOpacity = 0 Then
-    aicImage(m_uscom).Visible = True
+    aicImage(m_uscom).Visible = False
     RaiseEvent AnimateEnd(m_uscom)
 End If
 End Sub
@@ -138,14 +149,13 @@ End Sub
 Private Sub aicImageAnimate_FadeTerminated(Index As Integer, ByVal CurrentOpacity As Long)
 Dim i As Integer
 If CurrentOpacity = 0 Then
-    For i = 1 To aicImageAnimate.UBound
-        Unload aicImageAnimate(i)
-    Next
+    aicImageAnimate(Index).Visible = False
     RaiseEvent AnimateEnd(m_uscom)
 End If
 End Sub
 
 Private Sub TimerObj_Timer()
+Dim tmpImagenum As Integer, tmpImagenumAfter As Integer
 Call SetImageMaskUse
 Select Case m_AnimatePictureList.Count()
     Case 1
@@ -184,27 +194,34 @@ Select Case m_AnimatePictureList.Count()
                 aicImage(m_uscom).FadeInOut 0, 20
         End Select
     Case Is >= 16
+        If timernum > 0 And timernum <= m_AnimatePictureList.Count() Then
+            tmpImagenum = AnimateImageShowList(timernum)
+        End If
+        If timernum < m_AnimatePictureList.Count() Then
+            tmpImagenumAfter = AnimateImageShowList(timernum + 1)
+        End If
         Select Case timernum
             Case 0
-                aicImageAnimate(timernum + 1).Opacity = 0
-                aicImageAnimate(timernum + 1).Visible = True
-                aicImageAnimate(timernum + 1).FadeInOut 100, 20
+                aicImageAnimate(tmpImagenumAfter).Opacity = 0
+                aicImageAnimate(tmpImagenumAfter).Visible = True
+                aicImageAnimate(tmpImagenumAfter).FadeInOut 100, 25
             Case 1
-                aicImageAnimate(timernum + 1).Visible = True
-                aicImageAnimate(timernum).Visible = False
+                aicImageAnimate(tmpImagenumAfter).Visible = True
+                aicImageAnimate(tmpImagenum).Visible = False
                 m_MusicPlayerObj.MusicStop
                 m_MusicPlayerObj.MusicPlay
             Case 7
-                aicImageAnimate(timernum + 1).Visible = True
-                aicImageAnimate(timernum).Visible = False
+                aicImageAnimate(tmpImagenumAfter).Visible = True
+                aicImageAnimate(tmpImagenum).Visible = False
                 RaiseEvent AnimateCheckPoint(m_uscom)
             Case m_AnimatePictureList.Count()
                 TimerObj.Enabled = False
-                aicImageAnimate(timernum).FadeInOut 0, 20
+                aicImageAnimate(tmpImagenum).FadeInOut 0, 25
             Case Else
                 If timernum < m_AnimatePictureList.Count() Then
-                    aicImageAnimate(timernum + 1).Visible = True
-                    aicImageAnimate(timernum).Visible = False
+                    aicImageAnimate(tmpImagenumAfter).Opacity = 100
+                    aicImageAnimate(tmpImagenumAfter).Visible = True
+                    aicImageAnimate(tmpImagenum).Visible = False
                 End If
         End Select
 End Select
@@ -223,6 +240,7 @@ End Property
 Private Sub UserControl_Show()
 aicImage(1).Visible = False
 aicImage(2).Visible = False
+aicImageAnimate(0).Visible = False
 End Sub
 
 Public Property Get ImageMaskUse() As Boolean
@@ -275,4 +293,18 @@ Else
     aicImage(1).MaskUsed = aiNoMask
     aicImage(2).MaskUsed = aiNoMask
 End If
+End Sub
+Sub Reset()
+Dim i As Integer
+For i = 1 To aicImageAnimate.UBound
+    Unload aicImageAnimate(i)
+Next
+Set AnimateImageDict = New Dictionary
+End Sub
+
+Private Sub UserControl_Terminate()
+Dim i As Integer
+For i = 1 To aicImageAnimate.UBound
+    Unload aicImageAnimate(i)
+Next
 End Sub

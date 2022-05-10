@@ -1434,6 +1434,8 @@ Next
 '==================
 BattleTurn = 1
 FormMainMode.PEAFInterface.turn = BattleTurn
+'==================
+FormMainMode.PEAFAnimateInterface.Reset
 FormMainMode.PEAFAnimateInterface.MusicPlayerObj = FormMainMode.cMusicPlayer(5)
 FormMainMode.PEAFAnimateInterface.ImageMaskUse = Formsetting.chkAtkingImageMaskUse.Value
 End Sub
