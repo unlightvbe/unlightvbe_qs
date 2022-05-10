@@ -828,8 +828,18 @@ Sub 執行指令_技能動畫執行_逐格動畫(ByVal uscom As Integer, ByVal commadtype As I
                 執行指令集.Sub_技能動畫執行_靜態 tmpstr1, tmpstr2, uscom
             Else
                 Set piclist = New Collection
-                For i = 1 To 16
-                    piclist.Add App.Path & commadstr3(0) & i & ".png"
+                For i = 1 To 24
+                    Dim filestr As String
+                    filestr = App.Path & commadstr3(0) & i & ".png"
+                    If Dir(filestr) <> "" Then
+                        piclist.Add filestr
+                    Else
+                        If i <= 16 Then
+                            GoTo vss_cmdlocalerr
+                        Else
+                            Exit For
+                        End If
+                    End If
                 Next
                 FormMainMode.PEAFAnimateInterface.AnimatePictureList = piclist
                 FormMainMode.PEAFAnimateInterface.uscom = uscom
@@ -1054,7 +1064,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
                                                         pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
                                                     End If
@@ -1081,7 +1091,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 5) = 2
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardRotationType = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
                                                         pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
