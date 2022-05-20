@@ -37,7 +37,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
         Case 45
           atking = atking & "EventTotalDiceChange#1,1,7" & "="
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Evarist\atking3-1.png,\gif\Evarist\atking3-2.png" & "="
+          atking = atking & "AtkingStartPlayAnimate#" & "\gif\Evarist\atking3\,12,17" & "="
           atking = atking & "AtkingLineLight#2" & "="
         Case 25
           If VBEAtkingVSS(5) < 0 And VBEAtkingVSS(8) > 0 Then

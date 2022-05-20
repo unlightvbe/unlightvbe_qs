@@ -40,7 +40,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
         Case 45
           atking = atking & "EventTotalDiceChange#1,1,4" & "="
         Case 11
-          atking = atking & "AtkingStartPlay#" & "\gif\Evarist\atking2.jpg,0" & "="
+          atking = atking & "AtkingStartPlayAnimate#" & "\gif\Evarist\atking2\,5,15" & "="
           atking = atking & "AtkingLineLight#2" & "="
         Case 28
           ReDim atkingtemp(UBound(VBEPageCardNumVS) + 1)
