@@ -587,7 +587,7 @@ Sub 執行指令_人物血量控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
             Select Case commadstr3(2)
                 Case 1
                      ReDim VBEStageNum(0 To 6) As Integer
-                     VBEStageNum(5) = uscom
+                     VBEStageNum(5) = -uscom
                      VBEStageNum(6) = statusnum
                      Select Case uscomt
                           Case 1
@@ -597,7 +597,7 @@ Sub 執行指令_人物血量控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
                      End Select
                 Case 2
                      ReDim VBEStageNum(0 To 5) As Integer
-                     VBEStageNum(4) = uscom
+                     VBEStageNum(4) = -uscom
                      VBEStageNum(5) = statusnum
                      Select Case uscomt
                           Case 1
@@ -607,7 +607,7 @@ Sub 執行指令_人物血量控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
                      End Select
                 Case 3
                      ReDim VBEStageNum(0 To 6) As Integer
-                     VBEStageNum(5) = uscom
+                     VBEStageNum(5) = -uscom
                      VBEStageNum(6) = statusnum
                      Select Case uscomt
                           Case 1

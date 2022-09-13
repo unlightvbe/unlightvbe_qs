@@ -740,7 +740,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                             VBEVSStageNum(2) = VBEStageNumMain(1)
                             VBEVSStageNum(3) = VBEStageNumMain(4)
                             VBEVSStageNum(4) = VBEStageNumMain(3)
-                        Case 41 '執行階段41(角色交換)
+                        Case 41, 46, 48 '執行階段41/46/48(角色交換/傷害/回復)
                             For i = 1 To UBound(VBEStageNumMain)
                                 If VBEStageNumMain(i) = -1 Then
                                     VBEVSStageNum(i) = 2
@@ -748,46 +748,6 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                                     VBEVSStageNum(i) = 1
                                 Else
                                     VBEVSStageNum(i) = VBEStageNumMain(i)
-                                End If
-                            Next
-                        Case 46 '執行階段46(傷害)
-                            For i = 1 To UBound(VBEStageNumMain)
-                                If VBEStageNumMain(i) = -1 Then
-                                    VBEVSStageNum(i) = 2
-                                ElseIf VBEStageNumMain(i) = -2 Then
-                                    VBEVSStageNum(i) = 1
-                                Else
-                                    If i = 4 Then
-                                        If VBEStageNumMain(i) = 1 Then
-                                            VBEVSStageNum(i) = 2
-                                        ElseIf VBEStageNumMain(i) = 2 Then
-                                            VBEVSStageNum(i) = 1
-                                        Else
-                                            VBEVSStageNum(i) = 0
-                                        End If
-                                    Else
-                                        VBEVSStageNum(i) = VBEStageNumMain(i)
-                                    End If
-                                End If
-                            Next
-                        Case 48 '執行階段48(回復)
-                            For i = 1 To UBound(VBEStageNumMain)
-                                If VBEStageNumMain(i) = -1 Then
-                                    VBEVSStageNum(i) = 2
-                                ElseIf VBEStageNumMain(i) = -2 Then
-                                    VBEVSStageNum(i) = 1
-                                Else
-                                    If i = 5 Then
-                                        If VBEStageNumMain(i) = 1 Then
-                                            VBEVSStageNum(i) = 2
-                                        ElseIf VBEStageNumMain(i) = 2 Then
-                                            VBEVSStageNum(i) = 1
-                                        Else
-                                            VBEVSStageNum(i) = 0
-                                        End If
-                                    Else
-                                        VBEVSStageNum(i) = VBEStageNumMain(i)
-                                    End If
                                 End If
                             Next
                         Case 76, 77
