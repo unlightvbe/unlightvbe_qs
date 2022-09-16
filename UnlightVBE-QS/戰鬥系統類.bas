@@ -49,7 +49,7 @@ Public 技能動畫顯示階段數 As Integer '技能動畫計數器階段碼(1.攻擊/防禦階段-普通,
 Public 攻擊防禦骰子總數(1 To 4) As Integer '攻擊/防禦模式骰子數量資料(1.使用者(總)/2.電腦(總)/3.使用者(原)/4.電腦(原))
 Public atkingpagetot(1 To 2, 1 To 5) As Integer  '每階段出牌種類及數值統計資料(1.使用者/2.電腦,1.劍/2.防/3.移/4.特/5.槍)
 Public 骰數零檢查值(1 To 2) As Boolean '當前階段骰子數量是否為零檢查數(1.使用者/2.電腦)
-Public pagecardnum(1 To 999, 1 To 11) As String '公用牌資料(第x編號(1~70-公牌/71~88-使用者事件牌/89~106-電腦事件牌),1.正面類型/2.正面數值/3.反面類型/4.反面數值/5.(1)使用者-(2)電腦/6.(1)手牌-(2)出牌-(3)藏牌-(4)牌堆/7.出牌順序/8.圖片編號/9.目前Left(座標)/10.目前Top(座標)/11.(1)電腦方出牌(裏)-(2)電腦發出牌(外))
+Public pagecardnum(1 To 999, 1 To 11) As String '公用牌資料(第x編號,1.正面類型/2.正面數值/3.反面類型/4.反面數值/5.(1)使用者-(2)電腦/6.(1)手牌-(2)出牌-(3)藏牌-(4)牌堆/7.出牌順序/8.圖片編號/9.目前Left(座標)/10.目前Top(座標)/11.(1)電腦方出牌(裏)-(2)電腦發出牌(外))
 Public 牌總階段數(1 To 3) As Integer '牌擁有總階段數(1.使用者/2.電腦/3.總計)
 Public 牌移動暫時變數(1 To 3) As Long '牌移動計數器暫時變數(1.Left單位/2.Top單位/3.牌張編號)
 Public 目前數(1 To 33) As Integer '總暫時變數
@@ -2310,7 +2310,7 @@ End Sub
 Sub 事件卡處理_指定_使用者方()
 Dim kp(1 To 18)  As Integer '事件卡標記暫時數
 Dim m As Integer, km As Integer, i As Integer
-If 事件卡記錄暫時數(0, 1) = 18 Then
+If 事件卡記錄暫時數(0, 1) = 18 Or Formsetting.persontgreus.Value = 0 Then
     Do
         Randomize
         m = Int(Rnd() * 18) + 1
@@ -2342,7 +2342,7 @@ Sub 事件卡處理_指定_電腦方()
 Dim kp(1 To 18)  As Integer '事件卡標記暫時數
 Dim m As Integer, km As Integer, i As Integer
 
-If 事件卡記錄暫時數(0, 1) = 18 Then
+If 事件卡記錄暫時數(0, 1) = 18 Or Formsetting.persontgrecom.Value = 0 Then
     Do
         Randomize
         m = Int(Rnd() * 18) + 1

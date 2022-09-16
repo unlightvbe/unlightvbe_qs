@@ -1075,7 +1075,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                 End If
                                             End If
                                             If BattleTurn < 18 And (tn <= 事件卡記錄暫時數(0, 1) Or Formsetting.persontgreus.Value = 0) Then
-                                                目前數(16) = 70 + BattleTurn + 1
+                                                目前數(16) = 公用牌實體卡片分隔紀錄數(2) + tn
                                                 BattleTurn = BattleTurn + 1
                                                 FormMainMode.PEAFInterface.turn = BattleTurn
                                                 目前數(15) = 21
@@ -1103,7 +1103,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                 End If
                                             End If
                                             If BattleTurn < 18 And (tn <= 事件卡記錄暫時數(0, 1) Or Formsetting.persontgrecom.Value = 0) Then
-                                                目前數(16) = 88 + BattleTurn + 1
+                                                目前數(16) = 公用牌實體卡片分隔紀錄數(3) + tn
                                                 BattleTurn = BattleTurn + 1
                                                 FormMainMode.PEAFInterface.turn = BattleTurn
                                                 目前數(15) = 21
