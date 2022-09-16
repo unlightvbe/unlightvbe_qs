@@ -7,7 +7,7 @@ Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
 Public Vss_AtkingStartPlayNum(1 To 3) As Integer '執行指令集-技能動畫執行紀錄暫時變數
 Public Vss_EventBloodActionOffNum As Integer '執行指令集-原應執行之傷害無效化紀錄暫時變數
-Public Vss_EventBloodActionChangeNum(0 To 4) As Integer '執行指令集-原應執行之傷害效果變更紀錄暫時變數(0.是否執行/1.受到傷害方(1)使用者-(2)電腦/2.受到傷害人物編號/3.(1)骰傷-(2)直傷-(3)立即死亡/4.效果變更後數值)
+Public Vss_EventBloodActionChangeNum(0 To 4) As Integer '執行指令集-原應執行之傷害效果變更紀錄暫時變數(0.是否執行(0)不執行-(1)效果變更/1.受到傷害方(1)使用者-(2)電腦/2.受到傷害人物編號/3.(1)骰傷-(2)直傷-(3)立即死亡/4.效果變更後數值)
 Public Vss_EventHPLActionOffNum As Integer '執行指令集-原應執行之回復無效化紀錄暫時變數
 Public Vss_EventHPLActionChangeNum(0 To 1) As Integer '執行指令集-原應執行之回復效果變更紀錄暫時變數(0.是否執行/1.效果變更後數值)
 Public Vss_EventMoveActionOffNum As Integer '執行指令集-原應執行之距離變更無效化紀錄暫時變數
@@ -153,6 +153,10 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                執行指令集.執行指令_執行之傷害無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventBloodActionChange"
                                執行指令集.執行指令_執行之傷害效果變更_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "EventBloodReflection"
+                               執行指令集.執行指令_傷害效果反射_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "EventHPLReflection"
+                               執行指令集.執行指令_回復效果反射_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventHPLActionOff"
                                執行指令集.執行指令_執行之回復無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventHPLActionChange"
@@ -601,9 +605,9 @@ Sub 執行指令_人物血量控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
                      VBEStageNum(5) = statusnum
                      Select Case uscomt
                           Case 1
-                                戰鬥系統類.回復執行_使用者 commadstr3(3), commadstr3(1), statusnum
+                                戰鬥系統類.回復執行_使用者 commadstr3(3), commadstr3(1), statusnum, True
                           Case 2
-                                戰鬥系統類.回復執行_電腦 commadstr3(3), commadstr3(1), statusnum
+                                戰鬥系統類.回復執行_電腦 commadstr3(3), commadstr3(1), statusnum, True
                      End Select
                 Case 3
                      ReDim VBEStageNum(0 To 6) As Integer
@@ -1542,6 +1546,82 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_傷害效果反射_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    Dim uscomt As Integer
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 2 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 46 Then GoTo VssCommadExit
+    Select Case Val(commadstr3(0))
+         Case 1
+               uscomt = uscom
+         Case 2
+               If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            Select Case uscomt
+                Case 1
+                    戰鬥系統類.傷害執行_技能直傷_使用者 commadstr3(2), commadstr3(1), False
+                Case 2
+                    戰鬥系統類.傷害執行_技能直傷_電腦 commadstr3(2), commadstr3(1), False
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventBloodReflection", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_回復效果反射_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    Dim uscomt As Integer, statusnum As Integer
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 2 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 48 Then GoTo VssCommadExit
+    Select Case Val(commadstr3(0))
+         Case 1
+            uscomt = uscom
+         Case 2
+            If uscom = 1 Then uscomt = 2 Else uscomt = 1
+    End Select
+    Select Case atkingnum
+        Case Is <= 4
+            statusnum = 1
+        Case Is <= 8
+            statusnum = 2
+        Case 9
+            statusnum = 3
+        Case 10
+            statusnum = 4
+    End Select
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            Select Case uscomt
+                Case 1
+                    戰鬥系統類.回復執行_使用者 commadstr3(2), commadstr3(1), statusnum, False
+                Case 2
+                    戰鬥系統類.回復執行_電腦 commadstr3(2), commadstr3(1), statusnum, False
+            End Select
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventHPLReflection", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub 執行指令_執行之回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr

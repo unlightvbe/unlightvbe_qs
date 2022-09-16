@@ -254,105 +254,109 @@ Select Case movecp
         一般系統類.音效播放 8
 End Select
 End Sub
-Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer)
-'===============================
-If statusfrom = 0 Then
-    ReDim VBEStageNum(0 To 5) As Integer
-    VBEStageNum(4) = 0 '觸發事件方
-    VBEStageNum(5) = 0 '觸發事件體系
+Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean)
+If isEvent = True Then
+    '===============================
+    If statusfrom = 0 Then
+        ReDim VBEStageNum(0 To 5) As Integer
+        VBEStageNum(4) = 0 '觸發事件方
+        VBEStageNum(5) = 0 '觸發事件體系
+    End If
+    Vss_EventHPLActionOffNum = 0
+    VBEStageNum(0) = 48
+    VBEStageNum(1) = -1 '回復方(1.使用者/2.電腦)
+    VBEStageNum(2) = num '回復人物編號
+    VBEStageNum(3) = tot '回復之數值
+    Vss_EventHPLActionChangeNum(0) = 0
+    Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
+    '===========================執行階段插入點(48)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 48, 1
+    '============================
+    If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
+    If Vss_EventHPLActionOffNum = 1 Then Exit Sub
 End If
-Vss_EventHPLActionOffNum = 0
-VBEStageNum(0) = 48
-VBEStageNum(1) = -1 '回復方(1.使用者/2.電腦)
-VBEStageNum(2) = num '回復人物編號
-VBEStageNum(3) = tot '回復之數值
-Vss_EventHPLActionChangeNum(0) = 0
-Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
-'===========================執行階段插入點(48)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 48, 1
-'============================
-If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
-If Vss_EventHPLActionOffNum = 0 Then
-    Select Case num
-       Case 1
-             If liveus(角色人物對戰人數(1, 2)) > 0 And tot > 0 Then
-                If liveusmax(角色人物對戰人數(1, 2)) - liveus(角色人物對戰人數(1, 2)) >= tot Then
-                    戰鬥系統類.廣播訊息 "你的HP恢復了" & tot & "點。"
-                    FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width + 距離單位(1, 1, 1) * tot
-                    liveus(角色人物對戰人數(1, 2)) = Val(liveus(角色人物對戰人數(1, 2))) + tot
-                ElseIf liveusmax(角色人物對戰人數(1, 2)) - liveus(角色人物對戰人數(1, 2)) < tot Then
-                    If liveusmax(角色人物對戰人數(1, 2)) - liveus(角色人物對戰人數(1, 2)) > 0 Then
-                       戰鬥系統類.廣播訊息 "你的HP恢復了" & Val(liveusmax(角色人物對戰人數(1, 2))) - Val(liveus(角色人物對戰人數(1, 2))) & "點。"
-                       FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width + 距離單位(1, 1, 1) * (Val(liveusmax(角色人物對戰人數(1, 2))) - Val(liveus(角色人物對戰人數(1, 2))))
-                       liveus(角色人物對戰人數(1, 2)) = Val(liveusmax(角色人物對戰人數(1, 2)))
-                    End If
+
+Select Case num
+   Case 1
+         If liveus(角色人物對戰人數(1, 2)) > 0 And tot > 0 Then
+            If liveusmax(角色人物對戰人數(1, 2)) - liveus(角色人物對戰人數(1, 2)) >= tot Then
+                戰鬥系統類.廣播訊息 "你的HP恢復了" & tot & "點。"
+                FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width + 距離單位(1, 1, 1) * tot
+                liveus(角色人物對戰人數(1, 2)) = Val(liveus(角色人物對戰人數(1, 2))) + tot
+            ElseIf liveusmax(角色人物對戰人數(1, 2)) - liveus(角色人物對戰人數(1, 2)) < tot Then
+                If liveusmax(角色人物對戰人數(1, 2)) - liveus(角色人物對戰人數(1, 2)) > 0 Then
+                   戰鬥系統類.廣播訊息 "你的HP恢復了" & Val(liveusmax(角色人物對戰人數(1, 2))) - Val(liveus(角色人物對戰人數(1, 2))) & "點。"
+                   FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width + 距離單位(1, 1, 1) * (Val(liveusmax(角色人物對戰人數(1, 2))) - Val(liveus(角色人物對戰人數(1, 2))))
+                   liveus(角色人物對戰人數(1, 2)) = Val(liveusmax(角色人物對戰人數(1, 2)))
                 End If
-                FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2))
-                FormMainMode.PEAFpersoncardus(角色人物對戰人數(1, 2)).CurrentHP = liveus(角色人物對戰人數(1, 2))
-                FormMainMode.bloodnumus1.Caption = liveus(角色人物對戰人數(1, 2))
             End If
-       Case Is > 1
-            If liveus(角色待機人物紀錄數(1, num)) > 0 And tot > 0 Then
-                If liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) >= tot Then
-                    liveus(角色待機人物紀錄數(1, num)) = Val(liveus(角色待機人物紀錄數(1, num))) + tot
-                ElseIf liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) < tot Then
-                    liveus(角色待機人物紀錄數(1, num)) = Val(liveusmax(角色待機人物紀錄數(1, num)))
-                End If
-                FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = liveus(角色待機人物紀錄數(1, num))
-                FormMainMode.PEAFpersoncardus(角色待機人物紀錄數(1, num)).CurrentHP = liveus(角色待機人物紀錄數(1, num))
+            FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2))
+            FormMainMode.PEAFpersoncardus(角色人物對戰人數(1, 2)).CurrentHP = liveus(角色人物對戰人數(1, 2))
+            FormMainMode.bloodnumus1.Caption = liveus(角色人物對戰人數(1, 2))
+        End If
+   Case Is > 1
+        If liveus(角色待機人物紀錄數(1, num)) > 0 And tot > 0 Then
+            If liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) >= tot Then
+                liveus(角色待機人物紀錄數(1, num)) = Val(liveus(角色待機人物紀錄數(1, num))) + tot
+            ElseIf liveusmax(角色待機人物紀錄數(1, num)) - liveus(角色待機人物紀錄數(1, num)) < tot Then
+                liveus(角色待機人物紀錄數(1, num)) = Val(liveusmax(角色待機人物紀錄數(1, num)))
             End If
-    End Select
-End If
+            FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = liveus(角色待機人物紀錄數(1, num))
+            FormMainMode.PEAFpersoncardus(角色待機人物紀錄數(1, num)).CurrentHP = liveus(角色待機人物紀錄數(1, num))
+        End If
+End Select
 End Sub
-Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer)
-'===============================
-If statusfrom = 0 Then
-    ReDim VBEStageNum(0 To 5) As Integer
-    VBEStageNum(4) = 0 '觸發事件方
-    VBEStageNum(5) = 0 '觸發事件體系
+Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean)
+If isEvent = True Then
+    '===============================
+    If statusfrom = 0 Then
+        ReDim VBEStageNum(0 To 5) As Integer
+        VBEStageNum(4) = 0 '觸發事件方
+        VBEStageNum(5) = 0 '觸發事件體系
+    End If
+    Vss_EventHPLActionOffNum = 0
+    VBEStageNum(0) = 48
+    VBEStageNum(1) = -2 '回復方(系統代號)
+    VBEStageNum(2) = num '回復人物編號
+    VBEStageNum(3) = tot '回復之數值
+    Vss_EventHPLActionChangeNum(0) = 0
+    Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
+    '===========================執行階段插入點(48)
+    執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 48, 1
+    '============================
+    If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
+    If Vss_EventHPLActionOffNum = 1 Then Exit Sub
 End If
-Vss_EventHPLActionOffNum = 0
-VBEStageNum(0) = 48
-VBEStageNum(1) = -2 '回復方(系統代號)
-VBEStageNum(2) = num '回復人物編號
-VBEStageNum(3) = tot '回復之數值
-Vss_EventHPLActionChangeNum(0) = 0
-Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
-'===========================執行階段插入點(48)
-執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 48, 1
-'============================
-If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
-If Vss_EventHPLActionOffNum = 0 Then
-    Select Case num
-       Case 1
-             If livecom(角色人物對戰人數(2, 2)) > 0 And tot > 0 Then
-                If livecommax(角色人物對戰人數(2, 2)) - livecom(角色人物對戰人數(2, 2)) >= tot Then
-                    戰鬥系統類.廣播訊息 "對方的HP恢復了" & tot & "點。"
-                    FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left - 距離單位(1, 2, 1) * tot
-                    livecom(角色人物對戰人數(2, 2)) = Val(livecom(角色人物對戰人數(2, 2))) + tot
-                ElseIf livecommax(角色人物對戰人數(2, 2)) - livecom(角色人物對戰人數(2, 2)) < tot Then
-                    If livecommax(角色人物對戰人數(2, 2)) - livecom(角色人物對戰人數(2, 2)) > 0 Then
-                       戰鬥系統類.廣播訊息 "對方的HP恢復了" & Val(livecommax(角色人物對戰人數(2, 2))) - Val(livecom(角色人物對戰人數(2, 2))) & "點。"
-                       FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left - 距離單位(1, 2, 1) * (Val(livecommax(角色人物對戰人數(2, 2))) - Val(livecom(角色人物對戰人數(2, 2))))
-                       livecom(角色人物對戰人數(2, 2)) = Val(livecommax(角色人物對戰人數(2, 2)))
-                    End If
+
+Select Case num
+   Case 1
+         If livecom(角色人物對戰人數(2, 2)) > 0 And tot > 0 Then
+            If livecommax(角色人物對戰人數(2, 2)) - livecom(角色人物對戰人數(2, 2)) >= tot Then
+                戰鬥系統類.廣播訊息 "對方的HP恢復了" & tot & "點。"
+                FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left - 距離單位(1, 2, 1) * tot
+                livecom(角色人物對戰人數(2, 2)) = Val(livecom(角色人物對戰人數(2, 2))) + tot
+            ElseIf livecommax(角色人物對戰人數(2, 2)) - livecom(角色人物對戰人數(2, 2)) < tot Then
+                If livecommax(角色人物對戰人數(2, 2)) - livecom(角色人物對戰人數(2, 2)) > 0 Then
+                   戰鬥系統類.廣播訊息 "對方的HP恢復了" & Val(livecommax(角色人物對戰人數(2, 2))) - Val(livecom(角色人物對戰人數(2, 2))) & "點。"
+                   FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left - 距離單位(1, 2, 1) * (Val(livecommax(角色人物對戰人數(2, 2))) - Val(livecom(角色人物對戰人數(2, 2))))
+                   livecom(角色人物對戰人數(2, 2)) = Val(livecommax(角色人物對戰人數(2, 2)))
                 End If
-                FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = livecom(角色人物對戰人數(2, 2))
-                FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2))
-                FormMainMode.bloodnumcom1.Caption = livecom(角色人物對戰人數(2, 2))
             End If
-       Case Is > 1
-            If livecom(角色待機人物紀錄數(2, num)) > 0 And tot > 0 Then
-                If livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) >= tot Then
-                    livecom(角色待機人物紀錄數(2, num)) = Val(livecom(角色待機人物紀錄數(2, num))) + tot
-                ElseIf livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) < tot Then
-                    livecom(角色待機人物紀錄數(2, num)) = Val(livecommax(角色待機人物紀錄數(2, num)))
-                End If
-                FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
-                FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = livecom(角色待機人物紀錄數(2, num))
+            FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = livecom(角色人物對戰人數(2, 2))
+            FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2))
+            FormMainMode.bloodnumcom1.Caption = livecom(角色人物對戰人數(2, 2))
+        End If
+   Case Is > 1
+        If livecom(角色待機人物紀錄數(2, num)) > 0 And tot > 0 Then
+            If livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) >= tot Then
+                livecom(角色待機人物紀錄數(2, num)) = Val(livecom(角色待機人物紀錄數(2, num))) + tot
+            ElseIf livecommax(角色待機人物紀錄數(2, num)) - livecom(角色待機人物紀錄數(2, num)) < tot Then
+                livecom(角色待機人物紀錄數(2, num)) = Val(livecommax(角色待機人物紀錄數(2, num)))
             End If
-    End Select
-End If
+            FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = livecom(角色待機人物紀錄數(2, num))
+            FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = livecom(角色待機人物紀錄數(2, num))
+        End If
+End Select
 End Sub
 Sub 傷害執行_使用者(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub

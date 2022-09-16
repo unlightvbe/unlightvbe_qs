@@ -63,7 +63,7 @@ Select Case 事件卡記錄暫時數(2, 3)
     Case 2
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Width = 810
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
-        FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
+        FormMainMode.card(事件卡記錄暫時數(2, 4)).cardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         一般系統類.音效播放 7
         等待時間佇列(2).Add 9
@@ -222,7 +222,7 @@ Select Case 事件卡記錄暫時數(2, 3)
      Case 4
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Width = 810
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
-        FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
+        FormMainMode.card(事件卡記錄暫時數(2, 4)).cardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         一般系統類.音效播放 7
         等待時間佇列(2).Add 15
@@ -261,7 +261,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         turnpageonin = 0
         FormMainMode.PEAFInterface.BnOKEnabled False
         '=======================
-        戰鬥系統類.回復執行_使用者 Val(事件卡記錄暫時數(1, 1)), 1, 0
+        戰鬥系統類.回復執行_使用者 Val(事件卡記錄暫時數(1, 1)), 1, 0, True
         等待時間佇列(2).Add 17
         FormMainMode.等待時間_2.Enabled = True
      Case 3
@@ -303,13 +303,13 @@ Select Case 事件卡記錄暫時數(2, 3)
     Case 2
         事件卡記錄暫時數(2, 2) = 1
         '=======================
-        回復執行_電腦 Val(事件卡記錄暫時數(2, 1)), 1, 0
+        回復執行_電腦 Val(事件卡記錄暫時數(2, 1)), 1, 0, True
         等待時間佇列(2).Add 19
         FormMainMode.等待時間_2.Enabled = True
      Case 3
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Width = 810
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
-        FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
+        FormMainMode.card(事件卡記錄暫時數(2, 4)).cardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         一般系統類.音效播放 7
         等待時間佇列(2).Add 20
@@ -400,7 +400,7 @@ Select Case 事件卡記錄暫時數(2, 3)
      Case 3
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Width = 810
         FormMainMode.card(事件卡記錄暫時數(2, 4)).Height = 1260
-        FormMainMode.card(事件卡記錄暫時數(2, 4)).CardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
+        FormMainMode.card(事件卡記錄暫時數(2, 4)).cardImage = app_path & "card\" & pagecardnum(事件卡記錄暫時數(2, 4), 8) & ".png"
         FormMainMode.card(事件卡記錄暫時數(2, 4)).CardRotationType = pageonin(事件卡記錄暫時數(2, 4))
         一般系統類.音效播放 7
         等待時間佇列(2).Add 43
