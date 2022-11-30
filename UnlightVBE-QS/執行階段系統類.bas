@@ -15,6 +15,7 @@ Public VBEVSStageNum() As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
 Public VBEStageRemoveBuffAllNum() As Boolean '執行階段系統-執行階段73-異常狀態控制全部清除-異常狀態是否異議標記暫時變數
 Public VBEActualStatusVS(1 To 2, 1 To 3, 1 To 2) As Variant '人物實際狀態資料-VS版
 Public VBEStage7xAtkingInformation As String '執行階段7x(76狀態加入/77解除)-技能唯一識別碼暫時儲存變數
+Public VBEVSStageInfoList As New Collection '執行階段系統各層數紀載資訊
 Sub 執行階段系統總主要程序_人物主動技能(ByVal uscom As Integer, ByVal personnum As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByVal PersonBattleNum As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim atkingvssnum As Integer
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層

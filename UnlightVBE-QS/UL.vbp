@@ -57,6 +57,7 @@ UserControl=uc角色卡片介面_後_主動技能.ctl
 UserControl=uc卡片背面_主動技能.ctl
 UserControl=uc角色卡片介面_後_被動技能.ctl
 UserControl=uc卡片背面_被動技能.ctl
+Class=clsVSStageObj; clsVSStageObj.cls
 IconForm="FormMainMode"
 Startup="FormMainMode"
 HelpFile=""

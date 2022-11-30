@@ -96,23 +96,32 @@ End Function
 Sub 傷害執行_技能直傷_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
 If tot <= 0 Then Exit Sub
 If isEvent = True Then
-'===============================
-    Vss_EventBloodActionOffNum = 0
+    Dim stageInfoListObj As clsVSStageObj
+    Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+    '===============================
     VBEStageNum(0) = 46
     VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
     VBEStageNum(2) = num '受到傷害人物編號
     VBEStageNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
     VBEStageNum(4) = tot '受到傷害之數值
-    Vss_EventBloodActionChangeNum(0) = 0
-    Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
-    Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
-    Vss_EventBloodActionChangeNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-    Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
+    stageInfoListObj.Argument = tot  '受到傷害之數值
+    stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害方(1.使用者/2.電腦)
+    stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + str(num) '受到傷害人物編號
+    stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "2" '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
     '===========================執行階段插入點(46)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
     '============================
-    If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
-    If Vss_EventBloodActionOffNum = 1 Then Exit Sub
+    If stageInfoListObj.CommandStr = "PersonBloodControl" Then
+        If stageInfoListObj.Value = "BLOODOFF" Then
+            Exit Sub
+        Else
+            Dim tmpstr() As String
+            tmpstr = Split(stageInfoListObj.Value, "%")
+            If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+                tot = Val(tmpstr(1))
+            End If
+        End If
+    End If
 End If
 Select Case num
    Case 1
@@ -254,26 +263,46 @@ Select Case movecp
         一般系統類.音效播放 8
 End Select
 End Sub
-Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean)
+Sub 回復執行_使用者(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean, ByVal isSysCall As Boolean)
 If isEvent = True Then
+    Dim stageInfoListObj As clsVSStageObj
+    If isSysCall = True Then
+        Set stageInfoListObj = New clsVSStageObj
+        stageInfoListObj.StageNum = 0
+        stageInfoListObj.CommandStr = "@System"
+        stageInfoListObj.Value = "0"
+        執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+    Else
+        Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+    End If
     '===============================
     If statusfrom = 0 Then
         ReDim VBEStageNum(0 To 5) As Integer
         VBEStageNum(4) = 0 '觸發事件方
         VBEStageNum(5) = 0 '觸發事件體系
     End If
-    Vss_EventHPLActionOffNum = 0
     VBEStageNum(0) = 48
     VBEStageNum(1) = -1 '回復方(1.使用者/2.電腦)
     VBEStageNum(2) = num '回復人物編號
     VBEStageNum(3) = tot '回復之數值
-    Vss_EventHPLActionChangeNum(0) = 0
-    Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
+    stageInfoListObj.Argument = tot '回復之數值
     '===========================執行階段插入點(48)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 48, 1
     '============================
-    If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
-    If Vss_EventHPLActionOffNum = 1 Then Exit Sub
+    If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
+        If stageInfoListObj.Value = "HPLOFF" Then
+            Exit Sub
+        Else
+            Dim tmpstr() As String
+            tmpstr = Split(stageInfoListObj.Value, "%")
+            If UBound(tmpstr) = 1 And tmpstr(0) = "HPLCHANGE" Then
+                tot = Val(tmpstr(1))
+            End If
+        End If
+    End If
+    If isSysCall = True Then
+        執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+    End If
 End If
 
 Select Case num
@@ -306,26 +335,46 @@ Select Case num
         End If
 End Select
 End Sub
-Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean)
+Sub 回復執行_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean, ByVal isSysCall As Boolean)
 If isEvent = True Then
+    Dim stageInfoListObj As clsVSStageObj
+    If isSysCall = True Then
+        Set stageInfoListObj = New clsVSStageObj
+        stageInfoListObj.StageNum = 0
+        stageInfoListObj.CommandStr = "@System"
+        stageInfoListObj.Value = "0"
+        執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+    Else
+        Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+    End If
     '===============================
     If statusfrom = 0 Then
         ReDim VBEStageNum(0 To 5) As Integer
         VBEStageNum(4) = 0 '觸發事件方
         VBEStageNum(5) = 0 '觸發事件體系
     End If
-    Vss_EventHPLActionOffNum = 0
     VBEStageNum(0) = 48
     VBEStageNum(1) = -2 '回復方(系統代號)
     VBEStageNum(2) = num '回復人物編號
     VBEStageNum(3) = tot '回復之數值
-    Vss_EventHPLActionChangeNum(0) = 0
-    Vss_EventHPLActionChangeNum(1) = tot  '回復之數值
+    stageInfoListObj.Argument = tot '回復之數值
     '===========================執行階段插入點(48)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 48, 1
     '============================
-    If Vss_EventHPLActionChangeNum(0) = 1 Then tot = Vss_EventHPLActionChangeNum(1)
-    If Vss_EventHPLActionOffNum = 1 Then Exit Sub
+    If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
+        If stageInfoListObj.Value = "HPLOFF" Then
+            Exit Sub
+        Else
+            Dim tmpstr() As String
+            tmpstr = Split(stageInfoListObj.Value, "%")
+            If UBound(tmpstr) = 1 And tmpstr(0) = "HPLCHANGE" Then
+                tot = Val(tmpstr(1))
+            End If
+        End If
+    End If
+    If isSysCall = True Then
+        執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+    End If
 End If
 
 Select Case num
@@ -361,8 +410,13 @@ End Sub
 Sub 傷害執行_使用者(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub
 '===============================
+Dim stageInfoListObj As New clsVSStageObj
+stageInfoListObj.StageNum = 0
+stageInfoListObj.CommandStr = "@System"
+stageInfoListObj.Value = "0"
+執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+'===============================
 ReDim VBEStageNum(0 To 6) As Integer
-Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = 1 '受到傷害人物編號
@@ -370,56 +424,74 @@ VBEStageNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 VBEStageNum(4) = tot '受到傷害之數值
 VBEStageNum(5) = 0 '來自系統的傷害
 VBEStageNum(6) = 0 '來自系統的傷害
-Vss_EventBloodActionChangeNum(0) = 0
-Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
-Vss_EventBloodActionChangeNum(2) = 1 '受到傷害人物編號
-Vss_EventBloodActionChangeNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
+stageInfoListObj.Argument = tot  '受到傷害之數值
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害方(1.使用者/2.電腦)
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害人物編號
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
 '============================
-If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
-If Vss_EventBloodActionOffNum = 0 Then
-    If tot > 0 And liveus(角色人物對戰人數(1, 2)) > 0 Then
-          If tot >= liveus(角色人物對戰人數(1, 2)) Then
-             戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
-             FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
-             liveus(角色人物對戰人數(1, 2)) = 0
-             FormMainMode.bloodnumus1.Caption = 0
-             FormMainMode.bloodlineout1.Width = 0
-             牌總階段數(1) = 牌總階段數(1) + 1
-          Else
-             FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2)) - tot
-             liveus(角色人物對戰人數(1, 2)) = liveus(角色人物對戰人數(1, 2)) - tot
-             FormMainMode.bloodnumus1.Caption = Val(FormMainMode.bloodnumus1.Caption) - tot
-             FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width - (距離單位(1, 1, 1) * tot)
-             戰鬥系統類.廣播訊息 "您受到了" & tot & "點傷害。"
-          End If
-          FormMainMode.PEAFpersoncardus(角色人物對戰人數(1, 2)).CurrentHP = liveus(角色人物對戰人數(1, 2))
-    戰鬥系統類.播放傷害音樂
+If stageInfoListObj.CommandStr = "@System" Then
+    If stageInfoListObj.Value = "BLOODOFF" Then
+        Exit Sub
+    Else
+        Dim tmpstr() As String
+        tmpstr = Split(stageInfoListObj.Value, "%")
+        If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+            tot = Val(tmpstr(1))
+        End If
     End If
+End If
+執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+'============================
+If tot > 0 And liveus(角色人物對戰人數(1, 2)) > 0 Then
+    If tot >= liveus(角色人物對戰人數(1, 2)) Then
+       戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
+       FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
+       liveus(角色人物對戰人數(1, 2)) = 0
+       FormMainMode.bloodnumus1.Caption = 0
+       FormMainMode.bloodlineout1.Width = 0
+       牌總階段數(1) = 牌總階段數(1) + 1
+    Else
+       FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = liveus(角色人物對戰人數(1, 2)) - tot
+       liveus(角色人物對戰人數(1, 2)) = liveus(角色人物對戰人數(1, 2)) - tot
+       FormMainMode.bloodnumus1.Caption = Val(FormMainMode.bloodnumus1.Caption) - tot
+       FormMainMode.bloodlineout1.Width = FormMainMode.bloodlineout1.Width - (距離單位(1, 1, 1) * tot)
+       戰鬥系統類.廣播訊息 "您受到了" & tot & "點傷害。"
+    End If
+    FormMainMode.PEAFpersoncardus(角色人物對戰人數(1, 2)).CurrentHP = liveus(角色人物對戰人數(1, 2))
+    戰鬥系統類.播放傷害音樂
 End If
 End Sub
 Sub 傷害執行_技能直傷_電腦(ByVal tot As Integer, ByVal num As Integer, ByVal isEvent As Boolean)
 If tot <= 0 Then Exit Sub
 If isEvent = True Then
+    Dim stageInfoListObj As clsVSStageObj
+    Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
     '===============================
-    Vss_EventBloodActionOffNum = 0
     VBEStageNum(0) = 46
     VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
     VBEStageNum(2) = num '受到傷害人物編號
     VBEStageNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
     VBEStageNum(4) = tot '受到傷害之數值
-    Vss_EventBloodActionChangeNum(0) = 0
-    Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
-    Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
-    Vss_EventBloodActionChangeNum(3) = 2 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-    Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
+    stageInfoListObj.Argument = tot  '受到傷害之數值
+    stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "2" '受到傷害方(1.使用者/2.電腦)
+    stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + str(num) '受到傷害人物編號
+    stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "2" '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
     '===========================執行階段插入點(46)
     執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
     '============================
-    If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
-    If Vss_EventBloodActionOffNum = 1 Then Exit Sub
+    If stageInfoListObj.CommandStr = "PersonBloodControl" Then
+        If stageInfoListObj.Value = "BLOODOFF" Then
+            Exit Sub
+        Else
+            Dim tmpstr() As String
+            tmpstr = Split(stageInfoListObj.Value, "%")
+            If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+                tot = Val(tmpstr(1))
+            End If
+        End If
+    End If
 End If
 Select Case num
     Case 1
@@ -458,8 +530,13 @@ End Sub
 Sub 傷害執行_電腦(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub
 '===============================
+Dim stageInfoListObj As New clsVSStageObj
+stageInfoListObj.StageNum = 0
+stageInfoListObj.CommandStr = "@System"
+stageInfoListObj.Value = "0"
+執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+'===============================
 ReDim VBEStageNum(0 To 6) As Integer
-Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = 1 '受到傷害人物編號
@@ -467,34 +544,43 @@ VBEStageNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 VBEStageNum(4) = tot '受到傷害之數值
 VBEStageNum(5) = 0 '來自系統的傷害
 VBEStageNum(6) = 0 '來自系統的傷害
-Vss_EventBloodActionChangeNum(0) = 0
-Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
-Vss_EventBloodActionChangeNum(2) = 1 '受到傷害人物編號
-Vss_EventBloodActionChangeNum(3) = 1 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-Vss_EventBloodActionChangeNum(4) = tot  '受到傷害之數值
+stageInfoListObj.Argument = tot  '受到傷害之數值
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害方(1.使用者/2.電腦)
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害人物編號
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
 '============================
-If Vss_EventBloodActionChangeNum(0) = 1 Then tot = Vss_EventBloodActionChangeNum(4)
-If Vss_EventBloodActionOffNum = 0 Then
-    If tot > 0 And livecom(角色人物對戰人數(2, 2)) > 0 Then
-        If tot >= livecom(角色人物對戰人數(2, 2)) Then
-           戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"
-           FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 0
-           FormMainMode.bloodnumcom1.Caption = 0
-           livecom(角色人物對戰人數(2, 2)) = 0
-           FormMainMode.bloodlineout2.Left = 11580
-           牌總階段數(2) = 牌總階段數(2) + 1
-        Else
-           戰鬥系統類.廣播訊息 "對方受到了" & Val(tot) & "點傷害。"
-           FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2)) - tot
-           FormMainMode.bloodnumcom1.Caption = Val(FormMainMode.bloodnumcom1.Caption) - tot
-           livecom(角色人物對戰人數(2, 2)) = livecom(角色人物對戰人數(2, 2)) - tot
-           FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left + (距離單位(1, 2, 1) * tot)
+If stageInfoListObj.CommandStr = "@System" Then
+    If stageInfoListObj.Value = "BLOODOFF" Then
+        Exit Sub
+    Else
+        Dim tmpstr() As String
+        tmpstr = Split(stageInfoListObj.Value, "%")
+        If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+            tot = Val(tmpstr(1))
         End If
-        FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = livecom(角色人物對戰人數(2, 2))
-        戰鬥系統類.播放傷害音樂
     End If
+End If
+執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+'============================
+If tot > 0 And livecom(角色人物對戰人數(2, 2)) > 0 Then
+    If tot >= livecom(角色人物對戰人數(2, 2)) Then
+       戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"
+       FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 0
+       FormMainMode.bloodnumcom1.Caption = 0
+       livecom(角色人物對戰人數(2, 2)) = 0
+       FormMainMode.bloodlineout2.Left = 11580
+       牌總階段數(2) = 牌總階段數(2) + 1
+    Else
+       戰鬥系統類.廣播訊息 "對方受到了" & Val(tot) & "點傷害。"
+       FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = livecom(角色人物對戰人數(2, 2)) - tot
+       FormMainMode.bloodnumcom1.Caption = Val(FormMainMode.bloodnumcom1.Caption) - tot
+       livecom(角色人物對戰人數(2, 2)) = livecom(角色人物對戰人數(2, 2)) - tot
+       FormMainMode.bloodlineout2.Left = FormMainMode.bloodlineout2.Left + (距離單位(1, 2, 1) * tot)
+    End If
+    FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = livecom(角色人物對戰人數(2, 2))
+    戰鬥系統類.播放傷害音樂
 End If
 End Sub
 Sub 執行動作_使用者_棄牌(ByVal n As Integer)
@@ -791,15 +877,15 @@ movecp = m
 End Sub
 Sub 計算牌移動距離單位()
 If 牌移動暫時變數(1) >= pagecardnum(牌移動暫時變數(3), 9) Then
-   距離單位(2, 1, 1) = (牌移動暫時變數(1) - pagecardnum(牌移動暫時變數(3), 9)) \ 12
+   距離單位(2, 1, 1) = (牌移動暫時變數(1) - pagecardnum(牌移動暫時變數(3), 9)) \ 8
 Else
-   距離單位(2, 1, 1) = -((pagecardnum(牌移動暫時變數(3), 9) - 牌移動暫時變數(1)) \ 12)
+   距離單位(2, 1, 1) = -((pagecardnum(牌移動暫時變數(3), 9) - 牌移動暫時變數(1)) \ 8)
 End If
 
 If 牌移動暫時變數(2) >= pagecardnum(牌移動暫時變數(3), 10) Then
-   距離單位(2, 1, 2) = (牌移動暫時變數(2) - pagecardnum(牌移動暫時變數(3), 10)) \ 12
+   距離單位(2, 1, 2) = (牌移動暫時變數(2) - pagecardnum(牌移動暫時變數(3), 10)) \ 8
 Else
-   距離單位(2, 1, 2) = -((pagecardnum(牌移動暫時變數(3), 10) - 牌移動暫時變數(2)) \ 12)
+   距離單位(2, 1, 2) = -((pagecardnum(牌移動暫時變數(3), 10) - 牌移動暫時變數(2)) \ 8)
 End If
 End Sub
 Sub 異常狀態顯示更新(ByVal uscom As Integer)
@@ -4259,74 +4345,94 @@ For i = Val(公用牌各牌類型紀錄數(0, 2)) + 1 To 70
 Next
 End Sub
 Sub 傷害執行_立即死亡_使用者(ByVal num As Integer)
+Dim stageInfoListObj As clsVSStageObj
+Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
 '===============================
-Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -1 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = num '受到傷害人物編號
 VBEStageNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 VBEStageNum(4) = liveus(角色待機人物紀錄數(1, num))  '受到傷害之數值(現有HP)
-Vss_EventBloodActionChangeNum(0) = 0
-Vss_EventBloodActionChangeNum(1) = 1 '受到傷害方(1.使用者/2.電腦)
-Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
-Vss_EventBloodActionChangeNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-Vss_EventBloodActionChangeNum(4) = liveus(角色待機人物紀錄數(1, num))   '受到傷害之數值
+stageInfoListObj.Argument = liveus(角色待機人物紀錄數(1, num))   '受到傷害之數值
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '受到傷害方(1.使用者/2.電腦)
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + str(num) '受到傷害人物編號
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "3" '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 46, 1
 '============================
-If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
-    Select Case num
-       Case 1
-            戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
-            FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
-            FormMainMode.PEAFpersoncardus(角色人物對戰人數(1, 2)).CurrentHP = 0
-            liveus(角色人物對戰人數(1, 2)) = 0
-            FormMainMode.bloodnumus1.Caption = 0
-            FormMainMode.bloodlineout1.Width = 0
-            牌總階段數(1) = 牌總階段數(1) + 1
-            戰鬥系統類.播放傷害音樂
-       Case Is > 1
-            liveus(角色待機人物紀錄數(1, num)) = 0
-            FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 0
-            FormMainMode.PEAFpersoncardus(角色待機人物紀錄數(1, num)).CurrentHP = 0
-            牌總階段數(1) = 牌總階段數(1) + 1
-    End Select
+If stageInfoListObj.CommandStr = "PersonBloodControl" Then
+    If stageInfoListObj.Value = "BLOODOFF" Then
+        Exit Sub
+    Else
+        Dim tmpstr() As String
+        tmpstr = Split(stageInfoListObj.Value, "%")
+        If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+            Exit Sub
+        End If
+    End If
 End If
+'============================
+Select Case num
+   Case 1
+        戰鬥系統類.廣播訊息 "您受到了" & liveus(角色人物對戰人數(1, 2)) & "點傷害。"
+        FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 0
+        FormMainMode.PEAFpersoncardus(角色人物對戰人數(1, 2)).CurrentHP = 0
+        liveus(角色人物對戰人數(1, 2)) = 0
+        FormMainMode.bloodnumus1.Caption = 0
+        FormMainMode.bloodlineout1.Width = 0
+        牌總階段數(1) = 牌總階段數(1) + 1
+        戰鬥系統類.播放傷害音樂
+   Case Is > 1
+        liveus(角色待機人物紀錄數(1, num)) = 0
+        FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 0
+        FormMainMode.PEAFpersoncardus(角色待機人物紀錄數(1, num)).CurrentHP = 0
+        牌總階段數(1) = 牌總階段數(1) + 1
+End Select
 End Sub
 Sub 傷害執行_立即死亡_電腦(ByVal num As Integer)
+Dim stageInfoListObj As clsVSStageObj
+Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
 '===============================
-Vss_EventBloodActionOffNum = 0
 VBEStageNum(0) = 46
 VBEStageNum(1) = -2 '受到傷害方(1.使用者/2.電腦)
 VBEStageNum(2) = num '受到傷害人物編號
 VBEStageNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 VBEStageNum(4) = livecom(角色待機人物紀錄數(2, num)) '受到傷害之數值(現有HP)
-Vss_EventBloodActionChangeNum(0) = 0
-Vss_EventBloodActionChangeNum(1) = 2 '受到傷害方(1.使用者/2.電腦)
-Vss_EventBloodActionChangeNum(2) = num '受到傷害人物編號
-Vss_EventBloodActionChangeNum(3) = 3 '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
-Vss_EventBloodActionChangeNum(4) = livecom(角色待機人物紀錄數(2, num))  '受到傷害之數值
+stageInfoListObj.Argument = livecom(角色待機人物紀錄數(2, num))  '受到傷害之數值
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "2" '受到傷害方(1.使用者/2.電腦)
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + str(num) '受到傷害人物編號
+stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "3" '受到傷害之形式(1.骰傷/2.直傷/3.立即死亡)
 '===========================執行階段插入點(46)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 46, 1
 '============================
-If Vss_EventBloodActionOffNum = 0 And Vss_EventBloodActionChangeNum(0) = 0 Then
-    Select Case num
-        Case 1
-            戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"
-            FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = 0
-            FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 0
-            FormMainMode.bloodnumcom1.Caption = 0
-            livecom(角色人物對戰人數(2, 2)) = 0
-            FormMainMode.bloodlineout2.Left = 11580
-            牌總階段數(2) = 牌總階段數(2) + 1
-            戰鬥系統類.播放傷害音樂
-        Case Is > 1
-            FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
-            livecom(角色待機人物紀錄數(2, num)) = 0
-            FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = 0
-            牌總階段數(2) = 牌總階段數(2) + 1
-    End Select
+If stageInfoListObj.CommandStr = "PersonBloodControl" Then
+    If stageInfoListObj.Value = "BLOODOFF" Then
+        Exit Sub
+    Else
+        Dim tmpstr() As String
+        tmpstr = Split(stageInfoListObj.Value, "%")
+        If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+            Exit Sub
+        End If
+    End If
 End If
+'============================
+Select Case num
+    Case 1
+        戰鬥系統類.廣播訊息 "對方受到了" & livecom(角色人物對戰人數(2, 2)) & "點傷害。"
+        FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = 0
+        FormMainMode.cardcom(角色人物對戰人數(2, 2)).CardMain_角色HP = 0
+        FormMainMode.bloodnumcom1.Caption = 0
+        livecom(角色人物對戰人數(2, 2)) = 0
+        FormMainMode.bloodlineout2.Left = 11580
+        牌總階段數(2) = 牌總階段數(2) + 1
+        戰鬥系統類.播放傷害音樂
+    Case Is > 1
+        FormMainMode.cardcom(角色待機人物紀錄數(2, num)).CardMain_角色HP = 0
+        livecom(角色待機人物紀錄數(2, num)) = 0
+        FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = 0
+        牌總階段數(2) = 牌總階段數(2) + 1
+End Select
 End Sub
 Sub 角色復活_使用者(ByVal num As Integer)
 If liveus(角色待機人物紀錄數(1, num)) > 0 Then Exit Sub

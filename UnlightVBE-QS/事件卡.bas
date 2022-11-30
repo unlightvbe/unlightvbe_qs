@@ -261,7 +261,7 @@ Select Case 事件卡記錄暫時數(1, 3)
         turnpageonin = 0
         FormMainMode.PEAFInterface.BnOKEnabled False
         '=======================
-        戰鬥系統類.回復執行_使用者 Val(事件卡記錄暫時數(1, 1)), 1, 0, True
+        戰鬥系統類.回復執行_使用者 Val(事件卡記錄暫時數(1, 1)), 1, 0, True, True
         等待時間佇列(2).Add 17
         FormMainMode.等待時間_2.Enabled = True
      Case 3
@@ -303,7 +303,7 @@ Select Case 事件卡記錄暫時數(2, 3)
     Case 2
         事件卡記錄暫時數(2, 2) = 1
         '=======================
-        回復執行_電腦 Val(事件卡記錄暫時數(2, 1)), 1, 0, True
+        回復執行_電腦 Val(事件卡記錄暫時數(2, 1)), 1, 0, True, True
         等待時間佇列(2).Add 19
         FormMainMode.等待時間_2.Enabled = True
      Case 3

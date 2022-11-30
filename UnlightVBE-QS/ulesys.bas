@@ -1666,6 +1666,14 @@ For i = 1 To 2
         Set 人物異常狀態列表(i, j) = Nothing
     Next
 Next
+For i = 1 To 執行階段系統類.VBEVSStageInfoList.Count
+    執行階段系統類.VBEVSStageInfoList.Remove 1
+Next
+For i = 1 To 2
+    For j = 1 To 戰鬥系統類.等待時間佇列(i).Count
+        戰鬥系統類.等待時間佇列(i).Remove 1
+    Next
+Next
 End Sub
 Sub 清除戰鬥系統開始表單設定值()
 Dim i As Integer, j As Integer

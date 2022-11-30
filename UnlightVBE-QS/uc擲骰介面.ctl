@@ -493,12 +493,12 @@ If TrDiceShowTotalNum2 >= 100 Then
     TrDiceShowTotalNum1 = TrDiceShowTotalNum1 + 1
 Else
     If TrDiceShowTotalNum1 <= Me.diceusTotal And TrDiceShowTotalNum1 <= 120 Then
-        dicemini1(TrDiceShowTotalNum1).Opacity = dicemini1(TrDiceShowTotalNum1).Opacity + 25
+        dicemini1(TrDiceShowTotalNum1).Opacity = dicemini1(TrDiceShowTotalNum1).Opacity + 50
     End If
     If TrDiceShowTotalNum1 <= Me.dicecomTotal And TrDiceShowTotalNum1 <= 120 Then
-        dicemini2(TrDiceShowTotalNum1).Opacity = dicemini2(TrDiceShowTotalNum1).Opacity + 25
+        dicemini2(TrDiceShowTotalNum1).Opacity = dicemini2(TrDiceShowTotalNum1).Opacity + 50
     End If
-    TrDiceShowTotalNum2 = TrDiceShowTotalNum2 + 25
+    TrDiceShowTotalNum2 = TrDiceShowTotalNum2 + 50
 End If
 If TrDiceShowTotalNum1 > Me.diceusTotal And TrDiceShowTotalNum1 > Me.dicecomTotal Then
     trdiceshow_tot.Enabled = False
