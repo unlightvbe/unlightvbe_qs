@@ -4836,7 +4836,7 @@ If 目前數(31) = 0 Then
        movecpn = 3
     End If
     
-    執行動作_距離變更 movecpn, True
+    執行動作_距離變更 movecpn, True, True
     
     If Vss_PersonAttackFirstControlNum = 1 Then
         戰鬥系統類.movetnus

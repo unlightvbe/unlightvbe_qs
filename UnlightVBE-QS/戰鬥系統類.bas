@@ -827,17 +827,35 @@ If ¤Hª«²§±`ª¬ºA¦Cªí(uscom, ¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(uscom, num)).Count > 0 Then
     ¾Ô°«¨t²ÎÃþ.²§±`ª¬ºAÅã¥Ü§ó·s uscom
 End If
 End Sub
-Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean)
+Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean, ByVal isSysCall As Boolean)
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(47)
 If isEvent = True Then
-    Vss_EventMoveActionOffNum = 0
-    ReDim VBEStageNum(0 To 2) As Integer
+    Dim stageInfoListObj As clsVSStageObj
+    If isSysCall = True Then
+        ReDim VBEStageNum(0 To 3) As Integer
+        VBEStageNum(3) = 0  'Ä²µo¨Æ¥ó¤è
+        '======================
+        Set stageInfoListObj = New clsVSStageObj
+        stageInfoListObj.StageNum = 0
+        stageInfoListObj.CommandStr = "@System"
+        stageInfoListObj.Value = "0"
+        °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
+    Else
+        Set stageInfoListObj = °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList(°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count)
+    End If
     VBEStageNum(0) = 47
     VBEStageNum(1) = movecp 'ÅÜ§ó«e¶ZÂ÷
     VBEStageNum(2) = m  'ÅÜ§ó«á¶ZÂ÷
     °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 47, 1
     '=====================
-    If Vss_EventMoveActionOffNum = 1 Then Exit Sub
+    If stageInfoListObj.CommandStr = "BattleMoveControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
+        If stageInfoListObj.Value = "BMCOFF" Then
+            Exit Sub
+        End If
+    End If
+    If isSysCall = True Then
+        °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
+    End If
 End If
 '============================
 Dim anw(1 To 2) As Integer
@@ -2194,7 +2212,7 @@ FormMainMode.bloodlineout1.Width = (¶ZÂ÷³æ¦ì(1, 1, 1) * liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(
 FormMainMode.bloodnumus1.Caption = liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2))
 FormMainMode.bloodnumus2.Caption = liveusmax(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2))
 '========================
-°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
+°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False, True
 '========================
 For i = 1 To 4
     ¾Ô°«¨t²ÎÃþ.¤Hª«§Þ¯àÄæ¿O¶}Ãö False, i
@@ -2271,7 +2289,7 @@ FormMainMode.bloodlineout2.Left = 11340 - (¶ZÂ÷³æ¦ì(1, 2, 1) * livecom(¨¤¦â¤Hª«¹
 FormMainMode.bloodnumcom1.Caption = livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2))
 FormMainMode.bloodnumcom2.Caption = livecommax(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2))
 '==============================
-°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False
+°õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó movecp, False, True
 '=============================
 FormMainMode.personcomminijpg.¤p¤Hª«Åã²{ = True
 Do Until FormMainMode.personcomminijpg.¤p¤Hª«Åã²{ = False

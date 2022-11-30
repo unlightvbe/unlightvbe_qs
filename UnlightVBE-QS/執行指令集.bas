@@ -6,7 +6,6 @@ Public vbecommadtotplay As Integer '目前執行之執行階段計數值
 Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
 Public Vss_AtkingStartPlayNum(1 To 3) As Integer '執行指令集-技能動畫執行紀錄暫時變數
-Public Vss_EventMoveActionOffNum As Integer '執行指令集-原應執行之距離變更無效化紀錄暫時變數
 Public Vss_EventRemoveBuffActionOffNum As Integer '執行指令集-原應執行之異常狀態消除無效化標記暫時變數
 Public Vss_EventRemoveActualStatusActionOffNum As Integer '執行指令集-原應執行之人物實際狀態消除無效化標記暫時變數
 Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3, 1 To 8) As Integer '執行指令集-禁止執行人物主動技及被動技技能紀錄暫時變數(1.使用者/2.電腦,1~3人物編號,1~4.主動技標記/5~8.被動技標記)
@@ -740,14 +739,24 @@ Sub 執行指令_場地距離控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
     '=====================
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
+            ReDim VBEStageNum(0 To 3) As Integer
+            VBEStageNum(3) = -uscom
+            '===============================加入該階段紀載資訊
+            Dim stageInfoListObj As New clsVSStageObj
+            stageInfoListObj.StageNum = vbecommadtotplayNow
+            stageInfoListObj.CommandStr = "BattleMoveControl"
+            stageInfoListObj.Value = "0"
+            執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+            '===============================
             Select Case Val(commadstr3(0))
                 Case 1
-                    戰鬥系統類.執行動作_距離變更 1, True
+                    戰鬥系統類.執行動作_距離變更 1, True, False
                 Case 2
-                    戰鬥系統類.執行動作_距離變更 2, True
+                    戰鬥系統類.執行動作_距離變更 2, True, False
                 Case 3
-                    戰鬥系統類.執行動作_距離變更 3, True
+                    戰鬥系統類.執行動作_距離變更 3, True, False
             End Select
+            執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
             GoTo VssCommadExit
     End Select
     '============================
@@ -1498,7 +1507,7 @@ Sub 執行指令_執行之傷害無效化_專(ByVal uscom As Integer, ByVal commadtype As Int
         Case 1
             Dim stageInfoListObj As clsVSStageObj
             Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl" Then
+            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
                 stageInfoListObj.Value = "BLOODOFF"
             End If
             GoTo VssCommadExit
@@ -1527,7 +1536,7 @@ Sub 執行指令_執行之傷害效果變更_專(ByVal uscom As Integer, ByVal commadtype As I
             Dim tmparg() As String, tmpnum As Integer
             tmparg = Split(stageInfoListObj.Argument, "%")
             
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl" Then
+            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
                 tmpnum = Val(tmparg(0))
                 Select Case Val(commadstr3(0))
                     Case 1
@@ -1650,7 +1659,7 @@ Sub 執行指令_執行之回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Int
         Case 1
             Dim stageInfoListObj As clsVSStageObj
             Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl" Then
+            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
                 stageInfoListObj.Value = "HPLOFF"
             End If
             GoTo VssCommadExit
@@ -1676,7 +1685,7 @@ Sub 執行指令_執行之回復效果變更_專(ByVal uscom As Integer, ByVal commadtype As I
         Case 1
             Dim stageInfoListObj As clsVSStageObj
             Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl" Then
+            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
                 Select Case Val(commadstr3(0))
                     Case 1
                             tmpnum = stageInfoListObj.Argument + Val(commadstr3(1))
@@ -1707,7 +1716,11 @@ Sub 執行指令_執行之距離變更無效化_專(ByVal uscom As Integer, ByVal commadtype As
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 47 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Vss_EventMoveActionOffNum = 1
+            Dim stageInfoListObj As clsVSStageObj
+            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "BattleMoveControl" Or stageInfoListObj.CommandStr = "@System") Then
+                stageInfoListObj.Value = "BMCOFF"
+            End If
             GoTo VssCommadExit
     End Select
     '============================
@@ -2521,7 +2534,7 @@ Sub 執行指令_人物實際狀態加入資料_專(ByVal uscom As Integer, ByVal commadtype As
                         FormMainMode.personusminijpg.小人物影子top差 = Val(人物實際狀態資料庫(uscom, personnum, 8))
                         戰鬥擲骰介面人物立繪圖路徑紀錄數(1) = 人物實際狀態資料庫(uscom, personnum, 3)
                         FormMainMode.顯示列1.使用者方小人物圖片left = -(FormMainMode.顯示列1.使用者方小人物圖片width)
-                        戰鬥系統類.執行動作_距離變更 movecp, False
+                        戰鬥系統類.執行動作_距離變更 movecp, False, True
                         FormMainMode.personusminijpg.小人物顯現 = True
                     Case 2
                         FormMainMode.personcomminijpg.小人物圖片 = 人物實際狀態資料庫(uscom, personnum, 4)
@@ -2531,7 +2544,7 @@ Sub 執行指令_人物實際狀態加入資料_專(ByVal uscom As Integer, ByVal commadtype As
                         FormMainMode.personcomminijpg.小人物影子top差 = Val(人物實際狀態資料庫(uscom, personnum, 8))
                         戰鬥擲骰介面人物立繪圖路徑紀錄數(2) = 人物實際狀態資料庫(uscom, personnum, 3)
                         FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.ScaleWidth
-                        戰鬥系統類.執行動作_距離變更 movecp, False
+                        戰鬥系統類.執行動作_距離變更 movecp, False, True
                         FormMainMode.personcomminijpg.小人物顯現 = True
                 End Select
                 vbecommadnum(2, vbecommadtotplayNow) = 3
@@ -2606,7 +2619,7 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personusminijpg.小人物影子top差 = Val(VBEPerson(1, 角色人物對戰人數(1, 2), 2, 1, 6))
                         戰鬥擲骰介面人物立繪圖路徑紀錄數(1) = VBEPerson(1, 角色人物對戰人數(1, 2), 1, 5, 3)
                         FormMainMode.顯示列1.使用者方小人物圖片left = -(FormMainMode.顯示列1.使用者方小人物圖片width)
-                        戰鬥系統類.執行動作_距離變更 movecp, False
+                        戰鬥系統類.執行動作_距離變更 movecp, False, True
                         FormMainMode.personusminijpg.小人物顯現 = True
                     Case 2
                         FormMainMode.personcomminijpg.小人物圖片 = VBEPerson(2, 角色人物對戰人數(2, 2), 1, 5, 1)
@@ -2616,7 +2629,7 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personcomminijpg.小人物影子top差 = VBEPerson(2, 角色人物對戰人數(2, 2), 2, 1, 6)
                         戰鬥擲骰介面人物立繪圖路徑紀錄數(2) = VBEPerson(2, 角色人物對戰人數(2, 2), 1, 5, 3)
                         FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.ScaleWidth
-                        戰鬥系統類.執行動作_距離變更 movecp, False
+                        戰鬥系統類.執行動作_距離變更 movecp, False, True
                         FormMainMode.personcomminijpg.小人物顯現 = True
                 End Select
                 VBEStage7xAtkingInformation = 人物實際狀態資料庫(uscom, personnum, 1)
@@ -2724,7 +2737,7 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personusminijpg.小人物影子top差 = Val(VBEPerson(1, 角色人物對戰人數(1, 2), 2, 1, 6))
                         戰鬥擲骰介面人物立繪圖路徑紀錄數(1) = VBEPerson(1, 角色人物對戰人數(1, 2), 1, 5, 3)
                         FormMainMode.顯示列1.使用者方小人物圖片left = -(FormMainMode.顯示列1.使用者方小人物圖片width)
-                        戰鬥系統類.執行動作_距離變更 movecp, False
+                        戰鬥系統類.執行動作_距離變更 movecp, False, True
                         FormMainMode.personusminijpg.小人物顯現 = True
                     Case 2
                         FormMainMode.personcomminijpg.小人物圖片 = VBEPerson(2, 角色人物對戰人數(2, 2), 1, 5, 1)
@@ -2734,7 +2747,7 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
                         FormMainMode.personcomminijpg.小人物影子top差 = VBEPerson(2, 角色人物對戰人數(2, 2), 2, 1, 6)
                         戰鬥擲骰介面人物立繪圖路徑紀錄數(2) = VBEPerson(2, 角色人物對戰人數(2, 2), 1, 5, 3)
                         FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.ScaleWidth
-                        戰鬥系統類.執行動作_距離變更 movecp, False
+                        戰鬥系統類.執行動作_距離變更 movecp, False, True
                         FormMainMode.personcomminijpg.小人物顯現 = True
                 End Select
                 VBEStage7xAtkingInformation = 人物實際狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 1)

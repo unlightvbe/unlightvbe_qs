@@ -1406,7 +1406,7 @@ For i = 1 To 2
     Next
 Next
 '==================執行小人物立繪指定及距離指定
-執行動作_距離變更 movecp, False
+執行動作_距離變更 movecp, False, True
 '================仿對戰模式設定
 If Formsetting.chkpersonvsmode.Value = 1 Then
     For i = 2 To 3
