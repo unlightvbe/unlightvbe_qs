@@ -58,11 +58,24 @@ If 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count > 0 Then
     '=======================
     For i = 1 To 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count
         Set buffobj = 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num))(i)
-        Vss_EventRemoveBuffActionOffNum = 0
-        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffobj.Identifier, 73, num, VBEStageNumMainSec, vbecommadnumSecond
-        If Vss_EventRemoveBuffActionOffNum = 1 Then
-             VBEStageRemoveBuffAllNum(i) = True
+        '===============================加入該階段紀載資訊
+        Dim stageInfoListObj As New clsVSStageObj
+        stageInfoListObj.StageNum = vbecommadnumSecond - 1
+        If isHPW = True Then
+            stageInfoListObj.CommandStr = "@HPWEvent"
+        Else
+            stageInfoListObj.CommandStr = "PersonRemoveBuffAll"
         End If
+        stageInfoListObj.Value = "0"
+        執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+        '===============================
+        執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), buffobj.Identifier, 73, num, VBEStageNumMainSec, vbecommadnumSecond
+        If stageInfoListObj.CommandStr = "PersonRemoveBuffAll" Or (stageInfoListObj.CommandStr = "@HPWEvent" And isHPW = True) Then
+            If stageInfoListObj.Value = "OFF" Then
+                VBEStageRemoveBuffAllNum(i) = True
+            End If
+        End If
+        執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
     Next
     '=======================
     執行階段系統_宣告開始或結束 2
@@ -78,7 +91,6 @@ Dim VBEStageNumMainSec(0 To 1) As Integer
 VBEStageNumMainSec(0) = 73
 VBEStageNumMainSec(1) = 1
 '=======================
-Vss_EventRemoveBuffActionOffNum = 0
 執行階段系統類.執行階段系統總主要程序_異常狀態 uscom, 角色待機人物紀錄數(uscom, num), akstr, 73, num, VBEStageNumMainSec, vbecommadnumSecond
 '=======================
 執行階段系統_宣告開始或結束 2

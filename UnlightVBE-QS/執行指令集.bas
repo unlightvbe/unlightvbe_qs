@@ -6,7 +6,6 @@ Public vbecommadtotplay As Integer '目前執行之執行階段計數值
 Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
 Public Vss_AtkingStartPlayNum(1 To 3) As Integer '執行指令集-技能動畫執行紀錄暫時變數
-Public Vss_EventRemoveBuffActionOffNum As Integer '執行指令集-原應執行之異常狀態消除無效化標記暫時變數
 Public Vss_EventRemoveActualStatusActionOffNum As Integer '執行指令集-原應執行之人物實際狀態消除無效化標記暫時變數
 Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3, 1 To 8) As Integer '執行指令集-禁止執行人物主動技及被動技技能紀錄暫時變數(1.使用者/2.電腦,1~3人物編號,1~4.主動技標記/5~8.被動技標記)
 Public Vss_EventActiveAIScoreNum() As Integer '執行指令集-智慧型AI個別技能評分紀錄暫時變數(1.該排列組合技能評分回復/2.評分標準回復/3~.技能推薦之個別期望推薦牌編號)
@@ -2007,7 +2006,7 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
     Dim commadstr3() As String
     Dim buffvssnum As String
     Dim vsstr As String
-    Dim uscomt As Integer
+    Dim uscomt As Integer, tmpflag As Boolean
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     If UBound(commadstr3) <> 2 Or atkingnum = 9 Then GoTo VssCommadExit
@@ -2034,10 +2033,24 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
             End If
             '===========================================
             If CollectionExists(人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))), commadstr3(2)) = True Then
+                '===============================加入該階段紀載資訊
+                Dim stageInfoListObj As New clsVSStageObj
+                stageInfoListObj.StageNum = vbecommadtotplayNow
+                stageInfoListObj.CommandStr = "PersonRemoveBuffSelect"
+                stageInfoListObj.Value = "0"
+                執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+                '===============================
+                tmpflag = False
                 執行階段系統類.執行階段73_指令_異常狀態控制_特定清除 uscomt, Val(commadstr3(1)), commadstr3(2)
-                If Vss_EventRemoveBuffActionOffNum = 0 Then
+                If stageInfoListObj.CommandStr = "PersonRemoveBuffSelect" Then
+                    If stageInfoListObj.Value = "OFF" Then
+                        tmpflag = True
+                    End If
+                End If
+                If tmpflag = False Then
                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
                 End If
+                執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
                 VBEStage7xAtkingInformation = commadstr3(2)
                 vbecommadnum(2, vbecommadtotplayNow) = 2
                 Exit Sub
@@ -2153,7 +2166,11 @@ Sub 執行指令_執行之異常狀態消滅無效化_專(ByVal uscom As Integer, ByVal commadtyp
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 73 Or atkingnum <> 9 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Vss_EventRemoveBuffActionOffNum = 1
+            Dim stageInfoListObj As clsVSStageObj
+            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonRemoveBuffSelect" Or stageInfoListObj.CommandStr = "PersonRemoveBuffAll" Or stageInfoListObj.CommandStr = "@HPWEvent") Then
+                stageInfoListObj.Value = "OFF"
+            End If
             GoTo VssCommadExit
     End Select
     '============================
