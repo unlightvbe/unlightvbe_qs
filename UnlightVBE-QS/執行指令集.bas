@@ -6,7 +6,6 @@ Public vbecommadtotplay As Integer '目前執行之執行階段計數值
 Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
 Public Vss_AtkingStartPlayNum(1 To 3) As Integer '執行指令集-技能動畫執行紀錄暫時變數
-Public Vss_EventRemoveActualStatusActionOffNum As Integer '執行指令集-原應執行之人物實際狀態消除無效化標記暫時變數
 Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3, 1 To 8) As Integer '執行指令集-禁止執行人物主動技及被動技技能紀錄暫時變數(1.使用者/2.電腦,1~3人物編號,1~4.主動技標記/5~8.被動技標記)
 Public Vss_EventActiveAIScoreNum() As Integer '執行指令集-智慧型AI個別技能評分紀錄暫時變數(1.該排列組合技能評分回復/2.評分標準回復/3~.技能推薦之個別期望推薦牌編號)
 Public Vss_PersonMoveControlNum(1 To 2, 1 To 2) As Integer  '執行指令集-移動前總移動量控制暫時變數(1.使用者方/2.電腦方,1.移動變化量/2.是否為指定)
@@ -1504,10 +1503,12 @@ Sub 執行指令_執行之傷害無效化_專(ByVal uscom As Integer, ByVal commadtype As Int
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 46 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Dim stageInfoListObj As clsVSStageObj
-            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
-                stageInfoListObj.Value = "BLOODOFF"
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+                    stageInfoListObj.Value = "BLOODOFF"
+                End If
             End If
             GoTo VssCommadExit
     End Select
@@ -1529,6 +1530,8 @@ Sub 執行指令_執行之傷害效果變更_專(ByVal uscom As Integer, ByVal commadtype As I
     If UBound(commadstr3) <> 1 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 46 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count = 0 Then GoTo VssCommadExit
+            
             Dim stageInfoListObj As clsVSStageObj
             Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
             
@@ -1656,10 +1659,12 @@ Sub 執行指令_執行之回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Int
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 48 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Dim stageInfoListObj As clsVSStageObj
-            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
-                stageInfoListObj.Value = "HPLOFF"
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+                    stageInfoListObj.Value = "HPLOFF"
+                End If
             End If
             GoTo VssCommadExit
     End Select
@@ -1682,19 +1687,21 @@ Sub 執行指令_執行之回復效果變更_專(ByVal uscom As Integer, ByVal commadtype As I
     If UBound(commadstr3) <> 1 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 48 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Dim stageInfoListObj As clsVSStageObj
-            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
-                Select Case Val(commadstr3(0))
-                    Case 1
-                            tmpnum = stageInfoListObj.Argument + Val(commadstr3(1))
-                    Case 2
-                            tmpnum = stageInfoListObj.Argument - Val(commadstr3(1))
-                    Case 3
-                            tmpnum = Val(commadstr3(1))
-                End Select
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+                    Select Case Val(commadstr3(0))
+                        Case 1
+                                tmpnum = stageInfoListObj.Argument + Val(commadstr3(1))
+                        Case 2
+                                tmpnum = stageInfoListObj.Argument - Val(commadstr3(1))
+                        Case 3
+                                tmpnum = Val(commadstr3(1))
+                    End Select
+                End If
+                stageInfoListObj.Value = "HPLCHANGE%" + str(tmpnum)
             End If
-            stageInfoListObj.Value = "HPLCHANGE%" + str(tmpnum)
             GoTo VssCommadExit
     End Select
     '============================
@@ -1715,10 +1722,12 @@ Sub 執行指令_執行之距離變更無效化_專(ByVal uscom As Integer, ByVal commadtype As
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 47 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Dim stageInfoListObj As clsVSStageObj
-            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "BattleMoveControl" Or stageInfoListObj.CommandStr = "@System") Then
-                stageInfoListObj.Value = "BMCOFF"
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "BattleMoveControl" Or stageInfoListObj.CommandStr = "@System") Then
+                    stageInfoListObj.Value = "BMCOFF"
+                End If
             End If
             GoTo VssCommadExit
     End Select
@@ -2166,10 +2175,12 @@ Sub 執行指令_執行之異常狀態消滅無效化_專(ByVal uscom As Integer, ByVal commadtyp
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 73 Or atkingnum <> 9 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Dim stageInfoListObj As clsVSStageObj
-            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonRemoveBuffSelect" Or stageInfoListObj.CommandStr = "PersonRemoveBuffAll" Or stageInfoListObj.CommandStr = "@HPWEvent") Then
-                stageInfoListObj.Value = "OFF"
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonRemoveBuffSelect" Or stageInfoListObj.CommandStr = "PersonRemoveBuffAll" Or stageInfoListObj.CommandStr = "@HPWEvent") Then
+                    stageInfoListObj.Value = "OFF"
+                End If
             End If
             GoTo VssCommadExit
     End Select
@@ -2687,7 +2698,8 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
     Dim commadstr3() As String
     Dim buffvssnum As String
     Dim vsstr As String
-    Dim uscomt As Integer, i As Integer
+    Dim uscomt As Integer, i As Integer, tmpflag As Boolean
+    Dim stageInfoListObj As clsVSStageObj
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     If UBound(commadstr3) <> 1 Or atkingnum >= 9 Then GoTo VssCommadExit
@@ -2709,9 +2721,14 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
             If 人物實際狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), 1) <> "" Then
-                Vss_EventRemoveActualStatusActionOffNum = 0
+                '===============================加入該階段紀載資訊
+                Set stageInfoListObj = New clsVSStageObj
+                stageInfoListObj.StageNum = vbecommadtotplayNow
+                stageInfoListObj.CommandStr = "PersonRemoveActualStatus"
+                stageInfoListObj.Value = "0"
+                執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+                '===============================
                 Dim vbecommadnumSecond As Integer '本層執行階段編號數
-                '=======================
                 vbecommadnumSecond = 執行階段系統_宣告開始或結束(1)
                 '=======================
                 Dim VBEStageNumMainSec(0 To 1) As Integer
@@ -2727,8 +2744,18 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
             End If
             '=================
         Case 2
-            If Vss_EventRemoveActualStatusActionOffNum = 0 Then
-                If Val(commadstr3(1)) = 1 Then
+            Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+            tmpflag = False
+            If stageInfoListObj.CommandStr = "PersonRemoveActualStatus" Then
+                If stageInfoListObj.Value = "OFF" Then
+                    tmpflag = True
+                End If
+            End If
+            
+            執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+            
+            If tmpflag = False Then
+               If Val(commadstr3(1)) = 1 Then
                     Select Case uscomt
                         Case 1
                             FormMainMode.personusminijpg.小人物消失 = True
@@ -2808,7 +2835,13 @@ Sub 執行指令_執行之人物實際狀態消滅無效化_專(ByVal uscom As Integer, ByVal comma
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 75 Or atkingnum <> 10 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Vss_EventRemoveActualStatusActionOffNum = 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonRemoveActualStatus" Then
+                    stageInfoListObj.Value = "OFF"
+                End If
+            End If
             GoTo VssCommadExit
     End Select
     '============================
