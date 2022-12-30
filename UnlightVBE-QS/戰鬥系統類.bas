@@ -4455,11 +4455,23 @@ End Sub
 Sub 角色復活_使用者(ByVal num As Integer)
 If liveus(角色待機人物紀錄數(1, num)) > 0 Then Exit Sub
 '===============================
-Vss_EventPersonResurrectActionOffNum = 0
+Dim stageInfoListObj As New clsVSStageObj
+stageInfoListObj.StageNum = vbecommadtotplayNow
+stageInfoListObj.CommandStr = "PersonResurrect"
+stageInfoListObj.Value = "0"
+執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
 '===========================執行階段插入點(49)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 49, 1
 '============================
-If Vss_EventPersonResurrectActionOffNum = 0 Then
+Dim tmpflag As Boolean
+tmpflag = False
+If stageInfoListObj.CommandStr = "PersonResurrect" Then
+    If stageInfoListObj.Value = "OFF" Then
+        tmpflag = True
+    End If
+End If
+
+If tmpflag = False Then
     Select Case num
        Case 1
             FormMainMode.cardus(角色人物對戰人數(1, 2)).CardMain_角色HP = 1
@@ -4473,16 +4485,29 @@ If Vss_EventPersonResurrectActionOffNum = 0 Then
             FormMainMode.cardus(角色待機人物紀錄數(1, num)).CardMain_角色HP = 1
     End Select
 End If
+執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
 End Sub
 Sub 角色復活_電腦(ByVal num As Integer)
 '===============================
 If livecom(角色待機人物紀錄數(2, num)) > 0 Then Exit Sub
 '===============================
-Vss_EventPersonResurrectActionOffNum = 0
+Dim stageInfoListObj As New clsVSStageObj
+stageInfoListObj.StageNum = vbecommadtotplayNow
+stageInfoListObj.CommandStr = "PersonResurrect"
+stageInfoListObj.Value = "0"
+執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
 '===========================執行階段插入點(49)
 執行階段系統類.執行階段系統總主要程序_執行階段開始 2, 49, 1
 '============================
-If Vss_EventPersonResurrectActionOffNum = 0 Then
+Dim tmpflag As Boolean
+tmpflag = False
+If stageInfoListObj.CommandStr = "PersonResurrect" Then
+    If stageInfoListObj.Value = "OFF" Then
+        tmpflag = True
+    End If
+End If
+
+If tmpflag = False Then
     Select Case num
         Case 1
             FormMainMode.PEAFpersoncardcom(角色人物對戰人數(2, 2)).CurrentHP = 1
@@ -4496,6 +4521,7 @@ If Vss_EventPersonResurrectActionOffNum = 0 Then
             FormMainMode.PEAFpersoncardcom(角色待機人物紀錄數(2, num)).CurrentHP = 1
     End Select
 End If
+執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
 End Sub
 Sub 解析骰量變化(ByVal str As String, ByVal uscom As Integer)
 Dim cmdstr() As String

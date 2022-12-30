@@ -13,7 +13,6 @@ Public Vss_AtkingInformationRecordStr(1 To 2, 1 To 3, 1 To 8) As String '°õ¦æ«ü¥
 Public Vss_EventPlayerAllActionOffNum(1 To 2) As Integer '°õ¦æ«ü¥O¶°-¸T¤îª±®a¶i¦æ©Ò¦³¾Þ§@¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è)
 Public Vss_PersonMoveActionChangeNum(1 To 2, 1 To 2) As Integer  '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦â²¾°Ê¶¥¬q¦æ°Ê±±¨î¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,1.¬O§_°õ¦æ/2.§ó§ï«á¿ï¾Ü¼Æ)
 Public Vss_PersonAttackFirstControlNum As Integer '°õ¦æ«ü¥O¶°-¤Hª«¨¤¦âÀu¥ý§ðÀ»±±¨î¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è¥ý/2.¹q¸£¤è¥ý)
-Public Vss_EventPersonResurrectActionOffNum As Integer '°õ¦æ«ü¥O¶°-­ìÀ³°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ¼Ð°O¼È®ÉÅÜ¼Æ
 Public Vss_BattleStartDiceNum(0 To 5) As Integer '°õ¦æ«ü¥O¶°-°õ¦æÂY»ë¤l¶¥¬q¸ê°T¼È®ÉÅÜ¼Æ(0.°õ¦æ¶¥¬q¸¹/1.¦Û¨­Á`»ë¼Æ/2.¹ï¤âÁ`»ë¼Æ/3.ÂY»ë«á¦Û¨­¥¿»ë¼Æ¶q/4.ÂY»ë«á¹ï¤â¥¿»ë¼Æ¶q/5.ÂY»ë«áÁ`¥¿»ë¼Æ¶q)
 Public Vss_EventPersonAbilityDiceChangeNum(1 To 2, 1 To 2) As Integer '°õ¦æ«ü¥O¶°-¨¤¦â¯à¤O¹ï»ë¼ÆÅÜ¤Æ¶q±±¨î¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,1.ÅÜ¤Æ¶q/2.¬O§_¬°«ü©w)
 
@@ -1749,7 +1748,13 @@ Sub °õ¦æ«ü¥O_°õ¦æ¤§¤Hª«¨¤¦â´_¬¡µL®Ä¤Æ_±M(ByVal uscom As Integer, ByVal commadtyp
     If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 49 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            Vss_EventPersonResurrectActionOffNum = 1
+            If °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList(°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonResurrect" Then
+                    stageInfoListObj.Value = "OFF"
+                End If
+            End If
             GoTo VssCommadExit
     End Select
     '============================
