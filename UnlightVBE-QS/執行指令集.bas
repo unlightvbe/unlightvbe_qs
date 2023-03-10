@@ -167,6 +167,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                                 執行指令集.執行指令_禁止玩家進行所有操作 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventPersonResurrectActionOff"
                                 執行指令集.執行指令_執行之人物角色復活無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "EventAtkingSeizeEnemyCardsActionOff"
+                                執行指令集.執行指令_奪取對手卡牌無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                      '========================================================
                         Case Else
                                GoTo vss_cmdlocalerr
@@ -954,7 +956,7 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
             stageInfoListObj.Value = "0"
             執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
             '===============================
-            ReDim VBEStageNum(0 To 3) As Integer
+            ReDim VBEStageNum(0 To 7) As Integer
             VBEStageNum(0) = 101
             VBEStageNum(1) = -uscom '觸發事件方(1.使用者/2.電腦)
             VBEStageNum(2) = Val(commadstr3(1)) '受影響之卡牌編號
@@ -1072,6 +1074,33 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "AtkingSeizeEnemyCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
+Sub 執行指令_奪取對手卡牌無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 101 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "AtkingSeizeEnemyCards" Then
+                    stageInfoListObj.Value = "OFF"
+                End If
+            End If
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventAtkingSeizeEnemyCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
 Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String, ay() As String
@@ -1123,7 +1152,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
                                                         pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
                                                     End If
@@ -1150,7 +1179,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 5) = 2
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 6) = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
-                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+                                                        FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
                                                         FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardRotationType = 1
                                                         pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
                                                         pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
