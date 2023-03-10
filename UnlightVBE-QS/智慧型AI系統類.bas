@@ -1183,7 +1183,13 @@ Next
 End Sub
 Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain() As Integer, ByVal turnai As Integer, ByVal movecpre As Integer, ByVal cardAICaseNum As Integer)
     '===========================
-    Erase VBEPersonVS 'VBE人物統一變數-VS版
+    Dim tmpVBEPersonVSflag As Boolean
+    If VBEPersonVSTempStageNum(1) = 99 And VBEPersonVSTempStageNum(2) = uscom Then
+        tmpVBEPersonVSflag = True
+    Else
+        Erase VBEPersonVS 'VBE人物統一變數-VS版
+        tmpVBEPersonVSflag = False
+    End If
     Erase atkingpagetotVS '每階段出牌種類及數值統計資料-VS版
     Erase VBEPersonBuffVSF  '異常狀態資料-VS-F版
     Erase VBEPersonBuffVSS  '異常狀態資料-VS-S版
@@ -1214,17 +1220,21 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
     Select Case uscom
          Case 1
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
-             For i = 1 To 2
-                 For j = 1 To 3
-                     For k = 1 To 4
-                         For m = 1 To 30
-                             For p = 1 To 11
-                                 VBEPersonVS(i, j, k, m, p) = VBEPerson(i, 角色待機人物紀錄數(i, j), k, m, p)
+             If tmpVBEPersonVSflag = False Then
+                VBEPersonVSTempStageNum(1) = 99
+                VBEPersonVSTempStageNum(2) = uscom
+                For i = 1 To 2
+                     For j = 1 To 3
+                         For k = 1 To 4
+                             For m = 1 To 30
+                                 For p = 1 To 11
+                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(i, 角色待機人物紀錄數(i, j), k, m, p)
+                                 Next
                              Next
-                         Next
-                      Next
-                 Next
-            Next
+                          Next
+                     Next
+                Next
+            End If
             '======================
             For i = 1 To cardAInumuscom
                 For j = 1 To 6
@@ -1368,18 +1378,22 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
              Next
          Case 2 '===============================================================
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
-             For i = 1 To 2
-                 If i = 1 Then q = 2 Else q = 1
-                 For j = 1 To 3
-                     For k = 1 To 4
-                         For m = 1 To 30
-                             For p = 1 To 11
-                                 VBEPersonVS(i, j, k, m, p) = VBEPerson(q, 角色待機人物紀錄數(q, j), k, m, p)
+             If tmpVBEPersonVSflag = False Then
+                VBEPersonVSTempStageNum(1) = 99
+                VBEPersonVSTempStageNum(2) = uscom
+                For i = 1 To 2
+                     If i = 1 Then q = 2 Else q = 1
+                     For j = 1 To 3
+                         For k = 1 To 4
+                             For m = 1 To 30
+                                 For p = 1 To 11
+                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(q, 角色待機人物紀錄數(q, j), k, m, p)
+                                 Next
                              Next
-                         Next
-                      Next
-                 Next
-            Next
+                          Next
+                     Next
+                Next
+            End If
             '======================
             For i = 1 To cardAInumuscom
                 For j = 1 To 6

@@ -49,7 +49,7 @@ Public §Þ¯à°ÊµeÅã¥Ü¶¥¬q¼Æ As Integer '§Þ¯à°Êµe­p¼Æ¾¹¶¥¬q½X(1.§ðÀ»/¨¾¿m¶¥¬q-´¶³q,
 Public §ðÀ»¨¾¿m»ë¤lÁ`¼Æ(1 To 4) As Integer '§ðÀ»/¨¾¿m¼Ò¦¡»ë¤l¼Æ¶q¸ê®Æ(1.¨Ï¥ÎªÌ(Á`)/2.¹q¸£(Á`)/3.¨Ï¥ÎªÌ(­ì)/4.¹q¸£(­ì))
 Public atkingpagetot(1 To 2, 1 To 5) As Integer  '¨C¶¥¬q¥XµPºØÃþ¤Î¼Æ­È²Î­p¸ê®Æ(1.¨Ï¥ÎªÌ/2.¹q¸£,1.¼C/2.¨¾/3.²¾/4.¯S/5.ºj)
 Public »ë¼Æ¹sÀË¬d­È(1 To 2) As Boolean '·í«e¶¥¬q»ë¤l¼Æ¶q¬O§_¬°¹sÀË¬d¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£)
-Public pagecardnum(1 To 999, 1 To 11) As String '¤½¥ÎµP¸ê®Æ(²Äx½s¸¹,1.¥¿­±Ãþ«¬/2.¥¿­±¼Æ­È/3.¤Ï­±Ãþ«¬/4.¤Ï­±¼Æ­È/5.(1)¨Ï¥ÎªÌ-(2)¹q¸£/6.(1)¤âµP-(2)¥XµP-(3)ÂÃµP-(4)µP°ï/7.¥XµP¶¶§Ç/8.¹Ï¤ù½s¸¹/9.¥Ø«eLeft(®y¼Ð)/10.¥Ø«eTop(®y¼Ð)/11.(1)¹q¸£¤è¥XµP(ùØ)-(2)¹q¸£µo¥XµP(¥~))
+Public pagecardnum(1 To 999, 1 To 11) As String '¤½¥ÎµP¸ê®Æ(²Äx½s¸¹,1.¥¿­±Ãþ«¬/2.¥¿­±¼Æ­È/3.¤Ï­±Ãþ«¬/4.¤Ï­±¼Æ­È/5.(0)¨t²Î-(1)¨Ï¥ÎªÌ-(2)¹q¸£/6.(1)¤âµP-(2)¥XµP-(3)ÂÃµP-(4)µP°ï/7.¥XµP¶¶§Ç/8.¹Ï¤ù½s¸¹/9.¥Ø«eLeft(®y¼Ð)/10.¥Ø«eTop(®y¼Ð)/11.(1)¹q¸£¤è¥XµP(ùØ)-(2)¹q¸£µo¥XµP(¥~))
 Public µPÁ`¶¥¬q¼Æ(1 To 3) As Integer 'µP¾Ö¦³Á`¶¥¬q¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£/3.Á`­p)
 Public µP²¾°Ê¼È®ÉÅÜ¼Æ(1 To 3) As Long 'µP²¾°Ê­p¼Æ¾¹¼È®ÉÅÜ¼Æ(1.Left³æ¦ì/2.Top³æ¦ì/3.µP±i½s¸¹)
 Public ¥Ø«e¼Æ(1 To 33) As Integer 'Á`¼È®ÉÅÜ¼Æ
@@ -266,6 +266,7 @@ End Sub
 Sub ¦^´_°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean, ByVal isSysCall As Boolean)
 If isEvent = True Then
     Dim stageInfoListObj As clsVSStageObj
+    Dim tmpflagoff As Boolean
     If isSysCall = True Then
         Set stageInfoListObj = New clsVSStageObj
         stageInfoListObj.StageNum = 0
@@ -289,9 +290,10 @@ If isEvent = True Then
     '===========================°õ¦æ¶¥¬q´¡¤JÂI(48)
     °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 48, 1
     '============================
+    tmpflagoff = False
     If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
         If stageInfoListObj.Value = "HPLOFF" Then
-            Exit Sub
+            tmpflagoff = True
         Else
             Dim tmpstr() As String
             tmpstr = Split(stageInfoListObj.Value, "%")
@@ -303,6 +305,9 @@ If isEvent = True Then
     If isSysCall = True Then
         °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
     End If
+    '===============================
+    If tmpflagoff = True Then Exit Sub
+    '===============================
 End If
 
 Select Case num
@@ -338,6 +343,7 @@ End Sub
 Sub ¦^´_°õ¦æ_¹q¸£(ByVal tot As Integer, ByVal num As Integer, ByVal statusfrom As Integer, ByVal isEvent As Boolean, ByVal isSysCall As Boolean)
 If isEvent = True Then
     Dim stageInfoListObj As clsVSStageObj
+    Dim tmpflagoff As Boolean
     If isSysCall = True Then
         Set stageInfoListObj = New clsVSStageObj
         stageInfoListObj.StageNum = 0
@@ -361,9 +367,10 @@ If isEvent = True Then
     '===========================°õ¦æ¶¥¬q´¡¤JÂI(48)
     °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 48, 1
     '============================
+    tmpflagoff = False
     If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
         If stageInfoListObj.Value = "HPLOFF" Then
-            Exit Sub
+            tmpflagoff = True
         Else
             Dim tmpstr() As String
             tmpstr = Split(stageInfoListObj.Value, "%")
@@ -375,6 +382,9 @@ If isEvent = True Then
     If isSysCall = True Then
         °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
     End If
+    '===============================
+    If tmpflagoff = True Then Exit Sub
+    '===============================
 End If
 
 Select Case num
@@ -411,6 +421,7 @@ Sub ¶Ë®`°õ¦æ_¨Ï¥ÎªÌ(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub
 '===============================
 Dim stageInfoListObj As New clsVSStageObj
+Dim tmpflagoff As Boolean
 stageInfoListObj.StageNum = 0
 stageInfoListObj.CommandStr = "@System"
 stageInfoListObj.Value = "0"
@@ -431,9 +442,10 @@ stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '¨ü¨ì¶Ë®`¤§§Î¦
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 46, 1
 '============================
+tmpflagoff = False
 If stageInfoListObj.CommandStr = "@System" Then
     If stageInfoListObj.Value = "BLOODOFF" Then
-        Exit Sub
+        tmpflagoff = True
     Else
         Dim tmpstr() As String
         tmpstr = Split(stageInfoListObj.Value, "%")
@@ -443,7 +455,9 @@ If stageInfoListObj.CommandStr = "@System" Then
     End If
 End If
 °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
-'============================
+'===============================
+If tmpflagoff = True Then Exit Sub
+'===============================
 If tot > 0 And liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) > 0 Then
     If tot >= liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) Then
        ¾Ô°«¨t²ÎÃþ.¼s¼½°T®§ "±z¨ü¨ì¤F" & liveus(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(1, 2)) & "ÂI¶Ë®`¡C"
@@ -531,6 +545,7 @@ Sub ¶Ë®`°õ¦æ_¹q¸£(ByVal tot As Integer)
 If tot <= 0 Then Exit Sub
 '===============================
 Dim stageInfoListObj As New clsVSStageObj
+Dim tmpflagoff As Boolean
 stageInfoListObj.StageNum = 0
 stageInfoListObj.CommandStr = "@System"
 stageInfoListObj.Value = "0"
@@ -551,9 +566,10 @@ stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '¨ü¨ì¶Ë®`¤§§Î¦
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(46)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 46, 1
 '============================
+tmpflagoff = False
 If stageInfoListObj.CommandStr = "@System" Then
     If stageInfoListObj.Value = "BLOODOFF" Then
-        Exit Sub
+        tmpflagoff = True
     Else
         Dim tmpstr() As String
         tmpstr = Split(stageInfoListObj.Value, "%")
@@ -563,6 +579,8 @@ If stageInfoListObj.CommandStr = "@System" Then
     End If
 End If
 °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
+'===============================
+If tmpflagoff = True Then Exit Sub
 '============================
 If tot > 0 And livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) > 0 Then
     If tot >= livecom(¨¤¦â¤Hª«¹ï¾Ô¤H¼Æ(2, 2)) Then
@@ -744,6 +762,7 @@ Dim g As Integer
 For g = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
      If pagecardnum(g, 6) = 3 Then
          ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 1) = Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 1)) - 1
+         pagecardnum(g, 5) = 0
          pagecardnum(g, 6) = 4
          Select Case pagecardnum(g, 8)
             Case "021"  '==²¾1ºj1Ãþ
@@ -831,6 +850,8 @@ Sub °õ¦æ°Ê§@_¶ZÂ÷ÅÜ§ó(ByVal m As Integer, ByVal isEvent As Boolean, ByVal isSysC
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(47)
 If isEvent = True Then
     Dim stageInfoListObj As clsVSStageObj
+    Dim tmpflagoff As Boolean
+    Dim tmpuscom As Integer
     If isSysCall = True Then
         ReDim VBEStageNum(0 To 3) As Integer
         VBEStageNum(3) = 0  'Ä²µo¨Æ¥ó¤è
@@ -846,16 +867,25 @@ If isEvent = True Then
     VBEStageNum(0) = 47
     VBEStageNum(1) = movecp 'ÅÜ§ó«e¶ZÂ÷
     VBEStageNum(2) = m  'ÅÜ§ó«á¶ZÂ÷
-    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 47, 1
+    If isSysCall = True Then
+        tmpuscom = 1
+    Else
+        tmpuscom = Abs(VBEStageNum(3))
+    End If
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l tmpuscom, 47, 1
     '=====================
+    tmpflagoff = False
     If stageInfoListObj.CommandStr = "BattleMoveControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
         If stageInfoListObj.Value = "BMCOFF" Then
-            Exit Sub
+            tmpflagoff = True
         End If
     End If
     If isSysCall = True Then
         °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
     End If
+    '===============================
+    If tmpflagoff = True Then Exit Sub
+    '===============================
 End If
 '============================
 Dim anw(1 To 2) As Integer
@@ -4456,10 +4486,10 @@ Sub ¨¤¦â´_¬¡_¨Ï¥ÎªÌ(ByVal num As Integer)
 If liveus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)) > 0 Then Exit Sub
 '===============================
 Dim stageInfoListObj As New clsVSStageObj
-stageInfoListObj.StageNum = vbecommadtotplayNow
-stageInfoListObj.CommandStr = "PersonResurrect"
-stageInfoListObj.Value = "0"
-°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
+Set stageInfoListObj = °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList(°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count)
+VBEStageNum(0) = 49
+VBEStageNum(1) = -1 '¨¤¦â´_¬¡¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+VBEStageNum(2) = num '¨¤¦â´_¬¡¤Hª«½s¸¹
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(49)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 49, 1
 '============================
@@ -4485,17 +4515,16 @@ If tmpflag = False Then
             FormMainMode.cardus(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(1, num)).CardMain_¨¤¦âHP = 1
     End Select
 End If
-°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
 End Sub
 Sub ¨¤¦â´_¬¡_¹q¸£(ByVal num As Integer)
 '===============================
 If livecom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)) > 0 Then Exit Sub
 '===============================
 Dim stageInfoListObj As New clsVSStageObj
-stageInfoListObj.StageNum = vbecommadtotplayNow
-stageInfoListObj.CommandStr = "PersonResurrect"
-stageInfoListObj.Value = "0"
-°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
+Set stageInfoListObj = °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList(°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count)
+VBEStageNum(0) = 49
+VBEStageNum(1) = -2 '¨¤¦â´_¬¡¤è(1.¨Ï¥ÎªÌ/2.¹q¸£)
+VBEStageNum(2) = num '¨¤¦â´_¬¡¤Hª«½s¸¹
 '===========================°õ¦æ¶¥¬q´¡¤JÂI(49)
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 49, 1
 '============================
@@ -4521,7 +4550,6 @@ If tmpflag = False Then
             FormMainMode.PEAFpersoncardcom(¨¤¦â«Ý¾÷¤Hª«¬ö¿ý¼Æ(2, num)).CurrentHP = 1
     End Select
 End If
-°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Remove °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count
 End Sub
 Sub ¸ÑªR»ë¶qÅÜ¤Æ(ByVal str As String, ByVal uscom As Integer)
 Dim cmdstr() As String

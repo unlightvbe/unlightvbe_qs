@@ -16,11 +16,12 @@ Public VBEStageRemoveBuffAllNum() As Boolean '執行階段系統-執行階段73-異常狀態控
 Public VBEActualStatusVS(1 To 2, 1 To 3, 1 To 2) As Variant '人物實際狀態資料-VS版
 Public VBEStage7xAtkingInformation As String '執行階段7x(76狀態加入/77解除)-技能唯一識別碼暫時儲存變數
 Public VBEVSStageInfoList As New Collection '執行階段系統各層數紀載資訊
+Public VBEPersonVSTempStageNum(1 To 2) As Integer 'VBE人物統一變數-VS版目前執行階段數所列狀態(1.目前執行階段數/2.uscom紀載方)
 Sub 執行階段系統總主要程序_人物主動技能(ByVal uscom As Integer, ByVal personnum As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByVal PersonBattleNum As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim atkingvssnum As Integer
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
     If 執行階段系統類.執行階段系統_驗證(atkingnum, ns, VBEPerson(uscom, personnum, 3, atkingnum, 11), uscom, personnum) = True Then
-           執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain, PersonBattleNum
+           執行階段系統類.執行階段系統_準備變數統合資料 uscom, ns, VBEStageNumMain, PersonBattleNum
            vbecommadnum(6, vbecommadtotplayNow) = PersonBattleNum
            vbecommadnum(7, vbecommadtotplayNow) = personnum
            atkingvssnum = (uscom - 1) * 12 + (4 * personnum - 4) + atkingnum
@@ -31,7 +32,7 @@ Sub 執行階段系統總主要程序_人物被動技能(ByVal uscom As Integer, ByVal personnum 
     Dim passivevssnum As Integer, PassivePersonType As Integer  '暫時變數
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
     If 執行階段系統類.執行階段系統_驗證(atkingnum, ns, VBEPerson(uscom, personnum, 3, atkingnum, 3), uscom, personnum) = True Then
-           執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain, PersonBattleNum
+           執行階段系統類.執行階段系統_準備變數統合資料 uscom, ns, VBEStageNumMain, PersonBattleNum
            If PersonBattleNum > 1 Then PassivePersonType = 2 Else PassivePersonType = 1
            vbecommadnum(6, vbecommadtotplayNow) = PersonBattleNum
            vbecommadnum(7, vbecommadtotplayNow) = personnum
@@ -412,9 +413,15 @@ vsgoerror:
 '=====================================
 
 End Function
-Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain() As Integer, ByVal PersonBattleNum As Integer)
+Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, ByRef VBEStageNumMain() As Integer, ByVal PersonBattleNum As Integer)
     '===========================
-    Erase VBEPersonVS 'VBE人物統一變數-VS版
+    Dim tmpVBEPersonVSflag As Boolean
+    If VBEPersonVSTempStageNum(1) = ns And VBEPersonVSTempStageNum(2) = uscom Then
+        tmpVBEPersonVSflag = True
+    Else
+        Erase VBEPersonVS 'VBE人物統一變數-VS版
+        tmpVBEPersonVSflag = False
+    End If
     Erase atkingpagetotVS '每階段出牌種類及數值統計資料-VS版
     Erase VBEPersonBuffVSF  '異常狀態資料-VS-F版
     Erase VBEPersonBuffVSS  '異常狀態資料-VS-S版
@@ -445,45 +452,28 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
     Select Case uscom
          Case 1
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
-             For i = 1 To 2
-                 For j = 1 To 3
-                     For k = 1 To 4
-                         For m = 1 To 30
-                             For p = 1 To 11
-                                 VBEPersonVS(i, j, k, m, p) = VBEPerson(i, 角色待機人物紀錄數(i, j), k, m, p)
+             If tmpVBEPersonVSflag = False Then
+                VBEPersonVSTempStageNum(1) = ns
+                VBEPersonVSTempStageNum(2) = uscom
+                For i = 1 To 2
+                     For j = 1 To 3
+                         For k = 1 To 4
+                             For m = 1 To 30
+                                 For p = 1 To 11
+                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(i, 角色待機人物紀錄數(i, j), k, m, p)
+                                 Next
                              Next
-                         Next
-                      Next
-                 Next
-            Next
+                          Next
+                     Next
+                Next
+            End If
             '======================
             For i = 1 To 公用牌實體卡片分隔紀錄數(1)
                 For j = 1 To 6
                     If j = 1 Or j = 3 Then
-                       Select Case pagecardnum(i, j)
-                            Case "ATK-劍"
-                                VBEPageCardNumVS(i, j) = 1
-                            Case "DEF"
-                                VBEPageCardNumVS(i, j) = 2
-                            Case "MOV"
-                                VBEPageCardNumVS(i, j) = 3
-                            Case "SPE"
-                                VBEPageCardNumVS(i, j) = 4
-                            Case "ATK-槍"
-                                VBEPageCardNumVS(i, j) = 5
-                            Case "DRAW"
-                                VBEPageCardNumVS(i, j) = 6
-                            Case "BRK"
-                                VBEPageCardNumVS(i, j) = 7
-                            Case "HPL"
-                                VBEPageCardNumVS(i, j) = 8
-                            Case "HPW"
-                                VBEPageCardNumVS(i, j) = 9
-                            Case Else
-                                VBEPageCardNumVS(i, j) = 0
-                       End Select
+                        VBEPageCardNumVS(i, j) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(pagecardnum(i, j))
                     Else
-                       VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
+                        VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
                     End If
                 Next
             Next
@@ -578,7 +568,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
              '=========================
              If LBound(VBEStageNumMain) = 0 Then
                     Select Case VBEStageNumMain(0)
-                        Case 41, 46, 47, 48 '執行階段41/46/47/48(角色交換/傷害/移動/回復)
+                        Case 41, 46, 47, 48, 49, 101
                             For i = 1 To UBound(VBEStageNumMain)
                                     If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
                                         VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
@@ -603,46 +593,29 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
              End If
          Case 2 '===============================================================
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
-             For i = 1 To 2
-                 If i = 1 Then q = 2 Else q = 1
-                 For j = 1 To 3
-                     For k = 1 To 4
-                         For m = 1 To 30
-                             For p = 1 To 11
-                                 VBEPersonVS(i, j, k, m, p) = VBEPerson(q, 角色待機人物紀錄數(q, j), k, m, p)
+             If tmpVBEPersonVSflag = False Then
+                VBEPersonVSTempStageNum(1) = ns
+                VBEPersonVSTempStageNum(2) = uscom
+                For i = 1 To 2
+                     If i = 1 Then q = 2 Else q = 1
+                     For j = 1 To 3
+                         For k = 1 To 4
+                             For m = 1 To 30
+                                 For p = 1 To 11
+                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(q, 角色待機人物紀錄數(q, j), k, m, p)
+                                 Next
                              Next
-                         Next
-                      Next
-                 Next
-            Next
+                          Next
+                     Next
+                Next
+            End If
             '======================
             For i = 1 To 公用牌實體卡片分隔紀錄數(1)
                 For j = 1 To 6
                      If j = 1 Or j = 3 Then
-                       Select Case pagecardnum(i, j)
-                            Case "ATK-劍"
-                                VBEPageCardNumVS(i, j) = 1
-                            Case "DEF"
-                                VBEPageCardNumVS(i, j) = 2
-                            Case "MOV"
-                                VBEPageCardNumVS(i, j) = 3
-                            Case "SPE"
-                                VBEPageCardNumVS(i, j) = 4
-                            Case "ATK-槍"
-                                VBEPageCardNumVS(i, j) = 5
-                            Case "DRAW"
-                                VBEPageCardNumVS(i, j) = 6
-                            Case "BRK"
-                                VBEPageCardNumVS(i, j) = 7
-                            Case "HPL"
-                                VBEPageCardNumVS(i, j) = 8
-                            Case "HPW"
-                                VBEPageCardNumVS(i, j) = 9
-                            Case Else
-                                VBEPageCardNumVS(i, j) = 0
-                       End Select
+                        VBEPageCardNumVS(i, j) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(pagecardnum(i, j))
                     ElseIf j = 5 Then
-                       If Val(pagecardnum(i, j)) = 2 Then
+                        If Val(pagecardnum(i, j)) = 2 Then
                            VBEPageCardNumVS(i, j) = 1
                         ElseIf Val(pagecardnum(i, j)) = 1 Then
                            VBEPageCardNumVS(i, j) = 2
@@ -650,7 +623,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                            VBEPageCardNumVS(i, j) = 0
                         End If
                     Else
-                       VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
+                        VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
                     End If
                 Next
             Next
@@ -753,7 +726,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                             VBEVSStageNum(2) = VBEStageNumMain(1)
                             VBEVSStageNum(3) = VBEStageNumMain(4)
                             VBEVSStageNum(4) = VBEStageNumMain(3)
-                        Case 41, 46, 47, 48 '執行階段41/46/48(角色交換/傷害/移動/回復)
+                        Case 41, 46, 47, 48, 49, 101
                             For i = 1 To UBound(VBEStageNumMain)
                                 If VBEStageNumMain(i) = -1 Then
                                     VBEVSStageNum(i) = 2
@@ -777,7 +750,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
                             If VBEStageNumMain(1) = -1 Then VBEVSStageNum(1) = 2 Else VBEVSStageNum(1) = 1
                         Case Else
                             For i = 1 To UBound(VBEStageNumMain)
-                                    VBEVSStageNum(i) = VBEStageNumMain(i)
+                                VBEVSStageNum(i) = VBEStageNumMain(i)
                             Next
                     End Select
              Else
@@ -785,6 +758,30 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByRef VBEStageNumMain(
              End If
    End Select
 End Sub
+Function 執行階段系統_準備變數統合_pagecardnum_type(ByVal typestr As String) As Integer
+Select Case typestr
+     Case "ATK-劍"
+         執行階段系統_準備變數統合_pagecardnum_type = 1
+     Case "DEF"
+         執行階段系統_準備變數統合_pagecardnum_type = 2
+     Case "MOV"
+         執行階段系統_準備變數統合_pagecardnum_type = 3
+     Case "SPE"
+         執行階段系統_準備變數統合_pagecardnum_type = 4
+     Case "ATK-槍"
+         執行階段系統_準備變數統合_pagecardnum_type = 5
+     Case "DRAW"
+         執行階段系統_準備變數統合_pagecardnum_type = 6
+     Case "BRK"
+         執行階段系統_準備變數統合_pagecardnum_type = 7
+     Case "HPL"
+         執行階段系統_準備變數統合_pagecardnum_type = 8
+     Case "HPW"
+         執行階段系統_準備變數統合_pagecardnum_type = 9
+     Case Else
+         執行階段系統_準備變數統合_pagecardnum_type = 0
+End Select
+End Function
 Sub 執行階段系統_初始_腳本讀入程序()
 If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
 Dim atknum As Integer, uscomn As Integer, pnnum As Integer, buffnum As Integer
@@ -1136,7 +1133,7 @@ Sub 執行階段系統總主要程序_異常狀態(ByVal uscom As Integer, ByVal personnum As I
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
     If 執行階段系統類.執行階段系統_驗證(9, ns, akstr, uscom, personnum) = True Then
            Set buffobj = 人物異常狀態列表(uscom, personnum)(akstr)
-           執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain, PersonBattleNum
+           執行階段系統類.執行階段系統_準備變數統合資料 uscom, ns, VBEStageNumMain, PersonBattleNum
            If PersonBattleNum > 1 Then BuffPersonType = 2 Else BuffPersonType = 1
            vbecommadnum(6, vbecommadtotplayNow) = PersonBattleNum
            vbecommadnum(7, vbecommadtotplayNow) = personnum
@@ -1156,7 +1153,7 @@ Sub 執行階段系統總主要程序_人物實際狀態(ByVal uscom As Integer, ByVal personnum 
     Dim ActualStatusvssnum As Integer, ActualStatusPersonType As Integer '暫時變數
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
     If 執行階段系統類.執行階段系統_驗證(10, ns, 人物實際狀態資料庫(uscom, personnum, 1), uscom, personnum) = True Then
-           執行階段系統類.執行階段系統_準備變數統合資料 uscom, VBEStageNumMain, PersonBattleNum
+           執行階段系統類.執行階段系統_準備變數統合資料 uscom, ns, VBEStageNumMain, PersonBattleNum
            If PersonBattleNum > 1 Then ActualStatusPersonType = 2 Else ActualStatusPersonType = 1
            vbecommadnum(6, vbecommadtotplayNow) = PersonBattleNum
            vbecommadnum(7, vbecommadtotplayNow) = personnum

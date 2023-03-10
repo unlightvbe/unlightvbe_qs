@@ -1656,6 +1656,8 @@ Erase 人物實際狀態資料庫 '人物實際狀態資料
 Erase 事件卡記錄暫時數 '事件卡使用紀錄暫時變數(0.(1)總共給予回合數,1.使用者/2.電腦,1.總共數值/2.目前處理數值/3.目前階段/4.事件卡牌編號/5.事件分類/6.是否啟動)
 ''===================
 vbecommadtotplay = 0
+執行階段系統類.VBEPersonVSTempStageNum(1) = -999
+執行階段系統類.VBEPersonVSTempStageNum(2) = 0
 ReDim vbecommadnum(1 To 7, vbecommadtotplay)
 ReDim vbecommadstr(1 To 3, vbecommadtotplay)
 Erase Vss_PersonAtkingOffNum

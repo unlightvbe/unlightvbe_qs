@@ -654,12 +654,24 @@ Sub 執行指令_人物角色復活(ByVal uscom As Integer, ByVal commadtype As Integer, B
     If Val(commadstr3(1)) < 1 Or Val(commadstr3(1)) > 角色人物對戰人數(uscomt, 1) Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
+            '===================================
+            Dim stageInfoListObj As New clsVSStageObj
+            stageInfoListObj.StageNum = vbecommadtotplayNow
+            stageInfoListObj.CommandStr = "PersonResurrect"
+            stageInfoListObj.Value = "0"
+            執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+            '===================================
+            ReDim VBEStageNum(0 To 3) As Integer
+            VBEStageNum(3) = -uscom
+            '===================================
             Select Case uscomt
                 Case 1
                      戰鬥系統類.角色復活_使用者 Val(commadstr3(1))
                 Case 2
                      戰鬥系統類.角色復活_電腦 Val(commadstr3(1))
             End Select
+            
+            執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
             GoTo VssCommadExit
     End Select
         '============================
@@ -921,7 +933,7 @@ Sub Sub_技能動畫執行_靜態(ByVal commadstr3_1 As String, ByVal commadstr3_2 As St
 End Sub
 Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
-    Dim commadstr3() As String
+    Dim commadstr3() As String, tmpflag As Boolean
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     If UBound(commadstr3) <> 1 Or (commadtype <> 1 And commadtype <> 3) Then GoTo VssCommadExit
@@ -934,87 +946,120 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
     End Select
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-             Select Case Val(commadstr3(0))
-                  Case 1  '==手牌
-                        Select Case uscomt
-                             Case 1
-                                    If Val(pagecardnum(Val(commadstr3(1)), 6)) = 1 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 1 Then
-                                        目前數(20) = Val(commadstr3(1))
-                                        目前數(21) = 2
-                                        FormMainMode.tr使用者牌_偷牌.Enabled = True
-                                        vbecommadnum(2, vbecommadtotplayNow) = 0
-                                    Else
-                                        GoTo VssCommadExit
-                                    End If
-                             Case 2
-                                    If Val(pagecardnum(Val(commadstr3(1)), 6)) = 1 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 2 Then
-                                        目前數(16) = Val(commadstr3(1))
-                                        FormMainMode.tr電腦牌_翻牌.Enabled = True
-                                        vbecommadnum(2, vbecommadtotplayNow) = 0
-                                    Else
-                                        GoTo VssCommadExit
-                                    End If
-                        End Select
-                  Case 2  '==出牌
-                        Select Case uscomt
-                               Case 1
-                                    If Val(pagecardnum(Val(commadstr3(1)), 6)) = 2 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 1 Then
-                                         turnpageoninatking = 1
-                                         FormMainMode.card_CardClick (Val(commadstr3(1)))
-                                         vbecommadnum(2, vbecommadtotplayNow) = 0
-                                     Else
-                                         GoTo VssCommadExit
-                                     End If
-                               Case 2
-                                    If Val(pagecardnum(Val(commadstr3(1)), 6)) = 2 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 2 Then
-                                         戰鬥系統類.電腦牌_模擬按牌_外 Val(commadstr3(1))
-                                         vbecommadnum(2, vbecommadtotplayNow) = 0
-                                     Else
-                                         GoTo VssCommadExit
-                                     End If
-                            End Select
-             End Select
+            If Val(commadstr3(1)) < 1 Or Val(commadstr3(1)) > 公用牌實體卡片分隔紀錄數(1) Or Val(pagecardnum(Val(commadstr3(1)), 6)) <> Val(commadstr3(0)) Then GoTo VssCommadExit
+            '===============================加入該階段紀載資訊
+            Dim stageInfoListObj As New clsVSStageObj
+            stageInfoListObj.StageNum = vbecommadtotplayNow
+            stageInfoListObj.CommandStr = "AtkingSeizeEnemyCards"
+            stageInfoListObj.Value = "0"
+            執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+            '===============================
+            ReDim VBEStageNum(0 To 3) As Integer
+            VBEStageNum(0) = 101
+            VBEStageNum(1) = -uscom '觸發事件方(1.使用者/2.電腦)
+            VBEStageNum(2) = Val(commadstr3(1)) '受影響之卡牌編號
+            VBEStageNum(3) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(pagecardnum(Val(commadstr3(1)), 1)) '受影響之卡牌正面類型
+            VBEStageNum(4) = Val(pagecardnum(Val(commadstr3(1)), 2)) '受影響之卡牌正面數值
+            VBEStageNum(5) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(pagecardnum(Val(commadstr3(1)), 3)) '受影響之卡牌反面類型
+            VBEStageNum(6) = Val(pagecardnum(Val(commadstr3(1)), 4)) '受影響之卡牌反面數值
+            VBEStageNum(7) = Val(pagecardnum(Val(commadstr3(1)), 6))
+            '===========================執行階段插入點(101)
+            執行階段系統類.執行階段系統總主要程序_執行階段開始 uscomt, 101, 1
+            '============================
+            tmpflag = False
+            If stageInfoListObj.CommandStr = "AtkingSeizeEnemyCards" Then
+                If stageInfoListObj.Value = "OFF" Then
+                    tmpflag = True
+                End If
+            End If
+            If tmpflag = False Then
+               人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
+            End If
+            執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+            
+            If tmpflag = True Then GoTo VssCommadExit
+            '=======================
+            Select Case Val(commadstr3(0))
+                Case 1  '==手牌
+                    Select Case uscomt
+                        Case 1
+                            If Val(pagecardnum(Val(commadstr3(1)), 6)) = 1 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 1 Then
+                                目前數(20) = Val(commadstr3(1))
+                                目前數(21) = 2
+                                FormMainMode.tr使用者牌_偷牌.Enabled = True
+                                vbecommadnum(2, vbecommadtotplayNow) = 0
+                            Else
+                                GoTo VssCommadExit
+                            End If
+                        Case 2
+                            If Val(pagecardnum(Val(commadstr3(1)), 6)) = 1 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 2 Then
+                                目前數(16) = Val(commadstr3(1))
+                                FormMainMode.tr電腦牌_翻牌.Enabled = True
+                                vbecommadnum(2, vbecommadtotplayNow) = 0
+                            Else
+                                GoTo VssCommadExit
+                            End If
+                    End Select
+                Case 2  '==出牌
+                    Select Case uscomt
+                        Case 1
+                            If Val(pagecardnum(Val(commadstr3(1)), 6)) = 2 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 1 Then
+                                turnpageoninatking = 1
+                                FormMainMode.card_CardClick (Val(commadstr3(1)))
+                                vbecommadnum(2, vbecommadtotplayNow) = 0
+                            Else
+                                GoTo VssCommadExit
+                            End If
+                        Case 2
+                            If Val(pagecardnum(Val(commadstr3(1)), 6)) = 2 And Val(pagecardnum(Val(commadstr3(1)), 5)) = 2 Then
+                                戰鬥系統類.電腦牌_模擬按牌_外 Val(commadstr3(1))
+                                vbecommadnum(2, vbecommadtotplayNow) = 0
+                            Else
+                                GoTo VssCommadExit
+                            End If
+                    End Select
+            End Select
         Case 2
             Select Case Val(commadstr3(0))
                  Case 1  '==手牌
-                        Select Case uscomt
-                             Case 1
-                                   GoTo VssCommadExit
-                             Case 2
-                                   目前數(17) = 3
-                                    FormMainMode.tr電腦牌_偷牌.Enabled = True
-                                    vbecommadnum(2, vbecommadtotplayNow) = 0
-                        End Select
+                    Select Case uscomt
+                        Case 1
+                            GoTo VssCommadExit
+                        Case 2
+                            目前數(17) = 3
+                            FormMainMode.tr電腦牌_偷牌.Enabled = True
+                            vbecommadnum(2, vbecommadtotplayNow) = 0
+                    End Select
                  Case 2  '==出牌
-                        Select Case uscomt
-                             Case 1
-                                    目前數(21) = 1
-                                    Vss_AtkingSeizeEnemyCardsNum = 目前數(5)
-                                    '=========將座標指定至電腦手牌
-                                    戰鬥系統類.座標計算_電腦手牌
-                                    戰鬥系統類.執行動作_使用者牌_偷牌_電腦 Val(commadstr3(1))
-                                    目前數(5) = Vss_AtkingSeizeEnemyCardsNum
-                                    目前數(15) = 23
-                                    turnpageoninatking = 0
-                                    vbecommadnum(2, vbecommadtotplayNow) = 0
-                             Case 2
-                                    目前數(17) = 2
-                                    Vss_AtkingSeizeEnemyCardsNum = 目前數(9)
-                                    '=========將座標指定至使用者手牌
-                                    戰鬥系統類.座標計算_使用者手牌
-                                    戰鬥系統類.執行動作_電腦牌_偷牌_使用者 Val(commadstr3(1))
-                                    戰鬥系統類.公用牌回復正面 Val(commadstr3(1))
-                                    目前數(9) = Vss_AtkingSeizeEnemyCardsNum
-                                    目前數(15) = 23
-                                    vbecommadnum(2, vbecommadtotplayNow) = 0
-                        End Select
+                    Select Case uscomt
+                        Case 1
+                            目前數(21) = 1
+                            Vss_AtkingSeizeEnemyCardsNum = 目前數(5)
+                            '=========將座標指定至電腦手牌
+                            戰鬥系統類.座標計算_電腦手牌
+                            戰鬥系統類.執行動作_使用者牌_偷牌_電腦 Val(commadstr3(1))
+                            目前數(5) = Vss_AtkingSeizeEnemyCardsNum
+                            目前數(15) = 23
+                            turnpageoninatking = 0
+                            vbecommadnum(2, vbecommadtotplayNow) = 0
+                        Case 2
+                            目前數(17) = 2
+                            Vss_AtkingSeizeEnemyCardsNum = 目前數(9)
+                            '=========將座標指定至使用者手牌
+                            戰鬥系統類.座標計算_使用者手牌
+                            戰鬥系統類.執行動作_電腦牌_偷牌_使用者 Val(commadstr3(1))
+                            戰鬥系統類.公用牌回復正面 Val(commadstr3(1))
+                            目前數(9) = Vss_AtkingSeizeEnemyCardsNum
+                            目前數(15) = 23
+                            vbecommadnum(2, vbecommadtotplayNow) = 0
+                    End Select
             End Select
         Case 3
             Select Case Val(commadstr3(0))
-                 Case 1  '==手牌
-                       GoTo VssCommadExit
-                 Case 2  '==出牌
-                       GoTo VssCommadExit
+                Case 1  '==手牌
+                      GoTo VssCommadExit
+                Case 2  '==出牌
+                      GoTo VssCommadExit
             End Select
     End Select
         '============================
@@ -2065,6 +2110,9 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
                    人物異常狀態列表(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1)))).Remove commadstr3(2)
                 End If
                 執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+                '===============================
+                If tmpflag = True Then GoTo VssCommadExit
+                '===============================
                 VBEStage7xAtkingInformation = commadstr3(2)
                 vbecommadnum(2, vbecommadtotplayNow) = 2
                 Exit Sub
