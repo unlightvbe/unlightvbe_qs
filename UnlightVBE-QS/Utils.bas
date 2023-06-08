@@ -63,8 +63,18 @@ End Sub
 Public Function CollectionExists(ByVal oCol As Collection, ByVal vKey As Variant) As Boolean
 
     On Error Resume Next
-    oCol.Item vKey
+    oCol.item vKey
     CollectionExists = (Err.Number = 0)
     Err.Clear
 
 End Function
+Public Function IndexOf(ByVal coll As Collection, ByVal item As Variant) As Long
+    Dim i As Long
+    For i = 1 To coll.Count
+        If coll(i) Is item Then
+            IndexOf = i
+            Exit Function
+        End If
+    Next
+End Function
+

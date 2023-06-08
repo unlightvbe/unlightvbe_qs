@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{ACD4732E-2B7C-40C1-A56B-078848D41977}#1.0#0"; "Imagex.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.5#0"; "comctl32.Ocx"
 Begin VB.Form Formsetting 
    Appearance      =   0  '平面
    BorderStyle     =   1  '單線固定
@@ -2211,6 +2211,14 @@ Else
     comboeventcarrdus.ListIndex = 0
     comboeventcarrdcom.ListIndex = 0
     Formsetting.對戰地圖選擇.ListIndex = 0
+End If
+End Sub
+
+Private Sub chksetcomaipagenum_Click()
+If chksetcomaipagenum.Value = 0 Then
+    自訂AI手牌張數.Enabled = False
+Else
+    自訂AI手牌張數.Enabled = True
 End If
 End Sub
 

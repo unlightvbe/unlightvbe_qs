@@ -20,7 +20,6 @@ Public Const b8b As Integer = 8
 Public Const b9b As Integer = 9
 
 Public goicheck(1 To 2) As Integer   '攻擊/防禦模式加骰數值檢查碼
-Public pageonin(1 To 999) As Integer  '牌張正反面檢查碼
 Public liveus(1 To 3) As Integer, livecom(1 To 3) As Integer, liveusmax(1 To 3) As Integer, livecommax(1 To 3) As Integer
 Public BattleTurn As Integer, BattleCardNum As Integer, atkus(1 To 3) As Integer, atkcom(1 To 3) As Integer, defus(1 To 3) As Integer, defcom(1 To 3) As Integer, pagecheckus As Integer, pagecheckcom As Integer, pagegive As Integer, goidefus As Integer, movecom As Integer, moveus As Integer, movecp As Integer, chkcomck As Integer, uslevel(1 To 3) As Integer, comlevel(1 To 3) As Integer, liveus41(1 To 3) As Integer, livecom41(1 To 3) As Integer, movecheckcom As Integer, movecheckus As Integer
 Public nameus(1 To 3) As String, namecom(1 To 3) As String
@@ -49,12 +48,36 @@ Public 技能動畫顯示階段數 As Integer '技能動畫計數器階段碼(1.攻擊/防禦階段-普通,
 Public 攻擊防禦骰子總數(1 To 4) As Integer '攻擊/防禦模式骰子數量資料(1.使用者(總)/2.電腦(總)/3.使用者(原)/4.電腦(原))
 Public atkingpagetot(1 To 2, 1 To 5) As Integer  '每階段出牌種類及數值統計資料(1.使用者/2.電腦,1.劍/2.防/3.移/4.特/5.槍)
 Public 骰數零檢查值(1 To 2) As Boolean '當前階段骰子數量是否為零檢查數(1.使用者/2.電腦)
-Public pagecardnum(1 To 999, 1 To 11) As String '公用牌資料(第x編號,1.正面類型/2.正面數值/3.反面類型/4.反面數值/5.(0)系統-(1)使用者-(2)電腦/6.(1)手牌-(2)出牌-(3)藏牌-(4)牌堆/7.出牌順序/8.圖片編號/9.目前Left(座標)/10.目前Top(座標)/11.(1)電腦方出牌(裏)-(2)電腦發出牌(外))
 Public 牌總階段數(1 To 3) As Integer '牌擁有總階段數(1.使用者/2.電腦/3.總計)
 Public 牌移動暫時變數(1 To 3) As Long '牌移動計數器暫時變數(1.Left單位/2.Top單位/3.牌張編號)
 Public 目前數(1 To 33) As Integer '總暫時變數
-Public 出牌順序統計暫時變數(1 To 4, 1 To 999, 1 To 2) As Integer '出牌順序統計總暫時資料(1.使用者出牌/2.使用者手牌/3.電腦出牌/4.電腦手牌,第x順序,1.目前牌出牌順序/2.牌張編號)
-Public 距離單位_收牌暫時數(1 To 999, 1 To 3) As Integer  '收牌個別距離單位暫時儲存變數(第x順序,1.Left單位/2.Top單位/3.牌張編號)
+'2.(1)變成使用者發牌階段-(2)變成電腦發牌階段-(3)變成發牌檢查階段
+'3.使用者出牌對齊距離統計,
+'4.使用者手牌靠左對齊距離統計,
+'5.使用者牌對齊篩選數,
+'6.電腦出牌/亮牌計數暫時數,
+'7.電腦出牌對齊距離統計,
+'8.電腦手牌對齊距離統計,
+'9.電腦牌對齊篩選數,
+'10.收牌階段數,
+'11.收牌統計暫時值,
+'12.收牌牌減值暫時數,
+'13.使用者手牌對齊2列第1張牌編號移動暫時數,
+'14.等待時間計數器(1,2)暫時數,
+'15牌移動計數器執行階段數-(1)發牌階段-(2)偷牌階段-電腦手牌對齊,
+'16.牌翻牌/回牌/棄牌牌編號暫時數,
+'17.電腦手牌對齊階段數-(1)-電腦出牌階段-(2)偷牌後對齊階段
+'20.使用者翻牌牌編號暫時數
+'21.使用者手牌對齊階段數
+'22.等待時間計數器執行階段數
+'25.電腦移動階段出牌計數暫時變數
+'26.骰子執行後技能啟動階段HP檢查是否完成數
+'29.技能啟動動畫計數暫時數
+'30.牌堆洗牌時既有卡牌數量暫時紀錄數
+'31.移動階段初始Timer-是否第一次啟動暫時紀錄數
+'32.使用者出牌-AI出牌控制牌目前數
+'33.使用者出牌-AI出牌移動階段選擇行動數
+Public 距離單位_收牌暫時數() As Integer  '收牌個別距離單位暫時儲存變數(第x順序,1.Left單位/2.Top單位/3.牌張編號)
 Public 階段狀態數 As Integer '每階段開始結束狀態檢查數(1.開始階段(使用者)/2.結束階段(使用者)/3.開始階段(電腦)/4.結束階段(電腦)/5.交換角色)
 Public 小人物頭像移動方向數(1 To 2) As Integer '小人物頭像移動方向狀態數(1.使用者/2.電腦[1.向內,2.向外])
 Public 血量計數器動畫暫時變數(1 To 2, 1 To 2) As Integer '開始初始階段-血量動畫計數器暫時變數(1.使用者血條/2.電腦血條,1.每次移動量/2.是否已完成)
@@ -68,7 +91,7 @@ Public 電腦方事件卡是否出完選擇數 As Boolean '電腦方先出事件卡是否出完暫時紀錄
 Public 人物卡面背面編號紀錄數(1 To 7) As Integer '人物卡片背面技能說明人物編號暫時變數(1.(1).使用者/(2).電腦,2.第n位,3.目前使用者方使用人物編號/4.目前選擇之技能編號(使用者方使用人物)/5.目前選擇之技能編號(其他)/6~7.目前選擇之技能編號(交換角色)
 Public 擲骰表單溝通暫時變數(1 To 10) As Integer '擲骰介面溝通暫時變數(1.一回合中先後判斷(1.前/2.後),2.擲骰後有效傷害數,3.擲骰後傷害對象(1.使用者/2.電腦),4.(1.使用者先攻/2.電腦先攻)/5.當前骰值(使用者)/6.當前骰值(電腦)/7.系統公用骰值(使用者)/8.系統公用骰值(電腦)/9.擲骰前骰值-總骰(使用者)/10.擲骰前骰值-總骰(電腦))
 Public 人物消失檢查暫時變數(1 To 3) As Integer '人物消失檢查計數器紀錄暫時變數(1.目前計數/2.使用者標記/3.電腦標記)
-Public 公用牌各牌類型紀錄數(0 To 31, 1 To 2) As Integer '各場景公用牌牌類型紀錄暫時變數(0.(1)目前已發牌總數量/(2)目前場景牌總數量,1~31.(1)目前已使用之牌數/(2)該牌型能使用之總數量)
+Public 公用牌各牌類型紀錄數(0 To 29, 1 To 2) As Integer '各場景公用牌牌類型紀錄暫時變數(0.(1)目前已發牌總數量/(2)目前場景牌總數量,1~31.(1)目前已使用之牌數/(2)該牌型能使用之總數量)
 Public 卡片人物資訊檔案讀取失敗紀錄串 As String '卡片人物資訊檔案讀取失敗時檔案名紀錄暫時變數
 Public 公用牌實體卡片分隔紀錄數(1 To 5) As Integer '戰鬥系統實體牌相關紀錄數(1.總共牌數/2.公牌牌數/3.使用者事件卡最底編號/4.電腦事件卡最底編號/5.自由分配實體牌開始編號)
 Public 顯示列雙方數值鎖定紀錄數(1 To 2) As Boolean '戰鬥系統顯示列雙方數值鎖定表示紀錄變數(1.使用者方/2.電腦方)
@@ -80,6 +103,7 @@ Public 等待時間佇列(1 To 2) As New Collection '戰鬥系統等待時間計數器工作佇列
 Public 人物異常狀態列表(1 To 2, 1 To 3) As Collection '異常狀態列表(1.使用者/2.電腦,第n位)
 Public ActiveSkillObj(1 To 2, 1 To 4) As clsPersonActiveSkill '戰鬥系統主動技能說明物件(1.使用者方/2.電腦方,第n個)
 Public PersonCardShowOnMode(1 To 2, 1 To 3) As Boolean '戰鬥系統人物卡片資訊是否展示(1.使用者方/2.電腦方,第n個)
+Public CardDeckCollection(0 To 9) As Collection '戰鬥系統卡牌牌堆集合(0.卡牌索引/1.牌堆/2.墓地牌/3.事件卡牌堆(使用者方)/4.事件卡牌堆(電腦方)/5.手牌(使用者方)/6.出牌(使用者方)/7.手牌(電腦方)/8.出牌(電腦方)/9.棄牌)
 Sub 人物技能欄燈開關(ByVal isOn As Boolean, ByVal num As Integer)
 FormMainMode.PEAFInterface.ActiveSkillLight 1, num, isOn
 End Sub
@@ -602,77 +626,101 @@ If tot > 0 And livecom(角色人物對戰人數(2, 2)) > 0 Then
 End If
 End Sub
 Sub 執行動作_使用者_棄牌(ByVal n As Integer)
+    Dim tmpcard As clsActionCard
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)))(CStr(n))
+    
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) - 1
-    目前數(5) = pagecardnum(n, 7)
-    pagecardnum(n, 6) = 3
+    目前數(5) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n))), tmpcard)
+    tmpcard.Location = 3
     牌移動暫時變數(1) = 240
     牌移動暫時變數(2) = 960
     牌移動暫時變數(3) = n
-    pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
-    pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(n).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
     目前數(15) = 4
+    Select Case tmpcard.CardType
+        Case 1 '公用牌
+            戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 2
+        Case 2 '事件卡
+            戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 9
+    End Select
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_牌組_回牌_使用者(ByVal n As Integer)
+    Dim tmpcard As clsActionCard
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)))(CStr(n))
+    
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-    pagecardnum(n, 5) = 1
-    pagecardnum(n, 6) = 1
+    tmpcard.Owner = 1
+    tmpcard.Location = 1
     戰鬥系統類.座標計算_使用者手牌
     牌移動暫時變數(3) = n
-    pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
-    pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(n).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.公用牌回復正面 n
     戰鬥系統類.計算牌移動距離單位
-    牌順序增加_手牌_使用者 n
+    戰鬥系統類.牌順序增加_手牌_使用者
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 5
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_電腦牌_偷牌_使用者(ByVal n As Integer)
+    Dim tmpcard As clsActionCard
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)))(CStr(n))
+    
     FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
     FormMainMode.pagecomglead = Val(FormMainMode.pagecomglead) - 1
-    目前數(9) = pagecardnum(n, 7)
-    pagecardnum(n, 5) = 1
-    pagecardnum(n, 6) = 1
+    目前數(9) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n))), tmpcard)
+    tmpcard.Owner = 1
+    tmpcard.Location = 1
     戰鬥系統類.座標計算_使用者手牌
     牌移動暫時變數(3) = n
-    pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
-    pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(n).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
-    牌順序增加_手牌_使用者 n
+    戰鬥系統類.牌順序增加_手牌_使用者
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 5
     目前數(15) = 2
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_使用者牌_偷牌_電腦(ByVal n As Integer)
+    Dim tmpcard As clsActionCard
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)))(CStr(n))
+    
     FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
     FormMainMode.pageusglead = Val(FormMainMode.pageusglead) - 1
-    目前數(5) = pagecardnum(n, 7)
-    pagecardnum(n, 5) = 2
-    pagecardnum(n, 6) = 1
+    目前數(5) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n))), tmpcard)
+    tmpcard.Owner = 2
+    tmpcard.Location = 1
     戰鬥系統類.座標計算_電腦手牌
     牌移動暫時變數(3) = n
-    pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
-    pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(n).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
-    牌順序增加_手牌_電腦 n
+    戰鬥系統類.牌順序增加_手牌_電腦
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 7
     目前數(15) = 20
     戰鬥系統類.公用牌變背面
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_牌組_回牌_電腦(ByVal n As Integer)
+    Dim tmpcard As clsActionCard
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)))(CStr(n))
+    
     FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
-'    目前數(5) = pagecardnum(n, 7)
-    pagecardnum(n, 5) = 2
-    pagecardnum(n, 6) = 1
+    tmpcard.Owner = 2
+    tmpcard.Location = 1
     戰鬥系統類.座標計算_電腦手牌
     牌移動暫時變數(3) = n
-    pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
-    pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(n).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
-    牌順序增加_手牌_電腦 n
+    戰鬥系統類.牌順序增加_手牌_電腦
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 7
     戰鬥系統類.公用牌變背面
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
@@ -680,7 +728,6 @@ End Sub
 Sub 執行動作_翻牌(ByVal n As Integer)
     FormMainMode.card(n).Width = 810
     FormMainMode.card(n).Height = 1260
-'    FormMainMode.card(n).Picture = LoadPicture(app_path & "card\" & pagecardnum(n, 8) & "-" & pageonin(n) & ".bmp")
     FormMainMode.card(n).LocationType = 1
     FormMainMode.card(n).CardEventType = False
     FormMainMode.card(n).Visible = True
@@ -727,107 +774,146 @@ Else
    牌移動暫時變數(2) = 7980 '指定Top座標
 End If
 End Sub
-Sub 牌順序增加_出牌_電腦(ByRef m As Integer)
-pagecardnum(m, 7) = pagecomleadmax(1) + 1
+Sub 牌順序增加_出牌_電腦()
 pagecomleadmax(1) = pagecomleadmax(1) + 1
 End Sub
-Sub 牌順序增加_手牌_電腦(ByRef m As Integer)
-pagecardnum(m, 7) = pagecomleadmax(0) + 1
+Sub 牌順序增加_手牌_電腦()
 pagecomleadmax(0) = pagecomleadmax(0) + 1
 End Sub
-Sub 牌順序增加_手牌_使用者(ByVal m As Integer)
-pagecardnum(m, 7) = pageusleadmax(0) + 1
+Sub 牌順序增加_手牌_使用者()
 pageusleadmax(0) = pageusleadmax(0) + 1
 End Sub
-Sub 牌順序增加_出牌_使用者(ByRef m As Integer)
-pagecardnum(m, 7) = pageusleadmax(1) + 1
+Sub 牌順序增加_出牌_使用者()
 pageusleadmax(1) = pageusleadmax(1) + 1
 End Sub
 Sub 執行動作_電腦_棄牌(ByVal n As Integer)
+    Dim tmpcard As clsActionCard
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)))(CStr(n))
+    
     FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) - 1
-    目前數(9) = pagecardnum(n, 7)
-    pagecardnum(n, 6) = 3
+    目前數(9) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n))), tmpcard)
+    tmpcard.Location = 3
     牌移動暫時變數(1) = 240
     牌移動暫時變數(2) = 960
     牌移動暫時變數(3) = n
-    pagecardnum(n, 9) = FormMainMode.card(n).Left  '指定目前Left(座標)
-    pagecardnum(n, 10) = FormMainMode.card(n).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(n).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(n).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
+    Select Case tmpcard.CardType
+        Case 1 '公用牌
+            戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 2
+        Case 2 '事件卡
+            戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(n)), 9
+    End Select
     目前數(15) = 5
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
 End Sub
 Sub 執行動作_洗牌()
-Dim g As Integer
-For g = 1 To 公用牌實體卡片分隔紀錄數(2)
-     If pagecardnum(g, 6) = 3 Then
-         公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) - 1
-         pagecardnum(g, 5) = 0
-         pagecardnum(g, 6) = 4
-         Select Case pagecardnum(g, 8)
-            Case "021"  '==移1槍1類
-                 公用牌各牌類型紀錄數(1, 1) = Val(公用牌各牌類型紀錄數(1, 1)) - 1
-            Case "019"  '==移1槍2類
-                 公用牌各牌類型紀錄數(2, 1) = Val(公用牌各牌類型紀錄數(2, 1)) - 1
-            Case "017"  '==移1槍3類
-                 公用牌各牌類型紀錄數(3, 1) = Val(公用牌各牌類型紀錄數(3, 1)) - 1
-            Case "025"  '==移1盾1類
-                 公用牌各牌類型紀錄數(4, 1) = Val(公用牌各牌類型紀錄數(4, 1)) - 1
-            Case "024"  '==移1盾2類
-                 公用牌各牌類型紀錄數(5, 1) = Val(公用牌各牌類型紀錄數(5, 1)) - 1
-            Case "023"  '==移1盾3類
-                 公用牌各牌類型紀錄數(6, 1) = Val(公用牌各牌類型紀錄數(6, 1)) - 1
-            Case "026"  '==移2特3類
-                 公用牌各牌類型紀錄數(7, 1) = Val(公用牌各牌類型紀錄數(7, 1)) - 1
-            Case "027"  '==移3移3類
-                 公用牌各牌類型紀錄數(8, 1) = Val(公用牌各牌類型紀錄數(8, 1)) - 1
-            Case "001"  '==劍6劍6類
-                 公用牌各牌類型紀錄數(9, 1) = Val(公用牌各牌類型紀錄數(9, 1)) - 1
-            Case "011"  '==劍1槍1類
-                 公用牌各牌類型紀錄數(10, 1) = Val(公用牌各牌類型紀錄數(10, 1)) - 1
-            Case "007"  '==劍2槍1類
-                 公用牌各牌類型紀錄數(11, 1) = Val(公用牌各牌類型紀錄數(11, 1)) - 1
-            Case "006"  '==劍2槍2類
-                 公用牌各牌類型紀錄數(12, 1) = Val(公用牌各牌類型紀錄數(12, 1)) - 1
-            Case "004"  '==劍3槍3類
-                 公用牌各牌類型紀錄數(13, 1) = Val(公用牌各牌類型紀錄數(13, 1)) - 1
-            Case "028"  '==劍5槍5類
-                 公用牌各牌類型紀錄數(14, 1) = Val(公用牌各牌類型紀錄數(14, 1)) - 1
-            Case "012"  '==劍1盾1類
-                 公用牌各牌類型紀錄數(15, 1) = Val(公用牌各牌類型紀錄數(15, 1)) - 1
-            Case "009"  '==劍2盾1類
-                 公用牌各牌類型紀錄數(16, 1) = Val(公用牌各牌類型紀錄數(16, 1)) - 1
-            Case "008"  '==劍2盾2類
-                 公用牌各牌類型紀錄數(17, 1) = Val(公用牌各牌類型紀錄數(17, 1)) - 1
-            Case "005"  '==劍3盾3類
-                 公用牌各牌類型紀錄數(18, 1) = Val(公用牌各牌類型紀錄數(18, 1)) - 1
-            Case "013"  '==劍1特1類
-                 公用牌各牌類型紀錄數(19, 1) = Val(公用牌各牌類型紀錄數(19, 1)) - 1
-            Case "010"  '==劍2特1類
-                 公用牌各牌類型紀錄數(20, 1) = Val(公用牌各牌類型紀錄數(20, 1)) - 1
-            Case "003"  '==劍4特1類
-                 公用牌各牌類型紀錄數(21, 1) = Val(公用牌各牌類型紀錄數(21, 1)) - 1
-            Case "002"  '==劍5特2類
-                 公用牌各牌類型紀錄數(22, 1) = Val(公用牌各牌類型紀錄數(22, 1)) - 1
-            Case "015"  '==槍4槍4類
-                 公用牌各牌類型紀錄數(23, 1) = Val(公用牌各牌類型紀錄數(23, 1)) - 1
-            Case "020"  '==槍2特1類
-                 公用牌各牌類型紀錄數(24, 1) = Val(公用牌各牌類型紀錄數(24, 1)) - 1
-            Case "018"  '==槍3特2類
-                 公用牌各牌類型紀錄數(25, 1) = Val(公用牌各牌類型紀錄數(25, 1)) - 1
-            Case "016"  '==槍4特1類
-                 公用牌各牌類型紀錄數(26, 1) = Val(公用牌各牌類型紀錄數(26, 1)) - 1
-            Case "014"  '==槍5特2類
-                 公用牌各牌類型紀錄數(27, 1) = Val(公用牌各牌類型紀錄數(27, 1)) - 1
-            Case "022"  '==盾5盾5類
-                 公用牌各牌類型紀錄數(28, 1) = Val(公用牌各牌類型紀錄數(28, 1)) - 1
-            Case "029"  '==盾3特5類
-                 公用牌各牌類型紀錄數(29, 1) = Val(公用牌各牌類型紀錄數(29, 1)) - 1
-         End Select
-     End If
-Next
-BattleCardNum = Val(公用牌各牌類型紀錄數(0, 2)) - Val(公用牌各牌類型紀錄數(0, 1))
+戰鬥系統類.執行動作_洗牌_墓地牌回牌
+戰鬥系統類.執行動作_洗牌_牌堆洗牌
+End Sub
+Sub 執行動作_洗牌_墓地牌回牌()
+Dim tmpcard As clsActionCard
+
+目前數(30) = 戰鬥系統類.CardDeckCollection(1).Count
+
+Do While 戰鬥系統類.CardDeckCollection(2).Count > 0
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(2)(1)
+    
+    tmpcard.Owner = 0
+    tmpcard.Location = 4
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 2, 1
+Loop
+
+BattleCardNum = 戰鬥系統類.CardDeckCollection(1).Count
 戰鬥系統類.執行動作_系統總卡牌張數更新
+End Sub
+Sub 執行動作_洗牌_牌堆洗牌()
+Dim tmpnewCollection As New Collection
+Dim tmpcard As clsActionCard
+Dim i As Integer
+
+For i = 1 To 目前數(30) '將既有卡牌保留於牌堆最上層
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(1)(1)
+    
+    tmpnewCollection.Add tmpcard, CStr(tmpcard.Cardnum)
+    戰鬥系統類.CardDeckCollection(1).Remove 1
+Next
+
+Do While 戰鬥系統類.CardDeckCollection(1).Count > 0
+    Randomize
+    i = Int(Rnd() * 戰鬥系統類.CardDeckCollection(1).Count) + 1
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(1)(i)
+    
+    tmpnewCollection.Add tmpcard, CStr(tmpcard.Cardnum)
+    戰鬥系統類.CardDeckCollection(1).Remove i
+Loop
+
+Set 戰鬥系統類.CardDeckCollection(1) = Nothing
+Set 戰鬥系統類.CardDeckCollection(1) = tmpnewCollection
+
+End Sub
+Sub 執行動作_抽牌_公用牌(ByVal uscom As Integer)
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(1)(1)
+Dim n As Integer
+'==================================隨機轉牌
+Randomize
+n = Int(Rnd() * 2) + 1
+If n = 2 Then
+   Call tmpcard.Reverse
+End If
+FormMainMode.card(tmpcard.Cardnum).CardRotationType = tmpcard.CardOnIn
+'==============================================
+Select Case uscom
+    Case 1 '使用者
+        tmpcard.ComMark = 0
+        tmpcard.Owner = 1
+        tmpcard.Location = 1
+        戰鬥系統類.卡牌牌堆集合更換 tmpcard, 1, 5
+        '=================
+        BattleCardNum = BattleCardNum - 1
+        戰鬥系統類.執行動作_系統總卡牌張數更新
+        FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
+        戰鬥系統類.座標計算_使用者手牌
+        牌移動暫時變數(3) = tmpcard.Cardnum
+        tmpcard.XYLeft = 240 '指定目前Left(座標)
+        tmpcard.XYTop = 960 '指定目前Top(座標)
+        FormMainMode.card(tmpcard.Cardnum).Left = 240
+        FormMainMode.card(tmpcard.Cardnum).Top = 960
+        戰鬥系統類.計算牌移動距離單位
+        戰鬥系統類.公用牌回復正面 (牌移動暫時變數(3))
+        FormMainMode.card(tmpcard.Cardnum).CardEventType = False
+        FormMainMode.card(tmpcard.Cardnum).Visible = True
+        FormMainMode.card(tmpcard.Cardnum).ZOrder
+        戰鬥系統類.牌順序增加_手牌_使用者
+        FormMainMode.牌移動.Enabled = True
+        一般系統類.音效播放 1
+    Case 2 '電腦
+        tmpcard.ComMark = 0
+        tmpcard.Owner = 2
+        tmpcard.Location = 1
+        戰鬥系統類.卡牌牌堆集合更換 tmpcard, 1, 7
+        '=================
+        BattleCardNum = BattleCardNum - 1
+        戰鬥系統類.執行動作_系統總卡牌張數更新
+        FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
+        戰鬥系統類.座標計算_電腦手牌
+        牌移動暫時變數(3) = tmpcard.Cardnum
+        tmpcard.XYLeft = 240 '指定目前Left(座標)
+        tmpcard.XYTop = 960 '指定目前Top(座標)
+        FormMainMode.card(tmpcard.Cardnum).Left = 240
+        FormMainMode.card(tmpcard.Cardnum).Top = 960
+        戰鬥系統類.計算牌移動距離單位
+        戰鬥系統類.公用牌變背面
+        FormMainMode.card(tmpcard.Cardnum).CardEventType = False
+        FormMainMode.card(tmpcard.Cardnum).Visible = True
+        FormMainMode.card(tmpcard.Cardnum).ZOrder
+        戰鬥系統類.牌順序增加_手牌_電腦
+        FormMainMode.牌移動.Enabled = True
+        一般系統類.音效播放 1
+End Select
 End Sub
 Sub 執行動作_清除所有異常狀態_聖水(ByVal uscom As Integer, ByVal num As Integer)
 If 人物異常狀態列表(uscom, 角色待機人物紀錄數(uscom, num)).Count > 0 Then
@@ -924,16 +1010,19 @@ End Select
 movecp = m
 End Sub
 Sub 計算牌移動距離單位()
-If 牌移動暫時變數(1) >= pagecardnum(牌移動暫時變數(3), 9) Then
-   距離單位(2, 1, 1) = (牌移動暫時變數(1) - pagecardnum(牌移動暫時變數(3), 9)) \ 8
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(牌移動暫時變數(3))))(CStr(牌移動暫時變數(3)))
+
+If 牌移動暫時變數(1) >= tmpcard.XYLeft Then
+   距離單位(2, 1, 1) = (牌移動暫時變數(1) - tmpcard.XYLeft) \ 8
 Else
-   距離單位(2, 1, 1) = -((pagecardnum(牌移動暫時變數(3), 9) - 牌移動暫時變數(1)) \ 8)
+   距離單位(2, 1, 1) = -((tmpcard.XYLeft - 牌移動暫時變數(1)) \ 8)
 End If
 
-If 牌移動暫時變數(2) >= pagecardnum(牌移動暫時變數(3), 10) Then
-   距離單位(2, 1, 2) = (牌移動暫時變數(2) - pagecardnum(牌移動暫時變數(3), 10)) \ 8
+If 牌移動暫時變數(2) >= tmpcard.XYTop Then
+   距離單位(2, 1, 2) = (牌移動暫時變數(2) - tmpcard.XYTop) \ 8
 Else
-   距離單位(2, 1, 2) = -((pagecardnum(牌移動暫時變數(3), 10) - 牌移動暫時變數(2)) \ 8)
+   距離單位(2, 1, 2) = -((tmpcard.XYTop - 牌移動暫時變數(2)) \ 8)
 End If
 End Sub
 Sub 異常狀態顯示更新(ByVal uscom As Integer)
@@ -1017,185 +1106,59 @@ FormMainMode.card(牌移動暫時變數(3)).Height = 990
 FormMainMode.card(牌移動暫時變數(3)).LocationType = 3
 End Sub
 Sub 公用牌回復正面(ByVal num As Integer)
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(num)))(CStr(num))
+
 FormMainMode.card(num).Width = 810
 FormMainMode.card(num).Height = 1260
 FormMainMode.card(num).LocationType = 1
 FormMainMode.card(num).CardEventType = False
-End Sub
-Sub 出牌順序計算_使用者_手牌()
-Dim pagegustot As Integer '暫時變數
-Dim i As Integer, j As Integer, o As Integer
-Dim g As Integer, h As Integer
-
-For i = 1 To 999
-   For j = 1 To 2
-      出牌順序統計暫時變數(2, i, j) = 0
-   Next
-Next
-
-For i = 1 To 999
-   If Val(pagecardnum(i, 6)) = 1 And Val(pagecardnum(i, 5)) = 1 Then
-    pagegustot = Val(pagegustot) + 1
-    出牌順序統計暫時變數(2, pagegustot, 1) = Val(pagecardnum(i, 7))
-    出牌順序統計暫時變數(2, pagegustot, 2) = i
-   End If
-Next
-
-For o = 1 To Val(pagegustot) - 1
-  For i = o + 1 To Val(pagegustot)
-   If 出牌順序統計暫時變數(2, o, 1) > 出牌順序統計暫時變數(2, i, 1) Then
-    g = 出牌順序統計暫時變數(2, i, 1)
-    h = 出牌順序統計暫時變數(2, i, 2)
-    出牌順序統計暫時變數(2, i, 1) = 出牌順序統計暫時變數(2, o, 1)
-    出牌順序統計暫時變數(2, i, 2) = 出牌順序統計暫時變數(2, o, 2)
-    出牌順序統計暫時變數(2, o, 1) = g
-    出牌順序統計暫時變數(2, o, 2) = h
-   End If
-  Next
-Next
-'MsgBox 123
-End Sub
-Sub 出牌順序計算_使用者_出牌()
-Dim pagegustot As Integer '暫時變數
-Dim i As Integer, j As Integer, o As Integer
-Dim g As Integer, h As Integer
-
-For i = 1 To 999
-   For j = 1 To 2
-      出牌順序統計暫時變數(1, i, j) = 0
-   Next
-Next
-
-For i = 1 To 999
-   If Val(pagecardnum(i, 6)) = 2 And Val(pagecardnum(i, 5)) = 1 Then
-    pagegustot = Val(pagegustot) + 1
-    出牌順序統計暫時變數(1, pagegustot, 1) = Val(pagecardnum(i, 7))
-    出牌順序統計暫時變數(1, pagegustot, 2) = i
-   End If
-Next
-
-For o = 1 To Val(pagegustot) - 1
-  For i = o + 1 To Val(pagegustot)
-   If 出牌順序統計暫時變數(1, o, 1) > 出牌順序統計暫時變數(1, i, 1) Then
-    g = 出牌順序統計暫時變數(1, i, 1)
-    h = 出牌順序統計暫時變數(1, i, 2)
-    出牌順序統計暫時變數(1, i, 1) = 出牌順序統計暫時變數(1, o, 1)
-    出牌順序統計暫時變數(1, i, 2) = 出牌順序統計暫時變數(1, o, 2)
-    出牌順序統計暫時變數(1, o, 1) = g
-    出牌順序統計暫時變數(1, o, 2) = h
-   End If
-  Next
-Next
-
-End Sub
-Sub 出牌順序計算_電腦_手牌()
-Dim pagegustot As Integer '暫時變數
-Dim i As Integer, j As Integer, o As Integer
-Dim g As Integer, h As Integer
-
-For i = 1 To 999
-   For j = 1 To 2
-      出牌順序統計暫時變數(4, i, j) = 0
-   Next
-Next
-
-For i = 1 To 999
-   If Val(pagecardnum(i, 6)) = 1 And Val(pagecardnum(i, 5)) = 2 Then
-       pagegustot = Val(pagegustot) + 1
-       出牌順序統計暫時變數(4, pagegustot, 1) = Val(pagecardnum(i, 7))
-       出牌順序統計暫時變數(4, pagegustot, 2) = i
-   ElseIf Val(pagecardnum(i, 6)) = 2 And Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 11)) = 1 Then
-       pagegustot = Val(pagegustot) + 1
-       出牌順序統計暫時變數(4, pagegustot, 1) = Val(pagecardnum(i, 7))
-       出牌順序統計暫時變數(4, pagegustot, 2) = i
-   End If
-Next
-
-For o = 1 To Val(pagegustot) - 1
-  For i = o + 1 To Val(pagegustot)
-   If 出牌順序統計暫時變數(4, o, 1) > 出牌順序統計暫時變數(4, i, 1) Then
-    g = 出牌順序統計暫時變數(4, i, 1)
-    h = 出牌順序統計暫時變數(4, i, 2)
-    出牌順序統計暫時變數(4, i, 1) = 出牌順序統計暫時變數(4, o, 1)
-    出牌順序統計暫時變數(4, i, 2) = 出牌順序統計暫時變數(4, o, 2)
-    出牌順序統計暫時變數(4, o, 1) = g
-    出牌順序統計暫時變數(4, o, 2) = h
-   End If
-  Next
-Next
-End Sub
-Sub 出牌順序計算_電腦_出牌()
-Dim pagegustot As Integer '暫時變數
-Dim i As Integer, j As Integer, o As Integer
-Dim g As Integer, h As Integer
-
-For i = 1 To 999
-   For j = 1 To 2
-      出牌順序統計暫時變數(3, i, j) = 0
-   Next
-Next
-
-For i = 1 To 999
-   If Val(pagecardnum(i, 6)) = 2 And Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 11)) = 2 Then
-       pagegustot = Val(pagegustot) + 1
-       出牌順序統計暫時變數(3, pagegustot, 1) = Val(pagecardnum(i, 7))
-       出牌順序統計暫時變數(3, pagegustot, 2) = i
-    End If
-Next
-
-For o = 1 To Val(pagegustot) - 1
-  For i = o + 1 To Val(pagegustot)
-   If 出牌順序統計暫時變數(3, o, 1) > 出牌順序統計暫時變數(3, i, 1) Then
-    g = 出牌順序統計暫時變數(3, i, 1)
-    h = 出牌順序統計暫時變數(3, i, 2)
-    出牌順序統計暫時變數(3, i, 1) = 出牌順序統計暫時變數(3, o, 1)
-    出牌順序統計暫時變數(3, i, 2) = 出牌順序統計暫時變數(3, o, 2)
-    出牌順序統計暫時變數(3, o, 1) = g
-    出牌順序統計暫時變數(3, o, 2) = h
-   End If
-  Next
-Next
+FormMainMode.card(num).CardRotationType = tmpcard.CardOnIn
 End Sub
 Sub 收牌計算距離單位_使用者()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
-For i = 1 To 999
-    距離單位_收牌暫時數(i, 1) = 0
-    距離單位_收牌暫時數(i, 2) = 0
-Next
+If 戰鬥系統類.CardDeckCollection(6).Count > 0 Then
+    ReDim 距離單位_收牌暫時數(1 To 戰鬥系統類.CardDeckCollection(6).Count, 1 To 3) As Integer
+Else
+    Erase 距離單位_收牌暫時數
+End If
 
-戰鬥系統類.出牌順序計算_使用者_出牌
-For i = 1 To pageqlead(1)
+For i = 1 To 戰鬥系統類.CardDeckCollection(6).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(6)(i)
     牌移動暫時變數(1) = 240
     牌移動暫時變數(2) = 960
-    牌移動暫時變數(3) = 出牌順序統計暫時變數(1, i, 2)
-    pagecardnum(出牌順序統計暫時變數(1, i, 2), 9) = FormMainMode.card(出牌順序統計暫時變數(1, i, 2)).Left  '指定目前Left(座標)
-    pagecardnum(出牌順序統計暫時變數(1, i, 2), 10) = FormMainMode.card(出牌順序統計暫時變數(1, i, 2)).Top  '指定目前Top(座標)
+    牌移動暫時變數(3) = tmpcard.Cardnum
+    tmpcard.XYLeft = FormMainMode.card(tmpcard.Cardnum).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(tmpcard.Cardnum).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
     距離單位_收牌暫時數(i, 1) = 距離單位(2, 1, 1)
     距離單位_收牌暫時數(i, 2) = 距離單位(2, 1, 2)
-    距離單位_收牌暫時數(i, 3) = 出牌順序統計暫時變數(1, i, 2)
+    距離單位_收牌暫時數(i, 3) = tmpcard.Cardnum
 Next
 End Sub
 Sub 收牌計算距離單位_電腦()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
-For i = 1 To 999
-    距離單位_收牌暫時數(i, 1) = 0
-    距離單位_收牌暫時數(i, 2) = 0
-Next
+If 戰鬥系統類.CardDeckCollection(8).Count > 0 Then
+    ReDim 距離單位_收牌暫時數(1 To 戰鬥系統類.CardDeckCollection(8).Count, 1 To 3) As Integer
+Else
+    Erase 距離單位_收牌暫時數
+End If
 
-戰鬥系統類.出牌順序計算_電腦_出牌
-For i = 1 To pageqlead(2)
+For i = 1 To 戰鬥系統類.CardDeckCollection(8).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(i)
     牌移動暫時變數(1) = 240
     牌移動暫時變數(2) = 960
-    牌移動暫時變數(3) = 出牌順序統計暫時變數(3, i, 2)
-    pagecardnum(出牌順序統計暫時變數(3, i, 2), 9) = FormMainMode.card(出牌順序統計暫時變數(3, i, 2)).Left  '指定目前Left(座標)
-    pagecardnum(出牌順序統計暫時變數(3, i, 2), 10) = FormMainMode.card(出牌順序統計暫時變數(3, i, 2)).Top  '指定目前Top(座標)
+    牌移動暫時變數(3) = tmpcard.Cardnum
+    tmpcard.XYLeft = FormMainMode.card(tmpcard.Cardnum).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(tmpcard.Cardnum).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
     距離單位_收牌暫時數(i, 1) = 距離單位(2, 1, 1)
     距離單位_收牌暫時數(i, 2) = 距離單位(2, 1, 2)
-    距離單位_收牌暫時數(i, 3) = 出牌順序統計暫時變數(3, i, 2)
+    距離單位_收牌暫時數(i, 3) = tmpcard.Cardnum
 Next
 End Sub
 Sub 技能說明載入_使用者()
@@ -1384,86 +1347,89 @@ Else
   End If
 End Sub
 Sub 電腦牌_模擬按牌(ByVal Index As Integer)
-If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 2 Then
-   pagecardnum(Index, 6) = 2
-   If pagecardnum(Index, 1) = a1a Then
-      atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) + Val(pagecardnum(Index, 2))
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(CStr(Index))
+
+If tmpcard.Location = 1 And tmpcard.Owner = 2 Then
+   tmpcard.Location = 2
+   If tmpcard.UpperType = a1a Then
+      atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) + Val(tmpcard.UpperNum)
       If turnatk = 2 And movecp = 1 And 攻擊防禦骰子總數(4) = 0 Then
           攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
       End If
       If turnatk = 2 And movecp = 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a5a Then
-      atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a5a Then
+      atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) + Val(tmpcard.UpperNum)
       If turnatk = 2 And movecp > 1 And 攻擊防禦骰子總數(4) = 0 Then
           攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
       End If
       If turnatk = 2 And movecp > 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a2a Then
-      atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a2a Then
+      atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) + Val(tmpcard.UpperNum)
       If turnatk = 1 And 攻擊防禦骰子總數(4) = 0 Then
           攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + defcom(角色人物對戰人數(2, 2))
       End If
       If turnatk = 1 Then
-         攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(pagecardnum(Index, 2))
-         攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(pagecardnum(Index, 2))
+         攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(tmpcard.UpperNum)
+         攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a3a Then
-      atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a3a Then
+      atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) + Val(tmpcard.UpperNum)
    End If
-   If pagecardnum(Index, 1) = a4a Then
-      atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a4a Then
+      atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) + Val(tmpcard.UpperNum)
    End If
    '===================
-    目前數(9) = pagecardnum(Index, 7)
-    pagecardnum(Index, 7) = Val(pagecomleadmax(1)) + 1
+    目前數(9) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(7), tmpcard)
     pagecomleadmax(1) = Val(pagecomleadmax(1)) + 1
     pageqlead(2) = Val(pageqlead(2)) + 1
     FormMainMode.pagecomglead = Val(FormMainMode.pagecomglead) - 1
     FormMainMode.pagecomqlead = Val(FormMainMode.pagecomqlead) + 1
-    pagecardnum(Index, 11) = 2
+    tmpcard.ComMark = 2
    '===================以下是出牌對齊
     目前數(7) = 0
-    戰鬥系統類.出牌順序計算_電腦_出牌
     FormMainMode.電腦出牌_出牌對齊_靠左.Enabled = True
    '=============以下是牌移動(出牌)(電腦)
     戰鬥系統類.座標計算_電腦出牌
     牌移動暫時變數(3) = Index
-    pagecardnum(Index, 9) = FormMainMode.card(Index).Left  '指定目前Left(座標)
-    pagecardnum(Index, 10) = FormMainMode.card(Index).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(Index).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(Index).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 7, 8
     目前數(15) = 0
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
    '================以下是手牌對齊
    目前數(8) = 0
    目前數(17) = 1
+   FormMainMode.電腦出牌_手牌對齊.Enabled = True
    '===================以下是事件卡檢查及啟動
-   If pagecardnum(Index, 1) = a6a Then
+   If tmpcard.UpperType = a6a Then
        事件卡記錄暫時數(2, 3) = 1
-       事件卡.機會_電腦 Index, pagecardnum(Index, 2)
+       事件卡.機會_電腦 Index, tmpcard.UpperNum
    End If
    If turnatk = 1 Or turnatk = 2 Then
-        If pagecardnum(Index, 1) = a7a Then
+        If tmpcard.UpperType = a7a Then
             事件卡記錄暫時數(2, 3) = 1
-            事件卡.詛咒術_電腦 Index, pagecardnum(Index, 2)
+            事件卡.詛咒術_電腦 Index, tmpcard.UpperNum
         End If
    End If
-   If pagecardnum(Index, 1) = a8a Then
+   If tmpcard.UpperType = a8a Then
        事件卡記錄暫時數(2, 3) = 1
-       事件卡.HP回復_電腦 Index, pagecardnum(Index, 2)
+       事件卡.HP回復_電腦 Index, tmpcard.UpperNum
    End If
-   If pagecardnum(Index, 1) = a9a Then
+   If tmpcard.UpperType = a9a Then
        事件卡記錄暫時數(2, 3) = 1
-       事件卡.聖水_電腦 Index, pagecardnum(Index, 2)
+       事件卡.聖水_電腦 Index, tmpcard.UpperNum
    End If
     '==============================================
     Select Case turnatk
@@ -1501,62 +1467,64 @@ If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 2 Then
 End If
 End Sub
 Sub 電腦牌_模擬按牌_外(ByVal Index As Integer)
-If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
-   pagecardnum(Index, 6) = 1
-   If pagecardnum(Index, 1) = a1a Then
-      atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) - Val(pagecardnum(Index, 2))
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(CStr(Index))
+
+If tmpcard.Location = 2 And tmpcard.Owner = 2 Then
+   tmpcard.Location = 1
+   If tmpcard.UpperType = a1a Then
+      atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) - Val(tmpcard.UpperNum)
       If turnatk = 2 And movecp = 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(tmpcard.UpperNum)
       End If
       If 攻擊防禦骰子總數(4) = atkcom(角色人物對戰人數(2, 2)) Then
           攻擊防禦骰子總數(4) = 0
       End If
    End If
-   If pagecardnum(Index, 1) = a5a Then
-      atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a5a Then
+      atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) - Val(tmpcard.UpperNum)
       If turnatk = 2 And movecp > 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(tmpcard.UpperNum)
       End If
       If 攻擊防禦骰子總數(4) = atkcom(角色人物對戰人數(2, 2)) Then
           攻擊防禦骰子總數(4) = 0
       End If
    End If
-   If pagecardnum(Index, 1) = a2a Then
-      atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a2a Then
+      atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) - Val(tmpcard.UpperNum)
       If turnatk = 1 Then
-         攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(pagecardnum(Index, 2))
-         攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(pagecardnum(Index, 2))
+         攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(tmpcard.UpperNum)
+         攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a3a Then
-      atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a3a Then
+      atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) - Val(tmpcard.UpperNum)
    End If
-   If pagecardnum(Index, 1) = a4a Then
-      atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a4a Then
+      atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) - Val(tmpcard.UpperNum)
    End If
    '================
-   目前數(9) = pagecardnum(Index, 7)
-    pagecardnum(Index, 7) = Val(pagecomleadmax(0)) + 1
+    目前數(9) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(8), tmpcard)
     pagecomleadmax(0) = Val(pagecomleadmax(0)) + 1
     pageqlead(2) = Val(pageqlead(2)) - 1
     FormMainMode.pagecomglead = Val(FormMainMode.pagecomglead) + 1
     FormMainMode.pagecomqlead = Val(FormMainMode.pagecomqlead) - 1
-    pagecardnum(Index, 11) = 0
+    tmpcard.ComMark = 0
    '=============以下是牌移動(回牌)(電腦)
     戰鬥系統類.座標計算_電腦手牌
     牌移動暫時變數(3) = Index
-    pagecardnum(Index, 9) = FormMainMode.card(Index).Left  '指定目前Left(座標)
-    pagecardnum(Index, 10) = FormMainMode.card(Index).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = FormMainMode.card(Index).Left  '指定目前Left(座標)
+    tmpcard.XYTop = FormMainMode.card(Index).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
     戰鬥系統類.公用牌變背面
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 8, 7
     目前數(15) = 0
     FormMainMode.牌移動.Enabled = True
     一般系統類.音效播放 1
    '================以下是出牌對齊
    目前數(7) = 0
-   戰鬥系統類.出牌順序計算_電腦_出牌
    FormMainMode.電腦出牌_出牌對齊_靠右.Enabled = True
    '=====================以下是技能檢查及啟動
     If 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards") <> 0 Then
@@ -1598,92 +1566,84 @@ If pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 2 Then
 End If
 End Sub
 Sub 電腦牌_模擬轉牌_外(ByVal Index As Integer)
-Dim uspce As String, uspme As String
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(CStr(Index))
 
-uspce = pagecardnum(Index, 1)
-uspme = pagecardnum(Index, 2)
-pagecardnum(Index, 1) = pagecardnum(Index, 3)
-pagecardnum(Index, 2) = pagecardnum(Index, 4)
-pagecardnum(Index, 3) = uspce
-pagecardnum(Index, 4) = uspme
+Call tmpcard.Reverse
 一般系統類.音效播放 3
-If pageonin(Index) = 1 Then
-   pageonin(Index) = 2
-Else
-   pageonin(Index) = 1
-End If
-FormMainMode.card(Index).CardRotationType = pageonin(Index)
 
-   If pagecardnum(Index, 1) = a1a Then
-      atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) + pagecardnum(Index, 2)
-      If turnatk = 2 And movecp = 1 And 攻擊防禦骰子總數(4) = 0 Then
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
-      End If
-      If turnatk = 2 And movecp = 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(pagecardnum(Index, 2))
-      End If
+FormMainMode.card(Index).CardRotationType = tmpcard.CardOnIn
+
+If tmpcard.UpperType = a1a Then
+   atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) + tmpcard.UpperNum
+   If turnatk = 2 And movecp = 1 And 攻擊防禦骰子總數(4) = 0 Then
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
    End If
-   If pagecardnum(Index, 1) = a5a Then
-      atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) + pagecardnum(Index, 2)
-      If turnatk = 2 And movecp > 1 And 攻擊防禦骰子總數(4) = 0 Then
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
-      End If
-      If turnatk = 2 And movecp > 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(pagecardnum(Index, 2))
-      End If
+   If turnatk = 2 And movecp = 1 Then
+       攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(tmpcard.UpperNum)
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(tmpcard.UpperNum)
    End If
-   If pagecardnum(Index, 1) = a2a Then
-      atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) + pagecardnum(Index, 2)
-      If turnatk = 1 And 攻擊防禦骰子總數(4) = 0 Then
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + defcom(角色人物對戰人數(2, 2))
-      End If
-      If turnatk = 1 Then
-         攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(pagecardnum(Index, 2))
-         攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(pagecardnum(Index, 2))
-      End If
+End If
+If tmpcard.UpperType = a5a Then
+   atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) + tmpcard.UpperNum
+   If turnatk = 2 And movecp > 1 And 攻擊防禦骰子總數(4) = 0 Then
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + atkcom(角色人物對戰人數(2, 2))
    End If
-   If pagecardnum(Index, 1) = a3a Then
-      atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) + pagecardnum(Index, 2)
+   If turnatk = 2 And movecp > 1 Then
+       攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(tmpcard.UpperNum)
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(tmpcard.UpperNum)
    End If
-   If pagecardnum(Index, 1) = a4a Then
-      atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) + pagecardnum(Index, 2)
+End If
+If tmpcard.UpperType = a2a Then
+   atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) + tmpcard.UpperNum
+   If turnatk = 1 And 攻擊防禦骰子總數(4) = 0 Then
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + defcom(角色人物對戰人數(2, 2))
    End If
+   If turnatk = 1 Then
+      攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) + Val(tmpcard.UpperNum)
+      攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) + Val(tmpcard.UpperNum)
+   End If
+End If
+If tmpcard.UpperType = a3a Then
+   atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) + tmpcard.UpperNum
+End If
+If tmpcard.UpperType = a4a Then
+   atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) + tmpcard.UpperNum
+End If
 '======================================
-   If pagecardnum(Index, 3) = a1a Then
-      atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) - pagecardnum(Index, 4)
-      If turnatk = 2 And movecp = 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(pagecardnum(Index, 4))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(pagecardnum(Index, 4))
-      End If
-      If 攻擊防禦骰子總數(4) = atkcom(角色人物對戰人數(2, 2)) Then
-          攻擊防禦骰子總數(4) = 0
-      End If
+If tmpcard.LowerType = a1a Then
+   atkingpagetot(2, 1) = Val(atkingpagetot(2, 1)) - tmpcard.LowerNum
+   If turnatk = 2 And movecp = 1 Then
+       攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(tmpcard.LowerNum)
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(tmpcard.LowerNum)
    End If
-   If pagecardnum(Index, 3) = a5a Then
-      atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) - pagecardnum(Index, 4)
-      If turnatk = 2 And movecp > 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(pagecardnum(Index, 4))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(pagecardnum(Index, 4))
-      End If
-      If 攻擊防禦骰子總數(4) = atkcom(角色人物對戰人數(2, 2)) Then
-          攻擊防禦骰子總數(4) = 0
-      End If
+   If 攻擊防禦骰子總數(4) = atkcom(角色人物對戰人數(2, 2)) Then
+       攻擊防禦骰子總數(4) = 0
    End If
-   If pagecardnum(Index, 3) = a2a Then
-      atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) - pagecardnum(Index, 4)
-      If turnatk = 1 Then
-          攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(pagecardnum(Index, 4))
-          攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(pagecardnum(Index, 4))
-      End If
+End If
+If tmpcard.LowerType = a5a Then
+   atkingpagetot(2, 5) = Val(atkingpagetot(2, 5)) - tmpcard.LowerNum
+   If turnatk = 2 And movecp > 1 Then
+       攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(tmpcard.LowerNum)
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(tmpcard.LowerNum)
    End If
-   If pagecardnum(Index, 3) = a3a Then
-      atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) - pagecardnum(Index, 4)
+   If 攻擊防禦骰子總數(4) = atkcom(角色人物對戰人數(2, 2)) Then
+       攻擊防禦骰子總數(4) = 0
    End If
-   If pagecardnum(Index, 3) = a4a Then
-      atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) - pagecardnum(Index, 4)
+End If
+If tmpcard.LowerType = a2a Then
+   atkingpagetot(2, 2) = Val(atkingpagetot(2, 2)) - tmpcard.LowerNum
+   If turnatk = 1 Then
+       攻擊防禦骰子總數(2) = 攻擊防禦骰子總數(2) - Val(tmpcard.LowerNum)
+       攻擊防禦骰子總數(4) = 攻擊防禦骰子總數(4) - Val(tmpcard.LowerNum)
    End If
+End If
+If tmpcard.LowerType = a3a Then
+   atkingpagetot(2, 3) = Val(atkingpagetot(2, 3)) - tmpcard.LowerNum
+End If
+If tmpcard.LowerType = a4a Then
+   atkingpagetot(2, 4) = Val(atkingpagetot(2, 4)) - tmpcard.LowerNum
+End If
 '==============================================
 Select Case turnatk
     Case 1
@@ -2019,58 +1979,40 @@ Next
 End Sub
 Sub comatk1()
 Dim a As Integer
-Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 
-For a = 1 To 公用牌實體卡片分隔紀錄數(1)
-  If Val(pagecardnum(a, 6)) = 1 And Val(pagecardnum(a, 5)) = 2 And Val(pagecardnum(a, 11)) <> 1 Then
-     If pagecardnum(a, 1) = a1a Then
-       pagecardnum(a, 11) = 1
-     ElseIf pagecardnum(a, 3) = a1a Then
-       cspce = pagecardnum(a, 1)
-       cspme = pagecardnum(a, 2)
-       pagecardnum(a, 1) = pagecardnum(a, 3)
-       pagecardnum(a, 2) = pagecardnum(a, 4)
-       pagecardnum(a, 3) = cspce
-       pagecardnum(a, 4) = cspme
-       If pageonin(a) = 2 Then
-          pageonin(a) = 1
-       Else
-          pageonin(a) = 2
-       End If
-       pagecardnum(a, 11) = 1
-     End If
-  End If
+For a = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(a)
+    If tmpcard.ComMark <> 1 Then
+        If tmpcard.UpperType = a1a Then
+            tmpcard.ComMark = 1
+        ElseIf tmpcard.LowerType = a1a Then
+            Call tmpcard.Reverse
+            tmpcard.ComMark = 1
+        End If
+    End If
 Next
 End Sub
 Sub comatk2()
 Dim j As Integer
-Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 
-For j = 1 To 公用牌實體卡片分隔紀錄數(1)
-  If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
-     If pagecardnum(j, 1) = a5a Then
-       pagecardnum(j, 11) = 1
-     ElseIf pagecardnum(j, 3) = a5a Then
-       cspce = pagecardnum(j, 1)
-       cspme = pagecardnum(j, 2)
-       pagecardnum(j, 1) = pagecardnum(j, 3)
-       pagecardnum(j, 2) = pagecardnum(j, 4)
-       pagecardnum(j, 3) = cspce
-       pagecardnum(j, 4) = cspme
-       If pageonin(j) = 2 Then
-          pageonin(j) = 1
-       Else
-          pageonin(j) = 2
-       End If
-       pagecardnum(j, 11) = 1
-     End If
-  End If
+For j = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(j)
+    If tmpcard.ComMark <> 1 Then
+        If tmpcard.UpperType = a5a Then
+            tmpcard.ComMark = 1
+        ElseIf tmpcard.LowerType = a5a Then
+            Call tmpcard.Reverse
+            tmpcard.ComMark = 1
+        End If
+    End If
 Next
 End Sub
 Sub comatk_智慧型AI引導程序_超出牌張數(ByVal turn As Integer, ByVal movecpre As Integer, ByVal choose As Integer)
 Dim werstr As String, werbo As Boolean
 Dim a As Integer, k As Integer
-Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 
 If movecpre = 1 And turn = 1 Then
    werstr = a1a
@@ -2080,79 +2022,58 @@ ElseIf turn = 2 Then
    werstr = a2a
 End If
 '=================================
-For a = 1 To 公用牌實體卡片分隔紀錄數(1)
+For a = 1 To 戰鬥系統類.CardDeckCollection(7).Count
     werbo = False
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(a)
     For k = 1 To UBound(cardAInumOvertenrecord)
-        If a = cardAInumOvertenrecord(k) Then
+        If tmpcard.Cardnum = cardAInumOvertenrecord(k) Then
             werbo = True
         End If
     Next
-    If Val(pagecardnum(a, 6)) = 1 And Val(pagecardnum(a, 5)) = 2 And Val(pagecardnum(a, 11)) <> 1 And werbo = False Then
-            If pagecardnum(a, 1) = werstr Then
-              pagecardnum(a, 11) = 1
-            ElseIf pagecardnum(a, 3) = werstr Then
-              cspce = pagecardnum(a, 1)
-              cspme = pagecardnum(a, 2)
-              pagecardnum(a, 1) = pagecardnum(a, 3)
-              pagecardnum(a, 2) = pagecardnum(a, 4)
-              pagecardnum(a, 3) = cspce
-              pagecardnum(a, 4) = cspme
-              If pageonin(a) = 2 Then
-                 pageonin(a) = 1
-              Else
-                 pageonin(a) = 2
-              End If
-              pagecardnum(a, 11) = 1
-            End If
-            If choose = 1 And pagecardnum(a, 11) = 0 Then
-                pagecardnum(a, 11) = 1
-            End If
+    If tmpcard.ComMark <> 1 And werbo = False Then
+        If tmpcard.UpperType = werstr Then
+            tmpcard.ComMark = 1
+        ElseIf tmpcard.LowerType = werstr Then
+            Call tmpcard.Reverse
+            tmpcard.ComMark = 1
+        End If
+        If choose = 1 And tmpcard.ComMark = 0 Then
+            tmpcard.ComMark = 1
+        End If
     End If
 Next
 End Sub
 Sub moveatkin()
 Dim j As Integer
-Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 
 Do
-    For j = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
-      If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
-         If pagecardnum(j, 1) = a3a And pagecardnum(j, 3) = a3a Then '移動單面事件卡優先
-           pagecardnum(j, 11) = 1
-'           movecom = Val(movecom) + Val(pagecardnum(j, 2))
-            目前數(25) = 目前數(25) + Val(pagecardnum(j, 2))
-         End If
-         If 目前數(25) >= 2 Then Exit Do
-      End If
+    For j = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(j)
+        If tmpcard.CardType = 2 And tmpcard.ComMark <> 1 Then
+            If tmpcard.UpperType = a3a And tmpcard.LowerType = a3a Then '移動單面事件卡優先
+                 tmpcard.ComMark = 1
+                 目前數(25) = 目前數(25) + tmpcard.UpperNum
+            End If
+            If 目前數(25) >= 2 Then Exit Do
+        End If
     Next
-    For j = 1 To 公用牌實體卡片分隔紀錄數(1)
-      If Val(pagecardnum(j, 6)) = 1 And Val(pagecardnum(j, 5)) = 2 And Val(pagecardnum(j, 11)) <> 1 Then
-         If pagecardnum(j, 1) = a3a Then
-           pagecardnum(j, 11) = 1
-'           movecom = Val(movecom) + Val(pagecardnum(j, 2))
-            目前數(25) = 目前數(25) + 1
-         ElseIf pagecardnum(j, 3) = a3a Then
-           cspce = pagecardnum(j, 1)
-           cspme = pagecardnum(j, 2)
-           pagecardnum(j, 1) = pagecardnum(j, 3)
-           pagecardnum(j, 2) = pagecardnum(j, 4)
-           pagecardnum(j, 3) = cspce
-           pagecardnum(j, 4) = cspme
-           If pageonin(j) = 2 Then
-              pageonin(j) = 1
-           Else
-              pageonin(j) = 2
-           End If
-           pagecardnum(j, 11) = 1
-'           movecom = Val(movecom) + Val(pagecardnum(j, 2))
-            目前數(25) = 目前數(25) + Val(pagecardnum(j, 2))
-         End If
-         If 目前數(25) >= 2 Then Exit Do
-      End If
+    For j = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(j)
+        If tmpcard.ComMark <> 1 Then
+            If tmpcard.UpperType = a3a Then
+                tmpcard.ComMark = 1
+                目前數(25) = 目前數(25) + 1
+            ElseIf tmpcard.LowerType = a3a Then
+                Call tmpcard.Reverse
+                tmpcard.ComMark = 1
+                目前數(25) = 目前數(25) + tmpcard.UpperNum
+            End If
+            If 目前數(25) >= 2 Then Exit Do
+        End If
     Next
     Exit Do
 Loop
-'movecheckcom = movecom
 End Sub
 Sub movetnus()
 戰鬥系統類.廣播訊息 "你有主動權。"
@@ -3289,73 +3210,47 @@ ElseIf Formsetting.comboeventcarrdcom.Text = "隨機" Or Formsetting.comboeventcar
 End If
 End Sub
 Sub 事件卡處理_分派_使用者方()
-Dim tn As Integer
-Dim ay() As String
-tn = BattleTurn
-If tn <= 18 Then
-    If tn <= 事件卡記錄暫時數(0, 1) Or Formsetting.persontgreus.Value = 0 Then
-        If pageeventnum(1, tn, 1) <> "" Then
-            ay = Split(一般系統類.事件卡資料庫(pageeventnum(1, tn, 1), 3), "=")
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 1) = ay(0)
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 2) = ay(1)
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 3) = ay(2)
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 4) = ay(3)
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 5) = 1
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 6) = 1
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 8) = pageeventnum(1, tn, 2)
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 11) = 0
-            FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
-            pageonin(公用牌實體卡片分隔紀錄數(2) + tn) = 1
-            戰鬥系統類.座標計算_使用者手牌
-            牌移動暫時變數(3) = 公用牌實體卡片分隔紀錄數(2) + tn
-            戰鬥系統類.牌順序增加_手牌_使用者 公用牌實體卡片分隔紀錄數(2) + tn
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 9) = 牌移動暫時變數(1) '指定目前Left(座標)
-            pagecardnum(公用牌實體卡片分隔紀錄數(2) + tn, 10) = 牌移動暫時變數(2) '指定目前Top(座標)
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).Left = 牌移動暫時變數(1)
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).Top = 牌移動暫時變數(2)
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).ZOrder
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).Visible = True
-        End If
-    End If
-End If
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(3)(1)
+
+FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
+戰鬥系統類.座標計算_使用者手牌
+牌移動暫時變數(3) = tmpcard.Cardnum
+戰鬥系統類.牌順序增加_手牌_使用者
+tmpcard.Location = 1
+tmpcard.Owner = 1
+tmpcard.XYLeft = 牌移動暫時變數(1) '指定目前Left(座標)
+tmpcard.XYTop = 牌移動暫時變數(2) '指定目前Top(座標)
+FormMainMode.card(tmpcard.Cardnum).Left = 牌移動暫時變數(1)
+FormMainMode.card(tmpcard.Cardnum).Top = 牌移動暫時變數(2)
+FormMainMode.card(tmpcard.Cardnum).ZOrder
+FormMainMode.card(tmpcard.Cardnum).Visible = True
+
+戰鬥系統類.卡牌牌堆集合更換 tmpcard, 3, 5
 End Sub
 Sub 事件卡處理_分派_電腦方()
-Dim tn As Integer, i As Integer
-Dim ay() As String
-tn = BattleTurn
-If tn <= 18 Then
-    If tn <= 事件卡記錄暫時數(0, 1) Or Formsetting.persontgrecom.Value = 0 Then
-        If pageeventnum(2, tn, 1) <> "" Then
-            ay = Split(一般系統類.事件卡資料庫(pageeventnum(2, tn, 1), 3), "=")
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 1) = ay(0)
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 2) = ay(1)
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 3) = ay(2)
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 4) = ay(3)
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 5) = 2
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 6) = 1
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 8) = pageeventnum(2, tn, 2)
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 11) = 0
-            FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
-            pageonin(公用牌實體卡片分隔紀錄數(3) + tn) = 1
-            戰鬥系統類.座標計算_電腦手牌
-            牌移動暫時變數(3) = 公用牌實體卡片分隔紀錄數(3) + tn
-            戰鬥系統類.公用牌變背面
-            戰鬥系統類.牌順序增加_手牌_電腦 公用牌實體卡片分隔紀錄數(3) + tn
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 9) = 牌移動暫時變數(1) '指定目前Left(座標)
-            pagecardnum(公用牌實體卡片分隔紀錄數(3) + tn, 10) = 牌移動暫時變數(2) '指定目前Top(座標)
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).Left = 牌移動暫時變數(1)
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).Top = 牌移動暫時變數(2)
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).ZOrder
-            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).Visible = True
-            For i = 1 To 3
-                FormMainMode.PEAFpersoncardcom(i).ZOrder
-            Next
-        End If
-    End If
-End If
+Dim i As Integer
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(4)(1)
+
+FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
+戰鬥系統類.座標計算_電腦手牌
+牌移動暫時變數(3) = tmpcard.Cardnum
+戰鬥系統類.公用牌變背面
+戰鬥系統類.牌順序增加_手牌_電腦
+tmpcard.Location = 1
+tmpcard.Owner = 2
+tmpcard.XYLeft = 牌移動暫時變數(1) '指定目前Left(座標)
+tmpcard.XYTop = 牌移動暫時變數(2) '指定目前Top(座標)
+FormMainMode.card(tmpcard.Cardnum).Left = 牌移動暫時變數(1)
+FormMainMode.card(tmpcard.Cardnum).Top = 牌移動暫時變數(2)
+FormMainMode.card(tmpcard.Cardnum).ZOrder
+FormMainMode.card(tmpcard.Cardnum).Visible = True
+戰鬥系統類.卡牌牌堆集合更換 tmpcard, 4, 7
+
+For i = 1 To 3
+    FormMainMode.PEAFpersoncardcom(i).ZOrder
+Next
 End Sub
 Sub 事件卡處理_計算張數()
 If 角色人物對戰人數(1, 1) > 1 Or 角色人物對戰人數(2, 1) > 1 Then
@@ -3441,512 +3336,421 @@ For n = 1 To 2
     Next
 Next
 End Sub
-Sub getpage(ByVal k As Integer, m As Integer)
-Dim qwp As Integer, n As Integer, uspce As String, uspme As String, yne As Boolean
-If Val(公用牌各牌類型紀錄數(0, 1)) < Val(公用牌各牌類型紀錄數(0, 2)) Then
-    yne = False
-    Do
-            Randomize
-            qwp = Int(Rnd() * 29) + 1
-            Select Case qwp
-                    Case 1  '==移1槍1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\021.png"
-                            pagecardnum(m, 8) = "021"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 2  '==移1槍2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\019.png"
-                            pagecardnum(m, 8) = "019"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 3  '==移1槍3類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b3b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\017.png"
-                            pagecardnum(m, 8) = "017"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 4  '==移1盾1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\025.png"
-                            pagecardnum(m, 8) = "025"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 5  '==移1盾2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\024.png"
-                            pagecardnum(m, 8) = "024"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 6  '==移1盾3類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b3b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\023.png"
-                            pagecardnum(m, 8) = "023"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 7  '==移2特3類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b3b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\026.png"
-                            pagecardnum(m, 8) = "026"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 8  '==移3移3類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a3a
-                            pagecardnum(m, 2) = b3b
-                            pagecardnum(m, 3) = a3a
-                            pagecardnum(m, 4) = b3b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\027.png"
-                            pagecardnum(m, 8) = "027"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 9  '==劍6劍6類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b6b
-                            pagecardnum(m, 3) = a1a
-                            pagecardnum(m, 4) = b6b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\001.png"
-                            pagecardnum(m, 8) = "001"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 10  '==劍1槍1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\011.png"
-                            pagecardnum(m, 8) = "011"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 11  '==劍2槍1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\007.png"
-                            pagecardnum(m, 8) = "007"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 12  '==劍2槍2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\006.png"
-                            pagecardnum(m, 8) = "006"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 13  '==劍3槍3類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b3b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b3b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\004.png"
-                            pagecardnum(m, 8) = "004"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 14  '==劍5槍5類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b5b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b5b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\028.png"
-                            pagecardnum(m, 8) = "028"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 15  '==劍1盾1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\012.png"
-                            pagecardnum(m, 8) = "012"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 16  '==劍2盾1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\009.png"
-                            pagecardnum(m, 8) = "009"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 17  '==劍2盾2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\008.png"
-                            pagecardnum(m, 8) = "008"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 18  '==劍3盾3類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b3b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b3b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\005.png"
-                            pagecardnum(m, 8) = "005"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 19  '==劍1特1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b1b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\013.png"
-                            pagecardnum(m, 8) = "013"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 20  '==劍2特1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\010.png"
-                            pagecardnum(m, 8) = "010"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 21  '==劍4特1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b4b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\003.png"
-                            pagecardnum(m, 8) = "003"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 22  '==劍5特2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a1a
-                            pagecardnum(m, 2) = b5b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\002.png"
-                            pagecardnum(m, 8) = "002"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 23  '==槍4槍4類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a5a
-                            pagecardnum(m, 2) = b4b
-                            pagecardnum(m, 3) = a5a
-                            pagecardnum(m, 4) = b4b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\015.png"
-                            pagecardnum(m, 8) = "015"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 24  '==槍2特1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a5a
-                            pagecardnum(m, 2) = b2b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\020.png"
-                            pagecardnum(m, 8) = "020"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 25  '==槍3特2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a5a
-                            pagecardnum(m, 2) = b3b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\018.png"
-                            pagecardnum(m, 8) = "018"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 26  '==槍4特1類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a5a
-                            pagecardnum(m, 2) = b4b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b1b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\016.png"
-                            pagecardnum(m, 8) = "016"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 27  '==槍5特2類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a5a
-                            pagecardnum(m, 2) = b5b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b2b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\014.png"
-                            pagecardnum(m, 8) = "014"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 28  '==盾5盾5類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a2a
-                            pagecardnum(m, 2) = b5b
-                            pagecardnum(m, 3) = a2a
-                            pagecardnum(m, 4) = b5b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\022.png"
-                            pagecardnum(m, 8) = "022"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-                    Case 29  '==盾3特5類
-                         If Val(公用牌各牌類型紀錄數(qwp, 1)) < Val(公用牌各牌類型紀錄數(qwp, 2)) Then
-                            公用牌各牌類型紀錄數(qwp, 1) = Val(公用牌各牌類型紀錄數(qwp, 1)) + 1
-                            公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
-                            pagecardnum(m, 1) = a2a
-                            pagecardnum(m, 2) = b3b
-                            pagecardnum(m, 3) = a4a
-                            pagecardnum(m, 4) = b5b
-                            pagecardnum(m, 5) = k
-                            FormMainMode.card(m).cardImage = app_path & "card\029.png"
-                            pagecardnum(m, 8) = "029"
-                            pageonin(m) = 1
-                            pagecardnum(m, 6) = 1
-                            yne = True
-                         End If
-             End Select
-     Loop Until yne = True
-     '==================================隨機轉牌
-     Randomize
-     n = Int(Rnd() * 2) + 1
-     If n = 2 Then
-        uspce = pagecardnum(m, 1)
-        uspme = pagecardnum(m, 2)
-        pagecardnum(m, 1) = pagecardnum(m, 3)
-        pagecardnum(m, 2) = pagecardnum(m, 4)
-        pagecardnum(m, 3) = uspce
-        pagecardnum(m, 4) = uspme
-        If pageonin(m) = 1 Then
-           pageonin(m) = 2
-'           FormMainMode.card(m).Picture = LoadPicture(app_path & "card\" & pagecardnum(m, 8) & "-" & pageonin(m) & ".bmp")
-        Else
-           pageonin(m) = 1
-'           FormMainMode.card(m).Picture = LoadPicture(app_path & "card\" & pagecardnum(m, 8) & "-" & pageonin(m) & ".bmp")
+Sub 發行卡牌_公用牌()
+Dim i As Integer, j As Integer
+Dim tmpcard As clsActionCard, tmpindexobj As clsCollectionIndex
+
+For i = 1 To 公用牌實體卡片分隔紀錄數(2)
+    For j = 1 To UBound(公用牌各牌類型紀錄數, 1)
+        Set tmpcard = New clsActionCard
+        tmpcard.Cardnum = i
+        tmpcard.Location = 4
+        tmpcard.CardType = 1
+        
+        If Val(公用牌各牌類型紀錄數(j, 1)) < Val(公用牌各牌類型紀錄數(j, 2)) Then
+            Select Case j
+                Case 1  '==移1槍1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\021.png"
+                    tmpcard.ImageStr = "021"
+                    tmpcard.CardOnIn = 1
+                Case 2  '==移1槍2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\019.png"
+                    tmpcard.ImageStr = "019"
+                    tmpcard.CardOnIn = 1
+                Case 3  '==移1槍3類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b3b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\017.png"
+                    tmpcard.ImageStr = "017"
+                    tmpcard.CardOnIn = 1
+                Case 4  '==移1盾1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\025.png"
+                    tmpcard.ImageStr = "025"
+                    tmpcard.CardOnIn = 1
+                Case 5  '==移1盾2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\024.png"
+                    tmpcard.ImageStr = "024"
+                    tmpcard.CardOnIn = 1
+                Case 6  '==移1盾3類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b3b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\023.png"
+                    tmpcard.ImageStr = "023"
+                    tmpcard.CardOnIn = 1
+                Case 7  '==移2特3類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b3b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\026.png"
+                    tmpcard.ImageStr = "026"
+                    tmpcard.CardOnIn = 1
+                Case 8  '==移3移3類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a3a
+                    tmpcard.UpperNum = b3b
+                    tmpcard.LowerType = a3a
+                    tmpcard.LowerNum = b3b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\027.png"
+                    tmpcard.ImageStr = "027"
+                    tmpcard.CardOnIn = 1
+                Case 9  '==劍6劍6類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b6b
+                    tmpcard.LowerType = a1a
+                    tmpcard.LowerNum = b6b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\001.png"
+                    tmpcard.ImageStr = "001"
+                    tmpcard.CardOnIn = 1
+                Case 10  '==劍1槍1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\011.png"
+                    tmpcard.ImageStr = "011"
+                    tmpcard.CardOnIn = 1
+                Case 11  '==劍2槍1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\007.png"
+                    tmpcard.ImageStr = "007"
+                    tmpcard.CardOnIn = 1
+                Case 12  '==劍2槍2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\006.png"
+                    tmpcard.ImageStr = "006"
+                    tmpcard.CardOnIn = 1
+                Case 13  '==劍3槍3類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b3b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b3b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\004.png"
+                    tmpcard.ImageStr = "004"
+                    tmpcard.CardOnIn = 1
+                Case 14  '==劍5槍5類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b5b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b5b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\028.png"
+                    tmpcard.ImageStr = "028"
+                    tmpcard.CardOnIn = 1
+                Case 15  '==劍1盾1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\012.png"
+                    tmpcard.ImageStr = "012"
+                    tmpcard.CardOnIn = 1
+                Case 16  '==劍2盾1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\009.png"
+                    tmpcard.ImageStr = "009"
+                    tmpcard.CardOnIn = 1
+                Case 17  '==劍2盾2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\008.png"
+                    tmpcard.ImageStr = "008"
+                    tmpcard.CardOnIn = 1
+                Case 18  '==劍3盾3類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b3b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b3b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\005.png"
+                    tmpcard.ImageStr = "005"
+                    tmpcard.CardOnIn = 1
+                Case 19  '==劍1特1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b1b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\013.png"
+                    tmpcard.ImageStr = "013"
+                    tmpcard.CardOnIn = 1
+                Case 20  '==劍2特1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\010.png"
+                    tmpcard.ImageStr = "010"
+                    tmpcard.CardOnIn = 1
+                Case 21  '==劍4特1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b4b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\003.png"
+                    tmpcard.ImageStr = "003"
+                    tmpcard.CardOnIn = 1
+                Case 22  '==劍5特2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a1a
+                    tmpcard.UpperNum = b5b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\002.png"
+                    tmpcard.ImageStr = "002"
+                    tmpcard.CardOnIn = 1
+                Case 23  '==槍4槍4類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a5a
+                    tmpcard.UpperNum = b4b
+                    tmpcard.LowerType = a5a
+                    tmpcard.LowerNum = b4b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\015.png"
+                    tmpcard.ImageStr = "015"
+                    tmpcard.CardOnIn = 1
+                Case 24  '==槍2特1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a5a
+                    tmpcard.UpperNum = b2b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\020.png"
+                    tmpcard.ImageStr = "020"
+                    tmpcard.CardOnIn = 1
+                Case 25  '==槍3特2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a5a
+                    tmpcard.UpperNum = b3b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\018.png"
+                    tmpcard.ImageStr = "018"
+                    tmpcard.CardOnIn = 1
+                Case 26  '==槍4特1類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a5a
+                    tmpcard.UpperNum = b4b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b1b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\016.png"
+                    tmpcard.ImageStr = "016"
+                    tmpcard.CardOnIn = 1
+                Case 27  '==槍5特2類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a5a
+                    tmpcard.UpperNum = b5b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b2b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\014.png"
+                    tmpcard.ImageStr = "014"
+                    tmpcard.CardOnIn = 1
+                Case 28  '==盾5盾5類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a2a
+                    tmpcard.UpperNum = b5b
+                    tmpcard.LowerType = a2a
+                    tmpcard.LowerNum = b5b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\022.png"
+                    tmpcard.ImageStr = "022"
+                    tmpcard.CardOnIn = 1
+                Case 29  '==盾3特5類
+                    公用牌各牌類型紀錄數(j, 1) = Val(公用牌各牌類型紀錄數(j, 1)) + 1
+                    公用牌各牌類型紀錄數(0, 1) = Val(公用牌各牌類型紀錄數(0, 1)) + 1
+                    tmpcard.UpperType = a2a
+                    tmpcard.UpperNum = b3b
+                    tmpcard.LowerType = a4a
+                    tmpcard.LowerNum = b5b
+                    tmpcard.Owner = 0
+                    FormMainMode.card(i).cardImage = app_path & "card\029.png"
+                    tmpcard.ImageStr = "029"
+                    tmpcard.CardOnIn = 1
+            End Select
+            戰鬥系統類.CardDeckCollection(1).Add tmpcard, CStr(i)
+            
+            Set tmpindexobj = New clsCollectionIndex
+            tmpindexobj.CollectionIndex = 1
+            tmpindexobj.Cardnum = i
+            tmpindexobj.Index = 戰鬥系統類.CardDeckCollection(0).Count + 1
+            戰鬥系統類.CardDeckCollection(0).Add tmpindexobj, CStr(i)
+            Exit For
         End If
-     End If
-     FormMainMode.card(m).CardRotationType = pageonin(m)
-     '==============================================
-     Select Case k
-            Case 1 '使用者
-                pagecardnum(m, 11) = 0
-                BattleCardNum = BattleCardNum - 1
-                戰鬥系統類.執行動作_系統總卡牌張數更新
-                FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-                戰鬥系統類.座標計算_使用者手牌
-                牌移動暫時變數(3) = m
-                pagecardnum(m, 9) = 240 '指定目前Left(座標)
-                pagecardnum(m, 10) = 960 '指定目前Top(座標)
-                FormMainMode.card(m).Left = 240
-                FormMainMode.card(m).Top = 960
-                戰鬥系統類.計算牌移動距離單位
-                戰鬥系統類.公用牌回復正面 (牌移動暫時變數(3))
-                FormMainMode.card(m).CardEventType = False
-                FormMainMode.card(m).Visible = True
-                FormMainMode.card(m).ZOrder
-                戰鬥系統類.牌順序增加_手牌_使用者 m
-                FormMainMode.牌移動.Enabled = True
-                一般系統類.音效播放 1
-            Case 2 '電腦
-                pagecardnum(m, 11) = 0
-                BattleCardNum = BattleCardNum - 1
-                戰鬥系統類.執行動作_系統總卡牌張數更新
-                FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
-                戰鬥系統類.座標計算_電腦手牌
-                牌移動暫時變數(3) = m
-                pagecardnum(m, 9) = 240 '指定目前Left(座標)
-                pagecardnum(m, 10) = 960 '指定目前Top(座標)
-                FormMainMode.card(m).Left = 240
-                FormMainMode.card(m).Top = 960
-                戰鬥系統類.計算牌移動距離單位
-                戰鬥系統類.公用牌變背面
-                FormMainMode.card(m).CardEventType = False
-                FormMainMode.card(m).Visible = True
-                FormMainMode.card(m).ZOrder
-                戰鬥系統類.牌順序增加_手牌_電腦 m
-                FormMainMode.牌移動.Enabled = True
-                一般系統類.音效播放 1
-        End Select
-End If
+    Next
+Next
+End Sub
+Sub 發行卡牌_事件卡()
+Dim ay() As String
+Dim tn As Integer
+Dim tmpcard As clsActionCard
+Dim tmpindexobj As clsCollectionIndex
+
+For tn = 1 To 18 'max 18 turn
+    '===============使用者方
+    If tn <= 事件卡記錄暫時數(0, 1) Or Formsetting.persontgreus.Value = 0 Then
+        If pageeventnum(1, tn, 1) <> "" Then
+            Set tmpcard = New clsActionCard
+            tmpcard.Cardnum = 公用牌實體卡片分隔紀錄數(2) + tn
+            '============
+            Erase ay
+            ay = Split(一般系統類.事件卡資料庫(pageeventnum(1, tn, 1), 3), "=")
+            '============
+            tmpcard.UpperType = ay(0)
+            tmpcard.UpperNum = ay(1)
+            tmpcard.LowerType = ay(2)
+            tmpcard.LowerNum = ay(3)
+            tmpcard.Owner = 0
+            tmpcard.Location = 0
+            tmpcard.ImageStr = pageeventnum(1, tn, 2)
+            tmpcard.ComMark = 0
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(2) + tn).CardRotationType = 1
+            tmpcard.CardOnIn = 1
+            tmpcard.CardType = 2
+            '============
+            戰鬥系統類.CardDeckCollection(3).Add tmpcard, CStr(公用牌實體卡片分隔紀錄數(2) + tn)
+            
+            Set tmpindexobj = New clsCollectionIndex
+            tmpindexobj.CollectionIndex = 3
+            tmpindexobj.Cardnum = 公用牌實體卡片分隔紀錄數(2) + tn
+            tmpindexobj.Index = 戰鬥系統類.CardDeckCollection(0).Count + 1
+            戰鬥系統類.CardDeckCollection(0).Add tmpindexobj, CStr(公用牌實體卡片分隔紀錄數(2) + tn)
+        End If
+    End If
+    '===============電腦方
+    If tn <= 事件卡記錄暫時數(0, 1) Or Formsetting.persontgrecom.Value = 0 Then
+        If pageeventnum(2, tn, 1) <> "" Then
+            Set tmpcard = New clsActionCard
+            tmpcard.Cardnum = 公用牌實體卡片分隔紀錄數(3) + tn
+            '============
+            Erase ay
+            ay = Split(一般系統類.事件卡資料庫(pageeventnum(2, tn, 1), 3), "=")
+            '============
+            tmpcard.UpperType = ay(0)
+            tmpcard.UpperNum = ay(1)
+            tmpcard.LowerType = ay(2)
+            tmpcard.LowerNum = ay(3)
+            tmpcard.Owner = 0
+            tmpcard.Location = 0
+            tmpcard.ImageStr = pageeventnum(2, tn, 2)
+            tmpcard.ComMark = 0
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
+            FormMainMode.card(公用牌實體卡片分隔紀錄數(3) + tn).CardRotationType = 1
+            tmpcard.CardOnIn = 1
+            tmpcard.CardType = 2
+            '============
+            戰鬥系統類.CardDeckCollection(4).Add tmpcard, CStr(公用牌實體卡片分隔紀錄數(3) + tn)
+            
+            Set tmpindexobj = New clsCollectionIndex
+            tmpindexobj.CollectionIndex = 4
+            tmpindexobj.Cardnum = 公用牌實體卡片分隔紀錄數(3) + tn
+            tmpindexobj.Index = 戰鬥系統類.CardDeckCollection(0).Count + 1
+            戰鬥系統類.CardDeckCollection(0).Add tmpindexobj, CStr(公用牌實體卡片分隔紀錄數(3) + tn)
+        End If
+    End If
+Next
 End Sub
 Sub 公用牌地圖牌種類配置(ByVal name As String)
 Select Case name
@@ -4386,12 +4190,6 @@ Select Case name
            公用牌各牌類型紀錄數(29, 2) = 0
 End Select
 End Sub
-Sub 公用牌未使用檢查()
-Dim i As Integer
-For i = Val(公用牌各牌類型紀錄數(0, 2)) + 1 To 70
-     pagecardnum(i, 6) = 5
-Next
-End Sub
 Sub 傷害執行_立即死亡_使用者(ByVal num As Integer)
 Dim stageInfoListObj As clsVSStageObj
 Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
@@ -4604,7 +4402,7 @@ Dim i As Integer
 公用牌實體卡片分隔紀錄數(2) = 公用牌各牌類型紀錄數(0, 2)
 公用牌實體卡片分隔紀錄數(3) = 公用牌各牌類型紀錄數(0, 2) + 18
 公用牌實體卡片分隔紀錄數(4) = 公用牌各牌類型紀錄數(0, 2) + 18 + 18
-公用牌實體卡片分隔紀錄數(5) = -1
+公用牌實體卡片分隔紀錄數(5) = 公用牌實體卡片分隔紀錄數(1) + 1
 For i = 1 To 公用牌實體卡片分隔紀錄數(1)
     Load FormMainMode.card(i)
     Set FormMainMode.card(i).Container = FormMainMode.PEAttackingForm
@@ -4613,6 +4411,10 @@ For i = 1 To 公用牌實體卡片分隔紀錄數(1)
     FormMainMode.card(i).Visible = False
     FormMainMode.card(i).CardEventType = False
     FormMainMode.card(i).LocationType = 0
+Next
+
+For i = 0 To UBound(戰鬥系統類.CardDeckCollection)
+    Set 戰鬥系統類.CardDeckCollection(i) = New Collection
 Next
 End Sub
 Sub 廣播訊息(ByVal messagestr As String)
@@ -4735,3 +4537,27 @@ Select Case uscom
     End With
 End Select
 End Sub
+Sub 卡牌牌堆集合更換(ByRef tmpcard As clsActionCard, ByVal torigc As Integer, ByVal tnewc As Integer)
+Dim tmpindexobj As clsCollectionIndex
+Set tmpindexobj = 戰鬥系統類.CardDeckCollection(0)(CStr(tmpcard.Cardnum))
+
+戰鬥系統類.CardDeckCollection(torigc).Remove CStr(tmpcard.Cardnum)
+戰鬥系統類.CardDeckCollection(tnewc).Add tmpcard, CStr(tmpcard.Cardnum)
+'=========索引更新
+tmpindexobj.CollectionIndex = tnewc
+End Sub
+Function 卡牌牌堆集合索引_CollectionIndex(ByVal tmpindex As Variant) As Integer
+Dim tmpindexobj As clsCollectionIndex
+Set tmpindexobj = 戰鬥系統類.CardDeckCollection(0)(tmpindex)
+卡牌牌堆集合索引_CollectionIndex = tmpindexobj.CollectionIndex
+End Function
+Function 卡牌牌堆集合索引_CardNum(ByVal tmpindex As Variant) As Integer
+Dim tmpindexobj As clsCollectionIndex
+Set tmpindexobj = 戰鬥系統類.CardDeckCollection(0)(tmpindex)
+卡牌牌堆集合索引_CardNum = tmpindexobj.Cardnum
+End Function
+Function 卡牌牌堆集合索引_Index(ByVal tmpindex As Variant) As Integer
+Dim tmpindexobj As clsCollectionIndex
+Set tmpindexobj = 戰鬥系統類.CardDeckCollection(0)(tmpindex)
+卡牌牌堆集合索引_Index = tmpindexobj.Index
+End Function

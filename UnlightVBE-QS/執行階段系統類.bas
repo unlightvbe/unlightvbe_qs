@@ -429,13 +429,11 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
     Erase AtkingckVSF '技能資訊一覽-F版(技能備註字串)
     Erase VBEAtkingVSF 'VBE>VS給予變數統一資料-F版
     Erase VBEAtkingVSS 'VBE>VS給予變數統一資料-S版
-'    Erase VBEPageCardNumVS '公用牌資料-VS版
-    ReDim VBEPageCardNumVS(1 To 公用牌實體卡片分隔紀錄數(1), 1 To 6) As Variant '公用牌資料-VS版
-'    Erase VBEVSStageNum '執行階段系統-執行階段多用途紀錄變數-VS版
+    ReDim VBEPageCardNumVS(1 To 戰鬥系統類.CardDeckCollection(0).Count, 1 To 7) As Variant '公用牌資料-VS版
     ReDim VBEVSStageNum(1 To UBound(VBEStageNumMain)) As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
     Erase VBEActualStatusVS '人物實際狀態資料-VS版
     '===========================
-    Dim q As Integer, w As Integer, rr As Integer, tempc As Integer, buffobj As clsStatus
+    Dim q As Integer, w As Integer, rr As Integer, tempc As Integer, buffobj As clsStatus, tmpcard As clsActionCard
     Dim i As Integer, j As Integer, k As Integer, m As Integer, p As Integer
     
     tempc = 1
@@ -468,14 +466,15 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
                 Next
             End If
             '======================
-            For i = 1 To 公用牌實體卡片分隔紀錄數(1)
-                For j = 1 To 6
-                    If j = 1 Or j = 3 Then
-                        VBEPageCardNumVS(i, j) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(pagecardnum(i, j))
-                    Else
-                        VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
-                    End If
-                Next
+            For i = 1 To 戰鬥系統類.CardDeckCollection(0).Count
+                Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(i))(CStr(戰鬥系統類.卡牌牌堆集合索引_CardNum(i)))
+                VBEPageCardNumVS(i, 1) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.UpperType)
+                VBEPageCardNumVS(i, 2) = tmpcard.UpperNum
+                VBEPageCardNumVS(i, 3) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.LowerType)
+                VBEPageCardNumVS(i, 4) = tmpcard.LowerNum
+                VBEPageCardNumVS(i, 5) = tmpcard.Owner
+                VBEPageCardNumVS(i, 6) = tmpcard.Location
+                VBEPageCardNumVS(i, 7) = tmpcard.CardType
             Next
             '======================
             '(1 To 2, 1 To 5)
@@ -610,22 +609,21 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
                 Next
             End If
             '======================
-            For i = 1 To 公用牌實體卡片分隔紀錄數(1)
-                For j = 1 To 6
-                     If j = 1 Or j = 3 Then
-                        VBEPageCardNumVS(i, j) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(pagecardnum(i, j))
-                    ElseIf j = 5 Then
-                        If Val(pagecardnum(i, j)) = 2 Then
-                           VBEPageCardNumVS(i, j) = 1
-                        ElseIf Val(pagecardnum(i, j)) = 1 Then
-                           VBEPageCardNumVS(i, j) = 2
-                        Else
-                           VBEPageCardNumVS(i, j) = 0
-                        End If
-                    Else
-                        VBEPageCardNumVS(i, j) = Val(pagecardnum(i, j))
-                    End If
-                Next
+            For i = 1 To 戰鬥系統類.CardDeckCollection(0).Count
+                Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(i))(CStr(戰鬥系統類.卡牌牌堆集合索引_CardNum(i)))
+                VBEPageCardNumVS(i, 1) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.UpperType)
+                VBEPageCardNumVS(i, 2) = tmpcard.UpperNum
+                VBEPageCardNumVS(i, 3) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.LowerType)
+                VBEPageCardNumVS(i, 4) = tmpcard.LowerNum
+                If tmpcard.Owner = 2 Then
+                    VBEPageCardNumVS(i, 5) = 1
+                ElseIf tmpcard.Owner = 1 Then
+                    VBEPageCardNumVS(i, 5) = 2
+                Else
+                    VBEPageCardNumVS(i, 5) = 0
+                End If
+                VBEPageCardNumVS(i, 6) = tmpcard.Location
+                VBEPageCardNumVS(i, 7) = tmpcard.CardType
             Next
             '======================
             '(1 To 2, 1 To 5)

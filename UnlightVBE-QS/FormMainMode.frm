@@ -3030,100 +3030,91 @@ End
 End Sub
 
 Sub card_CardButtonClickin(Index As Integer)
-Dim uspce As String, uspme As String
-uspce = pagecardnum(Index, 1)
-uspme = pagecardnum(Index, 2)
-pagecardnum(Index, 1) = pagecardnum(Index, 3)
-pagecardnum(Index, 2) = pagecardnum(Index, 4)
-pagecardnum(Index, 3) = uspce
-pagecardnum(Index, 4) = uspme
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(CStr(Index))
+
+Call tmpcard.Reverse
 一般系統類.音效播放 3
-pageonin(Index) = Val(card(Index).CardRotationType)
 End Sub
 
 Sub card_CardButtonClickout(Index As Integer)
-Dim uspce As String, uspme As String
-uspce = pagecardnum(Index, 1)
-uspme = pagecardnum(Index, 2)
-pagecardnum(Index, 1) = pagecardnum(Index, 3)
-pagecardnum(Index, 2) = pagecardnum(Index, 4)
-pagecardnum(Index, 3) = uspce
-pagecardnum(Index, 4) = uspme
-一般系統類.音效播放 3
-pageonin(Index) = Val(card(Index).CardRotationType)
-'===================================================================
-   If pagecardnum(Index, 1) = a1a Then
-      atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) + Val(pagecardnum(Index, 2))
-      If turnatk = 1 And movecp = 1 And 攻擊防禦骰子總數(3) = 0 Then
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
-      End If
-      If turnatk = 1 And movecp = 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(pagecardnum(Index, 2))
-      End If
-   End If
-   If pagecardnum(Index, 1) = a5a Then
-      atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) + Val(pagecardnum(Index, 2))
-      If turnatk = 1 And movecp > 1 And 攻擊防禦骰子總數(3) = 0 Then
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
-      End If
-      If turnatk = 1 And movecp > 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(pagecardnum(Index, 2))
-      End If
-   End If
-   If pagecardnum(Index, 1) = a2a Then
-      atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) + Val(pagecardnum(Index, 2))
-      If turnatk = 2 And 攻擊防禦骰子總數(3) = 0 Then
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + defus(角色人物對戰人數(1, 2))
-      End If
-      If turnatk = 2 Then
-         攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(pagecardnum(Index, 2))
-         攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(pagecardnum(Index, 2))
-      End If
-   End If
-   If pagecardnum(Index, 1) = a3a Then
-      atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) + Val(pagecardnum(Index, 2))
-   End If
-   If pagecardnum(Index, 1) = a4a Then
-      atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) + Val(pagecardnum(Index, 2))
-   End If
-'======================================
-   If pagecardnum(Index, 3) = a1a Then
-      atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) - Val(pagecardnum(Index, 4))
-      If turnatk = 1 And movecp = 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(pagecardnum(Index, 4))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(pagecardnum(Index, 4))
-      End If
-      If 攻擊防禦骰子總數(3) = atkus(角色人物對戰人數(1, 2)) Then
-          攻擊防禦骰子總數(3) = 0
-      End If
-   End If
-   If pagecardnum(Index, 3) = a5a Then
-      atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) - Val(pagecardnum(Index, 4))
-      If turnatk = 1 And movecp > 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(pagecardnum(Index, 4))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(pagecardnum(Index, 4))
-      End If
-      If 攻擊防禦骰子總數(3) = atkus(角色人物對戰人數(1, 2)) Then
-          攻擊防禦骰子總數(3) = 0
-      End If
-   End If
-   If pagecardnum(Index, 3) = a2a Then
-      atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) - Val(pagecardnum(Index, 4))
-      If turnatk = 2 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(pagecardnum(Index, 4))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(pagecardnum(Index, 4))
-      End If
-   End If
-   If pagecardnum(Index, 3) = a3a Then
-      atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) - Val(pagecardnum(Index, 4))
-   End If
-   If pagecardnum(Index, 3) = a4a Then
-      atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) - Val(pagecardnum(Index, 4))
-   End If
-    '============以下是技能檢查及啟動
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(6)(CStr(Index))
 
+Call tmpcard.Reverse
+FormMainMode.card(Index).CardRotationType = tmpcard.CardOnIn
+一般系統類.音效播放 3
+'===================================================================
+If tmpcard.UpperType = a1a Then
+   atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) + Val(tmpcard.UpperNum)
+   If turnatk = 1 And movecp = 1 And 攻擊防禦骰子總數(3) = 0 Then
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
+   End If
+   If turnatk = 1 And movecp = 1 Then
+       攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(tmpcard.UpperNum)
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(tmpcard.UpperNum)
+   End If
+End If
+If tmpcard.UpperType = a5a Then
+   atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) + Val(tmpcard.UpperNum)
+   If turnatk = 1 And movecp > 1 And 攻擊防禦骰子總數(3) = 0 Then
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
+   End If
+   If turnatk = 1 And movecp > 1 Then
+       攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(tmpcard.UpperNum)
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(tmpcard.UpperNum)
+   End If
+End If
+If tmpcard.UpperType = a2a Then
+   atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) + Val(tmpcard.UpperNum)
+   If turnatk = 2 And 攻擊防禦骰子總數(3) = 0 Then
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + defus(角色人物對戰人數(1, 2))
+   End If
+   If turnatk = 2 Then
+      攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(tmpcard.UpperNum)
+      攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(tmpcard.UpperNum)
+   End If
+End If
+If tmpcard.UpperType = a3a Then
+   atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) + Val(tmpcard.UpperNum)
+End If
+If tmpcard.UpperType = a4a Then
+   atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) + Val(tmpcard.UpperNum)
+End If
+'======================================
+If tmpcard.LowerType = a1a Then
+   atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) - Val(tmpcard.LowerNum)
+   If turnatk = 1 And movecp = 1 Then
+       攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(tmpcard.LowerNum)
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(tmpcard.LowerNum)
+   End If
+   If 攻擊防禦骰子總數(3) = atkus(角色人物對戰人數(1, 2)) Then
+       攻擊防禦骰子總數(3) = 0
+   End If
+End If
+If tmpcard.LowerType = a5a Then
+   atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) - Val(tmpcard.LowerNum)
+   If turnatk = 1 And movecp > 1 Then
+       攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(tmpcard.LowerNum)
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(tmpcard.LowerNum)
+   End If
+   If 攻擊防禦骰子總數(3) = atkus(角色人物對戰人數(1, 2)) Then
+       攻擊防禦骰子總數(3) = 0
+   End If
+End If
+If tmpcard.LowerType = a2a Then
+   atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) - Val(tmpcard.LowerNum)
+   If turnatk = 2 Then
+       攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(tmpcard.LowerNum)
+       攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(tmpcard.LowerNum)
+   End If
+End If
+If tmpcard.LowerType = a3a Then
+   atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) - Val(tmpcard.LowerNum)
+End If
+If tmpcard.LowerType = a4a Then
+   atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) - Val(tmpcard.LowerNum)
+End If
 '==============================================
 Select Case turnatk
     Case 1
@@ -3162,95 +3153,93 @@ End Sub
 
 
 Sub card_CardClick(Index As Integer)
+Dim tmpcard As clsActionCard
+Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(Index)))(CStr(Index))
 '======================以下為專屬事件卡檢查
-If pagecardnum(Index, 1) = a7a And turnatk <> 1 And turnatk <> 2 Then
+If tmpcard.UpperType = a7a And turnatk <> 1 And turnatk <> 2 Then
    '=========違反詛咒術事件卡只在攻防階段使用原則
    Exit Sub
 End If
 '====================================
-If pagecardnum(Index, 6) = 1 And (turnpageonin = 1 Or turnpageoninatking = 1) And pagecardnum(Index, 5) = 1 Then
-   pagecardnum(Index, 6) = 2
-   If pagecardnum(Index, 1) = a1a Then
-      atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) + Val(pagecardnum(Index, 2))
+If tmpcard.Location = 1 And (turnpageonin = 1 Or turnpageoninatking = 1) And tmpcard.Owner = 1 Then
+   tmpcard.Location = 2
+   If tmpcard.UpperType = a1a Then
+      atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) + Val(tmpcard.UpperNum)
       If turnatk = 1 And movecp = 1 And 攻擊防禦骰子總數(3) = 0 Then
           攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
       End If
       If turnatk = 1 And movecp = 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a5a Then
-      atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a5a Then
+      atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) + Val(tmpcard.UpperNum)
       If turnatk = 1 And movecp > 1 And 攻擊防禦骰子總數(3) = 0 Then
           攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + atkus(角色人物對戰人數(1, 2))
       End If
       If turnatk = 1 And movecp > 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a2a Then
-      atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a2a Then
+      atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) + Val(tmpcard.UpperNum)
       If turnatk = 2 And 攻擊防禦骰子總數(3) = 0 Then
           攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + defus(角色人物對戰人數(1, 2))
       End If
       If turnatk = 2 Then
-         攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(pagecardnum(Index, 2))
-         攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(pagecardnum(Index, 2))
+         攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) + Val(tmpcard.UpperNum)
+         攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) + Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a3a Then
-      atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a3a Then
+      atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) + Val(tmpcard.UpperNum)
    End If
-   If pagecardnum(Index, 1) = a4a Then
-      atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) + Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a4a Then
+      atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) + Val(tmpcard.UpperNum)
    End If
    '=================
    turnpageonin = 0
    card(Index).LocationType = 2
    '===================
-   目前數(5) = pagecardnum(Index, 7)
+   目前數(5) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(5), tmpcard)
    pageqlead(1) = Val(pageqlead(1)) + 1
    pageusglead = Val(pageusglead) - 1
-   pagecardnum(Index, 7) = Val(pageusleadmax(1)) + 1
    pageusleadmax(1) = Val(pageusleadmax(1)) + 1
    pageusqlead = Val(pageusqlead) + 1
    目前數(13) = 0
    '===================以下是出牌對齊
    目前數(3) = 0
-   戰鬥系統類.出牌順序計算_使用者_出牌
    使用者出牌_出牌對齊_靠左.Enabled = True
-    '============以下是技能檢查及啟動
-
    '=============以下是牌移動(出牌)(使用者)
     戰鬥系統類.座標計算_使用者出牌
     牌移動暫時變數(3) = Index
-    pagecardnum(Index, 9) = card(Index).Left  '指定目前Left(座標)
-    pagecardnum(Index, 10) = card(Index).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = card(Index).Left  '指定目前Left(座標)
+    tmpcard.XYTop = card(Index).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 5, 6
     目前數(15) = 0
     牌移動.Enabled = True
     一般系統類.音效播放 1
    '================以下是手牌對齊
    目前數(4) = 0
    目前數(21) = 1
-   戰鬥系統類.出牌順序計算_使用者_手牌
    使用者出牌_手牌對齊.Enabled = True
    '=================
-   If pagecardnum(Index, 1) = a6a Or pagecardnum(Index, 1) = a7a Or pagecardnum(Index, 1) = a8a Or pagecardnum(Index, 1) = a9a Then
+   If tmpcard.UpperType = a6a Or tmpcard.UpperType = a7a Or tmpcard.UpperType = a8a Or tmpcard.UpperType = a9a Then
         '===================以下是事件卡檢查及啟動
         對齊完成檢查.Enabled = False
         事件卡記錄暫時數(1, 3) = 1
-        Select Case pagecardnum(Index, 1)
+        Select Case tmpcard.UpperType
             Case a6a
-                事件卡.機會_使用者 Index, pagecardnum(Index, 2)
+                事件卡.機會_使用者 Index, tmpcard.UpperNum
             Case a7a
-                事件卡.詛咒術_使用者 Index, pagecardnum(Index, 2)
+                事件卡.詛咒術_使用者 Index, tmpcard.UpperNum
             Case a8a
-                事件卡.HP回復_使用者 Index, pagecardnum(Index, 2)
+                事件卡.HP回復_使用者 Index, tmpcard.UpperNum
             Case a9a
-                事件卡.聖水_使用者 Index, pagecardnum(Index, 2)
+                事件卡.聖水_使用者 Index, tmpcard.UpperNum
         End Select
         '===================
         Exit Sub
@@ -3260,48 +3249,47 @@ If pagecardnum(Index, 6) = 1 And (turnpageonin = 1 Or turnpageoninatking = 1) An
     End If
 End If
 '=================================================================
-If pagecardnum(Index, 6) = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) And pagecardnum(Index, 5) = 1 Then
-   pagecardnum(Index, 6) = 1
+If tmpcard.Location = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) And tmpcard.Owner = 1 Then
+   tmpcard.Location = 1
    '===================================
-   If pagecardnum(Index, 1) = a1a Then
-      atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a1a Then
+      atkingpagetot(1, 1) = Val(atkingpagetot(1, 1)) - Val(tmpcard.UpperNum)
       If turnatk = 1 And movecp = 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(tmpcard.UpperNum)
       End If
       If 攻擊防禦骰子總數(3) = atkus(角色人物對戰人數(1, 2)) Then
           攻擊防禦骰子總數(3) = 0
       End If
    End If
-   If pagecardnum(Index, 1) = a5a Then
-      atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a5a Then
+      atkingpagetot(1, 5) = Val(atkingpagetot(1, 5)) - Val(tmpcard.UpperNum)
       If turnatk = 1 And movecp > 1 Then
-          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(pagecardnum(Index, 2))
-          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(pagecardnum(Index, 2))
+          攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(tmpcard.UpperNum)
+          攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(tmpcard.UpperNum)
       End If
       If 攻擊防禦骰子總數(3) = atkus(角色人物對戰人數(1, 2)) Then
           攻擊防禦骰子總數(3) = 0
       End If
    End If
-   If pagecardnum(Index, 1) = a2a Then
-      atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a2a Then
+      atkingpagetot(1, 2) = Val(atkingpagetot(1, 2)) - Val(tmpcard.UpperNum)
       If turnatk = 2 Then
-         攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(pagecardnum(Index, 2))
-         攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(pagecardnum(Index, 2))
+         攻擊防禦骰子總數(1) = 攻擊防禦骰子總數(1) - Val(tmpcard.UpperNum)
+         攻擊防禦骰子總數(3) = 攻擊防禦骰子總數(3) - Val(tmpcard.UpperNum)
       End If
    End If
-   If pagecardnum(Index, 1) = a3a Then
-      atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a3a Then
+      atkingpagetot(1, 3) = Val(atkingpagetot(1, 3)) - Val(tmpcard.UpperNum)
    End If
-   If pagecardnum(Index, 1) = a4a Then
-      atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) - Val(pagecardnum(Index, 2))
+   If tmpcard.UpperType = a4a Then
+      atkingpagetot(1, 4) = Val(atkingpagetot(1, 4)) - Val(tmpcard.UpperNum)
    End If
    '=============
    turnpageonin = 0
    card(Index).LocationType = 1
    '================
-   目前數(5) = pagecardnum(Index, 7)
-   pagecardnum(Index, 7) = Val(pageusleadmax(0)) + 1
+   目前數(5) = Utils.IndexOf(戰鬥系統類.CardDeckCollection(6), tmpcard)
    pageusleadmax(0) = Val(pageusleadmax(0)) + 1
    pageqlead(1) = Val(pageqlead(1)) - 1
    pageusglead = Val(pageusglead) + 1
@@ -3309,15 +3297,15 @@ If pagecardnum(Index, 6) = 2 And (turnpageonin = 1 Or turnpageoninatking = 1) An
    '=============以下是牌移動(回牌)(使用者)
     戰鬥系統類.座標計算_使用者手牌
     牌移動暫時變數(3) = Index
-    pagecardnum(Index, 9) = card(Index).Left  '指定目前Left(座標)
-    pagecardnum(Index, 10) = card(Index).Top  '指定目前Top(座標)
+    tmpcard.XYLeft = card(Index).Left  '指定目前Left(座標)
+    tmpcard.XYTop = card(Index).Top  '指定目前Top(座標)
     戰鬥系統類.計算牌移動距離單位
+    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 6, 5
     目前數(15) = 0
     牌移動.Enabled = True
     一般系統類.音效播放 1
    '================以下是出牌對齊
    目前數(3) = 0
-   戰鬥系統類.出牌順序計算_使用者_出牌
    使用者出牌_出牌對齊_靠右.Enabled = True
    '=====================
    對齊完成檢查.Enabled = True
@@ -3368,9 +3356,10 @@ End Sub
 
 
 Private Sub card_CardMouseMove(Index As Integer)
-If pagecardnum(Index, 6) = 1 And pagecardnum(Index, 5) = 1 And turnpageonin = 1 Then
+
+If 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(Index)) = 5 And turnpageonin = 1 Then
     card(Index).CardEventType = True
-ElseIf pagecardnum(Index, 6) = 2 And pagecardnum(Index, 5) = 1 And turnpageonin = 1 Then
+ElseIf 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(Index)) = 6 And turnpageonin = 1 Then
     card(Index).CardEventType = True
 Else
     card(Index).CardEventType = False
@@ -3379,6 +3368,7 @@ End Sub
 
 Sub cnmove_Click()
 Dim i As Integer, med As Integer
+Dim tmpcard As clsActionCard
 '======================
 If 電腦方事件卡是否出完選擇數 = True Then
     GoTo 電腦方事件卡先出制度_執行階段結束
@@ -3430,13 +3420,14 @@ End If
 Dim movecomatk1, movecomatk2 As Integer
 戰鬥系統類.moveatkin
 
-For i = 1 To 公用牌實體卡片分隔紀錄數(1)
-   If Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 6)) = 1 And Val(pagecardnum(i, 11)) <> 1 Then
-       If pagecardnum(i, 1) = a1a Then movecomatk1 = Val(movecomatk1) + Val(pagecardnum(i, 2))
-       If pagecardnum(i, 1) = a5a Then movecomatk2 = Val(movecomatk2) + Val(pagecardnum(i, 2))
-       If pagecardnum(i, 3) = a1a Then movecomatk1 = Val(movecomatk1) + Val(pagecardnum(i, 4))
-       If pagecardnum(i, 3) = a5a Then movecomatk2 = Val(movecomatk2) + Val(pagecardnum(i, 4))
-   End If
+For i = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(i)
+    If tmpcard.ComMark <> 1 Then
+        If tmpcard.UpperType = a1a Then movecomatk1 = Val(movecomatk1) + Val(tmpcard.UpperNum)
+        If tmpcard.UpperType = a5a Then movecomatk2 = Val(movecomatk2) + Val(tmpcard.UpperNum)
+        If tmpcard.LowerType = a1a Then movecomatk1 = Val(movecomatk1) + Val(tmpcard.LowerNum)
+        If tmpcard.LowerType = a5a Then movecomatk2 = Val(movecomatk2) + Val(tmpcard.LowerNum)
+    End If
 Next
 '===========================================
 麻痺_電腦_執行階段2: '異常狀態-麻痺-電腦-程式跳入點(執行階段2)
@@ -4247,37 +4238,17 @@ End Sub
 
 
 Private Sub tr牌組_抽牌_使用者_Timer()
-Dim m As Integer '暫時變數
-Do
-    Randomize
-    m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
-    '===========
-    If BattleCardNum <= 0 Then
-        Exit Do
-    End If
-    If pagecardnum(m, 6) = 4 Then
-       tr牌組_抽牌_使用者.Enabled = False
-       戰鬥系統類.getpage 1, m
-       Exit Do
-    End If
-Loop
+tr牌組_抽牌_使用者.Enabled = False
+If BattleCardNum > 0 Then
+    戰鬥系統類.執行動作_抽牌_公用牌 1
+End If
 End Sub
 
 Private Sub tr牌組_抽牌_電腦_Timer()
-Dim m As Integer '暫時變數
-Do
-    Randomize
-    m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
-    '===========
-    If BattleCardNum <= 0 Then
-        Exit Do
-    End If
-    If pagecardnum(m, 6) = 4 Then
-       tr牌組_抽牌_電腦.Enabled = False
-       戰鬥系統類.getpage 2, m
-       Exit Do
-    End If
-Loop
+tr牌組_抽牌_電腦.Enabled = False
+If BattleCardNum > 0 Then
+    戰鬥系統類.執行動作_抽牌_公用牌 2
+End If
 End Sub
 
 Private Sub tr電腦牌_偷牌_Timer()
@@ -4598,72 +4569,83 @@ HP檢查階段數 = 2
 End Sub
 
 Sub 使用者出牌_AI出牌控制_Timer()
+Dim tmpcard As clsActionCard
 If turnpageonin = 1 And 牌移動.Enabled = False Then
-    If Val(pagecardnum(目前數(32), 11)) = 3 And Val(pagecardnum(目前數(32), 5)) = 1 And Val(pagecardnum(目前數(32), 6)) = 1 Then
-        FormMainMode.card_CardClick (目前數(32))
+    If 戰鬥系統類.CardDeckCollection(5).Count > 0 Then
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(目前數(32))
+        If tmpcard.ComMark = 3 Then
+            目前數(32) = 目前數(32) - 1
+            FormMainMode.card_CardClick tmpcard.Cardnum
+        End If
+        目前數(32) = 目前數(32) + 1
     End If
-    目前數(32) = 目前數(32) + 1
-    If 目前數(32) > 公用牌實體卡片分隔紀錄數(1) Then
+    If 目前數(32) > 戰鬥系統類.CardDeckCollection(5).Count Then
         使用者出牌_AI出牌控制.Enabled = False
-        等待時間佇列(2).Add 47
-        等待時間_2.Enabled = True
+        等待時間佇列(1).Add 37
+        等待時間.Enabled = True
     End If
 End If
 End Sub
 
 Sub 使用者出牌_AI出牌控制_事件卡_Timer()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
 If turnpageonin = 1 And 牌移動.Enabled = False Then
-    For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
-        If Val(pagecardnum(i, 5)) = 1 And Val(pagecardnum(i, 6)) = 1 Then
-            If pagecardnum(i, 1) = a6a Then
-                FormMainMode.card_CardClick (i)
-                Exit Sub
+    If 戰鬥系統類.CardDeckCollection(5).Count > 0 Then
+        For i = 1 To 戰鬥系統類.CardDeckCollection(5).Count
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(i)
+            If tmpcard.CardType = 2 Then
+                If tmpcard.UpperType = a6a Then
+                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    Exit Sub
+                End If
+                If tmpcard.UpperType = a7a And (turnatk = 1 Or turnatk = 2) Then
+                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    Exit Sub
+                End If
+                If tmpcard.UpperType = a8a Then
+                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    Exit Sub
+                End If
+                If tmpcard.UpperType = a9a Then
+                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    Exit Sub
+                End If
             End If
-            If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
-                FormMainMode.card_CardClick (i)
-                Exit Sub
-            End If
-            If pagecardnum(i, 1) = a8a Then
-                FormMainMode.card_CardClick (i)
-                Exit Sub
-            End If
-            If pagecardnum(i, 1) = a9a Then
-                FormMainMode.card_CardClick (i)
-                Exit Sub
-            End If
-        End If
-    Next
-    If i = 公用牌實體卡片分隔紀錄數(4) + 1 Then
-        使用者出牌_AI出牌控制_事件卡.Enabled = False
-        等待時間佇列(2).Add 46
-        等待時間_2.Enabled = True
+        Next
     End If
+    
+    使用者出牌_AI出牌控制_事件卡.Enabled = False
+    等待時間佇列(2).Add 46
+    等待時間_2.Enabled = True
 End If
 End Sub
 
 
 Private Sub 使用者出牌_手牌對齊_Timer()
 Dim i As Integer
-For i = 1 To Val(pageusglead)
-   If 出牌順序統計暫時變數(2, i, 1) > 目前數(5) Then
-      If 目前數(13) = 0 Then
-         If card(出牌順序統計暫時變數(2, i, 2)).Left = 2640 And card(出牌順序統計暫時變數(2, i, 2)).Top = 7980 Then  '指定第2列第1張牌
-              目前數(13) = 出牌順序統計暫時變數(2, i, 2)
-              pagecardnum(目前數(13), 9) = card(目前數(13)).Left  '指定目前Left(座標)
-              pagecardnum(目前數(13), 10) = card(目前數(13)).Top  '指定目前Top(座標)
-              '==========戰鬥系統類.計算牌移動距離單位
-             距離單位_收牌暫時數(1, 1) = (9840 - pagecardnum(目前數(13), 9)) \ 10 '計算Left
-             距離單位_收牌暫時數(1, 2) = -((pagecardnum(目前數(13), 10) - 6700) \ 10)  '計算Top
-          End If
-     End If
-     If 目前數(13) = 出牌順序統計暫時變數(2, i, 2) Then
-             card(目前數(13)).Left = card(目前數(13)).Left + 距離單位_收牌暫時數(1, 1)
-             card(目前數(13)).Top = card(目前數(13)).Top + 距離單位_收牌暫時數(1, 2)
-     Else
-             card(出牌順序統計暫時變數(2, i, 2)).Left = card(出牌順序統計暫時變數(2, i, 2)).Left - (900 / 10)
-     End If
+Dim tmpcard As clsActionCard
+
+For i = 1 To 戰鬥系統類.CardDeckCollection(5).Count
+    If i >= 目前數(5) Then
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(i)
+        If 目前數(13) = 0 Then
+            If card(tmpcard.Cardnum).Left = 2640 And card(tmpcard.Cardnum).Top = 7980 Then  '指定第2列第1張牌
+                目前數(13) = tmpcard.Cardnum
+                tmpcard.XYLeft = card(目前數(13)).Left  '指定目前Left(座標)
+                tmpcard.XYTop = card(目前數(13)).Top  '指定目前Top(座標)
+                '==========戰鬥系統類.計算牌移動距離單位
+                距離單位_收牌暫時數(1, 1) = (9840 - tmpcard.XYLeft) \ 10 '計算Left
+                距離單位_收牌暫時數(1, 2) = -((tmpcard.XYTop - 6700) \ 10)  '計算Top
+            End If
+        End If
+        If 目前數(13) = tmpcard.Cardnum Then
+           card(目前數(13)).Left = card(目前數(13)).Left + 距離單位_收牌暫時數(1, 1)
+           card(目前數(13)).Top = card(目前數(13)).Top + 距離單位_收牌暫時數(1, 2)
+        Else
+           card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (900 / 10)
+        End If
   End If
 Next
 目前數(4) = 目前數(4) + (900 / 10)
@@ -4697,13 +4679,16 @@ End Sub
 
 Private Sub 使用者出牌_出牌對齊_靠右_Timer()
 Dim i As Integer
-For i = 1 To pageusqlead
-   If 出牌順序統計暫時變數(1, i, 1) < 目前數(5) Then
-      card(出牌順序統計暫時變數(1, i, 2)).Left = card(出牌順序統計暫時變數(1, i, 2)).Left + (480 / 10)
-   End If
-   If 出牌順序統計暫時變數(1, i, 1) > 目前數(5) Then
-      card(出牌順序統計暫時變數(1, i, 2)).Left = card(出牌順序統計暫時變數(1, i, 2)).Left - (500 / 10)
-   End If
+Dim tmpcard As clsActionCard
+
+For i = 1 To 戰鬥系統類.CardDeckCollection(6).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(6)(i)
+    If i < 目前數(5) Then
+       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left + (480 / 10)
+    End If
+    If i >= 目前數(5) Then
+       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (500 / 10)
+    End If
 Next
 目前數(3) = 目前數(3) + (480 / 10)
 If 目前數(3) >= 480 Then
@@ -4713,8 +4698,11 @@ End Sub
 
 Private Sub 使用者出牌_出牌對齊_靠左_Timer()
 Dim i As Integer
-For i = 1 To (pageusqlead - 1)
-   card(出牌順序統計暫時變數(1, i, 2)).Left = card(出牌順序統計暫時變數(1, i, 2)).Left - (480 / 10)
+Dim tmpcard As clsActionCard
+
+For i = 1 To (戰鬥系統類.CardDeckCollection(6).Count - 1)
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(6)(i)
+    card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (480 / 10)
 Next
 目前數(3) = 目前數(3) + (480 / 10)
 If 目前數(3) >= 480 Then
@@ -4871,7 +4859,6 @@ Else
     目前數(6) = 0
     目前數(10) = 1
     階段狀態數 = 2
-    戰鬥系統類.出牌順序計算_電腦_出牌
     電腦出牌_亮牌.Enabled = True
 End If
 移動階段_階段初始.Enabled = False
@@ -4900,103 +4887,93 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
    FormMainMode.PEAFAnimateInterface.ZOrder
    牌移動.Enabled = False
    Select Case 目前數(15)
-      Case 1
-          發牌檢查.Enabled = True
-      Case 2
-          戰鬥系統類.出牌順序計算_電腦_手牌
-          目前數(8) = 0
-          電腦出牌_手牌對齊.Enabled = True
-      Case 3
+        Case 1
+            發牌檢查.Enabled = True
+        Case 2
+            目前數(8) = 0
+            電腦出牌_手牌對齊.Enabled = True
+        Case 3
             'Nothing
-      Case 4
-             card(目前數(20)).Visible = False
+        Case 4
+            card(目前數(20)).Visible = False
             目前數(4) = 0
             目前數(13) = 0
-            戰鬥系統類.出牌順序計算_使用者_手牌
             使用者出牌_手牌對齊.Enabled = True
-      Case 5
-           card(目前數(16)).Visible = False
-           戰鬥系統類.出牌順序計算_電腦_手牌
-          目前數(8) = 0
-          電腦出牌_手牌對齊.Enabled = True
-       Case 6
-          '===========事件卡執行_機會_使用者(階段2)
-          card(事件卡記錄暫時數(1, 4)).Visible = False
-          pagecardnum(事件卡記錄暫時數(1, 4), 6) = 3
-          等待時間佇列(2).Add 6
-          等待時間_2.Enabled = True
+        Case 5
+            card(目前數(16)).Visible = False
+            目前數(8) = 0
+            電腦出牌_手牌對齊.Enabled = True
+        Case 6
+            '===========事件卡執行_機會_使用者(階段2)
+            card(事件卡記錄暫時數(1, 4)).Visible = False
+            等待時間佇列(2).Add 6
+            等待時間_2.Enabled = True
         Case 7
-           '===========事件卡執行_機會_使用者(階段1)
-          等待時間佇列(2).Add 5
-          等待時間_2.Enabled = True
+             '===========事件卡執行_機會_使用者(階段1)
+            等待時間佇列(2).Add 5
+            等待時間_2.Enabled = True
         Case 8
-           '===========事件卡執行_機會_使用者(階段3)
-           事件卡記錄暫時數(1, 3) = 3
-           事件卡.機會_使用者 0, 0
+            '===========事件卡執行_機會_使用者(階段3)
+            事件卡記錄暫時數(1, 3) = 3
+            事件卡.機會_使用者 0, 0
         Case 9
-            '===========事件卡執行_機會_電腦(階段1)
-           等待時間佇列(2).Add 7
-           等待時間_2.Enabled = True
+             '===========事件卡執行_機會_電腦(階段1)
+            等待時間佇列(2).Add 7
+            等待時間_2.Enabled = True
         Case 10
-           '===========事件卡執行_機會_電腦(階段3)
-          card(事件卡記錄暫時數(2, 4)).Visible = False
-          pagecardnum(事件卡記錄暫時數(2, 4), 6) = 3
-          等待時間佇列(2).Add 8
-          等待時間_2.Enabled = True
+            '===========事件卡執行_機會_電腦(階段3)
+            card(事件卡記錄暫時數(2, 4)).Visible = False
+            等待時間佇列(2).Add 8
+            等待時間_2.Enabled = True
         Case 11
-           '===========事件卡執行_機會_電腦(階段4)
-           事件卡記錄暫時數(2, 3) = 4
-           事件卡.機會_電腦 0, 0
+            '===========事件卡執行_機會_電腦(階段4)
+            事件卡記錄暫時數(2, 3) = 4
+            事件卡.機會_電腦 0, 0
         Case 12
-           '===========事件卡執行_詛咒術_使用者(階段1)
-           等待時間佇列(2).Add 11
-           等待時間_2.Enabled = True
+            '===========事件卡執行_詛咒術_使用者(階段1)
+            等待時間佇列(2).Add 11
+            等待時間_2.Enabled = True
         Case 13
-           '===========事件卡執行_詛咒術_使用者(階段6)
-           card(事件卡記錄暫時數(1, 4)).Visible = False
-           pagecardnum(事件卡記錄暫時數(1, 4), 6) = 3
-           事件卡記錄暫時數(1, 3) = 6
-           事件卡.詛咒術_使用者 0, 0
+            '===========事件卡執行_詛咒術_使用者(階段6)
+            card(事件卡記錄暫時數(1, 4)).Visible = False
+            事件卡記錄暫時數(1, 3) = 6
+            事件卡.詛咒術_使用者 0, 0
         Case 14
-           '===========事件卡執行_詛咒術_電腦(階段1)
-           等待時間佇列(2).Add 13
-           等待時間_2.Enabled = True
+            '===========事件卡執行_詛咒術_電腦(階段1)
+            等待時間佇列(2).Add 13
+            等待時間_2.Enabled = True
         Case 15
-           '===========事件卡執行_詛咒術_電腦(階段5>6)
-           card(事件卡記錄暫時數(2, 4)).Visible = False
-           pagecardnum(事件卡記錄暫時數(2, 4), 6) = 3
-           事件卡記錄暫時數(2, 3) = 6
-           事件卡.詛咒術_電腦 0, 0
+            '===========事件卡執行_詛咒術_電腦(階段5>6)
+            card(事件卡記錄暫時數(2, 4)).Visible = False
+            事件卡記錄暫時數(2, 3) = 6
+            事件卡.詛咒術_電腦 0, 0
         Case 16
-           '===========事件卡執行_HP回復_使用者(階段1)
-           等待時間佇列(2).Add 16
-           等待時間_2.Enabled = True
-           turnpageonin = 0
-           FormMainMode.PEAFInterface.BnOKEnabled False
+            '===========事件卡執行_HP回復_使用者(階段1)
+            等待時間佇列(2).Add 16
+            等待時間_2.Enabled = True
+            turnpageonin = 0
+            FormMainMode.PEAFInterface.BnOKEnabled False
         Case 17
-           '===========事件卡執行_HP回復_使用者(階段4)
-           card(事件卡記錄暫時數(1, 4)).Visible = False
-           pagecardnum(事件卡記錄暫時數(1, 4), 6) = 3
-           事件卡記錄暫時數(1, 3) = 4
-           事件卡.HP回復_使用者 0, 0
+            '===========事件卡執行_HP回復_使用者(階段4)
+            card(事件卡記錄暫時數(1, 4)).Visible = False
+            事件卡記錄暫時數(1, 3) = 4
+            事件卡.HP回復_使用者 0, 0
         Case 18
-           '===========事件卡執行_HP回復_電腦(階段1)
-           等待時間佇列(2).Add 18
-           等待時間_2.Enabled = True
+            '===========事件卡執行_HP回復_電腦(階段1)
+            等待時間佇列(2).Add 18
+            等待時間_2.Enabled = True
         Case 19
-           '===========事件卡執行_HP回復_電腦(階段4>5)
-           card(事件卡記錄暫時數(2, 4)).Visible = False
-           pagecardnum(事件卡記錄暫時數(2, 4), 6) = 3
-           事件卡記錄暫時數(2, 3) = 5
-           事件卡.HP回復_電腦 0, 0
+            '===========事件卡執行_HP回復_電腦(階段4>5)
+            card(事件卡記錄暫時數(2, 4)).Visible = False
+            事件卡記錄暫時數(2, 3) = 5
+            事件卡.HP回復_電腦 0, 0
         Case 20
-           戰鬥系統類.出牌順序計算_使用者_手牌
-           目前數(4) = 0
-           目前數(13) = 0
-           使用者出牌_手牌對齊.Enabled = True
+            目前數(4) = 0
+            目前數(13) = 0
+            使用者出牌_手牌對齊.Enabled = True
         Case 21
             If 執行階段系統_搜尋正在執行之執行階段("AtkingDrawCards") <> 0 Then
-                vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingDrawCards")) = 1 '(階段1)
+                vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingDrawCards")) = 2 '(階段2)
             End If
         Case 22
            If 執行階段系統_搜尋正在執行之執行階段("AtkingGetUsedCards") <> 0 Then
@@ -5006,31 +4983,29 @@ If Abs(牌移動暫時變數(1) - card(牌移動暫時變數(3)).Left) <= 50 Or Abs(牌移動暫時
             If 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards") <> 0 Then
                 vbecommadnum(2, 執行階段系統_搜尋正在執行之執行階段("AtkingSeizeEnemyCards")) = 3 '(階段3)
             End If
-      Case 40
-          等待時間佇列(2).Add 37
-          等待時間_2.Enabled = True
-      Case 41
-           '===========事件卡執行_聖水_使用者(階段1)
-           等待時間佇列(2).Add 39
-           等待時間_2.Enabled = True
-           turnpageonin = 0
-           FormMainMode.PEAFInterface.BnOKEnabled False
-      Case 42
-           '===========事件卡執行_聖水_使用者(階段4>5)
-           card(事件卡記錄暫時數(1, 4)).Visible = False
-           pagecardnum(事件卡記錄暫時數(1, 4), 6) = 3
-           事件卡記錄暫時數(1, 3) = 4
-           事件卡.聖水_使用者 0, 0
-      Case 43
-           '===========事件卡執行_聖水_電腦(階段1)
-           等待時間佇列(2).Add 41
-           等待時間_2.Enabled = True
-      Case 44
-           '===========事件卡執行_聖水_電腦(階段4>5)
-           card(事件卡記錄暫時數(2, 4)).Visible = False
-           pagecardnum(事件卡記錄暫時數(2, 4), 6) = 3
-           事件卡記錄暫時數(2, 3) = 5
-           事件卡.聖水_電腦 0, 0
+        Case 40
+            等待時間佇列(2).Add 37
+            等待時間_2.Enabled = True
+        Case 41
+            '===========事件卡執行_聖水_使用者(階段1)
+            等待時間佇列(2).Add 39
+            等待時間_2.Enabled = True
+            turnpageonin = 0
+            FormMainMode.PEAFInterface.BnOKEnabled False
+        Case 42
+            '===========事件卡執行_聖水_使用者(階段4>5)
+            card(事件卡記錄暫時數(1, 4)).Visible = False
+            事件卡記錄暫時數(1, 3) = 4
+            事件卡.聖水_使用者 0, 0
+        Case 43
+            '===========事件卡執行_聖水_電腦(階段1)
+            等待時間佇列(2).Add 41
+            等待時間_2.Enabled = True
+        Case 44
+            '===========事件卡執行_聖水_電腦(階段4>5)
+            card(事件卡記錄暫時數(2, 4)).Visible = False
+            事件卡記錄暫時數(2, 3) = 5
+            事件卡.聖水_電腦 0, 0
    End Select
 End If
 End Sub
@@ -5038,78 +5013,60 @@ End Sub
 
 Private Sub 牌移動_收牌_Timer()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
 If 目前數(11) = pageqlead(目前數(10)) Then
-'   FormMainMode.wmpse1.Controls.stop
-'    FormMainMode.wmpse1.Controls.play
     戰鬥系統類.checkpage
-   牌移動_收牌.Enabled = False
-   目前數(10) = 目前數(10) + 1
-   收牌階段_計算.Enabled = True
-   Exit Sub
+    牌移動_收牌.Enabled = False
+    目前數(10) = 目前數(10) + 1
+    收牌階段_計算.Enabled = True
+    Exit Sub
 End If
 For i = 1 + 目前數(11) To pageqlead(目前數(10)) - 目前數(12)
-     If Abs(240 - card(距離單位_收牌暫時數(i, 3)).Left) <= 10 Or Abs(960 - card(距離單位_收牌暫時數(i, 3)).Top) <= 10 Then
-         card(距離單位_收牌暫時數(i, 3)).Left = 240
-         card(距離單位_收牌暫時數(i, 3)).Top = 960
-'         MsgBox "收牌測試"
-         card(距離單位_收牌暫時數(i, 3)).Visible = False
-         pagecardnum(距離單位_收牌暫時數(i, 3), 6) = 3
-         目前數(11) = 目前數(11) + 1
-'         FormMainMode.wmpse1.Controls.stop
-'         FormMainMode.wmpse1.Controls.play
-     End If
-     card(距離單位_收牌暫時數(i, 3)).Left = card(距離單位_收牌暫時數(i, 3)).Left + 距離單位_收牌暫時數(i, 1)
-     card(距離單位_收牌暫時數(i, 3)).Top = card(距離單位_收牌暫時數(i, 3)).Top + 距離單位_收牌暫時數(i, 2)
-     If 目前數(12) > 0 Then
-         目前數(12) = 目前數(12) - 1
-     End If
+    If Abs(240 - card(距離單位_收牌暫時數(i, 3)).Left) <= 10 Or Abs(960 - card(距離單位_收牌暫時數(i, 3)).Top) <= 10 Then
+        card(距離單位_收牌暫時數(i, 3)).Left = 240
+        card(距離單位_收牌暫時數(i, 3)).Top = 960
+        card(距離單位_收牌暫時數(i, 3)).Visible = False
+        
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(距離單位_收牌暫時數(i, 3))))(CStr(距離單位_收牌暫時數(i, 3)))
+        tmpcard.Location = 3
+        Select Case tmpcard.CardType
+            Case 1 '公用牌
+                戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(距離單位_收牌暫時數(i, 3))), 2
+            Case 2 '事件卡
+                戰鬥系統類.卡牌牌堆集合更換 tmpcard, 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(CStr(距離單位_收牌暫時數(i, 3))), 9
+        End Select
+        
+        目前數(11) = 目前數(11) + 1
+    End If
+    card(距離單位_收牌暫時數(i, 3)).Left = card(距離單位_收牌暫時數(i, 3)).Left + 距離單位_收牌暫時數(i, 1)
+    card(距離單位_收牌暫時數(i, 3)).Top = card(距離單位_收牌暫時數(i, 3)).Top + 距離單位_收牌暫時數(i, 2)
+    If 目前數(12) > 0 Then
+        目前數(12) = 目前數(12) - 1
+    End If
 Next
 
 End Sub
 
 Private Sub 發牌_使用者階段_Timer()
-Dim m As Integer '暫時變數
-'-----------使用者階段
-'Do While 目前數(1) > Val(pageusglead) And 目前數(1) <= 牌總階段數(1)
-Do While Val(pageusglead) < 牌總階段數(1)
-          Randomize
-          m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
-          '===========
-          If pagecardnum(m, 6) = 4 Then
-             戰鬥系統類.getpage 1, m
-             目前數(2) = 2
-             發牌_使用者階段.Enabled = False
-             Exit Sub
-          End If
-Loop
-'If 目前數(1) > 牌總階段數(1) Or 目前數(1) <= Val(pageusglead) Then
-If Val(pageusglead) >= 牌總階段數(1) Then
-   發牌_使用者階段.Enabled = False
-'   發牌_電腦階段.Enabled = True
-   目前數(2) = 2
-   發牌檢查.Enabled = True
+發牌_使用者階段.Enabled = False
+目前數(2) = 2
+
+If Val(pageusglead) < 牌總階段數(1) Then
+    戰鬥系統類.執行動作_抽牌_公用牌 1
+Else
+    發牌檢查.Enabled = True
 End If
 End Sub
 
 Private Sub 發牌_電腦階段_Timer()
-'-----------電腦階段
-Dim m As Integer '暫時變數
-Do While Val(pagecomglead) < 牌總階段數(2)
-          Randomize
-          m = Int(Rnd() * Val(公用牌各牌類型紀錄數(0, 2))) + 1
-          '===========
-          If pagecardnum(m, 6) = 4 Then
-             戰鬥系統類.getpage 2, m
-             目前數(2) = 3
-             發牌_電腦階段.Enabled = False
-             Exit Sub
-          End If
-Loop
-If Val(pagecomglead) >= 牌總階段數(2) Then
-   目前數(2) = 3
-   發牌_電腦階段.Enabled = False
-   發牌檢查.Enabled = True
+發牌_電腦階段.Enabled = False
+目前數(2) = 3
+
+If Val(pagecomglead) < 牌總階段數(2) Then
+    戰鬥系統類.執行動作_抽牌_公用牌 2
+Else
+    發牌檢查.Enabled = True
 End If
 End Sub
 
@@ -5135,7 +5092,6 @@ End If
 End Sub
 
 Private Sub 等待時間_2_Timer()
-Dim ckl As Integer
 Select Case 目前數(14)
    Case 0
       目前數(14) = 目前數(14) + 1
@@ -5145,7 +5101,7 @@ Select Case 目前數(14)
           等待時間_2.Enabled = False
       End If
       If 等待時間佇列(2).Count = 0 Then Exit Sub
-      Select Case 等待時間佇列(2).Item(1)
+      Select Case 等待時間佇列(2).item(1)
           Case 1
               '========開始初始階段1
                 顯示列1.Visible = True
@@ -5306,17 +5262,6 @@ Select Case 目前數(14)
                 智慧型AI系統類.智慧型AI系統_使用者出牌階段判斷反轉
                 目前數(32) = 1
                 FormMainMode.使用者出牌_AI出牌控制.Enabled = True
-            Case 47
-                '=============使用者方選擇行動
-                If turnatk = 3 Then
-                    顯示列1.移動階段選擇值 = 目前數(33)
-                End If
-                '====================
-                FormMainMode.PEAFInterface.BnOKStartListen
-                FormMainMode.PEAFInterface_BnOKClick
-                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
-                    FormMainMode.card(ckl).CardEnabledType = True
-                Next
             Case 48
                 執行動作_電腦方各階段出牌完畢後行動 turnatk
       End Select
@@ -5326,54 +5271,54 @@ End Sub
 
 Private Sub 等待時間_Timer()
 Select Case 目前數(22)
-   Case 0
-      目前數(22) = 目前數(22) + 1
-   Case 1
-      If 等待時間佇列(1).Count <= 1 Then
-          目前數(22) = 0
-          等待時間.Enabled = False
-      End If
-      If 等待時間佇列(1).Count = 0 Then Exit Sub
-      Select Case 等待時間佇列(1).Item(1)
-          Case 2   '========開始初始階段2
-             等待時間佇列(1).Add 5
-             等待時間.Enabled = True
-          Case 3
-            等待時間佇列(1).Add 22
-            等待時間.Enabled = True
-          Case 4
+    Case 0
+       目前數(22) = 目前數(22) + 1
+    Case 1
+        If 等待時間佇列(1).Count <= 1 Then
+            目前數(22) = 0
+            等待時間.Enabled = False
+        End If
+        If 等待時間佇列(1).Count = 0 Then Exit Sub
+        Select Case 等待時間佇列(1).item(1)
+            Case 2   '========開始初始階段2
+                等待時間佇列(1).Add 5
+                等待時間.Enabled = True
+            Case 3
+                等待時間佇列(1).Add 22
+                等待時間.Enabled = True
+            Case 4
                 戰鬥系統類.廣播訊息 "現在的距離" & movecp & "。"
                 交換角色紀錄暫時變數(4) = 1
                 戰鬥系統類.執行動作_移動階段選擇執行
-           Case 5
-              cn1_Click
-           Case 6
+            Case 5
+                cn1_Click
+            Case 6
                 Erase Vss_EventPlayerAllActionOffNum
                 '===========================執行階段插入點(1)
                 執行階段系統類.執行階段系統總主要程序_執行階段開始 1, 1, 1
                 '============================
                 cnmove_Click
-           Case 7
-              等待時間佇列(2).Add 2
-              等待時間_2.Enabled = True
-           Case 8
-              等待時間佇列(2).Add 3
-              等待時間_2.Enabled = True
-           Case 9
-               cn2_Click
-               顯示列1.Visible = True
-               戰鬥系統類.時間軸_顯示
-           Case 10
-               電腦方事件卡是否出完選擇數 = False
-               cn3_Click
-               顯示列1.Visible = True
-               戰鬥系統類.時間軸_顯示
-           Case 11
-              戰鬥系統類.時間軸_隱藏
-              顯示列1.Visible = False
-              等待時間佇列(1).Add 12
-              等待時間.Enabled = True
-           Case 12
+            Case 7
+                等待時間佇列(2).Add 2
+                等待時間_2.Enabled = True
+            Case 8
+                等待時間佇列(2).Add 3
+                等待時間_2.Enabled = True
+            Case 9
+                cn2_Click
+                顯示列1.Visible = True
+                戰鬥系統類.時間軸_顯示
+            Case 10
+                電腦方事件卡是否出完選擇數 = False
+                cn3_Click
+                顯示列1.Visible = True
+                戰鬥系統類.時間軸_顯示
+            Case 11
+                戰鬥系統類.時間軸_隱藏
+                顯示列1.Visible = False
+                等待時間佇列(1).Add 12
+                等待時間.Enabled = True
+            Case 12
                 If Val(擲骰表單溝通暫時變數(4)) = 1 Then
                    Select Case Val(擲骰表單溝通暫時變數(1))
                     Case 1
@@ -5407,33 +5352,33 @@ Select Case 目前數(22)
                 戰鬥系統類.擲骰表單顯示
                 等待時間佇列(2).Add 25
                 FormMainMode.等待時間_2.Enabled = True
-           Case 13
-               等待時間佇列(1).Add 9
-               等待時間.Enabled = True
-           Case 14
-               等待時間佇列(1).Add 10
-               等待時間.Enabled = True
-           Case 15
-               cn4_Click
-           Case 17
-              '===========================執行階段插入點(9)
-               執行階段系統類.執行階段系統總主要程序_執行階段開始 moveturn, 9, 1
-              '============================
-              Select Case moveturn
+            Case 13
+                等待時間佇列(1).Add 9
+                等待時間.Enabled = True
+            Case 14
+                等待時間佇列(1).Add 10
+                等待時間.Enabled = True
+            Case 15
+                cn4_Click
+            Case 17
+                '===========================執行階段插入點(9)
+                 執行階段系統類.執行階段系統總主要程序_執行階段開始 moveturn, 9, 1
+                '============================
+                Select Case moveturn
                   Case 1
                      cn2_Click
                   Case 2
                      電腦方事件卡是否出完選擇數 = False
                      cn3_Click
                 End Select
-           Case 18
-                戰鬥系統類.執行動作_交換人物角色_電腦_初始
-           Case 19
-                戰鬥系統類.執行動作_交換人物角色_電腦_交換
-           Case 20
-                戰鬥系統類.時間軸_隱藏
-                顯示列1.Visible = False
-                cn4_Click
+            Case 18
+                 戰鬥系統類.執行動作_交換人物角色_電腦_初始
+            Case 19
+                 戰鬥系統類.執行動作_交換人物角色_電腦_交換
+            Case 20
+                 戰鬥系統類.時間軸_隱藏
+                 顯示列1.Visible = False
+                 cn4_Click
             Case 21
                 交換角色紀錄暫時變數(4) = 2
                 執行動作_人物死亡交換階段選擇執行
@@ -5446,98 +5391,71 @@ Select Case 目前數(22)
                 電腦出牌.Enabled = True
             Case 36
                 FormMainMode.trend.Enabled = True
-      End Select
-      等待時間佇列(1).Remove 1
+            Case 37
+                Dim ckl As Integer
+                '=============使用者方選擇行動
+                If turnatk = 3 Then
+                    顯示列1.移動階段選擇值 = 目前數(33)
+                End If
+                '====================
+                FormMainMode.PEAFInterface.BnOKStartListen
+                FormMainMode.PEAFInterface_BnOKClick
+                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                    FormMainMode.card(ckl).CardEnabledType = True
+                Next
+        End Select
+        等待時間佇列(1).Remove 1
 End Select
 End Sub
 
 Private Sub 電腦出牌_Timer()
 Dim i As Integer
-Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 
 電腦出牌.Enabled = False
 If 電腦方事件卡是否出完選擇數 = False Then
      '=========================專屬事件卡出牌階段
-    For i = 公用牌實體卡片分隔紀錄數(2) + 1 To 公用牌實體卡片分隔紀錄數(4)
-        If Val(pagecardnum(i, 5)) = 2 And Val(pagecardnum(i, 6)) = 1 Then
-            If pagecardnum(i, 1) = a6a Then
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+    For i = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(i)
+        If tmpcard.CardType = 2 Then
+            If tmpcard.UpperType = a6a Then
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
-            ElseIf pagecardnum(i, 3) = a6a Then
-                cspce = pagecardnum(i, 1)
-                cspme = pagecardnum(i, 2)
-                pagecardnum(i, 1) = pagecardnum(i, 3)
-                pagecardnum(i, 2) = pagecardnum(i, 4)
-                pagecardnum(i, 3) = cspce
-                pagecardnum(i, 4) = cspme
-                If pageonin(i) = 2 Then
-                   pageonin(i) = 1
-                Else
-                   pageonin(i) = 2
-                End If
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            ElseIf tmpcard.LowerType = a6a Then
+                Call tmpcard.Reverse
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
             End If
-            If pagecardnum(i, 1) = a7a And (turnatk = 1 Or turnatk = 2) Then
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            If tmpcard.UpperType = a7a And (turnatk = 1 Or turnatk = 2) Then
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
-            ElseIf pagecardnum(i, 3) = a7a And (turnatk = 1 Or turnatk = 2) Then
-                cspce = pagecardnum(i, 1)
-                cspme = pagecardnum(i, 2)
-                pagecardnum(i, 1) = pagecardnum(i, 3)
-                pagecardnum(i, 2) = pagecardnum(i, 4)
-                pagecardnum(i, 3) = cspce
-                pagecardnum(i, 4) = cspme
-                If pageonin(i) = 2 Then
-                   pageonin(i) = 1
-                Else
-                   pageonin(i) = 2
-                End If
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            ElseIf tmpcard.LowerType = a7a And (turnatk = 1 Or turnatk = 2) Then
+                Call tmpcard.Reverse
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
             End If
-            If pagecardnum(i, 1) = a8a Then
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            If tmpcard.UpperType = a8a Then
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
-            ElseIf pagecardnum(i, 3) = a8a Then
-                cspce = pagecardnum(i, 1)
-                cspme = pagecardnum(i, 2)
-                pagecardnum(i, 1) = pagecardnum(i, 3)
-                pagecardnum(i, 2) = pagecardnum(i, 4)
-                pagecardnum(i, 3) = cspce
-                pagecardnum(i, 4) = cspme
-                If pageonin(i) = 2 Then
-                   pageonin(i) = 1
-                Else
-                   pageonin(i) = 2
-                End If
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            ElseIf tmpcard.LowerType = a8a Then
+                Call tmpcard.Reverse
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
             End If
-            If pagecardnum(i, 1) = a9a Then
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            If tmpcard.UpperType = a9a Then
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
-            ElseIf pagecardnum(i, 3) = a9a Then
-                cspce = pagecardnum(i, 1)
-                cspme = pagecardnum(i, 2)
-                pagecardnum(i, 1) = pagecardnum(i, 3)
-                pagecardnum(i, 2) = pagecardnum(i, 4)
-                pagecardnum(i, 3) = cspce
-                pagecardnum(i, 4) = cspme
-                If pageonin(i) = 2 Then
-                   pageonin(i) = 1
-                Else
-                   pageonin(i) = 2
-                End If
-                pagecardnum(i, 11) = 1
-                電腦牌_模擬按牌 i
+            ElseIf tmpcard.LowerType = a9a Then
+                Call tmpcard.Reverse
+                tmpcard.ComMark = 1
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
                 Exit Sub
             End If
         End If
@@ -5556,47 +5474,49 @@ If 電腦方事件卡是否出完選擇數 = False Then
 End If
 '===========================================
 If 電腦方事件卡是否出完選擇數 = True Then
-        Do
-            目前數(6) = 目前數(6) + 1
-            If 目前數(6) > 公用牌實體卡片分隔紀錄數(4) Then
-                電腦方事件卡是否出完選擇數 = False
-                Select Case turnatk
-                   Case 1
-                      目前數(6) = 0
-                      目前數(10) = 1
-                      戰鬥系統類.時間軸_停止
-                      戰鬥系統類.出牌順序計算_電腦_出牌
-                      電腦出牌_亮牌.Enabled = True
-                      trgoi2_Timer
-                   Case 2
-                      目前數(6) = 0
-                      目前數(10) = 1
-                      戰鬥系統類.時間軸_停止
-                      戰鬥系統類.出牌順序計算_電腦_出牌
-                      電腦出牌_亮牌.Enabled = True
-                      trgoi2_Timer
-                      trgoi1_Timer
-                   Case 3
-                        執行動作_電腦方各階段出牌完畢後行動 3
-                End Select
-                Exit Sub
-            End If
-            If Val(pagecardnum(目前數(6), 5)) = 2 And Val(pagecardnum(目前數(6), 6)) = 1 And Val(pagecardnum(目前數(6), 11)) = 1 Then
-               電腦牌_模擬按牌 目前數(6)
-               Exit Sub
-            End If
-        Loop
+    Do
+        目前數(6) = 目前數(6) + 1
+        If 目前數(6) > 戰鬥系統類.CardDeckCollection(7).Count Then
+            電腦方事件卡是否出完選擇數 = False
+            Select Case turnatk
+               Case 1
+                  目前數(6) = 0
+                  目前數(10) = 1
+                  戰鬥系統類.時間軸_停止
+                  電腦出牌_亮牌.Enabled = True
+                  trgoi2_Timer
+               Case 2
+                  目前數(6) = 0
+                  目前數(10) = 1
+                  戰鬥系統類.時間軸_停止
+                  電腦出牌_亮牌.Enabled = True
+                  trgoi2_Timer
+                  trgoi1_Timer
+               Case 3
+                    執行動作_電腦方各階段出牌完畢後行動 3
+            End Select
+            Exit Sub
+        End If
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(目前數(6))
+        If tmpcard.ComMark = 1 Then
+            目前數(6) = 目前數(6) - 1
+            戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+            Exit Sub
+        End If
+    Loop
 End If
 End Sub
 
 Private Sub 電腦出牌_手牌對齊_Timer()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
 If 目前數(8) < 240 Then
-    For i = 1 To Val(pagecomglead)
-       If 出牌順序統計暫時變數(4, i, 1) > 目前數(9) Then
-           card(出牌順序統計暫時變數(4, i, 2)).Left = card(出牌順序統計暫時變數(4, i, 2)).Left + (240 / 10)
-       End If
+    For i = 1 To 戰鬥系統類.CardDeckCollection(7).Count
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(i)
+        If i >= 目前數(9) Then
+            card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left + (240 / 10)
+        End If
     Next
     目前數(8) = 目前數(8) + (240 / 10)
 Else
@@ -5634,14 +5554,16 @@ End Sub
 
 Private Sub 電腦出牌_出牌對齊_靠右_Timer()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
-For i = 1 To Val(pagecomqlead)
-   If 出牌順序統計暫時變數(3, i, 1) < 目前數(9) Then
-      card(出牌順序統計暫時變數(3, i, 2)).Left = card(出牌順序統計暫時變數(3, i, 2)).Left + (480 / 10)
-   End If
-   If 出牌順序統計暫時變數(3, i, 1) > 目前數(9) Then
-      card(出牌順序統計暫時變數(3, i, 2)).Left = card(出牌順序統計暫時變數(3, i, 2)).Left - (500 / 10)
-   End If
+For i = 1 To 戰鬥系統類.CardDeckCollection(8).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(i)
+    If i < 目前數(9) Then
+       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left + (480 / 10)
+    End If
+    If i >= 目前數(9) Then
+       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (500 / 10)
+    End If
 Next
 目前數(7) = 目前數(7) + (480 / 10)
 If 目前數(7) >= 480 Then
@@ -5651,22 +5573,24 @@ End Sub
 
 Private Sub 電腦出牌_出牌對齊_靠左_Timer()
 Dim i As Integer
+Dim tmpcard As clsActionCard
 
-For i = 1 To (pageqlead(2) - 1)
-   card(出牌順序統計暫時變數(3, i, 2)).Left = card(出牌順序統計暫時變數(3, i, 2)).Left - (480 / 10)
+For i = 1 To (戰鬥系統類.CardDeckCollection(8).Count - 1)
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(i)
+    card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (480 / 10)
 Next
 目前數(7) = 目前數(7) + (480 / 10)
 If 目前數(7) >= 480 Then
     電腦出牌_出牌對齊_靠左.Enabled = False
-    戰鬥系統類.出牌順序計算_電腦_手牌
-    電腦出牌_手牌對齊.Enabled = True
 End If
 End Sub
 
 
 Private Sub 電腦出牌_亮牌_Timer()
+Dim tmpcard As clsActionCard
+
 目前數(6) = 目前數(6) + 1
-If 目前數(6) > pageqlead(2) Then
+If 目前數(6) > 戰鬥系統類.CardDeckCollection(8).Count Then
     電腦出牌_亮牌.Enabled = False
     Select Case turnatk
        Case 1, 2
@@ -5677,11 +5601,10 @@ If 目前數(6) > pageqlead(2) Then
     End Select
     Exit Sub
 End If
-    card(出牌順序統計暫時變數(3, 目前數(6), 2)).Width = 810
-    card(出牌順序統計暫時變數(3, 目前數(6), 2)).Height = 1260
-    card(出牌順序統計暫時變數(3, 目前數(6), 2)).cardImage = app_path & "card\" & pagecardnum(出牌順序統計暫時變數(3, 目前數(6), 2), 8) & ".png"
-    card(出牌順序統計暫時變數(3, 目前數(6), 2)).CardRotationType = pageonin(出牌順序統計暫時變數(3, 目前數(6), 2))
-    一般系統類.音效播放 4
+
+Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(目前數(6))
+戰鬥系統類.公用牌回復正面 tmpcard.Cardnum
+一般系統類.音效播放 4
 End Sub
 
 Private Sub 對齊完成檢查_Timer()

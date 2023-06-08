@@ -10,7 +10,7 @@ Public cardAInumFinal2() As Integer '排列組合計算最終期望值-排列後
 Public cardAInumcase(1 To 5, 1 To 2) As Integer '公用牌計算統計資料(1.ATK-劍/2.DEF/3.MOV/4.SPE/5.ATK-槍,1.組合下最低數值/2.組合下最高數值)
 Public cardAInumcaseperson() As Integer '公用牌計算統計暫時資料-個別組合
 Public cardAInumuscom As Integer '手牌擁有者牌數記錄暫時變數
-Public cardAITotalNUM As Integer '排列組合計算總共組合數
+Public cardAITotalNUM As Long '排列組合計算總共組合數
 Public cardAInumcasepersonTER() As Integer '公用牌計算統計暫時資料-個別組合-個別卡面數值計數統計
 Public cardAInumselect1 As Integer  '公用牌計算統計比序暫時變數-目前最高期望值
 Public cardAInumselect4 As Integer  '公用牌計算統計比序暫時變數-目前最高個別加總期望值
@@ -46,21 +46,23 @@ ReDim cardAInumFinal2(1 To cardAITotalNUM, 1 To 4) As Integer
 End Sub
 Sub 智慧型AI系統計算_一階段_取得牌面資料(ByVal 是否一般 As Boolean, ByVal uscom As Integer)
 Dim i As Integer, w As Integer '暫時變數
+Dim tmpcard As clsActionCard
+
 If 是否一般 = True Then
         '=========擷取目前牌面資料
         Select Case uscom
             Case 1
-                戰鬥系統類.出牌順序計算_使用者_手牌
+                w = 5
             Case 2
-                戰鬥系統類.出牌順序計算_電腦_手牌
+                w = 7
         End Select
-        w = 2 * uscom '(2-使用者手牌/4-電腦手牌)
-        For i = 1 To pageglead(uscom)
-            cardcountAInum(i, 5) = 出牌順序統計暫時變數(w, i, 2)
-            cardcountAInum(i, 1) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 1)
-            cardcountAInum(i, 2) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 2)
-            cardcountAInum(i, 3) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 3)
-            cardcountAInum(i, 4) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 4)
+        For i = 1 To 戰鬥系統類.CardDeckCollection(w).Count
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(w)(i)
+            cardcountAInum(i, 5) = tmpcard.Cardnum
+            cardcountAInum(i, 1) = tmpcard.UpperType
+            cardcountAInum(i, 2) = tmpcard.UpperNum
+            cardcountAInum(i, 3) = tmpcard.LowerType
+            cardcountAInum(i, 4) = tmpcard.LowerNum
         Next
 End If
 '======================
@@ -153,7 +155,7 @@ Sub 排列組合計算(ByVal qnum As Integer)
 ReDim cardAIn(1 To Val(qnum))
 Erase cardAInumnm
 cardAInumans = ""
-Dim s As Integer, i As Integer
+Dim s As Long, i As Integer
 
 For i = 1 To qnum   '重設區塊數值
     cardAIn(i) = 0
@@ -495,7 +497,7 @@ End If
 End Sub
 Sub 智慧型AI系統計算_最後階段_實行選牌(ByVal choose As Integer, ByVal uscom As Integer)
 Dim wer As Integer, i As Integer '暫時變數
-Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 
 If choose = 1 Then
     wer = 0
@@ -503,42 +505,30 @@ Else
     wer = 1
 End If
 '=================
-Dim pu As Integer '暫時變數
-'=====
 If cardAInumchoose = -10 Then  '==沒有任何組合符合出牌條件
     Exit Sub
 End If
 '=======================如組合符合出牌條件的話
 Select Case uscom
-     Case 1 '==使用者方
-            For i = 1 To UBound(cardcountAInum, 1)
-                    pu = cardcountAInum(i, 5)
-                    If Mid(cardAInumnm(cardAInumchoose - 1), i, 1) = 1 And cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
-                        pagecardnum(pu, 11) = 4
-                    ElseIf cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
-                        pagecardnum(pu, 11) = 3
-                    End If
-            Next
-     Case 2 '==電腦方
-            For i = 1 To UBound(cardcountAInum, 1)
-                    pu = cardcountAInum(i, 5)
-                    If Mid(cardAInumnm(cardAInumchoose - 1), i, 1) = 1 And cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
-                        cspce = pagecardnum(pu, 1)
-                        cspme = pagecardnum(pu, 2)
-                        pagecardnum(pu, 1) = pagecardnum(pu, 3)
-                        pagecardnum(pu, 2) = pagecardnum(pu, 4)
-                        pagecardnum(pu, 3) = cspce
-                        pagecardnum(pu, 4) = cspme
-                        If pageonin(pu) = 2 Then
-                           pageonin(pu) = 1
-                        Else
-                           pageonin(pu) = 2
-                        End If
-                    End If
-                    If cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
-                        pagecardnum(pu, 11) = 1
-                    End If
-            Next
+    Case 1 '==使用者方
+        For i = 1 To UBound(cardcountAInum, 1)
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(CStr(cardcountAInum(i, 5)))
+            If Mid(cardAInumnm(cardAInumchoose - 1), i, 1) = 1 And cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
+                tmpcard.ComMark = 4
+            ElseIf cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
+                tmpcard.ComMark = 3
+            End If
+        Next
+    Case 2 '==電腦方
+        For i = 1 To UBound(cardcountAInum, 1)
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(CStr(cardcountAInum(i, 5)))
+            If Mid(cardAInumnm(cardAInumchoose - 1), i, 1) = 1 And cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
+                Call tmpcard.Reverse
+            End If
+            If cardAInumcaseperson(cardAInumchoose, 2, i) >= wer Then
+                tmpcard.ComMark = 1
+            End If
+        Next
 End Select
 End Sub
 Sub 智慧型AI系統計算_暫時匯出(ByVal uscom As Integer)
@@ -624,7 +614,7 @@ Function 階層數_取C(ByVal c1 As Integer, ByVal c2 As Integer) As Single
 
 End Function
 Sub 智慧型AI系統計算_移動階段續_取得計算之排列組合(ByVal n1 As Integer, ByVal n2 As Integer)
-Dim wtstr As String, wtall As Integer, wtpnum() As String, wtn As Integer, i As Integer, j As Integer
+Dim wtstr As String, wtall As Integer, wtpnum() As String, wtn As Integer, i As Long, j As Integer
 '===================
 智慧型AI系統類.排列組合計算 n1
 wtall = 智慧型AI系統類.階層數_取C(n1, n2)
@@ -719,7 +709,7 @@ Dim weru As Integer, wernum As Integer, werqr As String
 Dim werstru As String
 Dim werpstr() As String
 Dim wermovnm As Integer, wermovynm As Integer
-Dim i As Integer, k As Integer
+Dim i As Long, k As Integer
 '============進行估計之移動牌排列組合計算
 For i = 1 To Val(cardAInumMOVnmtot(0, 3))
        智慧型AI系統計算_移動階段續_取得計算之排列組合 Val(cardAInumMOVnmtot(0, 3)), i
@@ -798,7 +788,7 @@ Next
 End Sub
 Sub 智慧型AI系統計算_移動階段續_正向面_三階段_進行估計期望值計算(ByVal uscom As Integer, ByVal name As String, ByVal choose As Integer, ByVal movecpre As Integer, ByVal pagenumber As Integer)
 Dim weru As Integer, wertp As Integer, movecpren As Integer, turnm As Integer, werucount As Boolean
-Dim i As Integer, k As Integer, wp As Integer, q As Integer, wds As Integer
+Dim i As Long, k As Integer, wp As Integer, q As Integer, wds As Integer
 
 For i = 1 To 2 ^ Val(cardAInumMOVnmtot(0, 3))
     For k = 1 To 2
@@ -884,7 +874,7 @@ Sub 智慧型AI系統計算_移動階段續_正向面_四階段_統計估計期望值及判斷(ByVal uscom A
 Dim atk1max As Integer, atk2max As Integer, defmax As Integer, chemax As Integer, chestr As String
 Dim wtmovnum As Integer
 Dim buffobj As clsStatus
-Dim i As Integer
+Dim i As Long
 '==================篩選是否符合移動量
 For Each buffobj In 人物異常狀態列表(uscom, 角色人物對戰人數(uscom, 2))
     If buffobj.Identifier = "BUFFN00302" Then
@@ -943,7 +933,7 @@ Dim werstr As String, werg() As String, werg2() As String, werg3() As String
 Dim werpagenum As Integer, werpgnumstr As String
 Dim wermovmaxnum As Integer, wermvaxstr As String
 Dim werrndnum As Integer, werche As Integer
-Dim i As Integer, k As Integer
+Dim i As Long, k As Integer
 '==========================
 If movche = 1 Then werche = 3 Else werche = 4
 '==========================
@@ -998,63 +988,54 @@ Else
 End If
 End Sub
 Sub 智慧型AI系統計算_移動階段續_正向面_五階段_實行選牌(ByVal choose As Integer, ByVal uscom As Integer, ByVal pagenumber As Integer)
-Dim pu As Integer, i As Integer '暫時變數
+Dim i As Integer '暫時變數
 Dim cspce As String, cspme As String
+Dim tmpcard As clsActionCard
 '=======================如組合符合出牌條件的話
 Select Case uscom
-     Case 1 '==使用者方
-            For i = 1 To pagenumber
-                    pu = cardcountAInumMOV(i, 5)
-                    If Mid(cardAInumMOVFinal(1), i, 1) = 1 Then
-'                            If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 And Val(cardAInumMOVmain(2, i)) >= wer Then
-                            If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 Then
-                                pagecardnum(pu, 11) = 4
-'                            ElseIf Val(cardAInumMOVmain(2, i)) >= wer Then
-                            Else
-                                pagecardnum(pu, 11) = 3
-                            End If
-                    End If
-            Next
-            '===================選擇行動
-            Select Case cardAInumMOVFinal(3)
-                 Case 1
-                      目前數(33) = 3
-                 Case 2
-                      目前數(33) = 1
-                 Case 3
-                      目前數(33) = 2
-            End Select
-     Case 2 '==電腦方
-            For i = 1 To pagenumber
-                    pu = cardcountAInumMOV(i, 5)
-                    If Mid(cardAInumMOVFinal(1), i, 1) = 1 Then
-'                            If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 And Val(cardAInumMOVmain(2, i)) >= wer Then
-                            If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 Then
-                                cspce = pagecardnum(pu, 1)
-                                cspme = pagecardnum(pu, 2)
-                                pagecardnum(pu, 1) = pagecardnum(pu, 3)
-                                pagecardnum(pu, 2) = pagecardnum(pu, 4)
-                                pagecardnum(pu, 3) = cspce
-                                pagecardnum(pu, 4) = cspme
-                                If pageonin(pu) = 2 Then
-                                   pageonin(pu) = 1
-                                Else
-                                   pageonin(pu) = 2
-                                End If
-                            End If
-                            '==================
-                            pagecardnum(pu, 11) = 1
-                    End If
-            Next
-            '===================選擇行動
-            Select Case cardAInumMOVFinal(3)
-                 Case 1
-                      電腦方移動階段選擇數 = 3
-                 Case 2
-                      電腦方移動階段選擇數 = 1
-                 Case 3
-                      電腦方移動階段選擇數 = 2
-            End Select
+    Case 1 '==使用者方
+        For i = 1 To pagenumber
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(CStr(cardcountAInumMOV(i, 5)))
+            If Mid(cardAInumMOVFinal(1), i, 1) = 1 Then
+'               If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 And Val(cardAInumMOVmain(2, i)) >= wer Then
+                If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 Then
+                    tmpcard.ComMark = 4
+'               ElseIf Val(cardAInumMOVmain(2, i)) >= wer Then
+                Else
+                    tmpcard.ComMark = 3
+                End If
+            End If
+        Next
+        '===================選擇行動
+        Select Case cardAInumMOVFinal(3)
+            Case 1
+                 目前數(33) = 3
+            Case 2
+                 目前數(33) = 1
+            Case 3
+                 目前數(33) = 2
+        End Select
+    Case 2 '==電腦方
+        For i = 1 To pagenumber
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(CStr(cardcountAInumMOV(i, 5)))
+            If Mid(cardAInumMOVFinal(1), i, 1) = 1 Then
+'               If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 And Val(cardAInumMOVmain(2, i)) >= wer Then
+                If Mid(cardAInumMOVmain(1, 3), i, 1) = 1 Then
+                    Call tmpcard.Reverse
+                End If
+                '==================
+                tmpcard.ComMark = 1
+            End If
+        Next
+           '===================選擇行動
+           Select Case cardAInumMOVFinal(3)
+                Case 1
+                     電腦方移動階段選擇數 = 3
+                Case 2
+                     電腦方移動階段選擇數 = 1
+                Case 3
+                     電腦方移動階段選擇數 = 2
+           End Select
 End Select
 
 是否移動階段續估計判斷程序 = False
@@ -1063,6 +1044,7 @@ Sub 智慧型AI系統計算_引導程序_超出牌張數(ByVal uscom As Integer, ByVal turn As I
 If Val(pageglead(uscom)) > CardNumMax Then
     Dim CardOverCountNUM As Integer, CardNowNUM1 As Integer, CardNowNUM2 As Integer, CardNowCountNUM As Integer
     Dim w As Integer, k As Integer, i As Integer '暫時變數
+    Dim tmpcard As clsActionCard
     CardOverCountNUM = Int(Val(pageglead(uscom)) / Val(CardNumMax) + Val(0.9))
     CardNowNUM1 = 1: CardNowNUM2 = CardNumMax
     CardNowCountNUM = 0
@@ -1073,19 +1055,19 @@ If Val(pageglead(uscom)) > CardNumMax Then
         '=========擷取目前牌面資料(前[CardNumMax]張)
             Select Case uscom
                 Case 1
-                    戰鬥系統類.出牌順序計算_使用者_手牌
+                    w = 5
                 Case 2
-                    戰鬥系統類.出牌順序計算_電腦_手牌
+                    w = 7
             End Select
-            w = 2 * uscom '(2-使用者手牌/4-電腦手牌)
             k = 1
             For i = CardNowNUM1 To CardNowNUM2
-                cardcountAInum(k, 5) = 出牌順序統計暫時變數(w, i, 2)
-                cardAInumOvertenrecord(k) = 出牌順序統計暫時變數(w, i, 2)
-                cardcountAInum(k, 1) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 1)
-                cardcountAInum(k, 2) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 2)
-                cardcountAInum(k, 3) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 3)
-                cardcountAInum(k, 4) = pagecardnum(出牌順序統計暫時變數(w, i, 2), 4)
+                Set tmpcard = 戰鬥系統類.CardDeckCollection(w)(i)
+                cardcountAInum(k, 5) = tmpcard.Cardnum
+                cardAInumOvertenrecord(k) = tmpcard.Cardnum
+                cardcountAInum(k, 1) = tmpcard.UpperType
+                cardcountAInum(k, 2) = tmpcard.UpperNum
+                cardcountAInum(k, 3) = tmpcard.LowerType
+                cardcountAInum(k, 4) = tmpcard.LowerNum
                 k = k + 1
             Next
          '========================
@@ -1115,39 +1097,16 @@ If Val(pageglead(uscom)) > CardNumMax Then
 '    End If
 End If
 End Sub
-Sub 檢查人物技能是否有EX技(ByVal uscom As Integer, ByVal name As String)
-'Erase personatkingtfr
-'For i = 1 To 3
-'     If VBEPerson(uscom, i, 1, 1, 1) = name Then
-'         For k = 1 To 4
-'               If Mid(VBEPerson(uscom, i, 3, k, 1), 1, 2) = "Ex" Then
-'                   personatkingtfr(k) = 1
-'               Else
-'                   personatkingtfr(k) = 0
-'               End If
-'          Next
-'          For k = 1 To 14
-''                If (人物異常狀態資料庫(uscom, i, k, 3) = 22 And uscom = 1) Or _
-''                    (人物異常狀態資料庫(uscom, i, k, 3) = 23 And uscom = 2) Then
-'                 If 人物異常狀態資料庫(uscom, i, k, 3) = "BUFFN00701" Then
-'                    personatkingtfr(5) = 1
-'                End If
-'          Next
-'     End If
-'Next
-End Sub
 Sub 智慧型AI系統_使用者出牌階段判斷反轉()
 Dim i As Integer
-For i = 1 To 公用牌實體卡片分隔紀錄數(1)
-    If Val(pagecardnum(i, 11)) = 4 And Val(pagecardnum(i, 5)) = 1 And Val(pagecardnum(i, 6)) = 1 Then
-        If pageonin(i) = 1 Then
-           pageonin(i) = 2
-        Else
-           pageonin(i) = 1
-        End If
-        FormMainMode.card(i).CardRotationType = pageonin(i)
-        FormMainMode.card_CardButtonClickin (i)
-        pagecardnum(i, 11) = 3
+Dim tmpcard As clsActionCard
+
+For i = 1 To 戰鬥系統類.CardDeckCollection(5).Count
+    Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(i)
+    If tmpcard.ComMark = 4 Then
+        FormMainMode.card_CardButtonClickin tmpcard.Cardnum
+        FormMainMode.card(tmpcard.Cardnum).CardRotationType = tmpcard.CardOnIn
+        tmpcard.ComMark = 3
     End If
 Next
 End Sub
@@ -1197,9 +1156,7 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
     Erase AtkingckVSF '技能資訊一覽-F版(技能備註字串)
     Erase VBEAtkingVSF 'VBE>VS給予變數統一資料-F版
     Erase VBEAtkingVSS 'VBE>VS給予變數統一資料-S版
-'    Erase VBEPageCardNumVS '公用牌資料-VS版
-    ReDim VBEPageCardNumVS(1 To cardAInumuscom, 1 To 6) As Variant '公用牌資料-VS版
-'    Erase VBEVSStageNum '執行階段系統-執行階段多用途紀錄變數-VS版
+    ReDim VBEPageCardNumVS(1 To cardAInumuscom, 1 To 7) As Variant '公用牌資料-VS版
     ReDim VBEVSStageNum(1 To UBound(VBEStageNumMain)) As Variant '執行階段系統-執行階段多用途紀錄變數-VS版
     Erase VBEActualStatusVS '人物實際狀態資料-VS版
     '===========================
@@ -1239,28 +1196,9 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
             For i = 1 To cardAInumuscom
                 For j = 1 To 6
                     If j = 1 Or j = 3 Then
-                       Select Case cardcountAInum(i, j)
-                           Case "ATK-劍"
-                               VBEPageCardNumVS(i, j) = 1
-                           Case "DEF"
-                               VBEPageCardNumVS(i, j) = 2
-                           Case "MOV"
-                               VBEPageCardNumVS(i, j) = 3
-                           Case "SPE"
-                               VBEPageCardNumVS(i, j) = 4
-                           Case "ATK-槍"
-                               VBEPageCardNumVS(i, j) = 5
-                           Case "DRAW"
-                               VBEPageCardNumVS(i, j) = 6
-                           Case "BRK"
-                               VBEPageCardNumVS(i, j) = 7
-                           Case "HPL"
-                               VBEPageCardNumVS(i, j) = 8
-                           Case Else
-                               VBEPageCardNumVS(i, j) = 0
-                       End Select
+                        VBEPageCardNumVS(i, j) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(cardcountAInum(i, j))
                     ElseIf j >= 5 Then
-                       VBEPageCardNumVS(i, j) = 1
+                        VBEPageCardNumVS(i, j) = 1
                     Else
                         VBEPageCardNumVS(i, j) = Val(cardcountAInum(i, j))
                     End If
@@ -1398,30 +1336,11 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
             For i = 1 To cardAInumuscom
                 For j = 1 To 6
                      If j = 1 Or j = 3 Then
-                       Select Case cardcountAInum(i, j)
-                           Case "ATK-劍"
-                               VBEPageCardNumVS(i, j) = 1
-                           Case "DEF"
-                               VBEPageCardNumVS(i, j) = 2
-                           Case "MOV"
-                               VBEPageCardNumVS(i, j) = 3
-                           Case "SPE"
-                               VBEPageCardNumVS(i, j) = 4
-                           Case "ATK-槍"
-                               VBEPageCardNumVS(i, j) = 5
-                           Case "DRAW"
-                               VBEPageCardNumVS(i, j) = 6
-                           Case "BRK"
-                               VBEPageCardNumVS(i, j) = 7
-                           Case "HPL"
-                               VBEPageCardNumVS(i, j) = 8
-                           Case Else
-                               VBEPageCardNumVS(i, j) = 0
-                       End Select
+                        VBEPageCardNumVS(i, j) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(cardcountAInum(i, j))
                     ElseIf j >= 5 Then
                         VBEPageCardNumVS(i, j) = 1
                     Else
-                       VBEPageCardNumVS(i, j) = Val(cardcountAInum(i, j))
+                        VBEPageCardNumVS(i, j) = Val(cardcountAInum(i, j))
                     End If
                 Next
                 '==================
