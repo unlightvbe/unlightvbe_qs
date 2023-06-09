@@ -992,7 +992,7 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
                     Select Case uscomt
                         Case 1
                             If tmpcard.Location = 1 And tmpcard.Owner = 1 Then
-                                目前數(20) = tmpcard.Cardnum
+                                目前數(20) = tmpcard.CardNum
                                 目前數(21) = 2
                                 FormMainMode.tr使用者牌_偷牌.Enabled = True
                                 vbecommadnum(2, vbecommadtotplayNow) = 0
@@ -1001,7 +1001,7 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
                             End If
                         Case 2
                             If tmpcard.Location = 1 And tmpcard.Owner = 2 Then
-                                目前數(16) = tmpcard.Cardnum
+                                目前數(16) = tmpcard.CardNum
                                 FormMainMode.tr電腦牌_翻牌.Enabled = True
                                 vbecommadnum(2, vbecommadtotplayNow) = 0
                             Else
@@ -1013,14 +1013,14 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
                         Case 1
                             If tmpcard.Location = 2 And tmpcard.Owner = 1 Then
                                 turnpageoninatking = 1
-                                FormMainMode.card_CardClick tmpcard.Cardnum
+                                FormMainMode.card_CardClick tmpcard.CardNum
                                 vbecommadnum(2, vbecommadtotplayNow) = 0
                             Else
                                 GoTo VssCommadExit
                             End If
                         Case 2
                             If tmpcard.Location = 2 And tmpcard.Owner = 2 Then
-                                戰鬥系統類.電腦牌_模擬按牌_外 tmpcard.Cardnum
+                                戰鬥系統類.電腦牌_模擬按牌_外 tmpcard.CardNum
                                 vbecommadnum(2, vbecommadtotplayNow) = 0
                             Else
                                 GoTo VssCommadExit
@@ -1046,7 +1046,7 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
                             Vss_AtkingSeizeEnemyCardsNum = 目前數(5)
                             '=========將座標指定至電腦手牌
                             戰鬥系統類.座標計算_電腦手牌
-                            戰鬥系統類.執行動作_使用者牌_偷牌_電腦 tmpcard.Cardnum
+                            戰鬥系統類.執行動作_使用者牌_偷牌_電腦 tmpcard.CardNum
                             目前數(5) = Vss_AtkingSeizeEnemyCardsNum
                             目前數(15) = 23
                             turnpageoninatking = 0
@@ -1056,8 +1056,8 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
                             Vss_AtkingSeizeEnemyCardsNum = 目前數(9)
                             '=========將座標指定至使用者手牌
                             戰鬥系統類.座標計算_使用者手牌
-                            戰鬥系統類.執行動作_電腦牌_偷牌_使用者 tmpcard.Cardnum
-                            戰鬥系統類.公用牌回復正面 tmpcard.Cardnum
+                            戰鬥系統類.執行動作_電腦牌_偷牌_使用者 tmpcard.CardNum
+                            戰鬥系統類.公用牌回復正面 tmpcard.CardNum
                             目前數(9) = Vss_AtkingSeizeEnemyCardsNum
                             目前數(15) = 23
                             vbecommadnum(2, vbecommadtotplayNow) = 0
@@ -1175,7 +1175,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                             Case 1
                                 If 戰鬥系統類.CardDeckCollection(3).Count > 0 Then
                                     Set tmpcard = 戰鬥系統類.CardDeckCollection(3)(1)
-                                    目前數(16) = tmpcard.Cardnum
+                                    目前數(16) = tmpcard.CardNum
                                     BattleTurn = BattleTurn + 1
                                     FormMainMode.PEAFInterface.turn = BattleTurn
                                     目前數(15) = 21
@@ -1188,7 +1188,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                             Case 2
                                 If 戰鬥系統類.CardDeckCollection(4).Count > 0 Then
                                     Set tmpcard = 戰鬥系統類.CardDeckCollection(4)(1)
-                                    目前數(16) = tmpcard.Cardnum
+                                    目前數(16) = tmpcard.CardNum
                                     BattleTurn = BattleTurn + 1
                                     FormMainMode.PEAFInterface.turn = BattleTurn
                                     目前數(15) = 21
@@ -1388,7 +1388,7 @@ Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
             Select Case uscom
                 Case 1
                     If tmpcard.Location = 3 Then
-                        目前數(16) = tmpcard.Cardnum
+                        目前數(16) = tmpcard.CardNum
                         目前數(15) = 22
                         FormMainMode.tr牌組_回牌_使用者.Enabled = True
                         vbecommadnum(2, vbecommadtotplayNow) = 0
@@ -1397,7 +1397,7 @@ Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
                     End If
                 Case 2
                     If tmpcard.Location = 3 Then
-                       目前數(16) = tmpcard.Cardnum
+                       目前數(16) = tmpcard.CardNum
                        目前數(15) = 22
                        FormMainMode.tr牌組_回牌_電腦.Enabled = True
                        vbecommadnum(2, vbecommadtotplayNow) = 0
@@ -2476,20 +2476,11 @@ Sub 執行指令_插入事件卡(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
     End Select
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            If Val(commadstr3(1)) < 1 Or Val(commadstr3(1)) > 18 Or 一般系統類.事件卡資料庫(commadstr3(2), 1) = 99 Then
+            If Val(commadstr3(1)) <= 戰鬥系統類.BattleTurn Or 一般系統類.事件卡資料庫(commadstr3(2), 1) = 99 Then
                 GoTo VssCommadExit
             End If
-            For i = 18 To (Val(commadstr3(1)) + 1) Step -1
-                 pageeventnum(uscomt, i, 1) = pageeventnum(uscomt, i - 1, 1)
-                 pageeventnum(uscomt, i, 2) = pageeventnum(uscomt, i - 1, 2)
-            Next
-            For i = Val(commadstr3(1)) To Val(commadstr3(1))
-                 If 一般系統類.事件卡資料庫(commadstr3(2), 1) <> 99 Then
-                    pageeventnum(uscomt, i, 1) = commadstr3(2)
-                    pageeventnum(uscomt, i, 2) = 一般系統類.事件卡資料庫(commadstr3(2), 2)
-                 End If
-            Next
-            '===========================================
+            
+            戰鬥系統類.發行卡牌_事件卡 uscomt, commadstr3(2), 一般系統類.事件卡資料庫(commadstr3(2), 2), Val(commadstr3(1)) - 戰鬥系統類.BattleTurn
             GoTo VssCommadExit
     End Select
     '============================

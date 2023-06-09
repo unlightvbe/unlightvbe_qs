@@ -3850,7 +3850,7 @@ Dim tmpobj As clsPersonActiveSkill
 
 Select Case uscom
  Case 1
-    For i = 1 To 公用牌實體卡片分隔紀錄數(1)
+    For i = 1 To 戰鬥系統類.ActionCardTotNum
        card(i).CardEventType = False
     Next
  Case 2
@@ -3880,7 +3880,7 @@ Sub PEAFInterface_BnOKClick()
 Dim i As Integer
 If turnpageonin = 1 Then
     turnpageonin = 0
-    For i = 1 To 公用牌實體卡片分隔紀錄數(1)
+    For i = 1 To 戰鬥系統類.ActionCardTotNum
         FormMainMode.card(i).card_MouseExit
     Next
     FormMainMode.PEAFInterface.BnOKStopListen
@@ -3900,14 +3900,14 @@ End Sub
 
 Private Sub PEAFInterface_BnOKMouseMove()
 Dim i As Integer
-For i = 1 To 公用牌實體卡片分隔紀錄數(1)
+For i = 1 To 戰鬥系統類.ActionCardTotNum
    card(i).CardEventType = False
 Next
 End Sub
 
 Private Sub PEAFInterface_InterfaceMouseMove()
 Dim i As Integer
-For i = 1 To 公用牌實體卡片分隔紀錄數(1)
+For i = 1 To 戰鬥系統類.ActionCardTotNum
    card(i).CardEventType = False
 Next
 For i = 1 To 3
@@ -3988,7 +3988,7 @@ End Sub
 
 Private Sub PEAttackingForm_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 Dim i As Integer
-For i = 1 To 公用牌實體卡片分隔紀錄數(1)
+For i = 1 To 戰鬥系統類.ActionCardTotNum
    card(i).CardEventType = False
 Next
 For i = 1 To 3
@@ -4575,7 +4575,7 @@ If turnpageonin = 1 And 牌移動.Enabled = False Then
         Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(目前數(32))
         If tmpcard.ComMark = 3 Then
             目前數(32) = 目前數(32) - 1
-            FormMainMode.card_CardClick tmpcard.Cardnum
+            FormMainMode.card_CardClick tmpcard.CardNum
         End If
         目前數(32) = 目前數(32) + 1
     End If
@@ -4597,19 +4597,19 @@ If turnpageonin = 1 And 牌移動.Enabled = False Then
             Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(i)
             If tmpcard.CardType = 2 Then
                 If tmpcard.UpperType = a6a Then
-                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    FormMainMode.card_CardClick tmpcard.CardNum
                     Exit Sub
                 End If
                 If tmpcard.UpperType = a7a And (turnatk = 1 Or turnatk = 2) Then
-                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    FormMainMode.card_CardClick tmpcard.CardNum
                     Exit Sub
                 End If
                 If tmpcard.UpperType = a8a Then
-                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    FormMainMode.card_CardClick tmpcard.CardNum
                     Exit Sub
                 End If
                 If tmpcard.UpperType = a9a Then
-                    FormMainMode.card_CardClick tmpcard.Cardnum
+                    FormMainMode.card_CardClick tmpcard.CardNum
                     Exit Sub
                 End If
             End If
@@ -4631,8 +4631,8 @@ For i = 1 To 戰鬥系統類.CardDeckCollection(5).Count
     If i >= 目前數(5) Then
         Set tmpcard = 戰鬥系統類.CardDeckCollection(5)(i)
         If 目前數(13) = 0 Then
-            If card(tmpcard.Cardnum).Left = 2640 And card(tmpcard.Cardnum).Top = 7980 Then  '指定第2列第1張牌
-                目前數(13) = tmpcard.Cardnum
+            If card(tmpcard.CardNum).Left = 2640 And card(tmpcard.CardNum).Top = 7980 Then  '指定第2列第1張牌
+                目前數(13) = tmpcard.CardNum
                 tmpcard.XYLeft = card(目前數(13)).Left  '指定目前Left(座標)
                 tmpcard.XYTop = card(目前數(13)).Top  '指定目前Top(座標)
                 '==========戰鬥系統類.計算牌移動距離單位
@@ -4640,11 +4640,11 @@ For i = 1 To 戰鬥系統類.CardDeckCollection(5).Count
                 距離單位_收牌暫時數(1, 2) = -((tmpcard.XYTop - 6700) \ 10)  '計算Top
             End If
         End If
-        If 目前數(13) = tmpcard.Cardnum Then
+        If 目前數(13) = tmpcard.CardNum Then
            card(目前數(13)).Left = card(目前數(13)).Left + 距離單位_收牌暫時數(1, 1)
            card(目前數(13)).Top = card(目前數(13)).Top + 距離單位_收牌暫時數(1, 2)
         Else
-           card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (900 / 10)
+           card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left - (900 / 10)
         End If
   End If
 Next
@@ -4684,10 +4684,10 @@ Dim tmpcard As clsActionCard
 For i = 1 To 戰鬥系統類.CardDeckCollection(6).Count
     Set tmpcard = 戰鬥系統類.CardDeckCollection(6)(i)
     If i < 目前數(5) Then
-       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left + (480 / 10)
+       card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left + (480 / 10)
     End If
     If i >= 目前數(5) Then
-       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (500 / 10)
+       card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left - (500 / 10)
     End If
 Next
 目前數(3) = 目前數(3) + (480 / 10)
@@ -4702,7 +4702,7 @@ Dim tmpcard As clsActionCard
 
 For i = 1 To (戰鬥系統類.CardDeckCollection(6).Count - 1)
     Set tmpcard = 戰鬥系統類.CardDeckCollection(6)(i)
-    card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (480 / 10)
+    card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left - (480 / 10)
 Next
 目前數(3) = 目前數(3) + (480 / 10)
 If 目前數(3) >= 480 Then
@@ -5400,7 +5400,7 @@ Select Case 目前數(22)
                 '====================
                 FormMainMode.PEAFInterface.BnOKStartListen
                 FormMainMode.PEAFInterface_BnOKClick
-                For ckl = 1 To 公用牌實體卡片分隔紀錄數(1)
+                For ckl = 1 To 戰鬥系統類.ActionCardTotNum
                     FormMainMode.card(ckl).CardEnabledType = True
                 Next
         End Select
@@ -5420,42 +5420,42 @@ If 電腦方事件卡是否出完選擇數 = False Then
         If tmpcard.CardType = 2 Then
             If tmpcard.UpperType = a6a Then
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             ElseIf tmpcard.LowerType = a6a Then
                 Call tmpcard.Reverse
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             End If
             If tmpcard.UpperType = a7a And (turnatk = 1 Or turnatk = 2) Then
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             ElseIf tmpcard.LowerType = a7a And (turnatk = 1 Or turnatk = 2) Then
                 Call tmpcard.Reverse
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             End If
             If tmpcard.UpperType = a8a Then
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             ElseIf tmpcard.LowerType = a8a Then
                 Call tmpcard.Reverse
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             End If
             If tmpcard.UpperType = a9a Then
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             ElseIf tmpcard.LowerType = a9a Then
                 Call tmpcard.Reverse
                 tmpcard.ComMark = 1
-                戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+                戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
                 Exit Sub
             End If
         End If
@@ -5500,7 +5500,7 @@ If 電腦方事件卡是否出完選擇數 = True Then
         Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(目前數(6))
         If tmpcard.ComMark = 1 Then
             目前數(6) = 目前數(6) - 1
-            戰鬥系統類.電腦牌_模擬按牌 tmpcard.Cardnum
+            戰鬥系統類.電腦牌_模擬按牌 tmpcard.CardNum
             Exit Sub
         End If
     Loop
@@ -5515,7 +5515,7 @@ If 目前數(8) < 240 Then
     For i = 1 To 戰鬥系統類.CardDeckCollection(7).Count
         Set tmpcard = 戰鬥系統類.CardDeckCollection(7)(i)
         If i >= 目前數(9) Then
-            card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left + (240 / 10)
+            card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left + (240 / 10)
         End If
     Next
     目前數(8) = 目前數(8) + (240 / 10)
@@ -5559,10 +5559,10 @@ Dim tmpcard As clsActionCard
 For i = 1 To 戰鬥系統類.CardDeckCollection(8).Count
     Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(i)
     If i < 目前數(9) Then
-       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left + (480 / 10)
+       card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left + (480 / 10)
     End If
     If i >= 目前數(9) Then
-       card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (500 / 10)
+       card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left - (500 / 10)
     End If
 Next
 目前數(7) = 目前數(7) + (480 / 10)
@@ -5577,7 +5577,7 @@ Dim tmpcard As clsActionCard
 
 For i = 1 To (戰鬥系統類.CardDeckCollection(8).Count - 1)
     Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(i)
-    card(tmpcard.Cardnum).Left = card(tmpcard.Cardnum).Left - (480 / 10)
+    card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left - (480 / 10)
 Next
 目前數(7) = 目前數(7) + (480 / 10)
 If 目前數(7) >= 480 Then
@@ -5603,7 +5603,7 @@ If 目前數(6) > 戰鬥系統類.CardDeckCollection(8).Count Then
 End If
 
 Set tmpcard = 戰鬥系統類.CardDeckCollection(8)(目前數(6))
-戰鬥系統類.公用牌回復正面 tmpcard.Cardnum
+戰鬥系統類.公用牌回復正面 tmpcard.CardNum
 一般系統類.音效播放 4
 End Sub
 

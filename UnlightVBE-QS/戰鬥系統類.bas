@@ -84,16 +84,14 @@ Public ¦å¶q­p¼Æ¾¹°Êµe¼È®ÉÅÜ¼Æ(1 To 2, 1 To 2) As Integer '¶}©lªì©l¶¥¬q-¦å¶q°Êµe­
 Public ®É¶¡¶bÃC¦âÅÜ¤Æ¬ö¿ý¼È®ÉÅÜ¼Æ(1 To 4, 1 To 3) As Integer '®É¶¡¶b¶i¦æÃC¦âÅÜ¤Æ¶¥¬q¬ö¿ý¼È®ÉÅÜ¼Æ(1~3(1)³æ¦ìÅÜ¤Æ¶q(1(1).®É¶¡¶b(¤º¥~))/2.¥Ø«e²Ö­p¶q/3.¥Ø«eÃC¦â(R,G,B),4.(1)®É¶¡¶b(¥~)¶¥¬q¼Æ-(1)¶ÂÅÜ¬õ-(2)¬õÅÜ¶Â/2.¥Ø«e²Ö­p¶q/3.¥Ø«eÃC¦â(R))
 Public ¶}©l¥d¤ù²¾°Ê°Êµe§¹¦¨¼Æ(1 To 2, 1 To 4) As Integer   '¶}©l®É¨C±i¥d¤ù²¾°Ê°Êµe§¹¦¨¬ö¿ý¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£,1~3.¥d¤ù/4.¥Ø«e²Ä´X±i)
 Public ¥æ´«¨¤¦â¬ö¿ý¼È®ÉÅÜ¼Æ(1 To 4) As Integer '¥æ´«¨¤¦âÂù¤è¬ö¿ý¼È®É¼Æ(1.¨Ï¥ÎªÌ/2.¹q¸£/3.¬O§_·í¤U­º¦¸/4.¥æ´«¨¤¦â§¹°õ¦æ¶¥¬q¼Æ)
-Public pageeventnum(1 To 2, 1 To 18, 1 To 2) As String '¨Æ¥ó¥d±Æ¦C¬ö¿ý¸ê®Æ(1.¨Ï¥ÎªÌ/2.¹q¸£,1~18-½s¸¹,1.¨Æ¥ó¥d¦WºÙ/2.¨Æ¥ó¥dÀÉ®×¦WºÙ)
 Public ¾Ô°«¼Ò¦¡³Ó±Ñ¬ö¿ý¼Æ As Integer '¾Ô°«¨t²Î·í«e³Ó±Ñ¬ö¿ý¼È®ÉÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è³Ó§Q/2.¨Ï¥ÎªÌ¤è±Ñ¥_/3.¥­¤â)
 Public ¹q¸£¤è²¾°Ê¶¥¬q¿ï¾Ü¼Æ As Integer '²¾°Ê¶¥¬q¹q¸£¤è¿ï¾Ü¤§¦æ°Ê¼È®ÉÅÜ¼Æ
 Public ¹q¸£¤è¨Æ¥ó¥d¬O§_¥X§¹¿ï¾Ü¼Æ As Boolean '¹q¸£¤è¥ý¥X¨Æ¥ó¥d¬O§_¥X§¹¼È®É¬ö¿ý
 Public ¤Hª«¥d­±­I­±½s¸¹¬ö¿ý¼Æ(1 To 7) As Integer '¤Hª«¥d¤ù­I­±§Þ¯à»¡©ú¤Hª«½s¸¹¼È®ÉÅÜ¼Æ(1.(1).¨Ï¥ÎªÌ/(2).¹q¸£,2.²Än¦ì,3.¥Ø«e¨Ï¥ÎªÌ¤è¨Ï¥Î¤Hª«½s¸¹/4.¥Ø«e¿ï¾Ü¤§§Þ¯à½s¸¹(¨Ï¥ÎªÌ¤è¨Ï¥Î¤Hª«)/5.¥Ø«e¿ï¾Ü¤§§Þ¯à½s¸¹(¨ä¥L)/6~7.¥Ø«e¿ï¾Ü¤§§Þ¯à½s¸¹(¥æ´«¨¤¦â)
 Public ÂY»ëªí³æ·¾³q¼È®ÉÅÜ¼Æ(1 To 10) As Integer 'ÂY»ë¤¶­±·¾³q¼È®ÉÅÜ¼Æ(1.¤@¦^¦X¤¤¥ý«á§PÂ_(1.«e/2.«á),2.ÂY»ë«á¦³®Ä¶Ë®`¼Æ,3.ÂY»ë«á¶Ë®`¹ï¶H(1.¨Ï¥ÎªÌ/2.¹q¸£),4.(1.¨Ï¥ÎªÌ¥ý§ð/2.¹q¸£¥ý§ð)/5.·í«e»ë­È(¨Ï¥ÎªÌ)/6.·í«e»ë­È(¹q¸£)/7.¨t²Î¤½¥Î»ë­È(¨Ï¥ÎªÌ)/8.¨t²Î¤½¥Î»ë­È(¹q¸£)/9.ÂY»ë«e»ë­È-Á`»ë(¨Ï¥ÎªÌ)/10.ÂY»ë«e»ë­È-Á`»ë(¹q¸£))
 Public ¤Hª«®ø¥¢ÀË¬d¼È®ÉÅÜ¼Æ(1 To 3) As Integer '¤Hª«®ø¥¢ÀË¬d­p¼Æ¾¹¬ö¿ý¼È®ÉÅÜ¼Æ(1.¥Ø«e­p¼Æ/2.¨Ï¥ÎªÌ¼Ð°O/3.¹q¸£¼Ð°O)
-Public ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0 To 29, 1 To 2) As Integer '¦U³õ´º¤½¥ÎµPµPÃþ«¬¬ö¿ý¼È®ÉÅÜ¼Æ(0.(1)¥Ø«e¤wµoµPÁ`¼Æ¶q/(2)¥Ø«e³õ´ºµPÁ`¼Æ¶q,1~31.(1)¥Ø«e¤w¨Ï¥Î¤§µP¼Æ/(2)¸ÓµP«¬¯à¨Ï¥Î¤§Á`¼Æ¶q)
+Public ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0 To 29, 1 To 2) As Integer '¦U³õ´º¤½¥ÎµPµPÃþ«¬¬ö¿ý¼È®ÉÅÜ¼Æ(0.(1)¥Ø«e¤wµoµPÁ`¼Æ¶q/(2)¥Ø«e³õ´ºµPÁ`¼Æ¶q,1~29.(1)¥Ø«e¤w¨Ï¥Î¤§µP¼Æ/(2)¸ÓµP«¬¯à¨Ï¥Î¤§Á`¼Æ¶q)
 Public ¥d¤ù¤Hª«¸ê°TÀÉ®×Åª¨ú¥¢±Ñ¬ö¿ý¦ê As String '¥d¤ù¤Hª«¸ê°TÀÉ®×Åª¨ú¥¢±Ñ®ÉÀÉ®×¦W¬ö¿ý¼È®ÉÅÜ¼Æ
-Public ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1 To 5) As Integer '¾Ô°«¨t²Î¹êÅéµP¬ÛÃö¬ö¿ý¼Æ(1.Á`¦@µP¼Æ/2.¤½µPµP¼Æ/3.¨Ï¥ÎªÌ¨Æ¥ó¥d³Ì©³½s¸¹/4.¹q¸£¨Æ¥ó¥d³Ì©³½s¸¹/5.¦Û¥Ñ¤À°t¹êÅéµP¶}©l½s¸¹)
 Public Åã¥Ü¦CÂù¤è¼Æ­ÈÂê©w¬ö¿ý¼Æ(1 To 2) As Boolean '¾Ô°«¨t²ÎÅã¥Ü¦CÂù¤è¼Æ­ÈÂê©wªí¥Ü¬ö¿ýÅÜ¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è)
 Public ¬O§_¨t²Î¤½»ë As Boolean '¬O§_¬°¨t²Î¤½»ë¬ö¿ý¼Æ
 Public ¾Ô°«ÂY»ë¤¶­±¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(1 To 2) As String '¾Ô°«¨t²ÎÂY»ë¤¶­±Âù¤è¤Hª«¥ßÃ¸¹Ï¸ô®|¬ö¿ý¼Æ(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è)
@@ -104,6 +102,7 @@ Public ¤Hª«²§±`ª¬ºA¦Cªí(1 To 2, 1 To 3) As Collection '²§±`ª¬ºA¦Cªí(1.¨Ï¥ÎªÌ/2.¹
 Public ActiveSkillObj(1 To 2, 1 To 4) As clsPersonActiveSkill '¾Ô°«¨t²Î¥D°Ê§Þ¯à»¡©úª«¥ó(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,²Än­Ó)
 Public PersonCardShowOnMode(1 To 2, 1 To 3) As Boolean '¾Ô°«¨t²Î¤Hª«¥d¤ù¸ê°T¬O§_®i¥Ü(1.¨Ï¥ÎªÌ¤è/2.¹q¸£¤è,²Än­Ó)
 Public CardDeckCollection(0 To 9) As Collection '¾Ô°«¨t²Î¥dµPµP°ï¶°¦X(0.¥dµP¯Á¤Þ/1.µP°ï/2.¹Ó¦aµP/3.¨Æ¥ó¥dµP°ï(¨Ï¥ÎªÌ¤è)/4.¨Æ¥ó¥dµP°ï(¹q¸£¤è)/5.¤âµP(¨Ï¥ÎªÌ¤è)/6.¥XµP(¨Ï¥ÎªÌ¤è)/7.¤âµP(¹q¸£¤è)/8.¥XµP(¹q¸£¤è)/9.±óµP)
+Public ActionCardTotNum As Integer '¾Ô°«¨t²Î¥dµPÁ`µo¦æ¬ö¿ý¼Æ
 Sub ¤Hª«§Þ¯àÄæ¿O¶}Ãö(ByVal isOn As Boolean, ByVal num As Integer)
 FormMainMode.PEAFInterface.ActiveSkillLight 1, num, isOn
 End Sub
@@ -837,7 +836,7 @@ Dim i As Integer
 For i = 1 To ¥Ø«e¼Æ(30) '±N¬J¦³¥dµP«O¯d©óµP°ï³Ì¤W¼h
     Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1)(1)
     
-    tmpnewCollection.Add tmpcard, CStr(tmpcard.Cardnum)
+    tmpnewCollection.Add tmpcard, CStr(tmpcard.CardNum)
     ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Remove 1
 Next
 
@@ -846,12 +845,33 @@ Do While ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Count > 0
     i = Int(Rnd() * ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Count) + 1
     Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1)(i)
     
-    tmpnewCollection.Add tmpcard, CStr(tmpcard.Cardnum)
+    tmpnewCollection.Add tmpcard, CStr(tmpcard.CardNum)
     ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Remove i
 Loop
 
 Set ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1) = Nothing
 Set ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1) = tmpnewCollection
+
+End Sub
+Sub °õ¦æ°Ê§@_¬~µP_¨Æ¥ó¥dµP°ï¬~µP()
+Dim tmpnewCollection As Collection
+Dim tmpcard As clsActionCard
+Dim i As Integer, m As Integer
+
+For m = 3 To 4
+    Set tmpnewCollection = New Collection
+    Do While ¾Ô°«¨t²ÎÃþ.CardDeckCollection(m).Count > 0
+        Randomize
+        i = Int(Rnd() * ¾Ô°«¨t²ÎÃþ.CardDeckCollection(m).Count) + 1
+        Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(m)(i)
+        
+        tmpnewCollection.Add tmpcard, CStr(tmpcard.CardNum)
+        ¾Ô°«¨t²ÎÃþ.CardDeckCollection(m).Remove i
+    Loop
+    
+    Set ¾Ô°«¨t²ÎÃþ.CardDeckCollection(m) = Nothing
+    Set ¾Ô°«¨t²ÎÃþ.CardDeckCollection(m) = tmpnewCollection
+Next
 
 End Sub
 Sub °õ¦æ°Ê§@_©âµP_¤½¥ÎµP(ByVal uscom As Integer)
@@ -864,7 +884,7 @@ n = Int(Rnd() * 2) + 1
 If n = 2 Then
    Call tmpcard.Reverse
 End If
-FormMainMode.card(tmpcard.Cardnum).CardRotationType = tmpcard.CardOnIn
+FormMainMode.card(tmpcard.CardNum).CardRotationType = tmpcard.CardOnIn
 '==============================================
 Select Case uscom
     Case 1 '¨Ï¥ÎªÌ
@@ -877,16 +897,16 @@ Select Case uscom
         ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¨t²ÎÁ`¥dµP±i¼Æ§ó·s
         FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
         ¾Ô°«¨t²ÎÃþ.®y¼Ð­pºâ_¨Ï¥ÎªÌ¤âµP
-        µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.Cardnum
+        µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.CardNum
         tmpcard.XYLeft = 240 '«ü©w¥Ø«eLeft(®y¼Ð)
         tmpcard.XYTop = 960 '«ü©w¥Ø«eTop(®y¼Ð)
-        FormMainMode.card(tmpcard.Cardnum).Left = 240
-        FormMainMode.card(tmpcard.Cardnum).Top = 960
+        FormMainMode.card(tmpcard.CardNum).Left = 240
+        FormMainMode.card(tmpcard.CardNum).Top = 960
         ¾Ô°«¨t²ÎÃþ.­pºâµP²¾°Ê¶ZÂ÷³æ¦ì
         ¾Ô°«¨t²ÎÃþ.¤½¥ÎµP¦^´_¥¿­± (µP²¾°Ê¼È®ÉÅÜ¼Æ(3))
-        FormMainMode.card(tmpcard.Cardnum).CardEventType = False
-        FormMainMode.card(tmpcard.Cardnum).Visible = True
-        FormMainMode.card(tmpcard.Cardnum).ZOrder
+        FormMainMode.card(tmpcard.CardNum).CardEventType = False
+        FormMainMode.card(tmpcard.CardNum).Visible = True
+        FormMainMode.card(tmpcard.CardNum).ZOrder
         ¾Ô°«¨t²ÎÃþ.µP¶¶§Ç¼W¥[_¤âµP_¨Ï¥ÎªÌ
         FormMainMode.µP²¾°Ê.Enabled = True
         ¤@¯ë¨t²ÎÃþ.­µ®Ä¼½©ñ 1
@@ -900,16 +920,16 @@ Select Case uscom
         ¾Ô°«¨t²ÎÃþ.°õ¦æ°Ê§@_¨t²ÎÁ`¥dµP±i¼Æ§ó·s
         FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
         ¾Ô°«¨t²ÎÃþ.®y¼Ð­pºâ_¹q¸£¤âµP
-        µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.Cardnum
+        µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.CardNum
         tmpcard.XYLeft = 240 '«ü©w¥Ø«eLeft(®y¼Ð)
         tmpcard.XYTop = 960 '«ü©w¥Ø«eTop(®y¼Ð)
-        FormMainMode.card(tmpcard.Cardnum).Left = 240
-        FormMainMode.card(tmpcard.Cardnum).Top = 960
+        FormMainMode.card(tmpcard.CardNum).Left = 240
+        FormMainMode.card(tmpcard.CardNum).Top = 960
         ¾Ô°«¨t²ÎÃþ.­pºâµP²¾°Ê¶ZÂ÷³æ¦ì
         ¾Ô°«¨t²ÎÃþ.¤½¥ÎµPÅÜ­I­±
-        FormMainMode.card(tmpcard.Cardnum).CardEventType = False
-        FormMainMode.card(tmpcard.Cardnum).Visible = True
-        FormMainMode.card(tmpcard.Cardnum).ZOrder
+        FormMainMode.card(tmpcard.CardNum).CardEventType = False
+        FormMainMode.card(tmpcard.CardNum).Visible = True
+        FormMainMode.card(tmpcard.CardNum).ZOrder
         ¾Ô°«¨t²ÎÃþ.µP¶¶§Ç¼W¥[_¤âµP_¹q¸£
         FormMainMode.µP²¾°Ê.Enabled = True
         ¤@¯ë¨t²ÎÃþ.­µ®Ä¼½©ñ 1
@@ -1070,14 +1090,14 @@ Dim ckl As Integer
 If turnatk = 1 Or turnatk = 2 Then
    turnpageonin = 1
     If Vss_EventPlayerAllActionOffNum(1) = 1 Then
-        For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+        For ckl = 1 To ¾Ô°«¨t²ÎÃþ.ActionCardTotNum
             FormMainMode.card(ckl).CardEnabledType = False
         Next
         FormMainMode.PEAFInterface.BnOKEnabled False
         µ¥«Ý®É¶¡¦î¦C(2).Add 47
         FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
     ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
-        For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+        For ckl = 1 To ¾Ô°«¨t²ÎÃþ.ActionCardTotNum
             FormMainMode.card(ckl).CardEnabledType = False
         Next
         FormMainMode.PEAFInterface.BnOKEnabled False
@@ -1129,13 +1149,13 @@ For i = 1 To ¾Ô°«¨t²ÎÃþ.CardDeckCollection(6).Count
     Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(6)(i)
     µP²¾°Ê¼È®ÉÅÜ¼Æ(1) = 240
     µP²¾°Ê¼È®ÉÅÜ¼Æ(2) = 960
-    µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.Cardnum
-    tmpcard.XYLeft = FormMainMode.card(tmpcard.Cardnum).Left  '«ü©w¥Ø«eLeft(®y¼Ð)
-    tmpcard.XYTop = FormMainMode.card(tmpcard.Cardnum).Top  '«ü©w¥Ø«eTop(®y¼Ð)
+    µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.CardNum
+    tmpcard.XYLeft = FormMainMode.card(tmpcard.CardNum).Left  '«ü©w¥Ø«eLeft(®y¼Ð)
+    tmpcard.XYTop = FormMainMode.card(tmpcard.CardNum).Top  '«ü©w¥Ø«eTop(®y¼Ð)
     ¾Ô°«¨t²ÎÃþ.­pºâµP²¾°Ê¶ZÂ÷³æ¦ì
     ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 1) = ¶ZÂ÷³æ¦ì(2, 1, 1)
     ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 2) = ¶ZÂ÷³æ¦ì(2, 1, 2)
-    ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 3) = tmpcard.Cardnum
+    ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 3) = tmpcard.CardNum
 Next
 End Sub
 Sub ¦¬µP­pºâ¶ZÂ÷³æ¦ì_¹q¸£()
@@ -1152,13 +1172,13 @@ For i = 1 To ¾Ô°«¨t²ÎÃþ.CardDeckCollection(8).Count
     Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(8)(i)
     µP²¾°Ê¼È®ÉÅÜ¼Æ(1) = 240
     µP²¾°Ê¼È®ÉÅÜ¼Æ(2) = 960
-    µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.Cardnum
-    tmpcard.XYLeft = FormMainMode.card(tmpcard.Cardnum).Left  '«ü©w¥Ø«eLeft(®y¼Ð)
-    tmpcard.XYTop = FormMainMode.card(tmpcard.Cardnum).Top  '«ü©w¥Ø«eTop(®y¼Ð)
+    µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.CardNum
+    tmpcard.XYLeft = FormMainMode.card(tmpcard.CardNum).Left  '«ü©w¥Ø«eLeft(®y¼Ð)
+    tmpcard.XYTop = FormMainMode.card(tmpcard.CardNum).Top  '«ü©w¥Ø«eTop(®y¼Ð)
     ¾Ô°«¨t²ÎÃþ.­pºâµP²¾°Ê¶ZÂ÷³æ¦ì
     ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 1) = ¶ZÂ÷³æ¦ì(2, 1, 1)
     ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 2) = ¶ZÂ÷³æ¦ì(2, 1, 2)
-    ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 3) = tmpcard.Cardnum
+    ¶ZÂ÷³æ¦ì_¦¬µP¼È®É¼Æ(i, 3) = tmpcard.CardNum
 Next
 End Sub
 Sub §Þ¯à»¡©ú¸ü¤J_¨Ï¥ÎªÌ()
@@ -2026,7 +2046,7 @@ For a = 1 To ¾Ô°«¨t²ÎÃþ.CardDeckCollection(7).Count
     werbo = False
     Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(7)(a)
     For k = 1 To UBound(cardAInumOvertenrecord)
-        If tmpcard.Cardnum = cardAInumOvertenrecord(k) Then
+        If tmpcard.CardNum = cardAInumOvertenrecord(k) Then
             werbo = True
         End If
     Next
@@ -2362,850 +2382,501 @@ Sub °õ¦æ°Ê§@_¥æ´«¤Hª«¨¤¦â_µ²§ô°õ¦æ()
          °õ¦æ°Ê§@_¤Hª«¦º¤`¥æ´«¶¥¬q¿ï¾Ü°õ¦æ
     End Select
 End Sub
-Sub ¨Æ¥ó¥d³B²z_«ü©w_¨Ï¥ÎªÌ¤è()
-Dim kp(1 To 18)  As Integer '¨Æ¥ó¥d¼Ð°O¼È®É¼Æ
-Dim m As Integer, km As Integer, i As Integer
-If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgreus.Value = 0 Then
-    Do
-        Randomize
-        m = Int(Rnd() * 18) + 1
-        If kp(m) = 0 Then
-            kp(m) = 1
-            km = km + 1
-            pageeventnum(1, km, 1) = Formsetting.personus(m).Text
-            pageeventnum(1, km, 2) = ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(m).Text, 2)
-        End If
-    Loop Until km >= 18
-ElseIf ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 Then
-    Do
-        Randomize
-        m = Int(Rnd() * 6) + 1
-        If kp(m) = 0 Then
-            kp(m) = 1
-            km = km + 1
-            pageeventnum(1, km, 1) = Formsetting.personus(m).Text
-            pageeventnum(1, km, 2) = ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(m).Text, 2)
-        End If
-    Loop Until km >= 6
-    For i = 7 To 12
-        pageeventnum(1, i, 1) = Formsetting.personus(i).Text
-        pageeventnum(1, i, 2) = ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).Text, 2)
-    Next
-End If
-End Sub
-Sub ¨Æ¥ó¥d³B²z_«ü©w_¹q¸£¤è()
-Dim kp(1 To 18)  As Integer '¨Æ¥ó¥d¼Ð°O¼È®É¼Æ
-Dim m As Integer, km As Integer, i As Integer
-
-If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgrecom.Value = 0 Then
-    Do
-        Randomize
-        m = Int(Rnd() * 18) + 1
-        If kp(m) = 0 Then
-            kp(m) = 1
-            km = km + 1
-            pageeventnum(2, km, 1) = Formsetting.personcom(m).Text
-            pageeventnum(2, km, 2) = ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(m).Text, 2)
-        End If
-    Loop Until km >= 18
-ElseIf ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 Then
-    Do
-        Randomize
-        m = Int(Rnd() * 6) + 1
-        If kp(m) = 0 Then
-            kp(m) = 1
-            km = km + 1
-            pageeventnum(2, km, 1) = Formsetting.personcom(m).Text
-            pageeventnum(2, km, 2) = ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(m).Text, 2)
-        End If
-    Loop Until km >= 6
-    For i = 7 To 11
-        pageeventnum(2, i, 1) = Formsetting.personcom(i).Text
-        pageeventnum(2, i, 2) = ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).Text, 2)
-    Next
-End If
-End Sub
 Sub ¨Æ¥ó¥d³B²z_ªì©l_¨Ï¥ÎªÌ¤è()
 Dim ck As Boolean
-Dim m As Integer, i As Integer, j As Integer, tmpfailed As Integer
+Dim m As Integer, i As Integer, j As Integer, tmpfailed As Integer, tmpcardstr As String
 
 If Formsetting.comboeventcarrdus.Text = "µL" Then '=====(µL)
     For i = 1 To 18
-       Randomize
-       m = Int(Rnd() * 3) + 1
-       Select Case m
-          Case 1
-             For j = 0 To Formsetting.personus(i).ListCount - 1
-                If Formsetting.personus(i).List(j) = "¼C1" Then
-                    Formsetting.personus(i).ListIndex = j
-                End If
-             Next
-          Case 2
-             For j = 0 To Formsetting.personus(i).ListCount - 1
-                If Formsetting.personus(i).List(j) = "ºj1" Then
-                    Formsetting.personus(i).ListIndex = j
-                End If
-             Next
-          Case 3
-             For j = 0 To Formsetting.personus(i).ListCount - 1
-                If Formsetting.personus(i).List(j) = "¨¾1" Then
-                    Formsetting.personus(i).ListIndex = j
-                End If
-             Next
-       End Select
+        Randomize
+        m = Int(Rnd() * 3) + 1
+        Select Case m
+            Case 1
+                tmpcardstr = "¼C1"
+            Case 2
+                tmpcardstr = "ºj1"
+            Case 3
+                tmpcardstr = "¨¾1"
+        End Select
+        ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
     Next
 ElseIf Formsetting.comboeventcarrdus.Text = "¦Û­q" Then '=====¦Û­q
    If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgreus.Value = 0 Then
         For i = 1 To 18
-'            If Formsetting.personus(i).Text = "(µL)" Then
             If ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).Text, 1) = 99 Then
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "¼C1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "ºj1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "¨¾1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
-             End If
+            Else
+                tmpcardstr = Formsetting.personus(i).Text
+            End If
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
          Next
     ElseIf ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgreus.Value = 1 Then
          For i = 1 To 18
-            If Formsetting.personus(i).Text = "(µL)" Or i >= 7 Then
+            If i >= 7 Or ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).Text, 1) = 99 Then
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "¼C1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "ºj1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "¨¾1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
-             End If
+            Else
+                tmpcardstr = Formsetting.personus(i).Text
+            End If
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
          Next
     End If
 ElseIf Formsetting.comboeventcarrdus.Text = "³Ì¤j­È" Then '===============¿ï¾Ü³Ì¤j­È
     If Formsetting.persontgreus.Value = 1 Then  '===¿í¦u³W«h
-         For i = 1 To 18
-             Select Case Formsetting.persontgus(i).Caption
-                 Case 0
-                      Randomize
-                      m = Int(Rnd() * 8) + 1
-                      Select Case m
-                          Case 1
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¼C3/ºj1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 2
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "ºj3/¼C1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 3
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¨¾3/²¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 4
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¼C3/²¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 5
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "ºj3/²¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 6
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¼C3/¨¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 7
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "ºj3/¨¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 8
-                               For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¯S2" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                     End Select
-                 Case 1
-                      Randomize
-                      m = Int(Rnd() * 3) + 1
-                     Select Case m
-                         Case 1
-                              For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¼C5/ºj3" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                              For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¼C5/²¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 3
-                              For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¼C8" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
-                 Case 2
-                      Randomize
-                      m = Int(Rnd() * 3) + 1
-                     Select Case m
-                         Case 1
-                              For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "ºj5/¼C3" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                              For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "ºj5/²¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 3
-                              For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "ºj8" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
+        For i = 1 To 18
+            If i = 7 And ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgreus.Value = 1 Then Exit For
+            
+            Select Case Formsetting.persontgus(i).Caption
+                Case 0
+                    Randomize
+                    m = Int(Rnd() * 8) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¼C3/ºj1"
+                        Case 2
+                            tmpcardstr = "ºj3/¼C1"
+                        Case 3
+                            tmpcardstr = "¨¾3/²¾1"
+                        Case 4
+                            tmpcardstr = "¼C3/²¾1"
+                        Case 5
+                            tmpcardstr = "ºj3/²¾1"
+                        Case 6
+                            tmpcardstr = "¼C3/¨¾1"
+                        Case 7
+                            tmpcardstr = "ºj3/¨¾1"
+                        Case 8
+                            tmpcardstr = "¯S2"
+                    End Select
+                Case 1
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¼C5/ºj3"
+                        Case 2
+                            tmpcardstr = "¼C5/²¾1"
+                        Case 3
+                            tmpcardstr = "¼C8"
+                    End Select
+                Case 2
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "ºj5/¼C3"
+                        Case 2
+                            tmpcardstr = "ºj5/²¾1"
+                        Case 3
+                            tmpcardstr = "ºj8"
+                    End Select
                  Case 3
-                      Randomize
-                      m = Int(Rnd() * 3) + 1
-                     Select Case m
-                         Case 1
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¨¾5/²¾1" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¨¾7" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 3
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "HP¦^´_3" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¨¾5/²¾1"
+                        Case 2
+                            tmpcardstr = "¨¾7"
+                        Case 3
+                            tmpcardstr = "HP¦^´_3"
                       End Select
-                 Case 4
-                      Randomize
-                      m = Int(Rnd() * 2) + 1
-                     Select Case m
-                         Case 1
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "²¾3/¯S3" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "²¾5" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
-                 Case 5
-                    For j = 0 To Formsetting.personus(i).ListCount - 1
-                        If Formsetting.personus(i).List(j) = "¾÷·|5" Then
-                            Formsetting.personus(i).ListIndex = j
-                        End If
-                     Next
-                 Case 6
-                    For j = 0 To Formsetting.personus(i).ListCount - 1
-                        If Formsetting.personus(i).List(j) = "¶A©G³N5" Then
-                            Formsetting.personus(i).ListIndex = j
-                        End If
-                     Next
-                 Case 7
-                      Randomize
-                      m = Int(Rnd() * 2) + 1
-                     Select Case m
-                         Case 1
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¯S3/¨¾3" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                                For j = 0 To Formsetting.personus(i).ListCount - 1
-                                   If Formsetting.personus(i).List(j) = "¯S5" Then
-                                       Formsetting.personus(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
-             End Select
-         Next
-         If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgreus.Value = 1 Then
+                Case 4
+                    Randomize
+                    m = Int(Rnd() * 2) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "²¾3/¯S3"
+                        Case 2
+                            tmpcardstr = "²¾5"
+                    End Select
+                Case 5
+                    tmpcardstr = "¾÷·|5"
+                Case 6
+                    tmpcardstr = "¶A©G³N5"
+                Case 7
+                    Randomize
+                    m = Int(Rnd() * 2) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¯S3/¨¾3"
+                        Case 1
+                            tmpcardstr = "¯S5"
+                    End Select
+            End Select
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
+        Next
+        If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgreus.Value = 1 Then
             For i = 7 To 18
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "¼C1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "ºj1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personus(i).ListCount - 1
-                         If Formsetting.personus(i).List(j) = "¨¾1" Then
-                             Formsetting.personus(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
+                ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
             Next
         End If
     Else  '================================¤£¿í¦u³W«h
         For i = 1 To 18
             Do
-               Randomize
-               m = Int(Rnd() * (Formsetting.personus(i).ListCount - 1)) + 1
-               '==============================
-                    Select Case Formsetting.personus(i).List(m)
-                        Case "¼C8"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "ºj8"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¨¾7"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "²¾5"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "HP¦^´_3"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¾÷·|5"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¶A©G³N5"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¯S5"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¼C5/ºj3"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "ºj5/¼C3"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¨¾5/²¾1"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "ºj5/²¾1"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¼C5/²¾1"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "²¾3/¯S3"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                        Case "¯S3/¨¾3"
-                            Formsetting.personus(i).ListIndex = m
-                            Exit Do
-                    End Select
+                Randomize
+                m = Int(Rnd() * (Formsetting.personus(i).ListCount - 1)) + 1
+                '==============================
+                Select Case Formsetting.personus(i).List(m)
+                    Case "¼C8"
+                        Exit Do
+                    Case "ºj8"
+                        Exit Do
+                    Case "¨¾7"
+                        Exit Do
+                    Case "²¾5"
+                        Exit Do
+                    Case "HP¦^´_3"
+                        Exit Do
+                    Case "¾÷·|5"
+                        Exit Do
+                    Case "¶A©G³N5"
+                        Exit Do
+                    Case "¯S5"
+                        Exit Do
+                    Case "¼C5/ºj3"
+                        Exit Do
+                    Case "ºj5/¼C3"
+                        Exit Do
+                    Case "¨¾5/²¾1"
+                        Exit Do
+                    Case "ºj5/²¾1"
+                        Exit Do
+                    Case "¼C5/²¾1"
+                        Exit Do
+                    Case "²¾3/¯S3"
+                        Exit Do
+                    Case "¯S3/¨¾3"
+                        Exit Do
+                End Select
             Loop
+            tmpcardstr = Formsetting.personus(i).List(m)
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
         Next
     End If
 ElseIf Formsetting.comboeventcarrdus.Text = "ÀH¾÷" Or Formsetting.comboeventcarrdus.Text = "ÀH¾÷(¤£§t¸t¤ô)" Then '=====ÀH¾÷
     If Formsetting.persontgreus.Value = 1 Then '===¿í¦u³W«h
         For i = 1 To 18
-             tmpfailed = 0
-             Do
+            If i = 7 And ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 Then Exit For
+            
+            tmpfailed = 0
+            Do
                 Randomize
                 m = Int(Rnd() * (Formsetting.personus(i).ListCount - 1)) + 1
                 If ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).List(m), 1) = Formsetting.persontgus(i).Caption Or _
                    (tmpfailed > 10 And ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personus(i).List(m), 1) = 0) Then
                     If Formsetting.comboeventcarrdus.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personus(i).List(m) = "¸t¤ô" Then
                     Else
-                        Formsetting.personus(i).ListIndex = m
+                        tmpcardstr = Formsetting.personus(i).List(m)
                         Exit Do
                     End If
                 End If
                 tmpfailed = tmpfailed + 1
-             Loop
-         Next
+            Loop
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
+        Next
         If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 Then
             For i = 7 To 18
-                   Randomize
-                   m = Int(Rnd() * 3) + 1
-                   Select Case m
-                      Case 1
-                         For j = 0 To Formsetting.personus(i).ListCount - 1
-                            If Formsetting.personus(i).List(j) = "¼C1" Then
-                                Formsetting.personus(i).ListIndex = j
-                            End If
-                         Next
-                      Case 2
-                         For j = 0 To Formsetting.personus(i).ListCount - 1
-                            If Formsetting.personus(i).List(j) = "ºj1" Then
-                                Formsetting.personus(i).ListIndex = j
-                            End If
-                         Next
-                      Case 3
-                         For j = 0 To Formsetting.personus(i).ListCount - 1
-                            If Formsetting.personus(i).List(j) = "¨¾1" Then
-                                Formsetting.personus(i).ListIndex = j
-                            End If
-                         Next
-                   End Select
+                Randomize
+                m = Int(Rnd() * 3) + 1
+                Select Case m
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
+                End Select
+                ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
             Next
         End If
     Else '=============================¤£¿í¦u³W«h
-         For i = 1 To 18
+        For i = 1 To 18
             Randomize
             m = Int(Rnd() * (Formsetting.personus(i).ListCount - 1)) + 1
             If Formsetting.comboeventcarrdus.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personus(i).List(m) = "¸t¤ô" Then
                 i = i - 1
             Else
-                Formsetting.personus(i).ListIndex = m
+                tmpcardstr = Formsetting.personus(i).List(m)
             End If
-         Next
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 1, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
+        Next
     End If
 End If
 End Sub
 Sub ¨Æ¥ó¥d³B²z_ªì©l_¹q¸£¤è()
-Dim m As Integer, i As Integer, j As Integer, tmpfailed As Integer
+Dim m As Integer, i As Integer, j As Integer, tmpfailed As Integer, tmpcardstr As String
 Dim ay() As String
 
 If Formsetting.comboeventcarrdcom.Text = "µL" Then '=====(µL)
     For i = 1 To 18
-       Randomize
-       m = Int(Rnd() * 3) + 1
-       Select Case m
-          Case 1
-             For j = 0 To Formsetting.personcom(i).ListCount - 1
-                If Formsetting.personcom(i).List(j) = "¼C1" Then
-                    Formsetting.personcom(i).ListIndex = j
-                End If
-             Next
-          Case 2
-             For j = 0 To Formsetting.personcom(i).ListCount - 1
-                If Formsetting.personcom(i).List(j) = "ºj1" Then
-                    Formsetting.personcom(i).ListIndex = j
-                End If
-             Next
-          Case 3
-             For j = 0 To Formsetting.personcom(i).ListCount - 1
-                If Formsetting.personcom(i).List(j) = "¨¾1" Then
-                    Formsetting.personcom(i).ListIndex = j
-                End If
-             Next
-       End Select
+        Randomize
+        m = Int(Rnd() * 3) + 1
+        Select Case m
+            Case 1
+                tmpcardstr = "¼C1"
+            Case 2
+                tmpcardstr = "ºj1"
+            Case 3
+                tmpcardstr = "¨¾1"
+        End Select
+        ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
     Next
 ElseIf Formsetting.comboeventcarrdcom.Text = "¦Û­q" Then '=====¦Û­q
-   If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgrecom.Value = 0 Then
+    If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 18 Or Formsetting.persontgrecom.Value = 0 Then
         For i = 1 To 18
-'            If Formsetting.personcom(i).Text = "(µL)" Then
             If ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).Text, 1) = 99 Then
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¼C1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "ºj1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¨¾1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
-             End If
+            Else
+                tmpcardstr = Formsetting.personcom(i).Text
+            End If
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
          Next
     ElseIf ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
          For i = 1 To 18
-            If Formsetting.personcom(i).Text = "(µL)" Or i >= 7 Then
+            If i >= 7 Or ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).Text, 1) = 99 Then
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¼C1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "ºj1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¨¾1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
-             End If
+            Else
+                tmpcardstr = Formsetting.personcom(i).Text
+            End If
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
          Next
     End If
 ElseIf Formsetting.comboeventcarrdcom.Text = "³Ì¤j­È" Then '=====¿ï¾Ü³Ì¤j­È
     If Formsetting.persontgrecom.Value = 1 Then  '===¿í¦u³W«h
-         For i = 1 To 18
-             Select Case Formsetting.persontgcom(i).Caption
-                 Case 0
-                      Randomize
-                      m = Int(Rnd() * 8) + 1
-                      Select Case m
-                          Case 1
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¼C3/ºj1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 2
-                                For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "ºj3/¼C1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 3
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¨¾3/²¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 4
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¼C3/²¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 5
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "ºj3/²¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 6
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¼C3/¨¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 7
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "ºj3/¨¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                          Case 8
-                               For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¯S2" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                     End Select
-                 Case 1
-                      Randomize
-                      m = Int(Rnd() * 3) + 1
-                     Select Case m
-                         Case 1
-                              For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¼C5/ºj3" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                              For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¼C5/²¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 3
-                              For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¼C8" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
-                 Case 2
-                      Randomize
-                      m = Int(Rnd() * 3) + 1
-                     Select Case m
-                         Case 1
-                              For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "ºj5/¼C3" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                              For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "ºj5/²¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 3
-                              For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "ºj8" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
+        For i = 1 To 18
+            If i = 7 And ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then Exit For
+            
+            Select Case Formsetting.persontgcom(i).Caption
+                Case 0
+                    Randomize
+                    m = Int(Rnd() * 8) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¼C3/ºj1"
+                        Case 2
+                            tmpcardstr = "ºj3/¼C1"
+                        Case 3
+                            tmpcardstr = "¨¾3/²¾1"
+                        Case 4
+                            tmpcardstr = "¼C3/²¾1"
+                        Case 5
+                            tmpcardstr = "ºj3/²¾1"
+                        Case 6
+                            tmpcardstr = "¼C3/¨¾1"
+                        Case 7
+                            tmpcardstr = "ºj3/¨¾1"
+                        Case 8
+                            tmpcardstr = "¯S2"
+                    End Select
+                Case 1
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¼C5/ºj3"
+                        Case 2
+                            tmpcardstr = "¼C5/²¾1"
+                        Case 3
+                            tmpcardstr = "¼C8"
+                    End Select
+                Case 2
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "ºj5/¼C3"
+                        Case 2
+                            tmpcardstr = "ºj5/²¾1"
+                        Case 3
+                            tmpcardstr = "ºj8"
+                    End Select
                  Case 3
-                      Randomize
-                      m = Int(Rnd() * 3) + 1
-                     Select Case m
-                         Case 1
-                                For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¨¾5/²¾1" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                                For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "¨¾7" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 3
-                                For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "HP¦^´_3" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
+                    Randomize
+                    m = Int(Rnd() * 3) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¨¾5/²¾1"
+                        Case 2
+                            tmpcardstr = "¨¾7"
+                        Case 3
+                            tmpcardstr = "HP¦^´_3"
                       End Select
-                 Case 4
-                      Randomize
-                      m = Int(Rnd() * 2) + 1
-                     Select Case m
-                         Case 1
-                                For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "²¾3/¯S3" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                         Case 2
-                                For j = 0 To Formsetting.personcom(i).ListCount - 1
-                                   If Formsetting.personcom(i).List(j) = "²¾5" Then
-                                       Formsetting.personcom(i).ListIndex = j
-                                   End If
-                                Next
-                      End Select
-                 Case 5
-                    For j = 0 To Formsetting.personcom(i).ListCount - 1
-                        If Formsetting.personcom(i).List(j) = "¾÷·|5" Then
-                            Formsetting.personcom(i).ListIndex = j
-                        End If
-                     Next
-                 Case 6
-                    For j = 0 To Formsetting.personcom(i).ListCount - 1
-                        If Formsetting.personcom(i).List(j) = "¶A©G³N5" Then
-                            Formsetting.personcom(i).ListIndex = j
-                        End If
-                     Next
-                 Case 7
-                        For j = 0 To Formsetting.personcom(i).ListCount - 1
-                           If Formsetting.personcom(i).List(j) = "¯S3/¨¾3" Then
-                               Formsetting.personcom(i).ListIndex = j
-                           End If
-                        Next
-             End Select
-         Next
-         If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
+                Case 4
+                    Randomize
+                    m = Int(Rnd() * 2) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "²¾3/¯S3"
+                        Case 2
+                            tmpcardstr = "²¾5"
+                    End Select
+                Case 5
+                    tmpcardstr = "¾÷·|5"
+                Case 6
+                    tmpcardstr = "¶A©G³N5"
+                Case 7
+                    Randomize
+                    m = Int(Rnd() * 2) + 1
+                    Select Case m
+                        Case 1
+                            tmpcardstr = "¯S3/¨¾3"
+                        Case 1
+                            tmpcardstr = "¯S5"
+                    End Select
+            End Select
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
+        Next
+        If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
             For i = 7 To 18
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¼C1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "ºj1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¨¾1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
+                ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
             Next
         End If
     Else  '================================¤£¿í¦u³W«h
         For i = 1 To 18
             Do
-               Randomize
-               m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
-               '==============================
-                    Select Case Formsetting.personcom(i).List(m)
-                        Case "¼C8"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "ºj8"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¨¾7"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "²¾5"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "HP¦^´_3"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¾÷·|5"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¶A©G³N5"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¼C5/ºj3"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "ºj5/¼C3"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¨¾5/²¾1"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "ºj5/²¾1"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¼C5/²¾1"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "²¾3/¯S3"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                        Case "¯S3/¨¾3"
-                            Formsetting.personcom(i).ListIndex = m
-                            Exit Do
-                    End Select
+                Randomize
+                m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
+                '==============================
+                Select Case Formsetting.personcom(i).List(m)
+                    Case "¼C8"
+                        Exit Do
+                    Case "ºj8"
+                        Exit Do
+                    Case "¨¾7"
+                        Exit Do
+                    Case "²¾5"
+                        Exit Do
+                    Case "HP¦^´_3"
+                        Exit Do
+                    Case "¾÷·|5"
+                        Exit Do
+                    Case "¶A©G³N5"
+                        Exit Do
+                    Case "¯S5"
+                        Exit Do
+                    Case "¼C5/ºj3"
+                        Exit Do
+                    Case "ºj5/¼C3"
+                        Exit Do
+                    Case "¨¾5/²¾1"
+                        Exit Do
+                    Case "ºj5/²¾1"
+                        Exit Do
+                    Case "¼C5/²¾1"
+                        Exit Do
+                    Case "²¾3/¯S3"
+                        Exit Do
+                    Case "¯S3/¨¾3"
+                        Exit Do
+                End Select
             Loop
+            tmpcardstr = Formsetting.personcom(i).List(m)
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
         Next
     End If
 ElseIf Formsetting.comboeventcarrdcom.Text = "ÀH¾÷" Or Formsetting.comboeventcarrdcom.Text = "ÀH¾÷(¤£§t¸t¤ô)" Then '=====ÀH¾÷
     If Formsetting.persontgrecom.Value = 1 Then '===¿í¦u³W«h
         For i = 1 To 18
-             tmpfailed = 0
-             Do
+            If i = 7 And ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then Exit For
+            
+            tmpfailed = 0
+            Do
                 Randomize
                 m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
                 If ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).List(m), 1) = Formsetting.persontgcom(i).Caption Or _
                    (tmpfailed > 10 And ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(Formsetting.personcom(i).List(m), 1) = 0) Then
                     If Formsetting.comboeventcarrdcom.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personcom(i).List(m) = "¸t¤ô" Then
                     Else
-                        Formsetting.personcom(i).ListIndex = m
+                        tmpcardstr = Formsetting.personcom(i).List(m)
                         Exit Do
                     End If
                 End If
                 tmpfailed = tmpfailed + 1
-             Loop
-         Next
-         If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
+            Loop
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
+        Next
+        If ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) = 12 And Formsetting.persontgrecom.Value = 1 Then
             For i = 7 To 18
                 Randomize
                 m = Int(Rnd() * 3) + 1
                 Select Case m
-                   Case 1
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¼C1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 2
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "ºj1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
-                   Case 3
-                      For j = 0 To Formsetting.personcom(i).ListCount - 1
-                         If Formsetting.personcom(i).List(j) = "¨¾1" Then
-                             Formsetting.personcom(i).ListIndex = j
-                         End If
-                      Next
+                    Case 1
+                        tmpcardstr = "¼C1"
+                    Case 2
+                        tmpcardstr = "ºj1"
+                    Case 3
+                        tmpcardstr = "¨¾1"
                 End Select
+                ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
             Next
         End If
     Else '=============================¤£¿í¦u³W«h
-         For i = 1 To 18
+        For i = 1 To 18
             Randomize
             m = Int(Rnd() * (Formsetting.personcom(i).ListCount - 1)) + 1
             If Formsetting.comboeventcarrdcom.Text = "ÀH¾÷(¤£§t¸t¤ô)" And Formsetting.personcom(i).List(m) = "¸t¤ô" Then
                 i = i - 1
             Else
-                Formsetting.personcom(i).ListIndex = m
+                tmpcardstr = Formsetting.personcom(i).List(m)
             End If
-         Next
+            ¾Ô°«¨t²ÎÃþ.µo¦æ¥dµP_¨Æ¥ó¥d 2, tmpcardstr, ¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(tmpcardstr, 2)
+        Next
     End If
 End If
 End Sub
@@ -3215,16 +2886,16 @@ Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(3)(1)
 
 FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
 ¾Ô°«¨t²ÎÃþ.®y¼Ð­pºâ_¨Ï¥ÎªÌ¤âµP
-µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.Cardnum
+µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.CardNum
 ¾Ô°«¨t²ÎÃþ.µP¶¶§Ç¼W¥[_¤âµP_¨Ï¥ÎªÌ
 tmpcard.Location = 1
 tmpcard.Owner = 1
 tmpcard.XYLeft = µP²¾°Ê¼È®ÉÅÜ¼Æ(1) '«ü©w¥Ø«eLeft(®y¼Ð)
 tmpcard.XYTop = µP²¾°Ê¼È®ÉÅÜ¼Æ(2) '«ü©w¥Ø«eTop(®y¼Ð)
-FormMainMode.card(tmpcard.Cardnum).Left = µP²¾°Ê¼È®ÉÅÜ¼Æ(1)
-FormMainMode.card(tmpcard.Cardnum).Top = µP²¾°Ê¼È®ÉÅÜ¼Æ(2)
-FormMainMode.card(tmpcard.Cardnum).ZOrder
-FormMainMode.card(tmpcard.Cardnum).Visible = True
+FormMainMode.card(tmpcard.CardNum).Left = µP²¾°Ê¼È®ÉÅÜ¼Æ(1)
+FormMainMode.card(tmpcard.CardNum).Top = µP²¾°Ê¼È®ÉÅÜ¼Æ(2)
+FormMainMode.card(tmpcard.CardNum).ZOrder
+FormMainMode.card(tmpcard.CardNum).Visible = True
 
 ¾Ô°«¨t²ÎÃþ.¥dµPµP°ï¶°¦X§ó´« tmpcard, 3, 5
 End Sub
@@ -3235,17 +2906,17 @@ Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(4)(1)
 
 FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
 ¾Ô°«¨t²ÎÃþ.®y¼Ð­pºâ_¹q¸£¤âµP
-µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.Cardnum
+µP²¾°Ê¼È®ÉÅÜ¼Æ(3) = tmpcard.CardNum
 ¾Ô°«¨t²ÎÃþ.¤½¥ÎµPÅÜ­I­±
 ¾Ô°«¨t²ÎÃþ.µP¶¶§Ç¼W¥[_¤âµP_¹q¸£
 tmpcard.Location = 1
 tmpcard.Owner = 2
 tmpcard.XYLeft = µP²¾°Ê¼È®ÉÅÜ¼Æ(1) '«ü©w¥Ø«eLeft(®y¼Ð)
 tmpcard.XYTop = µP²¾°Ê¼È®ÉÅÜ¼Æ(2) '«ü©w¥Ø«eTop(®y¼Ð)
-FormMainMode.card(tmpcard.Cardnum).Left = µP²¾°Ê¼È®ÉÅÜ¼Æ(1)
-FormMainMode.card(tmpcard.Cardnum).Top = µP²¾°Ê¼È®ÉÅÜ¼Æ(2)
-FormMainMode.card(tmpcard.Cardnum).ZOrder
-FormMainMode.card(tmpcard.Cardnum).Visible = True
+FormMainMode.card(tmpcard.CardNum).Left = µP²¾°Ê¼È®ÉÅÜ¼Æ(1)
+FormMainMode.card(tmpcard.CardNum).Top = µP²¾°Ê¼È®ÉÅÜ¼Æ(2)
+FormMainMode.card(tmpcard.CardNum).ZOrder
+FormMainMode.card(tmpcard.CardNum).Visible = True
 ¾Ô°«¨t²ÎÃþ.¥dµPµP°ï¶°¦X§ó´« tmpcard, 4, 7
 
 For i = 1 To 3
@@ -3337,16 +3008,17 @@ For n = 1 To 2
 Next
 End Sub
 Sub µo¦æ¥dµP_¤½¥ÎµP()
-Dim i As Integer, j As Integer
+Dim i As Integer, j As Integer, tmpnewActionCardNum As Integer
 Dim tmpcard As clsActionCard, tmpindexobj As clsCollectionIndex
 
-For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
+For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
+    tmpnewActionCardNum = ¾Ô°«¨t²ÎÃþ.¹CÀ¸¹êÅéµPª«¥ó³Ð«Øµo¦æ
+    
+    Set tmpcard = New clsActionCard
+    tmpcard.CardNum = tmpnewActionCardNum
+    tmpcard.Location = 4
+    tmpcard.CardType = 1
     For j = 1 To UBound(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ, 1)
-        Set tmpcard = New clsActionCard
-        tmpcard.Cardnum = i
-        tmpcard.Location = 4
-        tmpcard.CardType = 1
-        
         If Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(j, 1)) < Val(¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(j, 2)) Then
             Select Case j
                 Case 1  '==²¾1ºj1Ãþ
@@ -3357,7 +3029,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\021.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\021.png"
                     tmpcard.ImageStr = "021"
                     tmpcard.CardOnIn = 1
                 Case 2  '==²¾1ºj2Ãþ
@@ -3368,7 +3040,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\019.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\019.png"
                     tmpcard.ImageStr = "019"
                     tmpcard.CardOnIn = 1
                 Case 3  '==²¾1ºj3Ãþ
@@ -3379,7 +3051,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\017.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\017.png"
                     tmpcard.ImageStr = "017"
                     tmpcard.CardOnIn = 1
                 Case 4  '==²¾1¬Þ1Ãþ
@@ -3390,7 +3062,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\025.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\025.png"
                     tmpcard.ImageStr = "025"
                     tmpcard.CardOnIn = 1
                 Case 5  '==²¾1¬Þ2Ãþ
@@ -3401,7 +3073,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\024.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\024.png"
                     tmpcard.ImageStr = "024"
                     tmpcard.CardOnIn = 1
                 Case 6  '==²¾1¬Þ3Ãþ
@@ -3412,7 +3084,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\023.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\023.png"
                     tmpcard.ImageStr = "023"
                     tmpcard.CardOnIn = 1
                 Case 7  '==²¾2¯S3Ãþ
@@ -3423,7 +3095,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\026.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\026.png"
                     tmpcard.ImageStr = "026"
                     tmpcard.CardOnIn = 1
                 Case 8  '==²¾3²¾3Ãþ
@@ -3434,7 +3106,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a3a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\027.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\027.png"
                     tmpcard.ImageStr = "027"
                     tmpcard.CardOnIn = 1
                 Case 9  '==¼C6¼C6Ãþ
@@ -3445,7 +3117,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a1a
                     tmpcard.LowerNum = b6b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\001.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\001.png"
                     tmpcard.ImageStr = "001"
                     tmpcard.CardOnIn = 1
                 Case 10  '==¼C1ºj1Ãþ
@@ -3456,7 +3128,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\011.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\011.png"
                     tmpcard.ImageStr = "011"
                     tmpcard.CardOnIn = 1
                 Case 11  '==¼C2ºj1Ãþ
@@ -3467,7 +3139,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\007.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\007.png"
                     tmpcard.ImageStr = "007"
                     tmpcard.CardOnIn = 1
                 Case 12  '==¼C2ºj2Ãþ
@@ -3478,7 +3150,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\006.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\006.png"
                     tmpcard.ImageStr = "006"
                     tmpcard.CardOnIn = 1
                 Case 13  '==¼C3ºj3Ãþ
@@ -3489,7 +3161,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\004.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\004.png"
                     tmpcard.ImageStr = "004"
                     tmpcard.CardOnIn = 1
                 Case 14  '==¼C5ºj5Ãþ
@@ -3500,7 +3172,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b5b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\028.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\028.png"
                     tmpcard.ImageStr = "028"
                     tmpcard.CardOnIn = 1
                 Case 15  '==¼C1¬Þ1Ãþ
@@ -3511,7 +3183,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\012.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\012.png"
                     tmpcard.ImageStr = "012"
                     tmpcard.CardOnIn = 1
                 Case 16  '==¼C2¬Þ1Ãþ
@@ -3522,7 +3194,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\009.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\009.png"
                     tmpcard.ImageStr = "009"
                     tmpcard.CardOnIn = 1
                 Case 17  '==¼C2¬Þ2Ãþ
@@ -3533,7 +3205,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\008.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\008.png"
                     tmpcard.ImageStr = "008"
                     tmpcard.CardOnIn = 1
                 Case 18  '==¼C3¬Þ3Ãþ
@@ -3544,7 +3216,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\005.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\005.png"
                     tmpcard.ImageStr = "005"
                     tmpcard.CardOnIn = 1
                 Case 19  '==¼C1¯S1Ãþ
@@ -3555,7 +3227,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\013.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\013.png"
                     tmpcard.ImageStr = "013"
                     tmpcard.CardOnIn = 1
                 Case 20  '==¼C2¯S1Ãþ
@@ -3566,7 +3238,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\010.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\010.png"
                     tmpcard.ImageStr = "010"
                     tmpcard.CardOnIn = 1
                 Case 21  '==¼C4¯S1Ãþ
@@ -3577,7 +3249,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\003.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\003.png"
                     tmpcard.ImageStr = "003"
                     tmpcard.CardOnIn = 1
                 Case 22  '==¼C5¯S2Ãþ
@@ -3588,7 +3260,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\002.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\002.png"
                     tmpcard.ImageStr = "002"
                     tmpcard.CardOnIn = 1
                 Case 23  '==ºj4ºj4Ãþ
@@ -3599,7 +3271,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b4b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\015.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\015.png"
                     tmpcard.ImageStr = "015"
                     tmpcard.CardOnIn = 1
                 Case 24  '==ºj2¯S1Ãþ
@@ -3610,7 +3282,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\020.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\020.png"
                     tmpcard.ImageStr = "020"
                     tmpcard.CardOnIn = 1
                 Case 25  '==ºj3¯S2Ãþ
@@ -3621,7 +3293,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\018.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\018.png"
                     tmpcard.ImageStr = "018"
                     tmpcard.CardOnIn = 1
                 Case 26  '==ºj4¯S1Ãþ
@@ -3632,7 +3304,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\016.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\016.png"
                     tmpcard.ImageStr = "016"
                     tmpcard.CardOnIn = 1
                 Case 27  '==ºj5¯S2Ãþ
@@ -3643,7 +3315,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\014.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\014.png"
                     tmpcard.ImageStr = "014"
                     tmpcard.CardOnIn = 1
                 Case 28  '==¬Þ5¬Þ5Ãþ
@@ -3654,7 +3326,7 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b5b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\022.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\022.png"
                     tmpcard.ImageStr = "022"
                     tmpcard.CardOnIn = 1
                 Case 29  '==¬Þ3¯S5Ãþ
@@ -3665,92 +3337,75 @@ For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b5b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).cardImage = app_path & "card\029.png"
+                    FormMainMode.card(i).CardImage = app_path & "card\029.png"
                     tmpcard.ImageStr = "029"
                     tmpcard.CardOnIn = 1
             End Select
-            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Add tmpcard, CStr(i)
+            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Add tmpcard, CStr(tmpnewActionCardNum)
             
             Set tmpindexobj = New clsCollectionIndex
             tmpindexobj.CollectionIndex = 1
-            tmpindexobj.Cardnum = i
+            tmpindexobj.CardNum = tmpnewActionCardNum
             tmpindexobj.Index = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Count + 1
-            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Add tmpindexobj, CStr(i)
+            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Add tmpindexobj, CStr(tmpnewActionCardNum)
             Exit For
         End If
     Next
 Next
 End Sub
-Sub µo¦æ¥dµP_¨Æ¥ó¥d()
+Sub µo¦æ¥dµP_¨Æ¥ó¥d(ByVal uscom As Integer, ByVal cardname As String, ByVal filename As String, Optional ByVal beforeindex As Integer)
 Dim ay() As String
-Dim tn As Integer
+Dim tn As Integer, tmpnewActionCardNum As Integer
 Dim tmpcard As clsActionCard
 Dim tmpindexobj As clsCollectionIndex
 
-For tn = 1 To 18 'max 18 turn
-    '===============¨Ï¥ÎªÌ¤è
-    If tn <= ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) Or Formsetting.persontgreus.Value = 0 Then
-        If pageeventnum(1, tn, 1) <> "" Then
-            Set tmpcard = New clsActionCard
-            tmpcard.Cardnum = ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) + tn
-            '============
-            Erase ay
-            ay = Split(¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(pageeventnum(1, tn, 1), 3), "=")
-            '============
-            tmpcard.UpperType = ay(0)
-            tmpcard.UpperNum = ay(1)
-            tmpcard.LowerType = ay(2)
-            tmpcard.LowerNum = ay(3)
-            tmpcard.Owner = 0
-            tmpcard.Location = 0
-            tmpcard.ImageStr = pageeventnum(1, tn, 2)
-            tmpcard.ComMark = 0
-            FormMainMode.card(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) + tn).cardImage = app_path & "card\" & pageeventnum(1, tn, 2) & ".png"
-            FormMainMode.card(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) + tn).CardRotationType = 1
-            tmpcard.CardOnIn = 1
-            tmpcard.CardType = 2
-            '============
-            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(3).Add tmpcard, CStr(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) + tn)
-            
-            Set tmpindexobj = New clsCollectionIndex
-            tmpindexobj.CollectionIndex = 3
-            tmpindexobj.Cardnum = ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) + tn
-            tmpindexobj.Index = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Count + 1
-            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Add tmpindexobj, CStr(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) + tn)
+If cardname = "" Or filename = "" Then Exit Sub
+
+tmpnewActionCardNum = ¾Ô°«¨t²ÎÃþ.¹CÀ¸¹êÅéµPª«¥ó³Ð«Øµo¦æ
+
+Set tmpcard = New clsActionCard
+tmpcard.CardNum = tmpnewActionCardNum
+'============
+Erase ay
+ay = Split(¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(cardname, 3), "=")
+'============
+tmpcard.UpperType = ay(0)
+tmpcard.UpperNum = ay(1)
+tmpcard.LowerType = ay(2)
+tmpcard.LowerNum = ay(3)
+tmpcard.Owner = 0
+tmpcard.Location = 0
+tmpcard.ImageStr = filename
+tmpcard.ComMark = 0
+FormMainMode.card(tmpnewActionCardNum).CardImage = app_path & "card\" & filename & ".png"
+FormMainMode.card(tmpnewActionCardNum).CardRotationType = 1
+tmpcard.CardOnIn = 1
+tmpcard.CardType = 2
+
+Set tmpindexobj = New clsCollectionIndex
+tmpindexobj.CardNum = tmpnewActionCardNum
+tmpindexobj.Index = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Count + 1
+
+Select Case uscom
+    Case 1
+        tmpindexobj.CollectionIndex = 3
+        ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Add tmpindexobj, CStr(tmpnewActionCardNum)
+        
+        If beforeindex > 0 And beforeindex <= ¾Ô°«¨t²ÎÃþ.CardDeckCollection(3).Count Then
+            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(3).Add tmpcard, CStr(tmpnewActionCardNum), beforeindex
+        Else
+            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(3).Add tmpcard, CStr(tmpnewActionCardNum)
         End If
-    End If
-    '===============¹q¸£¤è
-    If tn <= ¨Æ¥ó¥d°O¿ý¼È®É¼Æ(0, 1) Or Formsetting.persontgrecom.Value = 0 Then
-        If pageeventnum(2, tn, 1) <> "" Then
-            Set tmpcard = New clsActionCard
-            tmpcard.Cardnum = ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) + tn
-            '============
-            Erase ay
-            ay = Split(¤@¯ë¨t²ÎÃþ.¨Æ¥ó¥d¸ê®Æ®w(pageeventnum(2, tn, 1), 3), "=")
-            '============
-            tmpcard.UpperType = ay(0)
-            tmpcard.UpperNum = ay(1)
-            tmpcard.LowerType = ay(2)
-            tmpcard.LowerNum = ay(3)
-            tmpcard.Owner = 0
-            tmpcard.Location = 0
-            tmpcard.ImageStr = pageeventnum(2, tn, 2)
-            tmpcard.ComMark = 0
-            FormMainMode.card(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) + tn).cardImage = app_path & "card\" & pageeventnum(2, tn, 2) & ".png"
-            FormMainMode.card(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) + tn).CardRotationType = 1
-            tmpcard.CardOnIn = 1
-            tmpcard.CardType = 2
-            '============
-            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(4).Add tmpcard, CStr(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) + tn)
-            
-            Set tmpindexobj = New clsCollectionIndex
-            tmpindexobj.CollectionIndex = 4
-            tmpindexobj.Cardnum = ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) + tn
-            tmpindexobj.Index = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Count + 1
-            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Add tmpindexobj, CStr(¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) + tn)
+    Case 2
+        tmpindexobj.CollectionIndex = 4
+        ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0).Add tmpindexobj, CStr(tmpnewActionCardNum)
+        
+        If beforeindex > 0 And beforeindex <= ¾Ô°«¨t²ÎÃþ.CardDeckCollection(4).Count Then
+            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(4).Add tmpcard, CStr(tmpnewActionCardNum), beforeindex
+        Else
+            ¾Ô°«¨t²ÎÃþ.CardDeckCollection(4).Add tmpcard, CStr(tmpnewActionCardNum)
         End If
-    End If
-Next
+End Select
 End Sub
 Sub ¤½¥ÎµP¦a¹ÏµPºØÃþ°t¸m(ByVal name As String)
 Select Case name
@@ -4395,28 +4050,22 @@ For i = 1 To FormMainMode.cardcom.UBound
 Next
 '==========
 End Sub
-Sub ¹CÀ¸¹êÅéµPª«¥ó«Å§iµ{§Ç()
+Function ¹CÀ¸¹êÅéµPª«¥ó³Ð«Øµo¦æ() As Integer
 Dim i As Integer
 
-¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1) = ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2) + 18 + 18
-¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(2) = ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
-¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(3) = ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2) + 18
-¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(4) = ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2) + 18 + 18
-¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(5) = ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1) + 1
-For i = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
-    Load FormMainMode.card(i)
-    Set FormMainMode.card(i).Container = FormMainMode.PEAttackingForm
-    FormMainMode.card(i).Left = 240
-    FormMainMode.card(i).Top = 960
-    FormMainMode.card(i).Visible = False
-    FormMainMode.card(i).CardEventType = False
-    FormMainMode.card(i).LocationType = 0
-Next
+¾Ô°«¨t²ÎÃþ.ActionCardTotNum = ¾Ô°«¨t²ÎÃþ.ActionCardTotNum + 1
+i = ¾Ô°«¨t²ÎÃþ.ActionCardTotNum
 
-For i = 0 To UBound(¾Ô°«¨t²ÎÃþ.CardDeckCollection)
-    Set ¾Ô°«¨t²ÎÃþ.CardDeckCollection(i) = New Collection
-Next
-End Sub
+Load FormMainMode.card(i)
+Set FormMainMode.card(i).Container = FormMainMode.PEAttackingForm
+FormMainMode.card(i).Left = 240
+FormMainMode.card(i).Top = 960
+FormMainMode.card(i).Visible = False
+FormMainMode.card(i).CardEventType = False
+FormMainMode.card(i).LocationType = 0
+
+¹CÀ¸¹êÅéµPª«¥ó³Ð«Øµo¦æ = ¾Ô°«¨t²ÎÃþ.ActionCardTotNum
+End Function
 Sub ¼s¼½°T®§(ByVal messagestr As String)
 FormMainMode.PEAFInterface.Message messagestr
 End Sub
@@ -4429,7 +4078,7 @@ For i = 1 To 3
 Next
 End Sub
 Sub °õ¦æ°Ê§@_¨t²ÎÁ`¥dµP±i¼Æ§ó·s()
-FormMainMode.PEAFInterface.Cardnum = BattleCardNum
+FormMainMode.PEAFInterface.CardNum = BattleCardNum
 FormMainMode.pageul.Caption = BattleCardNum
 End Sub
 Sub °õ¦æ°Ê§@_¹q¸£¤è¦U¶¥¬q¥XµP§¹²¦«á¦æ°Ê(ByVal turnnum As Integer)
@@ -4455,14 +4104,14 @@ Select Case turnnum
         ¶¥¬qª¬ºA¼Æ = 1
         FormMainMode.PEAFInterface.BnOKStartListen
         If Vss_EventPlayerAllActionOffNum(1) = 1 Then
-            For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+            For ckl = 1 To ¾Ô°«¨t²ÎÃþ.ActionCardTotNum
                 FormMainMode.card(ckl).CardEnabledType = False
             Next
             FormMainMode.PEAFInterface.BnOKEnabled False
             µ¥«Ý®É¶¡¦î¦C(2).Add 47
             FormMainMode.µ¥«Ý®É¶¡_2.Enabled = True
         ElseIf Formsetting.chkusenewaipersonauto.Value = 1 Then
-            For ckl = 1 To ¤½¥ÎµP¹êÅé¥d¤ù¤À¹j¬ö¿ý¼Æ(1)
+            For ckl = 1 To ¾Ô°«¨t²ÎÃþ.ActionCardTotNum
                 FormMainMode.card(ckl).CardEnabledType = False
             Next
             FormMainMode.PEAFInterface.BnOKEnabled False
@@ -4539,10 +4188,10 @@ End Select
 End Sub
 Sub ¥dµPµP°ï¶°¦X§ó´«(ByRef tmpcard As clsActionCard, ByVal torigc As Integer, ByVal tnewc As Integer)
 Dim tmpindexobj As clsCollectionIndex
-Set tmpindexobj = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0)(CStr(tmpcard.Cardnum))
+Set tmpindexobj = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0)(CStr(tmpcard.CardNum))
 
-¾Ô°«¨t²ÎÃþ.CardDeckCollection(torigc).Remove CStr(tmpcard.Cardnum)
-¾Ô°«¨t²ÎÃþ.CardDeckCollection(tnewc).Add tmpcard, CStr(tmpcard.Cardnum)
+¾Ô°«¨t²ÎÃþ.CardDeckCollection(torigc).Remove CStr(tmpcard.CardNum)
+¾Ô°«¨t²ÎÃþ.CardDeckCollection(tnewc).Add tmpcard, CStr(tmpcard.CardNum)
 '=========¯Á¤Þ§ó·s
 tmpindexobj.CollectionIndex = tnewc
 End Sub
@@ -4554,7 +4203,7 @@ End Function
 Function ¥dµPµP°ï¶°¦X¯Á¤Þ_CardNum(ByVal tmpindex As Variant) As Integer
 Dim tmpindexobj As clsCollectionIndex
 Set tmpindexobj = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(0)(tmpindex)
-¥dµPµP°ï¶°¦X¯Á¤Þ_CardNum = tmpindexobj.Cardnum
+¥dµPµP°ï¶°¦X¯Á¤Þ_CardNum = tmpindexobj.CardNum
 End Function
 Function ¥dµPµP°ï¶°¦X¯Á¤Þ_Index(ByVal tmpindex As Variant) As Integer
 Dim tmpindexobj As clsCollectionIndex
