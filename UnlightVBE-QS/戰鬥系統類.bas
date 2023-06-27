@@ -293,7 +293,7 @@ If isEvent = True Then
     If isSysCall = True Then
         Set stageInfoListObj = New clsVSStageObj
         stageInfoListObj.StageNum = 0
-        stageInfoListObj.CommandStr = "@System"
+        stageInfoListObj.CommandStr = "@SystemHPLAction"
         stageInfoListObj.Value = "0"
         °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
     Else
@@ -314,7 +314,7 @@ If isEvent = True Then
     °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 48, 1
     '============================
     tmpflagoff = False
-    If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
+    If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@SystemHPLAction" And isSysCall = True) Then
         If stageInfoListObj.Value = "HPLOFF" Then
             tmpflagoff = True
         Else
@@ -370,7 +370,7 @@ If isEvent = True Then
     If isSysCall = True Then
         Set stageInfoListObj = New clsVSStageObj
         stageInfoListObj.StageNum = 0
-        stageInfoListObj.CommandStr = "@System"
+        stageInfoListObj.CommandStr = "@SystemHPLAction"
         stageInfoListObj.Value = "0"
         °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
     Else
@@ -391,7 +391,7 @@ If isEvent = True Then
     °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 48, 1
     '============================
     tmpflagoff = False
-    If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
+    If stageInfoListObj.CommandStr = "PersonBloodControl" Or (stageInfoListObj.CommandStr = "@SystemHPLAction" And isSysCall = True) Then
         If stageInfoListObj.Value = "HPLOFF" Then
             tmpflagoff = True
         Else
@@ -446,7 +446,7 @@ If tot <= 0 Then Exit Sub
 Dim stageInfoListObj As New clsVSStageObj
 Dim tmpflagoff As Boolean
 stageInfoListObj.StageNum = 0
-stageInfoListObj.CommandStr = "@System"
+stageInfoListObj.CommandStr = "@SystemBloodAction"
 stageInfoListObj.Value = "0"
 °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
 '===============================
@@ -466,7 +466,7 @@ stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '¨ü¨ì¶Ë®`¤§§Î¦
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 1, 46, 1
 '============================
 tmpflagoff = False
-If stageInfoListObj.CommandStr = "@System" Then
+If stageInfoListObj.CommandStr = "@SystemBloodAction" Then
     If stageInfoListObj.Value = "BLOODOFF" Then
         tmpflagoff = True
     Else
@@ -570,7 +570,7 @@ If tot <= 0 Then Exit Sub
 Dim stageInfoListObj As New clsVSStageObj
 Dim tmpflagoff As Boolean
 stageInfoListObj.StageNum = 0
-stageInfoListObj.CommandStr = "@System"
+stageInfoListObj.CommandStr = "@SystemBloodAction"
 stageInfoListObj.Value = "0"
 °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
 '===============================
@@ -590,7 +590,7 @@ stageInfoListObj.Argument = stageInfoListObj.Argument + "%" + "1" '¨ü¨ì¶Ë®`¤§§Î¦
 °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l 2, 46, 1
 '============================
 tmpflagoff = False
-If stageInfoListObj.CommandStr = "@System" Then
+If stageInfoListObj.CommandStr = "@SystemBloodAction" Then
     If stageInfoListObj.Value = "BLOODOFF" Then
         tmpflagoff = True
     Else
@@ -874,10 +874,16 @@ For m = 3 To 4
 Next
 
 End Sub
-Sub °õ¦æ°Ê§@_©âµP_¤½¥ÎµP(ByVal uscom As Integer)
+Sub °õ¦æ°Ê§@_©âµP_¤½¥ÎµP(ByVal uscom As Integer, Optional ByVal cardindex As Integer, Optional ByVal isEvent As Boolean)
 Dim tmpcard As clsActionCard
-Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1)(1)
-Dim n As Integer
+Dim stageInfoListObj As clsVSStageObj
+Dim n As Integer, i As Integer, tmpflag As Boolean
+
+If cardindex > 0 And cardindex <= ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1).Count Then
+    Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1)(cardindex)
+Else
+    Set tmpcard = ¾Ô°«¨t²ÎÃþ.CardDeckCollection(1)(1)
+End If
 '==================================ÀH¾÷ÂàµP
 Randomize
 n = Int(Rnd() * 2) + 1
@@ -885,7 +891,50 @@ If n = 2 Then
    Call tmpcard.Reverse
 End If
 FormMainMode.card(tmpcard.CardNum).CardRotationType = tmpcard.CardOnIn
-'==============================================
+
+If isEvent = True Then
+    Set stageInfoListObj = °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList(°õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Count)
+    
+    ReDim VBEStageNum(0 To 5) As Integer
+    VBEStageNum(0) = 103
+    VBEStageNum(1) = ¾Ô°«¨t²ÎÃþ.¥dµPµP°ï¶°¦X¯Á¤Þ_Index(CStr(tmpcard.CardNum))
+    VBEStageNum(2) = °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²Î_·Ç³ÆÅÜ¼Æ²Î¦X_pagecardnum_type(tmpcard.UpperType) '¨ü¼vÅT¤§¥dµP¥¿­±Ãþ«¬
+    VBEStageNum(3) = tmpcard.UpperNum '¨ü¼vÅT¤§¥dµP¥¿­±¼Æ­È
+    VBEStageNum(4) = °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²Î_·Ç³ÆÅÜ¼Æ²Î¦X_pagecardnum_type(tmpcard.LowerType) '¨ü¼vÅT¤§¥dµP¤Ï­±Ãþ«¬
+    VBEStageNum(5) = tmpcard.LowerNum '¨ü¼vÅT¤§¥dµP¤Ï­±¼Æ­È
+    '===========================°õ¦æ¶¥¬q´¡¤JÂI(103)
+    °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l uscom, 103, 2
+    '============================
+    tmpflag = False
+    If stageInfoListObj.CommandStr = "AtkingDrawCardsEvent" Then
+        Dim tmpstr() As String
+        tmpstr = Split(stageInfoListObj.Value, "%")
+        
+        Dim tmpbool(1 To 2) As Boolean
+        For i = 0 To UBound(tmpstr)
+            If tmpstr(i) = "OFF" Then
+                Vss_AtkingDrawCardsNum(1) = Vss_AtkingDrawCardsNum(2)
+                tmpflag = True
+                Exit For
+            ElseIf tmpstr(i) = "AddOnce" And tmpbool(1) = False Then
+                Vss_AtkingDrawCardsNum(2) = Vss_AtkingDrawCardsNum(2) + 1
+                tmpbool(1) = True
+            ElseIf tmpstr(i) = "Continue" And tmpbool(2) = False Then
+                Vss_AtkingDrawCardsNum(3) = Vss_AtkingDrawCardsNum(3) + 1
+                tmpbool(2) = True
+                tmpflag = True
+            End If
+        Next
+    End If
+    
+    If tmpflag = True Then
+        If °õ¦æ¶¥¬q¨t²Î_·j´M¥¿¦b°õ¦æ¤§°õ¦æ¶¥¬q("AtkingDrawCards") <> 0 Then
+            vbecommadnum(2, °õ¦æ¶¥¬q¨t²Î_·j´M¥¿¦b°õ¦æ¤§°õ¦æ¶¥¬q("AtkingDrawCards")) = 2 '(¶¥¬q2)
+        End If
+        Exit Sub
+    End If
+End If
+'=======================
 Select Case uscom
     Case 1 '¨Ï¥ÎªÌ
         tmpcard.ComMark = 0
@@ -964,7 +1013,7 @@ If isEvent = True Then
         '======================
         Set stageInfoListObj = New clsVSStageObj
         stageInfoListObj.StageNum = 0
-        stageInfoListObj.CommandStr = "@System"
+        stageInfoListObj.CommandStr = "@SystemBattleMove"
         stageInfoListObj.Value = "0"
         °õ¦æ¶¥¬q¨t²ÎÃþ.VBEVSStageInfoList.Add stageInfoListObj
     Else
@@ -981,7 +1030,7 @@ If isEvent = True Then
     °õ¦æ¶¥¬q¨t²ÎÃþ.°õ¦æ¶¥¬q¨t²ÎÁ`¥D­nµ{§Ç_°õ¦æ¶¥¬q¶}©l tmpuscom, 47, 1
     '=====================
     tmpflagoff = False
-    If stageInfoListObj.CommandStr = "BattleMoveControl" Or (stageInfoListObj.CommandStr = "@System" And isSysCall = True) Then
+    If stageInfoListObj.CommandStr = "BattleMoveControl" Or (stageInfoListObj.CommandStr = "@SystemBattleMove" And isSysCall = True) Then
         If stageInfoListObj.Value = "BMCOFF" Then
             tmpflagoff = True
         End If
@@ -3029,7 +3078,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\021.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\021.png"
                     tmpcard.ImageStr = "021"
                     tmpcard.CardOnIn = 1
                 Case 2  '==²¾1ºj2Ãþ
@@ -3040,7 +3089,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\019.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\019.png"
                     tmpcard.ImageStr = "019"
                     tmpcard.CardOnIn = 1
                 Case 3  '==²¾1ºj3Ãþ
@@ -3051,7 +3100,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\017.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\017.png"
                     tmpcard.ImageStr = "017"
                     tmpcard.CardOnIn = 1
                 Case 4  '==²¾1¬Þ1Ãþ
@@ -3062,7 +3111,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\025.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\025.png"
                     tmpcard.ImageStr = "025"
                     tmpcard.CardOnIn = 1
                 Case 5  '==²¾1¬Þ2Ãþ
@@ -3073,7 +3122,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\024.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\024.png"
                     tmpcard.ImageStr = "024"
                     tmpcard.CardOnIn = 1
                 Case 6  '==²¾1¬Þ3Ãþ
@@ -3084,7 +3133,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\023.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\023.png"
                     tmpcard.ImageStr = "023"
                     tmpcard.CardOnIn = 1
                 Case 7  '==²¾2¯S3Ãþ
@@ -3095,7 +3144,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\026.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\026.png"
                     tmpcard.ImageStr = "026"
                     tmpcard.CardOnIn = 1
                 Case 8  '==²¾3²¾3Ãþ
@@ -3106,7 +3155,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a3a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\027.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\027.png"
                     tmpcard.ImageStr = "027"
                     tmpcard.CardOnIn = 1
                 Case 9  '==¼C6¼C6Ãþ
@@ -3117,7 +3166,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a1a
                     tmpcard.LowerNum = b6b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\001.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\001.png"
                     tmpcard.ImageStr = "001"
                     tmpcard.CardOnIn = 1
                 Case 10  '==¼C1ºj1Ãþ
@@ -3128,7 +3177,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\011.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\011.png"
                     tmpcard.ImageStr = "011"
                     tmpcard.CardOnIn = 1
                 Case 11  '==¼C2ºj1Ãþ
@@ -3139,7 +3188,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\007.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\007.png"
                     tmpcard.ImageStr = "007"
                     tmpcard.CardOnIn = 1
                 Case 12  '==¼C2ºj2Ãþ
@@ -3150,7 +3199,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\006.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\006.png"
                     tmpcard.ImageStr = "006"
                     tmpcard.CardOnIn = 1
                 Case 13  '==¼C3ºj3Ãþ
@@ -3161,7 +3210,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\004.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\004.png"
                     tmpcard.ImageStr = "004"
                     tmpcard.CardOnIn = 1
                 Case 14  '==¼C5ºj5Ãþ
@@ -3172,7 +3221,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b5b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\028.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\028.png"
                     tmpcard.ImageStr = "028"
                     tmpcard.CardOnIn = 1
                 Case 15  '==¼C1¬Þ1Ãþ
@@ -3183,7 +3232,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\012.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\012.png"
                     tmpcard.ImageStr = "012"
                     tmpcard.CardOnIn = 1
                 Case 16  '==¼C2¬Þ1Ãþ
@@ -3194,7 +3243,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\009.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\009.png"
                     tmpcard.ImageStr = "009"
                     tmpcard.CardOnIn = 1
                 Case 17  '==¼C2¬Þ2Ãþ
@@ -3205,7 +3254,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\008.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\008.png"
                     tmpcard.ImageStr = "008"
                     tmpcard.CardOnIn = 1
                 Case 18  '==¼C3¬Þ3Ãþ
@@ -3216,7 +3265,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b3b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\005.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\005.png"
                     tmpcard.ImageStr = "005"
                     tmpcard.CardOnIn = 1
                 Case 19  '==¼C1¯S1Ãþ
@@ -3227,7 +3276,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\013.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\013.png"
                     tmpcard.ImageStr = "013"
                     tmpcard.CardOnIn = 1
                 Case 20  '==¼C2¯S1Ãþ
@@ -3238,7 +3287,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\010.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\010.png"
                     tmpcard.ImageStr = "010"
                     tmpcard.CardOnIn = 1
                 Case 21  '==¼C4¯S1Ãþ
@@ -3249,7 +3298,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\003.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\003.png"
                     tmpcard.ImageStr = "003"
                     tmpcard.CardOnIn = 1
                 Case 22  '==¼C5¯S2Ãþ
@@ -3260,7 +3309,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\002.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\002.png"
                     tmpcard.ImageStr = "002"
                     tmpcard.CardOnIn = 1
                 Case 23  '==ºj4ºj4Ãþ
@@ -3271,7 +3320,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a5a
                     tmpcard.LowerNum = b4b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\015.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\015.png"
                     tmpcard.ImageStr = "015"
                     tmpcard.CardOnIn = 1
                 Case 24  '==ºj2¯S1Ãþ
@@ -3282,7 +3331,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\020.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\020.png"
                     tmpcard.ImageStr = "020"
                     tmpcard.CardOnIn = 1
                 Case 25  '==ºj3¯S2Ãþ
@@ -3293,7 +3342,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\018.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\018.png"
                     tmpcard.ImageStr = "018"
                     tmpcard.CardOnIn = 1
                 Case 26  '==ºj4¯S1Ãþ
@@ -3304,7 +3353,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b1b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\016.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\016.png"
                     tmpcard.ImageStr = "016"
                     tmpcard.CardOnIn = 1
                 Case 27  '==ºj5¯S2Ãþ
@@ -3315,7 +3364,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b2b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\014.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\014.png"
                     tmpcard.ImageStr = "014"
                     tmpcard.CardOnIn = 1
                 Case 28  '==¬Þ5¬Þ5Ãþ
@@ -3326,7 +3375,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a2a
                     tmpcard.LowerNum = b5b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\022.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\022.png"
                     tmpcard.ImageStr = "022"
                     tmpcard.CardOnIn = 1
                 Case 29  '==¬Þ3¯S5Ãþ
@@ -3337,7 +3386,7 @@ For i = 1 To ¤½¥ÎµP¦UµPÃþ«¬¬ö¿ý¼Æ(0, 2)
                     tmpcard.LowerType = a4a
                     tmpcard.LowerNum = b5b
                     tmpcard.Owner = 0
-                    FormMainMode.card(i).CardImage = app_path & "card\029.png"
+                    FormMainMode.card(i).cardImage = app_path & "card\029.png"
                     tmpcard.ImageStr = "029"
                     tmpcard.CardOnIn = 1
             End Select
@@ -3377,7 +3426,7 @@ tmpcard.Owner = 0
 tmpcard.Location = 0
 tmpcard.ImageStr = filename
 tmpcard.ComMark = 0
-FormMainMode.card(tmpnewActionCardNum).CardImage = app_path & "card\" & filename & ".png"
+FormMainMode.card(tmpnewActionCardNum).cardImage = app_path & "card\" & filename & ".png"
 FormMainMode.card(tmpnewActionCardNum).CardRotationType = 1
 tmpcard.CardOnIn = 1
 tmpcard.CardType = 2
@@ -3868,6 +3917,7 @@ If stageInfoListObj.CommandStr = "PersonBloodControl" Then
         Dim tmpstr() As String
         tmpstr = Split(stageInfoListObj.Value, "%")
         If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+            ¾Ô°«¨t²ÎÃþ.¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¨Ï¥ÎªÌ Val(tmpstr(1)), num, False
             Exit Sub
         End If
     End If
@@ -3913,6 +3963,7 @@ If stageInfoListObj.CommandStr = "PersonBloodControl" Then
         Dim tmpstr() As String
         tmpstr = Split(stageInfoListObj.Value, "%")
         If UBound(tmpstr) = 1 And tmpstr(0) = "BLOODCHANGE" Then
+            ¾Ô°«¨t²ÎÃþ.¶Ë®`°õ¦æ_§Þ¯àª½¶Ë_¹q¸£ Val(tmpstr(1)), num, False
             Exit Sub
         End If
     End If

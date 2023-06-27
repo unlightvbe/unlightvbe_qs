@@ -4635,14 +4635,11 @@ For i = 1 To 戰鬥系統類.CardDeckCollection(5).Count
                 目前數(13) = tmpcard.CardNum
                 tmpcard.XYLeft = card(目前數(13)).Left  '指定目前Left(座標)
                 tmpcard.XYTop = card(目前數(13)).Top  '指定目前Top(座標)
-                '==========戰鬥系統類.計算牌移動距離單位
-                距離單位_收牌暫時數(1, 1) = (9840 - tmpcard.XYLeft) \ 10 '計算Left
-                距離單位_收牌暫時數(1, 2) = -((tmpcard.XYTop - 6700) \ 10)  '計算Top
             End If
         End If
         If 目前數(13) = tmpcard.CardNum Then
-           card(目前數(13)).Left = card(目前數(13)).Left + 距離單位_收牌暫時數(1, 1)
-           card(目前數(13)).Top = card(目前數(13)).Top + 距離單位_收牌暫時數(1, 2)
+           card(目前數(13)).Left = card(目前數(13)).Left + ((9840 - tmpcard.XYLeft) \ 10)
+           card(目前數(13)).Top = card(目前數(13)).Top + (-((tmpcard.XYTop - 6700) \ 10))
         Else
            card(tmpcard.CardNum).Left = card(tmpcard.CardNum).Left - (900 / 10)
         End If

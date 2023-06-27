@@ -3,7 +3,7 @@ Option Explicit
 Public vbecommadnum() As Integer '執行階段指令集變數-數值類(1.目前執行指令次序/2.目前執行指令分階段/3.目前執行腳本物件號/4.目前之執行階段號/5.目前執行階段指令總計/6.目前人物於場上順序/7.目前人物角色實際編號, 執行階段執行中計數值)
 Public vbecommadstr() As String '執行階段指令集變數-字串類(1.目前執行指令名稱/2.目前執行階段指令串, 執行階段執行中計數值)
 Public vbecommadtotplay As Integer '目前執行之執行階段計數值
-Public Vss_AtkingDrawCardsNum As Integer '執行指令集-技能抽牌牌數紀錄暫時變數
+Public Vss_AtkingDrawCardsNum(1 To 3) As Integer '執行指令集-技能抽牌牌數紀錄暫時變數(1.已抽張數[含略過]/2.預計總張數/3.已略過張數)
 Public Vss_AtkingSeizeEnemyCardsNum As Integer '執行指令集-奪取對手卡牌紀錄暫時變數
 Public Vss_AtkingStartPlayNum(1 To 3) As Integer '執行指令集-技能動畫執行紀錄暫時變數
 Public Vss_PersonAtkingOffNum(1 To 2, 1 To 3, 1 To 8) As Integer '執行指令集-禁止執行人物主動技及被動技技能紀錄暫時變數(1.使用者/2.電腦,1~3人物編號,1~4.主動技標記/5~8.被動技標記)
@@ -77,7 +77,7 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                         Case "AtkingSeizeEnemyCards"
                                執行指令集.執行指令_奪取對手卡牌 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "AtkingDrawCards"
-                               執行指令集.執行指令_技能抽牌 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_牌堆抽牌 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "BattleDeckShuffle"
                                執行指令集.執行指令_系統強制洗牌 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "BattleTurnControl"
@@ -142,19 +142,19 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                         Case "BuffTurnEnd"
                                執行指令集.執行指令_異常狀態控制_當回合結束_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventBloodActionOff"
-                               執行指令集.執行指令_執行之傷害無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_人物血量控制_傷害無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventBloodActionChange"
-                               執行指令集.執行指令_執行之傷害效果變更_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_人物血量控制_傷害效果變更_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventBloodReflection"
-                               執行指令集.執行指令_傷害效果反射_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_人物血量控制_傷害效果反射_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventHPLReflection"
-                               執行指令集.執行指令_回復效果反射_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_人物血量控制_回復效果反射_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventHPLActionOff"
-                               執行指令集.執行指令_執行之回復無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_人物血量控制_回復無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventHPLActionChange"
-                               執行指令集.執行指令_執行之回復效果變更_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_人物血量控制_回復效果變更_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventMoveActionOff"
-                               執行指令集.執行指令_執行之距離變更無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                               執行指令集.執行指令_場地距離控制_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventRemoveBuffActionOff"
                                執行指令集.執行指令_執行之異常狀態消滅無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventAddActualStatusData"
@@ -166,9 +166,15 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                         Case "EventPlayerAllActionOff"
                                 執行指令集.執行指令_禁止玩家進行所有操作 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventPersonResurrectActionOff"
-                                執行指令集.執行指令_執行之人物角色復活無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                                執行指令集.執行指令_人物角色復活_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
                         Case "EventAtkingSeizeEnemyCardsActionOff"
-                                執行指令集.執行指令_奪取對手卡牌無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                                執行指令集.執行指令_奪取對手卡牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow   '(階段1)
+                        Case "EventAtkingDrawCardsActionOff"
+                                執行指令集.執行指令_牌堆抽牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
+                        Case "EventAtkingDrawCardsAddOnce"
+                                執行指令集.執行指令_牌堆抽牌_數量增加_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
+                        Case "EventAtkingDrawCardsContinue"
+                                執行指令集.執行指令_牌堆抽牌_略過_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                      '========================================================
                         Case Else
                                GoTo vss_cmdlocalerr
@@ -1081,7 +1087,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "AtkingSeizeEnemyCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_奪取對手卡牌無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_奪取對手卡牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     
@@ -1108,10 +1114,11 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventAtkingSeizeEnemyCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_牌堆抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String, ay() As String
     Dim tmpcard As clsActionCard
+    Dim stageInfoListObj As clsVSStageObj
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     Dim tn As Integer, tmpflag As Boolean '暫時變數
@@ -1126,7 +1133,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
             '===============================加入該階段紀載資訊
-            Dim stageInfoListObj As New clsVSStageObj
+            Set stageInfoListObj = New clsVSStageObj
             stageInfoListObj.StageNum = vbecommadtotplayNow
             stageInfoListObj.CommandStr = "AtkingDrawCards"
             stageInfoListObj.Value = "0"
@@ -1140,7 +1147,7 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
             '============================
             tmpflag = False
             If stageInfoListObj.CommandStr = "AtkingDrawCards" Then
-                If stageInfoListObj.Value = "OFF" Then
+                If stageInfoListObj.Value = "OFF%" Then
                     tmpflag = True
                 End If
             End If
@@ -1148,28 +1155,32 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
             
             If tmpflag = True Then GoTo VssCommadExit
             '=======================
-            Vss_AtkingDrawCardsNum = 0
+            Vss_AtkingDrawCardsNum(1) = 0
+            Vss_AtkingDrawCardsNum(2) = Val(commadstr3(2))
+            Vss_AtkingDrawCardsNum(3) = 0
             vbecommadnum(2, vbecommadtotplayNow) = 2
         Case 2
-             Vss_AtkingDrawCardsNum = Vss_AtkingDrawCardsNum + 1
-             If Vss_AtkingDrawCardsNum = 1 Then
+             If Vss_AtkingDrawCardsNum(1) = 0 Then
                  If BattleCardNum < Val(commadstr3(2)) Then
                    戰鬥系統類.執行動作_洗牌
                 End If
              End If
-             If Vss_AtkingDrawCardsNum <= Val(commadstr3(2)) Then
+             If Vss_AtkingDrawCardsNum(1) < Vss_AtkingDrawCardsNum(2) And Vss_AtkingDrawCardsNum(1) < BattleCardNum Then
+                Vss_AtkingDrawCardsNum(1) = Vss_AtkingDrawCardsNum(1) + 1
+                vbecommadnum(2, vbecommadtotplayNow) = 0
                 Select Case Val(commadstr3(1))
                     Case 1  '==公用牌
-                        Select Case uscomt
-                            Case 1
-                                目前數(15) = 21
-                                FormMainMode.tr牌組_抽牌_使用者.Enabled = True
-                                vbecommadnum(2, vbecommadtotplayNow) = 0
-                            Case 2
-                                目前數(15) = 21
-                                FormMainMode.tr牌組_抽牌_電腦.Enabled = True
-                                vbecommadnum(2, vbecommadtotplayNow) = 0
-                        End Select
+                        目前數(15) = 21
+                        '===============================加入該階段紀載資訊
+                        Set stageInfoListObj = New clsVSStageObj
+                        stageInfoListObj.StageNum = vbecommadtotplayNow
+                        stageInfoListObj.CommandStr = "AtkingDrawCardsEvent"
+                        stageInfoListObj.Value = ""
+                        執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+                        '=========================
+                        戰鬥系統類.執行動作_抽牌_公用牌 uscomt, Vss_AtkingDrawCardsNum(3) + 1, True
+                        '=========================
+                        執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
                      Case 2  '==事件卡
                         Select Case uscomt
                             Case 1
@@ -1181,7 +1192,6 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                     目前數(15) = 21
                                     戰鬥系統類.卡牌牌堆集合更換 tmpcard, 3, 5
                                     FormMainMode.tr牌組_回牌_使用者.Enabled = True
-                                    vbecommadnum(2, vbecommadtotplayNow) = 0
                                 Else
                                     GoTo VssCommadExit
                                 End If
@@ -1194,14 +1204,12 @@ Sub 執行指令_技能抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
                                     目前數(15) = 21
                                     戰鬥系統類.卡牌牌堆集合更換 tmpcard, 4, 7
                                     FormMainMode.tr牌組_回牌_電腦.Enabled = True
-                                    vbecommadnum(2, vbecommadtotplayNow) = 0
                                 Else
                                     GoTo VssCommadExit
                                 End If
                         End Select
                 End Select
-             ElseIf Vss_AtkingDrawCardsNum > Val(commadstr3(2)) Then
-                Vss_AtkingDrawCardsNum = 0
+             Else
                 GoTo VssCommadExit
              End If
     End Select
@@ -1214,6 +1222,87 @@ VssCommadExit:
 Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "AtkingDrawCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_牌堆抽牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or (Val(vbecommadnum(4, vbecommadtotplayNow)) <> 102 And Val(vbecommadnum(4, vbecommadtotplayNow)) <> 103) Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "AtkingDrawCards" Or stageInfoListObj.CommandStr = "AtkingDrawCardsEvent") Then
+                    stageInfoListObj.Value = "OFF%"
+                End If
+            End If
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDrawCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_牌堆抽牌_數量增加_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 103 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "AtkingDrawCardsEvent" Then
+                    stageInfoListObj.Value = stageInfoListObj.Value + "AddOnce%"
+                End If
+            End If
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDrawCardsAddOnce", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_牌堆抽牌_略過_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+    
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 103 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "AtkingDrawCardsEvent" Then
+                    stageInfoListObj.Value = stageInfoListObj.Value + "Continue%"
+                End If
+            End If
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+'=============================
+Exit Sub
+vss_cmdlocalerr:
+執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDrawCardsContinue", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub 執行指令_系統強制洗牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
@@ -1581,7 +1670,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "PersonPassiveOffSelect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_執行之傷害無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物血量控制_傷害無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     
@@ -1592,7 +1681,7 @@ Sub 執行指令_執行之傷害無效化_專(ByVal uscom As Integer, ByVal commadtype As Int
             If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
                 Dim stageInfoListObj As clsVSStageObj
                 Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+                If (stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl") Or (stageInfoListObj.StageNum = 0 And stageInfoListObj.CommandStr = "@SystemBloodAction") Then
                     stageInfoListObj.Value = "BLOODOFF"
                 End If
             End If
@@ -1608,7 +1697,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_執行之傷害效果變更_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物血量控制_傷害效果變更_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     
@@ -1624,28 +1713,19 @@ Sub 執行指令_執行之傷害效果變更_專(ByVal uscom As Integer, ByVal commadtype As I
             Dim tmparg() As String, tmpNum As Integer
             tmparg = Split(stageInfoListObj.Argument, "%")
             
-            If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+            If (stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl") Or (stageInfoListObj.StageNum = 0 And stageInfoListObj.CommandStr = "@SystemBloodAction") Then
                 tmpNum = Val(tmparg(0))
                 Select Case Val(commadstr3(0))
                     Case 1
-                        If Val(tmparg(3)) < 3 Then '受到傷害之形式
+                        If Val(tmparg(3)) < 3 Then '排除立即死亡
                             tmpNum = Val(tmparg(0)) + Val(commadstr3(1))
                         End If
                     Case 2
-                        If Val(tmparg(3)) < 3 Then '受到傷害之形式
+                        If Val(tmparg(3)) < 3 Then '排除立即死亡
                             tmpNum = Val(tmparg(0)) - Val(commadstr3(1))
                         End If
                     Case 3
-                        If Val(tmparg(3)) < 3 Then '受到傷害之形式
-                            tmpNum = Val(commadstr3(1))
-                        ElseIf Val(tmparg(3)) = 3 Then
-                            Select Case Val(tmparg(1))
-                                Case 1
-                                    戰鬥系統類.傷害執行_技能直傷_使用者 Val(tmparg(0)), Val(tmparg(2)), False
-                                Case 2
-                                    戰鬥系統類.傷害執行_技能直傷_電腦 Val(tmparg(0)), Val(tmparg(2)), False
-                            End Select
-                        End If
+                        tmpNum = Val(commadstr3(1))
                 End Select
             End If
             stageInfoListObj.Value = "BLOODCHANGE%" + str(tmpNum)
@@ -1661,7 +1741,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_傷害效果反射_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物血量控制_傷害效果反射_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     Dim uscomt As Integer
@@ -1694,7 +1774,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventBloodReflection", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_回復效果反射_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物血量控制_回復效果反射_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     Dim uscomt As Integer, statusnum As Integer
@@ -1737,7 +1817,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventHPLReflection", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_執行之回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物血量控制_回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     
@@ -1748,7 +1828,7 @@ Sub 執行指令_執行之回復無效化_專(ByVal uscom As Integer, ByVal commadtype As Int
             If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
                 Dim stageInfoListObj As clsVSStageObj
                 Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+                If (stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl") Or (stageInfoListObj.StageNum = 0 And stageInfoListObj.CommandStr = "@SystemHPLAction") Then
                     stageInfoListObj.Value = "HPLOFF"
                 End If
             End If
@@ -1764,7 +1844,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventHPLActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_執行之回復效果變更_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物血量控制_回復效果變更_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     Dim tmpNum As Integer
@@ -1776,14 +1856,14 @@ Sub 執行指令_執行之回復效果變更_專(ByVal uscom As Integer, ByVal commadtype As I
             If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
                 Dim stageInfoListObj As clsVSStageObj
                 Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "PersonBloodControl" Or stageInfoListObj.CommandStr = "@System") Then
+                If (stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "PersonBloodControl") Or (stageInfoListObj.StageNum = 0 And stageInfoListObj.CommandStr = "@SystemHPLAction") Then
                     Select Case Val(commadstr3(0))
                         Case 1
-                                tmpNum = stageInfoListObj.Argument + Val(commadstr3(1))
+                            tmpNum = stageInfoListObj.Argument + Val(commadstr3(1))
                         Case 2
-                                tmpNum = stageInfoListObj.Argument - Val(commadstr3(1))
+                            tmpNum = stageInfoListObj.Argument - Val(commadstr3(1))
                         Case 3
-                                tmpNum = Val(commadstr3(1))
+                            tmpNum = Val(commadstr3(1))
                     End Select
                 End If
                 stageInfoListObj.Value = "HPLCHANGE%" + str(tmpNum)
@@ -1800,7 +1880,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventHPLActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_執行之距離變更無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_場地距離控制_無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     
@@ -1811,7 +1891,7 @@ Sub 執行指令_執行之距離變更無效化_專(ByVal uscom As Integer, ByVal commadtype As
             If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
                 Dim stageInfoListObj As clsVSStageObj
                 Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
-                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And (stageInfoListObj.CommandStr = "BattleMoveControl" Or stageInfoListObj.CommandStr = "@System") Then
+                If (stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "BattleMoveControl") Or (stageInfoListObj.StageNum = 0 And stageInfoListObj.CommandStr = "@SystemBattleMove") Then
                     stageInfoListObj.Value = "BMCOFF"
                 End If
             End If
@@ -1827,7 +1907,7 @@ Exit Sub
 vss_cmdlocalerr:
 執行指令集.執行指令集_錯誤訊息通知 "EventMoveActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
-Sub 執行指令_執行之人物角色復活無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+Sub 執行指令_人物角色復活_無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     

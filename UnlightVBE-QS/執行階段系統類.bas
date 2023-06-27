@@ -566,29 +566,29 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
              End Select
              '=========================
              If LBound(VBEStageNumMain) = 0 Then
-                    Select Case VBEStageNumMain(0)
-                        Case 41, 46, 47, 48, 49, 101
-                            For i = 1 To UBound(VBEStageNumMain)
-                                    If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
-                                        VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
-                                    Else
-                                        VBEVSStageNum(i) = VBEStageNumMain(i)
-                                    End If
-                            Next
-                        Case 76, 77
-                            For i = 1 To UBound(VBEStageNumMain) - 1
-                                    VBEVSStageNum(i) = VBEStageNumMain(i)
-                            Next
-                            VBEVSStageNum(3) = VBEStage7xAtkingInformation
-                        Case 42, 43, 44
-                            VBEVSStageNum(1) = Abs(VBEStageNumMain(1))
-                        Case Else
-                            For i = 1 To UBound(VBEStageNumMain)
-                                    VBEVSStageNum(i) = VBEStageNumMain(i)
-                            Next
-                    End Select
+                Select Case VBEStageNumMain(0)
+                    Case 41, 46, 47, 48, 49, 101, 102, 103
+                        For i = 1 To UBound(VBEStageNumMain)
+                            If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
+                                VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
+                            Else
+                                VBEVSStageNum(i) = VBEStageNumMain(i)
+                            End If
+                        Next
+                    Case 76, 77
+                        For i = 1 To UBound(VBEStageNumMain) - 1
+                            VBEVSStageNum(i) = VBEStageNumMain(i)
+                        Next
+                        VBEVSStageNum(3) = VBEStage7xAtkingInformation
+                    Case 42, 43, 44
+                        VBEVSStageNum(1) = Abs(VBEStageNumMain(1))
+                    Case Else
+                        For i = 1 To UBound(VBEStageNumMain)
+                            VBEVSStageNum(i) = VBEStageNumMain(i)
+                        Next
+                End Select
              Else
-                    VBEVSStageNum(1) = 0 '無資料
+                VBEVSStageNum(1) = 0 '無資料
              End If
          Case 2 '===============================================================
              '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
@@ -718,41 +718,41 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
              End Select
              '=========================
              If LBound(VBEStageNumMain) = 0 Then
-                    Select Case VBEStageNumMain(0)
-                        Case 2, 3, 4, 70, 71 '執行階段2/3/4/70/71(普通-移動前)
-                            VBEVSStageNum(1) = VBEStageNumMain(2)
-                            VBEVSStageNum(2) = VBEStageNumMain(1)
-                            VBEVSStageNum(3) = VBEStageNumMain(4)
-                            VBEVSStageNum(4) = VBEStageNumMain(3)
-                        Case 41, 46, 47, 48, 49, 101
-                            For i = 1 To UBound(VBEStageNumMain)
-                                If VBEStageNumMain(i) = -1 Then
-                                    VBEVSStageNum(i) = 2
-                                ElseIf VBEStageNumMain(i) = -2 Then
-                                    VBEVSStageNum(i) = 1
-                                Else
-                                    VBEVSStageNum(i) = VBEStageNumMain(i)
-                                End If
-                            Next
-                        Case 76, 77
-                            If VBEStageNumMain(1) = 1 Then VBEVSStageNum(1) = 2 Else VBEVSStageNum(1) = 1
-                            VBEVSStageNum(2) = VBEStageNumMain(2)
-                            VBEVSStageNum(3) = VBEStage7xAtkingInformation
-                        Case 62 '技能效果進行多次擲骰時
-                            VBEVSStageNum(1) = VBEStageNumMain(2)
-                            VBEVSStageNum(2) = VBEStageNumMain(1)
-                            VBEVSStageNum(3) = VBEStageNumMain(4)
-                            VBEVSStageNum(4) = VBEStageNumMain(3)
-                            VBEVSStageNum(5) = VBEStageNumMain(5)
-                        Case 42, 43, 44
-                            If VBEStageNumMain(1) = -1 Then VBEVSStageNum(1) = 2 Else VBEVSStageNum(1) = 1
-                        Case Else
-                            For i = 1 To UBound(VBEStageNumMain)
+                Select Case VBEStageNumMain(0)
+                    Case 2, 3, 4, 70, 71 '執行階段2/3/4/70/71(普通-移動前)
+                        VBEVSStageNum(1) = VBEStageNumMain(2)
+                        VBEVSStageNum(2) = VBEStageNumMain(1)
+                        VBEVSStageNum(3) = VBEStageNumMain(4)
+                        VBEVSStageNum(4) = VBEStageNumMain(3)
+                    Case 41, 46, 47, 48, 49, 101, 102, 103
+                        For i = 1 To UBound(VBEStageNumMain)
+                            If VBEStageNumMain(i) = -1 Then
+                                VBEVSStageNum(i) = 2
+                            ElseIf VBEStageNumMain(i) = -2 Then
+                                VBEVSStageNum(i) = 1
+                            Else
                                 VBEVSStageNum(i) = VBEStageNumMain(i)
-                            Next
-                    End Select
+                            End If
+                        Next
+                    Case 76, 77
+                        If VBEStageNumMain(1) = 1 Then VBEVSStageNum(1) = 2 Else VBEVSStageNum(1) = 1
+                        VBEVSStageNum(2) = VBEStageNumMain(2)
+                        VBEVSStageNum(3) = VBEStage7xAtkingInformation
+                    Case 62 '技能效果進行多次擲骰時
+                        VBEVSStageNum(1) = VBEStageNumMain(2)
+                        VBEVSStageNum(2) = VBEStageNumMain(1)
+                        VBEVSStageNum(3) = VBEStageNumMain(4)
+                        VBEVSStageNum(4) = VBEStageNumMain(3)
+                        VBEVSStageNum(5) = VBEStageNumMain(5)
+                    Case 42, 43, 44
+                        If VBEStageNumMain(1) = -1 Then VBEVSStageNum(1) = 2 Else VBEVSStageNum(1) = 1
+                    Case Else
+                        For i = 1 To UBound(VBEStageNumMain)
+                            VBEVSStageNum(i) = VBEStageNumMain(i)
+                        Next
+                End Select
              Else
-                    VBEVSStageNum(1) = 0 '無資料
+                VBEVSStageNum(1) = 0 '無資料
              End If
    End Select
 End Sub
