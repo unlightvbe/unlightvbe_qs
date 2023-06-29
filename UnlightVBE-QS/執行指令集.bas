@@ -2577,7 +2577,7 @@ Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As I
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
     Dim uscomt As Integer, k As Integer
-    Dim vsstr As String, textlinea As String, str As String
+    Dim vsstr As String, textlinea As String, str As String, tmpVsscNum As Integer
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
     If UBound(commadstr3) <> 3 Or atkingnum >= 9 Then GoTo VssCommadExit
@@ -2614,9 +2614,13 @@ Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As I
                        str = str & textlinea & vbCrLf
                     Loop
                     Close
+                    tmpVsscNum = (uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48
                     If str <> "" Then
-                        FormMainMode.PEAFvssc((uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48).AddCode str
-                        If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 (uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48
+                        FormMainMode.PEAFvssc(tmpVsscNum).AddCode str
+                        If 一般系統類.ProgramIsOnWine = True Then
+                            執行階段系統類.執行階段系統_加入Wine程式進入點 tmpVsscNum
+                        End If
+                        執行階段系統類.執行階段系統_實體物件納入參考物件 tmpVsscNum
                     End If
                     vsstr = FormMainMode.PEAFvssc((uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48).Run("main", 1)
                     If vsstr = commadstr3(2) Then
@@ -2826,7 +2830,12 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
                 For i = 1 To UBound(人物實際狀態資料庫, 3)
                      人物實際狀態資料庫(uscom, personnum, i) = ""
                 Next
+                
                 FormMainMode.PEAFvssc(vbecommadnum(3, vbecommadtotplayNow)).Reset
+                For i = 1 To UBound(執行階段系統類.VSSCObjectCollection)
+                    執行階段系統類.VSSCObjectCollection(i).Remove CStr(vbecommadnum(3, vbecommadtotplayNow))
+                Next
+                
                 vbecommadnum(2, vbecommadtotplayNow) = 4
             End If
         Case 4
@@ -2855,7 +2864,7 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
     Dim commadstr3() As String
     Dim buffvssnum As String
     Dim vsstr As String
-    Dim uscomt As Integer, i As Integer, tmpflag As Boolean
+    Dim uscomt As Integer, i As Integer, tmpflag As Boolean, tmpVsscNum As Integer
     Dim stageInfoListObj As clsVSStageObj
     
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
@@ -2960,7 +2969,11 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
                 For i = 1 To UBound(人物實際狀態資料庫, 3)
                      人物實際狀態資料庫(uscomt, 角色待機人物紀錄數(uscomt, Val(commadstr3(1))), i) = ""
                 Next
-                FormMainMode.PEAFvssc((uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48).Reset
+                tmpVsscNum = (uscomt - 1) * 3 + 角色待機人物紀錄數(uscomt, Val(commadstr3(1))) + 48
+                FormMainMode.PEAFvssc(tmpVsscNum).Reset
+                For i = 1 To UBound(執行階段系統類.VSSCObjectCollection)
+                    執行階段系統類.VSSCObjectCollection(i).Remove CStr(tmpVsscNum)
+                Next
                 vbecommadnum(2, vbecommadtotplayNow) = 5
             End If
         Case 5

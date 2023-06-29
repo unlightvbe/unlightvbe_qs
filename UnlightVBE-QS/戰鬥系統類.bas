@@ -4100,6 +4100,7 @@ For i = 1 To FormMainMode.cardcom.UBound
     Unload FormMainMode.cardcom(i)
 Next
 '==========
+Erase 執行階段系統類.VSSCObjectCollection
 End Sub
 Function 遊戲實體牌物件創建發行() As Integer
 Dim i As Integer

@@ -17,6 +17,7 @@ Public VBEActualStatusVS(1 To 2, 1 To 3, 1 To 2) As Variant '人物實際狀態資料-VS
 Public VBEStage7xAtkingInformation As String '執行階段7x(76狀態加入/77解除)-技能唯一識別碼暫時儲存變數
 Public VBEVSStageInfoList As New Collection '執行階段系統各層數紀載資訊
 Public VBEPersonVSTempStageNum(1 To 2) As Integer 'VBE人物統一變數-VS版目前執行階段數所列狀態(1.目前執行階段數/2.uscom紀載方)
+Public VSSCObjectCollection() As Collection '執行階段系統各實體物件納入物件參考集合(1.Command)
 Sub 執行階段系統總主要程序_人物主動技能(ByVal uscom As Integer, ByVal personnum As Integer, ByVal atkingnum As Integer, ByVal ns As Integer, ByVal PersonBattleNum As Integer, ByRef VBEStageNumMain() As Integer, ByVal vbecommadtotplayNow As Integer)
     Dim atkingvssnum As Integer
     If vbecommadtotplayNow > 10 Then Exit Sub '執行階段最高10層
@@ -784,7 +785,7 @@ Sub 執行階段系統_初始_腳本讀入程序()
 If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
 Dim atknum As Integer, uscomn As Integer, pnnum As Integer, buffnum As Integer
 atknum = 1: uscomn = 1: pnnum = 1: buffnum = 1
-Dim tot As Integer, textlinea As String, str As String
+Dim tot As Integer, textlinea As String, str As String, tmpVsscNum As Integer
 tot = 1
 Do
      textlinea = ""
@@ -799,9 +800,13 @@ Do
                        str = str & textlinea & vbCrLf
                     Loop
                     Close
+                    tmpVsscNum = (uscomn - 1) * 12 + (4 * pnnum - 4) + atknum
                     If str <> "" Then
-                        FormMainMode.PEAFvssc((uscomn - 1) * 12 + (4 * pnnum - 4) + atknum).AddCode str
-                        If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 (uscomn - 1) * 12 + (4 * pnnum - 4) + atknum
+                        FormMainMode.PEAFvssc(tmpVsscNum).AddCode str
+                        If 一般系統類.ProgramIsOnWine = True Then
+                            執行階段系統類.執行階段系統_加入Wine程式進入點 tmpVsscNum
+                        End If
+                        執行階段系統類.執行階段系統_實體物件納入參考物件 tmpVsscNum
                     End If
                 End If
                 atknum = atknum + 1
@@ -825,9 +830,13 @@ Do
                        str = str & textlinea & vbCrLf
                     Loop
                     Close
+                    tmpVsscNum = (uscomn - 1) * 12 + (4 * pnnum - 4) + atknum + 24
                     If str <> "" Then
-                        FormMainMode.PEAFvssc((uscomn - 1) * 12 + (4 * pnnum - 4) + atknum + 24).AddCode str
-                        If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 (uscomn - 1) * 12 + (4 * pnnum - 4) + atknum + 24
+                        FormMainMode.PEAFvssc(tmpVsscNum).AddCode str
+                        If 一般系統類.ProgramIsOnWine = True Then
+                            執行階段系統類.執行階段系統_加入Wine程式進入點 tmpVsscNum
+                        End If
+                        執行階段系統類.執行階段系統_實體物件納入參考物件 tmpVsscNum
                     End If
                 End If
                 atknum = atknum + 1
@@ -854,7 +863,10 @@ Do
                 Close
                 If str <> "" Then
                     FormMainMode.PEAFvssc(tot).AddCode str
-                    If 一般系統類.ProgramIsOnWine = True Then 執行階段系統類.執行階段系統_加入Wine程式進入點 tot
+                    If 一般系統類.ProgramIsOnWine = True Then
+                        執行階段系統類.執行階段系統_加入Wine程式進入點 tot
+                    End If
+                    執行階段系統類.執行階段系統_實體物件納入參考物件 tot
                 End If
                 buffnum = buffnum + 1
     End Select
@@ -889,11 +901,14 @@ Sub 執行階段系統_初始_腳本物件創立(ByVal num As Integer)
            Load FormMainMode.PEAFvssc(i)
         Next
         '==========
-        '==========
         For i = 1 To num
            FormMainMode.PEAFvssc(i).Reset
         Next
         '==========
+        ReDim 執行階段系統類.VSSCObjectCollection(1 To 1) As Collection
+        For i = 1 To 1
+            Set 執行階段系統類.VSSCObjectCollection(i) = New Collection
+        Next
 '===============
 Exit Sub
 vssyserror:
@@ -1187,6 +1202,11 @@ Select Case num
             strcode = "Function WineEntryPoint(wineObj)" & vbCrLf & "WineEntryPoint = buff(wineObj.oNs, wineObj.GetArray(""AtkingPagetotVS""), wineObj.GetArray(""VBEAtkingVSF""), wineObj.GetArray(""VBEAtkingVSS""), wineObj.GetArray(""VBEVSBuffNum""), wineObj.oPersonType, wineObj.GetArray(""VBEVSStageNum""))" & vbCrLf & "End Function"
 End Select
 FormMainMode.PEAFvssc(num).AddCode strcode
+End Sub
+Sub 執行階段系統_實體物件納入參考物件(ByVal num As Integer)
+    Dim tmpobjcommand As New clsVSCommand
+    FormMainMode.PEAFvssc(num).AddObject "VBECommand", tmpobjcommand
+    執行階段系統類.VSSCObjectCollection(1).Add tmpobjcommand, CStr(num)
 End Sub
 Sub 執行階段系統_wine變數統合資料物件寫入(ByRef wineObj As clsWineobj, ByVal ns As Integer, ByVal persontype As Integer)
 wineObj.oNs = ns

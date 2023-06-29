@@ -60,6 +60,7 @@ UserControl=uc卡片背面_被動技能.ctl
 Class=clsVSStageObj; clsVSStageObj.cls
 Class=clsActionCard; clsActionCard.cls
 Class=clsCollectionIndex; clsCollectionIndex.cls
+Class=clsVSCommand; clsVSCommand.cls
 IconForm="FormMainMode"
 Startup="FormMainMode"
 HelpFile=""
