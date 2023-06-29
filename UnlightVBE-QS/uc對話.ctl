@@ -59,21 +59,21 @@ Option Explicit
 Dim m_persontalkstr As String
 Dim m_persontalkyn As Boolean
 Public Property Get 對話文字() As String
-   對話文字 = m_persontalkstr
+    對話文字 = m_persontalkstr
 End Property
 Public Property Let 對話文字(ByVal New_對話文字 As String)
-   m_persontalkstr = New_對話文字
-   PropertyChanged "對話文字"
-   '================
-   talktext.Caption = Me.對話文字
+    m_persontalkstr = New_對話文字
+    PropertyChanged "對話文字"
+    '================
+    talktext.Caption = Me.對話文字
 End Property
 Public Property Get 對話文字顯示() As Boolean
-   對話文字顯示 = m_persontalkyn
+    對話文字顯示 = m_persontalkyn
 End Property
 Public Property Let 對話文字顯示(ByVal New_對話文字顯示 As Boolean)
-   m_persontalkyn = New_對話文字顯示
-   PropertyChanged "對話文字顯示"
-   '================
-   talktext.Visible = Me.對話文字顯示
+    m_persontalkyn = New_對話文字顯示
+    PropertyChanged "對話文字顯示"
+    '================
+    talktext.Visible = Me.對話文字顯示
 End Property
 

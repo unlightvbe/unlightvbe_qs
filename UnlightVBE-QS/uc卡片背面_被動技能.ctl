@@ -100,11 +100,11 @@ Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
 End Property
 
 Private Sub ShowOnModeChange()
-If m_ShowOnMode = True Then
-    Me.SkillName = m_SkillName
-Else
-    personcardback_passivetext.Visible = False
-End If
+    If m_ShowOnMode = True Then
+        Me.SkillName = m_SkillName
+    Else
+        personcardback_passivetext.Visible = False
+    End If
 End Sub
 Public Sub ResetAll()
     Me.SkillName = ""

@@ -103,158 +103,158 @@ Event CardButtonClickout()
 Event CardMouseMove()
 '=======================
 Dim m_CardImage As String
-Dim m_LocationType As Integer '牌目前狀態(0.未使用/1.手牌-正面/2.出牌-正面/3.背面)
-Dim m_CardRotationType As Integer '牌目前反轉紀錄數(1.正面/2.轉牌)
-Dim m_CardEventType As Boolean '牌是否顯示細項部分紀錄數
-Dim m_CardEnabledType As Boolean '牌是否回應使用者操作紀錄數
+Dim m_LocationType As Integer    '牌目前狀態(0.未使用/1.手牌-正面/2.出牌-正面/3.背面)
+Dim m_CardRotationType As Integer    '牌目前反轉紀錄數(1.正面/2.轉牌)
+Dim m_CardEventType As Boolean    '牌是否顯示細項部分紀錄數
+Dim m_CardEnabledType As Boolean    '牌是否回應使用者操作紀錄數
 
 Private Sub card_Click(ByVal Button As Integer)
-If m_CardEnabledType = True Then RaiseEvent CardClick
+    If m_CardEnabledType = True Then RaiseEvent CardClick
 End Sub
 
 Sub card_MouseExit()
-cardup1.Visible = False
-cardup2.Visible = False
-cge.Visible = False
-cgu.Visible = False
-cqu.Visible = False
-cqe.Visible = False
+    cardup1.Visible = False
+    cardup2.Visible = False
+    cge.Visible = False
+    cgu.Visible = False
+    cqu.Visible = False
+    cqe.Visible = False
 End Sub
 
 Private Sub card_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If m_CardEnabledType = True Then RaiseEvent CardMouseMove
-If Me.CardEventType = True Then
-    Select Case Me.LocationType
-        Case 1
-            cardup1.Visible = True
-            cardup2.Visible = False
-            cge.Visible = True
-            cqe.Visible = False
-        Case 2
-            cardup2.Visible = True
-            cardup1.Visible = False
-            cqe.Visible = True
-            cge.Visible = False
-        Case Else
-            cardup1.Visible = False
-            cardup2.Visible = False
-            cge.Visible = False
-            cqe.Visible = False
-    End Select
-    cgu.Visible = False
-    cqu.Visible = False
-Else
-    Call card_MouseExit
-End If
+    If m_CardEnabledType = True Then RaiseEvent CardMouseMove
+    If Me.CardEventType = True Then
+        Select Case Me.LocationType
+            Case 1
+                cardup1.Visible = True
+                cardup2.Visible = False
+                cge.Visible = True
+                cqe.Visible = False
+            Case 2
+                cardup2.Visible = True
+                cardup1.Visible = False
+                cqe.Visible = True
+                cge.Visible = False
+            Case Else
+                cardup1.Visible = False
+                cardup2.Visible = False
+                cge.Visible = False
+                cqe.Visible = False
+        End Select
+        cgu.Visible = False
+        cqu.Visible = False
+    Else
+        Call card_MouseExit
+    End If
 End Sub
 
 Private Sub cardup1_Click(ByVal Button As Integer)
-Call card_Click(Button)
+    Call card_Click(Button)
 End Sub
 
 Private Sub cardup1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-Call card_MouseMove(Button, Shift, X, Y)
+    Call card_MouseMove(Button, Shift, X, Y)
 End Sub
 
 Private Sub cardup2_Click(ByVal Button As Integer)
-Call card_Click(Button)
+    Call card_Click(Button)
 End Sub
 
 Private Sub cardup2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-Call card_MouseMove(Button, Shift, X, Y)
+    Call card_MouseMove(Button, Shift, X, Y)
 End Sub
 
 Private Sub cge_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-cgu.Visible = True
-cardup1.Visible = True
+    cgu.Visible = True
+    cardup1.Visible = True
 End Sub
 
 Private Sub cgu_Click(ByVal Button As Integer)
-If Me.CardRotationType = 1 Then
-    Me.CardRotationType = 2
-Else
-    Me.CardRotationType = 1
-End If
-If m_CardEnabledType = True Then RaiseEvent CardButtonClickin
+    If Me.CardRotationType = 1 Then
+        Me.CardRotationType = 2
+    Else
+        Me.CardRotationType = 1
+    End If
+    If m_CardEnabledType = True Then RaiseEvent CardButtonClickin
 End Sub
 
 Private Sub cqe_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-cqu.Visible = True
-cardup2.Visible = True
+    cqu.Visible = True
+    cardup2.Visible = True
 End Sub
 
 Private Sub cqu_Click(ByVal Button As Integer)
-If Me.CardRotationType = 1 Then
-    Me.CardRotationType = 2
-Else
-    Me.CardRotationType = 1
-End If
-If m_CardEnabledType = True Then RaiseEvent CardButtonClickout
+    If Me.CardRotationType = 1 Then
+        Me.CardRotationType = 2
+    Else
+        Me.CardRotationType = 1
+    End If
+    If m_CardEnabledType = True Then RaiseEvent CardButtonClickout
 End Sub
 
-Public Property Get CardImage() As String
-   CardImage = m_CardImage
+Public Property Get cardImage() As String
+    cardImage = m_CardImage
 End Property
-Public Property Let CardImage(ByVal New_CardImage As String)
-   m_CardImage = New_CardImage
-   PropertyChanged "CardImage"
-   '========================
-   card.ClearImage
-   card.LoadImage_FromFile Me.CardImage
-   Me.LocationType = 1
-   Me.CardRotationType = 1
+Public Property Let cardImage(ByVal New_CardImage As String)
+    m_CardImage = New_CardImage
+    PropertyChanged "CardImage"
+    '========================
+    card.ClearImage
+    card.LoadImage_FromFile Me.cardImage
+    Me.LocationType = 1
+    Me.CardRotationType = 1
 End Property
 Public Property Get LocationType() As Integer
-   LocationType = m_LocationType
+    LocationType = m_LocationType
 End Property
 Public Property Let LocationType(ByVal New_LocationType As Integer)
-   m_LocationType = New_LocationType
-   PropertyChanged "LocationType"
-   '==========================
-   If Me.LocationType = 3 Then
-       card.ClearImage
-       card.ScaleMethod = aiActualSize
-       card.Mirror = aiMirrorNone
-       card.LoadImage_FromFile App.Path & "\card\cardback.png"
-       card.Left = 0
-       card.Top = 0
-       Call card_MouseExit
-   ElseIf Me.LocationType > 0 Then
-       card.ClearImage
-       card.LoadImage_FromFile m_CardImage
-       card.Left = 0
-       card.Top = 0
-       Me.CardRotationType = m_CardRotationType
-   End If
+    m_LocationType = New_LocationType
+    PropertyChanged "LocationType"
+    '==========================
+    If Me.LocationType = 3 Then
+        card.ClearImage
+        card.ScaleMethod = aiActualSize
+        card.Mirror = aiMirrorNone
+        card.LoadImage_FromFile App.Path & "\card\cardback.png"
+        card.Left = 0
+        card.Top = 0
+        Call card_MouseExit
+    ElseIf Me.LocationType > 0 Then
+        card.ClearImage
+        card.LoadImage_FromFile m_CardImage
+        card.Left = 0
+        card.Top = 0
+        Me.CardRotationType = m_CardRotationType
+    End If
 End Property
 Public Property Get CardRotationType() As Integer
-   CardRotationType = m_CardRotationType
+    CardRotationType = m_CardRotationType
 End Property
 Public Property Let CardRotationType(ByVal New_CardRotationType As Integer)
-   m_CardRotationType = New_CardRotationType
-   PropertyChanged "CardRotationType"
-   '==========================
-   Select Case Me.CardRotationType
-       Case 1
-          card.Mirror = aiMirrorNone
-       Case 2
-          card.Mirror = aiMirrorAll
-   End Select
+    m_CardRotationType = New_CardRotationType
+    PropertyChanged "CardRotationType"
+    '==========================
+    Select Case Me.CardRotationType
+        Case 1
+            card.Mirror = aiMirrorNone
+        Case 2
+            card.Mirror = aiMirrorAll
+    End Select
 End Property
 Public Property Get CardEventType() As Boolean
-   CardEventType = m_CardEventType
+    CardEventType = m_CardEventType
 End Property
 Public Property Let CardEventType(ByVal New_CardEventType As Boolean)
-   m_CardEventType = New_CardEventType
-   PropertyChanged "CardEventType"
+    m_CardEventType = New_CardEventType
+    PropertyChanged "CardEventType"
 End Property
 Public Property Get CardEnabledType() As Boolean
-   CardEnabledType = m_CardEnabledType
+    CardEnabledType = m_CardEnabledType
 End Property
 Public Property Let CardEnabledType(ByVal New_CardEnabledType As Boolean)
-   m_CardEnabledType = New_CardEnabledType
-   PropertyChanged "CardEnabledType"
+    m_CardEnabledType = New_CardEnabledType
+    PropertyChanged "CardEnabledType"
 End Property
 Private Sub UserControl_Initialize()
-m_CardEnabledType = True
+    m_CardEnabledType = True
 End Sub

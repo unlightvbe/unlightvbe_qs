@@ -212,17 +212,17 @@ Public Property Let RangeStr(ByVal vNewValue As String)
     If m_RangeStr <> "" And m_ShowOnMode = True Then
         Dim k As Integer
         For k = 1 To 3
-             personcardback_range(k).物件類別 = 2
-             personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
-             If Mid(m_RangeStr, k, 1) = 1 Then
-                 If k < 3 Then
-                     personcardback_range(k).項目編號 = 1
-                 Else
-                     personcardback_range(k).項目編號 = 3
-                 End If
-             Else
-                 personcardback_range(k).項目編號 = 2
-             End If
+            personcardback_range(k).物件類別 = 2
+            personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
+            If Mid(m_RangeStr, k, 1) = 1 Then
+                If k < 3 Then
+                    personcardback_range(k).項目編號 = 1
+                Else
+                    personcardback_range(k).項目編號 = 3
+                End If
+            Else
+                personcardback_range(k).項目編號 = 2
+            End If
         Next
     Else
         For k = 1 To 3
@@ -246,19 +246,19 @@ Public Property Let CardStr(ByVal vNewValue As String)
         strw = Split(m_CardStr, "&")
         For k = 0 To UBound(strw)
             If Len(strw(k)) = 3 Then
-                   personcardback_num(k + 1).物件類別 = 1
-                   personcardback_num(k + 1).圖片 = App.Path & "\gif\system\cardback\CB" & Mid(strw(k), 1, 1) & "-" & Mid(strw(k), 3, 1) & ".png"
-                   If Mid(strw(k), 2, 1) = "a" Then
-                        n = 10
-                   ElseIf Mid(strw(k), 2, 1) = "b" Then
-                        n = 11
-                   Else
-                        n = Val(Mid(strw(k), 2, 1))
-                   End If
-                   personcardback_num(k + 1).項目編號 = n
-                   personcardback_num(k + 1).Visible = True
+                personcardback_num(k + 1).物件類別 = 1
+                personcardback_num(k + 1).圖片 = App.Path & "\gif\system\cardback\CB" & Mid(strw(k), 1, 1) & "-" & Mid(strw(k), 3, 1) & ".png"
+                If Mid(strw(k), 2, 1) = "a" Then
+                    n = 10
+                ElseIf Mid(strw(k), 2, 1) = "b" Then
+                    n = 11
+                Else
+                    n = Val(Mid(strw(k), 2, 1))
+                End If
+                personcardback_num(k + 1).項目編號 = n
+                personcardback_num(k + 1).Visible = True
             Else
-                   personcardback_num(k + 1).Visible = False
+                personcardback_num(k + 1).Visible = False
             End If
         Next
         For k = UBound(strw) + 1 To 4
@@ -282,26 +282,26 @@ Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
 End Property
 
 Private Sub ShowOnModeChange()
-If m_ShowOnMode = True Then
-    Me.SkillName = m_SkillName
-    Me.turnnum = m_TurnNum
-    Me.RangeStr = m_RangeStr
-    Me.CardStr = m_CardStr
-Else
-    Dim k As Integer
-    personcardback_turn.Visible = False
-    personcardback_text.Visible = False
-    For k = 1 To 5
-        personcardback_num(k).Visible = False
-    Next
-    '================
-    For k = 1 To 3
-        personcardback_range(k).物件類別 = 2
-        personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
-        personcardback_range(k).項目編號 = 2
-    Next
-    '================
-End If
+    If m_ShowOnMode = True Then
+        Me.SkillName = m_SkillName
+        Me.turnnum = m_TurnNum
+        Me.RangeStr = m_RangeStr
+        Me.CardStr = m_CardStr
+    Else
+        Dim k As Integer
+        personcardback_turn.Visible = False
+        personcardback_text.Visible = False
+        For k = 1 To 5
+            personcardback_num(k).Visible = False
+        Next
+        '================
+        For k = 1 To 3
+            personcardback_range(k).物件類別 = 2
+            personcardback_range(k).圖片 = App.Path & "\gif\system\cardback\CBrge.png"
+            personcardback_range(k).項目編號 = 2
+        Next
+        '================
+    End If
 End Sub
 
 Private Sub aicAlphaImageBar_Click(ByVal Button As Integer)

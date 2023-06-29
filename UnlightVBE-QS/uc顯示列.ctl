@@ -218,22 +218,22 @@ Dim m_moveleftnum As Integer
 Dim m_moveleftio As Integer
 Dim m_moverightnum As Integer
 Dim m_moverightio As Integer
-Dim 移動圖片顯示數(1 To 2, 1 To 3) As Integer '移動顯示計數器暫時變數(1.使用者/2.電腦,1.目前數/2.方向-(1)向內(2)向外/3.目標最大數)
-Dim 移動圖片顯示完成數(1 To 2) As Boolean '移動顯示計數器是否已完成變數(1.使用者/2.電腦)
-Dim trmovehidetime As Integer '移動顯示計數器暫時變數
+Dim 移動圖片顯示數(1 To 2, 1 To 3) As Integer    '移動顯示計數器暫時變數(1.使用者/2.電腦,1.目前數/2.方向-(1)向內(2)向外/3.目標最大數)
+Dim 移動圖片顯示完成數(1 To 2) As Boolean    '移動顯示計數器是否已完成變數(1.使用者/2.電腦)
+Dim trmovehidetime As Integer    '移動顯示計數器暫時變數
 Dim m_moveleftrightc As Boolean
 Dim m_smallimageuswidth As Integer
 Dim m_smallimagecomwidth As Integer
 Dim m_personvs As Integer
 
 Public Property Get 人物戰鬥人數() As Integer
-   人物戰鬥人數 = m_personvs
+    人物戰鬥人數 = m_personvs
 End Property
 Public Property Let 人物戰鬥人數(ByVal new_人物戰鬥人數 As Integer)
-   m_personvs = new_人物戰鬥人數
-   PropertyChanged "人物戰鬥人數"
-   Select Case Me.人物戰鬥人數
-       Case 1
+    m_personvs = new_人物戰鬥人數
+    PropertyChanged "人物戰鬥人數"
+    Select Case Me.人物戰鬥人數
+        Case 1
             bn1.Left = 4200
             bn1.Top = 100
             bn2.Left = 5340
@@ -248,7 +248,7 @@ Public Property Let 人物戰鬥人數(ByVal new_人物戰鬥人數 As Integer)
             bn32.Top = 100
             bn4.Visible = False
             bn42.Visible = False
-       Case 3
+        Case 3
             bn1.Left = 4080
             bn1.Top = 100
             bn2.Left = 4920
@@ -267,116 +267,116 @@ Public Property Let 人物戰鬥人數(ByVal new_人物戰鬥人數 As Integer)
             bn42.Top = 100
             bn4.Visible = True
             bn42.Visible = True
-   End Select
+    End Select
 End Property
 Public Property Get 顯示列圖片() As String
-   顯示列圖片 = m_smallimage
+    顯示列圖片 = m_smallimage
 End Property
 Public Property Get 使用者方小人物圖片width() As Integer
-   使用者方小人物圖片width = m_smallimageuswidth
+    使用者方小人物圖片width = m_smallimageuswidth
 End Property
 Public Property Get 電腦方小人物圖片width() As Integer
-   電腦方小人物圖片width = m_smallimagecomwidth
+    電腦方小人物圖片width = m_smallimagecomwidth
 End Property
 Public Property Get 移動方向圖片顯示() As Boolean
-   移動方向圖片顯示 = m_moveleftrightc
+    移動方向圖片顯示 = m_moveleftrightc
 End Property
 Public Property Get 使用者方移動值() As Integer
-   使用者方移動值 = m_moveleftnum
+    使用者方移動值 = m_moveleftnum
 End Property
 Public Property Get 使用者方移動內外() As Integer
-   使用者方移動內外 = m_moveleftio
+    使用者方移動內外 = m_moveleftio
 End Property
 Public Property Get 電腦方移動值() As Integer
-   電腦方移動值 = m_moverightnum
+    電腦方移動值 = m_moverightnum
 End Property
 Public Property Get 電腦方移動內外() As Integer
-   電腦方移動內外 = m_moverightio
+    電腦方移動內外 = m_moverightio
 End Property
 Public Property Get 移動階段圖顯示() As Boolean
-   移動階段圖顯示 = m_movetn
+    移動階段圖顯示 = m_movetn
 End Property
 Public Property Get goi1() As Integer
-   goi1 = m_g1
+    goi1 = m_g1
 End Property
 Public Property Get goi2() As Integer
-   goi2 = m_g2
+    goi2 = m_g2
 End Property
 Public Property Get 移動階段選擇值() As Integer
-   移動階段選擇值 = m_bnc
+    移動階段選擇值 = m_bnc
 End Property
 Public Property Get 使用者方小人物圖片left() As Integer
-   使用者方小人物圖片left = m_smallimageusleft
+    使用者方小人物圖片left = m_smallimageusleft
 End Property
 Public Property Get 電腦方小人物圖片left() As Integer
-   電腦方小人物圖片left = m_smallimagecomleft
+    電腦方小人物圖片left = m_smallimagecomleft
 End Property
 Public Property Get goi1顯示() As Boolean
-   goi1顯示 = m_g1v
+    goi1顯示 = m_g1v
 End Property
 Public Property Get goi2顯示() As Boolean
-   goi2顯示 = m_g2v
+    goi2顯示 = m_g2v
 End Property
 Public Property Get 使用者方小人物圖片() As String
-   使用者方小人物圖片 = m_smallimageus
+    使用者方小人物圖片 = m_smallimageus
 End Property
 Public Property Let 使用者方小人物圖片(ByVal New_使用者方小人物圖片 As String)
-   m_smallimageus = New_使用者方小人物圖片
-   PropertyChanged "使用者方小人物圖片"
-   If Me.使用者方小人物圖片 <> "" Then
-       image1.AutoSize = True
-       image1.AutoRedraw = True
-       image1.LoadImage_FromFile Me.使用者方小人物圖片
-       image1.Top = 0
-       image1.Left = 0
-       Me.使用者方小人物圖片width = image1.Width
-       image1.Mirror = aiMirrorNone
+    m_smallimageus = New_使用者方小人物圖片
+    PropertyChanged "使用者方小人物圖片"
+    If Me.使用者方小人物圖片 <> "" Then
+        image1.AutoSize = True
+        image1.AutoRedraw = True
+        image1.LoadImage_FromFile Me.使用者方小人物圖片
+        image1.Top = 0
+        image1.Left = 0
+        Me.使用者方小人物圖片width = image1.Width
+        image1.Mirror = aiMirrorNone
     End If
 End Property
 Public Property Get 電腦方小人物圖片() As String
-   電腦方小人物圖片 = m_smallimagecom
+    電腦方小人物圖片 = m_smallimagecom
 End Property
 Public Property Let 電腦方小人物圖片(ByVal New_電腦方小人物圖片 As String)
-   m_smallimagecom = New_電腦方小人物圖片
-   PropertyChanged "電腦方小人物圖片"
-   If Me.電腦方小人物圖片 <> "" Then
-       Image2.AutoSize = True
-       Image2.AutoRedraw = True
-       Image2.LoadImage_FromFile Me.電腦方小人物圖片
-       Image2.Top = 0
-       Image2.Left = 7680
-       Image2.Mirror = aiMirrorHorizontal
+    m_smallimagecom = New_電腦方小人物圖片
+    PropertyChanged "電腦方小人物圖片"
+    If Me.電腦方小人物圖片 <> "" Then
+        Image2.AutoSize = True
+        Image2.AutoRedraw = True
+        Image2.LoadImage_FromFile Me.電腦方小人物圖片
+        Image2.Top = 0
+        Image2.Left = 7680
+        Image2.Mirror = aiMirrorHorizontal
     End If
     Me.電腦方小人物圖片width = Image2.Width
 End Property
 Public Property Let 顯示列圖片(ByVal new_顯示列圖片 As String)
-   m_smallimage = new_顯示列圖片
-   PropertyChanged "顯示列圖片"
-   If Me.顯示列圖片 <> "" Then
-       aie1.AutoRedraw = True
-       aie1.AutoSize = True
-       aie1.LoadImage_FromFile Me.顯示列圖片
-       aie1.Left = 0
-       aie1.Top = 0
-   End If
+    m_smallimage = new_顯示列圖片
+    PropertyChanged "顯示列圖片"
+    If Me.顯示列圖片 <> "" Then
+        aie1.AutoRedraw = True
+        aie1.AutoSize = True
+        aie1.LoadImage_FromFile Me.顯示列圖片
+        aie1.Left = 0
+        aie1.Top = 0
+    End If
 End Property
 Public Property Let goi2(ByVal newgoi2 As Integer)
-   m_g2 = newgoi2
-   PropertyChanged "goi2"
-   g2.Caption = Me.goi2
+    m_g2 = newgoi2
+    PropertyChanged "goi2"
+    g2.Caption = Me.goi2
 End Property
 Public Property Let goi1(ByVal newgoi1 As Integer)
-   m_g1 = newgoi1
-   PropertyChanged "goi1"
-   g1.Caption = Me.goi1
+    m_g1 = newgoi1
+    PropertyChanged "goi1"
+    g1.Caption = Me.goi1
 End Property
 Public Property Let goi1顯示(ByVal newgoi1v As Boolean)
-   m_g1v = newgoi1v
-   PropertyChanged "goi1顯示"
-   If Me.goi1顯示 = False Then
-       g1.Visible = False
+    m_g1v = newgoi1v
+    PropertyChanged "goi1顯示"
+    If Me.goi1顯示 = False Then
+        g1.Visible = False
     Else
-       g1.Visible = True
+        g1.Visible = True
         If g1.FontName = "Noto Sans T Chinese Black" Then
             g1.Top = -160
             g1.FontSize = 40
@@ -387,12 +387,12 @@ Public Property Let goi1顯示(ByVal newgoi1v As Boolean)
     End If
 End Property
 Public Property Let goi2顯示(ByVal newgoi2v As Boolean)
-   m_g2v = newgoi2v
-   PropertyChanged "goi2顯示"
-   If Me.goi2顯示 = False Then
-       g2.Visible = False
+    m_g2v = newgoi2v
+    PropertyChanged "goi2顯示"
+    If Me.goi2顯示 = False Then
+        g2.Visible = False
     Else
-       g2.Visible = True
+        g2.Visible = True
         If g2.FontName = "Noto Sans T Chinese Black" Then
             g2.Top = -160
             g2.FontSize = 40
@@ -404,285 +404,285 @@ Public Property Let goi2顯示(ByVal newgoi2v As Boolean)
 End Property
 Public Property Let 使用者方小人物圖片left(ByVal new使用者方小人物圖片left As Integer)
     m_smallimageusleft = new使用者方小人物圖片left
-   PropertyChanged "使用者方小人物圖片left"
-   image1.Left = Me.使用者方小人物圖片left
+    PropertyChanged "使用者方小人物圖片left"
+    image1.Left = Me.使用者方小人物圖片left
 End Property
 Public Property Let 電腦方小人物圖片left(ByVal new電腦方小人物圖片left As Integer)
     m_smallimagecomleft = new電腦方小人物圖片left
-   PropertyChanged "電腦方小人物圖片left"
-   Image2.Left = Me.電腦方小人物圖片left
+    PropertyChanged "電腦方小人物圖片left"
+    Image2.Left = Me.電腦方小人物圖片left
 End Property
 
 Public Property Let 移動階段選擇值(ByVal new移動階段選擇值 As Integer)
     m_bnc = new移動階段選擇值
-   PropertyChanged "移動階段選擇值"
-   移動階段圖顯示_階段
+    PropertyChanged "移動階段選擇值"
+    移動階段圖顯示_階段
 End Property
 Public Property Let 使用者方移動值(ByVal new使用者方移動值 As Integer)
-   m_moveleftnum = new使用者方移動值
-   PropertyChanged "使用者方移動值"
-   移動圖片顯示數(1, 3) = Me.使用者方移動值
+    m_moveleftnum = new使用者方移動值
+    PropertyChanged "使用者方移動值"
+    移動圖片顯示數(1, 3) = Me.使用者方移動值
 End Property
 Public Property Let 使用者方移動內外(ByVal new使用者方移動內外 As Integer)
-   m_moveleftio = new使用者方移動內外
-   PropertyChanged "使用者方移動內外"
-   移動圖片顯示數(1, 2) = Me.使用者方移動內外
+    m_moveleftio = new使用者方移動內外
+    PropertyChanged "使用者方移動內外"
+    移動圖片顯示數(1, 2) = Me.使用者方移動內外
 End Property
 Public Property Let 電腦方移動值(ByVal new電腦方移動值 As Integer)
-   m_moverightnum = new電腦方移動值
-   PropertyChanged "電腦方移動值"
-   移動圖片顯示數(2, 3) = Me.電腦方移動值
+    m_moverightnum = new電腦方移動值
+    PropertyChanged "電腦方移動值"
+    移動圖片顯示數(2, 3) = Me.電腦方移動值
 End Property
 Public Property Let 電腦方移動內外(ByVal new電腦方移動內外 As Integer)
-   m_moverightio = new電腦方移動內外
-   PropertyChanged "電腦方移動內外"
-   移動圖片顯示數(2, 2) = Me.電腦方移動內外
+    m_moverightio = new電腦方移動內外
+    PropertyChanged "電腦方移動內外"
+    移動圖片顯示數(2, 2) = Me.電腦方移動內外
 End Property
 Public Property Let 使用者方小人物圖片width(ByVal new使用者方小人物圖片width As Integer)
-   m_smallimageuswidth = new使用者方小人物圖片width
-   PropertyChanged "使用者方小人物圖片width"
+    m_smallimageuswidth = new使用者方小人物圖片width
+    PropertyChanged "使用者方小人物圖片width"
 End Property
 Public Property Let 電腦方小人物圖片width(ByVal new電腦方小人物圖片width As Integer)
-   m_smallimagecomwidth = new電腦方小人物圖片width
-   PropertyChanged "電腦方小人物圖片width"
+    m_smallimagecomwidth = new電腦方小人物圖片width
+    PropertyChanged "電腦方小人物圖片width"
 End Property
 Public Property Let 移動方向圖片顯示(ByVal new移動方向圖片顯示 As Boolean)
-   Dim i As Integer
-   
-   m_moveleftrightc = new移動方向圖片顯示
-   PropertyChanged "移動方向圖片顯示"
-   If Me.移動方向圖片顯示 = True Then
-         移動圖片顯示數(1, 1) = 1
-         移動圖片顯示數(2, 1) = 1
-         移動圖片顯示完成數(1) = False
-         移動圖片顯示完成數(2) = False
-         '=============================
-         For i = 1 To 移動圖片顯示數(1, 3)
-             Load moveleftjpg(i)
-             moveleftjpg(i).Left = 2400 + i * 300
-             moveleftjpg(i).Top = 120
-         Next
-         For i = 1 To 移動圖片顯示數(2, 3)
-             Load moverightjpg(i)
-             moverightjpg(i).Left = 8520 - i * 300
-             moverightjpg(i).Top = 120
-         Next
-         '=============================
-         trmovehidetime = 1
-         trmoveshow.Enabled = True
+    Dim i As Integer
+
+    m_moveleftrightc = new移動方向圖片顯示
+    PropertyChanged "移動方向圖片顯示"
+    If Me.移動方向圖片顯示 = True Then
+        移動圖片顯示數(1, 1) = 1
+        移動圖片顯示數(2, 1) = 1
+        移動圖片顯示完成數(1) = False
+        移動圖片顯示完成數(2) = False
+        '=============================
+        For i = 1 To 移動圖片顯示數(1, 3)
+            Load moveleftjpg(i)
+            moveleftjpg(i).Left = 2400 + i * 300
+            moveleftjpg(i).Top = 120
+        Next
+        For i = 1 To 移動圖片顯示數(2, 3)
+            Load moverightjpg(i)
+            moverightjpg(i).Left = 8520 - i * 300
+            moverightjpg(i).Top = 120
+        Next
+        '=============================
+        trmovehidetime = 1
+        trmoveshow.Enabled = True
     End If
 End Property
 Public Property Let 移動階段圖顯示(ByVal new移動階段圖顯示 As Boolean)
     m_movetn = new移動階段圖顯示
-   PropertyChanged "移動階段圖顯示"
-   If Me.移動階段圖顯示 = True Then
-       bn1.Visible = True
-       bn2.Visible = True
-       bn3.Visible = True
-       If Me.人物戰鬥人數 = 3 Then
-           bn4.Visible = True
-       Else
-           bn4.Visible = False
-       End If
-       Me.移動階段選擇值 = 0
+    PropertyChanged "移動階段圖顯示"
+    If Me.移動階段圖顯示 = True Then
+        bn1.Visible = True
+        bn2.Visible = True
+        bn3.Visible = True
+        If Me.人物戰鬥人數 = 3 Then
+            bn4.Visible = True
+        Else
+            bn4.Visible = False
+        End If
+        Me.移動階段選擇值 = 0
     Else
-       bn1.Visible = False
-       bn2.Visible = False
-       bn3.Visible = False
-       bn4.Visible = False
-       bn12.Visible = False
-       bn22.Visible = False
-       bn32.Visible = False
-       bn42.Visible = False
+        bn1.Visible = False
+        bn2.Visible = False
+        bn3.Visible = False
+        bn4.Visible = False
+        bn12.Visible = False
+        bn22.Visible = False
+        bn32.Visible = False
+        bn42.Visible = False
     End If
 End Property
 Sub 移動階段圖顯示_階段()
-   Select Case Me.移動階段選擇值
-      Case 0
+    Select Case Me.移動階段選擇值
+        Case 0
             bn12.Visible = False
             bn22.Visible = False
             bn32.Visible = False
             bn42.Visible = False
-      Case 1
+        Case 1
             bn12.Visible = True
             bn22.Visible = False
             bn32.Visible = False
             bn42.Visible = False
-      Case 2
+        Case 2
             bn12.Visible = False
             bn22.Visible = True
             bn32.Visible = False
             bn42.Visible = False
-      Case 3
+        Case 3
             bn12.Visible = False
             bn22.Visible = False
             bn32.Visible = True
             bn42.Visible = False
-      Case 4
+        Case 4
             bn12.Visible = False
             bn22.Visible = False
             bn32.Visible = False
             bn42.Visible = True
-   End Select
+    End Select
 End Sub
 Private Sub aie1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-移動階段圖顯示_階段
+    移動階段圖顯示_階段
 End Sub
 
 Private Sub bn1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-bn12.Visible = True
+    bn12.Visible = True
 End Sub
 
 Private Sub bn12_Click(ByVal Button As Integer)
-Me.移動階段選擇值 = 1
+    Me.移動階段選擇值 = 1
 End Sub
 
 Private Sub bn2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-bn22.Visible = True
+    bn22.Visible = True
 End Sub
 
 Private Sub bn22_Click(ByVal Button As Integer)
-Me.移動階段選擇值 = 2
+    Me.移動階段選擇值 = 2
 End Sub
 
 Private Sub bn3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-bn32.Visible = True
+    bn32.Visible = True
 End Sub
 
 Private Sub bn32_Click(ByVal Button As Integer)
-Me.移動階段選擇值 = 3
+    Me.移動階段選擇值 = 3
 End Sub
 
 
 
 Private Sub bn4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-bn42.Visible = True
+    bn42.Visible = True
 End Sub
 
 Private Sub bn42_Click(ByVal Button As Integer)
-Me.移動階段選擇值 = 4
+    Me.移動階段選擇值 = 4
 End Sub
 
 Private Sub trmovehide_Timer()
-Dim i As Integer
+    Dim i As Integer
 
-Select Case trmovehidetime
- Case 2
-   If 移動圖片顯示數(1, 2) = 1 And 移動圖片顯示數(2, 2) = 2 Then
-     If 移動圖片顯示數(1, 3) > 0 And 移動圖片顯示數(2, 3) > 0 Then
-       If moveleftjpg(移動圖片顯示數(1, 3)).Visible = True And moverightjpg(移動圖片顯示數(2, 3)).Visible = True Then
-          moveleftjpg(移動圖片顯示數(1, 3)).Visible = False
-          moverightjpg(移動圖片顯示數(2, 3)).Visible = False
-          移動圖片顯示數(1, 3) = 移動圖片顯示數(1, 3) - 1
-          移動圖片顯示數(2, 3) = 移動圖片顯示數(2, 3) - 1
-          Exit Sub
-       End If
-     End If
-   ElseIf 移動圖片顯示數(1, 2) = 2 And 移動圖片顯示數(2, 2) = 1 Then
-     If 移動圖片顯示數(1, 3) > 0 And 移動圖片顯示數(2, 3) > 0 Then
-       If moveleftjpg(移動圖片顯示數(1, 3)).Visible = True And moverightjpg(移動圖片顯示數(2, 3)).Visible = True Then
-          moveleftjpg(移動圖片顯示數(1, 3)).Visible = False
-          moverightjpg(移動圖片顯示數(2, 3)).Visible = False
-          移動圖片顯示數(1, 3) = 移動圖片顯示數(1, 3) - 1
-          移動圖片顯示數(2, 3) = 移動圖片顯示數(2, 3) - 1
-          Exit Sub
-       End If
-     End If
-   End If
-   trmovehidetime = trmovehidetime + 1
- Case 10
-      '===假如都不符合條件時之動作
-      trmovehide.Enabled = False
-      '=========================
-      For i = 1 To moveleftjpg.UBound
-          moveleftjpg(i).Visible = False
-          Unload moveleftjpg(i)
-      Next
-      For i = 1 To moverightjpg.UBound
-          moverightjpg(i).Visible = False
-          Unload moverightjpg(i)
-      Next
-      '=========================
-      Me.移動方向圖片顯示 = False
- Case Else
-      trmovehidetime = trmovehidetime + 1
-End Select
+    Select Case trmovehidetime
+        Case 2
+            If 移動圖片顯示數(1, 2) = 1 And 移動圖片顯示數(2, 2) = 2 Then
+                If 移動圖片顯示數(1, 3) > 0 And 移動圖片顯示數(2, 3) > 0 Then
+                    If moveleftjpg(移動圖片顯示數(1, 3)).Visible = True And moverightjpg(移動圖片顯示數(2, 3)).Visible = True Then
+                        moveleftjpg(移動圖片顯示數(1, 3)).Visible = False
+                        moverightjpg(移動圖片顯示數(2, 3)).Visible = False
+                        移動圖片顯示數(1, 3) = 移動圖片顯示數(1, 3) - 1
+                        移動圖片顯示數(2, 3) = 移動圖片顯示數(2, 3) - 1
+                        Exit Sub
+                    End If
+                End If
+            ElseIf 移動圖片顯示數(1, 2) = 2 And 移動圖片顯示數(2, 2) = 1 Then
+                If 移動圖片顯示數(1, 3) > 0 And 移動圖片顯示數(2, 3) > 0 Then
+                    If moveleftjpg(移動圖片顯示數(1, 3)).Visible = True And moverightjpg(移動圖片顯示數(2, 3)).Visible = True Then
+                        moveleftjpg(移動圖片顯示數(1, 3)).Visible = False
+                        moverightjpg(移動圖片顯示數(2, 3)).Visible = False
+                        移動圖片顯示數(1, 3) = 移動圖片顯示數(1, 3) - 1
+                        移動圖片顯示數(2, 3) = 移動圖片顯示數(2, 3) - 1
+                        Exit Sub
+                    End If
+                End If
+            End If
+            trmovehidetime = trmovehidetime + 1
+        Case 10
+            '===假如都不符合條件時之動作
+            trmovehide.Enabled = False
+            '=========================
+            For i = 1 To moveleftjpg.UBound
+                moveleftjpg(i).Visible = False
+                Unload moveleftjpg(i)
+            Next
+            For i = 1 To moverightjpg.UBound
+                moverightjpg(i).Visible = False
+                Unload moverightjpg(i)
+            Next
+            '=========================
+            Me.移動方向圖片顯示 = False
+        Case Else
+            trmovehidetime = trmovehidetime + 1
+    End Select
 End Sub
 
 Private Sub trmoveshow_Timer()
-If 移動圖片顯示數(1, 1) <= 移動圖片顯示數(1, 3) Then
-   If 移動圖片顯示數(1, 2) = 1 Then
-      moveleftjpg(移動圖片顯示數(1, 1)).Picture = LoadPicture(App.Path & "\gif\system\movein.gif")
-      moveleftjpg(移動圖片顯示數(1, 1)).Visible = True
-      moveleftjpg(移動圖片顯示數(1, 1)).ZOrder
-   Else
-      moveleftjpg(移動圖片顯示數(1, 1)).Picture = LoadPicture(App.Path & "\gif\system\moveout.gif")
-      moveleftjpg(移動圖片顯示數(1, 1)).Visible = True
-      moveleftjpg(移動圖片顯示數(1, 1)).ZOrder
-   End If
-   移動圖片顯示數(1, 1) = 移動圖片顯示數(1, 1) + 1
-Else
-   移動圖片顯示完成數(1) = True
-End If
+    If 移動圖片顯示數(1, 1) <= 移動圖片顯示數(1, 3) Then
+        If 移動圖片顯示數(1, 2) = 1 Then
+            moveleftjpg(移動圖片顯示數(1, 1)).Picture = LoadPicture(App.Path & "\gif\system\movein.gif")
+            moveleftjpg(移動圖片顯示數(1, 1)).Visible = True
+            moveleftjpg(移動圖片顯示數(1, 1)).ZOrder
+        Else
+            moveleftjpg(移動圖片顯示數(1, 1)).Picture = LoadPicture(App.Path & "\gif\system\moveout.gif")
+            moveleftjpg(移動圖片顯示數(1, 1)).Visible = True
+            moveleftjpg(移動圖片顯示數(1, 1)).ZOrder
+        End If
+        移動圖片顯示數(1, 1) = 移動圖片顯示數(1, 1) + 1
+    Else
+        移動圖片顯示完成數(1) = True
+    End If
 
-If 移動圖片顯示數(2, 1) <= 移動圖片顯示數(2, 3) Then
-   If 移動圖片顯示數(2, 2) = 1 Then
-      moverightjpg(移動圖片顯示數(2, 1)).Picture = LoadPicture(App.Path & "\gif\system\moveout.gif")
-      moverightjpg(移動圖片顯示數(2, 1)).Visible = True
-      moverightjpg(移動圖片顯示數(2, 1)).ZOrder
-   Else
-      moverightjpg(移動圖片顯示數(2, 1)).Picture = LoadPicture(App.Path & "\gif\system\movein.gif")
-      moverightjpg(移動圖片顯示數(2, 1)).Visible = True
-      moverightjpg(移動圖片顯示數(2, 1)).ZOrder
-   End If
-   移動圖片顯示數(2, 1) = 移動圖片顯示數(2, 1) + 1
-Else
-   移動圖片顯示完成數(2) = True
-End If
+    If 移動圖片顯示數(2, 1) <= 移動圖片顯示數(2, 3) Then
+        If 移動圖片顯示數(2, 2) = 1 Then
+            moverightjpg(移動圖片顯示數(2, 1)).Picture = LoadPicture(App.Path & "\gif\system\moveout.gif")
+            moverightjpg(移動圖片顯示數(2, 1)).Visible = True
+            moverightjpg(移動圖片顯示數(2, 1)).ZOrder
+        Else
+            moverightjpg(移動圖片顯示數(2, 1)).Picture = LoadPicture(App.Path & "\gif\system\movein.gif")
+            moverightjpg(移動圖片顯示數(2, 1)).Visible = True
+            moverightjpg(移動圖片顯示數(2, 1)).ZOrder
+        End If
+        移動圖片顯示數(2, 1) = 移動圖片顯示數(2, 1) + 1
+    Else
+        移動圖片顯示完成數(2) = True
+    End If
 
-If 移動圖片顯示完成數(1) = True And 移動圖片顯示完成數(2) = True Then
-trmoveshow.Enabled = False
-移動圖片顯示完成數(1) = False
-移動圖片顯示完成數(2) = False
-trmovehide.Enabled = True
-End If
+    If 移動圖片顯示完成數(1) = True And 移動圖片顯示完成數(2) = True Then
+        trmoveshow.Enabled = False
+        移動圖片顯示完成數(1) = False
+        移動圖片顯示完成數(2) = False
+        trmovehide.Enabled = True
+    End If
 End Sub
 
 Private Sub UserControl_Show()
-bn1.AutoRedraw = True
-bn1.AutoSize = True
-bn2.AutoRedraw = True
-bn2.AutoSize = True
-bn3.AutoRedraw = True
-bn3.AutoSize = True
-bn4.AutoRedraw = True
-bn4.AutoSize = True
-bn12.AutoRedraw = True
-bn12.AutoSize = True
-bn22.AutoRedraw = True
-bn22.AutoSize = True
-bn32.AutoRedraw = True
-bn32.AutoSize = True
-bn42.AutoRedraw = True
-bn42.AutoSize = True
-bn1.LoadImage_FromFile App.Path & "\gif\system\left_1.png"
-bn2.LoadImage_FromFile App.Path & "\gif\system\rest_1.png"
-bn3.LoadImage_FromFile App.Path & "\gif\system\right_1.png"
-bn4.LoadImage_FromFile App.Path & "\gif\system\change_1.png"
-bn12.LoadImage_FromFile App.Path & "\gif\system\left_2.png"
-bn22.LoadImage_FromFile App.Path & "\gif\system\rest_2.png"
-bn32.LoadImage_FromFile App.Path & "\gif\system\right_2.png"
-bn42.LoadImage_FromFile App.Path & "\gif\system\change_2.png"
-Me.移動階段圖顯示 = False
-Me.移動階段選擇值 = 0
+    bn1.AutoRedraw = True
+    bn1.AutoSize = True
+    bn2.AutoRedraw = True
+    bn2.AutoSize = True
+    bn3.AutoRedraw = True
+    bn3.AutoSize = True
+    bn4.AutoRedraw = True
+    bn4.AutoSize = True
+    bn12.AutoRedraw = True
+    bn12.AutoSize = True
+    bn22.AutoRedraw = True
+    bn22.AutoSize = True
+    bn32.AutoRedraw = True
+    bn32.AutoSize = True
+    bn42.AutoRedraw = True
+    bn42.AutoSize = True
+    bn1.LoadImage_FromFile App.Path & "\gif\system\left_1.png"
+    bn2.LoadImage_FromFile App.Path & "\gif\system\rest_1.png"
+    bn3.LoadImage_FromFile App.Path & "\gif\system\right_1.png"
+    bn4.LoadImage_FromFile App.Path & "\gif\system\change_1.png"
+    bn12.LoadImage_FromFile App.Path & "\gif\system\left_2.png"
+    bn22.LoadImage_FromFile App.Path & "\gif\system\rest_2.png"
+    bn32.LoadImage_FromFile App.Path & "\gif\system\right_2.png"
+    bn42.LoadImage_FromFile App.Path & "\gif\system\change_2.png"
+    Me.移動階段圖顯示 = False
+    Me.移動階段選擇值 = 0
 
-moveleftjpg(0).Left = 2400
-moveleftjpg(0).Top = 120
-moverightjpg(0).Left = 8520
-moverightjpg(0).Top = 120
-moveleftjpg(0).Visible = False
-moverightjpg(0).Visible = False
-Me.移動方向圖片顯示 = False
+    moveleftjpg(0).Left = 2400
+    moveleftjpg(0).Top = 120
+    moverightjpg(0).Left = 8520
+    moverightjpg(0).Top = 120
+    moveleftjpg(0).Visible = False
+    moverightjpg(0).Visible = False
+    Me.移動方向圖片顯示 = False
 End Sub
 
 

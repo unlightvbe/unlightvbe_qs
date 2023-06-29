@@ -11,7 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Public StageNum As Integer '執行階段編號數
-Public CommandStr As String '該層執行指令名稱
-Public Argument As String '紀載參數
-Public Value As String '紀載內容
+Public StageNum As Integer    '執行階段編號數
+Public CommandStr As String    '該層執行指令名稱
+Public Argument As String    '紀載參數
+Public Value As String    '紀載內容

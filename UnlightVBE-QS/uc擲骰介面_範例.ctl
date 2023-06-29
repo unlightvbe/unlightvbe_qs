@@ -444,51 +444,56 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Dim m_diceus As String, m_dicecom As String
+Attribute m_dicecom.VB_VarUserMemId = 1073938432
 Dim m_start As Boolean, m_stop As Boolean
+Attribute m_start.VB_VarUserMemId = 1073938434
+Attribute m_stop.VB_VarUserMemId = 1073938434
 Dim m_DiceATKMode As Integer
+Attribute m_DiceATKMode.VB_VarUserMemId = 1073938436
 Dim m_PersonImage As String
+Attribute m_PersonImage.VB_VarUserMemId = 1073938437
 Public Property Get diceus() As String
-   diceus = m_diceus
+    diceus = m_diceus
 End Property
 Public Property Let diceus(ByVal New_diceus As String)
-   m_diceus = New_diceus
-   PropertyChanged "diceus"
+    m_diceus = New_diceus
+    PropertyChanged "diceus"
 End Property
 Public Property Get dicecom() As String
-   dicecom = m_dicecom
+    dicecom = m_dicecom
 End Property
 Public Property Let dicecom(ByVal New_dicecom As String)
-   m_dicecom = New_dicecom
-   PropertyChanged "dicecom"
+    m_dicecom = New_dicecom
+    PropertyChanged "dicecom"
 End Property
 Public Property Get DiceStart() As Boolean
-   DiceStart = m_start
+    DiceStart = m_start
 End Property
 Public Property Let DiceStart(ByVal New_DiceStart As Boolean)
-   m_start = New_DiceStart
-   PropertyChanged "DiceStart"
-   '==================
-   Me.DiceStop = False
+    m_start = New_DiceStart
+    PropertyChanged "DiceStart"
+    '==================
+    Me.DiceStop = False
 End Property
 Public Property Get DiceStop() As Boolean
-   DiceStop = m_stop
+    DiceStop = m_stop
 End Property
 Public Property Let DiceStop(ByVal New_DiceStop As Boolean)
-   m_stop = New_DiceStop
-   PropertyChanged "DiceStop"
+    m_stop = New_DiceStop
+    PropertyChanged "DiceStop"
 End Property
 Public Property Get DiceATKMode() As Integer
-   DiceATKMode = m_DiceATKMode
+    DiceATKMode = m_DiceATKMode
 End Property
 Public Property Let DiceATKMode(ByVal New_DiceATKMode As Integer)
-   m_DiceATKMode = New_DiceATKMode
-   PropertyChanged "DiceATKMode"
+    m_DiceATKMode = New_DiceATKMode
+    PropertyChanged "DiceATKMode"
 End Property
 Public Property Get PersonImage() As String
-   PersonImage = m_PersonImage
+    PersonImage = m_PersonImage
 End Property
 Public Property Let PersonImage(ByVal New_PersonImage As String)
-   m_PersonImage = New_PersonImage
-   PropertyChanged "PersonImage"
+    m_PersonImage = New_PersonImage
+    PropertyChanged "PersonImage"
 End Property
 

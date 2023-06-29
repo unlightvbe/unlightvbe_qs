@@ -695,80 +695,80 @@ Public Event BnOKClick()
 Public Event ActiveMouseEnter(ByVal uscom As Integer, ByVal num As Integer)
 Public Event ActiveMouseExit(ByVal uscom As Integer, ByVal num As Integer)
 Public Property Get turn() As Integer
-   turn = m_Turn
+    turn = m_Turn
 End Property
 Public Property Let turn(ByVal New_Turn As Integer)
-   m_Turn = New_Turn
-   PropertyChanged "Turn"
-   '=================
-   turnnum.Caption = Me.turn
-   If turnnum.FontName <> "Bradley Gratis" Then
+    m_Turn = New_Turn
+    PropertyChanged "Turn"
+    '=================
+    turnnum.Caption = Me.turn
+    If turnnum.FontName <> "Bradley Gratis" Then
         turnnum.FontSize = 20
-   Else
+    Else
         turnnum.FontSize = 24
-   End If
+    End If
 End Property
-Public Property Get Cardnum() As Integer
-   Cardnum = m_cardnum
+Public Property Get CardNum() As Integer
+    CardNum = m_cardnum
 End Property
-Public Property Let Cardnum(ByVal New_Cardnum As Integer)
-   m_cardnum = New_Cardnum
-   PropertyChanged "Cardnum"
-   '=================
-   pageul.Caption = Me.Cardnum
-   If pageul.FontName <> "Bradley Gratis" Then
+Public Property Let CardNum(ByVal New_Cardnum As Integer)
+    m_cardnum = New_Cardnum
+    PropertyChanged "Cardnum"
+    '=================
+    pageul.Caption = Me.CardNum
+    If pageul.FontName <> "Bradley Gratis" Then
         pageul.FontSize = 16
-   Else
+    Else
         pageul.FontSize = 20
-   End If
+    End If
 End Property
 Public Property Get Passive_介面顯示() As Boolean
-   Passive_介面顯示 = m_passivevisble
+    Passive_介面顯示 = m_passivevisble
 End Property
 Public Property Let Passive_介面顯示(ByVal New_Passive_介面顯示 As Boolean)
-   m_passivevisble = New_Passive_介面顯示
-   PropertyChanged "Passive_介面顯示"
-   '=================
-   Dim i As Integer
-   If Me.Passive_介面顯示 = False Then
-       cardunderjpg.Visible = False
-       cardpagejpg.Visible = False
-       pageul.Visible = False
-       stagejpgn.Visible = False
-       For i = 1 To 4
-          Me.Passive_使用者_技能隱藏 i
-          Me.Passive_電腦_技能隱藏 i
-       Next
-   Else
-       cardunderjpg.Visible = True
-       cardpagejpg.Visible = True
-       pageul.Visible = True
-       pageul.ZOrder
-       stagejpgn.Visible = True
-   End If
+    m_passivevisble = New_Passive_介面顯示
+    PropertyChanged "Passive_介面顯示"
+    '=================
+    Dim i As Integer
+    If Me.Passive_介面顯示 = False Then
+        cardunderjpg.Visible = False
+        cardpagejpg.Visible = False
+        pageul.Visible = False
+        stagejpgn.Visible = False
+        For i = 1 To 4
+            Me.Passive_使用者_技能隱藏 i
+            Me.Passive_電腦_技能隱藏 i
+        Next
+    Else
+        cardunderjpg.Visible = True
+        cardpagejpg.Visible = True
+        pageul.Visible = True
+        pageul.ZOrder
+        stagejpgn.Visible = True
+    End If
 End Property
 
 Sub MessageClear()
-messagetext.MessageTextClear
+    messagetext.MessageTextClear
 End Sub
 Sub Passive_技能一方全重設(ByVal uscom As Integer)
-Dim i As Integer
-Select Case uscom
-    Case 1
-        For i = 1 To 4
-            passivelight_us(i).Visible = False
-            Me.Passive_使用者_技能燈變暗 i
-            passivetext_us(i).Visible = False
-            passivetext_us(i).Caption = ""
-        Next
-    Case 2
-        For i = 1 To 4
-            passivelight_com(i).Visible = False
-            Me.Passive_電腦_技能燈變暗 i
-            passivetext_com(i).Visible = False
-            passivetext_com(i).Caption = ""
-        Next
-End Select
+    Dim i As Integer
+    Select Case uscom
+        Case 1
+            For i = 1 To 4
+                passivelight_us(i).Visible = False
+                Me.Passive_使用者_技能燈變暗 i
+                passivetext_us(i).Visible = False
+                passivetext_us(i).Caption = ""
+            Next
+        Case 2
+            For i = 1 To 4
+                passivelight_com(i).Visible = False
+                Me.Passive_電腦_技能燈變暗 i
+                passivetext_com(i).Visible = False
+                passivetext_com(i).Caption = ""
+            Next
+    End Select
 End Sub
 Sub Passive_電腦_技能名稱(ByVal name As String, ByVal num As Integer)
     If num < 1 Or num > 4 Then Exit Sub
@@ -824,131 +824,131 @@ Sub Passive_使用者_技能名稱(ByVal name As String, ByVal num As Integer)
 End Sub
 Sub stagejpg(ByVal filestr As String)
     If filestr <> "" Then
-       stagejpgn.Picture = LoadPicture(filestr)
-   End If
+        stagejpgn.Picture = LoadPicture(filestr)
+    End If
 End Sub
 Sub Message(ByVal msgstr As String)
     messagetext.MeaageText msgstr
 End Sub
 
 Private Sub activecom_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent ActiveMouseMove(2, Index)
+    RaiseEvent ActiveMouseMove(2, Index)
 End Sub
 
 Private Sub activeus_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent ActiveMouseMove(1, Index)
+    RaiseEvent ActiveMouseMove(1, Index)
 End Sub
 
 Private Sub bnok_Click(ByVal Button As Integer)
-RaiseEvent BnOKClick
+    RaiseEvent BnOKClick
 End Sub
 
 Private Sub bnok_MouseEnter()
-bnok.LoadImage_FromFile app_path & "gif\system\ok_2.jpg"
-m_bnoktype = 2
+    bnok.LoadImage_FromFile app_path & "gif\system\ok_2.jpg"
+    m_bnoktype = 2
 End Sub
 
 Private Sub bnok_MouseExit()
-bnok.LoadImage_FromFile app_path & "gif\system\ok_1.jpg"
-m_bnoktype = 1
+    bnok.LoadImage_FromFile app_path & "gif\system\ok_1.jpg"
+    m_bnoktype = 1
 End Sub
 
 Private Sub bnok_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent BnOKMouseMove
+    RaiseEvent BnOKMouseMove
 End Sub
 
 Private Sub cardunderjpg_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent InterfaceMouseMove
+    RaiseEvent InterfaceMouseMove
 End Sub
 
 Private Sub ImageMouseMoveActivecom_MouseEnter(Index As Integer)
-RaiseEvent ActiveMouseEnter(2, Index)
+    RaiseEvent ActiveMouseEnter(2, Index)
 End Sub
 
 Private Sub ImageMouseMoveActivecom_MouseExit(Index As Integer)
-RaiseEvent ActiveMouseExit(2, Index)
+    RaiseEvent ActiveMouseExit(2, Index)
 End Sub
 
 Private Sub ImageMouseMoveActiveus_MouseEnter(Index As Integer)
-RaiseEvent ActiveMouseEnter(1, Index)
+    RaiseEvent ActiveMouseEnter(1, Index)
 End Sub
 
 Private Sub ImageMouseMoveActiveus_MouseExit(Index As Integer)
-RaiseEvent ActiveMouseExit(1, Index)
+    RaiseEvent ActiveMouseExit(1, Index)
 End Sub
 
 Private Sub stagejpgn_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent InterfaceMouseMove
+    RaiseEvent InterfaceMouseMove
 End Sub
 Sub ActiveDescription(ByVal uscom As Integer, ByVal num As Integer, ByVal skillobj As clsPersonActiveSkill)
-Me.ActiveSkillName uscom, num, skillobj.name
-Me.ActiveSkillNameFontSize uscom, num, skillobj.NameFontSize
+    Me.ActiveSkillName uscom, num, skillobj.name
+    Me.ActiveSkillNameFontSize uscom, num, skillobj.NameFontSize
 End Sub
 
 Sub ActiveSkillLight(ByVal uscom As Integer, ByVal num As Integer, ByVal isOn As Boolean)
-Select Case uscom
- Case 1
-    If isOn = True Then
-       activeus(num).ForeColor = RGB(255, 255, 0)
-       activeus(num).BackColor = RGB(47, 94, 94)
-    Else
-       activeus(num).ForeColor = RGB(192, 192, 192)
-       activeus(num).BackColor = RGB(0, 0, 0)
-    End If
- Case 2
-    If isOn = True Then
-       activecom(num).ForeColor = RGB(255, 255, 0)
-       activecom(num).BackColor = RGB(47, 94, 94)
-    Else
-       activecom(num).ForeColor = RGB(192, 192, 192)
-       activecom(num).BackColor = RGB(0, 0, 0)
-    End If
-End Select
-    
+    Select Case uscom
+        Case 1
+            If isOn = True Then
+                activeus(num).ForeColor = RGB(255, 255, 0)
+                activeus(num).BackColor = RGB(47, 94, 94)
+            Else
+                activeus(num).ForeColor = RGB(192, 192, 192)
+                activeus(num).BackColor = RGB(0, 0, 0)
+            End If
+        Case 2
+            If isOn = True Then
+                activecom(num).ForeColor = RGB(255, 255, 0)
+                activecom(num).BackColor = RGB(47, 94, 94)
+            Else
+                activecom(num).ForeColor = RGB(192, 192, 192)
+                activecom(num).BackColor = RGB(0, 0, 0)
+            End If
+    End Select
+
 End Sub
 Sub ActiveSkillVisable(ByVal uscom As Integer, ByVal num As Integer, ByVal isOn As Boolean)
-Select Case uscom
- Case 1
-    activeus(num).Visible = isOn
- Case 2
-    activecom(num).Visible = isOn
-End Select
+    Select Case uscom
+        Case 1
+            activeus(num).Visible = isOn
+        Case 2
+            activecom(num).Visible = isOn
+    End Select
 End Sub
 Sub ActiveSkillName(ByVal uscom As Integer, ByVal num As Integer, ByVal namestr As String)
-Select Case uscom
- Case 1
-    activeus(num).Caption = namestr
- Case 2
-    activecom(num).Caption = namestr
-End Select
+    Select Case uscom
+        Case 1
+            activeus(num).Caption = namestr
+        Case 2
+            activecom(num).Caption = namestr
+    End Select
 End Sub
 Sub ActiveSkillNameFontSize(ByVal uscom As Integer, ByVal num As Integer, ByVal sizenum As Integer)
-If sizenum <= 7 Then Exit Sub
-Select Case uscom
- Case 1
-    activeus(num).FontSize = sizenum
- Case 2
-    activecom(num).FontSize = sizenum
-End Select
+    If sizenum <= 7 Then Exit Sub
+    Select Case uscom
+        Case 1
+            activeus(num).FontSize = sizenum
+        Case 2
+            activecom(num).FontSize = sizenum
+    End Select
 End Sub
 
 Private Sub UserControl_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent InterfaceMouseMove
+    RaiseEvent InterfaceMouseMove
 End Sub
 Sub BnOKStartListen()
-bnok.LoadImage_FromFile app_path & "gif\system\ok_1.jpg"
-m_bnoktype = 1
-bnok.Enabled = True
-bnok.Visible = True
+    bnok.LoadImage_FromFile app_path & "gif\system\ok_1.jpg"
+    m_bnoktype = 1
+    bnok.Enabled = True
+    bnok.Visible = True
 End Sub
 Sub BnOKStopListen()
-bnok.LoadImage_FromFile app_path & "gif\system\ok_3.jpg"
-m_bnoktype = 3
-bnok.Enabled = False
+    bnok.LoadImage_FromFile app_path & "gif\system\ok_3.jpg"
+    m_bnoktype = 3
+    bnok.Enabled = False
 End Sub
 Sub BnOKVisable(ByVal isOn As Boolean)
-bnok.Visible = isOn
+    bnok.Visible = isOn
 End Sub
 Sub BnOKEnabled(ByVal isOn As Boolean)
-bnok.Enabled = isOn
+    bnok.Enabled = isOn
 End Sub

@@ -13,7 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
 Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
-Public Value As Integer '異常狀態數值
-Public Total As Integer '異常狀態統計數(剩餘回合/累計)
-Public Identifier As String '技能唯一識別碼
-Public ImagePath As String '異常狀態圖片路徑
+Public Value As Integer    '異常狀態數值
+Public Total As Integer    '異常狀態統計數(剩餘回合/累計)
+Public Identifier As String    '技能唯一識別碼
+Public ImagePath As String    '異常狀態圖片路徑

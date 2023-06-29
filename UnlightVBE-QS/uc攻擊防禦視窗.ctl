@@ -367,93 +367,93 @@ Dim adcomall As Integer
 Dim hideall As Integer
 Dim m_adcgetext As Integer
 Dim m_adwaittext As Boolean
- 
- 
+
+
 Private Sub t1_Timer()
-Select Case Me.adcge
-Case 1
-    If adusall <= Me.adust Then
-       adus(adusall).Picture = LoadPicture(App.Path & "\gif\system\atkshow.gif")
-       adus(adusall).Visible = True
-       adusall = adusall + 1
+    Select Case Me.adcge
+        Case 1
+            If adusall <= Me.adust Then
+                adus(adusall).Picture = LoadPicture(App.Path & "\gif\system\atkshow.gif")
+                adus(adusall).Visible = True
+                adusall = adusall + 1
+            End If
+            If adcomall <= Me.adcomt Then
+                adcom(adcomall).Picture = LoadPicture(App.Path & "\gif\system\defshow.gif")
+                adcom(adcomall).Visible = True
+                adcomall = adcomall + 1
+            End If
+        Case 2
+            If adusall <= Me.adust Then
+                adus(adusall).Picture = LoadPicture(App.Path & "\gif\system\defshow.gif")
+                adus(adusall).Visible = True
+                adusall = adusall + 1
+            End If
+            If adcomall <= Me.adcomt Then
+                adcom(adcomall).Picture = LoadPicture(App.Path & "\gif\system\atkshow.gif")
+                adcom(adcomall).Visible = True
+                adcomall = adcomall + 1
+            End If
+    End Select
+    If adusall > Me.adust And adcomall > Me.adcomt Then
+        t1.Enabled = False
+        hideall = 1
+        trhide.Enabled = True
     End If
-    If adcomall <= Me.adcomt Then
-       adcom(adcomall).Picture = LoadPicture(App.Path & "\gif\system\defshow.gif")
-       adcom(adcomall).Visible = True
-       adcomall = adcomall + 1
-    End If
-Case 2
-   If adusall <= Me.adust Then
-       adus(adusall).Picture = LoadPicture(App.Path & "\gif\system\defshow.gif")
-       adus(adusall).Visible = True
-       adusall = adusall + 1
-    End If
-    If adcomall <= Me.adcomt Then
-       adcom(adcomall).Picture = LoadPicture(App.Path & "\gif\system\atkshow.gif")
-       adcom(adcomall).Visible = True
-       adcomall = adcomall + 1
-    End If
-End Select
-If adusall > Me.adust And adcomall > Me.adcomt Then
-   t1.Enabled = False
-   hideall = 1
-   trhide.Enabled = True
-End If
 End Sub
 
 Private Sub trhide_Timer()
-If hideall <= 20 Then
-   If adus(hideall).Visible = True And adcom(hideall).Visible = True Then
-      adus(hideall).Visible = False
-      adcom(hideall).Visible = False
-      hideall = hideall + 1
-   Else
-      trhide.Enabled = False
-      Me.adwait = True
-   End If
-Else
-   trhide.Enabled = False
-   Me.adwait = True
-End If
+    If hideall <= 20 Then
+        If adus(hideall).Visible = True And adcom(hideall).Visible = True Then
+            adus(hideall).Visible = False
+            adcom(hideall).Visible = False
+            hideall = hideall + 1
+        Else
+            trhide.Enabled = False
+            Me.adwait = True
+        End If
+    Else
+        trhide.Enabled = False
+        Me.adwait = True
+    End If
 End Sub
 
 Private Sub UserControl_Show()
-Dim i As Integer
-adusall = 1
-adcomall = 1
-t1.Enabled = True
-For i = 1 To 20
-   adus(i).Visible = False
-   adcom(i).Visible = False
-Next
+    Dim i As Integer
+    adusall = 1
+    adcomall = 1
+    t1.Enabled = True
+    For i = 1 To 20
+        adus(i).Visible = False
+        adcom(i).Visible = False
+    Next
 End Sub
 
 Public Property Get adcomt() As Integer
-   adcomt = m_adcomtext
+    adcomt = m_adcomtext
 End Property
 
 Public Property Get adust() As Integer
-   adust = m_adustext
+    adust = m_adustext
 End Property
 Public Property Get adcge() As Integer
-   adcge = m_adcgetext
+    adcge = m_adcgetext
 End Property
 Public Property Get adwait() As Boolean
-   adwait = m_adwaittext
+    adwait = m_adwaittext
 End Property
 Public Property Let adcomt(ByVal New_adcom As Integer)
-   m_adcomtext = New_adcom
-   PropertyChanged "adcomt"
+    m_adcomtext = New_adcom
+    PropertyChanged "adcomt"
 End Property
 Public Property Let adust(ByVal New_adus As Integer)
-   m_adustext = New_adus
-   PropertyChanged "adust"
+    m_adustext = New_adus
+    PropertyChanged "adust"
 End Property
 Public Property Let adcge(ByVal New_adcge As Integer)
-   m_adcgetext = New_adcge
-   PropertyChanged "adcge"
+    m_adcgetext = New_adcge
+    PropertyChanged "adcge"
 End Property
 Public Property Let adwait(ByVal New_adwait As Boolean)
-   m_adwaittext = New_adwait
-   PropertyChanged "adwait"
+    m_adwaittext = New_adwait
+    PropertyChanged "adwait"
 End Property

@@ -222,6 +222,9 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Private m_stage As String, m_distance As String, m_card As String, m_effect As String
+Attribute m_distance.VB_VarUserMemId = 1073938432
+Attribute m_card.VB_VarUserMemId = 1073938432
+Attribute m_effect.VB_VarUserMemId = 1073938432
 
 Public Event MouseEnter()
 Public Property Get Stage() As String
@@ -269,5 +272,5 @@ Public Property Let Effect(ByVal vNewValue As Variant)
 End Property
 
 Private Sub ImageMouseMove_MouseEnter()
-RaiseEvent MouseEnter
+    RaiseEvent MouseEnter
 End Sub

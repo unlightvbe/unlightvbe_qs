@@ -29,7 +29,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Dim m_message() As String
 Private Sub UserControl_Initialize()
-ReDim m_message(0) As String
+    ReDim m_message(0) As String
 End Sub
 Sub MeaageText(ByVal textstr As String)
     Dim i As Integer
@@ -39,15 +39,15 @@ Sub MeaageText(ByVal textstr As String)
     Cls
     If UBound(m_message) <= 5 Then
         For i = 1 To UBound(m_message)
-             Print " " & m_message(i)
+            Print " " & m_message(i)
         Next
     ElseIf UBound(m_message) > 5 Then
         For i = (UBound(m_message) - 5) + 1 To UBound(m_message)
-             Print " " & m_message(i)
+            Print " " & m_message(i)
         Next
     End If
 End Sub
 Sub MessageTextClear()
-Cls
-ReDim m_message(0) As String
+    Cls
+    ReDim m_message(0) As String
 End Sub

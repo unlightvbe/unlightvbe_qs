@@ -2199,717 +2199,717 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private Sub checktest_Click()
-If checktest.Value = 1 Then
-    persontgreus.Value = 0
-    persontgrecom.Value = 0
-    comboeventcarrdus.ListIndex = 1
-    comboeventcarrdcom.ListIndex = 1
-    Formsetting.對戰地圖選擇.ListIndex = Formsetting.對戰地圖選擇.ListCount - 1
-Else
-    persontgreus.Value = 1
-    persontgrecom.Value = 1
-    comboeventcarrdus.ListIndex = 0
-    comboeventcarrdcom.ListIndex = 0
-    Formsetting.對戰地圖選擇.ListIndex = 0
-End If
+    If checktest.Value = 1 Then
+        persontgreus.Value = 0
+        persontgrecom.Value = 0
+        comboeventcarrdus.ListIndex = 1
+        comboeventcarrdcom.ListIndex = 1
+        Formsetting.對戰地圖選擇.ListIndex = Formsetting.對戰地圖選擇.ListCount - 1
+    Else
+        persontgreus.Value = 1
+        persontgrecom.Value = 1
+        comboeventcarrdus.ListIndex = 0
+        comboeventcarrdcom.ListIndex = 0
+        Formsetting.對戰地圖選擇.ListIndex = 0
+    End If
 End Sub
 
 Private Sub chksetcomaipagenum_Click()
-If chksetcomaipagenum.Value = 0 Then
-    自訂AI手牌張數.Enabled = False
-Else
-    自訂AI手牌張數.Enabled = True
-End If
+    If chksetcomaipagenum.Value = 0 Then
+        自訂AI手牌張數.Enabled = False
+    Else
+        自訂AI手牌張數.Enabled = True
+    End If
 End Sub
 
 Private Sub chkusesimilarlevel_Click()
-If chkusesimilarlevel.Value = 0 Then
-   cbsimilarlevel.Enabled = False
-Else
-    cbsimilarlevel.Enabled = True
-End If
+    If chkusesimilarlevel.Value = 0 Then
+        cbsimilarlevel.Enabled = False
+    Else
+        cbsimilarlevel.Enabled = True
+    End If
 End Sub
 
 Private Sub ckbgmmute_Click()
-If ckbgmmute.Value = 1 Then
-   FormMainMode.cMusicPlayer(0).Mute = True
-Else
-   FormMainMode.cMusicPlayer(0).Mute = False
-End If
+    If ckbgmmute.Value = 1 Then
+        FormMainMode.cMusicPlayer(0).Mute = True
+    Else
+        FormMainMode.cMusicPlayer(0).Mute = False
+    End If
 End Sub
 
 Private Sub ckendturn_Click()
-If ckendturn.Value = 1 Then
-    ckendturnnum.Enabled = True
-Else
-    ckendturnnum.Enabled = False
-End If
+    If ckendturn.Value = 1 Then
+        ckendturnnum.Enabled = True
+    Else
+        ckendturnnum.Enabled = False
+    End If
 End Sub
 
 Private Sub cksemute_Click()
-Dim i As Integer
-If cksemute.Value = 1 Then
-    For i = 1 To FormMainMode.cMusicPlayer.UBound
-        FormMainMode.cMusicPlayer(i).Mute = True
-    Next
-Else
-    For i = 1 To FormMainMode.cMusicPlayer.UBound
-        FormMainMode.cMusicPlayer(i).Mute = False
-    Next
-End If
+    Dim i As Integer
+    If cksemute.Value = 1 Then
+        For i = 1 To FormMainMode.cMusicPlayer.UBound
+            FormMainMode.cMusicPlayer(i).Mute = True
+        Next
+    Else
+        For i = 1 To FormMainMode.cMusicPlayer.UBound
+            FormMainMode.cMusicPlayer(i).Mute = False
+        Next
+    End If
 End Sub
 
 Sub comboeventcarrdcom_Click()
-Dim i As Integer
+    Dim i As Integer
 
-If comboeventcarrdcom.Text = "自訂" Then
-    For i = 1 To 18
-        personcom(i).Enabled = True
-    Next
-Else
-    For i = 1 To 18
-        personcom(i).Enabled = False
-    Next
-End If
+    If comboeventcarrdcom.Text = "自訂" Then
+        For i = 1 To 18
+            personcom(i).Enabled = True
+        Next
+    Else
+        For i = 1 To 18
+            personcom(i).Enabled = False
+        Next
+    End If
 End Sub
 
 Sub comboeventcarrdus_Click()
-Dim i As Integer
+    Dim i As Integer
 
-If comboeventcarrdus.Text = "自訂" Then
-    For i = 1 To 18
-        personus(i).Enabled = True
-    Next
-Else
-    For i = 1 To 18
-        personus(i).Enabled = False
-    Next
-End If
+    If comboeventcarrdus.Text = "自訂" Then
+        For i = 1 To 18
+            personus(i).Enabled = True
+        Next
+    Else
+        For i = 1 To 18
+            personus(i).Enabled = False
+        Next
+    End If
 End Sub
 
 Private Sub Command1_Click()
-On Error GoTo VBEError
-cdgBGMchooce.ShowOpen
-If lopnmusictext.Caption = "" And cdgBGMchooce.filename <> "" Then
-    BGM選擇.AddItem "《其他》"
-End If
-If cdgBGMchooce.filename <> "" Then
-    lopnmusictext.Caption = cdgBGMchooce.filename
-    BGM選擇.ListIndex = BGM選擇.ListCount - 1
-Else
-    BGM選擇.ListIndex = 0
-End If
-Exit Sub
-'===============
+    On Error GoTo VBEError
+    cdgBGMchooce.ShowOpen
+    If lopnmusictext.Caption = "" And cdgBGMchooce.filename <> "" Then
+        BGM選擇.AddItem "《其他》"
+    End If
+    If cdgBGMchooce.filename <> "" Then
+        lopnmusictext.Caption = cdgBGMchooce.filename
+        BGM選擇.ListIndex = BGM選擇.ListCount - 1
+    Else
+        BGM選擇.ListIndex = 0
+    End If
+    Exit Sub
+    '===============
 VBEError:
-BGM選擇.ListIndex = 0
+    BGM選擇.ListIndex = 0
 End Sub
 
 Private Sub Command2_Click()
-On Error GoTo VBEError
-cdgMAPchooce.ShowOpen
-If lopnmapjpgtext.Caption = "" And cdgMAPchooce.filename <> "" Then
-    對戰地圖選擇.AddItem "《其他》"
-    ImageListback.ListImages.Add 15, , LoadPicture(cdgMAPchooce.filename)
-ElseIf lopnmapjpgtext.Caption <> "" And cdgMAPchooce.filename <> "" Then
-    ImageListback.ListImages.Remove 15
-    ImageListback.ListImages.Add 15, , LoadPicture(cdgMAPchooce.filename)
-End If
-If cdgMAPchooce.filename <> "" Then
-    lopnmapjpgtext.Caption = cdgMAPchooce.filename
-    對戰地圖選擇.ListIndex = 對戰地圖選擇.ListCount - 1
-Else
-    對戰地圖選擇.ListIndex = 0
-End If
-Formsetting.對戰地圖選擇_Click
-Exit Sub
-'===============
+    On Error GoTo VBEError
+    cdgMAPchooce.ShowOpen
+    If lopnmapjpgtext.Caption = "" And cdgMAPchooce.filename <> "" Then
+        對戰地圖選擇.AddItem "《其他》"
+        ImageListback.ListImages.Add 15, , LoadPicture(cdgMAPchooce.filename)
+    ElseIf lopnmapjpgtext.Caption <> "" And cdgMAPchooce.filename <> "" Then
+        ImageListback.ListImages.Remove 15
+        ImageListback.ListImages.Add 15, , LoadPicture(cdgMAPchooce.filename)
+    End If
+    If cdgMAPchooce.filename <> "" Then
+        lopnmapjpgtext.Caption = cdgMAPchooce.filename
+        對戰地圖選擇.ListIndex = 對戰地圖選擇.ListCount - 1
+    Else
+        對戰地圖選擇.ListIndex = 0
+    End If
+    Formsetting.對戰地圖選擇_Click
+    Exit Sub
+    '===============
 VBEError:
-對戰地圖選擇.ListIndex = 0
+    對戰地圖選擇.ListIndex = 0
 End Sub
 
 Private Sub Form_Activate()
-Dim i As Integer
-Formsetting.Width = 9315
-Formsetting.Height = 9150
-For i = 1 To 3
-   If FormMainMode.personnameus(i).Text <> "《隨機》" Then
-       personlevelus(i).Caption = FormMainMode.personlevelus(i).Text
-       personnameus(i).Caption = FormMainMode.personnameus(i).Text
-   Else
-       personlevelus(i).Caption = ""
-       personnameus(i).Caption = FormMainMode.personnameus(i).Text
-   End If
-   If FormMainMode.personnamecom(i).Text <> "《隨機》" Then
-       personlevelcom(i).Caption = FormMainMode.personlevelcom(i).Text
-       personnamecom(i).Caption = FormMainMode.personnamecom(i).Text
-   Else
-       personlevelcom(i).Caption = ""
-       personnamecom(i).Caption = FormMainMode.personnamecom(i).Text
-   End If
-   personnameusChange i
-   personnamecomChange i
-Next
+    Dim i As Integer
+    Formsetting.Width = 9315
+    Formsetting.Height = 9150
+    For i = 1 To 3
+        If FormMainMode.personnameus(i).Text <> "《隨機》" Then
+            personlevelus(i).Caption = FormMainMode.personlevelus(i).Text
+            personnameus(i).Caption = FormMainMode.personnameus(i).Text
+        Else
+            personlevelus(i).Caption = ""
+            personnameus(i).Caption = FormMainMode.personnameus(i).Text
+        End If
+        If FormMainMode.personnamecom(i).Text <> "《隨機》" Then
+            personlevelcom(i).Caption = FormMainMode.personlevelcom(i).Text
+            personnamecom(i).Caption = FormMainMode.personnamecom(i).Text
+        Else
+            personlevelcom(i).Caption = ""
+            personnamecom(i).Caption = FormMainMode.personnamecom(i).Text
+        End If
+        personnameusChange i
+        personnamecomChange i
+    Next
 End Sub
 
 Private Sub Form_Load()
-Dim i As Integer
+    Dim i As Integer
 
-對戰地圖選擇.AddItem "《隨機》"
-對戰地圖選擇.AddItem "人魂墓地"
-對戰地圖選擇.AddItem "白魔的圓環石陣"
-對戰地圖選擇.AddItem "冰封湖畔(新)"
-對戰地圖選擇.AddItem "冰封湖畔(舊)"
-對戰地圖選擇.AddItem "垃圾之街"
-對戰地圖選擇.AddItem "風暴荒野"
-對戰地圖選擇.AddItem "烏波斯的黑湖"
-對戰地圖選擇.AddItem "萊丁貝魯格城堡"
-對戰地圖選擇.AddItem "瘋狂山脈"
-對戰地圖選擇.AddItem "盡頭之村"
-對戰地圖選擇.AddItem "誘惑森林"
-對戰地圖選擇.AddItem "藩骸兒的遺跡"
-對戰地圖選擇.AddItem "魔女山谷"
-對戰地圖選擇.AddItem "魔都羅占布爾克"
-'對戰地圖選擇.ListIndex = 0
-'=============
-For i = 1 To 14
-    ImageListback.ListImages.Add i, , LoadPicture(app_path & "gif\system\map\" & i & ".jpg")
-Next
-'=============
-BGM選擇.AddItem "《隨機-地圖組合》"
-BGM選擇.AddItem "《隨機》"
-BGM選擇.AddItem "人魂墓地"
-'BGM選擇.AddItem "白魔的圓環石陣"
-BGM選擇.AddItem "冰封湖畔(新)"
-BGM選擇.AddItem "垃圾之街"
-BGM選擇.AddItem "風暴荒野"
-BGM選擇.AddItem "烏波斯的黑湖"
-BGM選擇.AddItem "萊丁貝魯格城堡"
-BGM選擇.AddItem "瘋狂山脈"
-BGM選擇.AddItem "盡頭之村"
-BGM選擇.AddItem "誘惑森林"
-BGM選擇.AddItem "藩骸兒的遺跡"
-BGM選擇.AddItem "魔都羅占布爾克"
-BGM選擇.AddItem "舊版"
-'BGM選擇.ListIndex = 0
-'=============
-cdgBGMchooce.Filter = "MP3音樂檔(*.mp3)|*.mp3|Wave音訊檔(*.wav)|*.wav|MP4音樂檔(*.m4a)|*.m4a|所有檔案(*.*)|*.*"
-cdgMAPchooce.Filter = "JPG圖片檔(*.jpg)|*.jpg|BMP點陣圖(*.bmp)|*.bmp|所有檔案(*.*)|*.*"
-For i = 1 To 18
-    personus(i).AddItem "(無)"
-    personus(i).AddItem "劍1"
-    personus(i).AddItem "劍2"
-    personus(i).AddItem "劍3"
-    personus(i).AddItem "劍4"
-    personus(i).AddItem "劍5"
-    personus(i).AddItem "劍6"
-    personus(i).AddItem "劍7"
-    personus(i).AddItem "劍8"
-    personus(i).AddItem "槍1"
-    personus(i).AddItem "槍2"
-    personus(i).AddItem "槍3"
-    personus(i).AddItem "槍4"
-    personus(i).AddItem "槍5"
-    personus(i).AddItem "槍6"
-    personus(i).AddItem "槍7"
-    personus(i).AddItem "槍8"
-    personus(i).AddItem "特1"
-    personus(i).AddItem "特2"
-    personus(i).AddItem "特3"
-    personus(i).AddItem "特4"
-    personus(i).AddItem "特5"
-    personus(i).AddItem "防1"
-    personus(i).AddItem "防2"
-    personus(i).AddItem "防3"
-    personus(i).AddItem "防4"
-    personus(i).AddItem "防5"
-    personus(i).AddItem "防7"
-    personus(i).AddItem "移1"
-    personus(i).AddItem "移2"
-    personus(i).AddItem "移3"
-    personus(i).AddItem "移4"
-    personus(i).AddItem "移5"
-    personus(i).AddItem "機會1"
-    personus(i).AddItem "機會2"
-    personus(i).AddItem "機會3"
-    personus(i).AddItem "機會4"
-    personus(i).AddItem "機會5"
-    personus(i).AddItem "詛咒術1"
-    personus(i).AddItem "詛咒術2"
-    personus(i).AddItem "詛咒術3"
-    personus(i).AddItem "詛咒術5"
-    personus(i).AddItem "HP回復1"
-    personus(i).AddItem "HP回復2"
-    personus(i).AddItem "HP回復3"
-    personus(i).AddItem "聖水"
-    personus(i).AddItem "劍3/槍1"
-    personus(i).AddItem "劍4/槍2"
-    personus(i).AddItem "劍5/槍3"
-    personus(i).AddItem "槍3/劍1"
-    personus(i).AddItem "槍4/劍2"
-    personus(i).AddItem "槍5/劍3"
-    personus(i).AddItem "防3/移1"
-    personus(i).AddItem "防4/移1"
-    personus(i).AddItem "防5/移1"
-    personus(i).AddItem "特1/防1"
-    personus(i).AddItem "特2/防2"
-    personus(i).AddItem "特3/防3"
-    personus(i).AddItem "劍3/移1"
-    personus(i).AddItem "劍4/移1"
-    personus(i).AddItem "劍5/移1"
-    personus(i).AddItem "槍3/移1"
-    personus(i).AddItem "槍4/移1"
-    personus(i).AddItem "槍5/移1"
-    personus(i).AddItem "劍3/防1"
-    personus(i).AddItem "槍3/防1"
-    personus(i).AddItem "移1/特1"
-    personus(i).AddItem "移2/特2"
-    personus(i).AddItem "移3/特3"
-    personcom(i).AddItem "(無)"
-    personcom(i).AddItem "劍1"
-    personcom(i).AddItem "劍2"
-    personcom(i).AddItem "劍3"
-    personcom(i).AddItem "劍4"
-    personcom(i).AddItem "劍5"
-    personcom(i).AddItem "劍6"
-    personcom(i).AddItem "劍7"
-    personcom(i).AddItem "劍8"
-    personcom(i).AddItem "槍1"
-    personcom(i).AddItem "槍2"
-    personcom(i).AddItem "槍3"
-    personcom(i).AddItem "槍4"
-    personcom(i).AddItem "槍5"
-    personcom(i).AddItem "槍6"
-    personcom(i).AddItem "槍7"
-    personcom(i).AddItem "槍8"
-    personcom(i).AddItem "特1"
-    personcom(i).AddItem "特2"
-    personcom(i).AddItem "特3"
-    personcom(i).AddItem "特4"
-    personcom(i).AddItem "特5"
-    personcom(i).AddItem "防1"
-    personcom(i).AddItem "防2"
-    personcom(i).AddItem "防3"
-    personcom(i).AddItem "防4"
-    personcom(i).AddItem "防5"
-    personcom(i).AddItem "防7"
-    personcom(i).AddItem "移1"
-    personcom(i).AddItem "移2"
-    personcom(i).AddItem "移3"
-    personcom(i).AddItem "移4"
-    personcom(i).AddItem "移5"
-    personcom(i).AddItem "機會1"
-    personcom(i).AddItem "機會2"
-    personcom(i).AddItem "機會3"
-    personcom(i).AddItem "機會4"
-    personcom(i).AddItem "機會5"
-    personcom(i).AddItem "詛咒術1"
-    personcom(i).AddItem "詛咒術2"
-    personcom(i).AddItem "詛咒術3"
-    personcom(i).AddItem "詛咒術5"
-    personcom(i).AddItem "HP回復1"
-    personcom(i).AddItem "HP回復2"
-    personcom(i).AddItem "HP回復3"
-    personcom(i).AddItem "聖水"
-    personcom(i).AddItem "劍3/槍1"
-    personcom(i).AddItem "劍4/槍2"
-    personcom(i).AddItem "劍5/槍3"
-    personcom(i).AddItem "槍3/劍1"
-    personcom(i).AddItem "槍4/劍2"
-    personcom(i).AddItem "槍5/劍3"
-    personcom(i).AddItem "防3/移1"
-    personcom(i).AddItem "防4/移1"
-    personcom(i).AddItem "防5/移1"
-    personcom(i).AddItem "特1/防1"
-    personcom(i).AddItem "特2/防2"
-    personcom(i).AddItem "特3/防3"
-    personcom(i).AddItem "劍3/移1"
-    personcom(i).AddItem "劍4/移1"
-    personcom(i).AddItem "劍5/移1"
-    personcom(i).AddItem "槍3/移1"
-    personcom(i).AddItem "槍4/移1"
-    personcom(i).AddItem "槍5/移1"
-    personcom(i).AddItem "劍3/防1"
-    personcom(i).AddItem "槍3/防1"
-    personcom(i).AddItem "移1/特1"
-    personcom(i).AddItem "移2/特2"
-    personcom(i).AddItem "移3/特3"
-    persontgus(i).Visible = False
-    persontgcom(i).Visible = False
-    '=================================
-    
-Next
-Formsetting.事件卡設定_列表填入 1, True
-Formsetting.事件卡設定_列表填入 2, True
-Formsetting.cbsimilarlevel.AddItem "LV1"
-Formsetting.cbsimilarlevel.AddItem "LV2"
-Formsetting.cbsimilarlevel.AddItem "LV3"
-Formsetting.cbsimilarlevel.AddItem "LV4"
-Formsetting.cbsimilarlevel.AddItem "LV5"
-Formsetting.cbsimilarlevel.AddItem "R1"
-Formsetting.cbsimilarlevel.AddItem "R2"
-Formsetting.cbsimilarlevel.AddItem "R3"
-Formsetting.cbsimilarlevel.AddItem "R4"
-Formsetting.cbsimilarlevel.AddItem "R5"
-Formsetting.cbsimilarlevel.AddItem "N1"
-'checktest.Value = 1
+    對戰地圖選擇.AddItem "《隨機》"
+    對戰地圖選擇.AddItem "人魂墓地"
+    對戰地圖選擇.AddItem "白魔的圓環石陣"
+    對戰地圖選擇.AddItem "冰封湖畔(新)"
+    對戰地圖選擇.AddItem "冰封湖畔(舊)"
+    對戰地圖選擇.AddItem "垃圾之街"
+    對戰地圖選擇.AddItem "風暴荒野"
+    對戰地圖選擇.AddItem "烏波斯的黑湖"
+    對戰地圖選擇.AddItem "萊丁貝魯格城堡"
+    對戰地圖選擇.AddItem "瘋狂山脈"
+    對戰地圖選擇.AddItem "盡頭之村"
+    對戰地圖選擇.AddItem "誘惑森林"
+    對戰地圖選擇.AddItem "藩骸兒的遺跡"
+    對戰地圖選擇.AddItem "魔女山谷"
+    對戰地圖選擇.AddItem "魔都羅占布爾克"
+    '對戰地圖選擇.ListIndex = 0
+    '=============
+    For i = 1 To 14
+        ImageListback.ListImages.Add i, , LoadPicture(app_path & "gif\system\map\" & i & ".jpg")
+    Next
+    '=============
+    BGM選擇.AddItem "《隨機-地圖組合》"
+    BGM選擇.AddItem "《隨機》"
+    BGM選擇.AddItem "人魂墓地"
+    'BGM選擇.AddItem "白魔的圓環石陣"
+    BGM選擇.AddItem "冰封湖畔(新)"
+    BGM選擇.AddItem "垃圾之街"
+    BGM選擇.AddItem "風暴荒野"
+    BGM選擇.AddItem "烏波斯的黑湖"
+    BGM選擇.AddItem "萊丁貝魯格城堡"
+    BGM選擇.AddItem "瘋狂山脈"
+    BGM選擇.AddItem "盡頭之村"
+    BGM選擇.AddItem "誘惑森林"
+    BGM選擇.AddItem "藩骸兒的遺跡"
+    BGM選擇.AddItem "魔都羅占布爾克"
+    BGM選擇.AddItem "舊版"
+    'BGM選擇.ListIndex = 0
+    '=============
+    cdgBGMchooce.Filter = "MP3音樂檔(*.mp3)|*.mp3|Wave音訊檔(*.wav)|*.wav|MP4音樂檔(*.m4a)|*.m4a|所有檔案(*.*)|*.*"
+    cdgMAPchooce.Filter = "JPG圖片檔(*.jpg)|*.jpg|BMP點陣圖(*.bmp)|*.bmp|所有檔案(*.*)|*.*"
+    For i = 1 To 18
+        personus(i).AddItem "(無)"
+        personus(i).AddItem "劍1"
+        personus(i).AddItem "劍2"
+        personus(i).AddItem "劍3"
+        personus(i).AddItem "劍4"
+        personus(i).AddItem "劍5"
+        personus(i).AddItem "劍6"
+        personus(i).AddItem "劍7"
+        personus(i).AddItem "劍8"
+        personus(i).AddItem "槍1"
+        personus(i).AddItem "槍2"
+        personus(i).AddItem "槍3"
+        personus(i).AddItem "槍4"
+        personus(i).AddItem "槍5"
+        personus(i).AddItem "槍6"
+        personus(i).AddItem "槍7"
+        personus(i).AddItem "槍8"
+        personus(i).AddItem "特1"
+        personus(i).AddItem "特2"
+        personus(i).AddItem "特3"
+        personus(i).AddItem "特4"
+        personus(i).AddItem "特5"
+        personus(i).AddItem "防1"
+        personus(i).AddItem "防2"
+        personus(i).AddItem "防3"
+        personus(i).AddItem "防4"
+        personus(i).AddItem "防5"
+        personus(i).AddItem "防7"
+        personus(i).AddItem "移1"
+        personus(i).AddItem "移2"
+        personus(i).AddItem "移3"
+        personus(i).AddItem "移4"
+        personus(i).AddItem "移5"
+        personus(i).AddItem "機會1"
+        personus(i).AddItem "機會2"
+        personus(i).AddItem "機會3"
+        personus(i).AddItem "機會4"
+        personus(i).AddItem "機會5"
+        personus(i).AddItem "詛咒術1"
+        personus(i).AddItem "詛咒術2"
+        personus(i).AddItem "詛咒術3"
+        personus(i).AddItem "詛咒術5"
+        personus(i).AddItem "HP回復1"
+        personus(i).AddItem "HP回復2"
+        personus(i).AddItem "HP回復3"
+        personus(i).AddItem "聖水"
+        personus(i).AddItem "劍3/槍1"
+        personus(i).AddItem "劍4/槍2"
+        personus(i).AddItem "劍5/槍3"
+        personus(i).AddItem "槍3/劍1"
+        personus(i).AddItem "槍4/劍2"
+        personus(i).AddItem "槍5/劍3"
+        personus(i).AddItem "防3/移1"
+        personus(i).AddItem "防4/移1"
+        personus(i).AddItem "防5/移1"
+        personus(i).AddItem "特1/防1"
+        personus(i).AddItem "特2/防2"
+        personus(i).AddItem "特3/防3"
+        personus(i).AddItem "劍3/移1"
+        personus(i).AddItem "劍4/移1"
+        personus(i).AddItem "劍5/移1"
+        personus(i).AddItem "槍3/移1"
+        personus(i).AddItem "槍4/移1"
+        personus(i).AddItem "槍5/移1"
+        personus(i).AddItem "劍3/防1"
+        personus(i).AddItem "槍3/防1"
+        personus(i).AddItem "移1/特1"
+        personus(i).AddItem "移2/特2"
+        personus(i).AddItem "移3/特3"
+        personcom(i).AddItem "(無)"
+        personcom(i).AddItem "劍1"
+        personcom(i).AddItem "劍2"
+        personcom(i).AddItem "劍3"
+        personcom(i).AddItem "劍4"
+        personcom(i).AddItem "劍5"
+        personcom(i).AddItem "劍6"
+        personcom(i).AddItem "劍7"
+        personcom(i).AddItem "劍8"
+        personcom(i).AddItem "槍1"
+        personcom(i).AddItem "槍2"
+        personcom(i).AddItem "槍3"
+        personcom(i).AddItem "槍4"
+        personcom(i).AddItem "槍5"
+        personcom(i).AddItem "槍6"
+        personcom(i).AddItem "槍7"
+        personcom(i).AddItem "槍8"
+        personcom(i).AddItem "特1"
+        personcom(i).AddItem "特2"
+        personcom(i).AddItem "特3"
+        personcom(i).AddItem "特4"
+        personcom(i).AddItem "特5"
+        personcom(i).AddItem "防1"
+        personcom(i).AddItem "防2"
+        personcom(i).AddItem "防3"
+        personcom(i).AddItem "防4"
+        personcom(i).AddItem "防5"
+        personcom(i).AddItem "防7"
+        personcom(i).AddItem "移1"
+        personcom(i).AddItem "移2"
+        personcom(i).AddItem "移3"
+        personcom(i).AddItem "移4"
+        personcom(i).AddItem "移5"
+        personcom(i).AddItem "機會1"
+        personcom(i).AddItem "機會2"
+        personcom(i).AddItem "機會3"
+        personcom(i).AddItem "機會4"
+        personcom(i).AddItem "機會5"
+        personcom(i).AddItem "詛咒術1"
+        personcom(i).AddItem "詛咒術2"
+        personcom(i).AddItem "詛咒術3"
+        personcom(i).AddItem "詛咒術5"
+        personcom(i).AddItem "HP回復1"
+        personcom(i).AddItem "HP回復2"
+        personcom(i).AddItem "HP回復3"
+        personcom(i).AddItem "聖水"
+        personcom(i).AddItem "劍3/槍1"
+        personcom(i).AddItem "劍4/槍2"
+        personcom(i).AddItem "劍5/槍3"
+        personcom(i).AddItem "槍3/劍1"
+        personcom(i).AddItem "槍4/劍2"
+        personcom(i).AddItem "槍5/劍3"
+        personcom(i).AddItem "防3/移1"
+        personcom(i).AddItem "防4/移1"
+        personcom(i).AddItem "防5/移1"
+        personcom(i).AddItem "特1/防1"
+        personcom(i).AddItem "特2/防2"
+        personcom(i).AddItem "特3/防3"
+        personcom(i).AddItem "劍3/移1"
+        personcom(i).AddItem "劍4/移1"
+        personcom(i).AddItem "劍5/移1"
+        personcom(i).AddItem "槍3/移1"
+        personcom(i).AddItem "槍4/移1"
+        personcom(i).AddItem "槍5/移1"
+        personcom(i).AddItem "劍3/防1"
+        personcom(i).AddItem "槍3/防1"
+        personcom(i).AddItem "移1/特1"
+        personcom(i).AddItem "移2/特2"
+        personcom(i).AddItem "移3/特3"
+        persontgus(i).Visible = False
+        persontgcom(i).Visible = False
+        '=================================
+
+    Next
+    Formsetting.事件卡設定_列表填入 1, True
+    Formsetting.事件卡設定_列表填入 2, True
+    Formsetting.cbsimilarlevel.AddItem "LV1"
+    Formsetting.cbsimilarlevel.AddItem "LV2"
+    Formsetting.cbsimilarlevel.AddItem "LV3"
+    Formsetting.cbsimilarlevel.AddItem "LV4"
+    Formsetting.cbsimilarlevel.AddItem "LV5"
+    Formsetting.cbsimilarlevel.AddItem "R1"
+    Formsetting.cbsimilarlevel.AddItem "R2"
+    Formsetting.cbsimilarlevel.AddItem "R3"
+    Formsetting.cbsimilarlevel.AddItem "R4"
+    Formsetting.cbsimilarlevel.AddItem "R5"
+    Formsetting.cbsimilarlevel.AddItem "N1"
+    'checktest.Value = 1
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-Cancel = 1
-imageOK_Click 0
+    Cancel = 1
+    imageOK_Click 0
 End Sub
 
 Private Sub imageOK_Click(ByVal Button As Integer)
-Formsetting.Visible = False
-If Val(挑戰模式選項_牌數.Text) > 30 Then 挑戰模式選項_牌數.Text = 30
-If Val(大亂鬥模式選項_牌數.Text) < 1 Then 大亂鬥模式選項_牌數.Text = 1
-If Val(ckendturnnum.Text) <= 0 Then
-    ckendturnnum.Text = 18
-End If
+    Formsetting.Visible = False
+    If Val(挑戰模式選項_牌數.Text) > 30 Then 挑戰模式選項_牌數.Text = 30
+    If Val(大亂鬥模式選項_牌數.Text) < 1 Then 大亂鬥模式選項_牌數.Text = 1
+    If Val(ckendturnnum.Text) <= 0 Then
+        ckendturnnum.Text = 18
+    End If
 End Sub
 
 Private Sub imageOK_MouseEnter()
-imageOK.LoadImage_FromFile App.Path & "\gif\system\okbar_2.png"
+    imageOK.LoadImage_FromFile App.Path & "\gif\system\okbar_2.png"
 End Sub
 
 Private Sub imageOK_MouseExit()
-imageOK.LoadImage_FromFile App.Path & "\gif\system\okbar_1.png"
+    imageOK.LoadImage_FromFile App.Path & "\gif\system\okbar_1.png"
 End Sub
 
 Private Sub personcom_Click(Index As Integer)
-If personcom(Index).ListIndex <> 0 Then
-    If 一般系統類.事件卡資料庫(personcom(Index).Text, 1) <> persontgcom(Index).Caption And _
-        一般系統類.事件卡資料庫(personcom(Index).Text, 1) <> 0 And persontgrecom.Value = 1 Then
-        MsgBox "此事件卡違反角色色格使用原則!", 64, "UnlightVBE系統提示"
-        personcom(Index).ListIndex = 0
+    If personcom(Index).ListIndex <> 0 Then
+        If 一般系統類.事件卡資料庫(personcom(Index).Text, 1) <> persontgcom(Index).Caption And _
+           一般系統類.事件卡資料庫(personcom(Index).Text, 1) <> 0 And persontgrecom.Value = 1 Then
+            MsgBox "此事件卡違反角色色格使用原則!", 64, "UnlightVBE系統提示"
+            personcom(Index).ListIndex = 0
+        End If
     End If
-End If
 End Sub
 
 Private Sub personnamecomChange(Index As Integer)
-If persontgrecom.Value = 1 Then
-    If FormMainMode.opnpersonvs(2).Value = True Then
-        If personnamecom(Index).Caption = "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 2, False
-            personwagcom.Visible = True
-        ElseIf personnamecom(1).Caption <> "《隨機》" And personnamecom(2).Caption <> "《隨機》" And _
-            personnamecom(3).Caption <> "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 2, True
-            personwagcom.Visible = False
-        End If
-    Else
-        If personnamecom(1).Caption = "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 2, False
-            personwagcom.Visible = True
-        ElseIf personnamecom(1).Caption <> "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 2, True
-            personwagcom.Visible = False
+    If persontgrecom.Value = 1 Then
+        If FormMainMode.opnpersonvs(2).Value = True Then
+            If personnamecom(Index).Caption = "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 2, False
+                personwagcom.Visible = True
+            ElseIf personnamecom(1).Caption <> "《隨機》" And personnamecom(2).Caption <> "《隨機》" And _
+                   personnamecom(3).Caption <> "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 2, True
+                personwagcom.Visible = False
+            End If
+        Else
+            If personnamecom(1).Caption = "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 2, False
+                personwagcom.Visible = True
+            ElseIf personnamecom(1).Caption <> "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 2, True
+                personwagcom.Visible = False
+            End If
         End If
     End If
-End If
 End Sub
 
 Private Sub personnameusChange(Index As Integer)
-If persontgreus.Value = 1 Then
-    If FormMainMode.opnpersonvs(2).Value = True Then
-        If personnameus(Index).Caption = "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 1, False
-            personwagus.Visible = True
-        ElseIf personnameus(1).Caption <> "《隨機》" And personnameus(2).Caption <> "《隨機》" And _
-            personnameus(3).Caption <> "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 1, True
-            personwagus.Visible = False
-        End If
-    Else
-        If personnameus(1).Caption = "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 1, False
-            personwagus.Visible = True
-        ElseIf personnameus(1).Caption <> "《隨機》" Then
-            Formsetting.事件卡設定_列表填入 1, True
-            personwagus.Visible = False
+    If persontgreus.Value = 1 Then
+        If FormMainMode.opnpersonvs(2).Value = True Then
+            If personnameus(Index).Caption = "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 1, False
+                personwagus.Visible = True
+            ElseIf personnameus(1).Caption <> "《隨機》" And personnameus(2).Caption <> "《隨機》" And _
+                   personnameus(3).Caption <> "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 1, True
+                personwagus.Visible = False
+            End If
+        Else
+            If personnameus(1).Caption = "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 1, False
+                personwagus.Visible = True
+            ElseIf personnameus(1).Caption <> "《隨機》" Then
+                Formsetting.事件卡設定_列表填入 1, True
+                personwagus.Visible = False
+            End If
         End If
     End If
-End If
 End Sub
 
 Private Sub persontgcom_Change(Index As Integer)
-Select Case persontgcom(Index).Caption
-    Case 0
-        personcom(Index).BackColor = RGB(192, 192, 192)
-        personcom(Index).ForeColor = RGB(255, 255, 255)
-    Case 1
-        personcom(Index).BackColor = RGB(255, 0, 0)
-        personcom(Index).ForeColor = RGB(255, 255, 255)
-    Case 2
-        personcom(Index).BackColor = RGB(0, 255, 0)
-        personcom(Index).ForeColor = RGB(0, 0, 0)
-    Case 3
-        personcom(Index).BackColor = RGB(0, 0, 255)
-        personcom(Index).ForeColor = RGB(255, 255, 255)
-    Case 4
-        personcom(Index).BackColor = RGB(255, 0, 255)
-        personcom(Index).ForeColor = RGB(255, 255, 255)
-    Case 5
-        personcom(Index).BackColor = RGB(255, 255, 255)
-        personcom(Index).ForeColor = RGB(0, 0, 0)
-    Case 6
-        personcom(Index).BackColor = RGB(0, 0, 0)
-        personcom(Index).ForeColor = RGB(255, 255, 255)
-    Case 7
-        personcom(Index).BackColor = RGB(255, 255, 0)
-        personcom(Index).ForeColor = RGB(0, 0, 0)
-End Select
+    Select Case persontgcom(Index).Caption
+        Case 0
+            personcom(Index).BackColor = RGB(192, 192, 192)
+            personcom(Index).ForeColor = RGB(255, 255, 255)
+        Case 1
+            personcom(Index).BackColor = RGB(255, 0, 0)
+            personcom(Index).ForeColor = RGB(255, 255, 255)
+        Case 2
+            personcom(Index).BackColor = RGB(0, 255, 0)
+            personcom(Index).ForeColor = RGB(0, 0, 0)
+        Case 3
+            personcom(Index).BackColor = RGB(0, 0, 255)
+            personcom(Index).ForeColor = RGB(255, 255, 255)
+        Case 4
+            personcom(Index).BackColor = RGB(255, 0, 255)
+            personcom(Index).ForeColor = RGB(255, 255, 255)
+        Case 5
+            personcom(Index).BackColor = RGB(255, 255, 255)
+            personcom(Index).ForeColor = RGB(0, 0, 0)
+        Case 6
+            personcom(Index).BackColor = RGB(0, 0, 0)
+            personcom(Index).ForeColor = RGB(255, 255, 255)
+        Case 7
+            personcom(Index).BackColor = RGB(255, 255, 0)
+            personcom(Index).ForeColor = RGB(0, 0, 0)
+    End Select
 End Sub
 
 Private Sub persontgrecom_Click()
-Dim i As Integer
+    Dim i As Integer
 
-If persontgrecom.Value = 1 Then
-    For i = 1 To 18
-       personcom_Click (i)
-    Next
-    For i = 1 To 3
-       personnamecomChange i
-    Next
-Else
-   personwagcom.Visible = False
-   Formsetting.事件卡設定_列表填入 2, True
-End If
-    
+    If persontgrecom.Value = 1 Then
+        For i = 1 To 18
+            personcom_Click (i)
+        Next
+        For i = 1 To 3
+            personnamecomChange i
+        Next
+    Else
+        personwagcom.Visible = False
+        Formsetting.事件卡設定_列表填入 2, True
+    End If
+
 End Sub
 
 Private Sub persontgreus_Click()
-Dim i As Integer
+    Dim i As Integer
 
-If persontgreus.Value = 1 Then
-    For i = 1 To 18
-       personus_Click (i)
-    Next
-    For i = 1 To 3
-       personnameusChange i
-    Next
-Else
-   personwagus.Visible = False
-   Formsetting.事件卡設定_列表填入 1, True
-End If
+    If persontgreus.Value = 1 Then
+        For i = 1 To 18
+            personus_Click (i)
+        Next
+        For i = 1 To 3
+            personnameusChange i
+        Next
+    Else
+        personwagus.Visible = False
+        Formsetting.事件卡設定_列表填入 1, True
+    End If
 End Sub
 
 Private Sub persontgus_Change(Index As Integer)
-Select Case persontgus(Index).Caption
-    Case 0
-        personus(Index).BackColor = RGB(192, 192, 192)
-        personus(Index).ForeColor = RGB(255, 255, 255)
-    Case 1
-        personus(Index).BackColor = RGB(255, 0, 0)
-        personus(Index).ForeColor = RGB(255, 255, 255)
-    Case 2
-        personus(Index).BackColor = RGB(0, 255, 0)
-        personus(Index).ForeColor = RGB(0, 0, 0)
-    Case 3
-        personus(Index).BackColor = RGB(0, 0, 255)
-        personus(Index).ForeColor = RGB(255, 255, 255)
-    Case 4
-        personus(Index).BackColor = RGB(255, 0, 255)
-        personus(Index).ForeColor = RGB(255, 255, 255)
-    Case 5
-        personus(Index).BackColor = RGB(255, 255, 255)
-        personus(Index).ForeColor = RGB(0, 0, 0)
-    Case 6
-        personus(Index).BackColor = RGB(0, 0, 0)
-        personus(Index).ForeColor = RGB(255, 255, 255)
-    Case 7
-        personus(Index).BackColor = RGB(255, 255, 0)
-        personus(Index).ForeColor = RGB(0, 0, 0)
-End Select
+    Select Case persontgus(Index).Caption
+        Case 0
+            personus(Index).BackColor = RGB(192, 192, 192)
+            personus(Index).ForeColor = RGB(255, 255, 255)
+        Case 1
+            personus(Index).BackColor = RGB(255, 0, 0)
+            personus(Index).ForeColor = RGB(255, 255, 255)
+        Case 2
+            personus(Index).BackColor = RGB(0, 255, 0)
+            personus(Index).ForeColor = RGB(0, 0, 0)
+        Case 3
+            personus(Index).BackColor = RGB(0, 0, 255)
+            personus(Index).ForeColor = RGB(255, 255, 255)
+        Case 4
+            personus(Index).BackColor = RGB(255, 0, 255)
+            personus(Index).ForeColor = RGB(255, 255, 255)
+        Case 5
+            personus(Index).BackColor = RGB(255, 255, 255)
+            personus(Index).ForeColor = RGB(0, 0, 0)
+        Case 6
+            personus(Index).BackColor = RGB(0, 0, 0)
+            personus(Index).ForeColor = RGB(255, 255, 255)
+        Case 7
+            personus(Index).BackColor = RGB(255, 255, 0)
+            personus(Index).ForeColor = RGB(0, 0, 0)
+    End Select
 End Sub
 
 Private Sub personus_Click(Index As Integer)
-If personus(Index).ListIndex <> 0 Then
-    If 一般系統類.事件卡資料庫(personus(Index).Text, 1) <> persontgus(Index).Caption And _
-        一般系統類.事件卡資料庫(personus(Index).Text, 1) <> 0 And persontgreus.Value = 1 Then
-        MsgBox "此事件卡違反角色色格使用原則!", 64, "UnlightVBE系統提示"
-        personus(Index).ListIndex = 0
+    If personus(Index).ListIndex <> 0 Then
+        If 一般系統類.事件卡資料庫(personus(Index).Text, 1) <> persontgus(Index).Caption And _
+           一般系統類.事件卡資料庫(personus(Index).Text, 1) <> 0 And persontgreus.Value = 1 Then
+            MsgBox "此事件卡違反角色色格使用原則!", 64, "UnlightVBE系統提示"
+            personus(Index).ListIndex = 0
+        End If
     End If
-End If
 End Sub
 
 Private Sub sdrbgm_Change()
-bgmve.Caption = sdrbgm.Value
+    bgmve.Caption = sdrbgm.Value
 End Sub
 
 Private Sub sdrbgm_Scroll()
-bgmve.Caption = sdrbgm.Value
-FormMainMode.cMusicPlayer(0).Volume = sdrbgm.Value
+    bgmve.Caption = sdrbgm.Value
+    FormMainMode.cMusicPlayer(0).Volume = sdrbgm.Value
 End Sub
 
 Private Sub sdrse_Change()
-seve.Caption = sdrse.Value
+    seve.Caption = sdrse.Value
 End Sub
 
 Private Sub sdrse_Scroll()
-Dim i As Integer
+    Dim i As Integer
 
-seve.Caption = sdrse.Value
-For i = 1 To FormMainMode.cMusicPlayer.UBound
-    FormMainMode.cMusicPlayer(i).Volume = sdrse.Value
-Next
+    seve.Caption = sdrse.Value
+    For i = 1 To FormMainMode.cMusicPlayer.UBound
+        FormMainMode.cMusicPlayer(i).Volume = sdrse.Value
+    Next
 End Sub
 Private Sub t1_Click(PreviousTab As Integer)
-Select Case t1.Tab
-     Case 0
-           一般設定_表單.Left = 120
-           一般設定_表單.Top = 2040
-           一般設定_表單.Visible = True
-           事件卡_使用者.Visible = False
-           事件卡_電腦.Visible = False
-           一般設定_表單.ZOrder
-     Case 1
-           事件卡_使用者.Left = 120
-           事件卡_使用者.Top = 2040
-           事件卡_使用者.Visible = True
-           事件卡_電腦.Visible = False
-           一般設定_表單.Visible = False
-           事件卡_使用者.ZOrder
-     Case 2
-           事件卡_電腦.Left = 120
-           事件卡_電腦.Top = 2040
-           事件卡_電腦.Visible = True
-           事件卡_使用者.Visible = False
-           一般設定_表單.Visible = False
-           事件卡_電腦.ZOrder
-     Case 3
-           表單_系統.Left = 120
-           表單_系統.Top = 2040
-           事件卡_電腦.Visible = False
-           事件卡_使用者.Visible = False
-           一般設定_表單.Visible = False
-           表單_系統.Visible = True
-           表單_系統.ZOrder
-End Select
+    Select Case t1.Tab
+        Case 0
+            一般設定_表單.Left = 120
+            一般設定_表單.Top = 2040
+            一般設定_表單.Visible = True
+            事件卡_使用者.Visible = False
+            事件卡_電腦.Visible = False
+            一般設定_表單.ZOrder
+        Case 1
+            事件卡_使用者.Left = 120
+            事件卡_使用者.Top = 2040
+            事件卡_使用者.Visible = True
+            事件卡_電腦.Visible = False
+            一般設定_表單.Visible = False
+            事件卡_使用者.ZOrder
+        Case 2
+            事件卡_電腦.Left = 120
+            事件卡_電腦.Top = 2040
+            事件卡_電腦.Visible = True
+            事件卡_使用者.Visible = False
+            一般設定_表單.Visible = False
+            事件卡_電腦.ZOrder
+        Case 3
+            表單_系統.Left = 120
+            表單_系統.Top = 2040
+            事件卡_電腦.Visible = False
+            事件卡_使用者.Visible = False
+            一般設定_表單.Visible = False
+            表單_系統.Visible = True
+            表單_系統.ZOrder
+    End Select
 End Sub
 
 Private Sub 大亂鬥模式選項_牌數_Change()
-Dim i As Integer, j As Integer, k As Integer
-j = 1
-Do While j <= Len(大亂鬥模式選項_牌數.Text)
-   k = 0
-      For k = 0 To 9
-         If Asc(Mid(大亂鬥模式選項_牌數.Text, j, 1)) = Asc(k) Then
-             j = j + 1
-             Exit For
-         End If
-      Next
-      If k = 10 Then
-         MsgBox "大小姐，請輸入數字歐...", 64
-         大亂鬥模式選項_牌數.Text = ""
-         Exit Sub
-      End If
-Loop
+    Dim i As Integer, j As Integer, k As Integer
+    j = 1
+    Do While j <= Len(大亂鬥模式選項_牌數.Text)
+        k = 0
+        For k = 0 To 9
+            If Asc(Mid(大亂鬥模式選項_牌數.Text, j, 1)) = Asc(k) Then
+                j = j + 1
+                Exit For
+            End If
+        Next
+        If k = 10 Then
+            MsgBox "大小姐，請輸入數字歐...", 64
+            大亂鬥模式選項_牌數.Text = ""
+            Exit Sub
+        End If
+    Loop
 End Sub
 
 Private Sub 大亂鬥選項_Click()
-If 大亂鬥選項.Value = 1 Then
-    大亂鬥模式選項_牌數.Enabled = True
-Else
-    大亂鬥模式選項_牌數.Enabled = False
-End If
+    If 大亂鬥選項.Value = 1 Then
+        大亂鬥模式選項_牌數.Enabled = True
+    Else
+        大亂鬥模式選項_牌數.Enabled = False
+    End If
 End Sub
 
 Private Sub 挑戰模式選項_Click()
-If 挑戰模式選項.Value = 1 Then
-    挑戰模式選項_牌數.Enabled = True
-Else
-   挑戰模式選項_牌數.Enabled = False
-End If
+    If 挑戰模式選項.Value = 1 Then
+        挑戰模式選項_牌數.Enabled = True
+    Else
+        挑戰模式選項_牌數.Enabled = False
+    End If
 End Sub
 
 Private Sub 挑戰模式選項_牌數_Change()
-Dim i As Integer, j As Integer, k As Integer
-j = 1
-Do While j <= Len(挑戰模式選項_牌數.Text)
-   k = 0
-      For k = 0 To 9
-         If Asc(Mid(挑戰模式選項_牌數.Text, j, 1)) = Asc(k) Then
-             j = j + 1
-             Exit For
-         End If
-      Next
-      If k = 10 Then
-         MsgBox "大小姐，請輸入數字歐...", 64
-         挑戰模式選項_牌數.Text = ""
-         Exit Sub
-      End If
-Loop
+    Dim i As Integer, j As Integer, k As Integer
+    j = 1
+    Do While j <= Len(挑戰模式選項_牌數.Text)
+        k = 0
+        For k = 0 To 9
+            If Asc(Mid(挑戰模式選項_牌數.Text, j, 1)) = Asc(k) Then
+                j = j + 1
+                Exit For
+            End If
+        Next
+        If k = 10 Then
+            MsgBox "大小姐，請輸入數字歐...", 64
+            挑戰模式選項_牌數.Text = ""
+            Exit Sub
+        End If
+    Loop
 
 End Sub
 
 Sub 對戰地圖選擇_Click()
-Dim i As Integer
+    Dim i As Integer
 
-Select Case 對戰地圖選擇.Text
-   Case "冰封湖畔(舊)"
-      BGM選擇.ListIndex = 13
-   Case "魔女山谷"
-      BGM選擇.ListIndex = 7
-   Case "白魔的圓環石陣"
-      BGM選擇.ListIndex = 7
-   Case Else
-      For i = 0 To BGM選擇.ListCount - 1
-         BGM選擇.ListIndex = i
-         If 對戰地圖選擇.Text = BGM選擇.Text Then
-            Exit For
-         End If
-      Next
-End Select
-If 對戰地圖選擇.ListIndex > 0 Then
-   場地顯示.Picture = ImageListback.ListImages(對戰地圖選擇.ListIndex).Picture
-   場地顯示.Visible = True
-   randomtext.Visible = False
-   randombk.Visible = False
-Else
-   場地顯示.Visible = False
-   randomtext.Visible = True
-   randombk.Visible = True
-End If
+    Select Case 對戰地圖選擇.Text
+        Case "冰封湖畔(舊)"
+            BGM選擇.ListIndex = 13
+        Case "魔女山谷"
+            BGM選擇.ListIndex = 7
+        Case "白魔的圓環石陣"
+            BGM選擇.ListIndex = 7
+        Case Else
+            For i = 0 To BGM選擇.ListCount - 1
+                BGM選擇.ListIndex = i
+                If 對戰地圖選擇.Text = BGM選擇.Text Then
+                    Exit For
+                End If
+            Next
+    End Select
+    If 對戰地圖選擇.ListIndex > 0 Then
+        場地顯示.Picture = ImageListback.ListImages(對戰地圖選擇.ListIndex).Picture
+        場地顯示.Visible = True
+        randomtext.Visible = False
+        randombk.Visible = False
+    Else
+        場地顯示.Visible = False
+        randomtext.Visible = True
+        randombk.Visible = True
+    End If
 
 End Sub
 Sub 事件卡設定_列表填入(ByVal uscom As Integer, ByVal isCustom As Boolean)
-Dim tmpindex As Integer
-Select Case uscom
-    Case 1
-        If Formsetting.comboeventcarrdus.ListCount > 0 Then
-            tmpindex = Formsetting.comboeventcarrdus.ListIndex
-        End If
-        Formsetting.comboeventcarrdus.Clear
-        Formsetting.comboeventcarrdus.AddItem "無"
-        Formsetting.comboeventcarrdus.AddItem "最大值"
-        Formsetting.comboeventcarrdus.AddItem "隨機"
-        Formsetting.comboeventcarrdus.AddItem "隨機(不含聖水)"
-        If isCustom = True Then
-            Formsetting.comboeventcarrdus.AddItem "自訂"
-        End If
-        If tmpindex >= 0 And tmpindex < Formsetting.comboeventcarrdus.ListCount Then
-            Formsetting.comboeventcarrdus.ListIndex = tmpindex
-        Else
-            Formsetting.comboeventcarrdus.ListIndex = 2
-        End If
-    Case 2
-        If Formsetting.comboeventcarrdcom.ListCount > 0 Then
-            tmpindex = Formsetting.comboeventcarrdcom.ListIndex
-        End If
-        Formsetting.comboeventcarrdcom.Clear
-        Formsetting.comboeventcarrdcom.AddItem "無"
-        Formsetting.comboeventcarrdcom.AddItem "最大值"
-        Formsetting.comboeventcarrdcom.AddItem "隨機"
-        Formsetting.comboeventcarrdcom.AddItem "隨機(不含聖水)"
-        If isCustom = True Then
-            Formsetting.comboeventcarrdcom.AddItem "自訂"
-        End If
-        If tmpindex >= 0 And tmpindex < Formsetting.comboeventcarrdcom.ListCount Then
-            Formsetting.comboeventcarrdcom.ListIndex = tmpindex
-        Else
-            Formsetting.comboeventcarrdcom.ListIndex = 2
-        End If
-End Select
+    Dim tmpindex As Integer
+    Select Case uscom
+        Case 1
+            If Formsetting.comboeventcarrdus.ListCount > 0 Then
+                tmpindex = Formsetting.comboeventcarrdus.ListIndex
+            End If
+            Formsetting.comboeventcarrdus.Clear
+            Formsetting.comboeventcarrdus.AddItem "無"
+            Formsetting.comboeventcarrdus.AddItem "最大值"
+            Formsetting.comboeventcarrdus.AddItem "隨機"
+            Formsetting.comboeventcarrdus.AddItem "隨機(不含聖水)"
+            If isCustom = True Then
+                Formsetting.comboeventcarrdus.AddItem "自訂"
+            End If
+            If tmpindex >= 0 And tmpindex < Formsetting.comboeventcarrdus.ListCount Then
+                Formsetting.comboeventcarrdus.ListIndex = tmpindex
+            Else
+                Formsetting.comboeventcarrdus.ListIndex = 2
+            End If
+        Case 2
+            If Formsetting.comboeventcarrdcom.ListCount > 0 Then
+                tmpindex = Formsetting.comboeventcarrdcom.ListIndex
+            End If
+            Formsetting.comboeventcarrdcom.Clear
+            Formsetting.comboeventcarrdcom.AddItem "無"
+            Formsetting.comboeventcarrdcom.AddItem "最大值"
+            Formsetting.comboeventcarrdcom.AddItem "隨機"
+            Formsetting.comboeventcarrdcom.AddItem "隨機(不含聖水)"
+            If isCustom = True Then
+                Formsetting.comboeventcarrdcom.AddItem "自訂"
+            End If
+            If tmpindex >= 0 And tmpindex < Formsetting.comboeventcarrdcom.ListCount Then
+                Formsetting.comboeventcarrdcom.ListIndex = tmpindex
+            Else
+                Formsetting.comboeventcarrdcom.ListIndex = 2
+            End If
+    End Select
 End Sub

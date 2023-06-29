@@ -23,26 +23,6 @@ Begin VB.Form Formchangeperson
    Moveable        =   0   'False
    ScaleHeight     =   4845
    ScaleWidth      =   6450
-   Begin UnlightVBE.uc角色卡片介面 card 
-      Height          =   3615
-      Index           =   2
-      Left            =   3480
-      TabIndex        =   1
-      Top             =   480
-      Width           =   2535
-      _extentx        =   2355
-      _extenty        =   3625
-   End
-   Begin UnlightVBE.uc角色卡片介面 card 
-      Height          =   3615
-      Index           =   1
-      Left            =   360
-      TabIndex        =   0
-      Top             =   480
-      Width           =   2535
-      _extentx        =   2355
-      _extenty        =   3625
-   End
    Begin VB.Timer 使用者方智慧型AI_自動控制選人 
       Enabled         =   0   'False
       Interval        =   500
@@ -54,6 +34,26 @@ Begin VB.Form Formchangeperson
       Interval        =   100
       Left            =   5880
       Top             =   360
+   End
+   Begin UnlightVBE.uc角色卡片介面 card 
+      Height          =   3615
+      Index           =   2
+      Left            =   3480
+      TabIndex        =   1
+      Top             =   480
+      Width           =   2535
+      _ExtentX        =   2355
+      _ExtentY        =   3625
+   End
+   Begin UnlightVBE.uc角色卡片介面 card 
+      Height          =   3615
+      Index           =   1
+      Left            =   360
+      TabIndex        =   0
+      Top             =   480
+      Width           =   2535
+      _ExtentX        =   2355
+      _ExtentY        =   3625
    End
    Begin VB.Image bnok 
       Height          =   345
@@ -80,57 +80,57 @@ Attribute VB_Exposed = False
 Option Explicit
 Dim changepersonComplete As Boolean
 Sub bnok_Click(Index As Integer)
-If liveus(角色待機人物紀錄數(1, Index + 1)) > 0 Then
-    Me.Hide
-    changepersonComplete = True
-    戰鬥系統類.人物交換_使用者_指定交換 Index + 1
-    執行動作_交換人物角色_結束執行
-    Unload Me
-End If
+    If liveus(角色待機人物紀錄數(1, Index + 1)) > 0 Then
+        Me.Hide
+        changepersonComplete = True
+        戰鬥系統類.人物交換_使用者_指定交換 Index + 1
+        執行動作_交換人物角色_結束執行
+        Unload Me
+    End If
 End Sub
 
 Private Sub bnok_MouseMove(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
-bnok(Index).Picture = LoadPicture(App.Path & "\gif\system\changeok_2.bmp")
+    bnok(Index).Picture = LoadPicture(App.Path & "\gif\system\changeok_2.bmp")
 End Sub
 
 Private Sub Form_Load()
-changepersonComplete = False
+    changepersonComplete = False
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-bnok(1).Picture = LoadPicture(App.Path & "\gif\system\changeok_1.bmp")
-bnok(2).Picture = LoadPicture(App.Path & "\gif\system\changeok_1.bmp")
+    bnok(1).Picture = LoadPicture(App.Path & "\gif\system\changeok_1.bmp")
+    bnok(2).Picture = LoadPicture(App.Path & "\gif\system\changeok_1.bmp")
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-Dim m As Integer
-Me.Hide
-If changepersonComplete = False Then
-    If liveus(角色人物對戰人數(1, 2)) > 0 Then
-        執行動作_交換人物角色_結束執行
-    Else
-        Randomize
-        m = Int(Rnd() * 2) + 1
-        If liveus(角色待機人物紀錄數(1, m + 1)) > 0 Then
-           戰鬥系統類.人物交換_使用者_指定交換 m + 1
-           執行動作_交換人物角色_結束執行
+    Dim m As Integer
+    Me.Hide
+    If changepersonComplete = False Then
+        If liveus(角色人物對戰人數(1, 2)) > 0 Then
+            執行動作_交換人物角色_結束執行
         Else
-           If m = 1 Then m = 2 Else m = 1
-           戰鬥系統類.人物交換_使用者_指定交換 m + 1
-           執行動作_交換人物角色_結束執行
+            Randomize
+            m = Int(Rnd() * 2) + 1
+            If liveus(角色待機人物紀錄數(1, m + 1)) > 0 Then
+                戰鬥系統類.人物交換_使用者_指定交換 m + 1
+                執行動作_交換人物角色_結束執行
+            Else
+                If m = 1 Then m = 2 Else m = 1
+                戰鬥系統類.人物交換_使用者_指定交換 m + 1
+                執行動作_交換人物角色_結束執行
+            End If
         End If
     End If
-End If
-Unload Me
+    Unload Me
 End Sub
 
 Sub 使用者方智慧型AI_自動控制選人_Timer()
-Dim i As Integer
-For i = 1 To 2
-    If liveus(角色待機人物紀錄數(1, i + 1)) > 0 Then
-        Formchangeperson.bnok_Click (i)
-        Formchangeperson.使用者方智慧型AI_自動控制選人.Enabled = False
-        Exit Sub
-    End If
-Next
+    Dim i As Integer
+    For i = 1 To 2
+        If liveus(角色待機人物紀錄數(1, i + 1)) > 0 Then
+            Formchangeperson.bnok_Click (i)
+            Formchangeperson.使用者方智慧型AI_自動控制選人.Enabled = False
+            Exit Sub
+        End If
+    Next
 End Sub

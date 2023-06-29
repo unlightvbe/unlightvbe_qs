@@ -163,6 +163,12 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Private m_PersonName As String, m_CurrentHP As Integer, m_Level As Integer, m_atk As Integer, m_def As Integer, m_allhp As Integer, m_ShowOnMode As Boolean
+Attribute m_CurrentHP.VB_VarUserMemId = 1073938432
+Attribute m_Level.VB_VarUserMemId = 1073938432
+Attribute m_atk.VB_VarUserMemId = 1073938432
+Attribute m_def.VB_VarUserMemId = 1073938432
+Attribute m_allhp.VB_VarUserMemId = 1073938432
+Attribute m_ShowOnMode.VB_VarUserMemId = 1073938432
 Public Event MouseMove()
 Public Event MouseEnter()
 Public Event MouseExit()
@@ -272,35 +278,35 @@ Public Property Let ShowOnMode(ByVal vNewValue As Boolean)
 End Property
 
 Private Sub aicAlphaImage1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+    RaiseEvent MouseMove
 End Sub
 
 Private Sub ImageMouseMove_MouseEnter()
-RaiseEvent MouseEnter
+    RaiseEvent MouseEnter
 End Sub
 
 Private Sub ImageMouseMove_MouseExit()
-RaiseEvent MouseExit
+    RaiseEvent MouseExit
 End Sub
 
 Private Sub labelallhp_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+    RaiseEvent MouseMove
 End Sub
 
 Private Sub labelatk_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+    RaiseEvent MouseMove
 End Sub
 
 Private Sub labeldef_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+    RaiseEvent MouseMove
 End Sub
 
 Private Sub labellv_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+    RaiseEvent MouseMove
 End Sub
 
 Private Sub labelname_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-RaiseEvent MouseMove
+    RaiseEvent MouseMove
 End Sub
 Private Sub HPColorChange()
     If m_ShowOnMode = True Then
@@ -322,27 +328,27 @@ Private Sub HPColorChange()
     End If
 End Sub
 Private Sub ShowOnModeChange()
-If m_ShowOnMode = True Then
-    labelcurrenthp.Caption = m_CurrentHP
-    labelcurrenthp.Visible = True
-    labelname.Caption = m_PersonName
-    labelname.Visible = True
-    labellv.Caption = m_Level
-    labelatk.Caption = m_atk
-    labeldef.Caption = m_def
-    labelallhp.Caption = m_allhp
-    Call HPColorChange
-Else
-    If m_CurrentHP - m_allhp = 0 Then
-        labelcurrenthp.Visible = False
-    Else
-        labelcurrenthp.Caption = m_CurrentHP - m_allhp
+    If m_ShowOnMode = True Then
+        labelcurrenthp.Caption = m_CurrentHP
         labelcurrenthp.Visible = True
+        labelname.Caption = m_PersonName
+        labelname.Visible = True
+        labellv.Caption = m_Level
+        labelatk.Caption = m_atk
+        labeldef.Caption = m_def
+        labelallhp.Caption = m_allhp
+        Call HPColorChange
+    Else
+        If m_CurrentHP - m_allhp = 0 Then
+            labelcurrenthp.Visible = False
+        Else
+            labelcurrenthp.Caption = m_CurrentHP - m_allhp
+            labelcurrenthp.Visible = True
+        End If
+        labelname.Visible = False
+        labellv.Caption = "?"
+        labelatk.Caption = "?"
+        labeldef.Caption = "?"
+        labelallhp.Caption = "?"
     End If
-    labelname.Visible = False
-    labellv.Caption = "?"
-    labelatk.Caption = "?"
-    labeldef.Caption = "?"
-    labelallhp.Caption = "?"
-End If
 End Sub

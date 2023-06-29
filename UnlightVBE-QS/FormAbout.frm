@@ -191,13 +191,13 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private Sub Command1_Click()
-FormAbout.Visible = False
+    FormAbout.Visible = False
 End Sub
 
 Private Sub Image2_Click()
-FormAbout.Visible = False
+    FormAbout.Visible = False
 End Sub
 
 Private Sub Label6_Click()
-FormAbout.Visible = False
+    FormAbout.Visible = False
 End Sub

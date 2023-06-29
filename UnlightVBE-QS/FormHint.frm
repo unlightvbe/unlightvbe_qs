@@ -99,18 +99,18 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub bne_Click()
-FormHint.Visible = False
-一般系統類.音效播放 11
-選單使用者事件 = True
-選單電腦事件 = True
-FormMainMode.PEGameFreeModeSettingForm.Enabled = True
+    FormHint.Visible = False
+    一般系統類.音效播放 11
+    選單使用者事件 = True
+    選單電腦事件 = True
+    FormMainMode.PEGameFreeModeSettingForm.Enabled = True
 End Sub
 
 Private Sub bnet_Click()
-FormHint.Visible = False
-一般系統類.音效播放 11
-選單使用者事件 = True
-選單電腦事件 = True
-FormMainMode.PEGameFreeModeSettingForm.Enabled = True
+    FormHint.Visible = False
+    一般系統類.音效播放 11
+    選單使用者事件 = True
+    選單電腦事件 = True
+    FormMainMode.PEGameFreeModeSettingForm.Enabled = True
 End Sub
 

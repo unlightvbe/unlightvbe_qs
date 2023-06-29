@@ -54,27 +54,27 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-╰参摸.瞒秨笴栏矗ボ Cancel, UnloadMode
+    ╰参摸.瞒秨笴栏矗ボ Cancel, UnloadMode
 End Sub
 
 Private Sub t1_Timer()
-If ヘ玡计(31) = 19 Then
-   t1.Enabled = False
-   Vss_AtkingStartPlayNum(3) = 1
-   Unload Me
-'==========================
-ElseIf ヘ玡计(31) = 10 Then
-   Vss_AtkingStartPlayNum(1) = 1 'м磅︽い传瓜
-   Vss_AtkingStartPlayNum(2) = 1 'м磅︽い币笆
-   ヘ玡计(31) = Val(ヘ玡计(31)) + 1
-ElseIf ヘ玡计(31) = 7 Then
-   ╰参摸.冀 5
-   ヘ玡计(31) = Val(ヘ玡计(31)) + 1
-ElseIf ヘ玡计(31) = 5 Then
-   atkingcomjpg.Visible = True
-   ヘ玡计(31) = Val(ヘ玡计(31)) + 1
-Else
-   ヘ玡计(31) = Val(ヘ玡计(31)) + 1
-End If
-DoEvents
+    If ヘ玡计(31) = 19 Then
+        t1.Enabled = False
+        Vss_AtkingStartPlayNum(3) = 1
+        Unload Me
+        '==========================
+    ElseIf ヘ玡计(31) = 10 Then
+        Vss_AtkingStartPlayNum(1) = 1    'м磅︽い传瓜
+        Vss_AtkingStartPlayNum(2) = 1    'м磅︽い币笆
+        ヘ玡计(31) = Val(ヘ玡计(31)) + 1
+    ElseIf ヘ玡计(31) = 7 Then
+        ╰参摸.冀 5
+        ヘ玡计(31) = Val(ヘ玡计(31)) + 1
+    ElseIf ヘ玡计(31) = 5 Then
+        atkingcomjpg.Visible = True
+        ヘ玡计(31) = Val(ヘ玡计(31)) + 1
+    Else
+        ヘ玡计(31) = Val(ヘ玡计(31)) + 1
+    End If
+    DoEvents
 End Sub

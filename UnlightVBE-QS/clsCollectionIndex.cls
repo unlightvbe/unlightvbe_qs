@@ -11,6 +11,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Public CollectionIndex As Integer '所在集合位置
-Public CardNum As Integer '卡片編號
-Public Index As Integer '卡片排序(Collection(0))
+Public CollectionIndex As Integer    '所在集合位置
+Public CardNum As Integer    '卡片編號
+Public Index As Integer    '卡片排序(Collection(0))

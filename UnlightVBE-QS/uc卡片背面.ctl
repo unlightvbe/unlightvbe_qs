@@ -33,40 +33,40 @@ Dim m_invent As Integer
 Dim m_picture As String
 Dim m_num As Integer
 Public Property Get 物件類別() As Integer
-   物件類別 = m_invent
+    物件類別 = m_invent
 End Property
 Public Property Let 物件類別(ByVal New_物件類別 As Integer)
-   m_invent = New_物件類別
-   PropertyChanged "物件類別"
+    m_invent = New_物件類別
+    PropertyChanged "物件類別"
 End Property
 Public Property Get 圖片() As String
-   圖片 = m_picture
+    圖片 = m_picture
 End Property
 Public Property Let 圖片(ByVal New_圖片 As String)
-   m_picture = New_圖片
-   PropertyChanged "圖片"
-   '============
-   image1.LoadImage_FromFile Me.圖片
-   image1.Left = 0
-   image1.Top = 0
+    m_picture = New_圖片
+    PropertyChanged "圖片"
+    '============
+    image1.LoadImage_FromFile Me.圖片
+    image1.Left = 0
+    image1.Top = 0
 End Property
 Public Property Get 項目編號() As Integer
-   項目編號 = m_num
+    項目編號 = m_num
 End Property
 Public Property Let 項目編號(ByVal New_項目編號 As Integer)
-   m_num = New_項目編號
-   PropertyChanged "項目編號"
-   '==============
-   Select Case Me.物件類別
+    m_num = New_項目編號
+    PropertyChanged "項目編號"
+    '==============
+    Select Case Me.物件類別
         Case 1
-             image1.Left = Val(Me.項目編號) * -315
-             image1.Top = 0
+            image1.Left = Val(Me.項目編號) * -315
+            image1.Top = 0
         Case 2
-             image1.Left = (Val(Me.項目編號) - 1) * -120
-             image1.Top = 0
+            image1.Left = (Val(Me.項目編號) - 1) * -120
+            image1.Top = 0
         Case 3
-             image1.Left = 0
-             image1.Top = (Val(Me.項目編號) - 1) * -210
+            image1.Left = 0
+            image1.Top = (Val(Me.項目編號) - 1) * -210
     End Select
 End Property
 

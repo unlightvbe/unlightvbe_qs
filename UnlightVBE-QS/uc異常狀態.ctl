@@ -86,34 +86,34 @@ Dim m_personimg As String
 Dim m_personnum As Integer
 Dim m_personturn As Integer
 Public Property Get 異常狀態圖片() As String
-   異常狀態圖片 = m_personimg
+    異常狀態圖片 = m_personimg
 End Property
 Public Property Get person_num() As Integer
-   person_num = m_personnum
+    person_num = m_personnum
 End Property
 Public Property Get person_turn() As Integer
-   person_turn = m_personturn
+    person_turn = m_personturn
 End Property
 Public Property Let 異常狀態圖片(ByVal New_異常狀態圖片 As String)
-   m_personimg = New_異常狀態圖片
-   PropertyChanged "異常狀態圖片"
-   If Me.異常狀態圖片 <> "" Then
-       personimg.LoadImage_FromFile Me.異常狀態圖片
+    m_personimg = New_異常狀態圖片
+    PropertyChanged "異常狀態圖片"
+    If Me.異常狀態圖片 <> "" Then
+        personimg.LoadImage_FromFile Me.異常狀態圖片
     End If
 End Property
 Public Property Let person_num(ByVal New_person_num As Integer)
-   m_personnum = New_person_num
-   PropertyChanged "person_num"
-   personnum.Caption = m_personnum
-   If m_personnum = 0 Then
-       personnum.Visible = False
-   Else
-       personnum.Visible = True
-   End If
+    m_personnum = New_person_num
+    PropertyChanged "person_num"
+    personnum.Caption = m_personnum
+    If m_personnum = 0 Then
+        personnum.Visible = False
+    Else
+        personnum.Visible = True
+    End If
 End Property
 Public Property Let person_turn(ByVal New_person_turn As Integer)
-   m_personturn = New_person_turn
-   PropertyChanged "person_turn"
-   personturn.Caption = m_personturn
+    m_personturn = New_person_turn
+    PropertyChanged "person_turn"
+    personturn.Caption = m_personturn
 End Property
 

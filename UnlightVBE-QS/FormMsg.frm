@@ -129,10 +129,10 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub bne_Click()
-FormMessage.Visible = False
+    FormMessage.Visible = False
 End Sub
 
 Private Sub bnet_Click()
-FormMessage.Visible = False
+    FormMessage.Visible = False
 End Sub
 

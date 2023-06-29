@@ -13,14 +13,14 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
 Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
-Public Name As String '名稱
-Public Stage As String '階段
-Public Distance As String '距離
-Public card As String '卡片
-Public Effect As String '效果
-Public NameFontSize As Integer '名稱字體大小
-Public cardFontSize As Integer '卡片字體大小
-Public EffectFontSize As Integer '效果字體大小
+Public name As String    '名稱
+Public Stage As String    '階段
+Public Distance As String    '距離
+Public card As String    '卡片
+Public Effect As String    '效果
+Public NameFontSize As Integer    '名稱字體大小
+Public cardFontSize As Integer    '卡片字體大小
+Public EffectFontSize As Integer    '效果字體大小
 
 
 

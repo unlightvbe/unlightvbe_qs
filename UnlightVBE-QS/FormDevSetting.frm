@@ -464,111 +464,111 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub Command2_Click()
-戰鬥系統類.時間軸_停止
+    戰鬥系統類.時間軸_停止
 End Sub
 
 Private Sub Command3_Click()
-FormMainMode.trtimeline.Enabled = True
+    FormMainMode.trtimeline.Enabled = True
 End Sub
 
 Private Sub personfcomleft_Click()
-FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.顯示列1.電腦方小人物圖片left - 10
-personfcom.Caption = personfcom.Caption - 10
+    FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.顯示列1.電腦方小人物圖片left - 10
+    personfcom.Caption = personfcom.Caption - 10
 End Sub
 
 Private Sub personfcomright_Click()
-FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.顯示列1.電腦方小人物圖片left + 10
-personfcom.Caption = personfcom.Caption + 10
+    FormMainMode.顯示列1.電腦方小人物圖片left = FormMainMode.顯示列1.電腦方小人物圖片left + 10
+    personfcom.Caption = personfcom.Caption + 10
 End Sub
 
 Private Sub personfusleft_Click()
-FormMainMode.顯示列1.使用者方小人物圖片left = FormMainMode.顯示列1.使用者方小人物圖片left - 10
-personfus.Caption = personfus.Caption - 10
+    FormMainMode.顯示列1.使用者方小人物圖片left = FormMainMode.顯示列1.使用者方小人物圖片left - 10
+    personfus.Caption = personfus.Caption - 10
 End Sub
 
 Private Sub personfusright_Click()
-FormMainMode.顯示列1.使用者方小人物圖片left = FormMainMode.顯示列1.使用者方小人物圖片left + 10
-personfus.Caption = personfus.Caption + 10
+    FormMainMode.顯示列1.使用者方小人物圖片left = FormMainMode.顯示列1.使用者方小人物圖片left + 10
+    personfus.Caption = personfus.Caption + 10
 End Sub
 
 Private Sub smallclcom_Click()
-FormMainMode.personcomminijpg.小人物影子Left = Val(FormMainMode.personcomminijpg.小人物影子Left) - 10
-smallleftcom.Caption = Val(smallleftcom.Caption) - 10
+    FormMainMode.personcomminijpg.小人物影子Left = Val(FormMainMode.personcomminijpg.小人物影子Left) - 10
+    smallleftcom.Caption = Val(smallleftcom.Caption) - 10
 End Sub
 
 Private Sub smallclus_Click()
-FormMainMode.personusminijpg.小人物影子Left = Val(FormMainMode.personusminijpg.小人物影子Left) - 10
-smallleftus.Caption = Val(smallleftus.Caption) - 10
+    FormMainMode.personusminijpg.小人物影子Left = Val(FormMainMode.personusminijpg.小人物影子Left) - 10
+    smallleftus.Caption = Val(smallleftus.Caption) - 10
 End Sub
 
 Private Sub smallcrcom_Click()
-FormMainMode.personcomminijpg.小人物影子Left = Val(FormMainMode.personcomminijpg.小人物影子Left) + 10
-smallleftcom.Caption = Val(smallleftcom.Caption) + 10
+    FormMainMode.personcomminijpg.小人物影子Left = Val(FormMainMode.personcomminijpg.小人物影子Left) + 10
+    smallleftcom.Caption = Val(smallleftcom.Caption) + 10
 End Sub
 
 Private Sub smallcrus_Click()
-FormMainMode.personusminijpg.小人物影子Left = Val(FormMainMode.personusminijpg.小人物影子Left) + 10
-smallleftus.Caption = Val(smallleftus.Caption) + 10
+    FormMainMode.personusminijpg.小人物影子Left = Val(FormMainMode.personusminijpg.小人物影子Left) + 10
+    smallleftus.Caption = Val(smallleftus.Caption) + 10
 End Sub
 
 Private Sub smallctdncom_Click()
-FormMainMode.personcomminijpg.小人物影子top差 = Val(FormMainMode.personcomminijpg.小人物影子top差) + 10
-smalltopcom.Caption = Val(smalltopcom.Caption) + 10
+    FormMainMode.personcomminijpg.小人物影子top差 = Val(FormMainMode.personcomminijpg.小人物影子top差) + 10
+    smalltopcom.Caption = Val(smalltopcom.Caption) + 10
 End Sub
 
 Private Sub smallctdnus_Click()
-FormMainMode.personusminijpg.小人物影子top差 = Val(FormMainMode.personusminijpg.小人物影子top差) + 10
-smalltopus.Caption = Val(smalltopus.Caption) + 10
+    FormMainMode.personusminijpg.小人物影子top差 = Val(FormMainMode.personusminijpg.小人物影子top差) + 10
+    smalltopus.Caption = Val(smalltopus.Caption) + 10
 End Sub
 
 Private Sub smallctupcom_Click()
-FormMainMode.personcomminijpg.小人物影子top差 = Val(FormMainMode.personcomminijpg.小人物影子top差) - 10
-smalltopcom.Caption = Val(smalltopcom.Caption) - 10
+    FormMainMode.personcomminijpg.小人物影子top差 = Val(FormMainMode.personcomminijpg.小人物影子top差) - 10
+    smalltopcom.Caption = Val(smalltopcom.Caption) - 10
 End Sub
 
 Private Sub smallctupus_Click()
-FormMainMode.personusminijpg.小人物影子top差 = Val(FormMainMode.personusminijpg.小人物影子top差) - 10
-smalltopus.Caption = Val(smalltopus.Caption) - 10
+    FormMainMode.personusminijpg.小人物影子top差 = Val(FormMainMode.personusminijpg.小人物影子top差) - 10
+    smalltopus.Caption = Val(smalltopus.Caption) - 10
 End Sub
 
 Private Sub smallpnlcom_Click()
-FormMainMode.personcomminijpg.Left = Val(FormMainMode.personcomminijpg.Left) - 10
-smallpnleftcom.Caption = Val(smallpnleftcom.Caption) - 10
+    FormMainMode.personcomminijpg.Left = Val(FormMainMode.personcomminijpg.Left) - 10
+    smallpnleftcom.Caption = Val(smallpnleftcom.Caption) - 10
 End Sub
 
 
 
 Private Sub smallpnlus_Click()
-FormMainMode.personusminijpg.Left = Val(FormMainMode.personusminijpg.Left) - 10
-smallpnleftus.Caption = Val(smallpnleftus.Caption) - 10
+    FormMainMode.personusminijpg.Left = Val(FormMainMode.personusminijpg.Left) - 10
+    smallpnleftus.Caption = Val(smallpnleftus.Caption) - 10
 End Sub
 
 Private Sub smallpnrcom_Click()
-FormMainMode.personcomminijpg.Left = Val(FormMainMode.personcomminijpg.Left) + 10
-smallpnleftcom.Caption = Val(smallpnleftcom.Caption) + 10
+    FormMainMode.personcomminijpg.Left = Val(FormMainMode.personcomminijpg.Left) + 10
+    smallpnleftcom.Caption = Val(smallpnleftcom.Caption) + 10
 End Sub
 
 Private Sub smallpnrus_Click()
-FormMainMode.personusminijpg.Left = Val(FormMainMode.personusminijpg.Left) + 10
-smallpnleftus.Caption = Val(smallpnleftus.Caption) + 10
+    FormMainMode.personusminijpg.Left = Val(FormMainMode.personusminijpg.Left) + 10
+    smallpnleftus.Caption = Val(smallpnleftus.Caption) + 10
 End Sub
 
 Private Sub smallpntdncom_Click()
-FormMainMode.personcomminijpg.Top = Val(FormMainMode.personcomminijpg.Top) + 10
-smallpntopcom.Caption = Val(smallpntopcom.Caption) + 10
+    FormMainMode.personcomminijpg.Top = Val(FormMainMode.personcomminijpg.Top) + 10
+    smallpntopcom.Caption = Val(smallpntopcom.Caption) + 10
 End Sub
 
 Private Sub smallpntdnus_Click()
-FormMainMode.personusminijpg.Top = Val(FormMainMode.personusminijpg.Top) + 10
-smallpntopus.Caption = Val(smallpntopus.Caption) + 10
+    FormMainMode.personusminijpg.Top = Val(FormMainMode.personusminijpg.Top) + 10
+    smallpntopus.Caption = Val(smallpntopus.Caption) + 10
 End Sub
 
 Private Sub smallpntupcom_Click()
-FormMainMode.personcomminijpg.Top = Val(FormMainMode.personcomminijpg.Top) - 10
-smallpntopcom.Caption = Val(smallpntopcom.Caption) - 10
+    FormMainMode.personcomminijpg.Top = Val(FormMainMode.personcomminijpg.Top) - 10
+    smallpntopcom.Caption = Val(smallpntopcom.Caption) - 10
 End Sub
 
 Private Sub smallpntupus_Click()
-FormMainMode.personusminijpg.Top = Val(FormMainMode.personusminijpg.Top) - 10
-smallpntopus.Caption = Val(smallpntopus.Caption) - 10
+    FormMainMode.personusminijpg.Top = Val(FormMainMode.personusminijpg.Top) - 10
+    smallpntopus.Caption = Val(smallpntopus.Caption) - 10
 End Sub
