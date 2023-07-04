@@ -1,19 +1,19 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKN00203"
-         Case 2
-              main = "43#45#31#61#99"
-         Case 3
-              main = "艶活"
-         Case 4
-              main = "ň縨#2"
-         Case 5
-              main = "い环禯瞒#110"
-         Case 6
-              main = "ň璸5疭璸1#25a&41a"
-         Case 7
-              main = "DEF+9&HP+疭∫2(Ю计秈)"
+        Case 1
+            main = "PNAKN00203"
+        Case 2
+            main = "43#45#31#61#99"
+        Case 3
+            main = "艶活"
+        Case 4
+            main = "ň縨#2"
+        Case 5
+            main = "い环禯瞒#110"
+        Case 6
+            main = "ň璸5疭璸1#25a&41a"
+        Case 7
+            main = "DEF+9&HP+疭∫2(Ю计秈)"
     End Select
 End Function
 
@@ -22,46 +22,43 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
         Case 43
             If VBEAtkingVSS(6) > 1 Then
                 If AtkingPagetotVS(1, 2) >= 5 And AtkingPagetotVS(1, 4) >= 1 Then
-                   If AtkingckVSS(3, 1) = 0 Then
-                        atking = atking & "AtkingLineLight#1" & "="
-                        atking = atking & "AtkingTurnOnOff#1" & "="
-                   End If
+                    If AtkingckVSS(3, 1) = 0 Then
+                        VBECommand.AtkingTurnOnOffWithLineLight 1
+                    End If
                 Else
-                   If AtkingckVSS(3, 1) = 1 Then
-                        atking = atking & "AtkingLineLight#2" & "="
-                        atking = atking & "AtkingTurnOnOff#2" & "="
-                   End If
+                    If AtkingckVSS(3, 1) = 1 Then
+                        VBECommand.AtkingTurnOnOffWithLineLight 2
+                    End If
                 End If
             End If
         Case 45
-            atking = atking & "EventTotalDiceChange#1,1,9" & "="
+            VBECommand.EventTotalDiceChange 1, 1, 9
         Case 31
-          Dim m
-          Randomize
-          m = Int(Rnd() * 8) + 1
-          atking = atking & "AtkingStartPlay#" & "\gif\Ayn\atking3\main.png,\gif\Ayn\atking3\" & m & ".png="
-          atking = atking & "AtkingLineLight#2" & "="
-          atking = atking & "AtkingTurnOnOff#2" & "="
+            Dim m
+            Randomize
+            m = Int(Rnd() * 8) + 1
+            VBECommand.AtkingStartPlay "\gif\Ayn\atking3\main.png", "\gif\Ayn\atking3\" & m & ".png"
+            VBECommand.AtkingTurnOnOffWithLineLight 2
         Case 61
-          Dim n
-          n = Int((AtkingPagetotVS(1, 4) / 2) + 0.9)
-          atking = atking & "PersonBloodControl#1,1,2," & n & "="
+            Dim n
+            n = Int((AtkingPagetotVS(1, 4) / 2) + 0.9)
+            VBECommand.PersonBloodControl 1, 1, 2, n
         Case 99
-          Dim k
-          If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 And VBEAtkingVSS(6) > 1 Then
+            Dim k
+            If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 And VBEAtkingVSS(6) > 1 Then
                 If AtkingPagetotVS(1, 2) >= 5 And AtkingPagetotVS(1, 4) >= 1 Then
-                    atking = atking & "EventActiveAIScore#1,1"
+                    VBECommand.EventActiveAIScore 1, 1
                     Do
                         k = k + 1
                         For i = 1 To UBound(VBEPageCardNumVS, 1)
                             If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = k Then
-                                atking = atking & "," & i
+                                VBECommand.EventActiveAIScoreAddCardNum i
                                 Exit Do
                             End If
                         Next
                     Loop
-                    atking = atking & "="
                 End If
-          End If
+            End If
     End Select
+    atking = VBECommand.Output()
 End Function

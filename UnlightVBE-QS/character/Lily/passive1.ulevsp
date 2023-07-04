@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNPEN02701"
-         Case 2
-              main = "0#22#55"
-         Case 3
-              main = "小公主"
-         Case 4
-              main = "20%機率受到的傷害為0。只會在HP5以上時發動。"
+        Case 1
+            main = "PNPEN02701"
+        Case 2
+            main = "0#22#55"
+        Case 3
+            main = "小公主"
+        Case 4
+            main = "20%機率受到的傷害為0。只會在HP5以上時發動。"
     End Select
 End Function
 
@@ -15,23 +15,22 @@ Function passive(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPer
     Select Case a
         Case 0
             If VBEAtkingVSF(1, 1, 1) >= 5 And PassivePersonType = 1 Then
-                passive = passive & "AtkingLineLight#1" & "="
-                passive = passive & "AtkingTurnOnOff#1" & "="
+                VBECommand.AtkingTurnOnOffWithLineLight 1
             End If
         Case 22
             If PassivePersonType = 1 And VBEAtkingVSS(12) = 4 Then
                 Dim m
                 Randomize Timer
                 m = Int(Rnd() * 100) + 1
-                If (AtkingckVSS(1, 1) = 1 And m >= 53 And m <= 92) Or (AtkingckVSS(1, 1) = 0 And m Mod 5 = 0) Then '==40%/20%之機率
-                    passive = passive & "AtkingTrueDiceControl#3,0" & "="
-                    passive = passive & "BattleSendMessage#因為小公主的效果，傷害被無效了。" & "="
+                If (AtkingckVSS(1, 1) = 1 And m >= 53 And m <= 92) Or (AtkingckVSS(1, 1) = 0 And m Mod 5 = 0) Then    '==40%/20%之機率
+                    VBECommand.AtkingTrueDiceControl 3, 0
+                    VBECommand.BattleSendMessage "因為小公主的效果，傷害被無效了。"
                 End If
             End If
         Case 55
             If PassivePersonType = 1 Then
-                passive = passive & "AtkingLineLight#2" & "="
-                passive = passive & "AtkingTurnOnOff#2" & "="
+                VBECommand.AtkingTurnOnOffWithLineLight 2
             End If
     End Select
+    passive = VBECommand.Output()
 End Function

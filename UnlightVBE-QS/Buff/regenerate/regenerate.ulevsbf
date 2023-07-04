@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "BUFFN00401"
-         Case 2
-              main = "6"
-         Case 3
-              main = "再生"
-         Case 4
-              main = "\Buff\regenerate\regenerate.png"
+        Case 1
+            main = "BUFFN00401"
+        Case 2
+            main = "6"
+        Case 3
+            main = "再生"
+        Case 4
+            main = "\Buff\regenerate\regenerate.png"
     End Select
 End Function
 
@@ -16,9 +16,10 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
         Case 6
             If BuffPersonType = 1 Then
                 If VBEAtkingVSS(12) = 2 Then
-                    buff = buff & "PersonBloodControl#1,1,2,1" & "="
+                    VBECommand.PersonBloodControl 1, 1, 2, 1
                 End If
-                buff = buff & "BuffTurnEnd#0" & "="
+                VBECommand.BuffTurnEnd
             End If
     End Select
+    buff = VBECommand.Output()
 End Function

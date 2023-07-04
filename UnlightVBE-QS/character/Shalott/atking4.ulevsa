@@ -1,20 +1,20 @@
 Dim pagecheck()
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKN01504"
-         Case 2
-              main = "44#5#61#99"
-         Case 3
-              main = "幸福的理由"
-         Case 4
-              main = "移動#3"
-         Case 5
-              main = "全距離#111"
-         Case 6
-              main = "特合計3以上#43a"
-         Case 7
-              main = "手牌最大數-1&接下來的3回合，自己的事件卡變為「機會5」。"
+        Case 1
+            main = "PNAKN01504"
+        Case 2
+            main = "44#5#61#99"
+        Case 3
+            main = "幸福的理由"
+        Case 4
+            main = "移動#3"
+        Case 5
+            main = "全距離#111"
+        Case 6
+            main = "特合計3以上#43a"
+        Case 7
+            main = "手牌最大數-1&接下來的3回合，自己的事件卡變為「機會5」。"
     End Select
 End Function
 
@@ -22,52 +22,50 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
     Select Case a
         Case 44
             If AtkingPagetotVS(1, 4) >= 3 Then
-               If AtkingckVSS(4, 1) = 0 Then
-                    atking = atking & "AtkingLineLight#1" & "="
-                    atking = atking & "AtkingTurnOnOff#1" & "="
-               End If
+                If AtkingckVSS(4, 1) = 0 Then
+                    VBECommand.AtkingTurnOnOffWithLineLight 1
+                End If
             Else
-               If AtkingckVSS(4, 1) = 1 Then
-                    atking = atking & "AtkingLineLight#2" & "="
-                    atking = atking & "AtkingTurnOnOff#2" & "="
-               End If
+                If AtkingckVSS(4, 1) = 1 Then
+                    VBECommand.AtkingTurnOnOffWithLineLight 2
+                End If
             End If
         Case 5
-          atking = atking & "AtkingStartPlay#" & "\gif\Shalott\atking4.png,0" & "="
-          atking = atking & "AtkingLineLight#2" & "="
-          atking = atking & "AtkingTurnOnOff#2" & "="
+            VBECommand.AtkingStartPlay "\gif\Shalott\atking4.png"
+            VBECommand.AtkingTurnOnOffWithLineLight 2
         Case 61
-          atking = atking & "BattleInsertEventCard#1," & VBEAtkingVSS(9) + 1 & ",機會5" & "="
-          atking = atking & "BattleInsertEventCard#1," & VBEAtkingVSS(9) + 2 & ",機會5" & "="
-          atking = atking & "BattleInsertEventCard#1," & VBEAtkingVSS(9) + 3 & ",機會5" & "="
-          atking = atking & "PersonMaxCardsNumControl#1,2,1" & "="
-          atking = atking & "AtkingInformationRecord#" & VBEAtkingVSS(9) & "="
+            VBECommand.BattleInsertEventCard 1, VBEAtkingVSS(9) + 1, "機會5"
+            VBECommand.BattleInsertEventCard 1, VBEAtkingVSS(9) + 2, "機會5"
+            VBECommand.BattleInsertEventCard 1, VBEAtkingVSS(9) + 3, "機會5"
+            VBECommand.PersonMaxCardsNumControl 1, 2, 1
+            VBECommand.AtkingInformationRecord CStr(VBEAtkingVSS(9))
         Case 99
-          Dim numtot, k, m
-          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
-          For i = 1 To UBound(AtkingckVSF, 1)
-              If AtkingckVSF(i, 1) = "" Then AtkingckVSF(i, 1) = "0"
-          Next
-          If VBEAtkingVSS(12) = 2 Then
+            Dim numtot, k, m
+            ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+            For i = 1 To UBound(AtkingckVSF, 1)
+                If AtkingckVSF(i, 1) = "" Then AtkingckVSF(i, 1) = "0"
+            Next
+            If VBEAtkingVSS(12) = 2 Then
                 If AtkingPagetotVS(1, 4) >= 3 Then
-                    If AtkingckVSF(4, 1) = "" And ((VBEAtkingVSF(1, 2, 1) = 0 And VBEAtkingVSF(1, 3, 1) = 0 And VBEAtkingVSF(1, 1, 1) + 1 >= VBEAtkingVSF(1, 1, 2)) _
-                        Or (VBEAtkingVSF(1, 1, 1) < (VBEAtkingVSF(1, 1, 2) \ 3) And (VBEAtkingVSF(1, 2, 1) > 0 Or VBEAtkingVSF(1, 3, 1) > 0))) Then
-                        atking = atking & "EventActiveAIScore#1,1"
+                    If VBEAtkingVSS(9) - CInt(AtkingckVSF(4, 1)) => 3 And AtkingckVSS(4, 3) < 3 And _
+                       ((VBEAtkingVSF(1, 2, 1) = 0 And VBEAtkingVSF(1, 3, 1) = 0 And VBEAtkingVSF(1, 1, 1) > (VBEAtkingVSF(1, 1, 2) \ 3)) _
+                        Or (VBEAtkingVSF(1, 1, 1) < ((VBEAtkingVSF(1, 1, 2) \ 3) - 1) And (VBEAtkingVSF(1, 2, 1) > 0 Or VBEAtkingVSF(1, 3, 1) > 0))) Then
+                        VBECommand.EventActiveAIScore 1, 1
                         Do
                             m = AtkingPagetotVS(1, 4) - k
                             k = k + 1
                             For i = 1 To UBound(VBEPageCardNumVS, 1)
                                 If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = 0 Then
-                                    atking = atking & "," & i
+                                    VBECommand.EventActiveAIScoreAddCardNum i
                                     pagecheck(i) = 1
                                     numtot = numtot + m
                                 End If
                                 If numtot >= 3 Then Exit Do
                             Next
                         Loop
-                        atking = atking & "="
                     End If
                 End If
-          End If
+            End If
     End Select
+    atking = VBECommand.Output()
 End Function

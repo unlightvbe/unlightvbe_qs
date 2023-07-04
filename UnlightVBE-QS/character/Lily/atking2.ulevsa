@@ -1,19 +1,19 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKN02702"
-         Case 2
-              main = "43#45#31#61"
-         Case 3
-              main = "雪之重唱"
-         Case 4
-              main = "防禦#2"
-         Case 5
-              main = "中、遠距離#110"
-         Case 6
-              main = "防合計4以上#24a"
-         Case 7
-              main = "DEF+5&#20%的機率對對手造成4點直接傷害。"
+        Case 1
+            main = "PNAKN02702"
+        Case 2
+            main = "43#45#31#61"
+        Case 3
+            main = "雪之重唱"
+        Case 4
+            main = "防禦#2"
+        Case 5
+            main = "中、遠距離#110"
+        Case 6
+            main = "防合計4以上#24a"
+        Case 7
+            main = "DEF+5&#20%的機率對對手造成4點直接傷害。"
     End Select
 End Function
 
@@ -22,35 +22,33 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
         Case 43
             If VBEAtkingVSS(6) > 1 Then
                 If AtkingPagetotVS(1, 2) >= 4 Then
-                   If AtkingckVSS(2, 1) = 0 Then
-                        atking = atking & "AtkingLineLight#1" & "="
-                        atking = atking & "AtkingTurnOnOff#1" & "="
-                   End If
+                    If AtkingckVSS(2, 1) = 0 Then
+                        VBECommand.AtkingTurnOnOffWithLineLight 1
+                    End If
                 Else
-                   If AtkingckVSS(2, 1) = 1 Then
-                        atking = atking & "AtkingLineLight#2" & "="
-                        atking = atking & "AtkingTurnOnOff#2" & "="
-                   End If
+                    If AtkingckVSS(2, 1) = 1 Then
+                        VBECommand.AtkingTurnOnOffWithLineLight 2
+                    End If
                 End If
             End If
         Case 45
-            atking = atking & "EventTotalDiceChange#1,1,5" & "="
+            VBECommand.EventTotalDiceChange 1, 1, 5
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Lily\atking2_1.png,\gif\Lily\atking2_2.png" & "="
-          atking = atking & "AtkingLineLight#2" & "="
-          atking = atking & "AtkingTurnOnOff#2" & "="
+            VBECommand.AtkingStartPlay "\gif\Lily\atking2_1.png", "\gif\Lily\atking2_2.png"
+            VBECommand.AtkingTurnOnOffWithLineLight 2
         Case 61
-           Dim m
-           Randomize Timer
-           m = Int(Rnd() * 100) + 1
-           If AtkingckVSS(1, 1) = 1 Then
-               If m >= 53 And m <= 92 Then '==40%之機率
-                   atking = atking & "PersonBloodControl#2,1,1,4" & "="
-               End If
-           Else
-               If m Mod 5 = 0 Then '==20%之機率
-                   atking = atking & "PersonBloodControl#2,1,1,4" & "="
-               End If
-           End If
+            Dim m
+            Randomize Timer
+            m = Int(Rnd() * 100) + 1
+            If AtkingckVSS(1, 1) = 1 Then
+                If m >= 53 And m <= 92 Then    '==40%之機率
+                    VBECommand.PersonBloodControl 2, 1, 1, 4
+                End If
+            Else
+                If m Mod 5 = 0 Then    '==20%之機率
+                    VBECommand.PersonBloodControl 2, 1, 1, 4
+                End If
+            End If
     End Select
+    atking = VBECommand.Output()
 End Function

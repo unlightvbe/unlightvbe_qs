@@ -1,19 +1,19 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKN00402"
-         Case 2
-              main = "42#12#21#99"
-         Case 3
-              main = "靜謐之背"
-         Case 4
-              main = "攻擊#1"
-         Case 5
-              main = "近、中距離#011"
-         Case 6
-              main = "劍合計3以上、槍合計2以上#13a&52a"
-         Case 7
-              main = "這次戰鬥追加「聖痕」×1的戰鬥傷害。&戰鬥結束後，自己的「聖痕」減少1。 "
+        Case 1
+            main = "PNAKN00402"
+        Case 2
+            main = "42#12#21#99"
+        Case 3
+            main = "靜謐之背"
+        Case 4
+            main = "攻擊#1"
+        Case 5
+            main = "近、中距離#011"
+        Case 6
+            main = "劍合計3以上、槍合計2以上#13a&52a"
+        Case 7
+            main = "這次戰鬥追加「聖痕」×1的戰鬥傷害。&戰鬥結束後，自己的「聖痕」減少1。 "
     End Select
 End Function
 
@@ -23,37 +23,30 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
         Case 42
             If VBEAtkingVSS(6) < 3 Then
                 If AtkingPagetotVS(1, 1) >= 3 And AtkingPagetotVS(1, 5) >= 2 Then
-                   If AtkingckVSS(2, 1) = 0 Then
-                        atking = atking & "AtkingLineLight#1" & "="
-                        atking = atking & "AtkingTurnOnOff#1" & "="
-                   End If
+                    If AtkingckVSS(2, 1) = 0 Then
+                        VBECommand.AtkingTurnOnOffWithLineLight 1
+                    End If
                 Else
-                   If AtkingckVSS(2, 1) = 1 Then
-                        atking = atking & "AtkingLineLight#2" & "="
-                        atking = atking & "AtkingTurnOnOff#2" & "="
-                   End If
+                    If AtkingckVSS(2, 1) = 1 Then
+                        VBECommand.AtkingTurnOnOffWithLineLight 2
+                    End If
                 End If
             End If
         Case 12
-            atking = atking & "AtkingStartPlay#" & "\gif\Palmo\atking2.png,0" & "="
-            atking = atking & "AtkingLineLight#2" & "="
+            VBECommand.AtkingStartPlay "\gif\Palmo\atking2.png"
+            VBECommand.AtkingLineLight 2
         Case 21
             For i = 1 To UBound(VBEPersonBuffVSS, 3)
                 If VBEPersonBuffVSS(1, 1, i) = "BUFFN01401" Then
-                    atking = atking & "AtkingTrueDiceControl#1," & VBEPersonBuffVSF(1, 1, i, 2) & "="
-                    If VBEPersonBuffVSF(1, 1, i, 2) = 1 Then 
-                        atking = atking & "PersonRemoveBuffSelect#1,1,BUFFN01401" & "="
-                    Else
-                        atking = atking & "PersonAddBuff#1,1,BUFFN01401,0," & VBEPersonBuffVSF(1, 1, i, 2) - 1 & "="
-                    End If
-                    atking = atking & "AtkingTurnOnOff#2" & "="
-                    Exit Function
+                    VBECommand.AtkingTrueDiceControl 1, VBEPersonBuffVSF(1, 1, i, 2)
+                    VBECommand.PersonBuffTurnChange 1, 1, "BUFFN01401", 2, 1
+                    Exit For
                 End If
             Next
-            atking = atking & "AtkingTurnOnOff#2" & "="
+            VBECommand.AtkingTurnOnOff 2
         Case 99
             Dim numtot(1), buffnum
-            k = 0 : buffnum = 0
+            k = 0: buffnum = 0
             If VBEAtkingVSS(12) = 3 And VBEAtkingVSS(13) = 1 And VBEAtkingVSS(6) < 3 And (AtkingPagetotVS(1, 1) >= 3 And AtkingPagetotVS(1, 1) < 6 And AtkingPagetotVS(1, 5) >= 2) Then
                 For i = 1 To UBound(VBEPersonBuffVSS, 3)
                     If VBEPersonBuffVSS(1, 1, i) = "BUFFN01401" Then
@@ -62,21 +55,21 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                     End If
                 Next
                 If buffnum > 5 Then
-                    atking = atking & "EventActiveAIScore#1,1"
+                    VBECommand.EventActiveAIScore 1, 1
                     Do
                         k = k + 1
                         For i = 1 To UBound(VBEPageCardNumVS, 1)
                             If VBEPageCardNumVS(i, 1) = 1 And VBEPageCardNumVS(i, 2) = k And numtot(0) < 3 Then
-                                atking = atking & "," & i
+                                VBECommand.EventActiveAIScoreAddCardNum i
                                 numtot(0) = numtot(0) + k
                             ElseIf VBEPageCardNumVS(i, 1) = 5 And VBEPageCardNumVS(i, 2) = k And numtot(1) < 2 Then
-                                atking = atking & "," & i
+                                VBECommand.EventActiveAIScoreAddCardNum i
                                 numtot(1) = numtot(1) + k
                             End If
                         Next
                     Loop Until (numtot(0) >= 3 And numtot(1) >= 2)
-                    atking = atking & "="
                 End If
             End If
     End Select
+    atking = VBECommand.Output()
 End Function

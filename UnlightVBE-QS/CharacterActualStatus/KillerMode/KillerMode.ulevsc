@@ -1,32 +1,33 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "UCASN00101"
-         Case 2
-              main = "74#45#54"
-         Case 3
-              main = "±þ¼®ª¬ºA"
+        Case 1
+            main = "UCASN00101"
+        Case 2
+            main = "74#45#54"
+        Case 3
+            main = "±þ¼®ª¬ºA"
     End Select
 End Function
 
 Function ActualStatus(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPersonBuffVSF(), VBEPersonBuffVSS(), VBEAtkingVSF(), VBEAtkingVSS(), ActualStatusPersonType, VBEVSStageNum())
     Select Case a
         Case 74
-          ActualStatus = ActualStatus & "EventAddActualStatusData#" & _
-                            "\CharacterActualStatus\KillerMode\personb.png," & _
-                            "\CharacterActualStatus\KillerMode\personmini.png," & _
-                            "\CharacterActualStatus\KillerMode\personminidown.png," & _
-                            "\CharacterActualStatus\KillerMode\personf.png," & _
-                            "-90,-60,90,-60" & "="
+            VBECommand.EventAddActualStatusData "\CharacterActualStatus\KillerMode\personb.png", _
+                                                "\CharacterActualStatus\KillerMode\personmini.png", _
+                                                "\CharacterActualStatus\KillerMode\personminidown.png", _
+                                                "\CharacterActualStatus\KillerMode\personf.png", _
+                                                -90, -60, 90, -60
         Case 45
-          If ActualStatusPersonType = 1 Then
-            If VBEAtkingVSS(12) = 3 Then
-              ActualStatus = ActualStatus & "EventTotalDiceChange#1,3,2" & "="
+            If ActualStatusPersonType = 1 Then
+                If VBEAtkingVSS(12) = 3 Then
+                    VBECommand.EventTotalDiceChange 1, 3, 2
+                End If
             End If
-          End If
         Case 54
-          If ActualStatusPersonType = 1 Then
-              ActualStatus = ActualStatus & "ActualStatusEnd#0" & "="
-          End If
+            If ActualStatusPersonType = 1 Then
+                VBECommand.ActualStatusEnd
+            End If
     End Select
+    ActualStatus = VBECommand.Output()
 End Function
+

@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "BUFFN01101"
-         Case 2
-              main = "71#73"
-         Case 3
-              main = "¶€√a"
-         Case 4
-              main = "\Buff\death\death.png"
+        Case 1
+            main = "BUFFN01101"
+        Case 2
+            main = "71#73"
+        Case 3
+            main = "¶€√a"
+        Case 4
+            main = "\Buff\death\death.png"
     End Select
 End Function
 
@@ -15,11 +15,12 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
     Select Case a
         Case 71
             If BuffPersonType = 1 Then
-                buff = buff & "BuffTurnEnd#0" & "="
+                VBECommand.BuffTurnEnd
             End If
         Case 73
             If VBEVSStageNum(1) = 0 Then
-                buff = buff & "PersonBloodControl#1," & VBEAtkingVSS(0) & ",3,0" & "="
+                VBECommand.PersonBloodControl 1, VBEAtkingVSS(0), 3, 0
             End If
     End Select
+    buff = VBECommand.Output()
 End Function

@@ -23,13 +23,11 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             If VBEAtkingVSS(6) > 1 Then
                 If AtkingPagetotVS(1, 5) >= 2 Then
                     If AtkingckVSS(1, 1) = 0 Then
-                        VBECommand.AtkingLineLight 1
-                        VBECommand.AtkingTurnOnOff 1
+                        VBECommand.AtkingTurnOnOffWithLineLight 1
                     End If
                 Else
                     If AtkingckVSS(1, 1) = 1 Then
-                        VBECommand.AtkingLineLight 2
-                        VBECommand.AtkingTurnOnOff 2
+                        VBECommand.AtkingTurnOnOffWithLineLight 2
                    End If
                 End If
             End If
@@ -37,8 +35,7 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             VBECommand.EventTotalDiceChange 1, 1, 4
         Case 11
             VBECommand.AtkingStartPlayAnimate "\gif\Evarist\atking1\", 9, 10
-            VBECommand.AtkingLineLight 2
-            VBECommand.AtkingTurnOnOff 2
+            VBECommand.AtkingTurnOnOffWithLineLight 2
     End Select
     atking = VBECommand.Output()
 End Function

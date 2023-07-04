@@ -35,14 +35,22 @@ End Sub
 Public Sub AtkingTurnOnOff(ByVal n1 As Integer)
     Me.Text = Me.Text & "AtkingTurnOnOff" & "#" & CStr(n1) & "="
 End Sub
+Public Sub AtkingTurnOnOffWithLineLight(ByVal n1 As Integer)
+    Me.Text = Me.Text & "AtkingLineLight" & "#" & CStr(n1) & "="
+    Me.Text = Me.Text & "AtkingTurnOnOff" & "#" & CStr(n1) & "="
+End Sub
 Public Sub AtkingLineLightAnother(ByVal n1 As Integer, ByVal n2 As Integer, ByVal n3 As Integer)
     Me.Text = Me.Text & "AtkingLineLightAnother" & "#" & CStr(n1) & "," & CStr(n2) & "," & CStr(n3) & "="
 End Sub
 Public Sub AtkingTurnOnOffAnother(ByVal n1 As Integer, ByVal n2 As Integer, ByVal n3 As Integer)
     Me.Text = Me.Text & "AtkingTurnOnOffAnother" & "#" & CStr(n1) & "," & CStr(n2) & "," & CStr(n3) & "="
 End Sub
-Public Sub AtkingStartPlay(ByVal n1 As String, ByVal n2 As String)
-    Me.Text = Me.Text & "AtkingStartPlay" & "#" & n1 & "," & n2 & "="
+Public Sub AtkingStartPlay(ByVal n1 As String, Optional ByVal n2 As String)
+    Me.Text = Me.Text & "AtkingStartPlay" & "#" & n1
+    If n2 <> "" Then
+        Me.Text = Me.Text & "," & n2
+    End If
+    Me.Text = Me.Text & "="
 End Sub
 Public Sub AtkingStartPlayAnimate(ByVal n1 As String, Optional ByVal n2 As Integer, Optional ByVal n3 As Integer)
     Me.Text = Me.Text & "AtkingStartPlayAnimate" & "#" & n1

@@ -1,19 +1,19 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKS00107"
-         Case 2
-              main = "43#31#36#99"
-         Case 3
-              main = "Ex活Ρ-马活簈"
-         Case 4
-              main = "ň縨#2"
-         Case 5
-              main = "禯瞒#111"
-         Case 6
-              main = "疭3#43b"
-         Case 7
-              main = "HP耴箂逞緇钉ねATK+9DEF+9(2)"
+        Case 1
+            main = "PNAKS00107"
+        Case 2
+            main = "43#31#36#99"
+        Case 3
+            main = "Ex活Ρ-马活簈"
+        Case 4
+            main = "ň縨#2"
+        Case 5
+            main = "禯瞒#111"
+        Case 6
+            main = "疭3#43b"
+        Case 7
+            main = "HP耴箂逞緇钉ねATK+9DEF+9(2)"
     End Select
 End Function
 
@@ -21,43 +21,43 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
     Select Case a
         Case 43
             Dim rrr
-                For i = 1 To UBound(VBEPageCardNumVS)
-                    If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = 3 And VBEPageCardNumVS(i, 6) = 2 And VBEPageCardNumVS(i, 5) = 1 Then
-                       rrr = rrr + 1
-                    End If
-                Next
-                If rrr >= 1 Then
-                   If AtkingckVSS(3, 1) = 0 Then
-                        atking = atking & "AtkingLineLight#1" & "="
-                        atking = atking & "AtkingTurnOnOff#1" & "="
-                   End If
-                Else
-                   If AtkingckVSS(3, 1) = 1 Then
-                        atking = atking & "AtkingLineLight#2" & "="
-                        atking = atking & "AtkingTurnOnOff#2" & "="
-                   End If
+            For i = 1 To UBound(VBEPageCardNumVS)
+                If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = 3 And VBEPageCardNumVS(i, 6) = 2 And VBEPageCardNumVS(i, 5) = 1 Then
+                    rrr = rrr + 1
                 End If
+            Next
+            If rrr >= 1 Then
+                If AtkingckVSS(3, 1) = 0 Then
+                    VBECommand.AtkingTurnOnOffWithLineLight 1
+                End If
+            Else
+                If AtkingckVSS(3, 1) = 1 Then
+                    VBECommand.AtkingTurnOnOffWithLineLight 2
+                End If
+            End If
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Ria\atking3EX.png,0" & "="
-          atking = atking & "AtkingLineLight#2" & "="
+            VBECommand.AtkingStartPlay "\gif\Ria\atking3EX.png"
+            VBECommand.AtkingLineLight 2
         Case 36
-          If VBEAtkingVSF(1, 1, 1) = 0 Then
-              For i = 2 To 3
-                  atking = atking & "PersonAddBuff#1," & i & ",BUFFN00101,9,2" & "="
-                  atking = atking & "PersonAddBuff#1," & i & ",BUFFN00201,9,2" & "="
-              Next
-          End If
-          atking = atking & "AtkingTurnOnOff#2" & "="
+            If VBEAtkingVSF(1, 1, 1) = 0 Then
+                For i = 2 To 3
+                    VBECommand.PersonAddBuff 1, i, "BUFFN00101", 9, 2
+                    VBECommand.PersonAddBuff 1, i, "BUFFN00201", 9, 2
+                Next
+            End If
+            VBECommand.AtkingTurnOnOff 2
         Case 99
-          If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
-              For i = 1 To UBound(VBEPageCardNumVS, 1)
+            If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
+                For i = 1 To UBound(VBEPageCardNumVS, 1)
                     If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = 3 Then
                         If VBEAtkingVSF(1, 1, 1) <= 3 Or VBEAtkingVSS(8) > (VBEAtkingVSF(1, 1, 1) + AtkingPagetotVS(1, 2)) * 3 Then
-                            atking = atking & "EventActiveAIScore#1,1," & i & "="
+                            VBECommand.EventActiveAIScore 1, 1
+                            VBECommand.EventActiveAIScoreAddCardNum i
                             Exit For
                         End If
                     End If
                 Next
-          End If
+            End If
     End Select
+    atking = VBECommand.Output()
 End Function

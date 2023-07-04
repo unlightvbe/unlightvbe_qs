@@ -1,19 +1,19 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKS00703"
-         Case 2
-              main = "42#45#11#23"
-         Case 3
-              main = "排除工作"
-         Case 4
-              main = "攻擊#1"
-         Case 5
-              main = "中、遠距離#110"
-         Case 6
-              main = "槍合計7以上#57a"
-         Case 7
-              main = "ATK+6&攻擊成功時，對手「中毒」(3回合)"
+        Case 1
+            main = "PNAKS00703"
+        Case 2
+            main = "42#45#11#23"
+        Case 3
+            main = "排除工作"
+        Case 4
+            main = "攻擊#1"
+        Case 5
+            main = "中、遠距離#110"
+        Case 6
+            main = "槍合計7以上#57a"
+        Case 7
+            main = "ATK+6&攻擊成功時，對手「中毒」(3回合)"
     End Select
 End Function
 
@@ -23,26 +23,25 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
             If VBEAtkingVSS(6) > 1 Then
                 If AtkingPagetotVS(1, 5) >= 7 Then
                     If AtkingckVSS(3, 1) = 0 Then
-                        atking = atking & "AtkingLineLight#1" & "="
-                        atking = atking & "AtkingTurnOnOff#1" & "="
+                        VBECommand.AtkingTurnOnOffWithLineLight 1
                     End If
                 Else
                     If AtkingckVSS(3, 1) = 1 Then
-                        atking = atking & "AtkingLineLight#2" & "="
-                        atking = atking & "AtkingTurnOnOff#2" & "="
+                        VBECommand.AtkingTurnOnOffWithLineLight 2
                     End If
                 End If
             End If
         Case 45
-            atking = atking & "EventTotalDiceChange#1,1,6" & "="
+            VBECommand.EventTotalDiceChange 1, 1, 6
         Case 11
-            atking = atking & "AtkingStartPlay#" & "\gif\Carminia\atking3.png,0" & "="
-            atking = atking & "AtkingLineLight#2" & "="
+            VBECommand.AtkingStartPlay "\gif\Carminia\atking3.png"
+            VBECommand.AtkingLineLight 2
         Case 23
             Dim w
             If VBEAtkingVSS(5) > 0 Then
-                atking = atking & "PersonAddBuff#2,1,BUFFN00501,0,3" & "="           
+                VBECommand.PersonAddBuff 2, 1, "BUFFN00501", 0, 3
             End If
-            atking = atking & "AtkingTurnOnOff#2" & "="
+            VBECommand.AtkingTurnOnOff 2
     End Select
+    atking = VBECommand.Output()
 End Function

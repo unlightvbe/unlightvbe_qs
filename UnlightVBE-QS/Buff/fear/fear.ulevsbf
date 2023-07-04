@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "BUFFN01202"
-         Case 2
-              main = "24#53"
-         Case 3
-              main = "®£©Æ"
-         Case 4
-              main = "\Buff\fear\fear.png"
+        Case 1
+            main = "BUFFN01202"
+        Case 2
+            main = "24#53"
+        Case 3
+            main = "®£©Æ"
+        Case 4
+            main = "\Buff\fear\fear.png"
     End Select
 End Function
 
@@ -16,12 +16,13 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
         Case 24
             If BuffPersonType = 1 Then
                 If VBEAtkingVSS(12) = 3 Or VBEAtkingVSS(12) = 4 Then
-                    buff = buff & "AtkingTrueDiceControl#3," & VBEAtkingVSS(5) \ 2 & "="
+                    VBECommand.AtkingTrueDiceControl 3, VBEAtkingVSS(5) \ 2
                 End If
             End If
         Case 53
             If BuffPersonType = 1 Then
-                buff = buff & "BuffTurnEnd#0" & "="
+                VBECommand.BuffTurnEnd
             End If
     End Select
+    buff = VBECommand.Output()
 End Function

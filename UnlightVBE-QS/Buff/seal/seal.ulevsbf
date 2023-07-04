@@ -1,25 +1,26 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "BUFFN00701"
-         Case 2
-              main = "72#53#73"
-         Case 3
-              main = "«Ê¦L"
-         Case 4
-              main = "\Buff\seal\seal.png"
+        Case 1
+            main = "BUFFN00701"
+        Case 2
+            main = "72#53#73"
+        Case 3
+            main = "«Ê¦L"
+        Case 4
+            main = "\Buff\seal\seal.png"
     End Select
 End Function
 
 Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum(), BuffPersonType, VBEVSStageNum())
     Select Case a
         Case 72
-            buff = buff & "PersonAtkingOff#1," & VBEAtkingVSS(0) & ",1" & "="
+            VBECommand.PersonAtkingOff 1, VBEAtkingVSS(0), 1
         Case 53
             If BuffPersonType = 1 Then
-                buff = buff & "BuffTurnEnd#0" & "="
+                VBECommand.BuffTurnEnd
             End If
         Case 73
-            buff = buff & "PersonAtkingOff#1," & VBEAtkingVSS(0) & ",2" & "="
+            VBECommand.PersonAtkingOff 1, VBEAtkingVSS(0), 2
     End Select
+    buff = VBECommand.Output()
 End Function

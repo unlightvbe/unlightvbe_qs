@@ -310,6 +310,8 @@ End Function
 Function 執行階段系統_執行腳本_人物主動技能類(ByVal atkingnum As Integer, ByVal ns As Integer, ByVal uscom As Integer, ByVal personnum As Integer) As String
     If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
 VssAdminReTry:
+    執行階段系統類.執行階段系統_VSCommand暫存資料清除 (uscom - 1) * 12 + (4 * personnum - 4) + atkingnum
+    
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, 0
@@ -337,6 +339,9 @@ Function 執行階段系統_執行腳本_人物被動技能類(ByVal atkingnum As Integer, ByVal 
 VssAdminReTry:
     Dim PassivePersonTypeVSS As Variant
     PassivePersonTypeVSS = PassivePersonType
+    
+    執行階段系統類.執行階段系統_VSCommand暫存資料清除 (uscom - 1) * 12 + (4 * personnum - 4) + (atkingnum - 4) + 24
+    
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, PassivePersonType
@@ -365,6 +370,9 @@ Function 執行階段系統_執行腳本_異常狀態類(ByVal vssnum As Integer, ByVal ns As I
 VssAdminReTry:
     Dim BuffPersonTypeVSS As Variant
     BuffPersonTypeVSS = BuffPersonType
+    
+    執行階段系統類.執行階段系統_VSCommand暫存資料清除 vssnum
+    
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, BuffPersonType
@@ -392,6 +400,9 @@ Function 執行階段系統_執行腳本_人物實際狀態類(ByVal vssnum As Integer, ByVal ns 
 VssAdminReTry:
     Dim ActualStatusPersonTypeVSS As Variant
     ActualStatusPersonTypeVSS = ActualStatusPersonType
+    
+    執行階段系統類.執行階段系統_VSCommand暫存資料清除 vssnum
+    
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, ActualStatusPersonType
@@ -1208,6 +1219,11 @@ Sub 執行階段系統_實體物件納入參考物件(ByVal num As Integer)
     Dim tmpobjcommand As New clsVSCommand
     FormMainMode.PEAFvssc(num).AddObject "VBECommand", tmpobjcommand
     執行階段系統類.VSSCObjectCollection(1).Add tmpobjcommand, CStr(num)
+End Sub
+Sub 執行階段系統_VSCommand暫存資料清除(ByVal num As Integer)
+    Dim tmpobjcommand As clsVSCommand
+    Set tmpobjcommand = 執行階段系統類.VSSCObjectCollection(1)(CStr(num))
+    tmpobjcommand.Text = ""
 End Sub
 Sub 執行階段系統_wine變數統合資料物件寫入(ByRef wineObj As clsWineobj, ByVal ns As Integer, ByVal persontype As Integer)
     wineObj.oNs = ns

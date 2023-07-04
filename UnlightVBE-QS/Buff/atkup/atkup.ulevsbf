@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "BUFFN00101"
-         Case 2
-              main = "45#53"
-         Case 3
-              main = "ATK+"
-         Case 4
-              main = "\Buff\atkup\atkup.png"
+        Case 1
+            main = "BUFFN00101"
+        Case 2
+            main = "45#53"
+        Case 3
+            main = "ATK+"
+        Case 4
+            main = "\Buff\atkup\atkup.png"
     End Select
 End Function
 
@@ -16,12 +16,13 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
         Case 45
             If BuffPersonType = 1 Then
                 If VBEAtkingVSS(12) = 3 Then
-                    buff = buff & "EventPersonAbilityDiceChange#1,1," & VBEVSBuffNum(1) & "="
+                    VBECommand.EventPersonAbilityDiceChange 1, 1, VBEVSBuffNum(1)
                 End If
             End If
         Case 53
             If BuffPersonType = 1 Then
-                buff = buff & "BuffTurnEnd#0" & "="
+                VBECommand.BuffTurnEnd
             End If
     End Select
+    buff = VBECommand.Output()
 End Function

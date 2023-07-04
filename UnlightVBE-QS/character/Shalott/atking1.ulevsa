@@ -2,20 +2,20 @@ Dim pagecheck()
 Dim DiceRecord
 Function main(a)
     Select Case a
-         Case 1
-              main = "PNAKN01501"
-         Case 2
-              main = "43#31#33#62#20#99"
-         Case 3
-              main = "大聖堂"
-         Case 4
-              main = "防禦#2"
-         Case 5
-              main = "全距離#111"
-         Case 6
-              main = "特合計2以上#42a"
-         Case 7
-              main = "丟兩次骰子，選擇比較好的那次結果。"
+        Case 1
+            main = "PNAKN01501"
+        Case 2
+            main = "43#31#33#62#20#99"
+        Case 3
+            main = "大聖堂"
+        Case 4
+            main = "防禦#2"
+        Case 5
+            main = "全距離#111"
+        Case 6
+            main = "特合計2以上#42a"
+        Case 7
+            main = "丟兩次骰子，選擇比較好的那次結果。"
     End Select
 End Function
 
@@ -23,49 +23,47 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
     Select Case a
         Case 43
             If AtkingPagetotVS(1, 4) >= 2 Then
-               If AtkingckVSS(1, 1) = 0 Then
-                    atking = atking & "AtkingLineLight#1" & "="
-                    atking = atking & "AtkingTurnOnOff#1" & "="
-               End If
+                If AtkingckVSS(1, 1) = 0 Then
+                    VBECommand.AtkingTurnOnOffWithLineLight 1
+                End If
             Else
-               If AtkingckVSS(1, 1) = 1 Then
-                    atking = atking & "AtkingLineLight#2" & "="
-                    atking = atking & "AtkingTurnOnOff#2" & "="
-               End If
+                If AtkingckVSS(1, 1) = 1 Then
+                    VBECommand.AtkingTurnOnOffWithLineLight 2
+                End If
             End If
         Case 31
-          atking = atking & "AtkingStartPlay#" & "\gif\Shalott\atking1.png,0" & "="
-          atking = atking & "AtkingLineLight#2" & "="
+            VBECommand.AtkingStartPlay "\gif\Shalott\atking1.png"
+            VBECommand.AtkingLineLight 2
         Case 33
-          DiceRecord = 0
-          atking = atking & "BattleStartDice#0" & "="
+            DiceRecord = 0
+            VBECommand.BattleStartDice
         Case 62
-          DiceRecord = VBEVSStageNum(5)
+            DiceRecord = VBEVSStageNum(5)
         Case 20
-          If DiceRecord < VBEAtkingVSS(5) Then
-              atking = atking & "AtkingTrueDiceControl#3," & DiceRecord & "="
-          End If
-          atking = atking & "AtkingTurnOnOff#2" & "="
+            If DiceRecord < VBEAtkingVSS(5) Then
+                VBECommand.AtkingTrueDiceControl 3, DiceRecord
+            End If
+            VBECommand.AtkingTurnOnOff 2
         Case 99
-          Dim numtot, k, m
-          ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
-          If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
+            Dim numtot, k, m
+            ReDim pagecheck(UBound(VBEPageCardNumVS, 1))
+            If VBEAtkingVSS(12) = 4 And VBEAtkingVSS(13) = 2 Then
                 If AtkingPagetotVS(1, 4) >= 2 Then
-                    atking = atking & "EventActiveAIScore#1,1"
+                    VBECommand.EventActiveAIScore 1, 1
                     Do
                         m = AtkingPagetotVS(1, 4) - k
                         k = k + 1
                         For i = 1 To UBound(VBEPageCardNumVS, 1)
                             If VBEPageCardNumVS(i, 1) = 4 And VBEPageCardNumVS(i, 2) = m And pagecheck(i) = 0 Then
-                                atking = atking & "," & i
+                                VBECommand.EventActiveAIScoreAddCardNum i
                                 pagecheck(i) = 1
                                 numtot = numtot + m
                             End If
                             If numtot >= 2 Then Exit Do
                         Next
                     Loop
-                    atking = atking & "="
                 End If
-          End If
+            End If
     End Select
+    atking = VBECommand.Output()
 End Function

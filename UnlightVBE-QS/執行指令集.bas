@@ -791,11 +791,23 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
     Dim commadstr3() As String
 
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 1 Or commadtype <> 1 Or atkingnum = 9 Or (vbecommadnum(4, vbecommadtotplayNow) = 13 Or vbecommadnum(4, vbecommadtotplayNow) = 33) Then GoTo VssCommadExit
+    If UBound(commadstr3) > 1 Or commadtype <> 1 Or atkingnum = 9 Or (vbecommadnum(4, vbecommadtotplayNow) = 13 Or vbecommadnum(4, vbecommadtotplayNow) = 33) Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
-            If commadstr3(1) = "0" Then commadstr3(1) = ""
-            執行指令集.Sub_技能動畫執行_靜態 commadstr3(0), commadstr3(1), uscom
+            Dim tmpstr1 As String, tmpstr2 As String
+            tmpstr1 = commadstr3(0)
+            
+            If UBound(commadstr3) = 1 Then
+                If commadstr3(1) = "0" Then
+                    tmpstr2 = ""
+                Else
+                    tmpstr2 = commadstr3(1)
+                End If
+            Else
+                tmpstr2 = ""
+            End If
+            
+            執行指令集.Sub_技能動畫執行_靜態 tmpstr1, tmpstr2, uscom
             vbecommadnum(2, vbecommadtotplayNow) = 3    '==等待時間
         Case 3
             If Vss_AtkingStartPlayNum(2) = 1 Then

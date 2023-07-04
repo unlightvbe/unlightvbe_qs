@@ -1,13 +1,13 @@
 Function main(a)
     Select Case a
-         Case 1
-              main = "BUFFS00101"
-         Case 2
-              main = "46"
-         Case 3
-              main = "庇護"
-         Case 4
-              main = "\Buff\shelter\shelter.png"
+        Case 1
+            main = "BUFFS00101"
+        Case 2
+            main = "46"
+        Case 3
+            main = "庇護"
+        Case 4
+            main = "\Buff\shelter\shelter.png"
     End Select
 End Function
 
@@ -15,13 +15,14 @@ Function buff(a, atkingpagetotVS(), VBEAtkingVSF(), VBEAtkingVSS(), VBEVSBuffNum
     Select Case a
         Case 46
             If VBEVSStageNum(1) = 1 And VBEVSStageNum(2) = VBEAtkingVSS(0) Then
-                buff = buff & "EventBloodActionOff#0" & "="
+                VBECommand.EventBloodActionOff
                 If BuffPersonType = 1 Then
-                    buff = buff & "BattleSendMessage#庇護效果發動!    當次受到的傷害無效化" & "="
+                    VBECommand.BattleSendMessage "庇護效果發動!    當次受到的傷害無效化"
                 ElseIf BuffPersonType = 2 Then
-                    buff = buff & "BattleSendMessage#庇護效果發動!    待機成員當次受到的傷害無效化" & "="
+                    VBECommand.BattleSendMessage "庇護效果發動!    待機成員當次受到的傷害無效化"
                 End If
-                buff = buff & "BuffTurnEnd#0" & "="
+                VBECommand.BuffTurnEnd
             End If
     End Select
+    buff = VBECommand.Output()
 End Function
