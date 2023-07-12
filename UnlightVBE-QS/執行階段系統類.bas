@@ -308,10 +308,10 @@ vsloaderror:
     '=====================================
 End Function
 Function 執行階段系統_執行腳本_人物主動技能類(ByVal atkingnum As Integer, ByVal ns As Integer, ByVal uscom As Integer, ByVal personnum As Integer) As String
-    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror Else On Error GoTo vsgoerrorAdmin
 VssAdminReTry:
     執行階段系統類.執行階段系統_VSCommand暫存資料清除 (uscom - 1) * 12 + (4 * personnum - 4) + atkingnum
-    
+
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, 0
@@ -322,26 +322,34 @@ VssAdminReTry:
     '=====================================
     Exit Function
     '===========
-    Dim i As Integer
-    For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
-        FormMainMode.PEAFvssc(i).Reset
-    Next
-    執行階段系統類.執行階段系統_初始_腳本讀入程序
-    GoTo VssAdminReTry
+vsgoerrorAdmin:
+    If 執行階段系統類.執行階段系統_錯誤訊息通知_Admin_Retry(2, "2 [1-" & atkingnum & "-" & ns & "]") = True Then
+        Dim i As Integer
+        For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
+            FormMainMode.PEAFvssc(i).Reset
+        Next
+        ReDim 執行階段系統類.VSSCObjectCollection(1 To 1) As Collection
+        For i = 1 To 1
+            Set 執行階段系統類.VSSCObjectCollection(i) = New Collection
+        Next
+        執行階段系統類.執行階段系統_初始_腳本讀入程序 True
+
+        GoTo VssAdminReTry
+    End If
     '===========
 vsgoerror:
-    執行階段系統_錯誤訊息通知 2, "2[1-" & atkingnum & "]"
+    執行階段系統_錯誤訊息通知 2, "2 [1-" & atkingnum & "-" & ns & "]"
     '=====================================
 
 End Function
 Function 執行階段系統_執行腳本_人物被動技能類(ByVal atkingnum As Integer, ByVal ns As Integer, ByVal uscom As Integer, ByVal personnum As Integer, ByVal PassivePersonType As Integer) As String
-    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror Else On Error GoTo vsgoerrorAdmin
 VssAdminReTry:
     Dim PassivePersonTypeVSS As Variant
     PassivePersonTypeVSS = PassivePersonType
-    
+
     執行階段系統類.執行階段系統_VSCommand暫存資料清除 (uscom - 1) * 12 + (4 * personnum - 4) + (atkingnum - 4) + 24
-    
+
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, PassivePersonType
@@ -352,27 +360,35 @@ VssAdminReTry:
     '=====================================
     Exit Function
     '===========
-    Dim i As Integer
-    For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
-        FormMainMode.PEAFvssc(i).Reset
-    Next
-    執行階段系統類.執行階段系統_初始_腳本讀入程序
-    GoTo VssAdminReTry
+vsgoerrorAdmin:
+    If 執行階段系統類.執行階段系統_錯誤訊息通知_Admin_Retry(2, "2 [2-" & atkingnum & "-" & ns & "]") = True Then
+        Dim i As Integer
+        For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
+            FormMainMode.PEAFvssc(i).Reset
+        Next
+        ReDim 執行階段系統類.VSSCObjectCollection(1 To 1) As Collection
+        For i = 1 To 1
+            Set 執行階段系統類.VSSCObjectCollection(i) = New Collection
+        Next
+        執行階段系統類.執行階段系統_初始_腳本讀入程序 True
+
+        GoTo VssAdminReTry
+    End If
     '===========
 vsgoerror:
-    執行階段系統_錯誤訊息通知 2, "2[2-" & atkingnum & "]"
+    執行階段系統_錯誤訊息通知 2, "2 [2-" & atkingnum & "-" & ns & "]"
     '=====================================
 
 End Function
 
 Function 執行階段系統_執行腳本_異常狀態類(ByVal vssnum As Integer, ByVal ns As Integer, ByVal BuffPersonType As Integer, ByVal akstr As String) As String
-    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror Else On Error GoTo vsgoerrorAdmin
 VssAdminReTry:
     Dim BuffPersonTypeVSS As Variant
     BuffPersonTypeVSS = BuffPersonType
-    
+
     執行階段系統類.執行階段系統_VSCommand暫存資料清除 vssnum
-    
+
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, BuffPersonType
@@ -383,26 +399,34 @@ VssAdminReTry:
     '=====================================
     Exit Function
     '===========
-    Dim i As Integer
-    For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
-        FormMainMode.PEAFvssc(i).Reset
-    Next
-    執行階段系統類.執行階段系統_初始_腳本讀入程序
-    GoTo VssAdminReTry
+vsgoerrorAdmin:
+    If 執行階段系統類.執行階段系統_錯誤訊息通知_Admin_Retry(2, "2 [3-" & akstr & "-" & ns & "]") = True Then
+        Dim i As Integer
+        For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
+            FormMainMode.PEAFvssc(i).Reset
+        Next
+        ReDim 執行階段系統類.VSSCObjectCollection(1 To 1) As Collection
+        For i = 1 To 1
+            Set 執行階段系統類.VSSCObjectCollection(i) = New Collection
+        Next
+        執行階段系統類.執行階段系統_初始_腳本讀入程序 True
+
+        GoTo VssAdminReTry
+    End If
     '===========
 vsgoerror:
-    執行階段系統_錯誤訊息通知 2, "2[3-" & akstr & "]"
+    執行階段系統_錯誤訊息通知 2, "2 [3-" & akstr & "-" & ns & "]"
     '=====================================
 
 End Function
 Function 執行階段系統_執行腳本_人物實際狀態類(ByVal vssnum As Integer, ByVal ns As Integer, ByVal ActualStatusPersonType As Integer, ByVal akstr As String) As String
-    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vsgoerror Else On Error GoTo vsgoerrorAdmin
 VssAdminReTry:
     Dim ActualStatusPersonTypeVSS As Variant
     ActualStatusPersonTypeVSS = ActualStatusPersonType
-    
+
     執行階段系統類.執行階段系統_VSCommand暫存資料清除 vssnum
-    
+
     If 一般系統類.ProgramIsOnWine = True Then
         Dim wineObj As New clsWineobj
         執行階段系統_wine變數統合資料物件寫入 wineObj, ns, ActualStatusPersonType
@@ -413,15 +437,23 @@ VssAdminReTry:
     '=====================================
     Exit Function
     '===========
-    Dim i As Integer
-    For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
-        FormMainMode.PEAFvssc(i).Reset
-    Next
-    執行階段系統類.執行階段系統_初始_腳本讀入程序
-    GoTo VssAdminReTry
+vsgoerrorAdmin:
+    If 執行階段系統類.執行階段系統_錯誤訊息通知_Admin_Retry(2, "2 [4-" & akstr & "-" & ns & "]") = True Then
+        Dim i As Integer
+        For i = 1 To (Val(54) + Val(UBound(VBEVSSBuffStr2)))
+            FormMainMode.PEAFvssc(i).Reset
+        Next
+        ReDim 執行階段系統類.VSSCObjectCollection(1 To 1) As Collection
+        For i = 1 To 1
+            Set 執行階段系統類.VSSCObjectCollection(i) = New Collection
+        Next
+        執行階段系統類.執行階段系統_初始_腳本讀入程序 True
+
+        GoTo VssAdminReTry
+    End If
     '===========
 vsgoerror:
-    執行階段系統_錯誤訊息通知 2, "2[4-" & akstr & "]"
+    執行階段系統_錯誤訊息通知 2, "2 [4-" & akstr & "-" & ns & "]"
     '=====================================
 
 End Function
@@ -579,7 +611,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
             '=========================
             If LBound(VBEStageNumMain) = 0 Then
                 Select Case VBEStageNumMain(0)
-                    Case 41, 46, 47, 48, 49, 101, 102, 103
+                    Case 41, 46, 47, 48, 49, 101, 102, 103, 104
                         For i = 1 To UBound(VBEStageNumMain)
                             If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
                                 VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
@@ -736,7 +768,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
                         VBEVSStageNum(2) = VBEStageNumMain(1)
                         VBEVSStageNum(3) = VBEStageNumMain(4)
                         VBEVSStageNum(4) = VBEStageNumMain(3)
-                    Case 41, 46, 47, 48, 49, 101, 102, 103
+                    Case 41, 46, 47, 48, 49, 101, 102, 103, 104
                         For i = 1 To UBound(VBEStageNumMain)
                             If VBEStageNumMain(i) = -1 Then
                                 VBEVSStageNum(i) = 2
@@ -792,11 +824,11 @@ Function 執行階段系統_準備變數統合_pagecardnum_type(ByVal typestr As String) As 
             執行階段系統_準備變數統合_pagecardnum_type = 0
     End Select
 End Function
-Sub 執行階段系統_初始_腳本讀入程序()
+Sub 執行階段系統_初始_腳本讀入程序(Optional isReload As Boolean)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror
     Dim atknum As Integer, uscomn As Integer, pnnum As Integer, buffnum As Integer, tmpVsscNum As Integer
     atknum = 1: uscomn = 1: pnnum = 1: buffnum = 1
-    Dim tot As Integer, textlinea As String, str As String
+    Dim tot As Integer, textlinea As String, str As String, k As Integer
     tot = 1
     Do
         textlinea = ""
@@ -863,7 +895,38 @@ Sub 執行階段系統_初始_腳本讀入程序()
                     atknum = 1: uscomn = 1: pnnum = 1
                 End If
             Case Is <= 54
+                If isReload = True And 人物實際狀態資料庫(uscomn, pnnum, 1) <> "" Then
+                    tmpVsscNum = (uscomn - 1) * 3 + pnnum + 48
 
+                    For k = 1 To UBound(VBEVSSActualStatusStr1)
+                        If VBEVSSActualStatusStr1(k) = 人物實際狀態資料庫(uscomn, pnnum, 1) Then
+                            Open VBEVSSActualStatusStr2(k) For Input As #1
+                            Do Until EOF(1)
+                                Line Input #1, textlinea
+                                str = str & textlinea & vbCrLf
+                            Loop
+                            Close
+                            If str <> "" Then
+                                FormMainMode.PEAFvssc(tmpVsscNum).AddCode str
+                                If 一般系統類.ProgramIsOnWine = True Then
+                                    執行階段系統類.執行階段系統_加入Wine程式進入點 tmpVsscNum
+                                End If
+                                執行階段系統類.執行階段系統_實體物件納入參考物件 tmpVsscNum
+
+                                Exit For
+                            End If
+                        End If
+                    Next
+
+                    pnnum = pnnum + 1
+                    If pnnum > 3 Then
+                        pnnum = 1
+                        uscomn = uscomn + 1
+                    End If
+                    If uscomn > 2 Then
+                        uscomn = 1: pnnum = 1
+                    End If
+                End If
             Case Else
                 Open VBEVSSBuffStr2(buffnum) For Input As #1
 
@@ -1201,6 +1264,15 @@ Sub 執行階段系統_錯誤訊息通知(ByVal num As Integer, ByVal num1 As String)
     MsgBox "執行階段錯誤(03-" & num & "-" & num1 & ")：" & Chr(10) & "系統於讀取及解釋腳本指令時發生錯誤。" & Chr(10) & Chr(10) & "(" & Err.Number & "):" & Err.Description, vbCritical
     End
 End Sub
+Function 執行階段系統_錯誤訊息通知_Admin_Retry(ByVal num As Integer, ByVal num1 As String) As Boolean
+    Dim Response
+    Response = MsgBox("執行階段錯誤(03-" & num & "-" & num1 & ")：" & Chr(10) & "系統於讀取及解釋腳本指令時發生錯誤。" & Chr(10) & Chr(10) & "(" & Err.Number & "):" & Err.Description & Chr(10) & Chr(10) & "請按「重試」以全部重新讀取腳本並重新執行本執行階段", vbRetryCancel + vbCritical)
+    If Response = vbRetry Then
+        執行階段系統_錯誤訊息通知_Admin_Retry = True
+    Else
+        End
+    End If
+End Function
 Sub 執行階段系統_加入Wine程式進入點(ByVal num As Integer)
     Dim strcode As String
     Select Case num

@@ -31,7 +31,6 @@ Function atking(a, VBEPersonVS(), VBEPageCardNumVS(), AtkingPagetotVS(), VBEPers
                     End If
                 End If
             End If
-
         Case 45
             VBECommand.EventTotalDiceChange 1, 1, 8
         Case 29

@@ -22,6 +22,7 @@ Public Const b9b As Integer = 9
 Public goicheck(1 To 2) As Integer   '攻擊/防禦模式加骰數值檢查碼
 Public liveus(1 To 3) As Integer, livecom(1 To 3) As Integer, liveusmax(1 To 3) As Integer, livecommax(1 To 3) As Integer
 Public BattleTurn As Integer, BattleCardNum As Integer, atkus(1 To 3) As Integer, atkcom(1 To 3) As Integer, defus(1 To 3) As Integer, defcom(1 To 3) As Integer, pagecheckus As Integer, pagecheckcom As Integer, pagegive As Integer, goidefus As Integer, movecom As Integer, moveus As Integer, movecp As Integer, chkcomck As Integer, uslevel(1 To 3) As Integer, comlevel(1 To 3) As Integer, liveus41(1 To 3) As Integer, livecom41(1 To 3) As Integer, movecheckcom As Integer, movecheckus As Integer
+Attribute BattleCardNum.VB_VarUserMemId = 1073741829
 Public nameus(1 To 3) As String, namecom(1 To 3) As String
 Attribute nameus.VB_VarUserMemId = 1073741849
 Public moveturn As Integer  '攻擊／防禦模式先後檢查碼(1.使用者先攻/2.電腦先攻)
@@ -142,8 +143,11 @@ Public 是否系統公骰 As Boolean    '是否為系統公骰紀錄數
 Attribute 是否系統公骰.VB_VarUserMemId = 1073741895
 Public 戰鬥擲骰介面人物立繪圖路徑紀錄數(1 To 2) As String    '戰鬥系統擲骰介面雙方人物立繪圖路徑紀錄數(1.使用者方/2.電腦方)
 Attribute 戰鬥擲骰介面人物立繪圖路徑紀錄數.VB_VarUserMemId = 1073741896
-Public 人物實際狀態資料庫(1 To 2, 1 To 3, 1 To 9) As String    '人物實際狀態資料
+Public 人物實際狀態資料庫(1 To 2, 1 To 3, 1 To 9) As String
 Attribute 人物實際狀態資料庫.VB_VarUserMemId = 1073741897
+'人物實際狀態資料(1.使用者/2.電腦,1~3.第n位,1.技能統一識別碼/2.人物形象是否更換(1.是/0.否)/
+'3.欲套用之大人物形象圖片路徑/4.欲套用之小人物形象圖片路徑/5.欲套用之小人物形象影子圖片路徑/
+'6.欲套用之顯示列人物頭像圖片路徑/7.小人物形象影子座標Left/8.小人物形象影子座標Top/9.人物實際狀態名稱)
 Public 系統顯示界面紀錄數 As Integer    '戰鬥系統顯示介面設定紀錄數(1.舊版/2.新版)
 Attribute 系統顯示界面紀錄數.VB_VarUserMemId = 1073741898
 Public 等待時間佇列(1 To 2) As New Collection    '戰鬥系統等待時間計數器工作佇列

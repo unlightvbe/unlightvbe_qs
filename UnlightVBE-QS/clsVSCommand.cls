@@ -191,6 +191,9 @@ End Sub
 Public Sub AtkingDestroyCards(ByVal n1 As Integer, ByVal n2 As Integer)
     Me.Text = Me.Text & "AtkingDestroyCards" & "#" & CStr(n1) & "," & CStr(n2) & "="
 End Sub
+Public Sub EventAtkingDestroyCardsActionOff()
+    Me.Text = Me.Text & "EventAtkingDestroyCardsActionOff" & "#0" & "="
+End Sub
 Public Sub AtkingGiveCards(ByVal n1 As Integer)
     Me.Text = Me.Text & "AtkingGiveCards" & "#" & CStr(n1) & "="
 End Sub
