@@ -177,6 +177,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                         執行指令集.執行指令_牌堆抽牌_略過_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                     Case "EventAtkingDestroyCardsActionOff"
                         執行指令集.執行指令_擁有卡牌丟牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
+                    Case "EventAtkingGiveCardsActionOff"
+                        執行指令集.執行指令_送與卡牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                         '========================================================
                     Case Else
                         GoTo vss_cmdlocalerr
@@ -1499,11 +1501,47 @@ End Sub
 Sub 執行指令_送與卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
+    Dim tmpcollectionIndex As Integer, tmpcard As clsActionCard, tmpflag As Boolean
 
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 1 Or (commadtype <> 1 And commadtype <> 3) Then GoTo VssCommadExit
+    If UBound(commadstr3) <> 0 Or (commadtype <> 1 And commadtype <> 3) Or vbecommadnum(4, vbecommadtotplayNow) = 105 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
+            tmpcollectionIndex = 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(Val(commadstr3(0)))
+
+            If (uscom = 1 And tmpcollectionIndex <> 5) Or (uscom = 2 And tmpcollectionIndex <> 7) Then
+                GoTo VssCommadExit
+            End If
+
+            Set tmpcard = 戰鬥系統類.CardDeckCollection(戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(Val(commadstr3(0))))(CStr(戰鬥系統類.卡牌牌堆集合索引_CardNum(Val(commadstr3(0)))))
+            '===============================加入該階段紀載資訊
+            Dim stageInfoListObj As New clsVSStageObj
+            stageInfoListObj.StageNum = vbecommadtotplayNow
+            stageInfoListObj.CommandStr = "AtkingGiveCards"
+            stageInfoListObj.Value = "0"
+            執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+            '===============================
+            ReDim VBEStageNum(0 To 6) As Integer
+            VBEStageNum(0) = 105
+            VBEStageNum(1) = -uscom    '觸發事件方(1.使用者/2.電腦)
+            VBEStageNum(2) = Val(commadstr3(0))    '受影響之卡牌編號順序
+            VBEStageNum(3) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.UpperType)    '受影響之卡牌正面類型
+            VBEStageNum(4) = tmpcard.UpperNum    '受影響之卡牌正面數值
+            VBEStageNum(5) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.LowerType)    '受影響之卡牌反面類型
+            VBEStageNum(6) = tmpcard.LowerNum    '受影響之卡牌反面數值
+            '===========================執行階段插入點(105)
+            執行階段系統類.執行階段系統總主要程序_執行階段開始 uscom, 105, 1
+            '============================
+            tmpflag = False
+            If stageInfoListObj.CommandStr = "AtkingGiveCards" Then
+                If stageInfoListObj.Value = "OFF" Then
+                    tmpflag = True
+                End If
+            End If
+            執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+
+            If tmpflag = True Then GoTo VssCommadExit
+            '=======================
             Select Case uscom
                 Case 1    '==使用者方
                     If 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(Val(commadstr3(0))) = 5 Then
@@ -1544,6 +1582,33 @@ VssCommadExit:
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingGiveCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_送與卡牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 105 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "AtkingGiveCards" Then
+                    stageInfoListObj.Value = "OFF"
+                End If
+            End If
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+    '=============================
+    Exit Sub
+vss_cmdlocalerr:
+    執行指令集.執行指令集_錯誤訊息通知 "EventAtkingGiveCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
@@ -2668,8 +2733,8 @@ Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As I
     Select Case commadtype
         Case 1
         Case 3
-            If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-               vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+            If vbecommadnum(4, vbecommadtotplayNow) = 74 Or _
+               vbecommadnum(4, vbecommadtotplayNow) = 75 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select
@@ -2756,15 +2821,7 @@ Sub 執行指令_人物實際狀態加入資料_專(ByVal uscom As Integer, ByVal commadtype As
     Dim strfalse As Boolean
 
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 7 And atkingnum <> 10 Then GoTo VssCommadExit
-    Select Case commadtype
-        Case 1
-        Case 3
-            If vbecommadnum(4, vbecommadtotplayNow) = 72 Or _
-               vbecommadnum(4, vbecommadtotplayNow) = 73 Then GoTo VssCommadExit
-        Case Else
-            GoTo VssCommadExit
-    End Select
+    If UBound(commadstr3) <> 7 Or atkingnum <> 10 Or (commadtype <> 1 And commadtype <> 3) Then GoTo VssCommadExit
     personnum = vbecommadnum(7, vbecommadtotplayNow)
     '==========
     Select Case vbecommadnum(2, vbecommadtotplayNow)
@@ -2845,12 +2902,12 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
     Dim vsstr As String
 
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 0 And atkingnum <> 10 Then GoTo VssCommadExit
+    If UBound(commadstr3) <> 0 Or atkingnum <> 10 Then GoTo VssCommadExit
     Select Case commadtype
         Case 1
         Case 3
-            If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-               vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+            If vbecommadnum(4, vbecommadtotplayNow) = 74 Or _
+               vbecommadnum(4, vbecommadtotplayNow) = 75 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select
@@ -2956,8 +3013,8 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
     Select Case commadtype
         Case 1
         Case 3
-            If vbecommadnum(4, vbecommadtotplayNow) >= 72 And _
-               vbecommadnum(4, vbecommadtotplayNow) <= 75 Then GoTo VssCommadExit
+            If vbecommadnum(4, vbecommadtotplayNow) = 74 Or _
+               vbecommadnum(4, vbecommadtotplayNow) = 75 Then GoTo VssCommadExit
         Case Else
             GoTo VssCommadExit
     End Select
