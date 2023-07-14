@@ -209,6 +209,9 @@ End Sub
 Public Sub AtkingOneSelfCardControl(ByVal n1 As Integer, ByVal n2 As Integer, ByVal n3 As Integer)
     Me.Text = Me.Text & "AtkingOneSelfCardControl" & "#" & CStr(n1) & "," & CStr(n2) & "," & CStr(n3) & "="
 End Sub
+Public Sub EventAtkingOneSelfCardControlActionOff()
+    Me.Text = Me.Text & "EventAtkingOneSelfCardControlActionOff" & "#0" & "="
+End Sub
 Public Sub PersonMaxCardsNumControl(ByVal n1 As Integer, ByVal n2 As Integer, ByVal n3 As Integer)
     Me.Text = Me.Text & "PersonMaxCardsNumControl" & "#" & CStr(n1) & "," & CStr(n2) & "," & CStr(n3) & "="
 End Sub

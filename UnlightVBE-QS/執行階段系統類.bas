@@ -611,7 +611,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
             '=========================
             If LBound(VBEStageNumMain) = 0 Then
                 Select Case VBEStageNumMain(0)
-                    Case 41, 46, 47, 48, 49, 101, 102, 103, 104, 105, 106
+                    Case 41, 46, 47, 48, 49, 101, 102, 103, 104, 105, 106, 107
                         For i = 1 To UBound(VBEStageNumMain)
                             If VBEStageNumMain(i) = -1 Or VBEStageNumMain(i) = -2 Then
                                 VBEVSStageNum(i) = Abs(VBEStageNumMain(i))
@@ -768,7 +768,7 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
                         VBEVSStageNum(2) = VBEStageNumMain(1)
                         VBEVSStageNum(3) = VBEStageNumMain(4)
                         VBEVSStageNum(4) = VBEStageNumMain(3)
-                    Case 41, 46, 47, 48, 49, 101, 102, 103, 104, 105, 106
+                    Case 41, 46, 47, 48, 49, 101, 102, 103, 104, 105, 106, 107
                         For i = 1 To UBound(VBEStageNumMain)
                             If VBEStageNumMain(i) = -1 Then
                                 VBEVSStageNum(i) = 2
