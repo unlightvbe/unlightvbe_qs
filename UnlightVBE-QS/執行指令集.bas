@@ -179,6 +179,8 @@ Sub 執行指令集總程序_指令呼叫執行(ByVal uscom As Integer, ByVal commadtype As In
                         執行指令集.執行指令_擁有卡牌丟牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                     Case "EventAtkingGiveCardsActionOff"
                         執行指令集.執行指令_送與卡牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
+                    Case "EventAtkingGetUsedCardsActionOff"
+                        執行指令集.執行指令_墓地牌回牌_無效化_專 uscom, commadtype, atkingnum, vbecommadtotplayNow  '(階段1)
                         '========================================================
                     Case Else
                         GoTo vss_cmdlocalerr
@@ -266,7 +268,6 @@ Sub 執行指令_技能燈控制(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingLineLight", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -323,7 +324,6 @@ Sub 執行指令_技能燈控制_其他(ByVal uscom As Integer, ByVal commadtype As Integer
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingLineLightAnother", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -374,7 +374,6 @@ Sub 執行指令_技能啟動碼控制(ByVal uscom As Integer, ByVal commadtype As Integer,
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingTurnOnOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -424,7 +423,6 @@ Sub 執行指令_技能啟動碼控制_其他(ByVal uscom As Integer, ByVal commadtype As Int
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingTurnOnOffAnother", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -513,7 +511,6 @@ Sub 執行指令_總骰數變化量控制(ByVal uscom As Integer, ByVal commadtype As Intege
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventTotalDiceChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -554,7 +551,6 @@ Sub 執行指令_總骰數總量控制(ByVal uscom As Integer, ByVal commadtype As Integer,
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonTotalDiceControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -639,7 +635,6 @@ Sub 執行指令_人物血量控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonBloodControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -691,7 +686,6 @@ Sub 執行指令_人物角色復活(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonResurrect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -739,7 +733,6 @@ Sub 執行指令_人物技能無效化(ByVal uscom As Integer, ByVal commadtype As Integer,
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonAtkingInvalid", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -785,7 +778,6 @@ Sub 執行指令_場地距離控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BattleMoveControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -800,7 +792,7 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
         Case 1
             Dim tmpstr1 As String, tmpstr2 As String
             tmpstr1 = commadstr3(0)
-            
+
             If UBound(commadstr3) = 1 Then
                 If commadstr3(1) = "0" Then
                     tmpstr2 = ""
@@ -810,7 +802,7 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
             Else
                 tmpstr2 = ""
             End If
-            
+
             執行指令集.Sub_技能動畫執行_靜態 tmpstr1, tmpstr2, uscom
             vbecommadnum(2, vbecommadtotplayNow) = 3    '==等待時間
         Case 3
@@ -848,7 +840,6 @@ Sub 執行指令_技能動畫執行(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingStartPlay", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -935,7 +926,6 @@ Sub 執行指令_技能動畫執行_逐格動畫(ByVal uscom As Integer, ByVal commadtype As I
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingStartPlayAnimate", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1098,7 +1088,6 @@ Sub 執行指令_奪取對手卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingSeizeEnemyCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1125,7 +1114,6 @@ Sub 執行指令_奪取對手卡牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As 
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAtkingSeizeEnemyCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1236,7 +1224,6 @@ Sub 執行指令_牌堆抽牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingDrawCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1263,7 +1250,6 @@ Sub 執行指令_牌堆抽牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As Inte
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDrawCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1290,7 +1276,6 @@ Sub 執行指令_牌堆抽牌_數量增加_專(ByVal uscom As Integer, ByVal commadtype As In
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDrawCardsAddOnce", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1317,7 +1302,6 @@ Sub 執行指令_牌堆抽牌_略過_專(ByVal uscom As Integer, ByVal commadtype As Intege
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDrawCardsContinue", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1340,7 +1324,6 @@ Sub 執行指令_系統強制洗牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BattleDeckShuffle", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1371,7 +1354,6 @@ Sub 執行指令_系統回合數控制(ByVal uscom As Integer, ByVal commadtype As Integer,
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BattleTurnControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1466,7 +1448,6 @@ Sub 執行指令_擁有卡牌丟牌(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingDestroyCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1493,7 +1474,6 @@ Sub 執行指令_擁有卡牌丟牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As 
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAtkingDestroyCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1578,7 +1558,6 @@ Sub 執行指令_送與卡牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingGiveCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1605,7 +1584,6 @@ Sub 執行指令_送與卡牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As Inte
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAtkingGiveCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1613,16 +1591,46 @@ End Sub
 Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
     Dim commadstr3() As String
-    Dim tmpcard As clsActionCard, tmpcollectionIndex As Integer
+    Dim tmpcard As clsActionCard, tmpcollectionIndex As Integer, tmpflag As Boolean, tmplocation As Integer
 
     commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
-    If UBound(commadstr3) <> 0 Or (commadtype <> 1 And commadtype <> 3) Then GoTo VssCommadExit
+    If UBound(commadstr3) <> 0 Or (commadtype <> 1 And commadtype <> 3) Or vbecommadnum(4, vbecommadtotplayNow) = 106 Then GoTo VssCommadExit
     Select Case vbecommadnum(2, vbecommadtotplayNow)
         Case 1
             tmpcollectionIndex = 戰鬥系統類.卡牌牌堆集合索引_CollectionIndex(Val(commadstr3(0)))
             If tmpcollectionIndex <> 2 And tmpcollectionIndex <> 9 Then GoTo VssCommadExit
+            If tmpcollectionIndex = 2 Then tmplocation = 1 Else tmplocation = 2
 
             Set tmpcard = 戰鬥系統類.CardDeckCollection(tmpcollectionIndex)(CStr(戰鬥系統類.卡牌牌堆集合索引_CardNum(Val(commadstr3(0)))))
+            '===============================加入該階段紀載資訊
+            Dim stageInfoListObj As New clsVSStageObj
+            stageInfoListObj.StageNum = vbecommadtotplayNow
+            stageInfoListObj.CommandStr = "AtkingGetUsedCards"
+            stageInfoListObj.Value = "0"
+            執行階段系統類.VBEVSStageInfoList.Add stageInfoListObj
+            '===============================
+            ReDim VBEStageNum(0 To 7) As Integer
+            VBEStageNum(0) = 106
+            VBEStageNum(1) = -uscom    '觸發事件方(1.使用者/2.電腦)
+            VBEStageNum(2) = Val(commadstr3(0))    '受影響之卡牌編號順序
+            VBEStageNum(3) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.UpperType)    '受影響之卡牌正面類型
+            VBEStageNum(4) = tmpcard.UpperNum    '受影響之卡牌正面數值
+            VBEStageNum(5) = 執行階段系統類.執行階段系統_準備變數統合_pagecardnum_type(tmpcard.LowerType)    '受影響之卡牌反面類型
+            VBEStageNum(6) = tmpcard.LowerNum    '受影響之卡牌反面數值
+            VBEStageNum(7) = tmplocation    '受影響之卡牌場上位置類別(1.墓地牌/2.棄牌)
+            '===========================執行階段插入點(106)
+            執行階段系統類.執行階段系統總主要程序_執行階段開始 uscom, 106, 1
+            '============================
+            tmpflag = False
+            If stageInfoListObj.CommandStr = "AtkingGetUsedCards" Then
+                If stageInfoListObj.Value = "OFF" Then
+                    tmpflag = True
+                End If
+            End If
+            執行階段系統類.VBEVSStageInfoList.Remove 執行階段系統類.VBEVSStageInfoList.Count
+
+            If tmpflag = True Then GoTo VssCommadExit
+            '=======================
             Select Case uscom
                 Case 1
                     If tmpcard.Location = 3 Then
@@ -1651,10 +1659,35 @@ Sub 執行指令_墓地牌回牌(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingGetUsedCards", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
+End Sub
+Sub 執行指令_墓地牌回牌_無效化_專(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
+    If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
+    Dim commadstr3() As String
+
+    commadstr3 = Split(vbecommadstr(3, vbecommadtotplayNow), ",")
+    If UBound(commadstr3) <> 0 Or Val(vbecommadnum(4, vbecommadtotplayNow)) <> 106 Then GoTo VssCommadExit
+    Select Case vbecommadnum(2, vbecommadtotplayNow)
+        Case 1
+            If 執行階段系統類.VBEVSStageInfoList.Count > 0 Then
+                Dim stageInfoListObj As clsVSStageObj
+                Set stageInfoListObj = 執行階段系統類.VBEVSStageInfoList(執行階段系統類.VBEVSStageInfoList.Count)
+                If stageInfoListObj.StageNum = vbecommadtotplayNow - 1 And stageInfoListObj.CommandStr = "AtkingGetUsedCards" Then
+                    stageInfoListObj.Value = "OFF"
+                End If
+            End If
+            GoTo VssCommadExit
+    End Select
+    '============================
+    Exit Sub
+VssCommadExit:
+    執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
+    '============================
+    Exit Sub
+vss_cmdlocalerr:
+    執行指令集.執行指令集_錯誤訊息通知 "EventAtkingGetUsedCardsActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
 End Sub
 Sub 執行指令_傳送訊息(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal atkingnum As Integer, ByVal vbecommadtotplayNow As Integer)
     If Formsetting.checktest.Value = 0 Then On Error GoTo vss_cmdlocalerr
@@ -1672,7 +1705,6 @@ Sub 執行指令_傳送訊息(ByVal uscom As Integer, ByVal commadtype As Integer, ByVal
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BattleSendMessage", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1710,7 +1742,6 @@ Sub 執行指令_禁止執行人物主動技技能_整體(ByVal uscom As Integer, ByVal commadtyp
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonAtkingOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1748,7 +1779,6 @@ Sub 執行指令_禁止執行人物被動技技能_整體(ByVal uscom As Integer, ByVal commadtyp
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonPassiveOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1781,7 +1811,6 @@ Sub 執行指令_禁止執行人物主動技技能_選擇(ByVal uscom As Integer, ByVal commadtyp
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonAtkingOffSelect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1814,7 +1843,6 @@ Sub 執行指令_禁止執行人物被動技技能_選擇(ByVal uscom As Integer, ByVal commadtyp
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonPassiveOffSelect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1841,7 +1869,6 @@ Sub 執行指令_人物血量控制_傷害無效化_專(ByVal uscom As Integer, ByVal commadtype
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1885,7 +1912,6 @@ Sub 執行指令_人物血量控制_傷害效果變更_專(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventBloodActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1918,7 +1944,6 @@ Sub 執行指令_人物血量控制_傷害效果反射_專(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventBloodReflection", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1961,7 +1986,6 @@ Sub 執行指令_人物血量控制_回復效果反射_專(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventHPLReflection", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -1988,7 +2012,6 @@ Sub 執行指令_人物血量控制_回復無效化_專(ByVal uscom As Integer, ByVal commadtype
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventHPLActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2024,7 +2047,6 @@ Sub 執行指令_人物血量控制_回復效果變更_專(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventHPLActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2051,7 +2073,6 @@ Sub 執行指令_場地距離控制_無效化_專(ByVal uscom As Integer, ByVal commadtype As 
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventMoveActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2078,7 +2099,6 @@ Sub 執行指令_人物角色復活_無效化_專(ByVal uscom As Integer, ByVal commadtype As 
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventPersonResurrectActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2173,7 +2193,6 @@ Sub 執行指令_異常狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As Integ
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonAddBuff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2201,7 +2220,6 @@ Sub 執行指令_正面骰數控制(ByVal uscom As Integer, ByVal commadtype As Integer, B
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingTrueDiceControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2261,7 +2279,6 @@ Sub 執行指令_異常狀態控制_當回合結束_專(ByVal uscom As Integer, ByVal commadtype
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BuffTurnEnd", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2326,7 +2343,6 @@ Sub 執行指令_異常狀態控制_全部清除_專(ByVal uscom As Integer, ByVal commadtype A
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonRemoveBuffAll", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2407,7 +2423,6 @@ Sub 執行指令_異常狀態控制_特定清除_專(ByVal uscom As Integer, ByVal commadtype A
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonRemoveBuffSelect", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2485,7 +2500,6 @@ Sub 執行指令_異常狀態控制_變更回合數(ByVal uscom As Integer, ByVal commadtype As
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonBuffTurnChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2513,7 +2527,6 @@ Sub 執行指令_執行之異常狀態消滅無效化_專(ByVal uscom As Integer, ByVal commadtyp
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventRemoveBuffActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2589,7 +2602,6 @@ Sub 執行指令_擁有之卡牌控制(ByVal uscom As Integer, ByVal commadtype As Integer,
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingOneSelfCardControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2641,7 +2653,6 @@ Sub 執行指令_執行擲骰子(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BattleStartDice", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2684,7 +2695,6 @@ Sub 執行指令_人物最大卡格數控制(ByVal uscom As Integer, ByVal commadtype As Inte
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonMaxCardsNumControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2717,7 +2727,6 @@ Sub 執行指令_插入事件卡(ByVal uscom As Integer, ByVal commadtype As Integer, ByV
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "BattleInsertEventCard", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2809,7 +2818,6 @@ Sub 執行指令_人物實際狀態控制_加入(ByVal uscom As Integer, ByVal commadtype As I
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonAddActualStatus", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2890,7 +2898,6 @@ Sub 執行指令_人物實際狀態加入資料_專(ByVal uscom As Integer, ByVal commadtype As
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventAddActualStatusData", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -2995,7 +3002,6 @@ Sub 執行指令_人物實際狀態控制_宣告結束_專(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "ActualStatusEnd", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3133,7 +3139,6 @@ Sub 執行指令_人物實際狀態控制_特定解除_專(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonRemoveActualStatus", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3160,7 +3165,6 @@ Sub 執行指令_執行之人物實際狀態消滅無效化_專(ByVal uscom As Integer, ByVal comma
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventRemoveActualStatusActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3188,7 +3192,6 @@ Sub 執行指令_禁止玩家進行所有操作(ByVal uscom As Integer, ByVal commadtype As In
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventPlayerAllActionOff", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3227,7 +3230,6 @@ Sub 執行指令_人物角色移動階段行動控制(ByVal uscom As Integer, ByVal commadtype A
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonMoveActionChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3267,7 +3269,6 @@ Sub 執行指令_移動前總移動量控制(ByVal uscom As Integer, ByVal commadtype As Inte
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonMoveControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3295,7 +3296,6 @@ Sub 執行指令_人物角色優先攻擊控制(ByVal uscom As Integer, ByVal commadtype As In
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonAttackFirstControl", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3321,7 +3321,6 @@ Sub 執行指令_技能註記備註字串(ByVal uscom As Integer, ByVal commadtype As Intege
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "AtkingInformationRecord", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3389,7 +3388,6 @@ Sub 執行指令_人物角色白值對骰數變化量控制(ByVal uscom As Integer, ByVal commadty
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "EventPersonAbilityDiceChange", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)
@@ -3417,7 +3415,6 @@ Sub 執行指令_變更人物戰鬥立繪(ByVal uscom As Integer, ByVal commadtype As Intege
 VssCommadExit:
     執行指令集.執行指令_指令結束標記 vbecommadtotplayNow
     '============================
-    '=============================
     Exit Sub
 vss_cmdlocalerr:
     執行指令集.執行指令集_錯誤訊息通知 "PersonChangeBattleImage", vbecommadnum(2, vbecommadtotplayNow), vbecommadnum(4, vbecommadtotplayNow)

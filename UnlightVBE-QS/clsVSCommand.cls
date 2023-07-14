@@ -203,6 +203,9 @@ End Sub
 Public Sub AtkingGetUsedCards(ByVal n1 As Integer)
     Me.Text = Me.Text & "AtkingGetUsedCards" & "#" & CStr(n1) & "="
 End Sub
+Public Sub EventAtkingGetUsedCardsActionOff()
+    Me.Text = Me.Text & "EventAtkingGetUsedCardsActionOff" & "#0" & "="
+End Sub
 Public Sub AtkingOneSelfCardControl(ByVal n1 As Integer, ByVal n2 As Integer, ByVal n3 As Integer)
     Me.Text = Me.Text & "AtkingOneSelfCardControl" & "#" & CStr(n1) & "," & CStr(n2) & "," & CStr(n3) & "="
 End Sub
