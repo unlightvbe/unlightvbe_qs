@@ -8,6 +8,7 @@ Begin VB.UserControl uc對話
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   7815
+   ClipBehavior    =   0  '無
    BeginProperty Font 
       Name            =   "微軟正黑體"
       Size            =   12
@@ -17,6 +18,7 @@ Begin VB.UserControl uc對話
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
+   HitBehavior     =   2  '使用繪圖區域
    ScaleHeight     =   4695
    ScaleWidth      =   7815
    Windowless      =   -1  'True
@@ -58,6 +60,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Dim m_persontalkstr As String
 Dim m_persontalkyn As Boolean
+Dim m_reverse As Boolean
 Public Property Get 對話文字() As String
     對話文字 = m_persontalkstr
 End Property
@@ -77,3 +80,17 @@ Public Property Let 對話文字顯示(ByVal New_對話文字顯示 As Boolean)
     talktext.Visible = Me.對話文字顯示
 End Property
 
+Public Property Get Reverse() As Boolean
+    Reverse = m_reverse
+End Property
+
+Public Property Let Reverse(ByVal vNewValue As Boolean)
+    m_reverse = vNewValue
+    PropertyChanged "Reverse"
+    '================
+    If m_reverse = True Then
+        image1.Mirror = aiMirrorHorizontal
+    Else
+        image1.Mirror = aiMirrorNone
+    End If
+End Property

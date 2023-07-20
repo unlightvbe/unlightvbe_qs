@@ -687,6 +687,9 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Private m_Turn As Integer, m_cardnum As Integer, m_passivevisble As Boolean, m_bnoktype As Integer
+Attribute m_cardnum.VB_VarUserMemId = 1073938432
+Attribute m_passivevisble.VB_VarUserMemId = 1073938432
+Attribute m_bnoktype.VB_VarUserMemId = 1073938432
 
 Public Event ActiveMouseMove(ByVal uscom As Integer, ByVal num As Integer)
 Public Event InterfaceMouseMove()

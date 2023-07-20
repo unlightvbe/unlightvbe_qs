@@ -1543,10 +1543,9 @@ Sub 主選單_PEAttackingStartForm顯示()
     FormMainMode.Width = 11430
     FormMainMode.Height = 10325
     FormMainMode.PEASpersontalk.Visible = False
+    FormMainMode.PEASpersontalkCom.Visible = False
     FormMainMode.PEAttackingStartForm.Visible = True
     FormMainMode.PEAttackingStartForm.ZOrder
-    '=============
-    FormMainMode.PEASpersontalk.Visible = False
 End Sub
 Sub 主選單_PEAttackingEndingForm顯示()
     FormMainMode.PEAttackingEndingForm.Left = 0

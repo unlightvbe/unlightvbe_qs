@@ -4284,7 +4284,7 @@ Sub 介面角色小卡資訊寫入(ByVal uscom As Integer, ByVal num As Integer)
                 .DEF = defus(num)
                 .CurrentHP = liveus(num)
                 .AllHP = liveusmax(num)
-                .PersonName = nameus(num)
+                .personName = nameus(num)
             End With
         Case 2
             With FormMainMode.PEAFpersoncardcom(num)
@@ -4293,7 +4293,7 @@ Sub 介面角色小卡資訊寫入(ByVal uscom As Integer, ByVal num As Integer)
                 .DEF = defcom(num)
                 .CurrentHP = livecom(num)
                 .AllHP = livecommax(num)
-                .PersonName = namecom(num)
+                .personName = namecom(num)
             End With
     End Select
 End Sub

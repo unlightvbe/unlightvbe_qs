@@ -5,7 +5,9 @@ Public 總共人物名稱 As String    '目前總共讀入人物名稱
 Public 總共人物檔案名 As String    '目前總共讀入人物檔案名
 Public 選單使用者事件 As Boolean    '選單類是否為使用者事件暫時數
 Public 選單電腦事件 As Boolean    '選單類是否為電腦事件暫時數
-Public VBEPerson(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11) As String    'VBE人物統一資料記錄變數
+Public VBEPerson(1 To 2, 1 To 3, 1 To 3, 1 To 8, 1 To 11) As String    'VBE人物統一資料記錄變數
+Public VBEPersonTalk(1 To 2, 1 To 3, 1 To 40, 1 To 3) As String
+'VBE人物統一資料記錄變數(對話系)(1.使用者/2.電腦,第n位, 1~20.第n個相對角色對話類/21~30.第n個無相對角色對話類//31~40.第n個特別指定角色對話類, 1.對話內容/2.[(1)相對角色名/(3)角色VBEID]/3.適用等級
 Public VBEVSSAtkingStr(1 To 2, 1 To 3, 1 To 8, 1 To 2) As String    'VBE人物技能相關名稱紀錄(1.使用者/2.電腦,1~4主動技/5~8被動技,1.技能唯一識別碼/2.技能腳本檔案名稱)
 Public VBEVSSBuffStr1() As String    'VBE人物異常狀態相關名稱紀錄(1~n異常狀態-技能唯一識別碼)
 Public VBEVSSBuffStr2() As String    'VBE人物異常狀態相關名稱紀錄(1~n異常狀態-技能腳本檔案名稱)
@@ -49,7 +51,7 @@ Sub 卡片人物資訊讀入_初階段(ByVal filename As String)
     Loop
     Close
 End Sub
-Sub 卡片人物資訊讀入_二階段_使用者(ByVal PersonName As String, ByVal Index As Integer)
+Sub 卡片人物資訊讀入_二階段_使用者(ByVal personName As String, ByVal Index As Integer)
     Dim textlinea As String    '讀入文件時一行處理暫時變數
     Dim 文件字串() As String
     Dim textcheck As Boolean    '判斷文件檢查碼正確性變數
@@ -61,7 +63,7 @@ Sub 卡片人物資訊讀入_二階段_使用者(ByVal PersonName As String, ByVal Index As In
     at = Split(總共人物名稱, "=")
     aw = Split(總共人物檔案名, "=")
     For i = 0 To UBound(at)
-        If at(i) = PersonName Then
+        If at(i) = personName Then
             filename = aw(i)
         End If
     Next
@@ -94,7 +96,7 @@ Sub 卡片人物資訊讀入_二階段_使用者(ByVal PersonName As String, ByVal Index As In
     Loop
     Close
 End Sub
-Sub 卡片人物資訊讀入_二階段_電腦(ByVal PersonName As String, ByVal Index As Integer)
+Sub 卡片人物資訊讀入_二階段_電腦(ByVal personName As String, ByVal Index As Integer)
     Dim textlinea As String    '讀入文件時一行處理暫時變數
     Dim 文件字串() As String
     Dim textcheck As Boolean    '判斷文件檢查碼正確性變數
@@ -106,7 +108,7 @@ Sub 卡片人物資訊讀入_二階段_電腦(ByVal PersonName As String, ByVal Index As Inte
     at = Split(總共人物名稱, "=")
     aw = Split(總共人物檔案名, "=")
     For i = 0 To UBound(at)
-        If at(i) = PersonName Then
+        If at(i) = personName Then
             filename = aw(i)
         End If
     Next
@@ -139,7 +141,7 @@ Sub 卡片人物資訊讀入_二階段_電腦(ByVal PersonName As String, ByVal Index As Inte
     Loop
     Close
 End Sub
-Sub 卡片人物資訊讀入_三階段(ByVal PersonName As String, ByVal personlevel As String, ByVal Index As Integer, ByVal uscom As Integer)
+Sub 卡片人物資訊讀入_三階段(ByVal personName As String, ByVal personLevel As String, ByVal Index As Integer, ByVal uscom As Integer)
     Dim textlinea As String    '讀入文件時一行處理暫時變數
     Dim 文件字串() As String
     Dim textcheck As Boolean    '判斷文件檢查碼正確性變數
@@ -152,7 +154,7 @@ Sub 卡片人物資訊讀入_三階段(ByVal PersonName As String, ByVal personlevel As Str
     at = Split(總共人物名稱, "=")
     aw = Split(總共人物檔案名, "=")
     For i = 0 To UBound(at)
-        If at(i) = PersonName Then
+        If at(i) = personName Then
             filename = aw(i)
         End If
     Next
@@ -178,7 +180,7 @@ Sub 卡片人物資訊讀入_三階段(ByVal PersonName As String, ByVal personlevel As Str
         If 略過資訊 = False Then
             Select Case 文件字串(0)
                 Case "StartPerson"
-                    If 文件字串(1) <> personlevel Or 文件字串(2) <> PersonName Then
+                    If 文件字串(1) <> personLevel Or 文件字串(2) <> personName Then
                         略過資訊 = True
                     End If
                 Case "cardjpg"
@@ -320,7 +322,7 @@ Sub 卡片人物資訊讀入_三階段(ByVal PersonName As String, ByVal personlevel As Str
     Close
 End Sub
 
-Sub 卡片人物資訊讀入_四階段(ByVal PersonName As String, ByVal Index As Integer, ByVal uscom As Integer)
+Sub 卡片人物資訊讀入_四階段(ByVal personName As String, ByVal Index As Integer, ByVal uscom As Integer)
     Dim textlinea As String    '讀入文件時一行處理暫時變數
     Dim 文件字串() As String
     Dim textcheck As Boolean    '判斷文件檢查碼正確性變數
@@ -334,7 +336,7 @@ Sub 卡片人物資訊讀入_四階段(ByVal PersonName As String, ByVal Index As Integer, 
     at = Split(總共人物名稱, "=")
     aw = Split(總共人物檔案名, "=")
     For i = 0 To UBound(at)
-        If at(i) = PersonName Then
+        If at(i) = personName Then
             filename = aw(i)
         End If
     Next
@@ -365,10 +367,14 @@ Sub 卡片人物資訊讀入_四階段(ByVal PersonName As String, ByVal Index As Integer, 
             End If
             '=====================
             Select Case 文件字串(0)
-                Case "StartTalk"
+                Case "StartTalk", "StartTalkCom"
                     略過資訊 = True
+                    If (文件字串(0) = "StartTalk" And uscom = 2) Or _
+                       (文件字串(0) = "StartTalkCom" And uscom = 1) Then
+                        GoTo 略過本行字串
+                    End If
                     '========================
-                    If 文件字串(1) = PersonName Then
+                    If 文件字串(1) = personName Then
                         If UBound(文件字串) >= 2 Then
                             For i = 2 To UBound(文件字串)
                                 If VBEPerson(uscom, Index, 1, 2, 1) = 文件字串(i) Then
@@ -381,116 +387,48 @@ Sub 卡片人物資訊讀入_四階段(ByVal PersonName As String, ByVal Index As Integer, 
                             Next
                         End If
                     End If
-                Case "TalkA1"
+                Case "TalkA1", "TalkA2", "TalkA3", "TalkA4", "TalkA5", "TalkA6", "TalkA7", "TalkA8", "TalkA9"
                     persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA2"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA3"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA4"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA5"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA6"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA7"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA8"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA9"
-                    persontalka = Right(文件字串(0), 1)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA10"
+                    VBEPersonTalk(uscom, Index, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 2) = 文件字串(2)
+                    If UBound(文件字串) >= 3 Then
+                        VBEPersonTalk(uscom, Index, persontalka, 3) = 文件字串(3)
+                    End If
+                Case "TalkA10", "TalkA11", "TalkA12", "TalkA13", "TalkA14", "TalkA15", "TalkA16", "TalkA17", "TalkA18", "TalkA19", "TalkA20"
                     persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA11"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA12"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA13"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA14"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA15"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA16"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA17"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA18"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA19"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkA20"
-                    persontalka = Right(文件字串(0), 2)
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                    VBEPerson(uscom, Index, 4, persontalka, 2) = 文件字串(2)
-                Case "TalkB1"
+                    VBEPersonTalk(uscom, Index, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 2) = 文件字串(2)
+                    If UBound(文件字串) >= 3 Then
+                        VBEPersonTalk(uscom, Index, persontalka, 3) = 文件字串(3)
+                    End If
+                Case "TalkB1", "TalkB2", "TalkB3", "TalkB4", "TalkB5", "TalkB6", "TalkB7", "TalkB8", "TalkB9"
                     persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB2"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB3"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB4"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB5"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB6"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB7"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB8"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
-                Case "TalkB9"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 2) = ""
+                    If UBound(文件字串) >= 2 Then
+                        VBEPersonTalk(uscom, Index, persontalka, 3) = 文件字串(2)
+                    End If
                 Case "TalkB10"
-                    persontalka = Val(Right(文件字串(0), 1)) + 20
-                    VBEPerson(uscom, Index, 4, persontalka, 1) = 文件字串(1)
+                    persontalka = Val(Right(文件字串(0), 2)) + 20
+                    VBEPersonTalk(uscom, Index, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 2) = ""
+                    If UBound(文件字串) >= 2 Then
+                        VBEPersonTalk(uscom, Index, persontalka, 3) = 文件字串(2)
+                    End If
+                Case "TalkC1", "TalkC2", "TalkC3", "TalkC4", "TalkC5", "TalkC6", "TalkC7", "TalkC8", "TalkC9"
+                    persontalka = Right(文件字串(0), 1) + 30
+                    VBEPersonTalk(uscom, Index, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 2) = 文件字串(2)
+                    If UBound(文件字串) >= 3 Then
+                        VBEPersonTalk(uscom, Index, persontalka, 3) = 文件字串(3)
+                    End If
+                Case "TalkC10"
+                    persontalka = Val(Right(文件字串(0), 2)) + 30
+                    VBEPersonTalk(uscom, Index, persontalka, 1) = 文件字串(1)
+                    VBEPersonTalk(uscom, Index, persontalka, 2) = 文件字串(2)
+                    If UBound(文件字串) >= 3 Then
+                        VBEPersonTalk(uscom, Index, persontalka, 3) = 文件字串(3)
+                    End If
             End Select
         End If
         If 文件字串(0) = "EndTalk" Then
@@ -914,9 +852,9 @@ Sub 卡片人物資訊顯示_電腦(ByVal Index As Integer)
 End Sub
 Sub 角色隨機_使用者(ByVal Index As Integer)
     Dim i As Integer, j As Integer, k As Integer
-    For i = 1 To 4
-        For j = 1 To 30
-            For k = 1 To 10
+    For i = 1 To UBound(VBEPerson, 3)
+        For j = 1 To UBound(VBEPerson, 4)
+            For k = 1 To UBound(VBEPerson, 5)
                 VBEPerson(1, Index, i, j, k) = ""
             Next
         Next
@@ -937,9 +875,9 @@ Sub 角色隨機_使用者(ByVal Index As Integer)
 End Sub
 Sub 角色隨機_電腦(ByVal Index As Integer)
     Dim i As Integer, j As Integer, k As Integer
-    For i = 1 To 4
-        For j = 1 To 30
-            For k = 1 To 10
+    For i = 1 To UBound(VBEPerson, 3)
+        For j = 1 To UBound(VBEPerson, 4)
+            For k = 1 To UBound(VBEPerson, 5)
                 VBEPerson(2, Index, i, j, k) = ""
             Next
         Next
@@ -959,50 +897,119 @@ Sub 角色隨機_電腦(ByVal Index As Integer)
     VBEPerson(2, Index, 1, 4, 3) = "?.?.?"
     VBEPerson(2, Index, 1, 3, 4) = "000000"
 End Sub
-Function 人物對話選擇() As String
-    Dim personcomname As String    '電腦方人物名稱暫時紀錄變數
-    Dim personcomlevel() As String    '電腦方人物等級暫時紀錄變數
+Function 人物對話選擇(ByVal uscom As Integer) As String
+    Dim personName As String    '對方人物名稱暫時紀錄變數
+    Dim persontalkLevel() As String    '我方每句對話適用等級暫時紀錄變數
     Dim talkname() As String  '每句對話人物記錄分別變數
-    Dim persontalkname As String  '每句對話人物記錄總變數
     Dim persontalkrec As String    '總共可選擇指定對話紀錄編號串
     Dim persontalkrecnum As Integer    '總共可選擇指定對話紀錄數
     Dim at() As String    '選擇對話暫時變數
-    Dim m As Integer, i As Integer, k As Integer, p As Integer    '暫時變數
+    Dim m As Integer, i As Integer, k As Integer, p As Integer, uscomt As Integer    '暫時變數
+    Dim tmpPersonLevel As String, isAdd As Boolean    '暫時變數
     Dim atbo(1 To 10) As Boolean    '人物本身對話空白標記記錄數
-    personcomname = VBEPerson(2, 1, 1, 1, 1)
-    personcomlevel = Split(VBETalkLevelStr(1), "=")
+    Dim talkPersionID() As String, personVBEID As String
 
-    For i = 1 To 20
-        '   persontalkname = formsettingpersonus.persontalking2(i).Text
-        persontalkname = VBEPerson(1, 1, 4, i, 2)
-        talkname = Split(persontalkname, "&")
-        For k = 0 To UBound(talkname)
-            If talkname(k) = personcomname Then
-                For p = 0 To UBound(personcomlevel)
-                    If VBEPerson(2, 1, 1, 2, 1) = personcomlevel(p) Then
+    If uscom = 1 Then uscomt = 2 Else uscomt = 1
+
+    personName = VBEPerson(uscomt, 1, 1, 1, 1)
+    personVBEID = VBEPerson(uscomt, 1, 1, 4, 1)
+    tmpPersonLevel = VBEPerson(uscom, 1, 1, 2, 1) & VBEPerson(uscom, 1, 1, 2, 2)
+    
+    '特別指定對話優先
+    For i = 31 To 40
+        If VBEPersonTalk(uscom, 1, i, 1) <> "" Then
+            talkPersionID = Split(VBEPersonTalk(uscom, 1, i, 2), "&")
+          
+            For k = 0 To UBound(talkPersionID)
+                If talkPersionID(k) = personVBEID Then
+                    isAdd = False
+                    If VBEPersonTalk(uscom, 1, i, 3) <> "" Then
+                        persontalkLevel = Split(VBEPersonTalk(uscom, 1, i, 3), "&")
+    
+                        For p = 0 To UBound(persontalkLevel)
+                            If persontalkLevel(p) = tmpPersonLevel Then
+                                isAdd = True
+                                Exit For
+                            End If
+                        Next
+                    Else
+                        isAdd = True
+                    End If
+                    If isAdd = True Then
                         persontalkrec = persontalkrec & i & "="
                         persontalkrecnum = persontalkrecnum + 1
-                        k = UBound(talkname)    '象徵ExitFor
-                        p = UBound(personcomlevel)    '象徵ExitFor
+                        Exit For
                     End If
-                Next
-            End If
-        Next
+                End If
+            Next
+        End If
+    Next
+    
+    If persontalkrecnum >= 1 Then
+        m = Int(Rnd() * persontalkrecnum) + 1
+        at = Split(persontalkrec, "=")
+        人物對話選擇 = VBEPersonTalk(uscom, 1, at(m - 1), 1)
+        Exit Function
+    End If
+    '=========================================
+    For i = 1 To 20
+        If VBEPersonTalk(uscom, 1, i, 1) <> "" Then
+            talkname = Split(VBEPersonTalk(uscom, 1, i, 2), "&")
+          
+            For k = 0 To UBound(talkname)
+                If talkname(k) = personName Then
+                    isAdd = False
+                    If VBEPersonTalk(uscom, 1, i, 3) <> "" Then
+                        persontalkLevel = Split(VBEPersonTalk(uscom, 1, i, 3), "&")
+    
+                        For p = 0 To UBound(persontalkLevel)
+                            If persontalkLevel(p) = tmpPersonLevel Then
+                                isAdd = True
+                                Exit For
+                            End If
+                        Next
+                    Else
+                        isAdd = True
+                    End If
+                    If isAdd = True Then
+                        persontalkrec = persontalkrec & i & "="
+                        persontalkrecnum = persontalkrecnum + 1
+                        Exit For
+                    End If
+                End If
+            Next
+        End If
     Next
 
     If persontalkrecnum >= 1 Then
         m = Int(Rnd() * persontalkrecnum) + 1
         at = Split(persontalkrec, "=")
-        '    人物對話選擇 = formsettingpersonus.persontalking1(at(m - 1)).Text
-        人物對話選擇 = VBEPerson(1, 1, 4, at(m - 1), 1)
+        人物對話選擇 = VBEPersonTalk(uscom, 1, at(m - 1), 1)
     Else
         Do
             Randomize
             m = Int(Rnd() * 10) + 1
             If atbo(m) = False Then
-                人物對話選擇 = VBEPerson(1, 1, 4, m + 20, 1)
-                atbo(m) = True
+                isAdd = False
+                If VBEPersonTalk(uscom, 1, m + 20, 3) <> "" Then
+                    persontalkLevel = Split(VBEPersonTalk(uscom, 1, m + 20, 3), "&")
+
+                    For p = 0 To UBound(persontalkLevel)
+                        If persontalkLevel(p) = tmpPersonLevel Then
+                            isAdd = True
+                            Exit For
+                        End If
+                    Next
+                Else
+                    isAdd = True
+                End If
+
+                If isAdd = True Then
+                    人物對話選擇 = VBEPersonTalk(uscom, 1, m + 20, 1)
+                    atbo(m) = True
+                End If
             End If
+
             If 人物對話選擇 <> "" Then
                 Exit Do
             ElseIf atbo(1) = True And atbo(2) = True And atbo(3) = True And atbo(4) = True And atbo(5) = True _
@@ -1028,6 +1035,11 @@ Sub 清除角色人物資訊變數(ByVal uscom As Integer, ByVal num As Integer)
     For i = 1 To UBound(VBEVSSAtkingStr, 3)
         For j = 1 To UBound(VBEVSSAtkingStr, 4)
             VBEVSSAtkingStr(uscom, num, i, j) = ""
+        Next
+    Next
+    For i = 1 To UBound(VBEPersonTalk, 3)
+        For j = 1 To UBound(VBEPersonTalk, 4)
+            VBEPersonTalk(uscom, num, i, j) = ""
         Next
     Next
     VBETalkLevelStr(uscom) = ""

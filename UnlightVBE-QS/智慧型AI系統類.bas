@@ -1176,14 +1176,14 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
     '===========================
     Select Case uscom
         Case 1
-            '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
+            '(1 To 2, 1 To 3, 1 To 3, 1 To 8, 1 To 11)
             If tmpVBEPersonVSflag = False Then
                 VBEPersonVSTempStageNum(1) = 99
                 VBEPersonVSTempStageNum(2) = uscom
                 For i = 1 To 2
                     For j = 1 To 3
-                        For k = 1 To 4
-                            For m = 1 To 30
+                        For k = 1 To 3
+                            For m = 1 To 8
                                 For p = 1 To 11
                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(i, 角色待機人物紀錄數(i, j), k, m, p)
                                 Next
@@ -1315,15 +1315,15 @@ Sub 智慧型AI系統_執行階段準備變數統合資料(ByVal uscom As Integer, ByRef VBEStage
                 End If
             Next
         Case 2    '===============================================================
-            '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
+            '(1 To 2, 1 To 3, 1 To 3, 1 To 8, 1 To 11)
             If tmpVBEPersonVSflag = False Then
                 VBEPersonVSTempStageNum(1) = 99
                 VBEPersonVSTempStageNum(2) = uscom
                 For i = 1 To 2
                     If i = 1 Then q = 2 Else q = 1
                     For j = 1 To 3
-                        For k = 1 To 4
-                            For m = 1 To 30
+                        For k = 1 To 3
+                            For m = 1 To 8
                                 For p = 1 To 11
                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(q, 角色待機人物紀錄數(q, j), k, m, p)
                                 Next

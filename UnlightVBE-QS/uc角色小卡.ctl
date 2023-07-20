@@ -172,11 +172,11 @@ Attribute m_ShowOnMode.VB_VarUserMemId = 1073938432
 Public Event MouseMove()
 Public Event MouseEnter()
 Public Event MouseExit()
-Public Property Get PersonName() As String
-    PersonName = m_PersonName
+Public Property Get personName() As String
+    personName = m_PersonName
 End Property
 
-Public Property Let PersonName(ByVal vNewValue As String)
+Public Property Let personName(ByVal vNewValue As String)
     m_PersonName = vNewValue
     PropertyChanged "PersonName"
     If m_ShowOnMode = True Then

@@ -47,6 +47,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Dim m_cardbackcheck As Integer, m_ShowOnMode As Boolean
+Attribute m_ShowOnMode.VB_VarUserMemId = 1073938432
 Private m_MusicPlayerObj As ucMusicPlayer
 Attribute m_MusicPlayerObj.VB_VarUserMemId = 1073938434
 

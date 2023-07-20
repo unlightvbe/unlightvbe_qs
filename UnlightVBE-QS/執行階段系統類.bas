@@ -1,6 +1,6 @@
 Attribute VB_Name = "執行階段系統類"
 Option Explicit
-Public VBEPersonVS(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11) As Variant    'VBE人物統一變數-VS版
+Public VBEPersonVS(1 To 2, 1 To 3, 1 To 3, 1 To 8, 1 To 11) As Variant    'VBE人物統一變數-VS版
 Public atkingpagetotVS(1 To 2, 1 To 5) As Variant  '每階段出牌種類及數值統計資料-VS版
 Public VBEPersonBuffVSF() As Variant    '異常狀態資料-VS-F版
 Public VBEPersonBuffVSS() As Variant    '異常狀態資料-VS-S版
@@ -493,14 +493,14 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
     '===========================
     Select Case uscom
         Case 1
-            '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
+            '(1 To 2, 1 To 3, 1 To 3, 1 To 8, 1 To 11)
             If tmpVBEPersonVSflag = False Then
                 VBEPersonVSTempStageNum(1) = ns
                 VBEPersonVSTempStageNum(2) = uscom
                 For i = 1 To 2
                     For j = 1 To 3
-                        For k = 1 To 4
-                            For m = 1 To 30
+                        For k = 1 To 3
+                            For m = 1 To 8
                                 For p = 1 To 11
                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(i, 角色待機人物紀錄數(i, j), k, m, p)
                                 Next
@@ -635,15 +635,15 @@ Sub 執行階段系統_準備變數統合資料(ByVal uscom As Integer, ByVal ns As Integer, B
                 VBEVSStageNum(1) = 0    '無資料
             End If
         Case 2    '===============================================================
-            '(1 To 2, 1 To 3, 1 To 4, 1 To 30, 1 To 11)
+            '(1 To 2, 1 To 3, 1 To 3, 1 To 8, 1 To 11)
             If tmpVBEPersonVSflag = False Then
                 VBEPersonVSTempStageNum(1) = ns
                 VBEPersonVSTempStageNum(2) = uscom
                 For i = 1 To 2
                     If i = 1 Then q = 2 Else q = 1
                     For j = 1 To 3
-                        For k = 1 To 4
-                            For m = 1 To 30
+                        For k = 1 To 3
+                            For m = 1 To 8
                                 For p = 1 To 11
                                     VBEPersonVS(i, j, k, m, p) = VBEPerson(q, 角色待機人物紀錄數(q, j), k, m, p)
                                 Next
@@ -1072,13 +1072,13 @@ vssyserror:
     執行階段系統_錯誤訊息通知 1, "6"
     '===============
 End Sub
-Sub 執行階段系統_初始_異常狀態類腳本加入紀錄(ByVal str1 As String, ByVal PersonName As String)
+Sub 執行階段系統_初始_異常狀態類腳本加入紀錄(ByVal str1 As String, ByVal personName As String)
     ReDim Preserve VBEVSSBuffStr2(UBound(VBEVSSBuffStr2) + 1)
-    VBEVSSBuffStr2(UBound(VBEVSSBuffStr2)) = PersonName & str1
+    VBEVSSBuffStr2(UBound(VBEVSSBuffStr2)) = personName & str1
 End Sub
-Sub 執行階段系統_初始_人物實際狀態類腳本加入紀錄(ByVal str1 As String, ByVal PersonName As String)
+Sub 執行階段系統_初始_人物實際狀態類腳本加入紀錄(ByVal str1 As String, ByVal personName As String)
     ReDim Preserve VBEVSSActualStatusStr2(UBound(VBEVSSActualStatusStr2) + 1)
-    VBEVSSActualStatusStr2(UBound(VBEVSSActualStatusStr2)) = PersonName & str1
+    VBEVSSActualStatusStr2(UBound(VBEVSSActualStatusStr2)) = personName & str1
 End Sub
 Sub 執行階段系統_初始_人物主動及被動技能類資料讀入()
     If Formsetting.checktest.Value = 0 Then On Error GoTo vssyserror

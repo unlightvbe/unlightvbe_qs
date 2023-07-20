@@ -129,6 +129,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 Dim m_diceusStr As String, m_dicecomStr As String
+Attribute m_dicecomStr.VB_VarUserMemId = 1073938432
 Dim m_diceusTotal As Integer, m_dicecomTotal As Integer
 Attribute m_diceusTotal.VB_VarUserMemId = 1073938434
 Attribute m_dicecomTotal.VB_VarUserMemId = 1073938434
