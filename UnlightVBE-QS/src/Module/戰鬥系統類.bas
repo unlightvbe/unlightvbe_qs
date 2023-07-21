@@ -3002,47 +3002,51 @@ Sub 事件卡處理_初始_電腦方()
     End If
 End Sub
 Sub 事件卡處理_分派_使用者方()
-    Dim tmpcard As clsActionCard
-    Set tmpcard = 戰鬥系統類.CardDeckCollection(3)(1)
+    If 戰鬥系統類.CardDeckCollection(3).Count > 0 Then
+        Dim tmpcard As clsActionCard
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(3)(1)
 
-    FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
-    戰鬥系統類.座標計算_使用者手牌
-    牌移動暫時變數(3) = tmpcard.CardNum
-    戰鬥系統類.牌順序增加_手牌_使用者
-    tmpcard.Location = 1
-    tmpcard.Owner = 1
-    tmpcard.XYLeft = 牌移動暫時變數(1)    '指定目前Left(座標)
-    tmpcard.XYTop = 牌移動暫時變數(2)    '指定目前Top(座標)
-    FormMainMode.card(tmpcard.CardNum).Left = 牌移動暫時變數(1)
-    FormMainMode.card(tmpcard.CardNum).Top = 牌移動暫時變數(2)
-    FormMainMode.card(tmpcard.CardNum).ZOrder
-    FormMainMode.card(tmpcard.CardNum).Visible = True
+        FormMainMode.pageusglead.Caption = Val(FormMainMode.pageusglead) + 1
+        戰鬥系統類.座標計算_使用者手牌
+        牌移動暫時變數(3) = tmpcard.CardNum
+        戰鬥系統類.牌順序增加_手牌_使用者
+        tmpcard.Location = 1
+        tmpcard.Owner = 1
+        tmpcard.XYLeft = 牌移動暫時變數(1)    '指定目前Left(座標)
+        tmpcard.XYTop = 牌移動暫時變數(2)    '指定目前Top(座標)
+        FormMainMode.card(tmpcard.CardNum).Left = 牌移動暫時變數(1)
+        FormMainMode.card(tmpcard.CardNum).Top = 牌移動暫時變數(2)
+        FormMainMode.card(tmpcard.CardNum).ZOrder
+        FormMainMode.card(tmpcard.CardNum).Visible = True
 
-    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 3, 5
+        戰鬥系統類.卡牌牌堆集合更換 tmpcard, 3, 5
+    End If
 End Sub
 Sub 事件卡處理_分派_電腦方()
-    Dim i As Integer
-    Dim tmpcard As clsActionCard
-    Set tmpcard = 戰鬥系統類.CardDeckCollection(4)(1)
+    If 戰鬥系統類.CardDeckCollection(4).Count > 0 Then
+        Dim i As Integer
+        Dim tmpcard As clsActionCard
+        Set tmpcard = 戰鬥系統類.CardDeckCollection(4)(1)
 
-    FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
-    戰鬥系統類.座標計算_電腦手牌
-    牌移動暫時變數(3) = tmpcard.CardNum
-    戰鬥系統類.公用牌變背面
-    戰鬥系統類.牌順序增加_手牌_電腦
-    tmpcard.Location = 1
-    tmpcard.Owner = 2
-    tmpcard.XYLeft = 牌移動暫時變數(1)    '指定目前Left(座標)
-    tmpcard.XYTop = 牌移動暫時變數(2)    '指定目前Top(座標)
-    FormMainMode.card(tmpcard.CardNum).Left = 牌移動暫時變數(1)
-    FormMainMode.card(tmpcard.CardNum).Top = 牌移動暫時變數(2)
-    FormMainMode.card(tmpcard.CardNum).ZOrder
-    FormMainMode.card(tmpcard.CardNum).Visible = True
-    戰鬥系統類.卡牌牌堆集合更換 tmpcard, 4, 7
+        FormMainMode.pagecomglead.Caption = Val(FormMainMode.pagecomglead) + 1
+        戰鬥系統類.座標計算_電腦手牌
+        牌移動暫時變數(3) = tmpcard.CardNum
+        戰鬥系統類.公用牌變背面
+        戰鬥系統類.牌順序增加_手牌_電腦
+        tmpcard.Location = 1
+        tmpcard.Owner = 2
+        tmpcard.XYLeft = 牌移動暫時變數(1)    '指定目前Left(座標)
+        tmpcard.XYTop = 牌移動暫時變數(2)    '指定目前Top(座標)
+        FormMainMode.card(tmpcard.CardNum).Left = 牌移動暫時變數(1)
+        FormMainMode.card(tmpcard.CardNum).Top = 牌移動暫時變數(2)
+        FormMainMode.card(tmpcard.CardNum).ZOrder
+        FormMainMode.card(tmpcard.CardNum).Visible = True
+        戰鬥系統類.卡牌牌堆集合更換 tmpcard, 4, 7
 
-    For i = 1 To 3
-        FormMainMode.PEAFpersoncardcom(i).ZOrder
-    Next
+        For i = 1 To 3
+            FormMainMode.PEAFpersoncardcom(i).ZOrder
+        Next
+    End If
 End Sub
 Sub 事件卡處理_計算張數()
     If 角色人物對戰人數(1, 1) > 1 Or 角色人物對戰人數(2, 1) > 1 Then
