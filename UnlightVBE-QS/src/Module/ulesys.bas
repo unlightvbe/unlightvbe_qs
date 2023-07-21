@@ -3,17 +3,8 @@ Option Explicit
 Public app_path As String  '路徑設定碼
 Public 角色人物對戰人數(1 To 2, 1 To 2) As Integer    '雙方對戰角色人數紀錄數(1.使用者/2.電腦,1.總共人數/2.目前第幾位)
 Public 角色待機人物紀錄數(1 To 2, 1 To 3) As Integer    '雙方待機角色人物編號紀錄數(1.使用者/2.電腦,1.場上角色/2~3.待機角色第n位編號)
-Public tr1num As Integer    'PEStartForm計數器暫時變數
-Public PEAEtr1num As Integer    'PEAttackingEndingForm計數器暫時變數
-Public st As Integer, sq As Integer, swq As Integer, cardusq As Integer, cardcomq As Integer   'PEAttackingStartForm計數器暫時變數
-Attribute sq.VB_VarUserMemId = 1073741829
-Attribute swq.VB_VarUserMemId = 1073741829
-Attribute cardusq.VB_VarUserMemId = 1073741829
-Attribute cardcomq.VB_VarUserMemId = 1073741829
 Public 第一次啟動讀入程序標記 As Boolean    '第一次啟動程式讀入程序標記數
 Attribute 第一次啟動讀入程序標記.VB_VarUserMemId = 1073741834
-Public 接續讀入表單串 As String    'PEStartForm接續讀入表單暫時紀錄數
-Attribute 接續讀入表單串.VB_VarUserMemId = 1073741835
 Public 音樂檢查播放目標數 As Integer    '音樂檢查播放計數器目標數
 Attribute 音樂檢查播放目標數.VB_VarUserMemId = 1073741836
 Public 通知表單是否已出現 As Boolean    '布勞通知表單是否已經出現暫時變數
@@ -1500,7 +1491,7 @@ Sub 主選單_PEStartForm顯示()
     FormMainMode.PEStartForm.ZOrder
     '====================
     FormMainMode.PEStext1.Visible = False
-    tr1num = 0
+    FormMainMode.PES_tr1num = 0
     FormMainMode.tr1.Enabled = True
 End Sub
 Sub 主選單_PEGameFreeModeSettingForm顯示()
@@ -1580,8 +1571,8 @@ Sub 戰鬥系統開始表單讀入程序()
     FormMainMode.大人物形像_電腦.Top = 8400 - FormMainMode.大人物形像_電腦.大人物圖片height
     FormMainMode.大人物形像_電腦.Width = FormMainMode.大人物形像_電腦.大人物圖片width
     FormMainMode.大人物形像_電腦.Left = FormMainMode.ScaleWidth
-    st = 0
-    sq = 0
+    FormMainMode.PEAS_st = 0
+    FormMainMode.PEAS_sq = 0
     FormMainMode.start1.Enabled = True
 End Sub
 Sub 自由戰鬥模式設定表單基本設定程序()

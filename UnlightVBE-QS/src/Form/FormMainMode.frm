@@ -2991,6 +2991,15 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+Public PEAS_st As Integer, PEAS_sq As Integer, PEAS_swq As Integer   'PEAttackingStartForm計數器暫時變數
+Attribute PEAS_sq.VB_VarUserMemId = 1073938432
+Attribute PEAS_swq.VB_VarUserMemId = 1073938432
+Public PES_接續讀入表單串 As String    'PEStartForm接續讀入表單暫時紀錄數
+Attribute PES_接續讀入表單串.VB_VarUserMemId = 1073938435
+Public PEAE_tr1num As Integer    'PEAttackingEndingForm計數器暫時變數
+Attribute PEAE_tr1num.VB_VarUserMemId = 1073938436
+Public PES_tr1num As Integer    'PEStartForm計數器暫時變數
+Attribute PES_tr1num.VB_VarUserMemId = 1073938437
 Private Sub atkingtrcom_Timer()
     If 目前數(29) = 1 Then
         目前數(31) = 0
@@ -3030,7 +3039,7 @@ Private Sub bnreturn_Click()
 End Sub
 
 Sub bnreturnt_Click()
-    接續讀入表單串 = "PEGF"
+    PES_接續讀入表單串 = "PEGF"
     一般系統類.主選單_PEStartForm顯示
     FormMainMode.PEAttackingEndingForm.Visible = False
 End Sub
@@ -3820,7 +3829,7 @@ Private Sub pageusglead_Change()
 End Sub
 
 Private Sub PEAEtr1_Timer()
-    Select Case PEAEtr1num
+    Select Case PEAE_tr1num
         Case 10
             If 戰鬥模式勝敗紀錄數 = 1 Then
                 FormMainMode.PEAttackingEndingForm.Picture = LoadPicture(app_path & "gif\system\gamewin.jpg")
@@ -3843,7 +3852,7 @@ Private Sub PEAEtr1_Timer()
             bn.Visible = True
             bnt.Visible = True
     End Select
-    PEAEtr1num = PEAEtr1num + 1
+    PEAE_tr1num = PEAE_tr1num + 1
 End Sub
 
 Private Sub PEAFAnimateInterface_AnimateCheckPoint(ByVal uscom As Integer)
@@ -3976,7 +3985,7 @@ Private Sub PEAFpersoncardus_MouseEnter(Index As Integer)
 End Sub
 
 Private Sub PEASpke_Timer()
-    Select Case swq
+    Select Case PEAS_swq
         Case 10
             PEASpersontalk.Top = -120
             PEASpersontalk.對話文字 = 人物系統類.人物對話選擇(1)
@@ -4006,7 +4015,7 @@ Private Sub PEASpke_Timer()
                 PEASpersontalkCom.對話文字顯示 = True
             End If
     End Select
-    swq = Val(swq) + 1
+    PEAS_swq = Val(PEAS_swq) + 1
 End Sub
 
 Private Sub PEAttackingForm_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -4025,7 +4034,7 @@ Private Sub PEAttackingForm_MouseMove(Button As Integer, Shift As Integer, X As 
 End Sub
 
 Private Sub tr1_Timer()
-    Select Case tr1num
+    Select Case PES_tr1num
         Case 1
             '        MsgBox "1-1"
             PEStext1.Visible = True
@@ -4033,11 +4042,11 @@ Private Sub tr1_Timer()
             If 第一次啟動讀入程序標記 = False Then
                 '            一般系統類.遊戲初始讀入程序
                 第一次啟動讀入程序標記 = True
-                接續讀入表單串 = "PEGF"   '====測試階段-直接進入自由戰鬥模式
+                PES_接續讀入表單串 = "PEGF"   '====測試階段-直接進入自由戰鬥模式
                 '            MsgBox "1-3"
             End If
         Case 5
-            Select Case 接續讀入表單串
+            Select Case PES_接續讀入表單串
                 Case "PEGF"
                     '                MsgBox "1-5"
                     一般系統類.遊戲初始讀入程序
@@ -4045,7 +4054,7 @@ Private Sub tr1_Timer()
                     一般系統類.自由戰鬥模式設定表單基本設定程序
             End Select
         Case 7
-            Select Case 接續讀入表單串
+            Select Case PES_接續讀入表單串
                 Case "PEGF"
                     '                MsgBox "1-7"
                     一般系統類.主選單_PEGameFreeModeSettingForm顯示
@@ -4053,14 +4062,14 @@ Private Sub tr1_Timer()
             tr1.Enabled = False
             PEStartForm.Visible = False
     End Select
-    tr1num = tr1num + 1
+    PES_tr1num = PES_tr1num + 1
 End Sub
 
 Private Sub trend_Timer()
     If trend暫時變數 = 4 Then
         一般系統類.主選單_PEAttackingEndingForm顯示
         PEAttackingForm.Visible = False
-        PEAEtr1num = 0
+        PEAE_tr1num = 0
         PEAEtr1.Enabled = True
         trend.Enabled = False
     ElseIf trend暫時變數 = 2 Then
@@ -5799,7 +5808,7 @@ Private Sub personresetus_Click(Index As Integer)
 End Sub
 Private Sub start1_Timer()
     Dim i As Integer
-    If st > 200 Then
+    If PEAS_st > 200 Then
         stup.Enabled = True
         stdown.Enabled = True
         start1.Enabled = False
@@ -5838,28 +5847,29 @@ Private Sub start1_Timer()
         開始卡片移動動畫完成數(1, 4) = 角色人物對戰人數(1, 1)
         開始卡片移動動畫完成數(2, 4) = 角色人物對戰人數(2, 1)
     Else
-        st = Val(st) + 1
+        PEAS_st = Val(PEAS_st) + 1
     End If
 End Sub
 
 Private Sub start2_Timer()
-    If sq = 401 Then
+    If PEAS_sq = 401 Then
         tr大人物形像_使用者.Enabled = True
         tr大人物形像_電腦.Enabled = True
-        sq = Val(sq) + 1
-    ElseIf sq = 500 Then
+        stup.Enabled = True
+        stdown.Enabled = True
+        PEAS_sq = Val(PEAS_sq) + 1
+    ElseIf PEAS_sq = 450 Then
         一般系統類.主選單_PEAttackingForm顯示
         PEAttackingStartForm.Visible = False
         start2.Enabled = False
         FormMainMode.血量載入動畫.Enabled = True
     Else
-        sq = Val(sq) + 1
+        PEAS_sq = Val(PEAS_sq) + 1
     End If
-
 End Sub
 
 Private Sub stdown_Timer()
-    If sq <= 400 Then
+    If PEAS_sq <= 400 Then
         If downjpg.Top <= 8400 Then
             downjpg.Top = 8400
             stdown.Enabled = False
@@ -5879,7 +5889,7 @@ Private Sub stdown_Timer()
 End Sub
 
 Private Sub stup_Timer()
-    If sq <= 400 Then
+    If PEAS_sq <= 400 Then
         If upjpg_2.Top >= 0 Then
             upjpg_2.Top = 0
             stup.Enabled = False
@@ -5913,11 +5923,11 @@ Private Sub tr大人物形像_使用者_Timer()
     End If
 
     kp = (大人物形像_使用者.大人物圖片width + bigall) / 30
-    If sq <= 400 Then
+    If PEAS_sq <= 400 Then
         If 大人物形像_使用者.Left >= bigall Then
             大人物形像_使用者.Left = bigall
             tr大人物形像_使用者.Enabled = False
-            swq = 0
+            PEAS_swq = 0
             PEASpke.Enabled = True
         Else
             If Abs(大人物形像_使用者.Left - bigall) < kp Then
@@ -5930,8 +5940,6 @@ Private Sub tr大人物形像_使用者_Timer()
         If 大人物形像_使用者.Left <= -大人物形像_使用者.大人物圖片width Then
             大人物形像_使用者.Left = -大人物形像_使用者.大人物圖片width
             tr大人物形像_使用者.Enabled = False
-            stup.Enabled = True
-            stdown.Enabled = True
         Else
             大人物形像_使用者.Left = 大人物形像_使用者.Left - kp
         End If
@@ -5950,7 +5958,7 @@ Private Sub tr大人物形像_電腦_Timer()
         bigall = 8760 - bigwn
     End If
     kr = (Val(FormMainMode.ScaleWidth) - bigall) / 30
-    If sq <= 400 Then
+    If PEAS_sq <= 400 Then
         If 大人物形像_電腦.Left <= bigall Then
             大人物形像_電腦.Left = bigall
             tr大人物形像_電腦.Enabled = False
@@ -5973,7 +5981,7 @@ End Sub
 
 Private Sub cardcomtr_Timer()
     Dim i As Integer
-    If sq <= 400 Then
+    If PEAS_sq <= 400 Then
         For i = 3 To 1 Step -1
             If PEAScardcom(i).Visible = True Then
                 If i < 3 Then
@@ -6027,7 +6035,7 @@ End Sub
 
 Private Sub cardustr_Timer()
     Dim i As Integer
-    If sq <= 400 Then
+    If PEAS_sq <= 400 Then
         For i = 3 To 1 Step -1
             If PEAScardus(i).Visible = True Then
                 If i < 3 Then

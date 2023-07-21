@@ -914,18 +914,18 @@ Function 人物對話選擇(ByVal uscom As Integer) As String
     personName = VBEPerson(uscomt, 1, 1, 1, 1)
     personVBEID = VBEPerson(uscomt, 1, 1, 4, 1)
     tmpPersonLevel = VBEPerson(uscom, 1, 1, 2, 1) & VBEPerson(uscom, 1, 1, 2, 2)
-    
+
     '特別指定對話優先
     For i = 31 To 40
         If VBEPersonTalk(uscom, 1, i, 1) <> "" Then
             talkPersionID = Split(VBEPersonTalk(uscom, 1, i, 2), "&")
-          
+
             For k = 0 To UBound(talkPersionID)
                 If talkPersionID(k) = personVBEID Then
                     isAdd = False
                     If VBEPersonTalk(uscom, 1, i, 3) <> "" Then
                         persontalkLevel = Split(VBEPersonTalk(uscom, 1, i, 3), "&")
-    
+
                         For p = 0 To UBound(persontalkLevel)
                             If persontalkLevel(p) = tmpPersonLevel Then
                                 isAdd = True
@@ -944,7 +944,7 @@ Function 人物對話選擇(ByVal uscom As Integer) As String
             Next
         End If
     Next
-    
+
     If persontalkrecnum >= 1 Then
         m = Int(Rnd() * persontalkrecnum) + 1
         at = Split(persontalkrec, "=")
@@ -955,13 +955,13 @@ Function 人物對話選擇(ByVal uscom As Integer) As String
     For i = 1 To 20
         If VBEPersonTalk(uscom, 1, i, 1) <> "" Then
             talkname = Split(VBEPersonTalk(uscom, 1, i, 2), "&")
-          
+
             For k = 0 To UBound(talkname)
                 If talkname(k) = personName Then
                     isAdd = False
                     If VBEPersonTalk(uscom, 1, i, 3) <> "" Then
                         persontalkLevel = Split(VBEPersonTalk(uscom, 1, i, 3), "&")
-    
+
                         For p = 0 To UBound(persontalkLevel)
                             If persontalkLevel(p) = tmpPersonLevel Then
                                 isAdd = True
