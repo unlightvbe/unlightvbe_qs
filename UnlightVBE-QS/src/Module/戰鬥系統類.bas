@@ -915,10 +915,23 @@ End Sub
 Sub 執行動作_洗牌_事件卡牌堆洗牌()
     Dim tmpnewCollection As Collection
     Dim tmpcard As clsActionCard
-    Dim i As Integer, m As Integer
+    Dim i As Integer, m As Integer, tmptot As Integer
 
     For m = 3 To 4
         Set tmpnewCollection = New Collection
+
+        If (m = 3 And 事件卡記錄暫時數(0, 1) = 12 And Formsetting.persontgreus.Value = 1) Or _
+           (m = 4 And 事件卡記錄暫時數(0, 1) = 12 And Formsetting.persontgrecom.Value = 1) Then    '1v1-遵守規則
+            For tmptot = 6 To 1 Step -1
+                Randomize
+                i = Int(Rnd() * tmptot) + 1
+                Set tmpcard = 戰鬥系統類.CardDeckCollection(m)(i)
+
+                tmpnewCollection.Add tmpcard, CStr(tmpcard.CardNum)
+                戰鬥系統類.CardDeckCollection(m).Remove i
+            Next
+        End If
+
         Do While 戰鬥系統類.CardDeckCollection(m).Count > 0
             Randomize
             i = Int(Rnd() * 戰鬥系統類.CardDeckCollection(m).Count) + 1
