@@ -116,7 +116,7 @@ Begin VB.Form FormAbout
       Width           =   1470
    End
    Begin VB.Label Label1 
-      Caption         =   "2022 By Andy Ciu."
+      Caption         =   "2023 By AndyCiu."
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   11.25
@@ -129,14 +129,14 @@ Begin VB.Form FormAbout
       Height          =   375
       Left            =   240
       TabIndex        =   3
-      Top             =   3960
+      Top             =   4080
       Width           =   3615
    End
    Begin VB.Label aboutvn 
-      Caption         =   "Bulid 1328"
+      Caption         =   "Bulid 1655"
       BeginProperty Font 
          Name            =   "微軟正黑體"
-         Size            =   12
+         Size            =   11.25
          Charset         =   136
          Weight          =   400
          Underline       =   0   'False
@@ -146,14 +146,14 @@ Begin VB.Form FormAbout
       Height          =   375
       Left            =   240
       TabIndex        =   2
-      Top             =   3240
+      Top             =   3360
       Width           =   3375
    End
    Begin VB.Label Label3 
       Caption         =   "Version Origin"
       BeginProperty Font 
          Name            =   "微軟正黑體"
-         Size            =   12
+         Size            =   11.25
          Charset         =   136
          Weight          =   400
          Underline       =   0   'False
@@ -163,7 +163,7 @@ Begin VB.Form FormAbout
       Height          =   375
       Left            =   240
       TabIndex        =   1
-      Top             =   2760
+      Top             =   2640
       Width           =   3615
    End
    Begin VB.Label Label2 
@@ -171,7 +171,7 @@ Begin VB.Form FormAbout
       BeginProperty Font 
          Name            =   "微軟正黑體"
          Size            =   12
-         Charset         =   136
+         Charset         =   0
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
